@@ -74,17 +74,22 @@ class Roll(commands.Cog):
 
             
     @commands.command(aliases=["mcs"])
-    async def MyCthulhuStats(self, ctx):
-        user_id = str(ctx.author.id)  # Get the user's ID as a string
+    async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
+        if member is None:
+            member = ctx.author
+
+        user_id = str(member.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send(f"Use !newInv for creating new investigator.")
-        else:
-            name = self.player_stats.get(user_id, {}).get("NAME", "Your Investigator Stats")
-            stats_embed = discord.Embed(
-                title=name,
-                description="Your current investigator statistics:",
-                color=discord.Color.gold()
-            )
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newI` for creating a new investigator.")
+            return
+
+        name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
+
+        stats_embed = discord.Embed(
+            title=name,
+            description="Investigator statistics:",
+            color=discord.Color.gold()
+        )
             for stat_name, value in self.player_stats[user_id].items():
                 emoji = ":question:"  # Default emoji if no suitable match is found
                 if stat_name == "NAME":

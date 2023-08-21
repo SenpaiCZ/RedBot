@@ -65,6 +65,7 @@ class Roll(commands.Cog):
             try:
                 new_value = int(new_value)
                 self.player_stats[user_id][stat_name] = new_value
+                self.save_data()
                 await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")

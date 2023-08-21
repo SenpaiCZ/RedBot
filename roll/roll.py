@@ -115,25 +115,27 @@ class Roll(commands.Cog):
         await ctx.send(embed=stats_embed)
         
     @commands.command()
-    async def newInvestigator(self, ctx, investigator_name):
+    async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
     
-        if user_id not in self.player_stats:
-           self.player_stats[user_id] = {
-               "STR": 0,
-                "DEX": 0,
-                "CON": 0,
-                "INT": 0,
-                "POW": 0,
-                "CHA": 0,
-               "EDU": 0,
-               "SIZ": 0,
-               "HP": 0,
-                "MP": 0,
-                "LUCK": 0,
-                "SAN": 0
+        if user_id in self.player_stats:
+            self.player_stats[user_id] = {
+            "NAME": investigator_name,
+            "STR": 0,
+            "DEX": 0,
+            "CON": 0,
+            "INT": 0,
+            "POW": 0,
+            "CHA": 0,
+            "EDU": 0,
+            "SIZ": 0,
+            "HP": 0,
+            "MP": 0,
+            "LUCK": 0,
+            "SAN": 0
              }
-           await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
+            self.save_data()  # Uložení změn do souboru
+            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
 

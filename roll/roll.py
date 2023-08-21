@@ -77,47 +77,48 @@ class Roll(commands.Cog):
     async def MyCthulhuStats(self, ctx):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send(f"Use !newL for creating new investigator.")
-        name = self.player_stats.get(user_id, {}).get("NAME", "Your Investigator Stats")
-        stats_embed = discord.Embed(
-            title=name,
-            description="Your current investigator statistics:",
-            color=discord.Color.gold()
-        )
-        for stat_name, value in self.player_stats[user_id].items():
-            emoji = ":question:"  # Default emoji if no suitable match is found
-            if stat_name == "NAME":
-                continue  # Skip displaying NAME in the list
-            if stat_name == "STR":
-                emoji = ":muscle:"
-            elif stat_name == "DEX":
-                emoji = ":runner:"
-            elif stat_name == "CON":
-                emoji = ":heart:"
-            elif stat_name == "INT":
-                emoji = ":brain:"
-            elif stat_name == "POW":
-                emoji = ":zap:"
-            elif stat_name == "CHA":
-                emoji = ":sparkles:"
-            elif stat_name == "EDU":
-                emoji = ":mortar_board:"
-            elif stat_name == "SIZ":
-                emoji = ":bust_in_silhouette:"
-            elif stat_name == "HP":
-                emoji = ":heartpulse:"
-            elif stat_name == "MP":
-                emoji = ":sparkles:"
-            elif stat_name == "LUCK":
-                emoji = ":four_leaf_clover:"
-            elif stat_name == "SAN":
-                emoji = ":scales:"
+            await ctx.send(f"Use !newInv for creating new investigator.")
+        else
+            name = self.player_stats.get(user_id, {}).get("NAME", "Your Investigator Stats")
+            stats_embed = discord.Embed(
+                title=name,
+                description="Your current investigator statistics:",
+                color=discord.Color.gold()
+            )
+            for stat_name, value in self.player_stats[user_id].items():
+                emoji = ":question:"  # Default emoji if no suitable match is found
+                if stat_name == "NAME":
+                    continue  # Skip displaying NAME in the list
+                if stat_name == "STR":
+                    emoji = ":muscle:"
+                elif stat_name == "DEX":
+                    emoji = ":runner:"
+                elif stat_name == "CON":
+                    emoji = ":heart:"
+                elif stat_name == "INT":
+                    emoji = ":brain:"
+                elif stat_name == "POW":
+                    emoji = ":zap:"
+                elif stat_name == "CHA":
+                    emoji = ":sparkles:"
+                elif stat_name == "EDU":
+                    emoji = ":mortar_board:"
+                elif stat_name == "SIZ":
+                    emoji = ":bust_in_silhouette:"
+                elif stat_name == "HP":
+                    emoji = ":heartpulse:"
+                elif stat_name == "MP":
+                    emoji = ":sparkles:"
+                elif stat_name == "LUCK":
+                    emoji = ":four_leaf_clover:"
+                elif stat_name == "SAN":
+                    emoji = ":scales:"
 
-            stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
+                stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
 
-        await ctx.send(embed=stats_embed)
+            await ctx.send(embed=stats_embed)
         
-    @commands.command(aliases=["newI"])
+    @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
     

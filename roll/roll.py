@@ -8,7 +8,7 @@ class Roll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    elf.data_file = "player_stats.json"  # Název souboru, kde budou uložena data
+    self.data_file = "player_stats.json"  # Název souboru, kde budou uložena data
 
     if os.path.exists(self.data_file):
         with open(self.data_file, "r") as f:

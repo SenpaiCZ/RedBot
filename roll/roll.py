@@ -23,7 +23,7 @@ class Roll(commands.Cog):
                 print(f"Error writing data to file: {e}")
 
     @commands.command(aliases=["diceroll"])
-    async def dr(self, ctx, dice_expression):
+    async def d(self, ctx, dice_expression):
         try:
             num_dice, dice_type = map(int, dice_expression.lower().split('d'))
             if dice_type not in [4, 6, 8, 10, 12, 20, 100]:

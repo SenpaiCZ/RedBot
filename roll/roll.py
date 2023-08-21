@@ -121,7 +121,7 @@ class Roll(commands.Cog):
 
                 stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
 
-            await ctx.send(embed=stats_embed)
+        await ctx.send(embed=stats_embed)
         
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):

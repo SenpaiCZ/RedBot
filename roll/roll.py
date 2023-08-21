@@ -77,15 +77,16 @@ class Roll(commands.Cog):
     @commands.command()
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         stat_name = stat_name.upper()
-        if stat_name in player_stats:
+        if stat_name in self.player_stats:
             try:
                 new_value = int(new_value)
-                player_stats[stat_name] = new_value
+                self.player_stats[stat_name] = new_value
                 await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
         else:
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+            
     @commands.command()
 
     async def MyCthulhuStats(self, ctx):

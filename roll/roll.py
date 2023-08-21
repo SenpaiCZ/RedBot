@@ -1,10 +1,24 @@
 from redbot.core import commands
 import random
 import discord
+import json
+import os
 
 class Roll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+    elf.data_file = "player_stats.json"  # Název souboru, kde budou uložena data
+
+        if os.path.exists(self.data_file):
+            with open(self.data_file, "r") as f:
+                self.player_stats = json.load(f)
+        else:
+            self.player_stats = {}
+
+    def save_data(self):
+        with open(self.data_file, "w") as f:
+            json.dump(self.player_stats, f, indent=4)
 
     @commands.command()
     async def dr(self, ctx, dice_expression):
@@ -60,3 +74,54 @@ class Roll(commands.Cog):
         embed.add_field(name="Sanity :scales:", value="70", inline=True)
         
         await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def CthulhuChangeStats(self, ctx, stat_name, new_value):
+        stat_name = stat_name.upper()
+        if stat_name in player_stats:
+            try:
+                new_value = int(new_value)
+                player_stats[stat_name] = new_value
+                await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
+            except ValueError:
+                await ctx.send("Invalid new value. Please provide a number.")
+        else:
+            await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+    @commands.command()
+
+    async def MyCthulhuStats(self, ctx):
+        stats_embed = discord.Embed(
+            title="Your Investigator Stats",
+            description="Your current investigator statistics:",
+            color=discord.Color.gold()
+        )
+        for stat_name, value in player_stats.items():
+            emoji = ":question:"  # Default emoji if no suitable match is found
+            if stat_name == "STR":
+                emoji = ":muscle:"
+            elif stat_name == "DEX":
+                emoji = ":runner:"
+            elif stat_name == "CON":
+                emoji = ":heart:"
+            elif stat_name == "INT":
+                emoji = ":brain:"
+            elif stat_name == "POW":
+                emoji = ":zap:"
+            elif stat_name == "CHA":
+                emoji = ":sparkles:"
+            elif stat_name == "EDU":
+                emoji = ":mortar_board:"
+            elif stat_name == "SIZ":
+                emoji = ":bust_in_silhouette:"
+            elif stat_name == "HP":
+                emoji = ":heartpulse:"
+            elif stat_name == "MP":
+                emoji = ":sparkles:"
+            elif stat_name == "LUCK":
+                emoji = ":four_leaf_clover:"
+            elif stat_name == "SAN":
+                emoji = ":scales:"
+            
+            stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
+        
+        await ctx.send(embed=stats_embed)

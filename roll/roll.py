@@ -131,21 +131,21 @@ class Roll(commands.Cog):
             stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
 
         await ctx.send(embed=stats_embed)
-        @commands.command()
-        async def newInvestigator(self, ctx):
-            user_id = str(ctx.author.id)  # Get the user's ID as a string
-            self.player_stats[user_id] = {
-                "STR": 0,
-                "DEX": 0,
-                "CON": 0,
-                "INT": 0,
-                "POW": 0,
-                "CHA": 0,
-                "EDU": 0,
-                "SIZ": 0,
-                "HP": 0,
-                "MP": 0,
-                "LUCK": 0,
-                "SAN": 0
-                }
+     @commands.command()
+     async def newInvestigator(self, ctx):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
+        self.player_stats[user_id] = {
+            "STR": 0,
+            "DEX": 0,
+            "CON": 0,
+            "INT": 0,
+            "POW": 0,
+            "CHA": 0,
+            "EDU": 0,
+            "SIZ": 0,
+            "HP": 0,
+            "MP": 0,
+            "LUCK": 0,
+            "SAN": 0
+            }
         await ctx.send("Your investigator has been created with all stats set to 0.")

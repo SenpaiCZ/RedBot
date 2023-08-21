@@ -154,6 +154,7 @@ class Roll(commands.Cog):
             return
         
         del self.player_stats[user_id]
+        self.player_stats[user_id] = {}  # Vytvoření prázdného slovníku pro nového investigátora
         self.save_data()  # Uložení změn do souboru
         await ctx.send("Investigator has been deleted.")
      else:

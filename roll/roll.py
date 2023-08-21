@@ -7,7 +7,7 @@ class Roll(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def roll(self, ctx, dice_expression):
+    async def dr(self, ctx, dice_expression):
         try:
             num_dice, dice_type = map(int, dice_expression.lower().split('d'))
             if dice_type not in [4, 6, 8, 10, 12, 20, 100]:

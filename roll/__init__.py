@@ -1,4 +1,4 @@
-from .mycog import Roll
+from .roll import Roll
 
 
 async def setup(bot):

@@ -1,3 +1,3 @@
-from .myfristcog import MyFirstCog
+from .myfirstcog import MyFirstCog
 def setup(bot):
     bot.add_cog(MyFirstCog())

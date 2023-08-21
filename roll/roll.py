@@ -79,12 +79,14 @@ class Roll(commands.Cog):
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             self.player_stats[user_id] = {}
         stats_embed = discord.Embed(
-            title="Your Investigator Stats",
+            title=name,
             description="Your current investigator statistics:",
             color=discord.Color.gold()
         )
         for stat_name, value in self.player_stats[user_id].items():
             emoji = ":question:"  # Default emoji if no suitable match is found
+            if stat_name == "NAME":
+                continue  # Skip displaying NAME in the list
             if stat_name == "STR":
                 emoji = ":muscle:"
             elif stat_name == "DEX":

@@ -77,6 +77,7 @@ class Roll(commands.Cog):
     @commands.command()
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         stat_name = stat_name.upper()
+        print(self.player_stats)
         if stat_name in self.player_stats:
             try:
                 new_value = int(new_value)

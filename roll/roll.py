@@ -115,20 +115,47 @@ class Roll(commands.Cog):
         await ctx.send(embed=stats_embed)
         
     @commands.command()
-    async def newInvestigator(self, ctx):
+    async def newInvestigator(self, ctx, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
-        self.player_stats[user_id] = {
-            "STR": 0,
-            "DEX": 0,
-            "CON": 0,
-            "INT": 0,
-            "POW": 0,
-            "CHA": 0,
-            "EDU": 0,
-            "SIZ": 0,
-            "HP": 0,
-            "MP": 0,
-            "LUCK": 0,
-            "SAN": 0
-            }
-        await ctx.send("Your investigator has been created with all stats set to 0.")
+    
+        if user_id not in self.player_stats:
+           self.player_stats[user_id] = {
+               "STR": 0,
+                "DEX": 0,
+                "CON": 0,
+                "INT": 0,
+                "POW": 0,
+                "CHA": 0,
+               "EDU": 0,
+               "SIZ": 0,
+               "HP": 0,
+                "MP": 0,
+                "LUCK": 0,
+                "SAN": 0
+             }
+           await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
+        else:
+            await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
+
+    @commands.command()
+    async def deleteInvestigator(self, ctx):
+     user_id = str(ctx.author.id)  # Get the user's ID as a string
+    
+     if user_id in self.player_stats:
+        await ctx.send("Are you sure you want to delete your investigator? If you're sure, type 'YES' to confirm.")
+        
+        def check(message):
+            return message.author == ctx.author and message.content.upper() == "YES"
+        
+        try:
+            confirm_message = await self.bot.wait_for("message", check=check, timeout=30)
+        except TimeoutError:
+            await ctx.send("Confirmation timeout. Investigator deletion canceled.")
+            return
+        
+        del self.player_stats[user_id]
+        self.save_data()  # Uložení změn do souboru
+        await ctx.send("Investigator has been deleted.")
+     else:
+        await ctx.send("You don't have an investigator to delete.")
+

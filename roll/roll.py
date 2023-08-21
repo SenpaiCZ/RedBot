@@ -6,8 +6,8 @@ class Roll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="dr")  # Změňte jméno příkazu zde
-    async def dice_roll(self, ctx, dice_expression):
+    @commands.command()
+    async def dr(self, ctx, dice_expression):
         if 'd' in dice_expression:
             num_dice, dice_type = map(int, dice_expression.lower().split('d'))
         else:
@@ -35,8 +35,8 @@ class Roll(commands.Cog):
         
         await ctx.send(embed=embed)
 
-    @commands.command(name="cthulhu")  # Přidáváme nový příkaz "cthulhu"
-    async def cthulhu_stats(self, ctx):
+    @commands.command()
+    async def investigator(self, ctx):
         embed = discord.Embed(
             title="Call of Cthulhu Stats",
             description="Basic statistics for a Call of Cthulhu character:",

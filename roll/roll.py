@@ -22,7 +22,7 @@ class Roll(commands.Cog):
         except Exception as e:
                 print(f"Error writing data to file: {e}")
 
-    @commands.command()
+    @commands.command(aliases=["diceroll"])
     async def dr(self, ctx, dice_expression):
         try:
             num_dice, dice_type = map(int, dice_expression.lower().split('d'))
@@ -55,7 +55,7 @@ class Roll(commands.Cog):
         
         await ctx.send(embed=embed)
         
-    @commands.command()
+    @commands.command(aliases=["ccs"])
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
@@ -73,7 +73,7 @@ class Roll(commands.Cog):
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
 
             
-    @commands.command()
+    @commands.command(aliases=["mcs"])
     async def MyCthulhuStats(self, ctx):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
@@ -114,7 +114,7 @@ class Roll(commands.Cog):
 
         await ctx.send(embed=stats_embed)
         
-    @commands.command()
+    @commands.command(aliases=["newI"])
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
     

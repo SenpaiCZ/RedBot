@@ -1,10 +1,10 @@
 {
-    "author" : ["Author", "Co-Author (optional)", "Co-Author 2 (optional)"],
-    "install_msg" : "A message you wish to display to users after they sucessfully install your cog.",
-    "name" : "Name of your cog.",
-    "short" : "A short description. Displayed in the `[p]cog list` command.",
+    "author" : ["SenpaiCZ"],
+    "install_msg" : "Thanks for installing, have fun.",
+    "name" : "CthulhuCog",
+    "short" : "A cog for tracking stats and making dice rolls for Call of Cthulhu RPG.",
     "requirements" : [],
-    "description" : "Full description of your cog. Displayed on the Red Portal and with `[p]cog info`",
-    "permissions" : ["List of Bot permissions required"],
-    "tags" : ["List of search tags for the Red portal"]
+    "description" : "Definetly working cog...",
+    "permissions" : ["I dont know ... yet!"],
+    "tags": ["rpg", "dice", "call of cthulhu"],
 }

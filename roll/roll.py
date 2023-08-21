@@ -131,8 +131,9 @@ class Roll(commands.Cog):
             stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
 
         await ctx.send(embed=stats_embed)
-     @commands.command()
-     async def newInvestigator(self, ctx):
+        
+    @commands.command()
+    async def newInvestigator(self, ctx):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         self.player_stats[user_id] = {
             "STR": 0,

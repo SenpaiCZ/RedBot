@@ -10,11 +10,11 @@ class Roll(commands.Cog):
         
     elf.data_file = "player_stats.json"  # Název souboru, kde budou uložena data
 
-        if os.path.exists(self.data_file):
-            with open(self.data_file, "r") as f:
+    if os.path.exists(self.data_file):
+        with open(self.data_file, "r") as f:
                 self.player_stats = json.load(f)
-        else:
-            self.player_stats = {}
+    else:
+        self.player_stats = {}
 
     def save_data(self):
         with open(self.data_file, "w") as f:

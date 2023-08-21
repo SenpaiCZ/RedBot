@@ -7,7 +7,7 @@ import os
 class Roll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.data_file = "player_stats.json" 
+        self.data_file = "/home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/roll/player_stats.json" 
 
         if os.path.exists(self.data_file):
             with open(self.data_file, "r") as f:

@@ -90,7 +90,7 @@ class Roll(commands.Cog):
             description="Investigator statistics:",
             color=discord.Color.gold()
         )
-            for stat_name, value in self.player_stats[user_id].items():
+        for stat_name, value in self.player_stats[user_id].items():
                 emoji = ":question:"  # Default emoji if no suitable match is found
                 if stat_name == "NAME":
                     continue  # Skip displaying NAME in the list

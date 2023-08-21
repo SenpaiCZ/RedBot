@@ -76,27 +76,32 @@ class Roll(commands.Cog):
         
     @commands.command()
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
-        print(self.player_stats)
-        if stat_name in self.player_stats:
+        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
+            self.player_stats[user_id] = {}
+        if stat_name in self.player_stats[user_id]:
             try:
                 new_value = int(new_value)
-                self.player_stats[stat_name] = new_value
+                self.player_stats[user_id][stat_name] = new_value
                 await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
         else:
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+
             
     @commands.command()
-
     async def MyCthulhuStats(self, ctx):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
+        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
+            self.player_stats[user_id] = {}
         stats_embed = discord.Embed(
             title="Your Investigator Stats",
             description="Your current investigator statistics:",
             color=discord.Color.gold()
         )
-        for stat_name, value in player_stats.items():
+        for stat_name, value in self.player_stats[user_id].items():
             emoji = ":question:"  # Default emoji if no suitable match is found
             if stat_name == "STR":
                 emoji = ":muscle:"
@@ -122,7 +127,7 @@ class Roll(commands.Cog):
                 emoji = ":four_leaf_clover:"
             elif stat_name == "SAN":
                 emoji = ":scales:"
-            
+
             stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
-        
+
         await ctx.send(embed=stats_embed)

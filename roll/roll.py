@@ -78,6 +78,7 @@ class Roll(commands.Cog):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             self.player_stats[user_id] = {}
+        name = self.player_stats.get(user_id, {}).get("NAME", "Your Investigator Stats")
         stats_embed = discord.Embed(
             title=name,
             description="Your current investigator statistics:",

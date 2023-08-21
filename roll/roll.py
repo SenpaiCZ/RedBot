@@ -80,7 +80,7 @@ class Roll(commands.Cog):
 
         user_id = str(member.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newI` for creating a new investigator.")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
 
         name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")

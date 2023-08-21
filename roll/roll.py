@@ -16,8 +16,11 @@ class Roll(commands.Cog):
             self.player_stats = {}
 
     def save_data(self):
-        with open(self.data_file, "w") as f:
-            json.dump(self.player_stats, f, indent=4)
+        try:
+            with open(self.data_file, "w") as f:
+                json.dump(self.player_stats, f, indent=4)
+        except Exception as e:
+            print(f"Error writing data to file: {e}")
 
     @commands.command()
     async def dr(self, ctx, dice_expression):

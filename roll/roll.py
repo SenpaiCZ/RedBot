@@ -82,8 +82,7 @@ class Roll(commands.Cog):
                         luck_used = min(luck_value, difference)
                         luck_value -= luck_used
                         self.player_stats[user_id]["LUCK"] = luck_value
-                        self.save_data()  # Uložení změn do souboru
-                        
+                        self.save_data()  # Uložení změn LUCK do dat
                         formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                         result = "Regular Success (LUCK Used) :heavy_check_mark:"
                         skill_value -= luck_used
@@ -128,6 +127,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+
 
     
 

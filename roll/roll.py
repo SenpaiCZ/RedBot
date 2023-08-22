@@ -210,16 +210,16 @@ class Roll(commands.Cog):
                 description=f"Investigator statistics - Page {page}/{max_page}:",
                 color=discord.Color.gold()
             )
-            
+
             if page == 1:
                 stats_range = range(0, 13)
             elif page == 2:
-                stats_range = range(13, 13 + 25)
+                stats_range = range(13, 38)  # 13 + 25 = 38
             elif page == max_page:
                 stats_range = range((page - 3) * 19, len(stats_list))
             else:
                 stats_range = range((page - 3) * 19, (page - 2) * 19)
-            
+
             for i in stats_range:
                 stat_name, value = stats_list[i]
                 if stat_name == "NAME":
@@ -227,7 +227,7 @@ class Roll(commands.Cog):
                 emoji = get_stat_emoji(stat_name)
                 value = get_stat_value(stat_name, value)
                 stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
-            
+
             return stats_embed
             
         message = await ctx.send(embed=generate_stats_page(stats_page))

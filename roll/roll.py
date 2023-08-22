@@ -130,16 +130,28 @@ class Roll(commands.Cog):
         stat_name = stat_name.upper()
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             self.player_stats[user_id] = {}
+        
         if stat_name in self.player_stats[user_id]:
             try:
                 new_value = int(new_value)
-                self.player_stats[user_id][stat_name] = new_value
+                
+                # Handle special cases for DEX and EDU
+                if stat_name == "DEX":
+                    self.player_stats[user_id][stat_name] = new_value
+                    self.player_stats[user_id]["Dodge"] = new_value // 2  # Save half of DEX value as Dodge
+                elif stat_name == "EDU":
+                    self.player_stats[user_id][stat_name] = new_value
+                    self.player_stats[user_id]["Language (own)"] = new_value  # Save EDU value as Language (own)
+                else:
+                    self.player_stats[user_id][stat_name] = new_value
+                    
                 self.save_data()
                 await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
         else:
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+
 
             
     @commands.command(aliases=["mcs"])

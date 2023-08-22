@@ -353,3 +353,25 @@ class Roll(commands.Cog):
         await ctx.send("Investigator has been deleted.")
      else:
         await ctx.send("You don't have an investigator to delete.")
+         
+    @commands.command(aliases=["cbackstory"])
+    async def CthulhuBackstory(self, ctx, category, *, entry):
+        user_id = str(ctx.author.id)
+        
+        if user_id not in self.player_stats:
+            self.player_stats[user_id] = {}
+        
+        category = category.capitalize()
+        entry = entry.strip()
+        
+        if "Backstory" not in self.player_stats[user_id]:
+            self.player_stats[user_id]["Backstory"] = {}
+        
+        if category not in self.player_stats[user_id]["Backstory"]:
+            self.player_stats[user_id]["Backstory"][category] = []
+        
+        self.player_stats[user_id]["Backstory"][category].append(entry)
+        
+        self.save_data()  # Uložení změn do souboru
+        
+        await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")

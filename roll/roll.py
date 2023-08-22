@@ -208,7 +208,14 @@ class Roll(commands.Cog):
             stats_embed.clear_fields()
             stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
             
-            for i in range((page - 1) * 13, min(page * 13, len(stats_list))):
+            if page == 1:
+                stats_range = range(0, 13)
+            elif page == 2:
+                stats_range = range(13, min(56, len(stats_list)))
+            else:
+                stats_range = range(56, len(stats_list))
+            
+            for i in stats_range:
                 stat_name, value = stats_list[i]
                 if stat_name == "NAME":
                     continue  # Skip displaying NAME in the list
@@ -217,7 +224,7 @@ class Roll(commands.Cog):
                 stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
             
             return stats_embed
-        
+            
         message = await ctx.send(embed=generate_stats_page(stats_page))
         await message.add_reaction("⬅️")
         await message.add_reaction("➡️")

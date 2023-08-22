@@ -58,7 +58,7 @@ class Roll(commands.Cog):
                 
                 embed = discord.Embed(
                     title=f"{name_value}'s Skill Check for '{skill_name}'",
-                    description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
+                    description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\n{formatted_skill}\n\n{formatted_luck}",
                     color=discord.Color.green()
                 )
                 
@@ -66,7 +66,7 @@ class Roll(commands.Cog):
                     difference = roll - skill_value
                     prompt_embed = discord.Embed(
                         title="Use LUCK?",
-                        description=f"Your roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
+                        description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
                                     "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
                         color=discord.Color.orange()
                     )
@@ -94,7 +94,7 @@ class Roll(commands.Cog):
                         
                         embed = discord.Embed(
                             title=f"{name_value}'s Skill Check for '{skill_name}'",
-                            description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
+                            description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\n{formatted_skill}\n\n{formatted_luck}",
                             color=discord.Color.green()
                         )
                     except asyncio.TimeoutError:
@@ -130,9 +130,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-    
 
-    
 
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):

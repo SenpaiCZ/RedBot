@@ -117,7 +117,10 @@ class Roll(commands.Cog):
             "Survival": 10,
             "Swim": 20,
             "Throw": 20,
-            "Track": 10
+            "Track": 10,
+            "Move": -1,
+            "Build": -1,
+            "Damage Bonus": -1
             }
             self.save_data()  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
@@ -166,15 +169,7 @@ class Roll(commands.Cog):
         
         # List of skills that can be changed
         changable_skills = [
-            "Accounting", "Anthropology", "Appraise", "Archaeology", "Charm", "Climb",
-            "Credit Rating", "Cthulhu Mythos", "Disguise", "Dodge", "Drive Auto",
-            "Elect. Repair", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)",
-            "Firearms (Rifle/Shotgun)", "First Aid", "History", "Intimidate", "Jump",
-            "Language (Other)", "Language (Own)", "Law", "Library Use", "Listen",
-            "Locksmith", "Mech. Repair", "Medicine", "Natural World", "Navigate",
-            "Occult", "Persuade", "Pilot", "Psychoanalysis", "Psychology", "Ride",
-            "Science (Specific)", "Sleight of Hand", "Spot Hidden", "Stealth",
-            "Survival", "Swim", "Throw", "Track"
+            "Accounting", "Anthropology", "Appraise", "Archaeology", "Charm", "Climb", "Credit Rating", "Cthulhu Mythos", "Disguise", "Dodge", "Drive Auto", "Elect. Repair", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)", "Firearms (Rifle/Shotgun)", "First Aid", "History", "Intimidate", "Jump", "Language (Other)", "Language (Own)", "Law", "Library Use", "Listen", "Locksmith", "Mech. Repair", "Medicine", "Natural World", "Navigate", "Occult", "Persuade", "Pilot", "Psychoanalysis", "Psychology", "Ride", "Science (Specific)", "Sleight of Hand", "Spot Hidden", "Stealth", "Survival", "Swim", "Throw", "Track", "Move", "Build", "Damage Bonus"
         ]
         
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
@@ -281,7 +276,10 @@ class Roll(commands.Cog):
                 "Survival": ":camping:",
                 "Swim": ":swimmer:",
                 "Throw": ":dart:",
-                "Track": ":mag_right:"
+                "Track": ":mag_right:",
+                "Move": ":person_running:",
+                "Build": ":restroom: ",
+                "Damage Bonus": ":mending_heart:"
             }
             return stat_emojis.get(stat_name, ":question:")
         
@@ -298,7 +296,7 @@ class Roll(commands.Cog):
             elif page == 2:
                 stats_range = range(13, min(37, len(stats_list)))
             elif page == 3:
-                stats_range = range(37, min(50, len(stats_list)))
+                stats_range = range(37, min(53, len(stats_list)))
             else:
                 stats_range = range(51, len(stats_list))
             

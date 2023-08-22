@@ -61,6 +61,37 @@ class Roll(commands.Cog):
                     description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
                     color=discord.Color.green()
                 )
+                
+                # Check if the roll is within 10 of the skill and has enough luck
+                if skill_value - roll <= 10 and luck_value >= skill_value - roll:
+                    prompt_embed = discord.Embed(
+                        title="Use LUCK?",
+                        description="Your roll is close to your skill. Do you want to use LUCK to turn it into a Regular Success?\n"
+                                    "Reply with 'YES' to use LUCK within 1 minute.",
+                        color=discord.Color.orange()
+                    )
+                    prompt_message = await ctx.send(embed=prompt_embed)
+                    
+                    def check(message):
+                        return message.author == ctx.author and message.content.lower() == "yes"
+                    
+                    try:
+                        response = await self.bot.wait_for("message", timeout=60, check=check)
+                        await prompt_message.delete()
+                        
+                        luck_value -= (skill_value - roll)
+                        formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                        result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                        
+                        embed = discord.Embed(
+                            title=f"{name_value}'s Skill Check for '{skill_name}'",
+                            description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
+                            color=discord.Color.green()
+                        )
+                    except asyncio.TimeoutError:
+                        await prompt_message.delete()
+                
+                await ctx.send(embed=embed)
             else:
                 num_dice, dice_type = map(int, dice_expression.lower().split('d'))
                 if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
@@ -90,9 +121,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-    
 
-    
 
 
     @commands.command(aliases=["newInv"])

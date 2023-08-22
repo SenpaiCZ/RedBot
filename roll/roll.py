@@ -63,7 +63,7 @@ class Roll(commands.Cog):
                 )
                 
                 # Check if the roll is close to Regular Success and offer using LUCK
-                if roll <= (skill_value + 10):
+                if skill_value >= roll > (skill_value - 10) and luck_value >= 5:
                     luck_check_message = await ctx.send("Do you want to use your LUCK?")
                     await luck_check_message.add_reaction("✅")
                     await luck_check_message.add_reaction("❌")
@@ -75,17 +75,21 @@ class Roll(commands.Cog):
                         reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                         await luck_check_message.delete()
                         if reaction.emoji == "✅":
-                            if luck_value >= 5:
-                                luck_value -= 5
-                                roll -= 10
-                                if roll < 1:
-                                    roll = 1
-                                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                                formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
-                                await ctx.send(embed=embed)
-                                return
-                    except asyncio.TimeoutError:
-                        await luck_check_message.delete()
+                            luck_value -= 5
+                            roll -= 10
+                            if roll < 1:
+                                roll = 1
+                            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                            formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
+                            result = "Regular Success :heavy_check_mark:"
+                except asyncio.TimeoutError:
+                    await luck_check_message.delete()
+                
+                embed = discord.Embed(
+                    title=f"{name_value}'s Skill Check for '{skill_name}'",
+                    description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
+                    color=discord.Color.green()
+                )
                 
                 await ctx.send(embed=embed)
             else:
@@ -117,7 +121,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-    
+
 
 
     @commands.command(aliases=["newInv"])

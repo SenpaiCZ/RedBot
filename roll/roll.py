@@ -198,14 +198,14 @@ class Roll(commands.Cog):
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:
             member = ctx.author
-
+    
         user_id = str(member.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
-
+    
         name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
-
+    
         stats_embed = discord.Embed(
             title=name,
             description="Investigator statistics:",
@@ -284,76 +284,53 @@ class Roll(commands.Cog):
                 "Track": ":mag_right:"
             }
             return stat_emojis.get(stat_name, ":question:")
-        
-        def get_stat_value(stat_name, value):
-            formatted_value = f"{value} - {value // 2} - {value // 5}"
-            return formatted_value
-        
-        def generate_stats_page(page):
-            stats_embed.clear_fields()
-            stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
-            
-            if page == 1:
-                stats_range = range(0, 13)
-            elif page == 2:
-                stats_range = range(13, min(37, len(stats_list)))
-            elif page == 3:
-                stats_range = range(37, min(57, len(stats_list)))
-            else:
-                stats_range = range(58, len(stats_list))
-            
-            for i in stats_range:
-                stat_name, value = stats_list[i]
-                if stat_name == "NAME":
-                    continue  # Skip displaying NAME in the list
-                emoji = get_stat_emoji(stat_name)
-                value = get_stat_value(stat_name, value)
-                stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
-            
-            return stats_embed
-            
-        message = await ctx.send(embed=generate_stats_page(stats_page))
-        await message.add_reaction("⬅️")
-        await message.add_reaction("➡️")
-        
-        def check(reaction, user):
-            return user == ctx.author and reaction.message == message and reaction.emoji in ["⬅️", "➡️"]
-        
-        while True:
-            try:
-                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                if reaction.emoji == "⬅️":
-                    stats_page = max(stats_page - 1, 1)
-                elif reaction.emoji == "➡️":
-                    stats_page = min(stats_page + 1, max_page)
-                
-                await message.edit(embed=generate_stats_page(stats_page))
-                await message.remove_reaction(reaction, ctx.author)
-            except asyncio.TimeoutError:
-                await message.clear_reactions()
-                break
-    @commands.command()
-    async def deleteInvestigator(self, ctx):
-     user_id = str(ctx.author.id)  # Get the user's ID as a string
+    def get_stat_value(stat_name, value):
+        formatted_value = f"{value} - {value // 2} - {value // 5}"
+        return formatted_value
     
-     if user_id in self.player_stats:
-        await ctx.send("Are you sure you want to delete your investigator? If you're sure, type 'YES' to confirm.")
+    def generate_stats_page(page):
+        stats_embed.clear_fields()
+        stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
         
-        def check(message):
-            return message.author == ctx.author and message.content.upper() == "YES"
+        if page == 1:
+            stats_range = range(0, 13)
+        elif page == 2:
+            stats_range = range(13, min(37, len(stats_list)))
+        elif page == 3:
+            stats_range = range(37, min(57, len(stats_list)))
+        else:
+            stats_range = range(58, len(stats_list))
         
+        for i in stats_range:
+            stat_name, value = stats_list[i]
+            if stat_name == "NAME":
+                continue  # Skip displaying NAME in the list
+            emoji = get_stat_emoji(stat_name)
+            value = get_stat_value(stat_name, value)
+            stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
+        
+        return stats_embed
+        
+    message = await ctx.send(embed=generate_stats_page(stats_page))
+    await message.add_reaction("⬅️")
+    await message.add_reaction("➡️")
+    
+    def check(reaction, user):
+        return user == ctx.author and reaction.message == message and reaction.emoji in ["⬅️", "➡️"]
+    
+    while True:
         try:
-            confirm_message = await self.bot.wait_for("message", check=check, timeout=30)
-        except TimeoutError:
-            await ctx.send("Confirmation timeout. Investigator deletion canceled.")
-            return
-        
-        del self.player_stats[user_id]
-        self.save_data()  # Uložení změn do souboru
-        await ctx.send("Investigator has been deleted.")
-     else:
-        await ctx.send("You don't have an investigator to delete.")
-         
+            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+            if reaction.emoji == "⬅️":
+                stats_page = max(stats_page - 1, 1)
+            elif reaction.emoji == "➡️":
+                stats_page = min(stats_page + 1, max_page)
+            
+            await message.edit(embed=generate_stats_page(stats_page))
+            await message.remove_reaction(reaction, ctx.author)
+        except asyncio.TimeoutError:
+            await message.clear_reactions()
+            break 
     @commands.command(aliases=["cbackstory"])
     async def CthulhuBackstory(self, ctx, category_1, category_2, *, entry):
         user_id = str(ctx.author.id)

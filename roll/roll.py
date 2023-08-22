@@ -58,7 +58,7 @@ class Roll(commands.Cog):
                 
                 embed = discord.Embed(
                     title=f"{name_value}'s Skill Check for '{skill_name}'",
-                    description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\n{formatted_skill}\n\n{formatted_luck}",
+                    description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
                     color=discord.Color.green()
                 )
                 

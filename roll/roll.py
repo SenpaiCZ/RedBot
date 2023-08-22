@@ -364,12 +364,12 @@ class Roll(commands.Cog):
         input_text = input_text.strip()
         parts = input_text.split(" - ")
         
-        if len(parts) < 3:
+        if len(parts) < 2:
             await ctx.send("Invalid input format. Please use 'Category - Entry' format.")
             return
         
-        category = f"{parts[0].strip().capitalize()} {parts[1].strip().capitalize()}"
-        entry = parts[2].strip()
+        category = parts[0].strip().capitalize()
+        entry = " - ".join(parts[1:]).strip()
     
         if "Backstory" not in self.player_stats[user_id]:
             self.player_stats[user_id]["Backstory"] = {}
@@ -383,7 +383,6 @@ class Roll(commands.Cog):
     
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
-        
     @commands.command(aliases=["mbackstory"])
     async def MyCthulhuBackstory(self, ctx):
         user_id = str(ctx.author.id)

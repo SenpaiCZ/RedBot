@@ -196,7 +196,7 @@ class Roll(commands.Cog):
                 "Cthulhu Mythos": ":octopus:",
                 "Disguise": ":dress:",
                 "Dodge": ":warning:",
-                "Drive Auto": ":car:",
+                "Drive Auto": ":blue_car:",
                 "Elec. Repair": ":wrench:",
                 "Fast Talk": ":pinched_fingers:",
                 "Fighting (Brawl)": ":boxing_glove:",

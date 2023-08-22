@@ -284,7 +284,10 @@ class Roll(commands.Cog):
             return stat_emojis.get(stat_name, ":question:")
         
         def get_stat_value(stat_name, value):
-            formatted_value = f"{value} - {value // 2} - {value // 5}"
+            if stat_name in ["Move", "Build", "Damage Bonus"]:
+                formatted_value = f"{value}"
+            else:
+                formatted_value = f"{value} - {value // 2} - {value // 5}"
             return formatted_value
         
         def generate_stats_page(page):

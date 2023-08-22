@@ -35,6 +35,7 @@ class Roll(commands.Cog):
                 skill_name = dice_expression
                 
                 skill_value = self.player_stats[user_id][skill_name]
+                luck_value = self.player_stats[user_id]["LUCK"]
                 
                 roll = random.randint(1, 100)
                 
@@ -51,9 +52,12 @@ class Roll(commands.Cog):
                 else:
                     result = "Fail"
                 
+                formatted_luck = f"LUCK: {luck_value}"
+                formatted_skill = f"{skill_value} - {skill_value // 2} - {skill_value // 5}"
+                
                 embed = discord.Embed(
                     title=f"{ctx.author.display_name}'s Skill Check for '{skill_name}'",
-                    description=f"Hozeno: {roll}\nVýsledek: {result}",
+                    description=f"Rolled: {roll}\nResult: {result}\n{formatted_skill}\n{formatted_luck}",
                     color=discord.Color.green()
                 )
             else:
@@ -85,6 +89,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+
 
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):

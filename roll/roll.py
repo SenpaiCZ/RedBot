@@ -402,7 +402,7 @@ class Roll(commands.Cog):
         await ctx.send(embed=backstory_embed)
 
     @commands.command(aliases=["rbackstory"])
-    async def RemoveCthulhuBackstory(self, ctx, category: str, index: int):
+    async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
         user_id = str(ctx.author.id)
         
         if user_id not in self.player_stats or "Backstory" not in self.player_stats[user_id]:
@@ -410,6 +410,15 @@ class Roll(commands.Cog):
             return
         
         backstory_data = self.player_stats[user_id]["Backstory"]
+        
+        # Rozdělíme vstup na název kategorie a index
+        parts = category_and_index.split()
+        if len(parts) < 2:
+            await ctx.send("Invalid input format. Please provide both the category and the index.")
+            return
+        
+        category = " ".join(parts[:-1])
+        index = int(parts[-1])
         
         if category not in backstory_data:
             await ctx.send(f"There is no category named '{category}' in your backstory.")

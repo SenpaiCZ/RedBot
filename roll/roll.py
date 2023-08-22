@@ -94,7 +94,7 @@ class Roll(commands.Cog):
             "History": 5,
             "Intimidate": 15,
             "Jump":10,
-            "Languege (other)": 1,
+            "Language (other)": 1,
             "Language (own)": -1,
             "Law":5,
             "Library Use":20,
@@ -153,8 +153,15 @@ class Roll(commands.Cog):
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
             
     @commands.command(aliases=["cskill"])
-    async def CthulhuChangeSkills(self, ctx, skill_name, new_value):
+    async def CthulhuChangeSkills(self, ctx, *, skill_and_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
+        skill_and_value = skill_and_value.split(maxsplit=1)
+        
+        if len(skill_and_value) != 2:
+            await ctx.send("Invalid input. Please provide skill name and new value.")
+            return
+        
+        skill_name, new_value = skill_and_value
         skill_name = skill_name.capitalize()  # Convert the skill name to title case
         
         # List of skills that can be changed
@@ -163,7 +170,7 @@ class Roll(commands.Cog):
             "Credit Rating", "Cthulhu Mythos", "Disguise", "Dodge", "Drive Auto",
             "Elec. Repair", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)",
             "Firearms (Rifle/Shotgun)", "First Aid", "History", "Intimidate", "Jump",
-            "Languege (other)", "Language (own)", "Law", "Library Use", "Listen",
+            "Language (other)", "Language (own)", "Law", "Library Use", "Listen",
             "Locksmith", "Mech. Repair", "Medicine", "Natural World", "Navigate",
             "Ocult", "Persuade", "Pilot", "Psychoanalysis", "Psychology", "Ride",
             "Science (specific)", "Sleight of Hand", "Spot Hidden", "Stealth",
@@ -184,6 +191,7 @@ class Roll(commands.Cog):
         else:
             await ctx.send("Invalid skill name. Use one of the following: "
                            "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
+
             
     @commands.command(aliases=["mcs"])
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
@@ -249,7 +257,7 @@ class Roll(commands.Cog):
                 "History": ":scroll:",
                 "Intimidate": ":fearful:",
                 "Jump": ":athletic_shoe:",
-                "Languege (other)": ":globe_with_meridians:",
+                "Language (other)": ":globe_with_meridians:",
                 "Language (own)": ":speech_balloon:",
                 "Law": ":scales:",
                 "Library Use": ":books:",

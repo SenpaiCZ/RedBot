@@ -204,16 +204,21 @@ class Roll(commands.Cog):
             # Your value formatting logic here
             return value
         
-        def generate_stats_page(page):
-            stats_embed.clear_fields()
-            stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
+        def generate_stats_page(page, stats_list, max_page):
+            stats_embed = discord.Embed(
+                title=name,
+                description=f"Investigator statistics - Page {page}/{max_page}:",
+                color=discord.Color.gold()
+            )
             
             if page == 1:
                 stats_range = range(0, 13)
             elif page == 2:
-                stats_range = range(13, min(56, len(stats_list)))
+                stats_range = range(13, 13 + 25)
+            elif page == max_page:
+                stats_range = range((page - 3) * 19, len(stats_list))
             else:
-                stats_range = range(56, len(stats_list))
+                stats_range = range((page - 3) * 19, (page - 2) * 19)
             
             for i in stats_range:
                 stat_name, value = stats_list[i]

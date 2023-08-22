@@ -58,9 +58,8 @@ class Roll(commands.Cog):
                 elif roll > 95:
                     result = "Fumble"
                 else:
-                    if roll <= skill_value + 10 and luck_value >= 5:
-                        formatted_skill += "\n\nWould you like to use your LUCK? (Reply with 'YES' within 1 minute)"
-                        formatted_luck += f" - Current: {luck_value - 5}"
+                    if skill_value - roll <= 10 and luck_value >= 5:
+                        formatted_skill += f"\n\nWould you like to use your LUCK? (Reply with 'YES' within 1 minute)"
                     else:
                         result = "Fail"
                 
@@ -84,12 +83,19 @@ class Roll(commands.Cog):
                         
                         if reaction.emoji == "✅":
                             luck_value -= 5
-                            roll -= 10
-                            if roll < 1:
-                                roll = 1
                             formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                            formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
-                            result = "Regular Success :heavy_check_mark:"
+                            formatted_skill += f"\n\nUsing LUCK: -5 LUCK"
+                            
+                            roll = random.randint(1, 100)
+                            
+                            if roll <= skill_value // 5:
+                                result = "Extreme Success :heavy_check_mark:"
+                            elif roll <= skill_value // 2:
+                                result = "Hard Success :heavy_check_mark:"
+                            elif roll <= skill_value:
+                                result = "Regular Success :heavy_check_mark:"
+                            else:
+                                result = "Fail"
                             
                             embed = discord.Embed(
                                 title=f"{name_value}'s Skill Check for '{dice_expression}' (LUCK Used)",
@@ -129,6 +135,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+
     
 
 

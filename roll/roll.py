@@ -31,12 +31,8 @@ class Roll(commands.Cog):
             self.player_stats[user_id]["Backstory"] = {}
         
         try:
-            if dice_expression.startswith("d"):
-                skill_name = dice_expression[1:]
-                
-                if skill_name not in self.player_stats.get(user_id, {}):
-                    await ctx.send(f"You don't have the skill '{skill_name}' registered.")
-                    return
+            if dice_expression in self.player_stats[user_id]:
+                skill_name = dice_expression
                 
                 skill_value = self.player_stats[user_id][skill_name]
                 
@@ -89,6 +85,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string

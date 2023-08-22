@@ -375,6 +375,7 @@ class Roll(commands.Cog):
         self.save_data()  # Uložení změn do souboru
         
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
+        
     @commands.command(aliases=["mbackstory"])
     async def MyCthulhuBackstory(self, ctx):
         user_id = str(ctx.author.id)
@@ -383,10 +384,11 @@ class Roll(commands.Cog):
             await ctx.send("You don't have any backstory entries.")
             return
         
+        name = self.player_stats.get(user_id, {}).get("NAME", "Your")
         backstory_data = self.player_stats[user_id]["Backstory"]
         
         entries_embed = discord.Embed(
-            title=f"{ctx.author.display_name}'s Inventory and Backstory",
+            title=f"{name}'s Inventory and Backstory",
             description="Your inventory and backstory entries:",
             color=discord.Color.gold()
         )
@@ -396,6 +398,7 @@ class Roll(commands.Cog):
             entries_embed.add_field(name=category, value=formatted_entries, inline=False)
         
         await ctx.send(embed=entries_embed)
+
 
 
     @commands.command(aliases=["rbackstory"])

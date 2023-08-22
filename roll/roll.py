@@ -385,21 +385,18 @@ class Roll(commands.Cog):
         
         backstory_data = self.player_stats[user_id]["Backstory"]
         
-        if not backstory_data:
-            await ctx.send("You don't have any backstory entries.")
-            return
-        
-        backstory_embed = discord.Embed(
-            title="Your Backstory",
-            description="Here are your backstory entries:",
+        entries_embed = discord.Embed(
+            title=f"{ctx.author.display_name}'s Inventory and Backstory",
+            description="Your inventory and backstory entries:",
             color=discord.Color.gold()
         )
         
         for category, entries in backstory_data.items():
-            entries_text = "\n".join([f"{index + 1}. {entry}" for index, entry in enumerate(entries)])
-            backstory_embed.add_field(name=category, value=entries_text, inline=False)
+            formatted_entries = "\n".join([f"{index + 1}. {entry}" for index, entry in enumerate(entries)])
+            entries_embed.add_field(name=category, value=formatted_entries, inline=False)
         
-        await ctx.send(embed=backstory_embed)
+        await ctx.send(embed=entries_embed)
+
 
     @commands.command(aliases=["rbackstory"])
     async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):

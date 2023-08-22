@@ -73,76 +73,76 @@ class Roll(commands.Cog):
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
 
             
-@commands.command(aliases=["mcs"])
-async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
-    if member is None:
-        member = ctx.author
+    @commands.command(aliases=["mcs"])
+    async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
+        if member is None:
+            member = ctx.author
 
-    user_id = str(member.id)  # Get the user's ID as a string
-    if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-        await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newI` for creating a new investigator.")
-        return
+        user_id = str(member.id)  # Get the user's ID as a string
+        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newI` for creating a new investigator.")
+            return
 
-    name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
+        name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
 
-    stats_embed = discord.Embed(
-        title=name,
-        description="Investigator statistics - Page 1/3:",
-        color=discord.Color.gold()
-    )
-    
-    stats_list = list(self.player_stats[user_id].items())
-    stats_page = 1
-    max_page = (len(stats_list) - 1) // 12 + 1
-    
-    def get_emoji(index):
-        if index == 0:
-            return "⬅️"
-        elif index == 1:
-            return "➡️"
-        else:
-            return ""
-    
-    def get_stat_emoji(stat_name):
-        # Your emoji logic here
-        return ":question:"
-    
-    def get_stat_value(stat_name, value):
-        # Your value formatting logic here
-        return value
-    
-    def generate_stats_page(page):
-        stats_embed.clear_fields()
-        stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
+        stats_embed = discord.Embed(
+            title=name,
+            description="Investigator statistics - Page 1/3:",
+            color=discord.Color.gold()
+        )
         
-        for i in range((page - 1) * 12, min(page * 12, len(stats_list))):
-            stat_name, value = stats_list[i]
-            emoji = get_stat_emoji(stat_name)
-            value = get_stat_value(stat_name, value)
-            stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
+        stats_list = list(self.player_stats[user_id].items())
+        stats_page = 1
+        max_page = (len(stats_list) - 1) // 12 + 1
         
-        return stats_embed
-    
-    message = await ctx.send(embed=generate_stats_page(stats_page))
-    await message.add_reaction("⬅️")
-    await message.add_reaction("➡️")
-    
-    def check(reaction, user):
-        return user == ctx.author and reaction.message == message and reaction.emoji in ["⬅️", "➡️"]
-    
-    while True:
-        try:
-            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-            if reaction.emoji == "⬅️":
-                stats_page = max(stats_page - 1, 1)
-            elif reaction.emoji == "➡️":
-                stats_page = min(stats_page + 1, max_page)
+        def get_emoji(index):
+            if index == 0:
+                return "⬅️"
+            elif index == 1:
+                return "➡️"
+            else:
+                return ""
+        
+        def get_stat_emoji(stat_name):
+            # Your emoji logic here
+            return ":question:"
+        
+        def get_stat_value(stat_name, value):
+            # Your value formatting logic here
+            return value
+        
+        def generate_stats_page(page):
+            stats_embed.clear_fields()
+            stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
             
-            await message.edit(embed=generate_stats_page(stats_page))
-            await message.remove_reaction(reaction, ctx.author)
-        except asyncio.TimeoutError:
-            await message.clear_reactions()
-            break
+            for i in range((page - 1) * 12, min(page * 12, len(stats_list))):
+                stat_name, value = stats_list[i]
+                emoji = get_stat_emoji(stat_name)
+                value = get_stat_value(stat_name, value)
+                stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
+            
+            return stats_embed
+        
+        message = await ctx.send(embed=generate_stats_page(stats_page))
+        await message.add_reaction("⬅️")
+        await message.add_reaction("➡️")
+        
+        def check(reaction, user):
+            return user == ctx.author and reaction.message == message and reaction.emoji in ["⬅️", "➡️"]
+        
+        while True:
+            try:
+                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                if reaction.emoji == "⬅️":
+                    stats_page = max(stats_page - 1, 1)
+                elif reaction.emoji == "➡️":
+                    stats_page = min(stats_page + 1, max_page)
+                
+                await message.edit(embed=generate_stats_page(stats_page))
+                await message.remove_reaction(reaction, ctx.author)
+            except asyncio.TimeoutError:
+                await message.clear_reactions()
+                break
         
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):

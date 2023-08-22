@@ -36,6 +36,7 @@ class Roll(commands.Cog):
                 
                 skill_value = self.player_stats[user_id][skill_name]
                 luck_value = self.player_stats[user_id]["LUCK"]
+                name_value = self.player_stats[user_id]["name"]
                 
                 roll = random.randint(1, 100)
                 
@@ -56,7 +57,7 @@ class Roll(commands.Cog):
                 formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
                 
                 embed = discord.Embed(
-                    title=f"{ctx.author.display_name}'s Skill Check for '{skill_name}'",
+                    title=f"{name_value}'s Skill Check for '{skill_name}'",
                     description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
                     color=discord.Color.green()
                 )
@@ -89,6 +90,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+
 
 
     @commands.command(aliases=["newInv"])

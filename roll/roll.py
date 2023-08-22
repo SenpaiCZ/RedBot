@@ -140,7 +140,7 @@ class Roll(commands.Cog):
             stats_embed.clear_fields()
             stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
             
-            for i in range((page - 1) * 12, min(page * 12, len(stats_list))):
+            for i in range((page - 1) * 13, min(page * 13, len(stats_list))):
                 stat_name, value = stats_list[i]
                 if stat_name == "NAME":
                     continue  # Skip displaying NAME in the list

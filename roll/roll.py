@@ -173,32 +173,65 @@ class Roll(commands.Cog):
                 return ""
         
         def get_stat_emoji(stat_name):
-            if stat_name == "STR":
-                return ":muscle:"
-            elif stat_name == "DEX":
-                return ":runner:"
-            elif stat_name == "CON":
-                return ":heart:"
-            elif stat_name == "INT":
-                return ":brain:"
-            elif stat_name == "POW":
-                return ":zap:"
-            elif stat_name == "CHA":
-                return ":sparkles:"
-            elif stat_name == "EDU":
-                return ":mortar_board:"
-            elif stat_name == "SIZ":
-                return ":bust_in_silhouette:"
-            elif stat_name == "HP":
-                return ":heartpulse:"
-            elif stat_name == "MP":
-                return ":sparkles:"
-            elif stat_name == "LUCK":
-                return ":four_leaf_clover:"
-            elif stat_name == "SAN":
-                return ":scales:"
-            else:
-                return ":question:"
+            stat_emojis = {
+                "STR": ":muscle:",
+                "DEX": ":runner:",
+                "CON": ":heart:",
+                "INT": ":brain:",
+                "POW": ":zap:",
+                "CHA": ":sparkles:",
+                "EDU": ":mortar_board:",
+                "SIZ": ":bust_in_silhouette:",
+                "HP": ":heartpulse:",
+                "MP": ":sparkles:",
+                "LUCK": ":four_leaf_clover:",
+                "SAN": ":scales:",
+                "Accounting": ":ledger:",
+                "Anthropology": ":earth_americas:",
+                "Appraise": ":mag:",
+                "Archaeology": ":pick:",
+                "Charm": ":heart_decoration:",
+                "Climb": ":mountain:",
+                "Credit Rating": ":moneybag:",
+                "Cthulhu Mythos": ":octopus:",
+                "Disguise": ":dress:",
+                "Dodge": ":warning:",
+                "Drive Auto": ":car:",
+                "Elec. Repair": ":wrench:",
+                "Fast Talk": ":talking:",
+                "Fighting (Brawl)": ":boxing_glove:",
+                "Firearms (Handgun)": ":gun:",
+                "Firearms (Rifle/Shotgun)": ":gun:",
+                "First Aid": ":ambulance:",
+                "History": ":scroll:",
+                "Intimidate": ":fearful:",
+                "Jump": ":athletic_shoe:",
+                "Languege (other)": ":globe_with_meridians:",
+                "Language (own)": ":speech_balloon:",
+                "Law": ":scales:",
+                "Library Use": ":books:",
+                "Listen": ":ear:",
+                "Locksmith": ":key:",
+                "Mech. Repair": ":wrench:",
+                "Medicine": ":pill:",
+                "Natural World": ":deciduous_tree:",
+                "Navigate": ":compass:",
+                "Ocult": ":crystal_ball:",
+                "Persuade": ":speech_balloon:",
+                "Pilot": ":airplane:",
+                "Psychoanalysis": ":brain:",
+                "Psychology": ":brain:",
+                "Ride": ":horse_racing:",
+                "Science (specific)": ":microscope:",
+                "Sleight of Hand": ":mage:",
+                "Spot Hidden": ":eyes:",
+                "Stealth": ":footprints:",
+                "Survival": ":camping:",
+                "Swim": ":swimmer:",
+                "Throw": ":dart:",
+                "Track": ":mag_right:"
+            }
+            return stat_emojis.get(stat_name, ":question:")
         
         def get_stat_value(stat_name, value):
             # Your value formatting logic here

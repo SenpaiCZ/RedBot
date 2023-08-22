@@ -198,7 +198,7 @@ class Roll(commands.Cog):
                 "Dodge": ":warning:",
                 "Drive Auto": ":car:",
                 "Elec. Repair": ":wrench:",
-                "Fast Talk": ":talking:",
+                "Fast Talk": ":pinched_fingers:",
                 "Fighting (Brawl)": ":boxing_glove:",
                 "Firearms (Handgun)": ":gun:",
                 "Firearms (Rifle/Shotgun)": ":gun:",

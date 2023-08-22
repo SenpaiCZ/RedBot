@@ -214,7 +214,7 @@ class Roll(commands.Cog):
         
         stats_list = list(self.player_stats[user_id].items())
         stats_page = 1
-        max_page = (len(stats_list) - 1) // 12 + 1
+        max_page = 3
         
         def get_emoji(index):
             if index == 0:

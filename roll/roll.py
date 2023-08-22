@@ -355,13 +355,13 @@ class Roll(commands.Cog):
         await ctx.send("You don't have an investigator to delete.")
          
     @commands.command(aliases=["cbackstory"])
-    async def CthulhuBackstory(self, ctx, category, *, entry):
+    async def CthulhuBackstory(self, ctx, category_1, category_2, *, entry):
         user_id = str(ctx.author.id)
         
         if user_id not in self.player_stats:
             self.player_stats[user_id] = {}
         
-        category = category.capitalize()
+        category = f"{category_1.capitalize()} {category_2.capitalize()}"
         entry = entry.strip()
         
         if "Backstory" not in self.player_stats[user_id]:

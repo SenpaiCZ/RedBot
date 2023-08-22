@@ -151,8 +151,39 @@ class Roll(commands.Cog):
                 await ctx.send("Invalid new value. Please provide a number.")
         else:
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
-
-
+            
+    @commands.command(aliases=["cskill"])
+    async def CthulhuChangeSkills(self, ctx, skill_name, new_value):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
+        skill_name = skill_name.capitalize()  # Convert the skill name to title case
+        
+        # List of skills that can be changed
+        changable_skills = [
+            "Accounting", "Anthropology", "Appraise", "Archaeology", "Charm", "Climb",
+            "Credit Rating", "Cthulhu Mythos", "Disguise", "Dodge", "Drive Auto",
+            "Elec. Repair", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)",
+            "Firearms (Rifle/Shotgun)", "First Aid", "History", "Intimidate", "Jump",
+            "Languege (other)", "Language (own)", "Law", "Library Use", "Listen",
+            "Locksmith", "Mech. Repair", "Medicine", "Natural World", "Navigate",
+            "Ocult", "Persuade", "Pilot", "Psychoanalysis", "Psychology", "Ride",
+            "Science (specific)", "Sleight of Hand", "Spot Hidden", "Stealth",
+            "Survival", "Swim", "Throw", "Track"
+        ]
+        
+        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
+            self.player_stats[user_id] = {}
+        
+        if skill_name in changable_skills:
+            try:
+                new_value = int(new_value)
+                self.player_stats[user_id][skill_name] = new_value
+                self.save_data()
+                await ctx.send(f"Your {skill_name} has been updated to {new_value}.")
+            except ValueError:
+                await ctx.send("Invalid new value. Please provide a number.")
+        else:
+            await ctx.send("Invalid skill name. Use one of the following: "
+                           "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
             
     @commands.command(aliases=["mcs"])
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):

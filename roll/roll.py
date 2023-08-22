@@ -23,7 +23,7 @@ class Roll(commands.Cog):
         except Exception as e:
                 print(f"Error writing data to file: {e}")
 
-    @commands.command(aliases=["diceroll", "d"])
+    @commands.command(aliases=["diceroll"])
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         

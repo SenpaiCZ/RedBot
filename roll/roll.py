@@ -67,8 +67,7 @@ class Roll(commands.Cog):
                     prompt_embed = discord.Embed(
                         title="Use LUCK?",
                         description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
-                                    "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.\n\n"
-                                    "Your LUCK: {luck_value} :four_leaf_clover:",
+                                    "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute."
                         color=discord.Color.orange()
                     )
                     prompt_message = await ctx.send(embed=prompt_embed)

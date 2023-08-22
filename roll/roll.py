@@ -62,10 +62,11 @@ class Roll(commands.Cog):
                     color=discord.Color.green()
                 )
                 
-                if skill_value - roll <= 10 and luck_value >= skill_value - roll:
+                if skill_value - roll <= 10 and luck_value >= skill_value - roll and skill_value - roll > 0:
+                    difference = skill_value - roll
                     prompt_embed = discord.Embed(
                         title="Use LUCK?",
-                        description="Your roll is close to your skill. Do you want to use LUCK to turn it into a Regular Success?\n"
+                        description=f"Your roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
                                     "Reply with 'YES' to use LUCK within 1 minute.",
                         color=discord.Color.orange()
                     )
@@ -78,7 +79,7 @@ class Roll(commands.Cog):
                         response = await self.bot.wait_for("message", timeout=60, check=check)
                         await prompt_message.delete()
                         
-                        luck_used = min(luck_value, skill_value - roll)
+                        luck_used = min(luck_value, difference)
                         luck_value -= luck_used
                         
                         formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
@@ -117,7 +118,7 @@ class Roll(commands.Cog):
                     color=discord.Color.green()
                 )
             
-            await ctx.send(embed=embed)
+                await ctx.send(embed=embed)
         except ValueError:
             embed = discord.Embed(
                 title="Invalid Input",
@@ -126,7 +127,6 @@ class Roll(commands.Cog):
             )
             await ctx.send(embed=embed)
     
-
 
 
     @commands.command(aliases=["newInv"])

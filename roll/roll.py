@@ -396,7 +396,8 @@ class Roll(commands.Cog):
         )
         
         for category, entries in backstory_data.items():
-            entries_text = "\n".join(entries)
+            entries_text = "\n".join([f"{index + 1}. {entry}" for index, entry in enumerate(entries)])
             backstory_embed.add_field(name=category, value=entries_text, inline=False)
         
         await ctx.send(embed=backstory_embed)
+

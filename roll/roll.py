@@ -156,8 +156,8 @@ class Roll(commands.Cog):
 
         stats_embed = discord.Embed(
             title=name,
-            description="Investigator statistics - Page 1/3:",
-            color=discord.Color.gold()
+            description="Investigator statistics:",
+            color=discord.Color.green()
         )
         
         stats_list = list(self.player_stats[user_id].items())
@@ -211,9 +211,11 @@ class Roll(commands.Cog):
             if page == 1:
                 stats_range = range(0, 13)
             elif page == 2:
-                stats_range = range(13, min(30, len(stats_list)))
+                stats_range = range(13, min(33, len(stats_list)))
+            elif page == 3:
+                stats_range = range(33, min(40, len(stats_list)))
             else:
-                stats_range = range(30, len(stats_list))
+                stats_range = range(40, len(stats_list))
             
             for i in stats_range:
                 stat_name, value = stats_list[i]

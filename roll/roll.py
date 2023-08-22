@@ -40,24 +40,24 @@ class Roll(commands.Cog):
                 roll = random.randint(1, 100)
                 
                 if roll == 1:
-                    result = "CRITICAL!"
+                    result = "CRITICAL! :star2:"
                 elif roll <= skill_value // 5:
-                    result = "Extreme Success"
+                    result = "Extreme Success :star:"
                 elif roll <= skill_value // 2:
-                    result = "Hard Success"
+                    result = "Hard Success :white_check_mark:"
                 elif roll <= skill_value:
-                    result = "Regular Success"
+                    result = "Regular Success :heavy_check_mark:"
                 elif roll > 95:
-                    result = "Fumble"
+                    result = "Fumble :warning:"
                 else:
-                    result = "Fail"
+                    result = "Fail :x:"
                 
-                formatted_luck = f"LUCK: {luck_value}"
-                formatted_skill = f"{skill_value} - {skill_value // 2} - {skill_value // 5}"
+                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
                 
                 embed = discord.Embed(
                     title=f"{ctx.author.display_name}'s Skill Check for '{skill_name}'",
-                    description=f"Rolled: {roll}\nResult: {result}\n{formatted_skill}\n{formatted_luck}",
+                    description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
                     color=discord.Color.green()
                 )
             else:
@@ -77,7 +77,7 @@ class Roll(commands.Cog):
                 
                 embed = discord.Embed(
                     title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                    description=f"Rolls: {rolls_str}\nTotal: {total}",
+                    description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
                     color=discord.Color.green()
                 )
             

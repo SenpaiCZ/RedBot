@@ -62,7 +62,6 @@ class Roll(commands.Cog):
                     color=discord.Color.green()
                 )
                 
-                # Check if the roll is within 10 of the skill and has enough luck
                 if skill_value - roll <= 10 and luck_value >= skill_value - roll:
                     prompt_embed = discord.Embed(
                         title="Use LUCK?",
@@ -79,9 +78,14 @@ class Roll(commands.Cog):
                         response = await self.bot.wait_for("message", timeout=60, check=check)
                         await prompt_message.delete()
                         
-                        luck_value -= (skill_value - roll)
+                        luck_used = min(luck_value, skill_value - roll)
+                        luck_value -= luck_used
+                        
                         formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                         result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                        skill_value -= luck_used
+                        
+                        formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
                         
                         embed = discord.Embed(
                             title=f"{name_value}'s Skill Check for '{skill_name}'",
@@ -121,6 +125,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+    
 
 
 

@@ -205,7 +205,7 @@ class Roll(commands.Cog):
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
         
-    @commands.command(aliases=["ccs"])
+    @commands.command(aliases=["cstat"])
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
@@ -267,7 +267,7 @@ class Roll(commands.Cog):
     
 
             
-    @commands.command(aliases=["mcs"])
+    @commands.command(aliases=["mychar","mcs"])
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:
             member = ctx.author
@@ -433,7 +433,7 @@ class Roll(commands.Cog):
      else:
         await ctx.send("You don't have an investigator to delete.")
          
-    @commands.command(aliases=["cbackstory"])
+    @commands.command(aliases=["cb"])
     async def CthulhuBackstory(self, ctx, *, input_text):
         user_id = str(ctx.author.id)
     
@@ -462,7 +462,7 @@ class Roll(commands.Cog):
     
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
-    @commands.command(aliases=["mbackstory"])
+    @commands.command(aliases=["mb"])
     async def MyCthulhuBackstory(self, ctx):
         user_id = str(ctx.author.id)
         
@@ -487,7 +487,7 @@ class Roll(commands.Cog):
 
 
 
-    @commands.command(aliases=["rbackstory"])
+    @commands.command(aliases=["rb"])
     async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
         user_id = str(ctx.author.id)
         

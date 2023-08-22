@@ -25,81 +25,81 @@ class Roll(commands.Cog):
 
     @commands.command(aliases=["diceroll"])
     async def d(self, ctx, *, dice_expression):
-    user_id = str(ctx.author.id)
-    
-    if "Backstory" not in self.player_stats.get(user_id, {}):
-        self.player_stats[user_id]["Backstory"] = {}
-    
-    try:
-        if "-" in dice_expression:
-            skill_name, dice_roll = dice_expression.split("-", 1)
-            skill_name = skill_name.strip()
-            dice_roll = dice_roll.strip()
-            
-            if skill_name not in self.player_stats.get(user_id, {}):
-                await ctx.send(f"You don't have the skill '{skill_name}' registered.")
-                return
-            
-            skill_value = self.player_stats[user_id][skill_name]
-            
-            if not dice_roll.startswith("d"):
-                await ctx.send("Invalid dice expression. Use format !d <skill_name> - d<dice_type>.")
-                return
-            
-            dice_type = int(dice_roll[1:])
-            if dice_type != 100:
-                await ctx.send("Invalid dice type. Use D100 for skill checks.")
-                return
-            
-            roll = random.randint(1, 100)
-            
-            if roll == 1:
-                result = "CRITICAL!"
-            elif roll <= skill_value // 5:
-                result = "Extreme Success"
-            elif roll <= skill_value // 2:
-                result = "Hard Success"
-            elif roll <= skill_value:
-                result = "Regular Success"
-            elif roll > 95:
-                result = "Fumble"
-            else:
-                result = "Fail"
-            
-            embed = discord.Embed(
-                title=f"{ctx.author.display_name}'s Skill Check for '{skill_name}'",
-                description=f"Hozeno: {roll}\nVýsledek: {result}",
-                color=discord.Color.green()
-            )
-        else:
-            num_dice, dice_type = map(int, dice_expression.lower().split('d'))
-            if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
-                embed = discord.Embed(
-                    title="Invalid Dice Type",
-                    description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
-                    color=discord.Color.red()
-                )
-                await ctx.send(embed=embed)
-                return
-            
-            rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
-            total = sum(rolls)
-            rolls_str = ", ".join(map(str, rolls))
-            
-            embed = discord.Embed(
-                title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                description=f"Rolls: {rolls_str}\nTotal: {total}",
-                color=discord.Color.green()
-            )
+        user_id = str(ctx.author.id)
         
-        await ctx.send(embed=embed)
-    except ValueError:
-        embed = discord.Embed(
-            title="Invalid Input",
-            description="Use format !d <skill_name> - d100 or XdY where X is the number of dice and Y is the dice type.",
-            color=discord.Color.red()
-        )
-        await ctx.send(embed=embed)
+        if "Backstory" not in self.player_stats.get(user_id, {}):
+            self.player_stats[user_id]["Backstory"] = {}
+        
+        try:
+            if "-" in dice_expression:
+                skill_name, dice_roll = dice_expression.split("-", 1)
+                skill_name = skill_name.strip()
+                dice_roll = dice_roll.strip()
+                
+                if skill_name not in self.player_stats.get(user_id, {}):
+                    await ctx.send(f"You don't have the skill '{skill_name}' registered.")
+                    return
+                
+                skill_value = self.player_stats[user_id][skill_name]
+                
+                if not dice_roll.startswith("d"):
+                    await ctx.send("Invalid dice expression. Use format !d <skill_name> - d<dice_type>.")
+                    return
+                
+                dice_type = int(dice_roll[1:])
+                if dice_type != 100:
+                    await ctx.send("Invalid dice type. Use D100 for skill checks.")
+                    return
+                
+                roll = random.randint(1, 100)
+                
+                if roll == 1:
+                    result = "CRITICAL!"
+                elif roll <= skill_value // 5:
+                    result = "Extreme Success"
+                elif roll <= skill_value // 2:
+                    result = "Hard Success"
+                elif roll <= skill_value:
+                    result = "Regular Success"
+                elif roll > 95:
+                    result = "Fumble"
+                else:
+                    result = "Fail"
+                
+                embed = discord.Embed(
+                    title=f"{ctx.author.display_name}'s Skill Check for '{skill_name}'",
+                    description=f"Hozeno: {roll}\nVýsledek: {result}",
+                    color=discord.Color.green()
+                )
+            else:
+                num_dice, dice_type = map(int, dice_expression.lower().split('d'))
+                if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
+                    embed = discord.Embed(
+                        title="Invalid Dice Type",
+                        description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
+                        color=discord.Color.red()
+                    )
+                    await ctx.send(embed=embed)
+                    return
+                
+                rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
+                total = sum(rolls)
+                rolls_str = ", ".join(map(str, rolls))
+                
+                embed = discord.Embed(
+                    title=f"Rolled {num_dice} :game_die:d{dice_type}:",
+                    description=f"Rolls: {rolls_str}\nTotal: {total}",
+                    color=discord.Color.green()
+                )
+            
+            await ctx.send(embed=embed)
+        except ValueError:
+            embed = discord.Embed(
+                title="Invalid Input",
+                description="Use format !d <skill_name> - d100 or XdY where X is the number of dice and Y is the dice type.",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string

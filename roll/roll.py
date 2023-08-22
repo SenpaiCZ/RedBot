@@ -32,80 +32,35 @@ class Roll(commands.Cog):
         
         try:
             if dice_expression in self.player_stats[user_id]:
-                name_value = self.player_stats[user_id]["NAME"]
+                skill_name = dice_expression
                 
-                if dice_expression not in self.player_stats[user_id]:
-                    await ctx.send(f"You don't have the skill '{dice_expression}' registered.")
-                    return
-                
-                skill_value = self.player_stats[user_id][dice_expression]
+                skill_value = self.player_stats[user_id][skill_name]
                 luck_value = self.player_stats[user_id]["LUCK"]
+                name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
                 
                 roll = random.randint(1, 100)
                 
-                result = ""
-                formatted_skill = f"Skill: {skill_value} - Hard Success: {skill_value // 2} - Extreme Success: {skill_value // 5}"
-                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                
                 if roll == 1:
-                    result = "CRITICAL!"
+                    result = "CRITICAL! :star2:"
                 elif roll <= skill_value // 5:
-                    result = "Extreme Success"
+                    result = "Extreme Success :star:"
                 elif roll <= skill_value // 2:
-                    result = "Hard Success"
+                    result = "Hard Success :white_check_mark:"
                 elif roll <= skill_value:
-                    result = "Regular Success"
+                    result = "Regular Success :heavy_check_mark:"
                 elif roll > 95:
-                    result = "Fumble"
+                    result = "Fumble :warning:"
                 else:
-                    if skill_value - roll <= 10 and luck_value >= 5:
-                        formatted_skill += f"\n\nWould you like to use your LUCK? (Reply with 'YES' within 1 minute)"
-                    else:
-                        result = "Fail"
+                    result = "Fail :x:"
+                
+                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
                 
                 embed = discord.Embed(
-                    title=f"{name_value}'s Skill Check for '{dice_expression}'",
+                    title=f"{name_value}'s Skill Check for '{skill_name}'",
                     description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
                     color=discord.Color.green()
                 )
-                
-                message = await ctx.send(embed=embed)
-                
-                if formatted_skill.endswith("within 1 minute)"):
-                    await message.add_reaction("✅")
-                    
-                    def check(reaction, user):
-                        return user == ctx.author and reaction.message == message and reaction.emoji == "✅"
-                    
-                    try:
-                        reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                        await message.delete()
-                        
-                        if reaction.emoji == "✅":
-                            luck_value -= 5
-                            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                            formatted_skill += f"\n\nUsing LUCK: -5 LUCK"
-                            
-                            roll = random.randint(1, 100)
-                            
-                            if roll <= skill_value // 5:
-                                result = "Extreme Success :heavy_check_mark:"
-                            elif roll <= skill_value // 2:
-                                result = "Hard Success :heavy_check_mark:"
-                            elif roll <= skill_value:
-                                result = "Regular Success :heavy_check_mark:"
-                            else:
-                                result = "Fail"
-                            
-                            embed = discord.Embed(
-                                title=f"{name_value}'s Skill Check for '{dice_expression}' (LUCK Used)",
-                                description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
-                                color=discord.Color.green()
-                            )
-                            
-                            await ctx.send(embed=embed)
-                    except asyncio.TimeoutError:
-                        await message.delete()
             else:
                 num_dice, dice_type = map(int, dice_expression.lower().split('d'))
                 if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
@@ -123,7 +78,7 @@ class Roll(commands.Cog):
                 
                 embed = discord.Embed(
                     title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                    description=f"Rolls: {rolls_str}\nTotal: {total}",
+                    description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
                     color=discord.Color.green()
                 )
             
@@ -135,6 +90,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+    
 
     
 

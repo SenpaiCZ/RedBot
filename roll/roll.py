@@ -3,6 +3,7 @@ import random
 import discord
 import json
 import os
+import asyncio
 
 class Roll(commands.Cog):
     def __init__(self, bot):

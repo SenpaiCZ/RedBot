@@ -31,25 +31,14 @@ class Roll(commands.Cog):
             self.player_stats[user_id]["Backstory"] = {}
         
         try:
-            if "-" in dice_expression:
-                skill_name, dice_roll = dice_expression.split("-", 1)
-                skill_name = skill_name.strip()
-                dice_roll = dice_roll.strip()
+            if dice_expression.startswith("d"):
+                skill_name = dice_expression[1:]
                 
                 if skill_name not in self.player_stats.get(user_id, {}):
                     await ctx.send(f"You don't have the skill '{skill_name}' registered.")
                     return
                 
                 skill_value = self.player_stats[user_id][skill_name]
-                
-                if not dice_roll.startswith("d"):
-                    await ctx.send("Invalid dice expression. Use format !d <skill_name> - d<dice_type>.")
-                    return
-                
-                dice_type = int(dice_roll[1:])
-                if dice_type != 100:
-                    await ctx.send("Invalid dice type. Use D100 for skill checks.")
-                    return
                 
                 roll = random.randint(1, 100)
                 
@@ -96,7 +85,7 @@ class Roll(commands.Cog):
         except ValueError:
             embed = discord.Embed(
                 title="Invalid Input",
-                description="Use format !d <skill_name> - d100 or XdY where X is the number of dice and Y is the dice type.",
+                description="Use format !d <skill_name> or XdY where X is the number of dice and Y is the dice type.",
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)

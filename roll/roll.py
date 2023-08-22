@@ -105,8 +105,32 @@ class Roll(commands.Cog):
                 return ""
         
         def get_stat_emoji(stat_name):
-            # Your emoji logic here
-            return ":question:"
+            if stat_name == "STR":
+                return ":muscle:"
+            elif stat_name == "DEX":
+                return ":runner:"
+            elif stat_name == "CON":
+                return ":heart:"
+            elif stat_name == "INT":
+                return ":brain:"
+            elif stat_name == "POW":
+                return ":zap:"
+            elif stat_name == "CHA":
+                return ":sparkles:"
+            elif stat_name == "EDU":
+                return ":mortar_board:"
+            elif stat_name == "SIZ":
+                return ":bust_in_silhouette:"
+            elif stat_name == "HP":
+                return ":heartpulse:"
+            elif stat_name == "MP":
+                return ":sparkles:"
+            elif stat_name == "LUCK":
+                return ":four_leaf_clover:"
+            elif stat_name == "SAN":
+                return ":scales:"
+            else:
+                return ":question:"
         
         def get_stat_value(stat_name, value):
             # Your value formatting logic here
@@ -118,6 +142,8 @@ class Roll(commands.Cog):
             
             for i in range((page - 1) * 12, min(page * 12, len(stats_list))):
                 stat_name, value = stats_list[i]
+                if stat_name == "NAME":
+                    continue  # Skip displaying NAME in the list
                 emoji = get_stat_emoji(stat_name)
                 value = get_stat_value(stat_name, value)
                 stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
@@ -144,32 +170,6 @@ class Roll(commands.Cog):
             except asyncio.TimeoutError:
                 await message.clear_reactions()
                 break
-        
-    @commands.command(aliases=["newInv"])
-    async def newInvestigator(self, ctx, *, investigator_name):
-        user_id = str(ctx.author.id)  # Get the user's ID as a string
-    
-        if user_id not in self.player_stats:
-            self.player_stats[user_id] = {
-            "NAME": investigator_name,
-            "STR": 0,
-            "DEX": 0,
-            "CON": 0,
-            "INT": 0,
-            "POW": 0,
-            "CHA": 0,
-            "EDU": 0,
-            "SIZ": 0,
-            "HP": 0,
-            "MP": 0,
-            "LUCK": 0,
-            "SAN": 0
-             }
-            self.save_data()  # Uložení změn do souboru
-            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
-        else:
-            await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
-
     @commands.command()
     async def deleteInvestigator(self, ctx):
      user_id = str(ctx.author.id)  # Get the user's ID as a string

@@ -67,27 +67,30 @@ class Roll(commands.Cog):
                     prompt_embed = discord.Embed(
                         title="Use LUCK?",
                         description=f"Your roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
-                                    "Reply with 'YES' to use LUCK within 1 minute.",
+                                    "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
                         color=discord.Color.orange()
                     )
                     prompt_message = await ctx.send(embed=prompt_embed)
                     
                     def check(message):
-                        return message.author == ctx.author and message.content.lower() == "yes"
+                        return message.author == ctx.author and message.content.lower() in ["yes", "no"]
                     
                     try:
                         response = await self.bot.wait_for("message", timeout=60, check=check)
                         await prompt_message.delete()
                         
-                        luck_used = min(luck_value, difference)
-                        luck_value -= luck_used
-                        self.player_stats[user_id]["LUCK"] = luck_value
-                        self.save_data()  # Uložení změn LUCK do dat
-                        formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                        result = "Regular Success (LUCK Used) :heavy_check_mark:"
-                        skill_value -= luck_used
-                        
-                        formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+                        if response.content.lower() == "yes":
+                            luck_used = min(luck_value, difference)
+                            luck_value -= luck_used
+                            self.player_stats[user_id]["LUCK"] = luck_value
+                            self.save_data()  # Uložení změn LUCK do dat
+                            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                            result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                            skill_value -= luck_used
+                            
+                            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+                        else:
+                            result = "Regular Success :heavy_check_mark:"
                         
                         embed = discord.Embed(
                             title=f"{name_value}'s Skill Check for '{skill_name}'",
@@ -121,16 +124,10 @@ class Roll(commands.Cog):
             
                 await ctx.send(embed=embed)
         except ValueError:
-            embed = discord.Embed(
-                title="Invalid Input",
-                description="Use format !d <skill_name> or XdY where X is the number of dice and Y is the dice type.",
-                color=discord.Color.red()
-            )
-            await ctx.send(embed=embed)
-
-
+           
     
-
+        
+    
 
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):

@@ -355,26 +355,34 @@ class Roll(commands.Cog):
         await ctx.send("You don't have an investigator to delete.")
          
     @commands.command(aliases=["cbackstory"])
-    async def CthulhuBackstory(self, ctx, category_1, category_2, *, entry):
+    async def CthulhuBackstory(self, ctx, *, input_text):
         user_id = str(ctx.author.id)
-        
+    
         if user_id not in self.player_stats:
             self.player_stats[user_id] = {}
+    
+        input_text = input_text.strip()
+        parts = input_text.split(" - ")
         
-        category = f"{category_1.capitalize()} {category_2.capitalize()}"
-        entry = entry.strip()
+        if len(parts) < 3:
+            await ctx.send("Invalid input format. Please use 'Category - Entry' format.")
+            return
         
+        category = f"{parts[0].strip().capitalize()} {parts[1].strip().capitalize()}"
+        entry = parts[2].strip()
+    
         if "Backstory" not in self.player_stats[user_id]:
             self.player_stats[user_id]["Backstory"] = {}
-        
+    
         if category not in self.player_stats[user_id]["Backstory"]:
             self.player_stats[user_id]["Backstory"][category] = []
-        
+    
         self.player_stats[user_id]["Backstory"][category].append(entry)
-        
+    
         self.save_data()  # Uložení změn do souboru
-        
+    
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
+
         
     @commands.command(aliases=["mbackstory"])
     async def MyCthulhuBackstory(self, ctx):

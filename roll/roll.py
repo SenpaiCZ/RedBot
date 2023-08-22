@@ -47,7 +47,7 @@ class Roll(commands.Cog):
                 elif roll <= skill_value // 2:
                     result = "Hard Success :white_check_mark:"
                 elif roll <= skill_value:
-                    result = "Regular Success :green_circle:"
+                    result = "Regular Success :heavy_check_mark:"
                 elif roll > 95:
                     result = "Fumble :warning:"
                 else:
@@ -73,6 +73,7 @@ class Roll(commands.Cog):
                     
                     try:
                         reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                        await luck_check_message.delete()
                         if reaction.emoji == "✅":
                             if luck_value >= 5:
                                 luck_value -= 5
@@ -81,11 +82,12 @@ class Roll(commands.Cog):
                                     roll = 1
                                 formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                                 formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
-                        await luck_check_message.delete()
+                                await ctx.send(embed=embed)
+                                return
                     except asyncio.TimeoutError:
                         await luck_check_message.delete()
                 
-                embed.description += f"\n\n{formatted_luck}"
+                await ctx.send(embed=embed)
             else:
                 num_dice, dice_type = map(int, dice_expression.lower().split('d'))
                 if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
@@ -107,7 +109,7 @@ class Roll(commands.Cog):
                     color=discord.Color.green()
                 )
             
-            await ctx.send(embed=embed)
+                await ctx.send(embed=embed)
         except ValueError:
             embed = discord.Embed(
                 title="Invalid Input",
@@ -115,6 +117,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+    
 
 
     @commands.command(aliases=["newInv"])

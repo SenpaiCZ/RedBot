@@ -23,104 +23,113 @@ class Roll(commands.Cog):
         except Exception as e:
                 print(f"Error writing data to file: {e}")
 
-@commands.command(aliases=["diceroll"])
-async def d(self, ctx, *, dice_expression):
-    user_id = str(ctx.author.id)
-    
-    if "Backstory" not in self.player_stats.get(user_id, {}):
-        self.player_stats[user_id]["Backstory"] = {}
-    
-    try:
-        if dice_expression in self.player_stats[user_id]:
-            skill_name = dice_expression
-            
-            skill_value = self.player_stats[user_id][skill_name]
-            luck_value = self.player_stats[user_id]["LUCK"]
-            name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
-            
-            roll = random.randint(1, 100)
-            
-            if roll == 1:
-                result = "CRITICAL! :star2:"
-            elif roll <= skill_value // 5:
-                result = "Extreme Success :star:"
-            elif roll <= skill_value // 2:
-                result = "Hard Success :white_check_mark:"
-            elif roll <= skill_value:
-                result = "Regular Success :heavy_check_mark:"
-            elif roll > 95:
-                result = "Fumble :warning:"
-            else:
-                result = "Fail :x:"
-            
-            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
-            
-            embed = discord.Embed(
-                title=f"{name_value}'s Skill Check for '{skill_name}'",
-                description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
-                color=discord.Color.green()
-            )
-            
-            # Check if the roll is close to Regular Success and offer using LUCK
-            if skill_value >= roll > (skill_value - 10) and luck_value >= 5:
-                luck_check_message = await ctx.send("Do you want to use your LUCK?")
-                await luck_check_message.add_reaction("✅")
-                await luck_check_message.add_reaction("❌")
-                
-                def check(reaction, user):
-                    return user == ctx.author and reaction.message == luck_check_message and reaction.emoji in ["✅", "❌"]
-                
-                try:
-                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                    await luck_check_message.delete()
-                    if reaction.emoji == "✅":
-                        luck_value -= 5
-                        roll -= 10
-                        if roll < 1:
-                            roll = 1
-                        formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                        formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
-                        result = "Regular Success :heavy_check_mark:"
-            except asyncio.TimeoutError:
-                await luck_check_message.delete()
-            
-            embed = discord.Embed(
-                title=f"{name_value}'s Skill Check for '{skill_name}'",
-                description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
-                color=discord.Color.green()
-            )
-            
-            await ctx.send(embed=embed)
-        else:
-            num_dice, dice_type = map(int, dice_expression.lower().split('d'))
-            if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
-                embed = discord.Embed(
-                    title="Invalid Dice Type",
-                    description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
-                    color=discord.Color.red()
-                )
-                await ctx.send(embed=embed)
-                return
-            
-            rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
-            total = sum(rolls)
-            rolls_str = ", ".join(map(str, rolls))
-            
-            embed = discord.Embed(
-                title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
-                color=discord.Color.green()
-            )
+    @commands.command(aliases=["diceroll"])
+    async def d(self, ctx, *, dice_expression):
+        user_id = str(ctx.author.id)
         
+        if "Backstory" not in self.player_stats.get(user_id, {}):
+            self.player_stats[user_id]["Backstory"] = {}
+        
+        try:
+            if dice_expression in self.player_stats[user_id]:
+                name_value = self.player_stats[user_id]["name"]
+                
+                if dice_expression not in self.player_stats[user_id]:
+                    await ctx.send(f"You don't have the skill '{dice_expression}' registered.")
+                    return
+                
+                skill_value = self.player_stats[user_id][dice_expression]
+                luck_value = self.player_stats[user_id]["LUCK"]
+                
+                roll = random.randint(1, 100)
+                
+                result = ""
+                formatted_skill = f"Skill: {skill_value} - Hard Success: {skill_value // 2} - Extreme Success: {skill_value // 5}"
+                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                
+                if roll == 1:
+                    result = "CRITICAL!"
+                elif roll <= skill_value // 5:
+                    result = "Extreme Success"
+                elif roll <= skill_value // 2:
+                    result = "Hard Success"
+                elif roll <= skill_value:
+                    result = "Regular Success"
+                elif roll > 95:
+                    result = "Fumble"
+                else:
+                    if roll <= skill_value + 10 and luck_value >= 5:
+                        formatted_skill += "\n\nWould you like to use your LUCK? (Reply with 'YES' within 1 minute)"
+                        formatted_luck += f" - Current: {luck_value - 5}"
+                    else:
+                        result = "Fail"
+                
+                embed = discord.Embed(
+                    title=f"{name_value}'s Skill Check for '{dice_expression}'",
+                    description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
+                    color=discord.Color.green()
+                )
+                
+                message = await ctx.send(embed=embed)
+                
+                if formatted_skill.endswith("within 1 minute)"):
+                    await message.add_reaction("✅")
+                    
+                    def check(reaction, user):
+                        return user == ctx.author and reaction.message == message and reaction.emoji == "✅"
+                    
+                    try:
+                        reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                        await message.delete()
+                        
+                        if reaction.emoji == "✅":
+                            luck_value -= 5
+                            roll -= 10
+                            if roll < 1:
+                                roll = 1
+                            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                            formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
+                            result = "Regular Success :heavy_check_mark:"
+                            
+                            embed = discord.Embed(
+                                title=f"{name_value}'s Skill Check for '{dice_expression}' (LUCK Used)",
+                                description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
+                                color=discord.Color.green()
+                            )
+                            
+                            await ctx.send(embed=embed)
+                    except asyncio.TimeoutError:
+                        await message.delete()
+            else:
+                num_dice, dice_type = map(int, dice_expression.lower().split('d'))
+                if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
+                    embed = discord.Embed(
+                        title="Invalid Dice Type",
+                        description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
+                        color=discord.Color.red()
+                    )
+                    await ctx.send(embed=embed)
+                    return
+                
+                rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
+                total = sum(rolls)
+                rolls_str = ", ".join(map(str, rolls))
+                
+                embed = discord.Embed(
+                    title=f"Rolled {num_dice} :game_die:d{dice_type}:",
+                    description=f"Rolls: {rolls_str}\nTotal: {total}",
+                    color=discord.Color.green()
+                )
+            
             await ctx.send(embed=embed)
-    except ValueError:
-        embed = discord.Embed(
-            title="Invalid Input",
-            description="Use format !d <skill_name> or XdY where X is the number of dice and Y is the dice type.",
-            color=discord.Color.red()
-        )
-        await ctx.send(embed=embed)
+        except ValueError:
+            embed = discord.Embed(
+                title="Invalid Input",
+                description="Use format !d <skill_name> or XdY where X is the number of dice and Y is the dice type.",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+
 
 
 

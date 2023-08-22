@@ -244,9 +244,9 @@ class Roll(commands.Cog):
             if page == 1:
                 stats_range = range(0, 13)
             elif page == 2:
-                stats_range = range(13, min(33, len(stats_list)))
+                stats_range = range(13, min(37, len(stats_list)))
             elif page == 3:
-                stats_range = range(33, min(40, len(stats_list)))
+                stats_range = range(37, min(40, len(stats_list)))
             else:
                 stats_range = range(40, len(stats_list))
             

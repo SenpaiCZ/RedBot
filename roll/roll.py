@@ -401,3 +401,32 @@ class Roll(commands.Cog):
         
         await ctx.send(embed=backstory_embed)
 
+    @commands.command(aliases=["rbackstory"])
+    async def RemoveCthulhuBackstory(self, ctx, category: str, index: int):
+        user_id = str(ctx.author.id)
+        
+        if user_id not in self.player_stats or "Backstory" not in self.player_stats[user_id]:
+            await ctx.send("You don't have any backstory entries.")
+            return
+        
+        backstory_data = self.player_stats[user_id]["Backstory"]
+        
+        if category not in backstory_data:
+            await ctx.send(f"There is no category named '{category}' in your backstory.")
+            return
+        
+        entries = backstory_data[category]
+        
+        if not entries or index < 1 or index > len(entries):
+            await ctx.send("Invalid index. Please provide a valid index.")
+            return
+        
+        removed_entry = entries.pop(index - 1)
+        
+        if not entries:
+            del backstory_data[category]
+        
+        self.save_data()
+        await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
+
+

@@ -36,7 +36,7 @@ class Roll(commands.Cog):
                 
                 skill_value = self.player_stats[user_id][skill_name]
                 luck_value = self.player_stats[user_id]["LUCK"]
-                name_value = self.player_stats[user_id]["name"]
+                name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
                 
                 roll = random.randint(1, 100)
                 
@@ -90,7 +90,6 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-
 
 
     @commands.command(aliases=["newInv"])

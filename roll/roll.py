@@ -47,7 +47,7 @@ class Roll(commands.Cog):
                 elif roll <= skill_value // 2:
                     result = "Hard Success :white_check_mark:"
                 elif roll <= skill_value:
-                    result = "Regular Success :heavy_check_mark:"
+                    result = "Regular Success :green_circle: "
                 elif roll > 95:
                     result = "Fumble :warning:"
                 else:

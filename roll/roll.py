@@ -23,7 +23,7 @@ class Roll(commands.Cog):
         except Exception as e:
                 print(f"Error writing data to file: {e}")
 
-    @commands.command(aliases=["diceroll"])
+    @commands.command(aliases=["diceroll", "d"])
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         
@@ -47,7 +47,7 @@ class Roll(commands.Cog):
                 elif roll <= skill_value // 2:
                     result = "Hard Success :white_check_mark:"
                 elif roll <= skill_value:
-                    result = "Regular Success :green_circle: "
+                    result = "Regular Success :green_circle:"
                 elif roll > 95:
                     result = "Fumble :warning:"
                 else:
@@ -61,6 +61,31 @@ class Roll(commands.Cog):
                     description=f":game_die: Rolled: {roll}\n{result}\n\n{formatted_skill}\n\n{formatted_luck}",
                     color=discord.Color.green()
                 )
+                
+                # Check if the roll is close to Regular Success and offer using LUCK
+                if roll <= (skill_value + 10):
+                    luck_check_message = await ctx.send("Do you want to use your LUCK?")
+                    await luck_check_message.add_reaction("✅")
+                    await luck_check_message.add_reaction("❌")
+                    
+                    def check(reaction, user):
+                        return user == ctx.author and reaction.message == luck_check_message and reaction.emoji in ["✅", "❌"]
+                    
+                    try:
+                        reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                        if reaction.emoji == "✅":
+                            if luck_value >= 5:
+                                luck_value -= 5
+                                roll -= 10
+                                if roll < 1:
+                                    roll = 1
+                                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                                formatted_skill += f"\n\nUsing LUCK: -5 LUCK, Adjusted Roll: {roll}"
+                        await luck_check_message.delete()
+                    except asyncio.TimeoutError:
+                        await luck_check_message.delete()
+                
+                embed.description += f"\n\n{formatted_luck}"
             else:
                 num_dice, dice_type = map(int, dice_expression.lower().split('d'))
                 if dice_type not in [4, 6, 8, 10, 12, 20, 100]:

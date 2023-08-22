@@ -23,7 +23,7 @@ class Roll(commands.Cog):
         except Exception as e:
                 print(f"Error writing data to file: {e}")
 
-    @commands.command(aliases=["diceroll"])
+    @commands.command(aliases=["diceroll", "d"])
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         
@@ -32,7 +32,7 @@ class Roll(commands.Cog):
         
         try:
             if dice_expression in self.player_stats[user_id]:
-                name_value = self.player_stats[user_id]["name"]
+                name_value = self.player_stats[user_id]["NAME"]
                 
                 if dice_expression not in self.player_stats[user_id]:
                     await ctx.send(f"You don't have the skill '{dice_expression}' registered.")
@@ -129,8 +129,7 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-
-
+    
 
 
     @commands.command(aliases=["newInv"])

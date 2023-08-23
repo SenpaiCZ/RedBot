@@ -38,17 +38,7 @@ class Roll(commands.Cog):
                 luck_value = self.player_stats[user_id]["LUCK"]
                 name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
                 
-                rolls = [random.randint(1, 10), random.randint(1, 10), random.randint(1, 10)]
-                rolls.sort()
-                
-                total = rolls[1]  # The middle roll represents the regular result
-                
-                if "b" in dice_expression.lower():
-                    total += rolls[2]  # Add the higher roll for bonus die
-                elif "p" in dice_expression.lower():
-                    total += rolls[0]  # Add the lower roll for penalty die
-                
-                roll = total + random.randint(1, 10)  # Simulate the units digit
+                roll = random.randint(1, 100)
                 
                 if roll == 1:
                     result = "CRITICAL! :star2:"
@@ -68,7 +58,7 @@ class Roll(commands.Cog):
                 
                 embed = discord.Embed(
                     title=f"{name_value}'s Skill Check for '{skill_name}'",
-                    description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                    description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
                     color=discord.Color.green()
                 )
                 
@@ -76,7 +66,7 @@ class Roll(commands.Cog):
                     difference = roll - skill_value
                     prompt_embed = discord.Embed(
                         title="Use LUCK?",
-                        description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
+                        description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
                                     "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
                         color=discord.Color.orange()
                     )
@@ -104,12 +94,12 @@ class Roll(commands.Cog):
                         
                         embed = discord.Embed(
                             title=f"{name_value}'s Skill Check for '{skill_name}'",
-                            description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                            description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
                             color=discord.Color.green()
                         )
                     except asyncio.TimeoutError:
                         await prompt_message.delete()
-                    
+                
                 await ctx.send(embed=embed)
             else:
                 num_dice, dice_type = map(int, dice_expression.lower().split('d'))
@@ -140,7 +130,6 @@ class Roll(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-
     
 
 

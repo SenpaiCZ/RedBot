@@ -523,3 +523,174 @@ class Roll(commands.Cog):
         
         self.save_data()
         await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
+
+    @commands.command()
+    async def db(self, ctx, *, skill_name):
+        user_id = str(ctx.author.id)
+        
+        if skill_name in self.player_stats[user_id]:
+            skill_value = self.player_stats[user_id][skill_name]
+            luck_value = self.player_stats[user_id]["LUCK"]
+            name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
+            
+            rolls = [random.randint(0, 10) * 10, random.randint(0, 10) * 10, random.randint(0, 10) * 10]
+            rolls.sort()
+            
+            total = rolls[0]  # The lowest roll represents the bonus die
+            
+            roll = total + random.randint(1, 10)  # Simulate the units digit
+            
+            if roll == 1:
+                result = "CRITICAL! :star2:"
+            elif roll <= skill_value // 5:
+                result = "Extreme Success :star:"
+            elif roll <= skill_value // 2:
+                result = "Hard Success :white_check_mark:"
+            elif roll <= skill_value:
+                result = "Regular Success :heavy_check_mark:"
+            elif roll > 95:
+                result = "Fumble :warning:"
+            else:
+                result = "Fail :x:"
+            
+            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+            
+            embed = discord.Embed(
+                title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
+                description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                color=discord.Color.green()
+            )
+            
+            if roll > skill_value and roll <= skill_value + 10 and luck_value >= roll - skill_value:
+                difference = roll - skill_value
+                prompt_embed = discord.Embed(
+                    title="Use LUCK?",
+                    description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
+                                "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
+                    color=discord.Color.orange()
+                )
+                prompt_message = await ctx.send(embed=prompt_embed)
+                
+                def check(message):
+                    return message.author == ctx.author and message.content.lower() in ["yes", "no"]
+                
+                try:
+                    response = await self.bot.wait_for("message", timeout=60, check=check)
+                    await prompt_message.delete()
+                    
+                    if response.content.lower() == "yes":
+                        luck_used = min(luck_value, difference)
+                        luck_value -= luck_used
+                        self.player_stats[user_id]["LUCK"] = luck_value
+                        self.save_data()  # Uložení změn LUCK do dat
+                        formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                        result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                        skill_value += luck_used
+                        
+                        formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+                    else:
+                        result = "Fail :x:"
+                    
+                    embed = discord.Embed(
+                        title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
+                        description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                        color=discord.Color.green()
+                    )
+                except asyncio.TimeoutError:
+                    await prompt_message.delete()
+            
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="Skill Not Found",
+                description=f"Skill '{skill_name}' was not found for this user.",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+    
+    
+    @commands.command()
+    async def dp(self, ctx, *, skill_name):
+        user_id = str(ctx.author.id)
+        
+        if skill_name in self.player_stats[user_id]:
+            skill_value = self.player_stats[user_id][skill_name]
+            luck_value = self.player_stats[user_id]["LUCK"]
+            name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
+            
+            rolls = [random.randint(0, 10) * 10, random.randint(0, 10) * 10, random.randint(0, 10) * 10]
+            rolls.sort(reverse=True)
+            
+            total = rolls[0]  # The highest roll represents the penalty die
+            
+            roll = total + random.randint(1, 10)  # Simulate the units digit
+            
+            if roll == 1:
+                result = "CRITICAL! :star2:"
+            elif roll <= skill_value // 5:
+                result = "Extreme Success :star:"
+            elif roll <= skill_value // 2:
+                result = "Hard Success :white_check_mark:"
+            elif roll <= skill_value:
+                result = "Regular Success :heavy_check_mark:"
+            elif roll > 95:
+                result = "Fumble :warning:"
+            else:
+                result = "Fail :x:"
+            
+            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+            
+            embed = discord.Embed(
+                title=f"{name_value}'s Skill Check for '{skill_name}' with Penalty Die",
+                description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                color=discord.Color.green()
+            )
+            
+            if roll > skill_value and roll <= skill_value + 10 and luck_value >= roll - skill_value:
+                difference = roll - skill_value
+                prompt_embed = discord.Embed(
+                    title="Use LUCK?",
+                    description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
+                                "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
+                    color=discord.Color.orange()
+                )
+                prompt_message = await ctx.send(embed=prompt_embed)
+                
+                def check(message):
+                    return message.author == ctx.author and message.content.lower() in ["yes", "no"]
+                
+                try:
+                    response = await self.bot.wait_for("message", timeout=60, check=check)
+                    await prompt_message.delete()
+                    
+                    if response.content.lower() == "yes":
+                        luck_used = min(luck_value, difference)
+                        luck_value -= luck_used
+                        self.player_stats[user_id]["LUCK"] = luck_value
+                        self.save_data()  # Uložení změn LUCK do dat
+                        formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                        result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                        skill_value += luck_used
+                        
+                        formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+                    else:
+                        result = "Fail :x:"
+                    
+                    embed = discord.Embed(
+                        title=f"{name_value}'s Skill Check for '{skill_name}' with Penalty Die",
+                        description=f":game_die: Rolled: {rolls} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                        color=discord.Color.green()
+                    )
+                except asyncio.TimeoutError:
+                    await prompt_message.delete()
+            
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="Skill Not Found",
+                description=f"Skill '{skill_name}' was not found for this user.",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)

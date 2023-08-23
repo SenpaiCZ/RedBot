@@ -1057,7 +1057,7 @@ class Roll(commands.Cog):
         else:
             skill_description = skills_info.get(skill_name, "Skill not found.")
             
-            response = f":zap: Skill Info: {skill_name}\n :zap: {skill_description}"
+            response = f":zap: Skill Info: {skill_name}\n {skill_description}"
         
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)

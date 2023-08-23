@@ -1055,11 +1055,7 @@ class Roll(commands.Cog):
             skills_list = ", ".join(skills_info.keys())
             response = f"List of skills:\n{skills_list}"
         else:
-            # Převedení zadaného názvu dovednosti na malá písmena
-            lower_skill_name = skill_name.lower()
-            
-            # Získání popisu dovednosti pomocí malých písmen jako klíče
-            skill_description = skills_info.get(lower_skill_name, "Skill not found.")
+            skill_description = skills_info.get(skill_name, "Skill not found.")
             
             response = f"Skill Info: {skill_name}\n{skill_description}"
         

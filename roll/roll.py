@@ -882,3 +882,94 @@ class Roll(commands.Cog):
         
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def autoChar(self, ctx):
+        user_id = str(ctx.author.id)
+        
+        # Check if the player has a character with all stats at 0
+        if user_id not in self.player_stats:
+            await ctx.send("You don't have a character created.")
+            return
+        
+        existing_stats = self.player_stats[user_id]
+        
+        if any(existing_stats[stat] != 0 for stat in ["STR", "DEX", "CON", "INT", "POW", "CHA", "EDU", "SIZ"]):
+            await ctx.send("Your character's stats are not all at 0.")
+            return
+        
+        # Generate stats
+        STR = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
+        CON = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
+        SIZ = 5 * (sum(sorted([random.randint(1, 6) for _ in range(2)])) + 6)
+        DEX = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
+        APP = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
+        INT = 5 * (sum(sorted([random.randint(1, 6) for _ in range(2)])) + 6)
+        POW = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
+        EDU = 5 * (sum(sorted([random.randint(1, 6) for _ in range(2)])) + 6)
+        LUCK = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
+        HP = (CON + SIZ) // 10
+        SAN = POW
+        MP = POW // 5
+        
+        # Create an embed to display the generated stats and age modifiers
+        stats_embed = discord.Embed(
+            title="Character Creation Assistant",
+            description="You are about to generate new stats for your character. Do you want to proceed?",
+            color=discord.Color.blue()
+        )
+        stats_embed.add_field(name="STR", value=f":game_die: {STR}", inline=True)
+        stats_embed.add_field(name="DEX", value=f":game_die: {DEX}", inline=True)
+        stats_embed.add_field(name="CON", value=f":game_die: {CON}", inline=True)
+        stats_embed.add_field(name="INT", value=f":game_die: {INT}", inline=True)
+        stats_embed.add_field(name="POW", value=f":game_die: {POW}", inline=True)
+        stats_embed.add_field(name="CHA", value=f":game_die: {APP}", inline=True)
+        stats_embed.add_field(name="EDU", value=f":game_die: {EDU}", inline=True)
+        stats_embed.add_field(name="SIZ", value=f":game_die: {SIZ}", inline=True)
+        stats_embed.add_field(name="HP", value=f":game_die: {HP}", inline=True)
+        stats_embed.add_field(name="SAN", value=f":game_die: {SAN}", inline=True)
+        stats_embed.add_field(name="MP", value=f":game_die: {MP}", inline=True)
+        stats_embed.add_field(name="LUCK", value=f":game_die: {LUCK}", inline=True)
+        
+        age_modifiers = (
+            "Age Modifiers:\n"
+            "15 to 19: Deduct 5 points among STR and SIZ. Deduct 5 points from EDU. Roll twice to generate a Luck score and use the higher value.\n"
+            "20s or 30s (20-39 years of age): Make an improvement check for EDU.\n"
+            "40s: Make 2 improvement checks for EDU and deduct 5 points among STR, CON or DEX, and reduce APP by 5.\n"
+            "50s: Make 3 improvement checks for EDU and deduct 10 points among STR, CON or DEX, and reduce APP by 10.\n"
+            "60s: Make 4 improvement checks for EDU and deduct 20 points among STR, CON or DEX, and reduce APP by 15.\n"
+            "70s: Make 4 improvement checks for EDU and deduct 40 points among STR, CON or DEX, and reduce APP by 20.\n"
+            "80s: Make 4 improvement checks for EDU and deduct 80 points among STR, CON or DEX, and reduce APP by 25."
+        )
+        
+        stats_embed.add_field(name="Age Modifiers", value=age_modifiers, inline=False)
+        
+        confirmation_message = await ctx.send(embed=stats_embed)
+        await confirmation_message.add_reaction("✅")
+        await confirmation_message.add_reaction("❌")
+        
+        def check(reaction, user):
+            return user == ctx.author and reaction.message.id == confirmation_message.id and str(reaction.emoji) in ["✅", "❌"]
+        
+        try:
+            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+            
+            if str(reaction.emoji) == "✅":
+                self.player_stats[user_id]["STR"] = STR
+                self.player_stats[user_id]["DEX"] = DEX
+                self.player_stats[user_id]["CON"] = CON
+                self.player_stats[user_id]["INT"] = INT
+                self.player_stats[user_id]["POW"] = POW
+                self.player_stats[user_id]["CHA"] = APP
+                self.player_stats[user_id]["EDU"] = EDU
+                self.player_stats[user_id]["SIZ"] = SIZ
+                self.player_stats[user_id]["HP"] = HP
+                self.player_stats[user_id]["SAN"] = SAN
+                self.player_stats[user_id]["MP"] = MP
+                self.player_stats[user_id]["LUCK"] = LUCK
+                self.save_data()  # Save the updated stats
+                
+                await ctx.send("New stats have been generated and saved for your character.")
+            else:
+                await ctx.send("Character creation cancelled.")
+        except asyncio.TimeoutError:
+            await ctx.send("Character creation timed out.")

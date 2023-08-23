@@ -4,7 +4,6 @@ import discord
 import json
 import os
 import asyncio
-import emoji
 
 class Roll(commands.Cog):
     def __init__(self, bot):
@@ -780,6 +779,21 @@ class Roll(commands.Cog):
             await ctx.send("Invalid gender. Use 'male' or 'female'.")
             return
         
+        def get_stat_emoji(stat_name):
+            stat_emojis = {
+                "STR": ":muscle:",
+                "DEX": ":runner:",
+                "CON": ":heart:",
+                "INT": ":brain:",
+                "POW": ":zap:",
+                "CHA": ":sparkles:",
+                "EDU": ":mortar_board:",
+                "SIZ": ":bust_in_silhouette:",
+                "HP": ":heartpulse:",
+                "LUCK": ":four_leaf_clover:",
+            }
+            return stat_emojis.get(stat_name, "")
+        
         # Generate random names
         if gender == "male":
             first_name_list = [
@@ -846,19 +860,19 @@ class Roll(commands.Cog):
         HP = (CON + SIZ) // 10
         
         stats = {
-            "STR": ":muscle:",
-            "DEX": ":runner:",
-            "CON": ":heart:",
-            "INT": ":brain:",
-            "POW": ":zap:",
-            "CHA": ":sparkles:",
-            "EDU": ":mortar_board:",
-            "SIZ": ":bust_in_silhouette:",
-            "HP": ":heartpulse:",
-            "LUCK": ":four_leaf_clover:",
+            "STR": STR,
+            "DEX": DEX,
+            "CON": CON,
+            "INT": INT,
+            "POW": POW,
+            "CHA": APP,
+            "EDU": EDU,
+            "SIZ": SIZ,
+            "HP": HP,
+            "LUCK": LUCK,
         }
         
-        stats_embed = "\n".join([f"{emoji} {stat}: {value}" for stat, value in stats.items()])
+        stats_embed = "\n".join([f"{get_stat_emoji(stat)} {stat}: {value}" for stat, value in stats.items()])
         
         embed = discord.Embed(
             title="NPC Character Sheet",

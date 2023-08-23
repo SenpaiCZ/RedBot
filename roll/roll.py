@@ -757,9 +757,15 @@ class Roll(commands.Cog):
                         "Tillinghast","Traver","Urton","Vallier","Wagner","Walsted","Wang","Warner","Webber","Welch","Winters","Yarbrough","Yeske"
         ])
         
+        if random.random() < 0.5:
+            second_first_name = random.choice(name_list)
+            full_name = f"{first_name} {second_first_name} {last_name}"
+        else:
+            full_name = f"{first_name} {last_name}"
+        
         embed = discord.Embed(
             title="Random name for Call of Cthulhu",
-            description=f":game_die: **{first_name} {last_name}** :game_die:",
+            description=f":game_die: **{full_name}** :game_die:",
             color=discord.Color.blue()
         )
         

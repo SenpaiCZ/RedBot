@@ -992,7 +992,7 @@ class Roll(commands.Cog):
 
 
     @commands.command()
-    async def skillinfo(self, ctx, *, skill_name: str):
+    async def skillinfo(self, ctx, *, skill_name: str = None):
         # Zde můžete definovat informace o dovednostech (malá písmena)
         skills_info = {
             "Accounting": "Base stat - 05% \n Accounting skill grants the ability to understand financial operations, detecting discrepancies and fraud in financial records, and evaluating the financial health of businesses or individuals. It involves inspecting account books to uncover misappropriations, bribes, or discrepancies in claimed financial conditions. Difficulty varies based on how well accounts are concealed. Pushing examples involve spending more time reviewing documents or double-checking findings. Failing a Pushed roll could lead to revealing the investigators' intentions or damaging the accounts, with insane investigators possibly eating them.",
@@ -1061,5 +1061,6 @@ class Roll(commands.Cog):
         
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)
+
 
             

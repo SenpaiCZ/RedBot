@@ -993,14 +993,18 @@ class Roll(commands.Cog):
 
     @commands.command()
     async def skillinfo(self, ctx, *, skill_name: str):
-        # Zde můžete definovat informace o dovednostech
+        # Zde můžete definovat informace o dovednostech (malá písmena)
         skills_info = {
-            "Sleight of Hand": "Allows the visual covering-up, secreting, or masking of an object...",
-            "Spot Hidden": "This skill allows the user to spot a secret door or compartment, notice a hidden intruder...",
+            "sleight of hand": "Allows the visual covering-up, secreting, or masking of an object...",
+            "spot hidden": "This skill allows the user to spot a secret door or compartment, notice a hidden intruder...",
             # Přidejte další dovednosti a popisy...
         }
         
-        skill_description = skills_info.get(skill_name, "Skill not found.")
+        # Převedení zadaného názvu dovednosti na malá písmena
+        lower_skill_name = skill_name.lower()
+        
+        # Získání popisu dovednosti pomocí malých písmen jako klíče
+        skill_description = skills_info.get(lower_skill_name, "Skill not found.")
         
         embed = discord.Embed(title=f"Skill Info: {skill_name}", description=skill_description, color=discord.Color.blue())
         await ctx.send(embed=embed)

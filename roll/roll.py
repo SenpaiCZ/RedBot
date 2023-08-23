@@ -911,27 +911,43 @@ class Roll(commands.Cog):
         SAN = POW
         MP = POW // 5
         
+        def get_stat_emoji(stat_name):
+            stat_emojis = {
+                "STR": ":muscle:",
+                "DEX": ":runner:",
+                "CON": ":heart:",
+                "INT": ":brain:",
+                "POW": ":zap:",
+                "CHA": ":sparkles:",
+                "EDU": ":mortar_board:",
+                "SIZ": ":bust_in_silhouette:",
+                "HP": ":heartpulse:",
+                "MP": ":sparkles:",
+                "LUCK": ":four_leaf_clover:",
+                "SAN": ":scales:",
+            }
+            return stat_emojis.get(stat_name, "")
+        
         # Create an embed to display the generated stats and age modifiers
         stats_embed = discord.Embed(
             title="Character Creation Assistant",
             description="You are about to generate new stats for your character. Do you want to proceed?",
             color=discord.Color.blue()
         )
-        stats_embed.add_field(name="STR", value=f":game_die: {STR}", inline=True)
-        stats_embed.add_field(name="DEX", value=f":game_die: {DEX}", inline=True)
-        stats_embed.add_field(name="CON", value=f":game_die: {CON}", inline=True)
-        stats_embed.add_field(name="INT", value=f":game_die: {INT}", inline=True)
-        stats_embed.add_field(name="POW", value=f":game_die: {POW}", inline=True)
-        stats_embed.add_field(name="CHA", value=f":game_die: {APP}", inline=True)
-        stats_embed.add_field(name="EDU", value=f":game_die: {EDU}", inline=True)
-        stats_embed.add_field(name="SIZ", value=f":game_die: {SIZ}", inline=True)
-        stats_embed.add_field(name="HP", value=f":game_die: {HP}", inline=True)
-        stats_embed.add_field(name="SAN", value=f":game_die: {SAN}", inline=True)
-        stats_embed.add_field(name="MP", value=f":game_die: {MP}", inline=True)
-        stats_embed.add_field(name="LUCK", value=f":game_die: {LUCK}", inline=True)
+        stats_embed.add_field(name="STR", value=f"{get_stat_emoji('STR')} :game_die: {STR}", inline=True)
+        stats_embed.add_field(name="DEX", value=f"{get_stat_emoji('DEX')} :game_die: {DEX}", inline=True)
+        stats_embed.add_field(name="CON", value=f"{get_stat_emoji('CON')} :game_die: {CON}", inline=True)
+        stats_embed.add_field(name="INT", value=f"{get_stat_emoji('INT')} :game_die: {INT}", inline=True)
+        stats_embed.add_field(name="POW", value=f"{get_stat_emoji('POW')} :game_die: {POW}", inline=True)
+        stats_embed.add_field(name="CHA", value=f"{get_stat_emoji('CHA')} :game_die: {APP}", inline=True)
+        stats_embed.add_field(name="EDU", value=f"{get_stat_emoji('EDU')} :game_die: {EDU}", inline=True)
+        stats_embed.add_field(name="SIZ", value=f"{get_stat_emoji('SIZ')} :game_die: {SIZ}", inline=True)
+        stats_embed.add_field(name="HP", value=f"{get_stat_emoji('HP')} :game_die: {HP}", inline=True)
+        stats_embed.add_field(name="SAN", value=f"{get_stat_emoji('SAN')} :game_die: {SAN}", inline=True)
+        stats_embed.add_field(name="MP", value=f"{get_stat_emoji('MP')} :game_die: {MP}", inline=True)
+        stats_embed.add_field(name="LUCK", value=f"{get_stat_emoji('LUCK')} :game_die: {LUCK}", inline=True)
         
         age_modifiers = (
-            "Age Modifiers:\n"
             "15 to 19: Deduct 5 points among STR and SIZ. Deduct 5 points from EDU. Roll twice to generate a Luck score and use the higher value.\n"
             "20s or 30s (20-39 years of age): Make an improvement check for EDU.\n"
             "40s: Make 2 improvement checks for EDU and deduct 5 points among STR, CON or DEX, and reduce APP by 5.\n"
@@ -973,3 +989,4 @@ class Roll(commands.Cog):
                 await ctx.send("Character creation cancelled.")
         except asyncio.TimeoutError:
             await ctx.send("Character creation timed out.")
+

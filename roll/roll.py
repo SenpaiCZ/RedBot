@@ -1092,7 +1092,7 @@ class Roll(commands.Cog):
                 "credit_rating": "20–90",
                 "suggested_contacts": "Film industry, media critics, writers.",
                 "skills": "Art/Craft (Acting), Disguise, Drive Auto, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any two other skills as personal or era specialties (e.g. Ride or Fighting)."
-            }
+            },
            "agency_detective": {
                 "description": "Numerous well-known detective agencies exist around the world, with probably the most famous being the Pinkerton and Burns agencies (merged into one in modern times). Large agencies employ two types of agents: security guards and operatives. Guards are uniformed patrolmen, hired by companies and individuals to protect property and people against burglars, assassins, and kidnappers. Use the Uniformed Police Officer’s (page 87) description for these characters. Company Operatives are plainclothes detectives, sent out on cases requiring them to solve mysteries, prevent murders, locate missing people, and so on.",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",

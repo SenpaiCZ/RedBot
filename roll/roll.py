@@ -1120,7 +1120,7 @@ class Roll(commands.Cog):
                 "credit_rating": "30–70",
                 "suggested_contacts": "Booksellers, antique collectors, historical societies.",
                 "skills": "Appraise, Art/Craft (any), History, Library Use, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Spot Hidden, any one other skill as a personal or era specialty."
-            }
+            },
             "antique_dealer": {
                 "description": "Antique dealers usually own their own shop, retail items out of their homes, or go on extended buying trips, making a profit on reselling to urban stores.",
                 "skill_points": "EDU × 4",
@@ -1155,7 +1155,7 @@ class Roll(commands.Cog):
                 "credit_rating": "8–20",
                 "suggested_contacts": "Medical staff, patients, and relatives of patients. Access to medical records, as well as drugs and other medical supplies.",
                 "skills": "Dodge, Fighting (Brawl), First Aid, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Listen, Psychology, Stealth."
-            }
+            },
            "athlete": {
                 "description": "Probably plays in a professional baseball, football, cricket, or basketball team. This may be a major league team with a regular salary and national attention or—particularly in the case of 1920s baseball—one of many minor league teams, some of them owned and operated by major league owners. The latter pay barely enough to keep players fed and on the team. Successful professional athletes will enjoy a certain amount of celebrity within the arena of their expertise—more so in the present day where sporting heroes stand side by side with film stars on red carpets around the world.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
@@ -1190,7 +1190,7 @@ class Roll(commands.Cog):
                 "credit_rating": "20–40",
                 "suggested_contacts": "Bibliographers, book dealers, libraries and universities, clients.",
                 "skills": "Accounting, Appraise, Drive Auto, History, Library Use, Own Language, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade)."
-            }
+            },
            "bounty_hunter": {
                 "description": "Bounty hunters track down and return fugitives to justice. Most often, freelancers are employed by Bail Bondsmen to track down bail jumpers. Bounty hunters may freely cross state lines in pursuit of their quarry and may show little regard for civil rights and other technicalities when capturing their prey. Breaking and entering, threats, and physical abuse are all part of the successful bounty hunter’s bag of tricks. In modern times this may stem to illegal phone taps, computer hacking, and other covert surveillance.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
@@ -1260,7 +1260,7 @@ class Roll(commands.Cog):
                 "credit_rating": "5–75",
                 "suggested_contacts": "Other gang members (current and retired), criminal freelancers, organized crime.",
                 "skills": "Drive Auto, Electrical or Mechanical Repair, Fighting, Firearms, Intimidate, Locksmith, Operate Heavy Machinery, any one other skill as personal or era specialty."
-            }
+            },
             "bootlegger_thug": {
                 "description": "Bootleggers are individuals involved in the illegal production and distribution of alcohol during the Prohibition era. Thugs are enforcers and muscle for criminal organizations...",
                 "skill_points": "EDU × 2 + STR × 2",
@@ -1295,7 +1295,7 @@ class Roll(commands.Cog):
                 "credit_rating": "10–80 (income is usually dependent on boyfriend’s income)",
                 "suggested_contacts": "Gangsters, law enforcement, local businesses.",
                 "skills": "Art/Craft (any), two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Fighting (Brawl) or Firearms (Handgun), Drive Auto, Listen, Stealth, any one other skill as personal or era specialty."
-            }
+            },
             "fence": {
                 "description": "Fences are criminals who deal in buying and selling stolen goods. They provide a market for stolen items, acting as intermediaries between thieves and buyers...",
                 "skill_points": "EDU × 2 + APP × 2",
@@ -1330,7 +1330,7 @@ class Roll(commands.Cog):
                 "credit_rating": "30–60",
                 "suggested_contacts": "While the majority of followers will be regular people, the more charismatic the leader, the greater the possibility of celebrity followers, such as movie stars and rich widows.",
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Occult, Psychology, Spot Hidden, any two other skills as specialties."
-            }
+            },
             "deprogrammer": {
                 "description": "Deprogramming is the act of persuading (or forcing) a person to abandon their belief or allegiance to a religious or social community. Normally, the deprogrammer is hired by relatives of an individual, who has joined some form of cult, in order to break them free (usually by kidnapping) and then subject them to psychological techniques to free them of their association ('conditioning') with the cult. Less extreme deprogrammers exist, who work with those who have voluntarily left a cult. In such cases, the deprogrammer effectively acts as an exit counselor.",
                 "skill_points": "EDU × 4",
@@ -1365,14 +1365,14 @@ class Roll(commands.Cog):
                 "credit_rating": "30–80",
                 "suggested_contacts": "Other physicians, medical workers, patients and ex-patients.",
                 "skills": "First Aid, Medicine, Other Language (Latin), Psychology, Science (Biology and Pharmacy), any two other skills as academic or personal specialties."
-            }
+            },
             "drifter": {
                 "description": "Drifters are individuals who choose a wandering and transient lifestyle, often moving from place to place. They may be motivated by a desire for freedom, philosophical reasons, or other factors. Their skills are adapted for mobility and survival on the road.",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2 or STR × 2)",
                 "credit_rating": "0–5",
                 "suggested_contacts": "Other hobos, friendly railroad guards, contacts in numerous towns.",
                 "skills": "Climb, Jump, Listen, Navigate, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Stealth, any two other skills as personal or era specialties."
-            }
+            },
             "chauffeur": {
                 "description": "A chauffeur is either directly employed by an individual or firm, or works for an agency that hires both car and chauffeur out for single engagements or on a retainer basis. Chauffeurs often serve successful business people and may have political connections.",
                 "skill_points": "EDU × 2 + DEX × 2",
@@ -1414,7 +1414,7 @@ class Roll(commands.Cog):
                 "credit_rating": "30–60",
                 "suggested_contacts": "Business or military workers, local government, architects.",
                 "skills": "Art/Craft (Technical Drawing), Electrical Repair, Library Use, Mechanical Repair, Operate Heavy Machine, Science (Engineering and Physics), any one other skill as personal or era specialty."
-            }
+            },
             "entertainer": {
                 "description": "This occupation includes various roles like clowns, singers, dancers, comedians, musicians, and more, who perform in front of audiences. Entertainers thrive on attention and applause, and their professions gained respect with the rise of Hollywood stars in the 1920s.",
                 "skill_points": "EDU × 2 + APP × 2",
@@ -1456,7 +1456,7 @@ class Roll(commands.Cog):
                 "credit_rating": "10–40",
                 "suggested_contacts": "National or worldwide news industry, foreign governments, military.",
                 "skills": "History, Other Language, Own Language, Listen, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one other skill as a personal or era specialty."
-            }
+            },
             "forensic_surgeon": {
                 "description": "Forensic surgeons conduct autopsies, determine causes of death, and provide recommendations to prosecutors. They often testify in criminal proceedings and have contacts in laboratories, law enforcement, and the medical profession.",
                 "skill_points": "EDU × 4",
@@ -1491,7 +1491,7 @@ class Roll(commands.Cog):
                 "credit_rating": "40–90",
                 "suggested_contacts": "Upper classes and landed gentry, politics, servants, agricultural workers.",
                 "skills": "Art/Craft (any), two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Firearms (Rifle/Shotgun), History, Other Language (any), Navigate, Ride."
-            }
+            },
             "hobo": {
                 "description": "Hobos are wandering workers who travel from town to town, often riding the rails. They are penniless explorers of the road, facing danger from police, communities, and railroad staff. Hobos have contacts among other hobos and some friendly railroad guards.",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
@@ -1519,7 +1519,7 @@ class Roll(commands.Cog):
                 "credit_rating": "9–30",
                 "suggested_contacts": "News and media industries, political organizations and government, business, law enforcement, street criminals, high society.",
                 "skills": "Art/Craft (Acting), History, Listen, Own Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Stealth, Spot Hidden."
-            }
+            },
             "judge": {
                 "description": "Judges preside over legal proceedings, making decisions and judgments either alone or within a group. They can be appointed or elected and are usually licensed attorneys. Judges have legal connections and possibly contacts with organized crime.",
                 "skill_points": "EDU × 4",
@@ -1568,14 +1568,14 @@ class Roll(commands.Cog):
                 "credit_rating": "9–35",
                 "suggested_contacts": "Booksellers, community groups, specialist researchers.",
                 "skills": "Accounting, Library Use, Other Language, Own Language, any four other skills as personal specialties or specialist reading topics."
-            }
+            },
              "mechanic": {
                 "description": "Mechanics and skilled tradespeople include various trades requiring specialized training and experience, such as carpenters, plumbers, electricians, and mechanics. They often have their own unions and contacts within the trade.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40",
                 "suggested_contacts": "Union members, trade-relevant specialists.",
                 "skills": "Art/Craft (Carpentry, Welding, Plumbing, etc.), Climb, Drive Auto, Electrical Repair, Mechanical Repair, Operate Heavy Machinery, any two other skills as personal, era or trade specialties."
-                },
+            },
             "military_officer": {
                 "description": "Military officers are command ranks requiring higher education. They undergo training and are often graduates of military academies. They have contacts in the military and federal government.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
@@ -1596,7 +1596,7 @@ class Roll(commands.Cog):
                 "credit_rating": "30–60",
                 "suggested_contacts": "Other climbers, environmentalists, patrons, sponsors, local rescue or law enforcement, park rangers, sports clubs.",
                 "skills": "Climb, First Aid, Jump, Listen, Navigate, Other Language, Survival (Alpine or as appropriate), Track."
-            }
+            },
             "museum_curator": {
                 "description": "Museum curators manage and oversee exhibits and collections in museums, often specializing in specific topics. They have contacts with local universities, scholars, and patrons.",
                 "skill_points": "EDU × 4",
@@ -1631,7 +1631,7 @@ class Roll(commands.Cog):
                 "credit_rating": "5–20",
                 "suggested_contacts": "Local people and native folk, traders.",
                 "skills": "Firearms, First Aid, Listen, Natural World, Navigate, Spot Hidden, Survival (any), Track."
-            }
+            },
             "parapsychologist": {
                 "description": "Parapsychologists study and investigate paranormal phenomena, often using technology to capture evidence. They specialize in areas like extrasensory perception, telekinesis, and hauntings.",
                 "skill_points": "EDU × 4",
@@ -1659,7 +1659,7 @@ class Roll(commands.Cog):
                 "credit_rating": "10–30",
                 "suggested_contacts": "News industry, film industry (1920s), foreign governments and authorities.",
                 "skills": "Art/Craft (Photography), Climb, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Other Language, Psychology, Science (Chemistry), any two other skills as personal or era specialties."
-            }
+            },
             "pilot": {
                 "description": "Pilots fly aircraft for various purposes, including commercial airlines and businesses. They may also work as stunt pilots, aviators, or military pilots.",
                 "skill_points": "EDU × 2 + DEX × 2",
@@ -1694,7 +1694,7 @@ class Roll(commands.Cog):
                 "credit_rating": "9–30",
                 "suggested_contacts": "Law enforcement, clients.",
                 "skills": "Art/Craft (Photography), Disguise, Law, Library Use, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Spot Hidden, and any one other skill as personal or era specialty (e.g. Computer Use, Locksmith, Fighting, Firearms)."
-            }
+            },
             "professor": {
                 "description": "Professors are academics employed by colleges and universities. They may also work for corporations in research and development roles. They often hold a Ph.D. and have expertise in their field.",
                 "skill_points": "EDU × 4",
@@ -1729,7 +1729,7 @@ class Roll(commands.Cog):
                 "credit_rating": "10–40",
                 "suggested_contacts": "Psychological community, patients.",
                 "skills": "Accounting, Library Use, Listen, Persuade, Psychoanalysis, Psychology, any two other skills as academic, era or personal specialties."
-            }
+            },
             "researcher": {
                 "description": "Researchers are involved in academic or private sector research. They can work in various fields, such as astronomy, physics, and chemistry.",
                 "skill_points": "EDU × 4",
@@ -1757,7 +1757,7 @@ class Roll(commands.Cog):
                 "credit_rating": "9–40",
                 "suggested_contacts": "Businesses within the same sector, favored customers.",
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Drive Auto, Listen, Psychology, Stealth or Sleight of Hand, any one other skill."
-            }
+            },
             "scientist": {
                 "description": "Scientists are involved in research and expanding the bounds of knowledge in various fields. They work for businesses and universities.",
                 "skill_points": "EDU × 4",
@@ -1792,7 +1792,7 @@ class Roll(commands.Cog):
                 "credit_rating": "20–60",
                 "suggested_contacts": "Generally only the person the spy reports to, possibly other connections developed while under cover.",
                 "skills": "Art/Craft (Acting) or Disguise, Firearms, Listen, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Sleight of Hand, Stealth."
-            }
+            },
             "student_intern": {
                 "description": "Students or interns may be enrolled at educational institutions or receive on-the-job training. They may work for minimal compensation.",
                 "skill_points": "EDU × 4",

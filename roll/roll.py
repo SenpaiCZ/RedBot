@@ -1225,7 +1225,7 @@ class Roll(commands.Cog):
                 "credit_rating": "10–70",
                 "suggested_contacts": "Other IT workers, corporate workers and managers, specialized Internet web communities.",
                 "skills": "Computer Use, Electrical Repair, Electronics, Library Use, Science (Mathematics), Spot Hidden, any two other skills as personal or era specialties."
-            }
+            },
             "cowboy_girl": {
                 "description": "Cowboys work the ranges and ranches of the West. Some own their own ranches, but many are simply hired where and when work is available. Good money can also be made by those willing to risk life and limb on the rodeo circuit, traveling between events for fame and glory. During the 1920s, a few found employment in Hollywood as stuntmen and extras in westerns; for example, Wyatt Earp worked as a technical advisor to the film industry. In modern times some ranches have opened their gates to holidaymakers wishing to experience life as a cowboy.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",

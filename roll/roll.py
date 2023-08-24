@@ -1061,6 +1061,50 @@ class Roll(commands.Cog):
         
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)
-
+        
+    @commands.command()
+    async def coccupations(self, ctx, *, occupation_name: str = None):
+        # Definice informací o povoláních (profesích)
+        occupations_info = {
+            "accountant": {
+                ":clipboard: description": "Either employed within a business or working as a freelance consultant with a portfolio of self-employed clients or businesses...",
+                ":black_joker: skill_points": "EDU × 4",
+                ":moneybag: credit_rating": "30–70",
+                ":telephone: suggested_contacts": "Business associates, legal professions, financial sector (bankers, other accountants).",
+                ":zap: skills": "Accounting, Law, Library Use, Listen, Persuade, Spot Hidden, any two other skills as personal or era specialties (e.g. Computer Use)."
+            },
+            # Přidejte další povolání a jejich informace...
+        }
+        
+        if occupation_name is None:
+            # Pokud není poskytnuto žádné jméno povolání, vypíše seznam všech povolání
+            occupations_list = ", ".join(occupations_info.keys())
+            response = f"List of occupations:\n{occupations_list}"
+            embed_title = "Occupations List"
+        else:
+            # Převedení zadaného názvu povolání na malá písmena
+            lower_occupation_name = occupation_name.lower()
+            
+            # Získání informací o povolání pomocí malých písmen jako klíče
+            occupation_info = occupations_info.get(lower_occupation_name)
+            if occupation_info is None:
+                response = "Occupation not found."
+            else:
+                embed_title = occupation_name.capitalize()  # Jméno povolání jako hlavička embedu
+                description = occupation_info["description"]
+                skill_points = occupation_info["skill_points"]
+                credit_rating = occupation_info["credit_rating"]
+                suggested_contacts = occupation_info["suggested_contacts"]
+                skills = occupation_info["skills"]
+                response = (
+                    f"Description: {description}\n"
+                    f"Occupation Skill Points: {skill_points}\n"
+                    f"Credit Rating: {credit_rating}\n"
+                    f"Suggested Contacts: {suggested_contacts}\n"
+                    f"Skills: {skills}"
+                )
+        
+        embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
+        await ctx.send(embed=embed)
 
             

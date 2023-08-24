@@ -1067,9 +1067,9 @@ class Roll(commands.Cog):
         # Definice informací o povoláních (profesích)
         occupations_info = {
             "accountant": {
-                ":clipboard: description": "Either employed within a business or working as a freelance consultant with a portfolio of self-employed clients or businesses...",
-                ":black_joker: skill_points": "EDU × 4",
-                ":moneybag: credit_rating": "30–70",
+                "description": "Either employed within a business or working as a freelance consultant with a portfolio of self-employed clients or businesses...",
+                "skill_points": "EDU × 4",
+                "credit_rating": "30–70",
                 ":telephone: suggested_contacts": "Business associates, legal professions, financial sector (bankers, other accountants).",
                 ":zap: skills": "Accounting, Law, Library Use, Listen, Persuade, Spot Hidden, any two other skills as personal or era specialties (e.g. Computer Use)."
             },
@@ -1097,11 +1097,11 @@ class Roll(commands.Cog):
                 suggested_contacts = occupation_info["suggested_contacts"]
                 skills = occupation_info["skills"]
                 response = (
-                    f"Description: {description}\n"
-                    f"Occupation Skill Points: {skill_points}\n"
-                    f"Credit Rating: {credit_rating}\n"
-                    f"Suggested Contacts: {suggested_contacts}\n"
-                    f"Skills: {skills}"
+                    f":clipboard: Description: {description}\n"
+                    f":black_joker: Occupation Skill Points: {skill_points}\n"
+                    f":moneybag: Credit Rating: {credit_rating}\n"
+                    f":telephone: Suggested Contacts: {suggested_contacts}\n"
+                    f":zap: Skills: {skills}"
                 )
         
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())

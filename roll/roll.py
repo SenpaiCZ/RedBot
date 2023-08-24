@@ -1061,40 +1061,35 @@ class Roll(commands.Cog):
         
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)
-        
-    @commands.command()
+
+    @commands.command(aliases=["cocc"])
     async def coccupations(self, ctx, *, occupation_name: str = None):
-        # Definice informací o povoláních (profesích)
         occupations_info = {
             "accountant": {
                 "description": "Either employed within a business or working as a freelance consultant with a portfolio of self-employed clients or businesses...",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
-                ":telephone: suggested_contacts": "Business associates, legal professions, financial sector (bankers, other accountants).",
-                ":zap: skills": "Accounting, Law, Library Use, Listen, Persuade, Spot Hidden, any two other skills as personal or era specialties (e.g. Computer Use)."
+                "suggested_contacts": "Business associates, legal professions, financial sector (bankers, other accountants).",
+                "skills": "Accounting, Law, Library Use, Listen, Persuade, Spot Hidden, any two other skills as personal or era specialties (e.g. Computer Use)."
             },
             # Přidejte další povolání a jejich informace...
         }
         
         if occupation_name is None:
-            # Pokud není poskytnuto žádné jméno povolání, vypíše seznam všech povolání
             occupations_list = ", ".join(occupations_info.keys())
             response = f"List of occupations:\n{occupations_list}"
             embed_title = "Occupations List"
         else:
-            # Převedení zadaného názvu povolání na malá písmena
             lower_occupation_name = occupation_name.lower()
-            
-            # Získání informací o povolání pomocí malých písmen jako klíče
             occupation_info = occupations_info.get(lower_occupation_name)
             if occupation_info is None:
                 response = "Occupation not found."
             else:
-                embed_title = occupation_name.capitalize()  # Jméno povolání jako hlavička embedu
+                embed_title = occupation_name.capitalize()
                 description = occupation_info["description"]
                 skill_points = occupation_info["skill_points"]
                 credit_rating = occupation_info["credit_rating"]
-                suggested_contacts = occupation_info["suggested_contacts"]
+                suggested_contacts = occupation_info.get("suggested_contacts", "None")
                 skills = occupation_info["skills"]
                 response = (
                     f":clipboard: Description: {description}\n"
@@ -1106,5 +1101,4 @@ class Roll(commands.Cog):
         
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
-
             

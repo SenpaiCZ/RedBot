@@ -1,4 +1,4 @@
-from .roll import CallofCthulhuCog
+from .CallofCthulhuCog import CallofCthulhuCog
 
 
 async def setup(bot):

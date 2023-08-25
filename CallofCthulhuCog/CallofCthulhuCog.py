@@ -10,7 +10,6 @@ class CallofCthulhuCog(commands.Cog):
         self.bot = bot
         current_directory = os.path.dirname(os.path.abspath(__file__))
         self.data_file = os.path.join(current_directory, "player_stats.json")
-        #Ex-cesta /home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/roll/
 
         if os.path.exists(self.data_file):
             with open(self.data_file, "r") as f:

@@ -1912,7 +1912,7 @@ class Roll(commands.Cog):
         
         personal_description_text = "Personal Description:\n"
         for description in personal_descriptions:
-            personal_description_text += f"{description}\n"
+            personal_description_text += f"{description}"
     
         ideology_beliefs = [
             "There is a higher power that you worship and pray to (e.g. Vishnu, Jesus Christ, Haile Selassie I).",

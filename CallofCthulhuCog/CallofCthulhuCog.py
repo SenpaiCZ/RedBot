@@ -8,8 +8,7 @@ import asyncio
 class CallofCthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        current_directory = os.path.dirname(os.path.abspath(__file__))
-        data_file = os.path.join(current_directory, "player_stats.json")
+        self.data_file = "player_stats.json"
         #Ex-cesta /home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/roll/
 
         if os.path.exists(self.data_file):
@@ -23,7 +22,7 @@ class CallofCthulhuCog(commands.Cog):
             with open(self.data_file, "w") as f:
                 json.dump(self.player_stats, f, indent=4)
         except Exception as e:
-                print(f"Error writing data to file: {e}")
+            print(f"Error writing data to file: {e}")
 
     @commands.command(aliases=["diceroll"])
     async def d(self, ctx, *, dice_expression):

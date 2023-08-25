@@ -1894,7 +1894,7 @@ class Roll(commands.Cog):
         await ctx.send(embed=embed)
             
     @commands.command(aliases=["gbackstory"])
-    async def generate_backstory(ctx, name=None):
+    async def generate_backstory(self, ctx):
         personal_descriptions = [
             "Rugged", "Handsome", "Ungainly",
             "Pretty", "Glamorous", "Baby-faced",

@@ -1,5 +1,5 @@
-from .roll import Roll
+from .roll import CallofCthulhuCog
 
 
 async def setup(bot):
-    await bot.add_cog(Roll(bot))
+    await bot.add_cog(CallofCthulhuCog(bot))

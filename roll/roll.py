@@ -1999,11 +1999,11 @@ class Roll(commands.Cog):
         selected_traits = random.choice(traits)
     
         embed = discord.Embed(title="Character Backstory Generator", color=0x00ff00)
-        embed.add_field(name="Personal Description:", value=personal_description_text, inline=False)
-        embed.add_field(name="Ideology/Beliefs:", value=selected_ideology_beliefs, inline=False)
-        embed.add_field(name="Significant People:", value=f"First, who? {selected_significant_people_first}\nWhy? {selected_significant_people_why}", inline=False)
-        embed.add_field(name="Meaningful Locations:", value=selected_meaningful_locations, inline=False)
-        embed.add_field(name="Treasured Possessions:", value=selected_treasured_possessions, inline=False)
-        embed.add_field(name="Traits:", value=selected_traits, inline=False)
+        embed.add_field(name="Personal Description (chose one that fists):", value=personal_description_text, inline=False)
+        embed.add_field(name=":church: Ideology/Beliefs:", value=selected_ideology_beliefs, inline=False)
+        embed.add_field(name=":bust_in_silhouette: Significant People:", value=f"First, who? {selected_significant_people_first}\nWhy? {selected_significant_people_why}", inline=False)
+        embed.add_field(name=":map: Meaningful Locations:", value=selected_meaningful_locations, inline=False)
+        embed.add_field(name=":gem: Treasured Possessions:", value=selected_treasured_possessions, inline=False)
+        embed.add_field(name=":beginner: Traits:", value=selected_traits, inline=False)
     
         await ctx.send(embed=embed)

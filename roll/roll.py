@@ -1893,3 +1893,117 @@ class Roll(commands.Cog):
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
             
+    @commands.command(aliases=["gbackstory"])
+    async def generate_backstory(ctx):
+        personal_descriptions = [
+            "Rugged", "Handsome", "Ungainly",
+            "Pretty", "Glamorous", "Baby-faced",
+            "Smart", "Untidy", "Dull",
+            "Dirty", "Dazzler", "Bookish",
+            "Youthful", "Weary", "Plump",
+            "Stout", "Hairy", "Slim",
+            "Elegant", "Scruffy", "Stocky",
+            "Pale", "Sullen", "Ordinary",
+            "Rosy", "Tanned", "Wrinkled",
+            "Sturdy", "Mousy", "Sharp",
+            "Brawny", "Dainty", "Muscular",
+            "Strapping", "Gawky", "Frail"
+        ]
+        
+        personal_description_text = "Personal Description:\n"
+        for description in personal_descriptions:
+            personal_description_text += f"{description}\n"
+    
+        ideology_beliefs = [
+            "There is a higher power that you worship and pray to (e.g. Vishnu, Jesus Christ, Haile Selassie I).",
+            "Mankind can do fine without religions (e.g. staunch atheist, humanist, secularist).",
+            "Science has all the answers. Pick a particular aspect of interest (e.g. evolution, cryogenics, space exploration).",
+            "A belief in fate (e.g. karma, the class system, superstitious).",
+            "Member of a society or secret society (e.g. Freemason, Women’s Institute, Anonymous).",
+            "There is evil in society that should be rooted out. What is this evil? (e.g. drugs, violence, racism).",
+            "The occult (e.g. astrology, spiritualism, tarot).",
+            "Politics (e.g. conservative, socialist, liberal).",
+            "\"Money is power, and I’m going to get all I can\" (e.g. greedy, enterprising, ruthless).",
+            "Campaigner/Activist (e.g. feminism, gay rights, union power)."
+        ]
+        selected_ideology_beliefs = random.choice(ideology_beliefs)
+    
+        significant_people_first = [
+            "Parent (e.g. mother, father, stepmother).",
+            "Grandparent (e.g. maternal grandmother, paternal grandfather).",
+            "Sibling (e.g. brother, half-brother, stepsister).",
+            "Child (e.g. son or daughter).",
+            "Partner (e.g. spouse, fiancé, lover).",
+            "Person who taught you your highest occupational skill. Identify the skill and consider who taught you (e.g. a schoolteacher, the person you apprenticed with, your father).",
+            "Childhood Friend (e.g. classmate, neighbor, imaginary friend).",
+            "A famous person. Your idol or hero. You may never have even met (e.g. film star, politician, musician).",
+            "A fellow investigator in your game. Pick one or choose randomly.",
+            "A non-player character (NPC) in the game. Ask the Keeper to pick one for you."
+        ]
+        selected_significant_people_first = random.choice(significant_people_first)
+        
+        significant_people_why = [
+            "You are indebted to them. How did they help you? (e.g. financially, they protected you through hard times, got you your first job).",
+            "They taught you something. What? (e.g. a skill, to love, to be a man).",
+            "They give your life meaning. How? (e.g. you aspire to be like them, you seek to be with them, you seek to make them happy).",
+            "You wronged them and seek reconciliation. What did you do? (e.g. stole money from them, informed the police about them, refused to help when they were desperate).",
+            "Shared experience. What? (e.g. you lived through hard times together, you grew up together, you served in the war together).",
+            "You seek to prove yourself to them. How? (e.g. by getting a good job, by finding a good spouse, by getting an education).",
+            "You idolize them (e.g. for their fame, their beauty, their work).",
+            "A feeling of regret (e.g. you should have died in their place, you fell out over something you said, you didn’t step up and help them when you had the chance).",
+            "You wish to prove yourself better than them. What was their flaw? (e.g. lazy, drunk, unloving).",
+            "They have crossed you and you seek revenge. For what do you blame them? (e.g. death of a loved one, your financial ruin, marital breakup)."
+        ]
+        selected_significant_people_why = random.choice(significant_people_why)
+    
+        meaningful_locations = [
+            "Your seat of learning (e.g. school, university, apprenticeship).",
+            "Your hometown (e.g. rural village, market town, busy city).",
+            "The place you met your first love (e.g. a music concert, on holiday, a bomb shelter).",
+            "A place for quiet contemplation (e.g. the library, country walks on your estate, fishing).",
+            "A place for socializing (e.g. gentlemen’s club, local bar, uncle’s house).",
+            "A place connected with your ideology/belief (e.g. parish church, Mecca, Stonehenge).",
+            "The grave of a significant person. Who? (e.g. a parent, a child, a lover).",
+            "Your family home (e.g. a country estate, a rented flat, the orphanage in which you were raised).",
+            "The place you were happiest in your life (e.g. the park bench where you first kissed, your university, your grandmother’s home).",
+            "Your workplace (e.g. the office, library, bank)."
+        ]
+        selected_meaningful_locations = random.choice(meaningful_locations)
+    
+        treasured_possessions = [
+            "An item connected with your highest skill (e.g. expensive suit, false ID, brass knuckles).",
+            "An essential item for your occupation (e.g. doctor’s bag, car, lock picks).",
+            "A memento from your childhood (e.g. comics, pocketknife, lucky coin).",
+            "A memento of a departed person (e.g. jewelry, a photograph in your wallet, a letter).",
+            "Something given to you by your Significant Person (e.g. a ring, a diary, a map).",
+            "Your collection. What is it? (e.g. bus tickets, stuffed animals, records).",
+            "Something you found but you don’t know what it is—you seek answers (e.g. a letter you found in a cupboard written in an unknown language, a curious pipe of unknown origin found among your late father’s effects, a strange silver ball you dug up in your garden).",
+            "A sporting item (e.g. cricket bat, a signed baseball, a fishing rod).",
+            "A weapon (e.g. service revolver, your old hunting rifle, the hidden knife in your boot).",
+            "A pet (e.g. a dog, a cat, a tortoise)."
+        ]
+        selected_treasured_possessions = random.choice(treasured_possessions)
+    
+        traits = [
+            "Generous (e.g. generous tipper, always helps out a person in need, philanthropist).",
+            "Good with Animals (e.g. loves cats, grew up on a farm, good with horses).",
+            "Dreamer (e.g. given to flights of fancy, visionary, highly creative).",
+            "Hedonist (e.g. life and soul of the party, entertaining drunk, \"live fast and die young\").",
+            "Gambler and a risk-taker (e.g. poker-faced, try anything once, lives on the edge).",
+            "Good Cook (e.g. bakes wonderful cakes, can make a meal from almost nothing, refined palate).",
+            "Ladies’ man/seductress (e.g. suave, charming voice, enchanting eyes).",
+            "Loyal (e.g. stands by his or her friends, never breaks a promise, would die for his or her beliefs).",
+            "A good reputation (e.g. the best after-dinner speaker in the country, the most pious of men, fearless in the face of danger).",
+            "Ambitious (e.g. to achieve a goal, to become the boss, to have it all)."
+        ]
+        selected_traits = random.choice(traits)
+    
+        embed = discord.Embed(title="Character Backstory Generator", color=0x00ff00)
+        embed.add_field(name="Personal Description:", value=personal_description_text, inline=False)
+        embed.add_field(name="Ideology/Beliefs:", value=selected_ideology_beliefs, inline=False)
+        embed.add_field(name="Significant People:", value=f"First, who? {selected_significant_people_first}\nWhy? {selected_significant_people_why}", inline=False)
+        embed.add_field(name="Meaningful Locations:", value=selected_meaningful_locations, inline=False)
+        embed.add_field(name="Treasured Possessions:", value=selected_treasured_possessions, inline=False)
+        embed.add_field(name="Traits:", value=selected_traits, inline=False)
+    
+        await ctx.send(embed=embed)

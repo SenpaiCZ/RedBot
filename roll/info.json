@@ -1,5 +1,5 @@
 {
-    "name": "CallofCthulhuCog",
+    "name": "roll",
     "short": "Call of Cthulhu Helper",
     "description": "Roll die, make notes, create investigator. Everything you need to play CoC over discord.",
     "end_user_data_statement": "This cog stores \"stats\" on users via ids.",

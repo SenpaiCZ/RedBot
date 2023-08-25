@@ -1910,7 +1910,7 @@ class Roll(commands.Cog):
             "Strapping", "Gawky", "Frail"
         ]
         
-        personal_description_text = "Personal Description:\n"
+        personal_description_text = ""
         for description in personal_descriptions:
             personal_description_text += f"{description}, "
     
@@ -1999,9 +1999,9 @@ class Roll(commands.Cog):
         selected_traits = random.choice(traits)
     
         embed = discord.Embed(title="Character Backstory Generator", color=0x00ff00)
-        embed.add_field(name="Personal Description (chose one that fists):", value=personal_description_text, inline=False)
+        embed.add_field(name=":biting_lip: Personal Description (chose one):", value=personal_description_text, inline=False)
         embed.add_field(name=":church: Ideology/Beliefs:", value=selected_ideology_beliefs, inline=False)
-        embed.add_field(name=":bust_in_silhouette: Significant People:", value=f"First, who? {selected_significant_people_first}\nWhy? {selected_significant_people_why}", inline=False)
+        embed.add_field(name=":bust_in_silhouette: Significant People:", value=f":grey_question: First, who?\n {selected_significant_people_first}\n :grey_question: Why?\n {selected_significant_people_why}", inline=False)
         embed.add_field(name=":map: Meaningful Locations:", value=selected_meaningful_locations, inline=False)
         embed.add_field(name=":gem: Treasured Possessions:", value=selected_treasured_possessions, inline=False)
         embed.add_field(name=":beginner: Traits:", value=selected_traits, inline=False)

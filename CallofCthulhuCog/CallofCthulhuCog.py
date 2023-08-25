@@ -29,7 +29,8 @@ class CallofCthulhuCog(commands.Cog):
         user_id = str(ctx.author.id)
         
         if "Backstory" not in self.player_stats.get(user_id, {}):
-            self.player_stats[user_id]["Backstory"] = {}
+            await ctx.send("You need to create a new Investigator using !newInv first.")
+            return
         
         try:
             if dice_expression in self.player_stats[user_id]:

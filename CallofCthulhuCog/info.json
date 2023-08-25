@@ -1,0 +1,19 @@
+{
+    "name": "CallofCthulhuCog",
+    "short": "Call of Cthulhu Helper",
+    "description": "Roll die, make notes, create investigator. Everything you need to play CoC over discord.",
+    "end_user_data_statement": "This cog stores \"stats\" on users via ids.",
+    "install_msg": "Thank you for installing Call of Cthulhu Cog.\nThis cog helps you play Call of Cthulhu over discord.",
+    "author": [
+        "Senpaicz"
+    ],
+    "required_cogs": {},
+    "requirements": [],
+    "tags": [
+        "utility", "CallofCthulhu", "Lovecraft", "stats"
+    ],
+    "min_bot_version": "3.5.0",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}

@@ -8,7 +8,8 @@ import asyncio
 class CallofCthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.data_file = "player_stats.json" 
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        data_file = os.path.join(current_directory, "player_stats.json")
         #Ex-cesta /home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/roll/
 
         if os.path.exists(self.data_file):

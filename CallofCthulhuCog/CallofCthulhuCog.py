@@ -9,18 +9,18 @@ class CallofCthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         current_directory = os.path.dirname(os.path.abspath(__file__))
-        data_file = os.path.join(current_directory, "player_stats.json")
+        self.data_file = os.path.join(current_directory, "player_stats.json")
         #Ex-cesta /home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/roll/
 
-        if os.path.exists(data_file):
-            with open(data_file, "r") as f:
+        if os.path.exists(self.data_file):
+            with open(self.data_file, "r") as f:
                 self.player_stats = json.load(f)
         else:
             self.player_stats = {}
 
     def save_data(self):
         try:
-            with open(data_file, "w") as f:
+            with open(self.data_file, "w") as f:
                 json.dump(self.player_stats, f, indent=4)
         except Exception as e:
             print(f"Error writing data to file: {e}")

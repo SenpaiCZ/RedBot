@@ -12,7 +12,7 @@ class CallofCthulhuCog(commands.Cog):
         data_file = os.path.join(current_directory, "player_stats.json")
         #Ex-cesta /home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/roll/
 
-        if os.path.exists(self.data_file):
+        if os.path.exists(data_file):
             with open(data_file, "r") as f:
                 self.player_stats = json.load(f)
         else:

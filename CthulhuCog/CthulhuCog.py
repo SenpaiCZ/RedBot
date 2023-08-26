@@ -2168,6 +2168,1123 @@ class CthulhuCog(commands.Cog):
                 "First practical hydroelectric station.",
                 "Electric torch adopted in England."
             ],
+            1892: [
+                "Fires and floods create a human hell in Oil City, Pennsylvania, with 130 dead.",
+                "Cholera vaccine developed.",
+                "Cape-Johannesburg railroad completed.",
+                "Crown top for bottles invented.",
+                "Diesel engine patented."
+            ],
+            1893: [
+                "Floods, pushed by hurricane winds, devastate the U.S. South Atlantic coast, resulting in 2000 deaths.",
+                "World Exposition in Chicago.",
+                "First practical roll film.",
+                "Shredded wheat cereal invented."
+            ],
+            1894: [
+                "War breaks out between China and Japan.",
+                "Minnesota forest fire kills 480 people.",
+                "Captain Dreyfus exiled to Devil’s Island.",
+                "First wireless communication."
+            ],
+            1895: [
+                "Roentgen discovers X-rays.",
+                "Cigarette-making machine invented.",
+                "The Lumieres open their Cinematographie."
+            ],
+            1896: [
+                "Klondike gold rush begins.",
+                "Addressograph patents confirmed.",
+                "Ford’s first motorcar.",
+                "Periscopes for submarines invented.",
+                "First modern Olympic Games held in Athens."
+            ],
+            1897: [
+                "Mimeo stencils are invented.",
+                "First cathode ray tube."
+            ],
+            1898: [
+                "Tropical cyclone hits southern U.S., resulting in hundreds of deaths.",
+                "2446 U.S. soldiers die in the Spanish-American War.",
+                "Disc recordings become practical.",
+                "Commercial aspirin appears.",
+                "Kellogg’s Corn Flakes introduced.",
+                "Tubular flashlight invented."
+            ],
+            1899: [
+                "Windsor Hotel in New York goes up in flames, causing millions in damage and 14 deaths.",
+                "Rutherford discovers alpha and beta particles.",
+                "General adoption of typewriters underway."
+            ],
+            1900: [
+                "Pier re, steamer Rio de Janeiro wrecked in San Francisco harbor, 128 lives lost.",
+                "The great Galveston hurricane kills 6,000 people.",
+                "Mine explosion kills 200 in Utah.",
+                "Boxer Rebellion occurs in China.",
+                "Kodak “Brownie” camera introduced.",
+                "Count Zeppelin launches 420-foot airship.",
+                "U.S. public debt is $1.263 billion.",
+                "U.S. resident population is 76 million."
+            ],
+            1901: [
+                "President McKinley is assassinated.",
+                "Two serious typhoid outbreaks occur in the U.S.",
+                "Queen Victoria dies.",
+                "Human blood groups classified.",
+                "First transatlantic wireless communication."
+            ],
+            1902: [
+                "Boer War.",
+                "Mt. Pelée eruption kills 40,000 on Martinique.",
+                "First steam-turbine-driven passenger ship.",
+                "Modern macadam developed.",
+                "First alum-dried powdered milk.",
+                "Puffed cereals introduced.",
+                "First Teddy bear created.",
+                "First Caruso gramophone recording.",
+                "Economical hydrogenated fats make fats for soap and cooking plentiful."
+            ],
+            1903: [
+                "Fire at Iroquois Theatre in Chicago, worst theater fire in U.S. history (602 dead).",
+                "Wright Brothers successfully fly the first heavier-than-air powered aircraft.",
+                "First fluorescent light developed.",
+                "Postal meter invented.",
+                "Center-frame motorcycle engine introduced."
+            ],
+            1904: [
+                "Eden Colorado train derails into flood, resulting in 96 deaths.",
+                "Broadway subway opens in NYC.",
+                "Thermos flask patented.",
+                "Tracks (as opposed to wheels) first appear on farm machinery.",
+                "Kapok life belts introduced.",
+                "Russo-Japanese War begins."
+            ],
+            1905: [
+                "Cullinan diamond (3,000 carats) found, largest to that date.",
+                "Steam turbines become standard for the British navy.",
+                "Abortive revolution in Russia.",
+                "Electric motor horn invented.",
+                "Chemical foam fire extinguisher created.",
+                "Special Theory of Relativity proposed."
+            ],
+            1906: [
+                "Earthquake and fire devastate San Francisco, 28,818 houses destroyed and 700 announced killed.",
+                "U.S. troops occupy Cuba until 1909.",
+                "Lusitania and Mauretania launched.",
+                "Jukebox introduced.",
+                "Mass-production of marine outboard motors begins."
+            ],
+            1907: [
+                "West Virginian coal mine explosion kills 361.",
+                "Rasputin gains great influence in Czarist Russia.",
+                "Animated cartoons introduced.",
+                "Electric washing machine invented.",
+                "Household detergent introduced.",
+                "Upright vacuum cleaner created."
+            ],
+            1908: [
+                "Minkowski formulates his 4-dimensional geometry.",
+                "Paper cups for drinking introduced."
+            ],
+            1909: [
+                "Robert E. Peary reaches the North Pole.",
+                "Hurricane in Louisiana and Mississippi kills 350.",
+                "First powered flight across the English Channel.",
+                "Double-decker buses introduced in the U.K."
+            ],
+            1910: [
+                "Landslide buries workers in the Norman open-pit mine in Virginia, MN.",
+                "Wellington, WA trains swept away by avalanche, killing 96.",
+                "Murray and Hjort undertake the first deep-sea research expedition.",
+                "Radio-direction finder introduced.",
+                "Spring-operated mouse trap invented.",
+                "Incorporation of the Boy Scouts of America.",
+                "U.S. resident population is 92 million."
+            ],
+            1911: [
+                "Forty tons of dynamite explode at Communipaw terminal, NJ, killing 30.",
+                "Triangle Shirtwaist Factory fire in New York City leaves 145 dead.",
+                "Zapata arrives in Mexico City, but the battles have just begun.",
+                "Revolution in China leads to the republic under Sun Yat-sen.",
+                "Electric frying pan introduced.",
+                "Norwegian explorer Roald Amundsen reaches South Pole."
+            ],
+            1912: [
+                "Titanic rams iceberg, 1,517 passengers and crew are lost.",
+                "Wilson’s cloud chamber leads to the detection of protons and electrons.",
+                "Cellophane patented.",
+                "Saville Row creates what will be named the “trench coat” in WWI.",
+                "Cadillac shows the first electric self-starter for automobiles.",
+                "Two self-service grocery stores open in California."
+            ],
+            1913: [
+                "The Balkan War begins.",
+                "British steamer Calvadas lost in a blizzard in the Sea of Marmara, 200 lost.",
+                "Wilson inaugurated as President of the U.S.",
+                "Electric starters for motorcycles introduced.",
+                "Vitamin A discovered.",
+                "Income tax and popular election of senators added to U.S. Constitution."
+            ],
+            1914: [
+                "The Great War begins.",
+                "First air raids.",
+                "First use of the Panama Canal.",
+                "Canadian Pacific steamship Empress of India sunk in collision with the Storstad in the St. Lawrence River, 1,024 lost."
+            ],
+            1915: [
+                "Lusitania sunk by German submarine, 1,199 lost, consternation and anger follow in the United States.",
+                "Enormous and unprecedented casualties in the Great War.",
+                "Cereal flakes are marketed.",
+                "Chlorine gas used as a weapon.",
+                "Gas mask invented.",
+                "The zipper is patented."
+            ],
+            1916: [
+                "Some 700,000 die in the battle of Verdun.",
+                "One million die in the battle of the Somme.",
+                "U.S. polio epidemic kills 7,000 and leaves 27,000 youngsters paralyzed.",
+                "Gallipoli.",
+                "Easter uprising.",
+                "Jutland.",
+                "Mechanical windshield wipers invented.",
+                "General Theory of Relativity proposed.",
+                "Pershing’s raid in Mexico."
+            ],
+            1917: [
+                "United States enters WWI.",
+                "The Russian Revolution unfolds and the Bolsheviks seize power.",
+                "Mustard gas used in warfare.",
+                "Ford mass-produces tractors.",
+                "Steamer Castalia wrecked on Lake Superior, 22 men lost.",
+                "Pennsylvania munitions plant explosion kills 133.",
+                "1,600 dead in ship collision and explosion in Halifax, Nova Scotia."
+            ],
+            1918: [
+                "WWI ends.",
+                "Russian Civil War.",
+                "Regular U.S. airmail service established.",
+                "World influenza epidemic kills 21.6 million.",
+                "U.S.S. Cyclops disappears after leaving Barbados.",
+                "Powered flight reaches 150+ mph and 30,000+ feet.",
+                "Electric clocks introduced."
+            ],
+            1919: [
+                "Prohibition enacted in U.S.",
+                "First transatlantic flight (1,880 miles in 16:12 hours).",
+                "Grease-guns invented.",
+                "Parachutes introduced."
+            ],
+            1920: [
+                "Prohibition in effect in U.S.",
+                "The Bolsheviks consolidate power in Russia.",
+                "Earthquake in Gansu province, China, kills 200,000.",
+                "First radio broadcasting station goes on the air.",
+                "Teabags introduced.",
+                "U.S. public debt is $24.3 billion.",
+                "Women’s suffrage ratified.",
+                "U.S. resident population is 105.7 million."
+            ],
+            1921: [
+                "Rorschach devises his inkblot tests.",
+                "Inflation of the German Mark begins.",
+                "KDKA broadcasts sports.",
+                "Capek coins the word “robot.”"
+            ],
+            1922: [
+                "Revival and growth of the Ku Klux Klan.",
+                "British dirigible AR-2 breaks in two, killing 62.",
+                "Insulin is isolated.",
+                "First practical postal franking machine.",
+                "Soviet May Day slogans omit “world revolution.”",
+                "Water-skiing invented.",
+                "Mussolini marches on Rome."
+            ],
+            1923: [
+                "Teapot Dome scandal rocks Harding administration.",
+                "Big fire in Berkeley, CA destroys 600 buildings, causes $10 million in damage, and 60 deaths.",
+                "German Mark stabilized.",
+                "Continuing Klan violence in Georgia.",
+                "Nazi putsch in Munich fails.",
+                "King Tut’s tomb opened.",
+                "Whooping-cough vaccine developed."
+            ],
+            1924: [
+                "Leopold and Loeb convicted of the kidnap slaying of Bobby Franks.",
+                "Paper egg cartons developed.",
+                "Kleenex introduced."
+            ],
+            1925: [
+                "W. Pauli formulates Exclusion Principle.",
+                "I.G. Farben formed.",
+                "Sun Yat-sen dies.",
+                "In Midwest, 792 die from tornadoes in one day.",
+                "U.S. dirigible Shenandoah breaks apart, killing 14.",
+                "German SS formed.",
+                "Scopes “Monkey Trial.”",
+                "Aerial commercial crop-dusting introduced."
+            ],
+            1926: [
+                "Dr. Goddard fires his first liquid-fuel rocket.",
+                "Lightning starts a massive explosion at the U.S. Naval ammunition dump, Lake Denmark NJ—85 million in damages and 30 dead.",
+                "Hurricane through Florida and Alabama leaves 243 dead.",
+                "Chiang Kai-Shek stages coup in Canton.",
+                "Trotsky expelled from Politburo.",
+                "Rolex waterproof watch introduced."
+            ],
+            1927: [
+                "Charles A. Lindbergh flies solo and non-stop between NYC-Paris.",
+                "The Jazz Singer first feature-length sound film.",
+                "First remote jukebox.",
+                "Pop-up toaster introduced.",
+                "Sacco and Vanzetti executed, later cleared by proclamation in 1977."
+            ],
+            1928: [
+                "Television experiments.",
+                "Southern Florida hurricane kills 1,836.",
+                "Byrd expedition sails to Antarctica.",
+                "Teletypes come into use.",
+                "Waterproof cellophane developed.",
+                "Geiger counter introduced.",
+                "Vitamin C discovered."
+            ],
+            1929: [
+                "Great stock market crash on 24 Oct.",
+                "Graf Zeppelin circles the world.",
+                "Russian passenger steamer Volga struck by remnant WWI mine in the Black Sea, 31 lost.",
+                "16mm color film developed.",
+                "Scotch tape introduced.",
+                "Tune-playing automobile horn invented."
+            ],
+            1930: [
+                "Technocracy movement at its highest.",
+                "Flash bulb ends flash powder explosions at press conferences.",
+                "First frozen foods marketed.",
+                "Bathysphere invented.",
+                "Cyclotron invented.",
+                "Pluto discovered.",
+                "Telescopic umbrella introduced.",
+                "U.S. public debt now $16.18 billion.",
+                "U.S. resident population now 122.8 million."
+            ],
+            1931: [
+                "German millionaire support builds for Nazi Party.",
+                "British Navy mutiny at Invergordon.",
+                "Empire State Building formally opens.",
+                "Al Capone imprisoned.",
+                "Alka-Seltzer introduced.",
+                "Electric razor introduced.",
+                "George Washington Bridge (3,500 feet) completed."
+            ],
+            1932: [
+                "Gandhi arrested.",
+                "British submarine goes down in English Channel.",
+                "Roosevelt elected President in landslide.",
+                "Mussolini drains Pontine Marshes.",
+                "Lindbergh baby kidnapped.",
+                "First car radios introduced.",
+                "First Gallup Poll conducted.",
+                "Mars Bars introduced.",
+                "Invention of zoom lens.",
+                "Zippo lighter introduced."
+            ],
+            1933: [
+                "Hitler named Chancellor of Germany.",
+                "Japan withdraws from League of Nations.",
+                "U.S. abandons gold standard.",
+                "Long Beach quake kills 123.",
+                "Hundreds die in Cuban rebellion.",
+                "Freed Gandhi weighs 90 pounds.",
+                "First German concentration camp (Dachau) established.",
+                "Day-Glo pigments introduced.",
+                "The game Monopoly published.",
+                "Fluorescent lights introduced commercially."
+            ],
+            1934: [
+                "Economic depression deepens as starvation and unrest spread in U.S.",
+                "Drought extends from New York State to California.",
+                "Sandino assassinated by Somoza supporters.",
+                "San Francisco general strike ends.",
+                "Huey Long assumes dictatorship of Louisiana.",
+                "First commercial launderette established."
+            ],
+            1935: [
+                "Increasingly severe dust storms batter the High Plains and Midwest of the U.S.",
+                "First Pan-Am Clipper departs San Francisco for China.",
+                "Social Security system enacted.",
+                "Huey Long assassinated.",
+                "Mao’s Long March concludes in Yenan.",
+                "First passenger flight for the DC-3.",
+                "Mass-market paperback books introduced.",
+                "Richter earthquake scale developed.",
+                "Tape recorder retailed."
+            ],
+            1936: [
+                "Nazis enter Rhineland.",
+                "Italy conquers Ethiopia.",
+                "Spanish Civil War.",
+                "U.S. heat wave kills 3,000.",
+                "Dust-bowl conditions continue.",
+                "Jesse Owens wins 4 gold medals at Berlin Olympics.",
+                "Axis powers sign pact.",
+                "Boulder Dam in operation.",
+                "First Volkswagen introduced."
+            ],
+            1937: [
+                "Gas explosion kills 294 in Texas school.",
+                "Hindenburg dirigible explodes with loss of 36.",
+                "8 Soviet generals die in Stalinist purges.",
+                "DuPont patents nylon.",
+                "Japanese sink U.S. gunboat Panay.",
+                "Golden Gate Bridge (4,200 feet) completed.",
+                "First supermarket carts introduced.",
+                "Buchenwald concentration camp opens."
+            ],
+            1938: [
+                "Mexico expropriates all foreign oil holdings.",
+                "Germans enter Austria unopposed.",
+                "Kristallnacht.",
+                "Electric steam iron with thermostat invented.",
+                "Instant coffee introduced.",
+                "Nylon introduced.",
+                "Ball-point pen patented.",
+                "Prototype of photocopy machine developed.",
+                "Major German-American Bund rally at Madison Square Garden.",
+                "Arrests of Jews throughout Germany and Austria."
+            ],
+            1939: [
+                "Germany annexes the Czechs.",
+                "Madrid falls to Franco.",
+                "U.S. submarine Squalus sinks with loss of 26 hands.",
+                "French submarine Phoenix sinks with loss of 63.",
+                "Two IRA bombs in London.",
+                "Cellophane wrappers first appear in stores.",
+                "Annexation of Baltic states.",
+                "Germany invades Poland, and France and Britain declare war.",
+                "Rockefeller Center opens.",
+                "DDT introduced.",
+                "Yellow-fever vaccine developed.",
+                "Radar technology developed and deployed."
+            ],
+            1940: [
+                "Finland surrenders to Soviets.",
+                "Nazis strike at Denmark and Norway.",
+                "Churchill becomes Prime Minister.",
+                "Holland and Belgium fall.",
+                "Dunkirk evacuation.",
+                "Thousands die in Russo-Finnish War.",
+                "German blitzkrieg to Channel.",
+                "Bombings in Germany and England kill tens of thousands.",
+                "Roosevelt elected for third term.",
+                "Automatic gearbox for automobiles introduced.",
+                "Inflatable life vests introduced.",
+                "Radar operational and deployed in Britain.",
+                "Artificial insemination developed.",
+                "Penicillin produced in quantity.",
+                "U.S. public debt now $42.97 billion.",
+                "U.S. resident population now 131.7 million."
+            ],
+            1941: [
+                "Aerial battle of Britain joined.",
+                "Lend-Lease policy enacted.",
+                "U.S. institutes military draft.",
+                "About 2,500 die in Japanese raid on Pearl Harbor.",
+                "Coconut Grove (Boston) nightclub fire kills 491.",
+                "Jeep adopted as general-purpose military vehicle.",
+                "Germans invade Soviet Union."
+            ],
+            1942: [
+                "Singapore and Philippines fall.",
+                "Major carrier battle off Midway Island.",
+                "German siege of Leningrad continues.",
+                "Crimea falls.",
+                "Doolittle raid on Tokyo.",
+                "Battle of Stalingrad joined.",
+                "U.S. lands on Guadalcanal.",
+                "Allies land in North Africa.",
+                "Atomic fission achieved.",
+                "Bazooka introduced.",
+                "Napalm introduced."
+            ],
+            1943: [
+                "Some 190,000 Germans and greater numbers of Soviet soldiers and civilians die at Stalingrad.",
+                "Germans surrender at Stalingrad.",
+                "Warsaw Ghetto uprising.",
+                "Germany defeated in the biggest tank battle (Kursk) in history.",
+                "Allies land in Sicily.",
+                "Mussolini deposed then reseated by Germans.",
+                "Allies invade Italy.",
+                "Soviets crack Dnieper River line.",
+                "Marshall Islands falls.",
+                "29 die in Detroit race riots.",
+                "Ball-point pens gain first acceptance.",
+                "Aqualung invented.",
+                "LSD synthesized."
+            ],
+            1944: [
+                "De Gaulle is Free-French commander-in-chief.",
+                "Continuing massive air raids on Germany.",
+                "Crimea freed.",
+                "Allies take Rome.",
+                "D-Day landings in Normandy.",
+                "Marianas under attack.",
+                "Paris falls to Allies.",
+                "Roosevelt re-elected for fourth term.",
+                "Mass killings in Nazi concentration camps revealed.",
+                "V-1 and V-2 missiles hit London.",
+                "MacArthur returns to Philippines.",
+                "Battle of the Bulge.",
+                "Hurricane kills 46 along East Coast, and 344 more at sea.",
+                "Ringling Bros. tent fire kills 168.",
+                "Ammunition explosion kills 322 at Port Chicago, CA.",
+                "Nerve gas developed."
+            ],
+            1945: [
+                "Some 130,000 die in Dresden firebombing.",
+                "60,000 die from nuclear blast at Nagasaki, and other mass bombings kill hundreds of thousands more in Japan.",
+                "Total casualties of WWII are estimated at 50 million people.",
+                "Europe and Japan need 15 years to effect significant recovery.",
+                "U.S. war-related dead total 405,399.",
+                "Auschwitz liberated.",
+                "Yalta conference.",
+                "Iwo Jima falls.",
+                "Remagen Bridge taken.",
+                "Roosevelt dies.",
+                "Mussolini executed.",
+                "Hitler commits suicide.",
+                "Full extent of Nazi death camps revealed.",
+                "Berlin falls.",
+                "Churchill resigns.",
+                "Battle of Okinawa.",
+                "United Nations formed.",
+                "Potsdam conference.",
+                "Japan surrenders.",
+                "Korea partitioned.",
+                "Jackie Robinson becomes the first modern African-American major leaguer.",
+                "Nuremberg war-crime trials.",
+                "Tupperware introduced."
+            ],
+            1946: [
+                "Chicago hotel fire kills 58.",
+                "ENIAC computer unveiled by War Department.",
+                "Churchill proclaims Iron Curtain.",
+                "Violence continues in Palestine.",
+                "Labor strikes dot U.S.",
+                "Chinese Civil War renewed.",
+                "Smoking said to cause lung cancer.",
+                "Uprising in Vietnam.",
+                "Chester F. Carlson unveils 'xerography'.",
+                "Bikini swimsuits introduced.",
+                "Espresso coffee machines invented."
+            ],
+            1947: [
+                "U.S. gives up attempts to broker a peace in China.",
+                "Religious strife in India.",
+                "Marshall Plan advanced.",
+                "Last New York streetcar retired.",
+                "India and Pakistan independent.",
+                "Polaroid Land Camera introduced.",
+                "House committee looks for subversives in films."
+            ],
+            1948: [
+                "Gandhi assassinated.",
+                "Communist coup in Czechoslovakia.",
+                "Civil war continues in the Palestine Mandate.",
+                "Berlin airlift starts.",
+                "State of Israel recognized and war continues.",
+                "200-inch telescope at Mt. Palomar.",
+                "New York subway fare doubles to ten cents.",
+                "Kinsey Report on sex.",
+                "Scrabble introduced.",
+                "Solid-body electric guitar developed.",
+                "Velcro invented.",
+                "Transistor developed at Bell Labs.",
+                "33 1/3 long-playing records introduced."
+            ],
+            1949: [
+                "Chinese Communists take Peking.",
+                "NATO organized.",
+                "Berlin blockade concludes.",
+                "German Federal Republic created.",
+                "Red scare continues in U.S.",
+                "USSR explodes nuclear device.",
+                "Nationalist Chinese forces retreat to Taiwan.",
+                "Indonesia achieves independence.",
+                "Cable television introduced.",
+                "Color television tube developed.",
+                "Key-starting auto ignitions introduced."
+            ],
+            1950: [
+                "One-piece windshield for Cadillacs.",
+                "RCA announces color television.",
+                "French appeal for aid against the Viet Minh.",
+                "U.S. blizzards kill hundreds.",
+                "Thousands die as Korean War begins.",
+                "Inchon landings.",
+                "China enters the Korean War.",
+                "Gussie Moran sports lace underwear at Wimbledon.",
+                "Diners’ Club card introduced.",
+                "Xerox 914 commercial copier introduced.",
+                "U.S. public debt now $256 billion.",
+                "U.S. resident population is now 150.7 million."
+            ],
+            1951: [
+                "MacArthur stripped of all commands.",
+                "50 die in U.S. plane crash.",
+                "Color television transmitted from Empire State Building.",
+                "Hydrogen bomb tests at Eniwetok.",
+                "Truce talks in Korea.",
+                "Cinerama introduced.",
+                "Chrysler introduces power steering.",
+                "3-color stoplights for autos introduced."
+            ],
+            1952: [
+                "Queen Elizabeth II accedes to British throne.",
+                "Worst U.S. bus crash kills 28.",
+                "French submarine La Sybille disappears in Mediterranean with 49 aboard.",
+                "U.S. polio epidemic kills 3,300 and affects 57,000 children.",
+                "Walk/Don’t Walk lighted pedestrian signs in New York City.",
+                "GM offers built-in air conditioning in some 1953 cars.",
+                "Eva Peron dies.",
+                "Transistorized hearing aid introduced.",
+                "Hydrogen bomb announced.",
+                "Videotape introduced."
+            ],
+            1953: [
+                "Joseph Stalin dies.",
+                "Storms off North Sea kill 200 in Britain.",
+                "DNA described as double helix in form.",
+                "Pius XII approves of psychoanalysis in therapy.",
+                "Rosenbergs executed.",
+                "East Berlin uprising quashed.",
+                "Korean armistice.",
+                "U.S. flight to suburbs noted.",
+                "Kennedy-Bouvier marriage.",
+                "Expedition searches for yeti.",
+                "Measles vaccine introduced."
+            ],
+            1954: [
+                "Nautilus is first atomic-powered submarine.",
+                "Army-McCarthy hearings.",
+                "Murrow takes on McCarthy.",
+                "Dien Bien Phu falls.",
+                "First H-bomb exploded.",
+                "Supreme Court orders school integration.",
+                "North and South Vietnam established.",
+                "Retractable ball-point pen introduced.",
+                "Silicon transistor developed."
+            ],
+            1955: [
+                "Missile with atomic warhead exploded in Nevada test.",
+                "Hurricane Diane kills 184.",
+                "Albert Einstein dies.",
+                "Warsaw Pact treaty signed.",
+                "Rebellion in Algeria.",
+                "Mickey Mouse Club debuts on television.",
+                "Air-to-air guided missile introduced.",
+                "Disneyland opens."
+            ],
+            1956: [
+                "Over 10,000 Mau-Mau rebels killed in 4 years.",
+                "Bus boycott in Montgomery.",
+                "Suburbs boom in U.S.",
+                "Khrushchev denounces Stalin.",
+                "Nasser seizes Suez Canal.",
+                "Hungarian Revolt.",
+                "Teon Company formed.",
+                "Go-karts introduced."
+            ],
+            1957: [
+                "Smoking shown to promote cancer.",
+                "Nike Hercules atomic warheads to defend U.S. cities from enemy aircraft.",
+                "Sputnik shocks U.S.",
+                "Mackinac Straits Bridge (3,800 feet) completed."
+            ],
+            1958: [
+                "Elvis Presley drafted.",
+                "90 die in Chicago school fire.",
+                "Nautilus sails across North Pole under the ice.",
+                "Faubus closes Little Rock’s high schools.",
+                "Pan Am inaugurates first 707 jet service to Paris.",
+                "Sabin polio vaccine introduced.",
+                "Communications satellite introduced.",
+                "Hula-hoop introduced."
+            ],
+            1959: [
+                "Castro gains power in Cuba.",
+                "Ford’s Edsel judged a failure.",
+                "Volvo introduces safety belts."
+            ],
+            1960: [
+                "Unrest continues in Algeria.",
+                "Hurricane Donna devastates U.S. East Coast and Puerto Rico, claiming 165 lives.",
+                "Artificial kidney introduced.",
+                "Lunch counter sit-ins begin.",
+                "Brasilia (the first public-relations city) is open for business.",
+                "Birth control pill goes on sale in U.S.",
+                "First weather satellite.",
+                "Popularity of portable transistor radios begins.",
+                "U.S. public debt now $284 billion.",
+                "U.S. resident population is now 179.3 million."
+            ],
+            1961: [
+                "Eisenhower warns against military-industrial complex.",
+                "The Leakeys find earliest human remains.",
+                "Berlin Wall erected.",
+                "Peace Corps established.",
+                "Bay of Pigs landing in Cuba.",
+                "Valium introduced."
+            ],
+            1962: [
+                "Cuban missile crisis nearly brings nuclear war.",
+                "Gallium-arsenide semiconductor laser developed.",
+                "First satellite link between the U.S. and the UK.",
+                "Polaroid color film introduced."
+            ],
+            1963: [
+                "Enormous civil rights demonstration in Washington.",
+                "Kennedy assassinated.",
+                "Coup in Vietnam removes Diem.",
+                "Cold wave in U.S. kills 150.",
+                "Hurricane Flora kills 7,000 in Haiti and Cuba.",
+                "Mob actions increasingly common in the South."
+            ],
+            1964: [
+                "Aswan Dam in service.",
+                "Beatles enormously popular.",
+                "U.S. accidentally releases a kilo of plutonium into atmosphere.",
+                "Nehru dies.",
+                "Verrazano-Narrows Bridge (4,260 feet) completed.",
+                "LBJ signs Civil Rights Act.",
+                "Tonkin Gulf resolution.",
+                "3-D laser-holography introduced.",
+                "Moog synthesizer introduced.",
+                "FTC requires health warning on cigarettes."
+            ],
+            1965: [
+                "Malcolm X assassinated.",
+                "Race riots in Watts.",
+                "Pope disassociates Jews from guilt for the crucifixion of Jesus.",
+                "Great Northeastern states’ electrical blackout.",
+                "Kevlar introduced.",
+                "Radial tires introduced.",
+                "IBM word processor introduced."
+            ],
+            1966: [
+                "Cultural Revolution in China.",
+                "Opposition to Vietnam War increases.",
+                "Sniper kills 12 at U. Texas.",
+                "Miniskirts introduced.",
+                "First black Senator elected by popular vote.",
+                "Dolby-A introduced.",
+                "Skateboards introduced.",
+                "Body counts introduced."
+            ],
+            1967: [
+                "The Six-Day War.",
+                "The Summer of Love.",
+                "First black Supreme Court justice appointed.",
+                "3 astronauts die in Apollo fire.",
+                "U.S. loses 500th plane over Vietnam.",
+                "Newark race riots leave 26 dead in four days.",
+                "31 deaths in Detroit race riots.",
+                "Antiwar protests accelerate.",
+                "Body count now a regular feature of Vietnam reports.",
+                "209 pounds of heroin seized in Georgia.",
+                "Bell bottoms introduced."
+            ],
+            1968: [
+                "Tet Offensive stuns civilian United States.",
+                "Martin Luther King assassinated.",
+                "Black riots.",
+                "Student revolt in Paris.",
+                "Robert Kennedy assassinated.",
+                "B-52 carrying four H-bombs crashes in a Greenland bay.",
+                "Soviets quash liberalizing Czech government.",
+                "Spain voids 1492 law banning Jews.",
+                "Democrats’ convention in Chicago battles protesters.",
+                "Apollo 8 astronauts orbit the Moon."
+            ],
+            1969: [
+                "Skyjackings to Cuba continue.",
+                "Barnard women integrate men’s dorm.",
+                "First artificial heart implant.",
+                "Anti-Vietnam War demonstrations in more than 40 cities on same weekend.",
+                "Woodstock.",
+                "250,000 protesters march on capital.",
+                "Apollo 11 lands on the Moon.",
+                "Snowstorm of the decade closes New York City.",
+                "My Lai massacre revealed to have taken place in 1968.",
+                "Boeing 747 jumbo jet.",
+                "Oil spill fouls Santa Barbara beaches.",
+                "First flight of Concorde Mach 2 jetliner."
+            ],
+            1970: [
+                "Radical chic.",
+                "Palestinian group hijacks five planes.",
+                "De Gaulle dies.",
+                "46 shot in Asbury Park riots.",
+                "\"Weathermen\" arrested for bomb plot.",
+                "Tuna recalled as mercury-contaminated.",
+                "Bar codes introduced.",
+                "Floppy disks introduced.",
+                "Windsurfing introduced.",
+                "U.S. public debt now $370 billion.",
+                "U.S. resident population is now 203.3 million."
+            ],
+            1971: [
+                "Quake in Los Angeles kills 51.",
+                "Reaction against drug use in armed forces at full tide.",
+                "Hot pants introduced.",
+                "Pentagon Papers printed.",
+                "Liquid crystal displays introduced."
+            ],
+            1972: [
+                "Ten members in European Common Market.",
+                "Nixon in China.",
+                "Burglars caught in Democrats’ Watergate headquarters.",
+                "11 Israelis massacred at Olympics.",
+                "Airline anti-hijacking procedures established in U.S.",
+                "Electronic pocket calculators introduced.",
+                "Pong video game introduced."
+            ],
+            1973: [
+                "Last trip to Moon.",
+                "Oil embargo.",
+                "Bosporus Bridge (3,524 feet) completed.",
+                "Recombinant DNA introduced."
+            ],
+            1974: [
+                "Patty Hearst is kidnapped by Symbionese Liberation \"Army\".",
+                "Widespread gasoline shortage in U.S.",
+                "Nixon resigns from Presidency.",
+                "Tornadoes kill 315 in two days in U.S.",
+                "Green Revolution agricultural technology introduced."
+            ],
+            1975: [
+                "South Vietnam falls.",
+                "Cambodia falls.",
+                "Civil war in Beirut.",
+                "Atari video games introduced."
+            ],
+            1976: [
+                "Extinction of animal species a public concern.",
+                "Mao Tse-tung dies.",
+                "Hurricane Lizzie leaves 2,500 dead in Mexico.",
+                "Cray I supercomputer introduced."
+            ],
+            1977: [
+                "Trans-Alaskan oil pipeline in operation.",
+                "Three Israeli settlements approved on West Bank.",
+                "Optical fiber telephone line introduced.",
+                "Last trip of Orient Express.",
+                "Protesters try to stop Seabrook nuclear power plant."
+            ],
+            1978: [
+                "Panama Canal to be controlled by Panama.",
+                "Proposition 13 wins in California, heralding decline of capital expenditures across the nation.",
+                "1 U.S. dollar equals 175 Japanese yen.",
+                "Air collision over San Diego kills 150.",
+                "909 die in Jonestown mass suicide.",
+                "First test-tube baby born in London."
+            ],
+            1979: [
+                "The Shah flees Iran.",
+                "3-Mile Island nuclear power plant leak.",
+                "Somoza ousted in Nicaragua.",
+                "U.S. embassy in Tehran seized and hostages held.",
+                "Soviets enter Afghanistan.",
+                "Rubik’s cube introduced.",
+                "Sony Walkman introduced."
+            ],
+            1980: [
+                "An ounce of gold reaches $802 U.S.",
+                "U.S. inflation rate highest in 33 years.",
+                "Banking deregulated.",
+                "Mt. St. Helens WA eruption kills 50+.",
+                "Hostage rescue fails in Iran.",
+                "Solidarity recognized in Poland.",
+                "Gold rush in the Amazon.",
+                "Dolby-C.",
+                "U.S. public debt now $908 billion.",
+                "U.S. resident population is now 226.5 million."
+            ],
+            1981: [
+                "Iran releases embassy hostages.",
+                "Millions in Poland on strike.",
+                "U.S. public debt reaches one trillion dollars.",
+                "Israeli raid destroys Iraqi nuclear reactor.",
+                "Humber Bridge (4,626 feet) completed.",
+                "Widespread marches and rallies against nuclear weapons and arms in Europe.",
+                "Strange immune-system disease noted by CDC."
+            ],
+            1982: [
+                "Worldwide oil glut.",
+                "War for Falkland Islands.",
+                "Airliner smashes into Potomac bridge, kills 78.",
+                "84 die as Newfoundland oil rig sinks.",
+                "New Orleans airliner crash kills 149.",
+                "800,000 march against nuclear weapons in New York City.",
+                "Israeli incursion reaches Beirut; PLO moves to Tunisia."
+            ],
+            1983: [
+                "Aquino assassinated upon arriving in Manila.",
+                "Widespread missile protests in Europe.",
+                "World population estimated at 4.7 billion."
+            ],
+            1984: [
+                "VCR taping legalized in U.S.",
+                "Iran-Iraq war now involves oil tankers in Persian Gulf.",
+                "Indonesian death squads reportedly kill some 4,000 people.",
+                "Battles in Beirut continue.",
+                "AIDS virus isolated.",
+                "Federal estimate of 350,000 homeless in U.S.",
+                "Passive inhalation of cigarette smoke held to cause disease.",
+                "900,000 march in Manila; President Reagan asks if you’ve ever had it so good."
+            ],
+            1985: [
+                "Kidnappings continue in Beirut.",
+                "Gorbachev chosen as USSR chairman.",
+                "Rock Hudson hospitalized for AIDS.",
+                "France sinks Greenpeace vessel.",
+                "Quake devastates Mexico City leaving 25,000 dead.",
+                "U.S. trade balance now negative.",
+                "Terrorism becomes widespread tactic of splinter groups.",
+                "Achille Lauro hijacking and murders.",
+                "Massive federal spending continues to fuel economic expansion.",
+                "U.S. public debt now $1.82 trillion, doubled since 1980."
+            ],
+            1986: [
+                "Challenger shuttle explosion effectively shuts down NASA manned program for several years.",
+                "English Channel tunnel project okayed.",
+                "At Chernobyl, dozens of heroes sacrifice themselves to contain the disaster and in the years to come, experts expect 24,000 deaths to be influenced by the released atomic cloud.",
+                "Crack cocaine epidemic in U.S."
+            ],
+            1987: [
+                "One million dead in Iran-Iraq War.",
+                "Dow average loses 508 points in one day.",
+                "This year 13,468 AIDS deaths in U.S.",
+                "Arabs within Israel begin general resistance.",
+                "50 million VCRs in U.S."
+            ],
+            1988: [
+                "The term “Greenhouse Effect” is widely used.",
+                "Pan-Am jetliner explodes over Lockerbie, Scotland, 259 aboard.",
+                "Armenian earthquake kills 25,000 and leaves 400,000 homeless.",
+                "RU-486.",
+                "Widespread drought in U.S.",
+                "U.S. AIDS cases top 60,000.",
+                "U.S. estimated to have spent $51.6 billion on illegal drugs this year."
+            ],
+            1989: [
+                "The U.S. \"war on drugs\" intensifies.",
+                "Political stress in the Soviet Union.",
+                "U.S.S. Iowa’s turret explodes, killing 42.",
+                "Hurricane Hugo leaves 71 dead.",
+                "Salman Rushdie affair begins.",
+                "Panama invasion topples Noriega.",
+                "Tiananmen Square demonstrations in Beijing.",
+                "Federally insured bank losses in U.S. estimated at $500 billion dollars.",
+                "CDs become dominant playback medium in the United States."
+            ],
+            1990: [
+                "Iraq invades Kuwait, and U.S. organizes expeditionary force in opposition.",
+                "South African government lifts emergency decrees.",
+                "U.S. public debt at $3.23 trillion.",
+                "Hubble telescope fiasco.",
+                "U.S. estimated to have spent $40 billion on illegal drugs this year.",
+                "U.S. resident population now 248.7 million."
+            ],
+            1991: [
+                "Gulf War kills at least 50,000 Iraqis.",
+                "Iraq releases 40 million gallons of crude oil into the Persian Gulf, and leaves some 600 oil wells afire.",
+                "Oakland Hills fire burns some 3,000 homes and leaves dozens dead.",
+                "Massive eruptions of Mt. Pinatubo on Luzon.",
+                "Coup foiled in USSR; Arab-Israeli talks.",
+                "At the end of May, AIDS deaths in the U.S. total 113,426.",
+                "Import auto sales now account for 1/3 of the U.S. market.",
+                "USSR dissolves into constituent republics; Gorbachev resigns.",
+                "One-fifth of sub-Saharan college graduates believed to be HIV+."
+            ],
+            1992: [
+                "Economic recession in industrial nations, homelessness and mass layoffs widely reported.",
+                "Rioting in Los Angeles and other U.S. cities over Rodney King verdict, 52 killed and damages over $1 billion.",
+                "U.S. military deployed to aid against famine amid Somalia civil war.",
+                "Tens of thousands massacred during \"ethnic cleansing\" in former Yugoslavia.",
+                "Hurricanes in Florida, Louisiana, and Hawaii kill dozens and leave thousands homeless.",
+                "Major earthquakes in Southern California and Egypt cause extensive damage.",
+                "Estimated 13 million people now infected with HIV virus.",
+                "Czechs and Slovaks separate."
+            ],
+            1993: [
+                "Terrorists bomb NY World Trade Center.",
+                "FBI lays siege to Branch Davidians near Waco, and 80 ultimately die.",
+                "Clinton first Democratic President since Carter.",
+                "Strife continues in Bosnia.",
+                "North Korea withdraws from nuclear nonproliferation treaty.",
+                "U.S. troops withdrawn from Somalia.",
+                "Congress votes over 130 U.S. military bases closed.",
+                "U.S. unemployment declines.",
+                "U.S. national debt $4.35 trillion."
+            ],
+            1994: [
+                "NAFTA agreement ratified by all parties.",
+                "CIA’s Aldrich Ames found to be Russian spy.",
+                "Anglican Church ordains first female priests.",
+                "First universal-suffrage election in South Africa signals end of white dominance.",
+                "Israel and PLO sign self-rule accord.",
+                "O.J. Simpson charged in 2 murders.",
+                "Fifty years since WWII Normandy landings.",
+                "Professional baseball strike marks the decline of that sport.",
+                "U.S. lands in Haiti and successfully returns Aristide to presidency."
+            ],
+            1995: [
+                "Shoemaker-Levi 9 comet cluster hurls into Jupiter.",
+                "Terrorist bomb smashes Oklahoma City federal building, killing 161.",
+                "In the U.S., about one in ten are wired into the internet.",
+                "O.J. Simpson acquitted of murder.",
+                "Peace progresses in Northern Ireland, Bosnia, and Middle East.",
+                "Rabin assassinated in Israel.",
+                "Colin Powell declines to run for U.S. presidency.",
+                "U.S. federal debt at $5 trillion."
+            ],
+            1996: [
+                "U.S. federal workers return to work after budget crisis.",
+                "One killed when bomb explodes at Atlanta Olympic Games.",
+                "Earth’s recent average surface temperature rises to new high.",
+                "Coldest winter in Minnesota in nearly a hundred years.",
+                "Mt. Everest climbing deaths rise steadily.",
+                "Islamic rebels capture Kabul.",
+                "Abortion struggle continues in Senate.",
+                "Copyright piracy continues friction between U.S. and China.",
+                "U.S. national debt at $5.2 trillion.",
+                "Prosperity reigns in U.S.",
+                "Ill-conceived attempts to control immigration and drug-addiction.",
+                "McVeigh held in Oklahoma City bombing.",
+                "Kaczinski indicted as Unabomber suspect."
+            ],
+            1997: [
+                "Haitian ferry Pride of la Gonave sinks with 200+ dead.",
+                "New AIDS infections estimated at more than 3 million.",
+                "Approximately 5.8 million now have died from the disease.",
+                "Approx. 275 million residents of U.S.",
+                "40% of the U.S. now connected to the internet.",
+                "Clinton under heavy pressure concerning sexual conduct.",
+                "Dow-Jones average breaks 8,000 in July.",
+                "Tobacco companies admit that tobacco is addictive.",
+                "Comet Hale-Bopp passes nearby in March.",
+                "Hong Kong reverts to China.",
+                "Ames Research Center to have department of astrobiology.",
+                "Diana, Princess of Wales, dead in auto crash.",
+                "Ted Turner gives $1 billion to United Nations."
+            ],
+            1998: [
+                "Pres. Clinton under cloud from possible perjury and obstruction of justice.",
+                "U.S. economic expansion shows signs of slowing.",
+                "El Niño soddens California and sends violent storms across the Midwest.",
+                "Storms in Europe.",
+                "Tornadoes in Alabama kill 34.",
+                "Kaczinski pleads guilty to unabombings.",
+                "U.S. federal budget shows small surplus for the first time in 30 years.",
+                "Rwanda executes 22 for genocide.",
+                "Iraq wages apparently successful end to UN weapons inspections.",
+                "Economic and social turmoil continue in Russia.",
+                "Passenger arrivals and departures at Chicago O’Hare number 70 million in 1997."
+            ],
+            1999: [
+                "Pres. Clinton impeached by the House, but the Senate acquits him.",
+                "U.S. economy surges; Dow Jones average finishes above 11,000 for first time in history.",
+                "Very large balance of payment deficits for U.S.",
+                "Violent crime in U.S. has not been lower since 1973.",
+                "AMA approves a union for medical doctors."
+            ],
+            2000: [
+                "U.S. stock market bubbles burst, ending talk of linking social security with stocks and other financial instruments.",
+                "Russian nuclear submarine sinks in Barents Sea, 118 die.",
+                "Air France Concorde smashes into hotel, 113 die.",
+                "Mexico’s PRI loses presidency for the first time in 71 years.",
+                "Edward Gorey dies at 75.",
+                "Bush elected U.S. president."
+            ],
+            2001: [
+                "World population estimated at 6.2 billion.",
+                "Combined terrorist attacks kill some 3,000 in New York and Virginia.",
+                "Submarine U.S.S. Greenville surfaces underneath a Japanese trawler, killing 9.",
+                "AIDS infections in previous year estimated at 5.3 million.",
+                "Total AIDS deaths placed at 21.8 million.",
+                "New observations of “dark energy” and “dark matter” force re-evaluation of previously held cosmology.",
+                "Solar-powered aircraft Helios reaches 96,500 feet.",
+                "Some 55% of U.S. households contain computers.",
+                "Senate and House offices closed because of anthrax contamination, and at least 5 elsewhere die from it.",
+                "U.S. armed forces enter Afghanistan."
+            ],
+            2002: [
+                "President Bush perceives an axis of evil, and many listen carefully.",
+                "North Korea reports that it has secretly produced nuclear bombs.",
+                "The Euro becomes official currency of Austria, Belgium, Finland, France, Germany, Greece, Ireland, Italy, Luxembourg, the Netherlands, Portugal, and Spain.",
+                "Milosevic war crimes trial begins.",
+                "Enormous accounting frauds and subsequent U.S. business bankruptcies come to light.",
+                "Piracy blamed, not quality, as sales of recorded music and music videos continue to drop across the world."
+            ],
+            2003: [
+                "Enormous power outage betrays summertime northeast U.S. and eastern Canada.",
+                "Europe swelters in unprecedented heat wave—deaths of more than 11,000 in France alone are attributed to extended European temperatures of above 105°F.",
+                "The Galileo space probe is sent crashing into Jupiter, concluding its fourteen-year mission among the outer planets.",
+                "Previously unknown to primatologists, a mysterious species of ape found in the northern Congo, resembling a cross between gorilla and chimpanzee, but larger than either."
+            ],
+            2004: [
+                "Terrorists on 4 rush hour trains kill 191 people in Madrid; 335 people killed and at least 700 people injured when Russian forces end the siege of a school in Beslan, Northern Ossetia.",
+                "The largest passenger ship afloat is named the Queen Mary 2 by Her Majesty Queen Elizabeth II, and sets off on its maiden voyage.",
+                "The Hutton Inquiry in London announces that it is satisfied that the British Government did not 'sex up' the dossier presenting the case for going to war in Iraq.",
+                "The CIA admits that prior to the invasion of Iraq there was no imminent threat from weapons of mass destruction.",
+                "Mount St. Helens becomes active again.",
+                "Taipei 101 opens, it is the world’s tallest skyscraper at 509 meters."
+            ],
+            2005: [
+                "Hurricane Katrina makes landfall along the U.S. Gulf Coast, killing over 1,800 people.",
+                "Virgin Atlantic Global Flyer breaks the world record for the fastest solo flight around the world.",
+                "A leap second is added to end the year."
+            ],
+            2006: [
+                "North Korea claims to have conducted its first nuclear test.",
+                "The 250th anniversary of the birth of Wolfgang Amadeus Mozart is celebrated."
+            ],
+            2007: [
+                "Russia declares the resumption of strategic bomber flight exercises.",
+                "Harry Potter and the Deathly Hallows is released and becomes the fastest-selling book in publishing history."
+            ],
+            2008: [
+                "Bernard Madoff is arrested for committing the largest financial fraud in history.",
+                "Barack Obama is elected the 44th President of the United States and the first President of African-American origin.",
+                "The Wilkins Ice Shelf in Antarctica disintegrates, leaving the entire shelf at risk of breakup.",
+                "Lehman Brothers goes bankrupt and sparks the beginning of a global financial crisis. Pirate activity increases off the coast of Somalia."
+            ],
+            2009: [
+                "The Icelandic banking system collapses.",
+                "An outbreak of the H1N1 influenza strain, 'Swine Flu,' reaches pandemic proportions.",
+                "The longest total solar eclipse of the 21st century takes place on 22nd July, lasting up to 6 minutes and 38.8 seconds, occurring over Asia and the Pacific Ocean."
+            ],
+            2010: [
+                "The Deepwater Horizon oil platform explodes in the Gulf of Mexico, eleven oil workers die and oil spills from the uncapped well for seven months.",
+                "The Eyjafjallajökull volcano erupts beneath an Icelandic ice cap, spewing ash into the atmosphere that shuts down air travel across Europe.",
+                "Hundreds of thousands of secret American diplomatic cables are released by the website WikiLeaks."
+            ],
+            2011: [
+                "The Iraq War is declared over by the United States.",
+                "Japan is hit by a 9.1 magnitude earthquake, the subsequent tsunami adds to the death toll and causes a crisis in four coastal nuclear power plants.",
+                "The global population is judged to have reached seven billion.",
+                "Osama bin Laden, figurehead of Al-Qaeda, is killed by American special forces in Pakistan.",
+                "Street vendor Mohamed Bouazizi sets himself on fire in Tunisia, his death inspiring a revolutionary movement that topples the Tunisian government; similar revolutions occur across the Middle East."
+            ],
+            2012: [
+                "Diamond Jubilee of Queen Elizabeth II.",
+                "Arab Spring.",
+                "The century’s second and last solar transit of Venus occurs.",
+                "Tokyo Skytree, the tallest self-supporting tower in the world (634 meters high), is opened to the public.",
+                "CERN announces the discovery of the Higgs Boson ‘god particle’.",
+                "Austrian skydiver, Felix Baumgartner, becomes the first person to break the sound barrier without machine assistance when he jumps 24 miles to earth at Roswell, New Mexico."
+            ],
+
+            
             # ... (další roky a události)
         }
         return events.get(year, [])

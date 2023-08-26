@@ -8,7 +8,7 @@ import asyncio
 class CallofCthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(self, identifier=0420753951)
+        self.config = Config.get_conf(self, identifier=4207503951)
         default_guild = {
             "player_stats": {}
         }

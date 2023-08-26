@@ -504,7 +504,7 @@ class CthulhuCog(commands.Cog):
         def get_stat_value(stat_name, value):
             if stat_name in ["Move", "Build", "Damage Bonus","HP","MP"]:
                 formatted_value = f"{value}"
-            elif stat_name in ["LUCK","SAN"]:
+            elif stat_name in ["LUCK"]:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"

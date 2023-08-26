@@ -430,13 +430,20 @@ class CthulhuCog(commands.Cog):
             else:
                 stats_range = range(61, len(stats_list))
             
-            for i in stats_range:
-                stat_name, value = stats_list[i]
+            for stat_name, value in stats_list:
                 if stat_name == "NAME":
                     continue  # Skip displaying NAME in the list
+                
                 emoji = get_stat_emoji(stat_name)
-                value = get_stat_value(stat_name, value)
-                stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
+                value_range = None
+                for range_start, description in stat_ranges.get(stat_name, []):
+                    if value >= range_start:
+                        value_range = f"{value} - {description}"
+                
+                if value_range is None:
+                    value_range = get_stat_value(stat_name, value)  # Use the existing function to format the value
+                    
+                stats_embed.add_field(name=f"{stat_name} {emoji}", value=value_range, inline=True)
             
             return stats_embed
             

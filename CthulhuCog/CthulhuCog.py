@@ -120,6 +120,17 @@ class CthulhuCog(commands.Cog):
             99: "Human maximum.",
         }
         return self.get_stat_description(value, descriptions)
+        
+    def get_skill_description(self, value):
+        descriptions = {
+            0: "Novice: complete amateur.",
+            6: "Neophyte: beginner with a small amount of knowlage.",
+            20: "Amateur: possesses some talent or dudimentarry training (hoby level).",
+            50: "Professional: allows a character to eke out a living from the skill. Equivalent to bachelors degree in specific subject.",
+            75: "Expert: advenced expertise. Corresponds with a masters degree or Ph.D.",
+            90: "Master: among the worlds best in the skill.",
+        }
+        return self.get_stat_description(value, descriptions)
     
     # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
     @commands.command(aliases=["diceroll"], guild_only=True)
@@ -460,8 +471,10 @@ class CthulhuCog(commands.Cog):
             return stat_emojis.get(stat_name, ":question:")
 
         def get_stat_value(stat_name, value):
-            if stat_name in ["Move", "Build", "Damage Bonus"]:
+            if stat_name in ["Move", "Build", "Damage Bonus","HP","MP"]:
                 formatted_value = f"{value}"
+            elif stat_name in ["LUCK","SAN"]:
+                formatted_value = f"{value} - {value // 2} - {value // 5}"
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
                 if stat_name == "STR":
@@ -480,6 +493,8 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n({self.get_power_description(value)})"
                 elif stat_name == "EDU":
                     formatted_value += f"\n({self.get_education_description(value)})"
+                else
+                    formatted_value += f"\n({self.get_skill_description(value)})"
             return formatted_value
     
         def generate_stats_page(page):

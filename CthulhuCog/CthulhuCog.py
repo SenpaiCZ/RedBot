@@ -152,6 +152,16 @@ class CthulhuCog(commands.Cog):
             99: "The pinnacle of charisma and charm (celebrities, leaders). Human maximum.",
         }
         return self.get_stat_description(value, descriptions)
+        
+    def get_sanity_description(self, value):
+        descriptions = {
+            0: "Insane, completely detached from reality.",
+            15: "Severely disturbed, unable to distinguish between reality and delusion.",
+            50: "Average human sanity.",
+            80: "Strong mental resilience, able to cope with stress and horrors.",
+            99: "Exceptional sanity, unshaken even by the most terrifying experiences. Human maximum.",
+        }
+        return self.get_stat_description(value, descriptions)
     
     # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
     @commands.command(aliases=["diceroll"], guild_only=True)
@@ -279,10 +289,10 @@ class CthulhuCog(commands.Cog):
             "EDU": 0,
             "SIZ": 0,
             "CHA": 0,
+            "SAN": 0,
             "HP": 0,
             "MP": 0,
             "LUCK": 0,
-            "SAN": 0,
             "Accounting": 5,
             "Anthropology": 1,
             "Appraise": 5,
@@ -518,6 +528,8 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n{self.get_credit_rating_description(value)}"
                 elif stat_name == "CHA":
                     formatted_value += f"\n{self.get_charisma_description(value)}"
+                elif stat_name == "SAN":
+                    formatted_value += f"\n{self.get_sanity_description(value)}"
                 else:
                     formatted_value += f"\n{self.get_skill_description(value)}"
             return formatted_value

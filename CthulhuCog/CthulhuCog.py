@@ -360,6 +360,10 @@ class CthulhuCog(commands.Cog):
                 "Damage Bonus": ":mending_heart:"
             }
             return stat_emojis.get(stat_name, ":question:")
+
+        def get_stat_description(self, value, descriptions):
+            return self.get_nearest_description(value, descriptions)
+            
         def get_nearest_description(self, value, descriptions):
             nearest_value = min(descriptions.keys(), key=lambda x: abs(x - value))
             return descriptions[nearest_value]

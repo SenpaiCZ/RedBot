@@ -266,7 +266,7 @@ class CthulhuCog(commands.Cog):
         else:
             await ctx.send("Invalid skill name. Use one of the following: "
                            "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
-            
+     """      
     @commands.command(aliases=["mychar","mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:
@@ -278,7 +278,50 @@ class CthulhuCog(commands.Cog):
             return
 
         name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
-
+"""
+    @commands.command(aliases=["mychar","mcs"], guild_only=True)
+    async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
+        if member is None:
+            member = ctx.author
+    
+        user_id = str(member.id)  # Get the user's ID as a string
+        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
+    
+        name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
+    
+        stats_embed = discord.Embed(
+            title=name,
+            description="Investigator statistics:",
+            color=discord.Color.green()
+        )
+    
+        stat_ranges = {
+            "STR": [(0, "Enfeebled: unable to even stand up or lift a cup of tea."),
+                    (15, "Puny, weak."),
+                    (50, "Average human strength."),
+                    (90, "One of the strongest people you’ve ever met."),
+                    (99, "World-class (Olympic weightlifter). Human maximum."),
+                    (140, "Beyond human strength (gorilla or horse).")],
+            "CON": [(0, "Dead."),
+                    (1, "Sickly, prone to prolonged illness and probably unable to operate without assistance."),
+                    (15, "Weak health, prone to bouts of ill health, great propensity for feeling pain."),
+                    (50, "Average healthy human."),
+                    (90, "Shrugs off colds, hardy and hale."),
+                    (99, "Iron constitution, able to withstand great amounts of pain. Human maximum."),
+                    (140, "Beyond human constitution (e.g. elephant).")],
+            # ... (přidat zde další statistiky a rozsahy)
+        }
+    
+        stats_list = list(self.player_stats[user_id].items())
+        
+        for stat_name, value in stats_list:
+            if stat_name in stat_ranges:
+                formatted_value = get_stat_with_description(stat_name, value, stat_ranges[stat_name])
+                emoji = get_stat_emoji(stat_name)
+                stats_embed.add_field(name=f"{stat_name} {emoji}", value=formatted_value, inline=True)
+         #end experiment   
         stats_embed = discord.Embed(
             title=name,
             description="Investigator statistics:",
@@ -367,7 +410,13 @@ class CthulhuCog(commands.Cog):
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
             return formatted_value
-        
+        #New - experimental
+        def get_stat_with_description(stat_name, value, ranges):
+            for range_start, description in ranges:
+                if value >= range_start:
+                    return f"{value} - {description}"
+            return f"{value} - Unknown description"
+        #end new experimental 
         def generate_stats_page(page):
             stats_embed.clear_fields()
             stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"

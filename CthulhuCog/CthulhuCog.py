@@ -123,12 +123,12 @@ class CthulhuCog(commands.Cog):
         
     def get_skill_description(self, value):
         descriptions = {
-            0: "Novice: complete amateur.",
-            6: "Neophyte: beginner with a small amount of knowlage.",
-            20: "Amateur: possesses some talent or dudimentarry training (hoby level).",
-            50: "Professional: allows a character to eke out a living from the skill. Equivalent to bachelors degree in specific subject.",
-            75: "Expert: advenced expertise. Corresponds with a masters degree or Ph.D.",
-            90: "Master: among the worlds best in the skill.",
+            0: "Novice",
+            6: "Neophyte",
+            20: "Amateur",
+            50: "Professional",
+            75: "Expert",
+            90: "Master",
         }
         return self.get_stat_description(value, descriptions)
     
@@ -478,23 +478,23 @@ class CthulhuCog(commands.Cog):
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
                 if stat_name == "STR":
-                    formatted_value += f"\n({self.get_strength_description(value)})"
+                    formatted_value += f"\n{self.get_strength_description(value)}"
                 elif stat_name == "CON":
-                    formatted_value += f"\n({self.get_constitution_description(value)})"
+                    formatted_value += f"\n{self.get_constitution_description(value)}"
                 elif stat_name == "SIZ":
-                    formatted_value += f"\n({self.get_size_description(value)})"
+                    formatted_value += f"\n{self.get_size_description(value)}"
                 elif stat_name == "DEX":
-                    formatted_value += f"\n({self.get_dexterity_description(value)})"
+                    formatted_value += f"\n{self.get_dexterity_description(value)}"
                 elif stat_name == "APP":
-                    formatted_value += f"\n({self.get_appearance_description(value)})"
+                    formatted_value += f"\n{self.get_appearance_description(value)}"
                 elif stat_name == "INT":
-                    formatted_value += f"\n({self.get_intelligence_description(value)})"
+                    formatted_value += f"\n{self.get_intelligence_description(value)}"
                 elif stat_name == "POW":
-                    formatted_value += f"\n({self.get_power_description(value)})"
+                    formatted_value += f"\n{self.get_power_description(value)}"
                 elif stat_name == "EDU":
-                    formatted_value += f"\n({self.get_education_description(value)})"
+                    formatted_value += f"\n{self.get_education_description(value)}"
                 else:
-                    formatted_value += f"\n({self.get_skill_description(value)})"
+                    formatted_value += f"\n{self.get_skill_description(value)}"
             return formatted_value
     
         def generate_stats_page(page):

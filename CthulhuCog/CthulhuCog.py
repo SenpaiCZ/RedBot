@@ -24,6 +24,37 @@ class CthulhuCog(commands.Cog):
         await self.config.guild_from_id(guild_id).player_stats.set(player_stats)
 
 
+    def get_stat_description(self, value, descriptions):
+        return self.get_nearest_description(value, descriptions)
+        
+    def get_nearest_description(self, value, descriptions):
+        nearest_value = min(descriptions.keys(), key=lambda x: abs(x - value))
+        return descriptions[nearest_value]
+    
+    def get_strength_description(self, value):
+        descriptions = {
+            0: "Enfeebled: unable to even stand up or lift a cup of tea.",
+            15: "Puny, weak.",
+            50: "Average human strength.",
+            90: "One of the strongest people you’ve ever met.",
+            99: "World-class (Olympic weightlifter). Human maximum.",
+            140: "Beyond human strength (gorilla or horse).",
+        }
+        return self.get_nearest_description(value, descriptions)
+        
+    def get_constitution_description(self, value):
+        descriptions = {
+            0: "Dead.",
+            1: "Sickly, prone to prolonged illness and probably unable to operate without assistance.",
+            15: "Weak health, prone to bouts of ill health, great propensity for feeling pain.",
+            50: "Average healthy human.",
+            90: "Shrugs off colds, hardy and hale.",
+            99: "Iron constitution, able to withstand great amounts of pain. Human maximum.",
+            140: "Beyond human constitution (e.g. elephant).",
+        }
+        return self.get_nearest_description(value, descriptions)
+    
+    # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
     @commands.command(aliases=["diceroll"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
@@ -360,38 +391,6 @@ class CthulhuCog(commands.Cog):
                 "Damage Bonus": ":mending_heart:"
             }
             return stat_emojis.get(stat_name, ":question:")
-
-        def get_stat_description(self, value, descriptions):
-            return self.get_nearest_description(value, descriptions)
-            
-        def get_nearest_description(self, value, descriptions):
-            nearest_value = min(descriptions.keys(), key=lambda x: abs(x - value))
-            return descriptions[nearest_value]
-        
-        def get_strength_description(self, value):
-            descriptions = {
-                0: "Enfeebled: unable to even stand up or lift a cup of tea.",
-                15: "Puny, weak.",
-                50: "Average human strength.",
-                90: "One of the strongest people you’ve ever met.",
-                99: "World-class (Olympic weightlifter). Human maximum.",
-                140: "Beyond human strength (gorilla or horse).",
-            }
-            return self.get_nearest_description(value, descriptions)
-            
-        def get_constitution_description(self, value):
-            descriptions = {
-                0: "Dead.",
-                1: "Sickly, prone to prolonged illness and probably unable to operate without assistance.",
-                15: "Weak health, prone to bouts of ill health, great propensity for feeling pain.",
-                50: "Average healthy human.",
-                90: "Shrugs off colds, hardy and hale.",
-                99: "Iron constitution, able to withstand great amounts of pain. Human maximum.",
-                140: "Beyond human constitution (e.g. elephant).",
-            }
-            return self.get_nearest_description(value, descriptions)
-        
-        # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
 
         def get_stat_value(stat_name, value):
             if stat_name in ["Move", "Build", "Damage Bonus"]:

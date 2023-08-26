@@ -1,5 +1,5 @@
 # SenpaiCZ Cogs for RedBot
-
+I have no idea what im doing. But its working.
 
 # Cthulhu Cog
 

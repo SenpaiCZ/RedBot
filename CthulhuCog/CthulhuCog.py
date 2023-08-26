@@ -142,6 +142,16 @@ class CthulhuCog(commands.Cog):
             99: "Super Rich",
         }
         return self.get_stat_description(value, descriptions)
+        
+    def get_charisma_description(self, value):
+        descriptions = {
+            0: "Extremely off-putting, others are affected by fear, revulsion, or pity.",
+            15: "Unpleasant demeanor, likely to repel others.",
+            50: "Average human charisma.",
+            90: "Charming, magnetic personality, easily wins people over.",
+            99: "The pinnacle of charisma and charm (celebrities, leaders). Human maximum.",
+        }
+        return self.get_stat_description(value, descriptions)
     
     # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
     @commands.command(aliases=["diceroll"], guild_only=True)
@@ -506,6 +516,8 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n{self.get_education_description(value)}"
                 elif stat_name == "Credit Rating":
                     formatted_value += f"\n{self.get_credit_rating_description(value)}"
+                elif stat_name == "CHA":
+                    formatted_value += f"\n{self.get_charisma_description(value)}"
                 else:
                     formatted_value += f"\n{self.get_skill_description(value)}"
             return formatted_value

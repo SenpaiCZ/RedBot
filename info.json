@@ -1,8 +1,8 @@
 {
     "author" : ["SenpaiCZ"],
-    "install_msg" : "Stay calm, I dont know why this work.",
+    "install_msg" : "Stay calm, I dont know why this works.",
     "name" : "Senpais Cogs",
-    "short" : "Experimental cogs for me.",
-    "description" : "Yeah. My cogs. No touchy. They will not work.",
-    "tags" : ["Call of Cthulhu"]
+    "short" : "Cogs for RedBot.",
+    "description" : "Cogs for RedBot, only Call of Cthulhu focused Cog rn. I will definetly make more cogs later.",
+    "tags" : ["Call of Cthulhu RPG"]
 }

@@ -24,7 +24,7 @@ class CthulhuCog(commands.Cog):
         await self.config.guild_from_id(guild_id).player_stats.set(player_stats)
 
 
-    @commands.command(aliases=["diceroll"])
+    @commands.command(aliases=["diceroll"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         
@@ -134,7 +134,7 @@ class CthulhuCog(commands.Cog):
     
 
 
-    @commands.command(aliases=["newInv"])
+    @commands.command(aliases=["newInv"], guild_only=True)
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         
@@ -206,7 +206,7 @@ class CthulhuCog(commands.Cog):
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
             
-    @commands.command(aliases=["cstat"])
+    @commands.command(aliases=["cstat"], guild_only=True)
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
@@ -235,7 +235,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
 
             
-    @commands.command(aliases=["cskill"])
+    @commands.command(aliases=["cskill"], guild_only=True)
     async def CthulhuChangeSkills(self, ctx, *, skill_and_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         skill_and_value = skill_and_value.rsplit(maxsplit=1)
@@ -267,7 +267,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Invalid skill name. Use one of the following: "
                            "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
             
-    @commands.command(aliases=["mychar","mcs"])
+    @commands.command(aliases=["mychar","mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:
             member = ctx.author
@@ -412,7 +412,7 @@ class CthulhuCog(commands.Cog):
                 await message.clear_reactions()
                 break
                 
-    @commands.command()
+    @commands.command(guild_only=True)
     async def deleteInvestigator(self, ctx):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         
@@ -436,7 +436,7 @@ class CthulhuCog(commands.Cog):
 
 
          
-    @commands.command(aliases=["cb"])
+    @commands.command(aliases=["cb"], guild_only=True)
     async def CthulhuBackstory(self, ctx, *, input_text):
         user_id = str(ctx.author.id)
     
@@ -466,7 +466,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
 
-    @commands.command(aliases=["mb"])
+    @commands.command(aliases=["mb"], guild_only=True)
     async def MyCthulhuBackstory(self, ctx):
         user_id = str(ctx.author.id)
         
@@ -493,7 +493,7 @@ class CthulhuCog(commands.Cog):
 
 
 
-    @commands.command(aliases=["rb"])
+    @commands.command(aliases=["rb"], guild_only=True)
     async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
         user_id = str(ctx.author.id)
         
@@ -531,7 +531,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
 
 
-    @commands.command()
+    @commands.command(guild_only=True)
     async def db(self, ctx, *, skill_name):
         user_id = str(ctx.author.id)
         
@@ -624,7 +624,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send(embed=embed)
 
     
-    @commands.command()
+    @commands.command(guild_only=True)
     async def dp(self, ctx, *, skill_name):
         user_id = str(ctx.author.id)
         
@@ -891,7 +891,7 @@ class CthulhuCog(commands.Cog):
         
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(guild_only=True)
     async def autoChar(self, ctx):
         user_id = str(ctx.author.id)
         

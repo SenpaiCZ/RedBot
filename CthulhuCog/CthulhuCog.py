@@ -2136,3 +2136,38 @@ class CthulhuCog(commands.Cog):
         embed.add_field(name=":beginner: Traits:", value=selected_traits, inline=False)
     
         await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def cyear(self, ctx, year: int):
+        event_info = self.get_year_events(year)
+        
+        if not event_info:
+            await ctx.send("No historical events found for the specified year.")
+            return
+        
+        year_embed = discord.Embed(
+            title=f"Historical Events in {year}",
+            description="\n".join(event_info),
+            color=discord.Color.blue()
+        )
+        
+        await ctx.send(embed=year_embed)
+    
+    def get_year_events(self, year):
+        events = {
+            1890: [
+                "First entirely steel-framed building erected in Chicago.",
+                "First electric tube railway in London.",
+                "British cruiser, Serpent, wrecked in storm off coast of Spain, 167 lost.",
+                "Sitting Bull killed in Sioux uprising.",
+                "First ice-cream sundae.",
+                "U.S. resident population is 62.9 million."
+            ],
+            1891: [
+                "Devastating quake levels 20,000 structures and kills 25,000 people in Japan.",
+                "First practical hydroelectric station.",
+                "Electric torch adopted in England."
+            ],
+            # ... (další roky a události)
+        }
+        return events.get(year, [])

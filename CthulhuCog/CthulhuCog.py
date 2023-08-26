@@ -266,7 +266,7 @@ class CthulhuCog(commands.Cog):
         else:
             await ctx.send("Invalid skill name. Use one of the following: "
                            "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
-     """      
+"""      
     @commands.command(aliases=["mychar","mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:

@@ -8,20 +8,15 @@ import asyncio
 class CallofCthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.data_file = "/home/pi/.local/share/SenpaiBot/cogs/RepoManager/repos/senpaicz/CallofCthulhuCog/player_stats.json" 
+        self.config = Config.get_conf(self, identifier=1234567890)
+        default_guild = {
+            "player_stats": {}
+        }
+        self.config.register_guild(**default_guild)
 
-        if os.path.exists(self.data_file):
-            with open(self.data_file, "r") as f:
-                self.player_stats = json.load(f)
-        else:
-            self.player_stats = {}
+    async def save_data(self, guild_id):
+        await self.config.guild_from_id(guild_id).player_stats.set(self.player_stats)
 
-    def save_data(self):
-        try:
-            with open(self.data_file, "w") as f:
-                json.dump(self.player_stats, f, indent=4)
-        except Exception as e:
-                print(f"Error writing data to file: {e}")
 
     @commands.command(aliases=["diceroll"])
     async def d(self, ctx, *, dice_expression):
@@ -83,7 +78,7 @@ class CallofCthulhuCog(commands.Cog):
                             luck_used = min(luck_value, difference)
                             luck_value -= luck_used
                             self.player_stats[user_id]["LUCK"] = luck_value
-                            self.save_data()  # Uložení změn LUCK do dat
+                            await self.save_data(guild_id)  # Uložení změn LUCK do dat
                             formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                             result = "Regular Success (LUCK Used) :heavy_check_mark:"
                             skill_value += luck_used
@@ -200,7 +195,7 @@ class CallofCthulhuCog(commands.Cog):
             "Build": -1,
             "Damage Bonus": -1
             }
-            self.save_data()  # Uložení změn do souboru
+            await self.save_data(guild_id)  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
@@ -226,7 +221,7 @@ class CallofCthulhuCog(commands.Cog):
                 else:
                     self.player_stats[user_id][stat_name] = new_value
                     
-                self.save_data()
+                await self.save_data(guild_id)
                 await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
@@ -257,7 +252,7 @@ class CallofCthulhuCog(commands.Cog):
             try:
                 new_value = int(new_value)
                 self.player_stats[user_id][skill_name] = new_value
-                self.save_data()
+                await self.save_data(guild_id)
                 await ctx.send(f"Your {skill_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
@@ -428,7 +423,7 @@ class CallofCthulhuCog(commands.Cog):
             return
         
         del self.player_stats[user_id]
-        self.save_data()  # Uložení změn do souboru
+        await self.save_data(guild_id)  # Uložení změn do souboru
         await ctx.send("Investigator has been deleted.")
      else:
         await ctx.send("You don't have an investigator to delete.")
@@ -458,7 +453,7 @@ class CallofCthulhuCog(commands.Cog):
     
         self.player_stats[user_id]["Backstory"][category].append(entry)
     
-        self.save_data()  # Uložení změn do souboru
+        await self.save_data(guild_id)  # Uložení změn do souboru
     
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
@@ -521,7 +516,7 @@ class CallofCthulhuCog(commands.Cog):
         if not entries:
             del backstory_data[category]
         
-        self.save_data()
+        await self.save_data(guild_id)
         await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
 
     @commands.command()
@@ -590,7 +585,7 @@ class CallofCthulhuCog(commands.Cog):
                         luck_used = min(luck_value, difference)
                         luck_value -= luck_used
                         self.player_stats[user_id]["LUCK"] = luck_value
-                        self.save_data()  # Uložení změn LUCK do dat
+                        await self.save_data(guild_id)  # Uložení změn LUCK do dat
                         formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                         result = "Regular Success (LUCK Used) :heavy_check_mark:"
                         skill_value += luck_used
@@ -682,7 +677,7 @@ class CallofCthulhuCog(commands.Cog):
                         luck_used = min(luck_value, difference)
                         luck_value -= luck_used
                         self.player_stats[user_id]["LUCK"] = luck_value
-                        self.save_data()  # Uložení změn LUCK do dat
+                        await self.save_data(guild_id)  # Uložení změn LUCK do dat
                         formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                         result = "Regular Success (LUCK Used) :heavy_check_mark:"
                         skill_value += luck_used
@@ -982,7 +977,7 @@ class CallofCthulhuCog(commands.Cog):
                 self.player_stats[user_id]["SAN"] = SAN
                 self.player_stats[user_id]["MP"] = MP
                 self.player_stats[user_id]["LUCK"] = LUCK
-                self.save_data()  # Save the updated stats
+                await self.save_data(guild_id)  # Save the updated stats
                 
                 await ctx.send("New stats have been generated and saved for your character.")
             else:

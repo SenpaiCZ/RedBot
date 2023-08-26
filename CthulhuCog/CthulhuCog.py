@@ -5,7 +5,7 @@ import json
 import os
 import asyncio
 
-class CallofCthulhuCog(commands.Cog):
+class CthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=4207503951)

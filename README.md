@@ -15,7 +15,9 @@ Generate random character stats
 Show character stats
 
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.jpg)
+
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs2.jpg)
+
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs3.jpg)
 
 Roll die or multiple
@@ -25,6 +27,7 @@ Roll die or multiple
 Using luck for rolls
 
 ![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck.jpg)
+
 ![using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck%202.jpg)
 
 Check for skill

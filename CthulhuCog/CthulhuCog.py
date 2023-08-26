@@ -5,7 +5,7 @@ import json
 import os
 import asyncio
 
-class CthulhuCog(commands.Cog):
+
 class CthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

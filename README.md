@@ -4,18 +4,18 @@ I have no idea what im doing. But its working.
 # Cthulhu Cog
 The Cthulhu Discord Cog is a versatile companion for your tabletop role-playing sessions based on the popular Call of Cthulhu game. With its intuitive commands, you can easily roll dice, perform skill checks, create new investigators, generate random stats and backstories, and manage your character's inventory. The bot also provides a wealth of information, including lists of skills and occupations, historical details about specific years, and the ability to generate random names and NPCs. Whether you're a Keeper or a player, this bot enhances your Call of Cthulhu experience by streamlining tasks and providing quick access to essential game mechanics.
 
-Generate random name with !cname male/female
+Generate random name with !cname male/female \n
 ![Generating random name](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/name.jpg)
 
-Generate random character stats
+Generate random character stats \n
 ![Generating random character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/autochar.jpg)
 
-Show character stats
+Show character stats \n
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.jpg)
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs2.jpg)
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs3.jpg)
 
-Roll die or multiple
+Roll die or multiple \n
 ![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d.jpg)
 
 Using luck for rolls

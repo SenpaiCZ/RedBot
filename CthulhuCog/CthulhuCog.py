@@ -398,9 +398,9 @@ class CthulhuCog(commands.Cog):
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
                 if stat_name == "STR":
-                    formatted_value += f" ({self.get_strength_description(value)})"
+                    formatted_value += f"\n ({self.get_strength_description(value)})"
                 elif stat_name == "CON":
-                    formatted_value += f" ({self.get_constitution_description(value)})"
+                    formatted_value += f"\n ({self.get_constitution_description(value)})"
             return formatted_value
     
         def generate_stats_page(page):

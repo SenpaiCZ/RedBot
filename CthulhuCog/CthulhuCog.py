@@ -133,7 +133,7 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["newInv"])
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
-    
+        
         if user_id not in self.player_stats:
             self.player_stats[user_id] = {
             "NAME": investigator_name,
@@ -197,7 +197,7 @@ class CthulhuCog(commands.Cog):
             "Build": -1,
             "Damage Bonus": -1
             }
-            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn do souboru
+            await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")

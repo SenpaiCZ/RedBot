@@ -6,6 +6,7 @@ import os
 import asyncio
 
 class CthulhuCog(commands.Cog):
+class CthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=4207503951)
@@ -13,9 +14,10 @@ class CthulhuCog(commands.Cog):
             "player_stats": {}
         }
         self.config.register_guild(**default_guild)
+        self.player_stats = {}
 
-    async def save_data(self, guild_id):
-        await self.config.guild_from_id(guild_id).player_stats.set(self.player_stats)
+    async def save_data(self, guild_id, player_stats):
+        await self.config.guild_from_id(guild_id).player_stats.set(player_stats)
 
 
     @commands.command(aliases=["diceroll"])
@@ -194,12 +196,11 @@ class CthulhuCog(commands.Cog):
             "Move": -1,
             "Build": -1,
             "Damage Bonus": -1
-            }
-            await self.save_data(guild_id)  # Uložení změn do souboru
+            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
-        
+            
     @commands.command(aliases=["cstat"])
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string

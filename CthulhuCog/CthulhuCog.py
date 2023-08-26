@@ -266,29 +266,29 @@ class CthulhuCog(commands.Cog):
         else:
             await ctx.send("Invalid skill name. Use one of the following: "
                            "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
-            
-    @commands.command(aliases=["mychar","mcs"], guild_only=True)
+
+    @commands.command(aliases=["mychar", "mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:
             member = ctx.author
-
+    
         user_id = str(member.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
-
+    
         name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
-
+    
         stats_embed = discord.Embed(
             title=name,
             description="Investigator statistics:",
             color=discord.Color.green()
         )
-        
+    
         stats_list = list(self.player_stats[user_id].items())
         stats_page = 1
         max_page = 3
-        
+    
         def get_emoji(index):
             if index == 0:
                 return "⬅️"
@@ -296,7 +296,7 @@ class CthulhuCog(commands.Cog):
                 return "➡️"
             else:
                 return ""
-        
+    
         def get_stat_emoji(stat_name):
             stat_emojis = {
                 "STR": ":muscle:",
@@ -360,18 +360,50 @@ class CthulhuCog(commands.Cog):
                 "Damage Bonus": ":mending_heart:"
             }
             return stat_emojis.get(stat_name, ":question:")
+        def get_nearest_description(self, value, descriptions):
+            nearest_value = min(descriptions.keys(), key=lambda x: abs(x - value))
+            return descriptions[nearest_value]
         
+        def get_strength_description(self, value):
+            descriptions = {
+                0: "Enfeebled: unable to even stand up or lift a cup of tea.",
+                15: "Puny, weak.",
+                50: "Average human strength.",
+                90: "One of the strongest people you’ve ever met.",
+                99: "World-class (Olympic weightlifter). Human maximum.",
+                140: "Beyond human strength (gorilla or horse).",
+            }
+            return self.get_nearest_description(value, descriptions)
+            
+        def get_constitution_description(self, value):
+            descriptions = {
+                0: "Dead.",
+                1: "Sickly, prone to prolonged illness and probably unable to operate without assistance.",
+                15: "Weak health, prone to bouts of ill health, great propensity for feeling pain.",
+                50: "Average healthy human.",
+                90: "Shrugs off colds, hardy and hale.",
+                99: "Iron constitution, able to withstand great amounts of pain. Human maximum.",
+                140: "Beyond human constitution (e.g. elephant).",
+            }
+            return self.get_nearest_description(value, descriptions)
+        
+        # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
+
         def get_stat_value(stat_name, value):
             if stat_name in ["Move", "Build", "Damage Bonus"]:
                 formatted_value = f"{value}"
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
+                if stat_name == "STR":
+                    formatted_value += f" ({self.get_strength_description(value)})"
+                elif stat_name == "CON":
+                    formatted_value += f" ({self.get_constitution_description(value)})"
             return formatted_value
-        
+    
         def generate_stats_page(page):
             stats_embed.clear_fields()
             stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
-            
+    
             if page == 1:
                 stats_range = range(0, 13)
             elif page == 2:
@@ -380,7 +412,7 @@ class CthulhuCog(commands.Cog):
                 stats_range = range(37, 60)
             else:
                 stats_range = range(61, len(stats_list))
-            
+    
             for i in stats_range:
                 stat_name, value = stats_list[i]
                 if stat_name == "NAME":
@@ -388,16 +420,16 @@ class CthulhuCog(commands.Cog):
                 emoji = get_stat_emoji(stat_name)
                 value = get_stat_value(stat_name, value)
                 stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)
-            
+    
             return stats_embed
-            
+    
         message = await ctx.send(embed=generate_stats_page(stats_page))
         await message.add_reaction("⬅️")
         await message.add_reaction("➡️")
-        
+    
         def check(reaction, user):
             return user == ctx.author and reaction.message == message and reaction.emoji in ["⬅️", "➡️"]
-        
+    
         while True:
             try:
                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
@@ -405,7 +437,7 @@ class CthulhuCog(commands.Cog):
                     stats_page = max(stats_page - 1, 1)
                 elif reaction.emoji == "➡️":
                     stats_page = min(stats_page + 1, max_page)
-                
+    
                 await message.edit(embed=generate_stats_page(stats_page))
                 await message.remove_reaction(reaction, ctx.author)
             except asyncio.TimeoutError:

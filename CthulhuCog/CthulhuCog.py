@@ -1,4 +1,4 @@
-from redbot.core import commands
+from redbot.core import Config, commands
 import random
 import discord
 import json
@@ -8,7 +8,7 @@ import asyncio
 class CallofCthulhuCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(self, identifier=654321987)
+        self.config = Config.get_conf(self, identifier=0420753951)
         default_guild = {
             "player_stats": {}
         }

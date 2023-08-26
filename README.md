@@ -16,8 +16,8 @@
 | !cskill <skill name>                     | Edit investigator skills                    |
 | !deleteInvestigator                      | Delete your investigator                   |
 | !mb                                      | Show backstory and inventory                |
-| !cb <category> - <item>                  | Add a record to backstory or inventory     |
-| !rb <category> - <item id>               | Delete a record from backstory or inventory|
+| !cb < category > - < item >                  | Add a record to backstory or inventory     |
+| !rb < category > - < item id >               | Delete a record from backstory or inventory|
 | !cname <male/female>                     | Generate a random name                      |
 | !cNPC <male/female>                      | Generate an NPC                             |
 | !skillinfo                               | List all skills                             |

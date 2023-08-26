@@ -131,6 +131,17 @@ class CthulhuCog(commands.Cog):
             90: "Master",
         }
         return self.get_stat_description(value, descriptions)
+        
+    def get_credit_rating_description(self, value):
+        descriptions = {
+            0: "Penniles",
+            1: "Poor",
+            10: "Avarege",
+            50: "Wealthy",
+            90: "Rich",
+            99: "Super Rich",
+        }
+        return self.get_stat_description(value, descriptions)
     
     # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
     @commands.command(aliases=["diceroll"], guild_only=True)
@@ -493,6 +504,8 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n{self.get_power_description(value)}"
                 elif stat_name == "EDU":
                     formatted_value += f"\n{self.get_education_description(value)}"
+                elif stat_name == "Credit Rating":
+                    formatted_value += f"\n{self.get_credit_rating_description(value)}"
                 else:
                     formatted_value += f"\n{self.get_skill_description(value)}"
             return formatted_value

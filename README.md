@@ -16,14 +16,14 @@
 | !cskill <skill name>                     | Edit investigator skills                    |
 | !deleteInvestigator                      | Delete your investigator                   |
 | !mb                                      | Show backstory and inventory                |
-| !cb < category > - < item >                  | Add a record to backstory or inventory     |
-| !rb < category > - < item id >               | Delete a record from backstory or inventory|
-| !cname <male/female>                     | Generate a random name                      |
-| !cNPC <male/female>                      | Generate an NPC                             |
+| !cb category - item                   | Add a record to backstory or inventory     |
+| !rb category - item-id                | Delete a record from backstory or inventory|
+| !cname male/female                     | Generate a random name                      |
+| !cNPC male/female                      | Generate an NPC                             |
 | !skillinfo                               | List all skills                             |
-| !skillinfo <skill name>                  | Get info about a specific skill             |
+| !skillinfo skill-name                  | Get info about a specific skill             |
 | !coccupations                            | List all occupations                        |
-| !coccupations <occupation name>          | Get info about a specific occupation       |
+| !coccupations occupation-name>          | Get info about a specific occupation       |
 | !gbackstory                              | Generate a random backstory                 |
 | !cyear <year>                            | Historical information about a year         |
 

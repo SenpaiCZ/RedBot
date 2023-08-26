@@ -53,6 +53,60 @@ class CthulhuCog(commands.Cog):
             140: "Beyond human constitution (e.g. elephant).",
         }
         return self.get_nearest_description(value, descriptions)
+        
+   def get_dexterity_description(self, value):
+        descriptions = {
+            0: "Unable to move without assistance.",
+            15: "Slow, clumsy with poor motor skills for fine manipulation.",
+            50: "Average human dexterity.",
+            90: "Fast, nimble and able to perform feats of fine manipulation (e.g. acrobat, great dancer).",
+            99: "World-class athlete (e.g. Olympic standard). Human maximum.",
+            120: "Beyond human dexterity (e.g. tiger).",
+        }
+        return self.get_stat_description(value, descriptions)
+    def get_appearance_description(self, value):
+        descriptions = {
+            0: "So unsightly that others are affected by fear, revulsion, or pity.",
+            15: "Ugly, possibly disfigured due to injury or at birth.",
+            50: "Average human appearance.",
+            90: "One of the most charming people you could meet, natural magnetism.",
+            99: "The height of glamour and cool (supermodel or world-renowned film star). Human maximum.",
+        }
+        return self.get_stat_description(value, descriptions)
+
+    def get_intelligence_description(self, value):
+        descriptions = {
+            0: "No intellect, unable to comprehend the world around them.",
+            15: "Slow learner, able to undertake only the most basic math, or read beginner-level books.",
+            50: "Average human intellect.",
+            90: "Quick-witted, probably able to comprehend multiple languages or theorems.",
+            99: "Genius (Einstein, Da Vinci, Tesla, etc.). Human maximum.",
+        }
+        return self.get_stat_description(value, descriptions)
+
+    def get_power_description(self, value):
+        descriptions = {
+            0: "Enfeebled mind, no willpower or drive, no magical potential.",
+            15: "Weak-willed, easily dominated by those with a greater intellect or willpower.",
+            50: "Average human.",
+            90: "Strong-willed, driven, a high potential to connect with the unseen and magical.",
+            100: "Iron will, strong connection to the spiritual 'realm' or unseen world.",
+            140: "Beyond human, possibly alien.",
+        }
+        return self.get_stat_description(value, descriptions)
+
+    def get_education_description(self, value):
+        descriptions = {
+            0: "A newborn baby.",
+            15: "Completely uneducated in every way.",
+            60: "High school graduate.",
+            70: "College graduate (Bachelor degree).",
+            80: "Degree level graduate (Master's degree).",
+            90: "Doctorate, professor.",
+            96: "World-class authority in their field of study.",
+            99: "Human maximum.",
+        }
+        return self.get_stat_description(value, descriptions)
     
     # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
     @commands.command(aliases=["diceroll"], guild_only=True)
@@ -398,9 +452,21 @@ class CthulhuCog(commands.Cog):
             else:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
                 if stat_name == "STR":
-                    formatted_value += f"\n ({self.get_strength_description(value)})"
+                    formatted_value += f"\n({self.get_strength_description(value)})"
                 elif stat_name == "CON":
-                    formatted_value += f"\n ({self.get_constitution_description(value)})"
+                    formatted_value += f"\n({self.get_constitution_description(value)})"
+                elif stat_name == "SIZ":
+                    formatted_value += f"\n({self.get_size_description(value)})"
+                elif stat_name == "DEX":
+                    formatted_value += f"\n({self.get_dexterity_description(value)})"
+                elif stat_name == "APP":
+                    formatted_value += f"\n({self.get_appearance_description(value)})"
+                elif stat_name == "INT":
+                    formatted_value += f"\n({self.get_intelligence_description(value)})"
+                elif stat_name == "POW":
+                    formatted_value += f"\n({self.get_power_description(value)})"
+                elif stat_name == "EDU":
+                    formatted_value += f"\n({self.get_education_description(value)})"
             return formatted_value
     
         def generate_stats_page(page):

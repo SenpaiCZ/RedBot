@@ -337,6 +337,7 @@ class CthulhuCog(commands.Cog):
             "Swim": 20,
             "Throw": 20,
             "Track": 10,
+            "Age": 20,
             "Move": -1,
             "Build": -1,
             "Damage Bonus": -1
@@ -495,6 +496,7 @@ class CthulhuCog(commands.Cog):
                 "Swim": ":swimmer:",
                 "Throw": ":dart:",
                 "Track": ":mag_right:",
+                "Age": ":birthday:",
                 "Move": ":person_running:",
                 "Build": ":restroom: ",
                 "Damage Bonus": ":mending_heart:"
@@ -543,9 +545,9 @@ class CthulhuCog(commands.Cog):
             elif page == 2:
                 stats_range = range(13, 37)
             elif page == 3:
-                stats_range = range(37, 60)
+                stats_range = range(37, 61)
             else:
-                stats_range = range(61, len(stats_list))
+                stats_range = range(62, len(stats_list))
     
             for i in stats_range:
                 stat_name, value = stats_list[i]

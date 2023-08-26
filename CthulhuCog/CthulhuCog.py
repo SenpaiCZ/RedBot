@@ -196,6 +196,7 @@ class CthulhuCog(commands.Cog):
             "Move": -1,
             "Build": -1,
             "Damage Bonus": -1
+            }
             await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
         else:

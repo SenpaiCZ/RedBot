@@ -426,10 +426,11 @@ class CthulhuCog(commands.Cog):
                 return
             
             del self.player_stats[user_id]
-            await self.save_data(ctx.guild.id)  # Uložení změn do souboru
+            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn do souboru
             await ctx.send("Investigator has been deleted.")
         else:
             await ctx.send("You don't have an investigator to delete.")
+
 
          
     @commands.command(aliases=["cb"])

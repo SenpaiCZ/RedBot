@@ -64,6 +64,7 @@ class CthulhuCog(commands.Cog):
             120: "Beyond human dexterity (e.g. tiger).",
         }
         return self.get_stat_description(value, descriptions)
+        
     def get_appearance_description(self, value):
         descriptions = {
             0: "So unsightly that others are affected by fear, revulsion, or pity.",
@@ -71,6 +72,18 @@ class CthulhuCog(commands.Cog):
             50: "Average human appearance.",
             90: "One of the most charming people you could meet, natural magnetism.",
             99: "The height of glamour and cool (supermodel or world-renowned film star). Human maximum.",
+        }
+        return self.get_stat_description(value, descriptions)
+        
+    def get_size_description(self, value):
+        descriptions = {
+            1: "A baby (1 to 12 pounds).",
+            15: "Child, very short in stature (dwarf) (33 pounds / 15 kg).",
+            65: "Average human size (moderate height and weight) (170 pounds / 75 kg).",
+            80: "Very tall, strongly built, or obese. (240 pounds / 110 kg).",
+            99: "Oversize in some respect (330 pounds / 150 kg).",
+            150: "Horse or cow (960 pounds / 436 kg).",
+            180: "Heaviest human ever recorded (1400 pounds / 634 kg).",
         }
         return self.get_stat_description(value, descriptions)
 

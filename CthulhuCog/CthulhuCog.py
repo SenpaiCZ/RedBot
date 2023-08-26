@@ -408,27 +408,29 @@ class CthulhuCog(commands.Cog):
             except asyncio.TimeoutError:
                 await message.clear_reactions()
                 break
+                
     @commands.command()
     async def deleteInvestigator(self, ctx):
-     user_id = str(ctx.author.id)  # Get the user's ID as a string
-    
-     if user_id in self.player_stats:
-        await ctx.send("Are you sure you want to delete your investigator? If you're sure, type 'YES' to confirm.")
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
         
-        def check(message):
-            return message.author == ctx.author and message.content.upper() == "YES"
-        
-        try:
-            confirm_message = await self.bot.wait_for("message", check=check, timeout=30)
-        except TimeoutError:
-            await ctx.send("Confirmation timeout. Investigator deletion canceled.")
-            return
-        
-        del self.player_stats[user_id]
-        await self.save_data(guild_id)  # Uložení změn do souboru
-        await ctx.send("Investigator has been deleted.")
-     else:
-        await ctx.send("You don't have an investigator to delete.")
+        if user_id in self.player_stats:
+            await ctx.send("Are you sure you want to delete your investigator? If you're sure, type 'YES' to confirm.")
+            
+            def check(message):
+                return message.author == ctx.author and message.content.upper() == "YES"
+            
+            try:
+                confirm_message = await self.bot.wait_for("message", check=check, timeout=30)
+            except TimeoutError:
+                await ctx.send("Confirmation timeout. Investigator deletion canceled.")
+                return
+            
+            del self.player_stats[user_id]
+            await self.save_data(ctx.guild.id)  # Uložení změn do souboru
+            await ctx.send("Investigator has been deleted.")
+        else:
+            await ctx.send("You don't have an investigator to delete.")
+
          
     @commands.command(aliases=["cb"])
     async def CthulhuBackstory(self, ctx, *, input_text):

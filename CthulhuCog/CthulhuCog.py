@@ -84,12 +84,12 @@ class CthulhuCog(commands.Cog):
                             luck_used = min(luck_value, difference)
                             luck_value -= luck_used
                             self.player_stats[user_id]["LUCK"] = luck_value
-                            await self.save_data(guild_id)  # Uložení změn LUCK do dat
+                            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn LUCK do dat
                             formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
                             result = "Regular Success (LUCK Used) :heavy_check_mark:"
                             skill_value += luck_used
-                            
                             formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+
                         else:
                             result = "Fail :x:"
                         
@@ -227,12 +227,13 @@ class CthulhuCog(commands.Cog):
                 else:
                     self.player_stats[user_id][stat_name] = new_value
                     
-                await self.save_data(guild_id)
+                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                 await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
         else:
             await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+
             
     @commands.command(aliases=["cskill"])
     async def CthulhuChangeSkills(self, ctx, *, skill_and_value):

@@ -1,7 +1,7 @@
 # SenpaiCZ Cogs for RedBot
-Its kinda working. BUT...
 
-#Call of Cthulhu Cog
+
+# Cthulhu Cog
 
 | Command                                  | Description                                 |
 |------------------------------------------|---------------------------------------------|

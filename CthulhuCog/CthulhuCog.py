@@ -14,7 +14,11 @@ class CthulhuCog(commands.Cog):
             "player_stats": {}
         }
         self.config.register_guild(**default_guild)
-        self.player_stats = {}
+        
+        # Načtení uložených dat nebo použití výchozích hodnot
+        self.player_stats = await self.config.guild(ctx.guild).player_stats()  # Předpokládáme, že ctx je váš kontext
+        if not self.player_stats:
+            self.player_stats = default_guild["player_stats"]
 
     async def save_data(self, guild_id, player_stats):
         await self.config.guild_from_id(guild_id).player_stats.set(player_stats)

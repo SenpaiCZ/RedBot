@@ -493,7 +493,7 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n({self.get_power_description(value)})"
                 elif stat_name == "EDU":
                     formatted_value += f"\n({self.get_education_description(value)})"
-                else
+                else:
                     formatted_value += f"\n({self.get_skill_description(value)})"
             return formatted_value
     

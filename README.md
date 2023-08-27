@@ -1,8 +1,20 @@
 # SenpaiCZ Cogs for RedBot
 Its my first cog i ever made from scratch. If you find any issue let me know via discord @senpaicz.
 
+
+
+# Call of Cthulhu by Chaosium .inc
+To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthulhu Starter set or Pulp of Cthulhu published by Chaosium .inc
+
+[Call of Cthulhu Keeper Rulebook](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/)
+
+[Call of Cthulhu Starter Set]([odkaz](https://www.chaosium.com/call-of-cthulhu-starter-set/))
+
+[Pulp Cthulhu](https://www.chaosium.com/pulp-cthulhu-hardcover/)
+
 # Cthulhu Cog
 The Cthulhu Discord Cog is a versatile companion for your tabletop role-playing sessions based on the popular Call of Cthulhu game. With its intuitive commands, you can easily roll dice, perform skill checks, create new investigators, generate random stats and backstories, and manage your character's inventory. The bot also provides a wealth of information, including lists of skills and occupations, historical details about specific years, and the ability to generate random names and NPCs. Whether you're a Keeper or a player, this bot enhances your Call of Cthulhu experience by streamlining tasks and providing quick access to essential game mechanics.
+
 
 Generate random name with !cname male/female
 

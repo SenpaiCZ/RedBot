@@ -82,15 +82,15 @@ Generate backstory
 | Command                                  | Description                                 |
 |------------------------------------------|---------------------------------------------|
 | !d YDX                                   | Roll dice (e.g. !d 3D6)                     |
-| !d <skill>                               | Roll D100 against a skill                   |
+| !d <skill>                               | Roll D100 against a skill (e.g. !d Listen)                |
 | !db <skill>                              | Roll D100 against a skill with a bonus      |
 | !dp <skill>                              | Roll D100 against a skill with a penalty    |
-| !newInv                                  | Create a new investigator                   |
-| !autoChar                                | Generate random stats for an investigator   |
+| !newInv name                                  | Create a new investigator                   |
+| !autoChar                                | Generate random stats for an investigator if your stats are 0   |
 | !mychar                                  | Show stats and skills                       |
 | !cstat statName                       | Edit investigator stats                     |
 | !cskill skillName                     | Edit investigator skills                    |
-| !deleteInvestigator                      | Delete your investigator                   |
+| !deleteInvestigator                      | Delete your investigator (you will be prompted to confirm deletion)                   |
 | !mb                                      | Show backstory and inventory                |
 | !cb category - item                   | Add a record to backstory or inventory     |
 | !rb category - itemID                | Delete a record from backstory or inventory|

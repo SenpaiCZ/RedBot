@@ -1,5 +1,5 @@
 # SenpaiCZ Cogs for RedBot
-I have no idea what im doing. But its working.
+Its my first cog i ever made from scratch. If you find any issue let me know via discord @senpaicz.
 
 # Cthulhu Cog
 The Cthulhu Discord Cog is a versatile companion for your tabletop role-playing sessions based on the popular Call of Cthulhu game. With its intuitive commands, you can easily roll dice, perform skill checks, create new investigators, generate random stats and backstories, and manage your character's inventory. The bot also provides a wealth of information, including lists of skills and occupations, historical details about specific years, and the ability to generate random names and NPCs. Whether you're a Keeper or a player, this bot enhances your Call of Cthulhu experience by streamlining tasks and providing quick access to essential game mechanics.

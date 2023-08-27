@@ -8,7 +8,7 @@ To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthul
 
 [Call of Cthulhu Keeper Rulebook](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/)
 
-[Call of Cthulhu Starter Set]([odkaz](https://www.chaosium.com/call-of-cthulhu-starter-set/))
+[Call of Cthulhu Starter Set](https://www.chaosium.com/call-of-cthulhu-starter-set/)
 
 [Pulp Cthulhu](https://www.chaosium.com/pulp-cthulhu-hardcover/)
 

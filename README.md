@@ -12,7 +12,12 @@ To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthul
 
 [Pulp Cthulhu](https://www.chaosium.com/pulp-cthulhu-hardcover/)
 
-# Cthulhu Cog
+# Cthulhu Cog Install
+!repo add senpaicz https://github.com/SenpaiCZ/RedBot
+
+!cog install senpaicz CthulhuCog
+
+# Cthulhu Cog Info
 The Cthulhu Discord Cog is a versatile companion for your tabletop role-playing sessions based on the popular Call of Cthulhu game. With its intuitive commands, you can easily roll dice, perform skill checks, create new investigators, generate random stats and backstories, and manage your character's inventory. The bot also provides a wealth of information, including lists of skills and occupations, historical details about specific years, and the ability to generate random names and NPCs. Whether you're a Keeper or a player, this bot enhances your Call of Cthulhu experience by streamlining tasks and providing quick access to essential game mechanics.
 
 
@@ -71,6 +76,8 @@ Get info about year
 Generate backstory
 
 ![Generate random backstory](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/backstory%20generator.jpg)
+
+# Cthulhu Cog Commands
 
 | Command                                  | Description                                 |
 |------------------------------------------|---------------------------------------------|

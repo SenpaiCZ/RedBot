@@ -81,7 +81,7 @@ Generate backstory
 | !newInv                                  | Create a new investigator                   |
 | !autoChar                                | Generate random stats for an investigator   |
 | !mychar                                  | Show stats and skills                       |
-| !cstat statName>                       | Edit investigator stats                     |
+| !cstat statName                       | Edit investigator stats                     |
 | !cskill skillName                     | Edit investigator skills                    |
 | !deleteInvestigator                      | Delete your investigator                   |
 | !mb                                      | Show backstory and inventory                |

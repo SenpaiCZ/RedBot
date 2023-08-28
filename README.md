@@ -92,6 +92,10 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms2.jpg)
 
+# Random loot generator
+
+![Loot generator](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/loot%20generator.jpg)
+
 # Cthulhu Cog Commands
 
 | Command                                  | Description                                 |
@@ -116,4 +120,5 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !gbackstory                              | Generate a random backstory (it will not be saved to your investigator)                 |
 | !cyear year                            | Historical information about a year         |
 | !firearms name                            | Information about firearms in CoC from 1920s and modern (without name you will get list of weapons)        |
+| !cloot                       | Generate random loot from 1920 (25% for money being inclooded)        |
 

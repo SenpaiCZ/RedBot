@@ -38,6 +38,10 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Generating random character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/autochar.jpg)
 
+# Change skill or stat
+
+![Edit skill of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/cskill.jpg)
+
 # Show character stats
 
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.jpg)
@@ -50,19 +54,15 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d.jpg)
 
+# Check for skill
+
+![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d%20listen.jpg)
+
 # Using luck for rolls (in this example its roll with bonus die)
 
 ![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck.jpg)
 
 ![using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck%202.jpg)
-
-# Check for skill
-
-![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d%20listen.jpg)
-
-# Change skill
-
-![Edit skill of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/cskill.jpg)
 
 # Generate random NPC
 

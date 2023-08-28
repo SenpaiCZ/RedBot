@@ -30,6 +30,491 @@ class CthulhuCog(commands.Cog):
     def get_nearest_description(self, value, descriptions):
         nearest_value = min(descriptions.keys(), key=lambda x: abs(x - value))
         return descriptions[nearest_value]
+        
+    def get_firearms_data():
+        return {
+            "Remington Double Derringer M95": {
+                "description": "A classic double-barrel derringer design.",
+                "year": "1866 onwards",
+                "cost": "$60 (1920s price)",
+                "range": "3 yards",
+                "shots_per_round": "1 (2 max) shots per round",
+                "capacity": "2",
+                "damage": "1D10",
+                "malfunction": "100"
+            },
+            "Colt Single Action Army Revolver M1873": {
+                "description": 'Called "the Peacemaker" or the "Frontier Six-Shooter," the single-action Colt is an Old West classic.',
+                "year": "1872 onwards",
+                "cost": "$30 (1920s price)",
+                "range": "15 yards",
+                "shots_per_round": "1 (3 max) shots per round",
+                "capacity": "6",
+                "damage": "1D10+2 (.45) or 1D6 (.22)",
+                "malfunction": "100"
+            },
+            "Colt .45 Automatic M1911": {
+                "description": "First adopted by the military in 1911, this popular handgun saw service in numerous wars, law enforcement, and in civilian sectors. Using the powerful .45 ACP round, this gun has excellent stopping power. It has a seven-round detachable box magazine that loads into the grip. It is extremely reliable even under adverse conditions.",
+                "year": "1911 onwards",
+                "cost": "$40",
+                "range": "15 yards",
+                "shots_per_round": "1 (3 max) shots per round",
+                "capacity": "7",
+                "damage": "1D10+2",
+                "malfunction": "100"
+            },
+            "Mauser 'Broomhandle' Pistol M1912": {
+                "description": 'One of the most distinctive handguns ever produced, the semiautomatic "Broomhandle" takes its name from its narrow wooden grip. The Mauser first appeared in 1896 and has been constantly updated since. It is available in a range of calibers, including 9mm parabellum, and a Chinese version that accepts .45 ACP rounds. A Spanish version, the Astra M900, appears in 1928. Most models accept a shoulder stock. The slender grip is too small to house a magazine, which is instead mounted in front of the trigger guard. Clumsy to handle and expensive to manufacture, by the time of the Second World War the Broomhandle was relegated to secondary troops. In the 1920s they are used mostly by law enforcement personnel and security troops.',
+                "year": "1896 onwards",
+                "cost": "$50 (1920s price)",
+                "range": "15 yards",
+                "shots_per_round": "1 (3 max) shots per round",
+                "capacity": "10",
+                "damage": "1D10+2 (.45) or 1D10 (9mm)",
+                "malfunction": "100"
+            },
+            "Webley-Fosbery Automatic Revolver": {
+                "description": "A unique weapon, the Webley uses the force of its recoil to rotate the chamber rather than trigger-pull, making it the only semiautomatic revolver on the market. Despite rejection by the British military, it is manufactured until 1939 in both .38 and .455 calibers. The Webley-Fosbery is prone to jams unless kept clean but, unlike most revolvers, it features a safety.",
+                "year": "1901 onwards",
+                "cost": "$30-40",
+                "range": "15 yards",
+                "shots_per_round": "1 (3 max) shots per round",
+                "capacity": "6 (.455) or 8 (.38)",
+                "damage": "1D10 (.38) or 1D10+2 (.455)",
+                "malfunction": "97-100"
+            },
+            "Winchester M1895 Rifle": {
+                "description": "This popular model was produced between 1895 and 1931, one of several Winchesters taken by Theodore Roosevelt on his hunting trip to Africa. Of lever-action design, it differs from the usual tubular magazine below the barrel, instead using a non-detachable box forward of the trigger guard. This reduces the rifle's capacity to four rounds, five in the .303 British version. Other calibers manufactured include a 7.62mm Spitzer made for the Russian government during the Great War, the only version incorporating stripper clips. Barrel lengths include the standard 30, 28, and 24-inch rifle lengths, as well as a cumbersome 36-inch long range version, and a 22-inch carbine model. The latter is available only in .30-30, .30-06, and .303 British calibers. Most military versions feature lugs for an 8-inch bayonet.",
+                "year": "1895 onwards",
+                "cost": "$80 (1920s price)",
+                "range": "110 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "4",
+                "damage": "2D6+4 (.30-30, 30-06 or 7.62mm)",
+                "malfunction": "99-100"
+            },
+            "Mauser M1898 Rifle": {
+                "description": "Available in both rifle and carbine versions, this successor to the M1888 is perhaps the ultimate in bolt-action design. Using the powerful 7.92mm Mauser round, a five-round stripper clip permits quick reloading. The M1898 accommodates any one of several types of bayonets, including the notorious saw-backed 'butcher blade.' This weapon was produced in massive quantities and proved as capable of bringing down big game as well as waging war.",
+                "year": "1898 onwards",
+                "cost": "$80 (1920s price)",
+                "range": "110 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "5",
+                "damage": "2D6+4",
+                "malfunction": "99-100"
+            },
+            "Springfield M1903 Rifle": {
+                "description": "This rugged, bolt-action rifle, regular issue for U.S. troops during the Great War, was a close copy of the Mauser M1898. Standard caliber after 1906 was the .30-06 cartridge in a five-round clip. Barrel length is a short 24 inches. These models are still prized by serious marksmen.",
+                "year": "1903 onwards",
+                "cost": "$80 (1920s price)",
+                "range": "110 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "5",
+                "damage": "2D6+4",
+                "malfunction": "99-100"
+            },
+            "Lee-Enfield Mark III Rifle": {
+                "description": "A replacement for the outdated Lee-Metford series, this British rifle uses the .303 British cartridge. Features a smooth bolt-action design, but takes advantage of a ten-round magazine for longer firing. The Mark III was the most common Lee-Enfield of the Great War.",
+                "year": "1907 onwards",
+                "cost": "$50",
+                "range": "110 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "10",
+                "damage": "2D6+4",
+                "malfunction": "100"
+            },
+            "Remington M1889": {
+                "description": "The last in a series that began with the M1883, this double-barrel shotgun with exposed hammers is available in 10, 12, and 16-gauge, with barrel lengths ranging between 28 and 32 inches. When production ceased in 1909, over 37,500 of these firearms had been produced.",
+                "year": "1889 onwards",
+                "cost": "$35-40",
+                "range": "50 yards",
+                "shots_per_round": "1 or 2 shots per round",
+                "capacity": "2",
+                "damage": "1D10+5 (16-gauge slug) or 1D10+6 (12-gauge slug) or 1D10+7 (10-gauge slug) or 4D6+2/2D6+1/1D6 (10-gauge buckshot at 10/20/50 yards) or 4D6/2D6/1D6 (12-gauge buckshot at 10/20/50 yards) or 2D6+2/1D6+1/1D4 (16-gauge buckshot at 10/20/50 yards)",
+                "malfunction": "100"
+            },
+            "Winchester M1887 Shotgun and M1901 Shotgun": {
+                "description": "This distinctive, lever-action, hammer shotgun was popular despite its strange, even ugly appearance. Two models were produced: the M1887 in 10- and 12-gauge black powder, and the M1901 in 10-gauge smokeless powder. Both feature five-round, tubular magazines. In 1898, both versions became available in short-barrel riot versions.",
+                "year": "1897 and 1901 onwards",
+                "cost": "$50",
+                "range": "50 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "5",
+                "damage": "1D10+6 (12-gauge slug) or 1D10+7 (10-gauge slug) or 4D6/2D6/1D6 (buckshot at 10/20/50 yards)",
+                "malfunction": "100"
+            },
+            "Winchester M1897 Shotgun": {
+                "description": "Intended as a replacement for the trouble-plagued M1893, this shotgun was a tremendous success. Pump-action, with an exposed hammer, over a million were produced between 1897 and 1957. A popular hunting weapon, seeing great use in the civilian sector. Thousands of trench versions served the military, while a riot version was marketed to law enforcement agencies.",
+                "year": "1897 onwards",
+                "cost": "$45",
+                "range": "50 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "5",
+                "damage": "1D10+6 (12-gauge slug) or 1D10+7 (10-gauge slug) or 4D6+2/2D6+1/1D6 (10-gauge buckshot at 10/20/50 yards) or 4D6/2D6/1D6 (12-gauge buckshot at 10/20/50 yards)",
+                "malfunction": "100"
+            },
+            "Winchester M1912 Shotgun": {
+                "description": "This common firearm, a pump-action hammerless design, is available in 12, 16, and 20-gauge (28-gauge in 1934). Riot and trench versions were first produced in 1918. The riot gun is fairly common but after the end of the Great War the trench model must be special-ordered.",
+                "year": "1912 onwards",
+                "cost": "$70",
+                "range": "50 yards",
+                "shots_per_round": "1 shot per round",
+                "capacity": "5",
+                "damage": "1D10+5 (16-gauge slug) or 1D10+6 (12-gauge slug) or 1D10+7 (10-gauge slug) or 4D6+2/2D6+1/1D6 (10-gauge buckshot at 10/20/50 yards) or 4D6/2D6/1D6 (12-gauge buckshot at 10/20/50 yards) or 2D6+2/1D6+1/1D4 (16-gauge buckshot at 10/20/50 yards)",
+                "malfunction": "100"
+            },
+            "Bergmann MP18I": {
+                "description": "This weapon was developed near the end of the Great War. Chambered for 9mm Parabellum, it fired automatic only at a cyclic rate of 350-400 rounds per minute from a 20-round drum magazine. The MP28II is a later version, developed in secret in violation of Germany's surrender conditions. It features minor internal modifications, better sights, and a choice of 20 or 30-round box magazines, or a 32-round snail drum. A selector switch allows a choice of semiautomatic or fully automatic fire.",
+                "year": "1918 onwards",
+                "cost": "$1000+ (black market)",
+                "range": "20 yards",
+                "shots_per_round": "1 (2) shots per round or full auto",
+                "capacity": "20/30/32",
+                "damage": "1D10",
+                "malfunction": "96-100"
+            },
+            "Thompson M1921": {
+                "description": "M1921 is a modified version of the original model introduced in 1919. Chambered for the .45 ACP, the 'Tommy gun' uses either 20 or 30-round box magazines, or the more cumbersome 50 or 100-round drums. It has a cyclic firing rate of 800 rounds per minute. The 1928 model features a horizontal forward grip (in place of the original pistol-grip) and a reduced firing rate of 650 rounds per minute.",
+                "year": "1921 onwards",
+                "cost": "$200+ ($1000+ black market)",
+                "range": "20 yards",
+                "shots_per_round": "1 shot per round or full auto",
+                "capacity": "20/30/50/100",
+                "damage": "1D10+2",
+                "malfunction": "96-100"
+            },
+            "Mark I Lewis Gun": {
+                "description": "The Lewis gun debuted in Belgium in 1913, soon after making its way into the arsenals of England, the U.S., and Japan. Chambered in either .303 British or .30-06 calibers, the fully automatic Lewis gun is fed by a circular drum holding 97 rounds mounted horizontally atop the gun. Although it has a shoulder stock, the Lewis gun's loaded weight of 47 pounds makes its short bipod and a prone firing position almost essential. Lewis Guns are particularly prone to jams. Lewis Guns were routinely fitted to aircraft, mounted on a swivel, and fired by a passenger. These usually dispense with the shoulder stock and opt for the larger, 97-round drum. They fire at a cyclic rate of 450-500 rounds per minute.",
+                "year": "1912 onwards",
+                "cost": "$3000+ (black market)",
+                "range": "110 yards",
+                "shots_per_round": "full auto",
+                "capacity": "27 (shoulder) or 97 (drum)",
+                "damage": "2D6+4",
+                "malfunction": "96-100"
+            },
+            "Browning M1918 Automatic Rifle": {
+                "description": "The famed BAR debuted in 1918. Chambered for the .30-06 round, it weighs an imposing 16 pounds but with the aid of its sling can still be supported and fired from a standing position. A selector switch allows a choice of semiautomatic or full automatic. It carries a 20-round box magazine.",
+                "year": "1918 onwards",
+                "cost": "$800+ (black market)",
+                "range": "90 yards",
+                "shots_per_round": "1 (2) or full auto",
+                "capacity": "20",
+                "damage": "2D6+4",
+                "malfunction": "100"
+            },
+            "Vickers .303 Caliber Machine Gun": {
+                "description": "Belt-fed and mounted on a heavy tripod, the British Vickers was first introduced in 1912. Firing a .303 cartridge, it has a cyclic rate of 450-500 rounds per minute. Water-cooled, the early models had a problem with steam rising from the barrel, obscuring the shooter's vision. Later models corrected this. This weapon features dual spade-handle handgrips, the trigger is depressed by the thumbs. A special, air-cooled version is suitable for aircraft only.",
+                "year": "1912 onwards",
+                "cost": "$5000+ (black market)",
+                "range": "110 yards",
+                "shots_per_round": "full auto",
+                "capacity": "250",
+                "damage": "2D6+4",
+                "malfunction": "99-100"
+            },
+            "Heckler & Koch MP5": {
+                "description": "A versatile submachine gun used by military and law enforcement around the world. Chambered for 9mm Parabellum, it offers a high rate of fire and accuracy in a compact package. Available in various configurations.",
+                "year": "1966 onwards",
+                "cost": "$1500+",
+                "range": "100 meters",
+                "shots_per_round": "full auto or semi-auto",
+                "capacity": "15/30/50-round magazines",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "AK-47": {
+                "description": "One of the most iconic assault rifles, the AK-47 is known for its reliability and simplicity. Chambered for 7.62x39mm, it has been widely used in conflicts around the world.",
+                "year": "1947 onwards",
+                "cost": "$500+",
+                "range": "300 meters",
+                "shots_per_round": "full auto or semi-auto",
+                "capacity": "30-round magazine",
+                "damage": "2D6+2",
+                "malfunction": "96-100"
+            },
+            "M16": {
+                "description": "The standard U.S. military rifle, the M16 has evolved over the years. Chambered for 5.56x45mm, it offers accuracy and modularity. Variants like the M4 are popular among special forces.",
+                "year": "1960 onwards",
+                "cost": "$1000+",
+                "range": "550 meters",
+                "shots_per_round": "semi-auto or burst",
+                "capacity": "20/30-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "Glock 17": {
+                "description": "A popular and reliable semiautomatic pistol used by law enforcement and civilians. Chambered for 9mm Parabellum, it features a polymer frame for reduced weight.",
+                "year": "1982 onwards",
+                "cost": "$500+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "17-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "98-100"
+            },
+            "FN SCAR": {
+                "description": "A modular assault rifle available in both 5.56x45mm and 7.62x51mm variants. It offers flexibility and adaptability to different combat scenarios.",
+                "year": "2009 onwards",
+                "cost": "$2000+",
+                "range": "600 meters",
+                "shots_per_round": "semi-auto or full auto",
+                "capacity": "20/30-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "SIG Sauer P226": {
+                "description": "A popular semiautomatic pistol used by military and law enforcement. Chambered for 9mm Parabellum, it offers accuracy and reliability.",
+                "year": "1983 onwards",
+                "cost": "$800+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "15-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "98-100"
+            },
+            "Barrett M82": {
+                "description": "A powerful anti-materiel rifle chambered for .50 BMG. Known for its long-range precision and stopping power, it's used for long-distance engagements and armor penetration.",
+                "year": "1982 onwards",
+                "cost": "$8000+",
+                "range": "1800 meters",
+                "shots_per_round": "bolt-action",
+                "capacity": "10-round magazine",
+                "damage": "4D6",
+                "malfunction": "97-100"
+            },
+            "MP7": {
+                "description": "A compact submachine gun designed for special forces and law enforcement. Chambered for 4.6x30mm, it offers high firepower in a small package.",
+                "year": "2001 onwards",
+                "cost": "$2000+",
+                "range": "200 meters",
+                "shots_per_round": "full auto or semi-auto",
+                "capacity": "20/40-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "Beretta M9": {
+                "description": "The standard U.S. military sidearm, the Beretta M9 is a 9mm semiautomatic pistol. Known for its reliability and accuracy, it's widely used by the armed forces.",
+                "year": "1985 onwards",
+                "cost": "$600+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "15-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "98-100"
+            },
+            "HK416": {
+                "description": "A modernized variant of the M4, the HK416 offers improved reliability and performance. Chambered for 5.56x45mm, it's used by special forces and law enforcement.",
+                "year": "2004 onwards",
+                "cost": "$1500+",
+                "range": "400 meters",
+                "shots_per_round": "semi-auto or burst",
+                "capacity": "20/30-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "FN P90": {
+                "description": "A compact personal defense weapon (PDW) chambered for 5.7x28mm. It features a high-capacity magazine positioned horizontally on top of the weapon.",
+                "year": "1990 onwards",
+                "cost": "$1500+",
+                "range": "200 meters",
+                "shots_per_round": "full auto or semi-auto",
+                "capacity": "50-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "Heckler & Koch G36": {
+                "description": "A versatile assault rifle chambered for 5.56x45mm, used by various military and law enforcement units. Its modular design allows customization.",
+                "year": "1996 onwards",
+                "cost": "$2000+",
+                "range": "400 meters",
+                "shots_per_round": "semi-auto or full auto",
+                "capacity": "20/30-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "Steyr AUG": {
+                "description": "An Austrian bullpup assault rifle chambered for 5.56x45mm. Known for its distinctive design, it offers good accuracy and is used by various armed forces.",
+                "year": "1978 onwards",
+                "cost": "$2000+",
+                "range": "300 meters",
+                "shots_per_round": "semi-auto or full auto",
+                "capacity": "30-round magazine",
+                "damage": "2D6",
+                "malfunction": "98-100"
+            },
+            "Ruger 10/22": {
+                "description": "A popular semiautomatic rimfire rifle chambered for .22 LR. Known for its reliability and affordability, it's often used for sport shooting and small game hunting.",
+                "year": "1964 onwards",
+                "cost": "$300+",
+                "range": "100 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "10/25-round magazine",
+                "damage": "1D4",
+                "malfunction": "99-100"
+            },
+            "CZ 75": {
+                "description": "A widely used semiautomatic pistol designed in Czechoslovakia. Chambered for 9mm Parabellum, it's known for its accuracy and all-steel construction.",
+                "year": "1975 onwards",
+                "cost": "$600+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "15/16-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "98-100"
+            },
+            "Remington 870": {
+                "description": "A pump-action shotgun available in various configurations and chamberings. Known for its reliability and versatility, it's used for hunting, sport shooting, and law enforcement.",
+                "year": "1950 onwards",
+                "cost": "$300+",
+                "range": "50 meters",
+                "shots_per_round": "1 or 2 shots per round",
+                "capacity": "4/6/8-round capacity",
+                "damage": "1D10+5 (12-gauge slug) or 4D6/2D6/1D6 (buckshot)",
+                "malfunction": "99-100"
+            },
+            "Desert Eagle": {
+                "description": "A powerful semiautomatic pistol chambered for various magnum calibers. Known for its large size and distinctive appearance, it's often used for sport shooting.",
+                "year": "1983 onwards",
+                "cost": "$1500+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "7/8/9-round magazine",
+                "damage": "2D6+2",
+                "malfunction": "98-100"
+            },
+            "Kel-Tec KSG": {
+                "description": "A bullpup pump-action shotgun known for its dual magazine tubes, allowing different types of ammunition to be loaded. Used for home defense and law enforcement.",
+                "year": "2011 onwards",
+                "cost": "$800+",
+                "range": "50 meters",
+                "shots_per_round": "1 or 2 shots per round",
+                "capacity": "6/7-round capacity",
+                "damage": "1D10+5 (12-gauge slug) or 4D6/2D6/1D6 (buckshot)",
+                "malfunction": "99-100"
+            },
+            "Springfield XD": {
+                "description": "A semiautomatic pistol chambered for various calibers. Known for its safety features and ergonomic design, it's used for self-defense and sport shooting.",
+                "year": "2001 onwards",
+                "cost": "$500+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "10/13/16-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "98-100"
+            },
+            "SIG Sauer P226": {
+                "description": "A popular semiautomatic pistol chambered for 9mm Parabellum. Known for its accuracy and reliability, it's used by law enforcement and military units worldwide.",
+                "year": "1980 onwards",
+                "cost": "$800+",
+                "range": "50 meters",
+                "shots_per_round": "semi-auto",
+                "capacity": "15/17/20-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "98-100"
+            },
+            "M1 Garand": {
+                "description": "A semiautomatic rifle chambered for .30-06 Springfield. Known for its distinctive 'ping' sound when the clip is ejected. Used by U.S. forces during WWII.",
+                "year": "1936-1957",
+                "cost": "$85",
+                "range": "500 meters",
+                "shots_per_round": "semiautomatic",
+                "capacity": "8-round en bloc clip",
+                "damage": "2D6+4",
+                "malfunction": "98-100"
+            },
+            "Thompson M1928A1": {
+                "description": "A submachine gun chambered for .45 ACP. Nicknamed the 'Tommy gun,' it was used by various military and law enforcement units during WWII.",
+                "year": "1921-1944",
+                "cost": "$225",
+                "range": "50 meters",
+                "shots_per_round": "semiautomatic or full auto",
+                "capacity": "20/30/50/100-round magazine",
+                "damage": "1D10+2",
+                "malfunction": "96-100"
+            },
+            "Sten Mk II": {
+                "description": "A British submachine gun chambered for 9mm Parabellum. Known for its simple design and mass production, it was used by Commonwealth forces during WWII.",
+                "year": "1941-1945",
+                "cost": "$10",
+                "range": "100 meters",
+                "shots_per_round": "full auto",
+                "capacity": "32-round magazine",
+                "damage": "1D10",
+                "malfunction": "96-100"
+            },
+            "MP40": {
+                "description": "A German submachine gun chambered for 9mm Parabellum. Known for its reliability and compact design, it was used by German forces during WWII.",
+                "year": "1940-1945",
+                "cost": "$30",
+                "range": "100 meters",
+                "shots_per_round": "full auto",
+                "capacity": "32-round magazine",
+                "damage": "1D10",
+                "malfunction": "98-100"
+            },
+            "Lee-Enfield No. 4 Mk I": {
+                "description": "A bolt-action rifle chambered for .303 British. Used by British and Commonwealth forces during WWII, known for its accuracy and durability.",
+                "year": "1941-1955",
+                "cost": "$25",
+                "range": "500 meters",
+                "shots_per_round": "bolt-action",
+                "capacity": "10-round magazine",
+                "damage": "2D6+4",
+                "malfunction": "98-100"
+            },
+            "Mosin-Nagant M91/30": {
+                "description": "A bolt-action rifle chambered for 7.62x54mmR. Used by Soviet forces during WWII, known for its ruggedness and widespread use.",
+                "year": "1891-1965",
+                "cost": "$15",
+                "range": "500 meters",
+                "shots_per_round": "bolt-action",
+                "capacity": "5-round internal magazine",
+                "damage": "2D6+4",
+                "malfunction": "98-100"
+            },
+            "MG42": {
+                "description": "A German general-purpose machine gun chambered for 7.92x57mm Mauser. Known for its high rate of fire and reliability, used by German forces during WWII.",
+                "year": "1942-1959",
+                "cost": "$75",
+                "range": "1100 meters",
+                "shots_per_round": "full auto",
+                "capacity": "50-round belt",
+                "damage": "2D6+4",
+                "malfunction": "99-100"
+            },
+            "M1A1 Bazooka": {
+                "description": "An American rocket-propelled grenade launcher used during WWII. Effective against tanks and armored vehicles.",
+                "year": "1942-1955",
+                "cost": "$100",
+                "range": "100 meters (antitank rockets)",
+                "shots_per_round": "single shot",
+                "capacity": "1 rocket",
+                "damage": "8D6",
+                "malfunction": "100"
+            },
+            "Karabiner 98k": {
+                "description": "A bolt-action rifle chambered for 7.92x57mm Mauser. Standard German infantry rifle during WWII, known for its accuracy and reliability.",
+                "year": "1935-1945",
+                "cost": "$35",
+                "range": "500 meters",
+                "shots_per_round": "bolt-action",
+                "capacity": "5-round internal magazine",
+                "damage": "2D6+4",
+                "malfunction": "98-100"
+            },
+            "PPSh-41": {
+                "description": "A Soviet submachine gun chambered for 7.62x25mm Tokarev. Known for its high rate of fire and simplicity, used by Soviet forces during WWII.",
+                "year": "1941-1961",
+                "cost": "$20",
+                "range": "100 meters",
+                "shots_per_round": "full auto",
+                "capacity": "35-round box or drum magazine",
+                "damage": "1D10",
+                "malfunction": "97-100"
+            },
+            # Další zbraně...
+        }
     
     def get_strength_description(self, value):
         descriptions = {
@@ -2135,6 +2620,31 @@ class CthulhuCog(commands.Cog):
         embed.add_field(name=":gem: Treasured Possessions:", value=selected_treasured_possessions, inline=False)
         embed.add_field(name=":beginner: Traits:", value=selected_traits, inline=False)
     
+        await ctx.send(embed=embed)
+
+
+    @commands.command(aliases=["cfirearms"])
+    async def cfirearms(self, ctx, *, weapon_name=None):
+        firearms_data = get_firearms_data()
+        matching_weapons = [weapon for weapon in firearms_data.keys() if weapon_name.lower() in weapon.lower()]
+
+        if not matching_weapons:
+            embed = discord.Embed(description="No matching weapons found.", color=discord.Color.red())
+        elif len(matching_weapons) == 1:
+            weapon_name = matching_weapons[0]
+            weapon_info = firearms_data[weapon_name]
+            embed = discord.Embed(title=weapon_name, description=weapon_info["description"], color=discord.Color.green())
+            embed.add_field(name="📅 Year", value=weapon_info["year"])
+            embed.add_field(name="💰 Cost", value=weapon_info["cost"])
+            embed.add_field(name="🎯 Range", value=weapon_info["range"])
+            embed.add_field(name="🔫 Shots per Round", value=weapon_info["shots_per_round"])
+            embed.add_field(name="📦 Capacity", value=weapon_info["capacity"])
+            embed.add_field(name="⚔️ Damage", value=weapon_info["damage"])
+            embed.add_field(name="🛠️ Malfunction", value=weapon_info["malfunction"])
+        else:
+            weapons_list = "\n".join(f"• {weapon}" for weapon in matching_weapons)
+            embed = discord.Embed(title="Matching Weapons", description=weapons_list, color=discord.Color.blue())
+
         await ctx.send(embed=embed)
         
     @commands.command()

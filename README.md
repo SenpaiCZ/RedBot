@@ -77,6 +77,12 @@ Generate backstory
 
 ![Generate random backstory](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/backstory%20generator.jpg)
 
+Show information about firearms
+
+![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms.jpg)
+
+![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms2.jpg)
+
 # Cthulhu Cog Commands
 
 | Command                                  | Description                                 |
@@ -96,10 +102,9 @@ Generate backstory
 | !rb category - itemID                | Delete a record from backstory or inventory|
 | !cname male/female                     | Generate a random name                      |
 | !cNPC male/female                      | Generate an NPC                             |
-| !skillinfo                               | List all skills                             |
-| !skillinfo skillName                  | Get info about a specific skill             |
-| !coccupations                            | List all occupations                        |
-| !coccupations occupationName          | Get info about a specific occupation       |
-| !gbackstory                              | Generate a random backstory                 |
-| !cyear <year>                            | Historical information about a year         |
+| !skillinfo skillName                  | Get info about a specific skill (without name of the skill you will get list of skills)            |                    |
+| !coccupations occupationName          | Get info about a specific occupation (without name you will get list of occupations)       |
+| !gbackstory                              | Generate a random backstory (it will not be saved to your investigator)                 |
+| !cyear year                            | Historical information about a year         |
+| !firearms name                            | Information about firearms in CoC from 1920s and modern (without name you will get list of weapons)        |
 

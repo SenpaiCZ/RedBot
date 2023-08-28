@@ -41,7 +41,7 @@ Roll die or multiple
 
 ![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d.jpg)
 
-Using luck for rolls
+Using luck for rolls (in this example its roll with bonus die)
 
 ![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck.jpg)
 

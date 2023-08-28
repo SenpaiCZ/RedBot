@@ -30,15 +30,15 @@ Whether you're a Keeper masterfully crafting the storyline or an investigator na
 Step into the realm of eldritch horrors and gripping narratives with the Cthulhu Discord Cog. Level up your Call of Cthulhu gameplay and embark on unforgettable adventures with the power of Discord and this versatile COG. Uncover the unknown and challenge the cosmic horrors that await!
 
 
-Generate random name with !cname male/female
+# Generate random name with !cname male/female
 
 ![Generating random name](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/name.jpg)
 
-Generate random character stats
+# Generate random character stats
 
 ![Generating random character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/autochar.jpg)
 
-Show character stats
+# Show character stats
 
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.jpg)
 
@@ -46,47 +46,47 @@ Show character stats
 
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs3.jpg)
 
-Roll die or multiple
+# Roll die or multiple
 
 ![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d.jpg)
 
-Using luck for rolls (in this example its roll with bonus die)
+# Using luck for rolls (in this example its roll with bonus die)
 
 ![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck.jpg)
 
 ![using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck%202.jpg)
 
-Check for skill
+# Check for skill
 
 ![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d%20listen.jpg)
 
-Change skill
+# Change skill
 
 ![Edit skill of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/cskill.jpg)
 
-Generate random NPC
+# Generate random NPC
 
 ![Generated random NPC](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/random%20npc.jpg)
 
-Get info about skills
+# Get info about skills
 
 ![List of skills](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/skillinfo.jpg)
 ![Show occult skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/skillinfo%20occult.jpg)
 
-Get info about occupations
+# Get info about occupations
 
 ![List of occupations](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/occupations.jpg)
 ![Get info about librarian](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/occupations%20librarian.jpg)
 
-Get info about year
+# Get info about year
 
 ![Year info](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/year%201923.jpg)
 
-Generate backstory
+# Generate backstory
 
 ![Generate random backstory](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/backstory%20generator.jpg)
 
-Show information about firearms
+# Show information about firearms
 
 ![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms.jpg)
 

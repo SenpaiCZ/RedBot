@@ -18,7 +18,21 @@ To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthul
 !cog install senpaicz CthulhuCog
 
 # Cthulhu Cog Info
-The Cthulhu Discord Cog is a versatile companion for your tabletop role-playing sessions based on the popular Call of Cthulhu game. With its intuitive commands, you can easily roll dice, perform skill checks, create new investigators, generate random stats and backstories, and manage your character's inventory. The bot also provides a wealth of information, including lists of skills and occupations, historical details about specific years, and the ability to generate random names and NPCs. Whether you're a Keeper or a player, this bot enhances your Call of Cthulhu experience by streamlining tasks and providing quick access to essential game mechanics.
+🐙 Elevate Your Call of Cthulhu RPG Experience with the Cthulhu Discord Cog! 🤖🎲
+
+Attention all tabletop RPG enthusiasts! I'm thrilled to introduce the Cthulhu Discord Cog, your ultimate companion for immersive Call of Cthulhu gaming sessions. Designed to streamline and enhance your gameplay, this COG brings a range of features to your fingertips.
+
+🎮 Seamlessly Manage Sessions: With intuitive commands, effortlessly roll dice, perform skill checks, and handle character actions—all within the Discord environment.
+
+🕵️‍♂️ Create Investigators on the Fly: Generate investigator characters with ease, complete with random stats, backstories, and even inventory management.
+
+🔍 Quick References at Your Fingertips: Access valuable game information, including skill lists, occupations, historical context, NPC generation, and more.
+
+📜 Enhance the Storytelling: Unleash your creativity with the ability to generate random names and NPCs, injecting spontaneity into your narratives.
+
+Whether you're a Keeper masterfully crafting the storyline or an investigator navigating through the mysteries, the Cthulhu Discord Cog is your trusty ally, making the Call of Cthulhu RPG smoother and more captivating than ever before.
+
+Step into the realm of eldritch horrors and gripping narratives with the Cthulhu Discord Cog. Level up your Call of Cthulhu gameplay and embark on unforgettable adventures with the power of Discord and this versatile COG. Uncover the unknown and challenge the cosmic horrors that await!
 
 
 Generate random name with !cname male/female

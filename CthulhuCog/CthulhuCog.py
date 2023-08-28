@@ -3816,10 +3816,10 @@ class CthulhuCog(commands.Cog):
         embed = discord.Embed(title="Random Loot", color=discord.Color.blue())
         for item in chosen_items:
             emoji = "\U0001F4E6"  # Emoji pro věc
-            embed.add_field(name=emoji, value=item, inline=False)
+            embed.add_field(name=f"{emoji} {item}", value='\u200b', inline=False)  # '\u200b' je prázdný znak
     
         if money is not None:
             emoji_money = "\U0001F4B5"  # Emoji pro peníze
-            embed.add_field(name=emoji_money, value=f"${money:.2f}", inline=False)
+            embed.add_field(name=f"{emoji_money} Money", value=f"${money:.2f}", inline=False)
     
         await ctx.send(embed=embed)

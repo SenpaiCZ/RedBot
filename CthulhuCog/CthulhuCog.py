@@ -2623,7 +2623,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=["cfirearms"])
+    @commands.command(aliases=["firearms"])
     async def cfirearms(self, ctx, *, weapon_name=None):
         firearms_data = get_firearms_data()
         matching_weapons = [weapon for weapon in firearms_data.keys() if weapon_name.lower() in weapon.lower()]

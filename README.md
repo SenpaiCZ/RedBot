@@ -1,8 +1,3 @@
-# SenpaiCZ Cogs for RedBot
-Its my first cog i ever made from scratch. If you find any issue let me know via discord @senpaicz.
-
-
-
 # Call of Cthulhu by Chaosium .inc
 To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthulhu Starter set or Pulp of Cthulhu published by Chaosium .inc
 

@@ -376,6 +376,8 @@ class CthulhuCog(commands.Cog):
             "Swim": 20,
             "Throw": 20,
             "Track": 10,
+            "Custom_skill_1": 0,
+            "Custom_skill_2": 0,
             "MAX_HP": -1,
             "MAX_MP": -1,
             "MAX_SAN": -1,
@@ -571,9 +573,9 @@ class CthulhuCog(commands.Cog):
             elif page == 2:
                 stats_range = range(17, 41)
             elif page == 3:
-                stats_range = range(41, 65)
+                stats_range = range(41, 67)
             else:
-                stats_range = range(65, len(stats_list))
+                stats_range = range(67, len(stats_list))
     
             for i in stats_range:
                 stat_name, value = stats_list[i]

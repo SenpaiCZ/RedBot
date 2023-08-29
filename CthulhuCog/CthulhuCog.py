@@ -428,7 +428,7 @@ class CthulhuCog(commands.Cog):
             else:
                 await ctx.send("Skill not found in your skills list.")
         else:
-            await ctx.send("Start by creating investigator !newInv.")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
     #Debugging command to check if your data are corrupted        
     @commands.command()
@@ -440,7 +440,7 @@ class CthulhuCog(commands.Cog):
             user_data_formatted = "\n".join([f"{skill}: {value}" for skill, value in user_data.items()])
             await ctx.send(f"Here is your user data:\n```{user_data_formatted}```")
         else:
-            await ctx.send("No user data found. Start by creating investigator !newInv.")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)

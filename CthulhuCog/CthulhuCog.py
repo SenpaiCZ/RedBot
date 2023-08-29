@@ -402,6 +402,7 @@ class CthulhuCog(commands.Cog):
     async def renameSkill(self, ctx, *, args):
         user_id = str(ctx.author.id)
         player_stats = await self.config.user(ctx.author).player_stats()
+        await ctx.send(player_stats)
     
         try:
             old_name, new_name = [part.strip() for part in args.split("->")]

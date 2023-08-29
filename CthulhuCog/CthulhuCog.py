@@ -203,11 +203,12 @@ class CthulhuCog(commands.Cog):
                 full_name = f"{first_name} {last_name}-{second_last_name}"
     
         return full_name
+        
     @commands.command(aliases=["diceroll"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:  
-            await ctx.send("You have not created investigator. Please start with !newInv")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
             try:
                 if dice_expression in self.player_stats[user_id]:
@@ -393,7 +394,7 @@ class CthulhuCog(commands.Cog):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send("You have not created investigator. Please start with !newInv")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
             if stat_name in self.player_stats[user_id]:
                 try:
@@ -452,7 +453,7 @@ class CthulhuCog(commands.Cog):
             else:
                 await ctx.send(f"Skill '{old_name}' was not found.")
         else:
-            await ctx.send("Start by creating investigator !newInv.")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
@@ -629,24 +630,25 @@ class CthulhuCog(commands.Cog):
     @commands.command(guild_only=True)
     async def deleteInvestigator(self, ctx):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
-        
+    
         if user_id in self.player_stats:
-            await ctx.send("Are you sure you want to delete your investigator? If you're sure, type 'YES' to confirm.")
+            investigator_name = self.player_stats[user_id]["NAME"]
+            await ctx.send(f"Are you sure you want to delete investigator '{investigator_name}'? "
+                           f"Type '{investigator_name}' to confirm or anything else to cancel.")
             
             def check(message):
-                return message.author == ctx.author and message.content.upper() == "YES"
+                return message.author == ctx.author and message.content.strip().title() == investigator_name
             
             try:
-                confirm_message = await self.bot.wait_for("message", check=check, timeout=30)
-            except TimeoutError:
-                await ctx.send("Confirmation timeout. Investigator deletion canceled.")
-                return
-            
-            del self.player_stats[user_id]
-            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn do souboru
-            await ctx.send("Investigator has been deleted.")
+                confirmation_msg = await self.bot.wait_for("message", timeout=30.0, check=check)
+            except asyncio.TimeoutError:
+                await ctx.send("Confirmation timed out. Investigator was not deleted.")
+            else:
+                del self.player_stats[user_id]
+                await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated dictionary
+                await ctx.send(f"Investigator '{investigator_name}' has been deleted.")
         else:
-            await ctx.send("You don't have an investigator to delete.")
+            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
 
          
@@ -655,7 +657,8 @@ class CthulhuCog(commands.Cog):
         user_id = str(ctx.author.id)
     
         if user_id not in self.player_stats:
-            self.player_stats[user_id] = {}
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
     
         input_text = input_text.strip()
         parts = input_text.split(" - ")
@@ -675,7 +678,7 @@ class CthulhuCog(commands.Cog):
     
         self.player_stats[user_id]["Backstory"][category].append(entry)
     
-        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+        await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
     
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
@@ -683,6 +686,9 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["mb"], guild_only=True)
     async def MyCthulhuBackstory(self, ctx):
         user_id = str(ctx.author.id)
+        if user_id not in self.player_stats:
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
         
         if user_id not in self.player_stats or "Backstory" not in self.player_stats[user_id]:
             await ctx.send("You don't have any backstory entries.")
@@ -710,6 +716,9 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["rb"], guild_only=True)
     async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
         user_id = str(ctx.author.id)
+        if user_id not in self.player_stats:
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
         
         if user_id not in self.player_stats or "Backstory" not in self.player_stats[user_id]:
             await ctx.send("You don't have any backstory entries.")
@@ -748,7 +757,9 @@ class CthulhuCog(commands.Cog):
     @commands.command(guild_only=True)
     async def db(self, ctx, *, skill_name):
         user_id = str(ctx.author.id)
-        
+        if user_id not in self.player_stats:
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
         if skill_name in self.player_stats[user_id]:
             skill_value = self.player_stats[user_id][skill_name]
             luck_value = self.player_stats[user_id]["LUCK"]
@@ -841,6 +852,9 @@ class CthulhuCog(commands.Cog):
     @commands.command(guild_only=True)
     async def dp(self, ctx, *, skill_name):
         user_id = str(ctx.author.id)
+        if user_id not in self.player_stats:
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
         
         if skill_name in self.player_stats[user_id]:
             skill_value = self.player_stats[user_id][skill_name]
@@ -1010,6 +1024,9 @@ class CthulhuCog(commands.Cog):
     @commands.command(guild_only=True)
     async def autoChar(self, ctx):
         user_id = str(ctx.author.id)
+        if user_id not in self.player_stats:
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            return
         
         # Check if the player has a character with all stats at 0
         if user_id in self.player_stats and all(self.player_stats[user_id][stat] == 0 for stat in ["STR", "DEX", "CON", "INT", "POW", "CHA", "EDU", "SIZ"]):
@@ -1078,7 +1095,7 @@ class CthulhuCog(commands.Cog):
             except asyncio.TimeoutError:
                 await ctx.send("You took too long to react. Automatic character stats creation canceled.")
         else:
-            await ctx.send("You dont have a investigator or you already have some stats assigned.")
+            await ctx.send("You already have some stats assigned to your investigator.")
 
 
 

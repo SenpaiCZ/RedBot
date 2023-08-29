@@ -581,9 +581,9 @@ class CthulhuCog(commands.Cog):
             elif page == 2:
                 stats_range = range(17, 41)
             elif page == 3:
-                stats_range = range(41, 66)
+                stats_range = range(41, 68)
             else:
-                stats_range = range(67, len(stats_list))
+                stats_range = range(69, len(stats_list))
     
             for i in stats_range:
                 stat_name, value = stats_list[i]

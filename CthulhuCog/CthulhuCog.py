@@ -2039,7 +2039,11 @@ class CthulhuCog(commands.Cog):
             lower_occupation_name = occupation_name.lower()
             occupation_info = occupations_info.get(lower_occupation_name)
             if occupation_info is None:
-                response = "Occupation not found."
+                response = (
+                    f"Occupation '{occupation_name}' not found.\n"
+                    f"Please choose an occupation from the list or check your spelling."
+                )
+                embed_title = "Invalid Occupation"
             else:
                 embed_title = occupation_name.capitalize()
                 description = occupation_info["description"]

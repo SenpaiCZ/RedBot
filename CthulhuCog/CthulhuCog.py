@@ -397,29 +397,32 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Start by creating investigator !newInv.")
 
 
-
+    
     @commands.command(aliases=["rSkill"], guild_only=True)
     async def renameSkill(self, ctx, *, args):
         user_id = str(ctx.author.id)
-        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
-            return
         player_stats = await self.config.user(ctx.author).player_stats()
-        
+    
         try:
             old_name, new_name = [part.strip() for part in args.split("->")]
         except ValueError:
             await ctx.send("Incorrect command format. Please use: !renameSkill old_name -> new_name")
             return
-        
-        if user_id in player_stats and old_name in player_stats[user_id]:
-            skill_value = player_stats[user_id][old_name]
-            player_stats[user_id][new_name] = skill_value
-            del player_stats[user_id][old_name]
-            await self.config.user(ctx.author).player_stats.set(player_stats)  # Save the changes to Redbot Config
-            await ctx.send(f"Skill '{old_name}' has been renamed to '{new_name}'.")
+    
+        if user_id in player_stats:
+            temp_player_stats = player_stats[user_id].copy()
+            if old_name in temp_player_stats:
+                skill_value = temp_player_stats[old_name]
+                del temp_player_stats[old_name]
+                temp_player_stats[new_name] = skill_value
+                player_stats[user_id] = temp_player_stats
+                await self.config.user(ctx.author).player_stats.set(player_stats)
+                await ctx.send(f"Skill '{old_name}' has been renamed to '{new_name}'.")
+            else:
+                await ctx.send(f"Skill '{old_name}' was not found.")
         else:
-            await ctx.send(f"Skill '{old_name}' was not found.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+
 
 
 

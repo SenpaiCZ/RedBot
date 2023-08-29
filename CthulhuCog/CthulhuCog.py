@@ -160,122 +160,159 @@ class CthulhuCog(commands.Cog):
             99: "Exceptional sanity, unshaken even by the most terrifying experiences. Human maximum.",
         }
         return self.get_stat_description(value, descriptions)
+
+    def get_random_name(gender):
+        name_list = []
+        if gender == "male":
+            name_list = [ "Aaron", "Abraham", "Addison", "Amos", "Anderson", "Archibald", "August", "Barnabas", "Barney", "Baxter","Blair", "Caleb", "Cecil", "Chester", "Clifford", "Clinton", "Cornelius", "Curtis", "Dayton", "Delbert","Douglas", "Dudley", "Ernest", "Eldridge", "Elijah", "Emanuel", "Emmet", "Enoch", "Ephraim", "Everett",
+                           "Ezekiel", "Forest", "Gilbert", "Granville", "Gustaf", "Hampton", "Harmon", "Henderson", "Herman","Hilliard", "Howard", "Hudson", "Irvin", "Issac", "Jackson", "Jacob", "Jeremiah", "Jonah", "Josiah","Kirk", "Larkin", "Leland", "Leopold", "Lloyd", "Luther", "Manford", "Marcellus", "Martin", "Mason",
+                           "Maurice", "Maynard", "Melvin", "Miles", "Milton", "Morgan", "Mortimer", "Moses", "Napoleon", "Nelson","Newton", "Noble", "Oliver", "Orson", "Oswald", "Pablo", "Percival", "Porter", "Quincy", "Randall",
+                           "Reginald", "Richmond", "Rodney", "Roscoe", "Rowland", "Rupert", "Sampson", "Sanford", "Sebastian","Shelby", "Sidney", "Solomon", "Squire", "Sterling", "Sidney", "Thaddeus", "Walter", "Wilbur", "Wilfred",
+                           "Zadok", "Zebedee"]
+        elif gender == "female":
+            name_list = [ "Adelaide", "Agatha", "Agnes", "Albertina", "Almeda", "Amelia", "Anastasia", "Annabelle", "Asenath", "Augusta","Barbara", "Bernadette", "Bernice", "Beryl", "Beulah", "Camilla", "Caroline", "Cecilia", "Carmen","Charity", "Christina", "Clarissa", "Cordelia", "Cynthia", "Daisy", "Dolores", "Doris", "Edith",
+                             "Edna", "Eloise", "Elouise", "Estelle", "Ethel", "Eudora", "Eugenie", "Eunice", "Florence", "Frieda","Genevieve", "Gertrude", "Gladys", "Gretchen", "Hannah", "Henrietta", "Ingrid", "Irene", "Iris","Ivy", "Jeanette", "Jezebel", "Josephine", "Joyce", "Juanita", "Keziah", "Laverne", "Leonora", "Loretta",
+                             "Lucretia", "Mabel", "Madeleine", "Margery", "Marguerite", "Marjorie", "Matilda", "Melinda", "Mercedes","Mildred", "Millicent", "Muriel", "Myrtle", "Naomi", "Nora", "Octavia", "Ophelia", "Pansy", "Patience","Pearle", "Phoebe", "Phyllis", "Rosemary", "Ruby", "Sadie", "Selina", "Selma", "Sibyl", "Sylvia", "Tabitha",
+                             "Ursula", "Veronica", "Violet", "Virginia", "Wanda", "Wilhelmina", "Winifred"]
+        else:
+            return None  # Neplatné pohlaví
     
-    # Stejně pro další metody get_constitution_description, get_dexterity_description a tak dále...
+        first_name = random.choice(name_list)
+        last_name_list = ["Abraham", "Adler", "Ankins", "Avery", "Barnham", "Bentz", "Bessler", "Blakely", "Bleeker", "Bouche","Bretz", "Buchman", "Butts", "Caffey", "Click", "Cordova", "Crabtree", "Crankovitch", "Cuthburt","Cutting", "Dorman", "Eakley", "Eddie", "Fandrick", "Farwell", "Feigel", "Fenske", "Fillman",
+                         "Finley", "Firske", "Flanagan", "Franklin", "Freeman", "Frisbe", "Gore", "Greenwald", "Hahn","Hammermeister", "Heminger", "Hogue", "Hollister", "Kasper", "Kisro", "Kleeman", "Lake", "Levard","Lockhart", "Luckstrim", "Lynch", "Mantei", "Marsh", "McBurney", "McCarney", "Moses", "Nickels",
+                         "O'Neil", "Olson", "Ozanich", "Patterson", "Patzer", "Peppin", "Porter", "Posch", "Raslo", "Razner","Rifenberg", "Riley", "Ripley", "Rossini", "Schiltgan", "Schmidt", "Schroeder", "Schwartz", "Shane","Shattuck", "Shea", "Slaughter", "Smith", "Speltzer", "Stimac", "Stimac","Strenburg","Strong","Swanson",
+                        "Tillinghast","Traver","Urton","Vallier","Wagner","Walsted","Wang","Warner","Webber","Welch","Winters","Yarbrough","Yeske"
+       ] 
+    
+        last_name = random.choice(last_name_list)
+    
+        if random.random() < 0.5:
+            if random.random() < 0.7:
+                second_first_name = random.choice(name_list)
+                full_name = f"{first_name} {second_first_name} {last_name}"
+            else:
+                second_first_name = random.choice(name_list)
+                second_last_name = random.choice(last_name_list)
+                full_name = f"{first_name} {second_first_name} {last_name}-{second_last_name}"
+    
+        else:
+            if random.random() < 0.7:
+                full_name = f"{first_name} {last_name}"
+            else:
+                second_last_name = random.choice(last_name_list)
+                full_name = f"{first_name} {last_name}-{second_last_name}"
+    
+        return full_name
     @commands.command(aliases=["diceroll"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
-        
-        if "Backstory" not in self.player_stats.get(user_id, {}):
-            self.player_stats[user_id]["Backstory"] = {}
-        
-        try:
-            if dice_expression in self.player_stats[user_id]:
-                skill_name = dice_expression
-                
-                skill_value = self.player_stats[user_id][skill_name]
-                luck_value = self.player_stats[user_id]["LUCK"]
-                name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
-                
-                roll = random.randint(1, 100)
-                
-                if roll == 1:
-                    result = "CRITICAL! :star2:"
-                elif roll <= skill_value // 5:
-                    result = "Extreme Success :star:"
-                elif roll <= skill_value // 2:
-                    result = "Hard Success :white_check_mark:"
-                elif roll <= skill_value:
-                    result = "Regular Success :heavy_check_mark:"
-                elif roll > 95:
-                    result = "Fumble :warning:"
-                else:
-                    result = "Fail :x:"
-                
-                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
-                
-                embed = discord.Embed(
-                    title=f"{name_value}'s Skill Check for '{skill_name}'",
-                    description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
-                    color=discord.Color.green()
-                )
-                
-                if roll > skill_value and roll <= skill_value + 10 and luck_value >= roll - skill_value:
-                    difference = roll - skill_value
-                    prompt_embed = discord.Embed(
-                        title="Use LUCK?",
-                        description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
-                                    "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
-                        color=discord.Color.orange()
-                    )
-                    prompt_message = await ctx.send(embed=prompt_embed)
+        if user_id not in self.player_stats:  
+            await ctx.send("You have not created investigator. Please start with !newInv")
+        else:
+            try:
+                if dice_expression in self.player_stats[user_id]:
+                    skill_name = dice_expression
                     
-                    def check(message):
-                        return message.author == ctx.author and message.content.lower() in ["yes", "no"]
+                    skill_value = self.player_stats[user_id][skill_name]
+                    luck_value = self.player_stats[user_id]["LUCK"]
+                    name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
                     
-                    try:
-                        response = await self.bot.wait_for("message", timeout=60, check=check)
-                        await prompt_message.delete()
-                        
-                        if response.content.lower() == "yes":
-                            luck_used = min(luck_value, difference)
-                            luck_value -= luck_used
-                            self.player_stats[user_id]["LUCK"] = luck_value
-                            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn LUCK do dat
-                            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                            result = "Regular Success (LUCK Used) :heavy_check_mark:"
-                            skill_value += luck_used
-                            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
-
-                        else:
-                            result = "Fail :x:"
-                        
-                        embed = discord.Embed(
-                            title=f"{name_value}'s Skill Check for '{skill_name}'",
-                            description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
-                            color=discord.Color.green()
-                        )
-                    except asyncio.TimeoutError:
-                        await prompt_message.delete()
-                
-                await ctx.send(embed=embed)
-            else:
-                num_dice, dice_type = map(int, dice_expression.lower().split('d'))
-                if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
+                    roll = random.randint(1, 100)
+                    
+                    if roll == 1:
+                        result = "CRITICAL! :star2:"
+                    elif roll <= skill_value // 5:
+                        result = "Extreme Success :star:"
+                    elif roll <= skill_value // 2:
+                        result = "Hard Success :white_check_mark:"
+                    elif roll <= skill_value:
+                        result = "Regular Success :heavy_check_mark:"
+                    elif roll > 95:
+                        result = "Fumble :warning:"
+                    else:
+                        result = "Fail :x:"
+                    
+                    formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                    formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+                    
                     embed = discord.Embed(
-                        title="Invalid Dice Type",
-                        description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
-                        color=discord.Color.red()
+                        title=f"{name_value}'s Skill Check for '{skill_name}'",
+                        description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                        color=discord.Color.green()
                     )
-                    await ctx.send(embed=embed)
-                    return
-                
-                rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
-                total = sum(rolls)
-                rolls_str = ", ".join(map(str, rolls))
-                
-                embed = discord.Embed(
-                    title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                    description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
-                    color=discord.Color.green()
-                )
-            
-                await ctx.send(embed=embed)
-        except ValueError:
-            embed = discord.Embed(
-                title="Invalid Input",
-                description="Use format !d <skill_name> or XdY where X is the number of dice and Y is the dice type.",
-                color=discord.Color.red()
-            )
-            await ctx.send(embed=embed)
+                    
+                    if roll > skill_value and roll <= skill_value + 10 and luck_value >= roll - skill_value:
+                        difference = roll - skill_value
+                        prompt_embed = discord.Embed(
+                            title="Use LUCK?",
+                            description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
+                                        "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
+                            color=discord.Color.orange()
+                        )
+                        prompt_message = await ctx.send(embed=prompt_embed)
+                        
+                        def check(message):
+                            return message.author == ctx.author and message.content.lower() in ["yes", "no"]
+                        
+                        try:
+                            response = await self.bot.wait_for("message", timeout=60, check=check)
+                            await prompt_message.delete()
+                            
+                            if response.content.lower() == "yes":
+                                luck_used = min(luck_value, difference)
+                                luck_value -= luck_used
+                                self.player_stats[user_id]["LUCK"] = luck_value
+                                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn LUCK do dat
+                                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                                result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                                skill_value += luck_used
+                                formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
     
-
-
+                            else:
+                                result = "Fail :x:"
+                            
+                            embed = discord.Embed(
+                                title=f"{name_value}'s Skill Check for '{skill_name}'",
+                                description=f":game_die: Rolled: {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                                color=discord.Color.green()
+                            )
+                        except asyncio.TimeoutError:
+                            await prompt_message.delete()
+                    
+                    await ctx.send(embed=embed)
+                else:
+                    num_dice, dice_type = map(int, dice_expression.lower().split('d'))
+                    if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
+                        embed = discord.Embed(
+                            title="Invalid Dice Type",
+                            description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
+                            color=discord.Color.red()
+                        )
+                        await ctx.send(embed=embed)
+                        return
+                    
+                    rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
+                    total = sum(rolls)
+                    rolls_str = ", ".join(map(str, rolls))
+                    
+                    embed = discord.Embed(
+                        title=f"Rolled {num_dice} :game_die:d{dice_type}:",
+                        description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
+                        color=discord.Color.green()
+                    )
+                
+                    await ctx.send(embed=embed)
+            except ValueError:
+                embed = discord.Embed(
+                    title="Invalid Input",
+                    description="Use format !d <skill_name> or XdY where X is the number of dice and Y is the dice type.",
+                    color=discord.Color.red()
+                )
+                await ctx.send(embed=embed)
+    
     @commands.command(aliases=["newInv"], guild_only=True)
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
-        
         if user_id not in self.player_stats:
             self.player_stats[user_id] = {
             "NAME": investigator_name,
@@ -338,10 +375,14 @@ class CthulhuCog(commands.Cog):
             "Age": 20,
             "Move": -1,
             "Build": -1,
-            "Damage Bonus": -1
+            "Damage Bonus": -1,
+            "MAX_HP": -1,
+            "MAX_MP": -1,
+            "MAX_SAN": -1,
+            "Backstory":{}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
-            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0.")
+            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing command !autoChar or you can fill your stats with !cstat and !cskill.")
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
             
@@ -350,28 +391,18 @@ class CthulhuCog(commands.Cog):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            self.player_stats[user_id] = {}
-        
-        if stat_name in self.player_stats[user_id]:
-            try:
-                new_value = int(new_value)
-                
-                # Handle special cases for DEX and EDU
-                if stat_name == "DEX":
-                    self.player_stats[user_id][stat_name] = new_value
-                    self.player_stats[user_id]["Dodge"] = new_value // 2  # Save half of DEX value as Dodge
-                elif stat_name == "EDU":
-                    self.player_stats[user_id][stat_name] = new_value
-                    self.player_stats[user_id]["Language (own)"] = new_value  # Save EDU value as Language (own)
-                else:
-                    self.player_stats[user_id][stat_name] = new_value
-                    
-                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
-            except ValueError:
-                await ctx.send("Invalid new value. Please provide a number.")
+            await ctx.send("You have not created investigator. Please start with !newInv")
         else:
-            await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+            if stat_name in self.player_stats[user_id]:
+                try:
+                    new_value = int(new_value)
+                    self.player_stats[user_id][stat_name] = new_value
+                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                    await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
+                except ValueError:
+                    await ctx.send("Invalid new value. Please provide a number.")
+            else:
+                await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
 
             
     @commands.command(aliases=["cskill"], guild_only=True)
@@ -390,9 +421,6 @@ class CthulhuCog(commands.Cog):
         changable_skills = [
             "Accounting", "Anthropology", "Appraise", "Archaeology", "Charm", "Climb", "Credit Rating", "Cthulhu Mythos", "Disguise", "Dodge", "Drive Auto", "Elect. Repair", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)", "Firearms (Rifle/Shotgun)", "First Aid", "History", "Intimidate", "Jump", "Language (Other)", "Language (Own)", "Law", "Library Use", "Listen", "Locksmith", "Mech. Repair", "Medicine", "Natural World", "Navigate", "Occult", "Persuade", "Pilot", "Psychoanalysis", "Psychology", "Ride", "Science (Specific)", "Sleight of Hand", "Spot Hidden", "Stealth", "Survival", "Swim", "Throw", "Track", "Move", "Build", "Damage Bonus"
         ]
-        
-        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            self.player_stats[user_id] = {}
         
         if skill_name in changable_skills:
             try:
@@ -887,64 +915,17 @@ class CthulhuCog(commands.Cog):
     async def cname(self, ctx, gender):
         gender = gender.lower()
         
-        if gender == "male":
-            name_list = [
-                "Aaron", "Abraham", "Addison", "Amos", "Anderson", "Archibald", "August", "Barnabas", "Barney", "Baxter",
-                           "Blair", "Caleb", "Cecil", "Chester", "Clifford", "Clinton", "Cornelius", "Curtis", "Dayton", "Delbert",
-                           "Douglas", "Dudley", "Ernest", "Eldridge", "Elijah", "Emanuel", "Emmet", "Enoch", "Ephraim", "Everett",
-                           "Ezekiel", "Forest", "Gilbert", "Granville", "Gustaf", "Hampton", "Harmon", "Henderson", "Herman",
-                           "Hilliard", "Howard", "Hudson", "Irvin", "Issac", "Jackson", "Jacob", "Jeremiah", "Jonah", "Josiah",
-                           "Kirk", "Larkin", "Leland", "Leopold", "Lloyd", "Luther", "Manford", "Marcellus", "Martin", "Mason",
-                           "Maurice", "Maynard", "Melvin", "Miles", "Milton", "Morgan", "Mortimer", "Moses", "Napoleon", "Nelson",
-                           "Newton", "Noble", "Oliver", "Orson", "Oswald", "Pablo", "Percival", "Porter", "Quincy", "Randall",
-                           "Reginald", "Richmond", "Rodney", "Roscoe", "Rowland", "Rupert", "Sampson", "Sanford", "Sebastian",
-                           "Shelby", "Sidney", "Solomon", "Squire", "Sterling", "Sidney", "Thaddeus", "Walter", "Wilbur", "Wilfred",
-                           "Zadok", "Zebedee"
-            ]
-        elif gender == "female":
-            name_list = [
-                "Adelaide", "Agatha", "Agnes", "Albertina", "Almeda", "Amelia", "Anastasia", "Annabelle", "Asenath", "Augusta",
-                             "Barbara", "Bernadette", "Bernice", "Beryl", "Beulah", "Camilla", "Caroline", "Cecilia", "Carmen",
-                             "Charity", "Christina", "Clarissa", "Cordelia", "Cynthia", "Daisy", "Dolores", "Doris", "Edith",
-                             "Edna", "Eloise", "Elouise", "Estelle", "Ethel", "Eudora", "Eugenie", "Eunice", "Florence", "Frieda",
-                             "Genevieve", "Gertrude", "Gladys", "Gretchen", "Hannah", "Henrietta", "Ingrid", "Irene", "Iris",
-                             "Ivy", "Jeanette", "Jezebel", "Josephine", "Joyce", "Juanita", "Keziah", "Laverne", "Leonora", "Loretta",
-                             "Lucretia", "Mabel", "Madeleine", "Margery", "Marguerite", "Marjorie", "Matilda", "Melinda", "Mercedes",
-                             "Mildred", "Millicent", "Muriel", "Myrtle", "Naomi", "Nora", "Octavia", "Ophelia", "Pansy", "Patience",
-                             "Pearle", "Phoebe", "Phyllis", "Rosemary", "Ruby", "Sadie", "Selina", "Selma", "Sibyl", "Sylvia", "Tabitha",
-                             "Ursula", "Veronica", "Violet", "Virginia", "Wanda", "Wilhelmina", "Winifred"
-            ]
+        full_name = get_random_name(gender)
+        
+        if full_name:
+            embed = discord.Embed(
+                title="Random name for Call of Cthulhu",
+                description=f":game_die: **{full_name}** :game_die:",
+                color=discord.Color.blue()
+            )
+            await ctx.send(embed=embed)
         else:
             await ctx.send("Invalid gender. Use 'male' or 'female'.")
-            return
-        
-        first_name = random.choice(name_list)
-        last_name = random.choice([
-            "Abraham", "Adler", "Ankins", "Avery", "Barnham", "Bentz", "Bessler", "Blakely", "Bleeker", "Bouche",
-                         "Bretz", "Buchman", "Butts", "Caffey", "Click", "Cordova", "Crabtree", "Crankovitch", "Cuthburt",
-                         "Cutting", "Dorman", "Eakley", "Eddie", "Fandrick", "Farwell", "Feigel", "Fenske", "Fillman",
-                         "Finley", "Firske", "Flanagan", "Franklin", "Freeman", "Frisbe", "Gore", "Greenwald", "Hahn",
-                         "Hammermeister", "Heminger", "Hogue", "Hollister", "Kasper", "Kisro", "Kleeman", "Lake", "Levard",
-                         "Lockhart", "Luckstrim", "Lynch", "Mantei", "Marsh", "McBurney", "McCarney", "Moses", "Nickels",
-                         "O'Neil", "Olson", "Ozanich", "Patterson", "Patzer", "Peppin", "Porter", "Posch", "Raslo", "Razner",
-                         "Rifenberg", "Riley", "Ripley", "Rossini", "Schiltgan", "Schmidt", "Schroeder", "Schwartz", "Shane",
-                         "Shattuck", "Shea", "Slaughter", "Smith", "Speltzer", "Stimac", "Stimac","Strenburg","Strong","Swanson",
-                        "Tillinghast","Traver","Urton","Vallier","Wagner","Walsted","Wang","Warner","Webber","Welch","Winters","Yarbrough","Yeske"
-        ])
-        
-        if random.random() < 0.5:
-            second_first_name = random.choice(name_list)
-            full_name = f"{first_name} {second_first_name} {last_name}"
-        else:
-            full_name = f"{first_name} {last_name}"
-        
-        embed = discord.Embed(
-            title="Random name for Call of Cthulhu",
-            description=f":game_die: **{full_name}** :game_die:",
-            color=discord.Color.blue()
-        )
-        
-        await ctx.send(embed=embed)
 
     @commands.command()
     async def cNPC(self, ctx, gender):
@@ -968,59 +949,8 @@ class CthulhuCog(commands.Cog):
                 "LUCK": ":four_leaf_clover:",
             }
             return stat_emojis.get(stat_name, "")
-        
-        # Generate random names
-        if gender == "male":
-            first_name_list = [
-                "Aaron", "Abraham", "Addison", "Amos", "Anderson", "Archibald", "August", "Barnabas", "Barney", "Baxter",
-                           "Blair", "Caleb", "Cecil", "Chester", "Clifford", "Clinton", "Cornelius", "Curtis", "Dayton", "Delbert",
-                           "Douglas", "Dudley", "Ernest", "Eldridge", "Elijah", "Emanuel", "Emmet", "Enoch", "Ephraim", "Everett",
-                           "Ezekiel", "Forest", "Gilbert", "Granville", "Gustaf", "Hampton", "Harmon", "Henderson", "Herman",
-                           "Hilliard", "Howard", "Hudson", "Irvin", "Issac", "Jackson", "Jacob", "Jeremiah", "Jonah", "Josiah",
-                           "Kirk", "Larkin", "Leland", "Leopold", "Lloyd", "Luther", "Manford", "Marcellus", "Martin", "Mason",
-                           "Maurice", "Maynard", "Melvin", "Miles", "Milton", "Morgan", "Mortimer", "Moses", "Napoleon", "Nelson",
-                           "Newton", "Noble", "Oliver", "Orson", "Oswald", "Pablo", "Percival", "Porter", "Quincy", "Randall",
-                           "Reginald", "Richmond", "Rodney", "Roscoe", "Rowland", "Rupert", "Sampson", "Sanford", "Sebastian",
-                           "Shelby", "Sidney", "Solomon", "Squire", "Sterling", "Sidney", "Thaddeus", "Walter", "Wilbur", "Wilfred",
-                           "Zadok", "Zebedee"
-            ]
-        else:
-            first_name_list = [
-                "Adelaide", "Agatha", "Agnes", "Albertina", "Almeda", "Amelia", "Anastasia", "Annabelle", "Asenath", "Augusta",
-                             "Barbara", "Bernadette", "Bernice", "Beryl", "Beulah", "Camilla", "Caroline", "Cecilia", "Carmen",
-                             "Charity", "Christina", "Clarissa", "Cordelia", "Cynthia", "Daisy", "Dolores", "Doris", "Edith",
-                             "Edna", "Eloise", "Elouise", "Estelle", "Ethel", "Eudora", "Eugenie", "Eunice", "Florence", "Frieda",
-                             "Genevieve", "Gertrude", "Gladys", "Gretchen", "Hannah", "Henrietta", "Ingrid", "Irene", "Iris",
-                             "Ivy", "Jeanette", "Jezebel", "Josephine", "Joyce", "Juanita", "Keziah", "Laverne", "Leonora", "Loretta",
-                             "Lucretia", "Mabel", "Madeleine", "Margery", "Marguerite", "Marjorie", "Matilda", "Melinda", "Mercedes",
-                             "Mildred", "Millicent", "Muriel", "Myrtle", "Naomi", "Nora", "Octavia", "Ophelia", "Pansy", "Patience",
-                             "Pearle", "Phoebe", "Phyllis", "Rosemary", "Ruby", "Sadie", "Selina", "Selma", "Sibyl", "Sylvia", "Tabitha",
-                             "Ursula", "Veronica", "Violet", "Virginia", "Wanda", "Wilhelmina", "Winifred"
-            ]
-        
-        first_name = random.choice(first_name_list)
-        
-        last_name = random.choice([
-            "Abraham", "Adler", "Ankins", "Avery", "Barnham", "Bentz", "Bessler", "Blakely", "Bleeker", "Bouche",
-                         "Bretz", "Buchman", "Butts", "Caffey", "Click", "Cordova", "Crabtree", "Crankovitch", "Cuthburt",
-                         "Cutting", "Dorman", "Eakley", "Eddie", "Fandrick", "Farwell", "Feigel", "Fenske", "Fillman",
-                         "Finley", "Firske", "Flanagan", "Franklin", "Freeman", "Frisbe", "Gore", "Greenwald", "Hahn",
-                         "Hammermeister", "Heminger", "Hogue", "Hollister", "Kasper", "Kisro", "Kleeman", "Lake", "Levard",
-                         "Lockhart", "Luckstrim", "Lynch", "Mantei", "Marsh", "McBurney", "McCarney", "Moses", "Nickels",
-                         "O'Neil", "Olson", "Ozanich", "Patterson", "Patzer", "Peppin", "Porter", "Posch", "Raslo", "Razner",
-                         "Rifenberg", "Riley", "Ripley", "Rossini", "Schiltgan", "Schmidt", "Schroeder", "Schwartz", "Shane",
-                         "Shattuck", "Shea", "Slaughter", "Smith", "Speltzer", "Stimac", "Stimac","Strenburg","Strong","Swanson",
-                        "Tillinghast","Traver","Urton","Vallier","Wagner","Walsted","Wang","Warner","Webber","Welch","Winters","Yarbrough","Yeske"
-        ])  # ... všechna příjmení
-        
-        full_name = first_name
-        
-        # 50% chance for a second first name
-        if random.random() < 0.5:
-            second_first_name = random.choice(first_name_list)
-            full_name = f"{first_name} {second_first_name}"
-        
-        full_name += f" {last_name}"
+            
+        full_name = get_random_name(gender)
         
         # Generate stats
         STR = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])

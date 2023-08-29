@@ -382,7 +382,6 @@ class CthulhuCog(commands.Cog):
             "Custom_skill_1": -1,
             "Custom_skill_2": -1,
             "Custom_skill_3": -1,
-            "Custom_skill_4": -1,
             "MAX_HP": -1,
             "MAX_MP": -1,
             "MAX_SAN": -1,

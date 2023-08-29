@@ -203,12 +203,6 @@ class CthulhuCog(commands.Cog):
                 full_name = f"{first_name} {last_name}-{second_last_name}"
     
         return full_name
-
-    @commands.command()
-    async def hardResetData()
-        default_guild = {
-            "player_stats": {}
-        }
         
         
     @commands.command(aliases=["diceroll"], guild_only=True)

@@ -419,22 +419,40 @@ class CthulhuCog(commands.Cog):
         skill_name = skill_and_value[0].title()  # Convert the skill name to title case
         new_value = skill_and_value[1]
         
-        # List of skills that can be changed
-        changable_skills = [
-            "Accounting", "Anthropology", "Appraise", "Archaeology", "Charm", "Climb", "Credit Rating", "Cthulhu Mythos", "Disguise", "Dodge", "Drive Auto", "Elect. Repair", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)", "Firearms (Rifle/Shotgun)", "First Aid", "History", "Intimidate", "Jump", "Language (Other)", "Language (Own)", "Law", "Library Use", "Listen", "Locksmith", "Mech. Repair", "Medicine", "Natural World", "Navigate", "Occult", "Persuade", "Pilot", "Psychoanalysis", "Psychology", "Ride", "Science (Specific)", "Sleight of Hand", "Spot Hidden", "Stealth", "Survival", "Swim", "Throw", "Track", "Move", "Build", "Damage Bonus"
-        ]
-        
-        if skill_name in changable_skills:
-            try:
-                new_value = int(new_value)
-                self.player_stats[user_id][skill_name] = new_value
-                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                await ctx.send(f"Your {skill_name} has been updated to {new_value}.")
-            except ValueError:
-                await ctx.send("Invalid new value. Please provide a number.")
+        if user_id in self.player_stats:
+            if skill_name in self.player_stats[user_id]:
+                try:
+                    new_value = int(new_value)
+                    self.player_stats[user_id][skill_name] = new_value
+                    await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
+                    await ctx.send(f"Your {skill_name} has been updated to {new_value}.")
+                except ValueError:
+                    await ctx.send("Invalid new value. Please provide a number.")
+            else:
+                await ctx.send("Skill not found in your skills list.")
         else:
-            await ctx.send("Invalid skill name. Use one of the following: "
-                           "Accounting, Anthropology, Appraise, Archaeology, Charm, Climb, ...")
+            await ctx.send("Start by creating investigator !newInv.")
+
+    @commands.command(aliases=["rskill"], guild_only=True)
+    async def renameSkill(ctx, *, args):
+        user_id = str(ctx.author.id)
+        
+        try:
+            old_name, new_name = [part.strip() for part in args.split("->")]
+        except ValueError:
+            await ctx.send("Incorrect command format. Please use: !renameSkill old_name -> new_name")
+            return
+        
+        if user_id in self.player_stats:
+            if old_name in self.player_stats[user_id]:
+                skill_value = self.player_stats[user_id][old_name]
+                self.player_stats[user_id][new_name] = skill_value
+                del self.player_stats[user_id][old_name]
+                await ctx.send(f"Skill '{old_name}' has been renamed to '{new_name}'.")
+            else:
+                await ctx.send(f"Skill '{old_name}' was not found.")
+        else:
+            await ctx.send("Start by creating investigator !newInv.")
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):

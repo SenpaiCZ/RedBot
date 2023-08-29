@@ -975,7 +975,7 @@ class CthulhuCog(commands.Cog):
     async def cname(self, ctx, gender):
         gender = gender.lower()
         
-        full_name = get_random_name(gender)
+        full_name = self.get_random_name(gender)
         
         if full_name:
             embed = discord.Embed(
@@ -1010,7 +1010,7 @@ class CthulhuCog(commands.Cog):
             }
             return stat_emojis.get(stat_name, "")
             
-        full_name = get_random_name(gender)
+        full_name = self.get_random_name(gender)
         
         # Generate stats
         STR = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])

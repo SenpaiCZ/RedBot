@@ -394,7 +394,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Start by creating investigator !newInv.")
 
     @commands.command(aliases=["rskill"], guild_only=True)
-    async def renameSkill(ctx, *, args):
+    async def renameSkill(self, ctx, *, args):  # Add 'self' parameter here
         user_id = str(ctx.author.id)
         
         try:
@@ -412,7 +412,8 @@ class CthulhuCog(commands.Cog):
             else:
                 await ctx.send(f"Skill '{old_name}' was not found.")
         else:
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):

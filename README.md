@@ -121,4 +121,6 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !cyear year                            | Historical information about a year         |
 | !firearms name                            | Information about firearms in CoC from 1920s and modern (without name you will get list of weapons)        |
 | !cloot                       | Generate random loot from 1920 (25% for money being inclooded)        |
+| !rskill                    | Rename skill to your liking. If your language is English you can rename Language (own) to English. You can also use 3 custom skills.    |
+| !showUserData                  | Debug command. Shows raw data saved for user who calls the commanad (stats, skill, backstory).  |
 

@@ -415,6 +415,12 @@ class CthulhuCog(commands.Cog):
             if matching_skills:
                 try:
                     self.player_stats[user_id][new_skill_name] = self.player_stats[user_id].pop(matching_skills[0])
+                    
+                    # Move "Backstory" to the end of the dictionary
+                    if "Backstory" in self.player_stats[user_id]:
+                        backstory = self.player_stats[user_id].pop("Backstory")
+                        self.player_stats[user_id]["Backstory"] = backstory
+                    
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
                     await ctx.send(f"Your skill '{matching_skills[0]}' has been updated to '{new_skill_name}'.")
                 except KeyError:
@@ -423,6 +429,7 @@ class CthulhuCog(commands.Cog):
                 await ctx.send("Skill not found in your skills list.")
         else:
             await ctx.send("Start by creating investigator !newInv.")
+
             
     @commands.command()
     async def showUserData(self, ctx):
@@ -580,15 +587,7 @@ class CthulhuCog(commands.Cog):
     
             for i in stats_range:
                 stat_name, value = stats_list[i]
-                if stat_name == "NAME":
-                    continue  # Skip displaying NAME in the list
-                if stat_name == "MAX_HP":
-                    continue
-                if stat_name == "MAX_MP":
-                    continue
-                if stat_name == "MAX_SAN":
-                    continue
-                if stat_name == "Backstory":
+                if stat_name == "NAME" or stat_name == "MAX_HP" or stat_name == "MAX_MP" or stat_name == "MAX_SAN" or stat_name == "Backstory":
                     continue
                 
                 emoji = get_stat_emoji(stat_name)

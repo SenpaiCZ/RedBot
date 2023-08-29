@@ -423,6 +423,17 @@ class CthulhuCog(commands.Cog):
                 await ctx.send("Skill not found in your skills list.")
         else:
             await ctx.send("Start by creating investigator !newInv.")
+            
+    @commands.command()
+    async def showUserData(self, ctx):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
+        
+        if user_id in self.player_stats:
+            user_data = self.player_stats[user_id]
+            user_data_formatted = "\n".join([f"{skill}: {value}" for skill, value in user_data.items()])
+            await ctx.send(f"Here is your user data:\n```{user_data_formatted}```")
+        else:
+            await ctx.send("No user data found. Start by creating investigator !newInv.")
 
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)

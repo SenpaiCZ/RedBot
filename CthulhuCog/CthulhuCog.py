@@ -165,7 +165,7 @@ class CthulhuCog(commands.Cog):
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:  
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
             try:
                 if dice_expression in self.player_stats[user_id]:

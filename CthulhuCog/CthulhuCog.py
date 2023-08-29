@@ -393,9 +393,10 @@ class CthulhuCog(commands.Cog):
         else:
             await ctx.send("Start by creating investigator !newInv.")
 
-    @commands.command(aliases=["rskill"], guild_only=True)
-    async def renameSkill(self, ctx, *, args):  # Add 'self' parameter here
+    @commands.command(aliases=["rSkill"], guild_only=True)
+    async def renameSkill(self, ctx, old_name, new_name):
         user_id = str(ctx.author.id)
+        player_stats = await self.config.user(ctx.author).player_stats()
         
         try:
             old_name, new_name = [part.strip() for part in args.split("->")]
@@ -403,12 +404,12 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Incorrect command format. Please use: !renameSkill old_name -> new_name")
             return
         
-        if user_id in self.player_stats:
-            if old_name in self.player_stats[user_id]:
-                skill_value = self.player_stats[user_id][old_name]
-                self.player_stats[user_id][new_name] = skill_value
-                del self.player_stats[user_id][old_name]  # Remove the old skill entry
-                await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
+        if user_id in player_stats:
+            if old_name in player_stats[user_id]:
+                skill_value = player_stats[user_id][old_name]
+                player_stats[user_id][new_name] = skill_value
+                del player_stats[user_id][old_name]
+                await self.config.user(ctx.author).player_stats.set(player_stats)  # Save the changes to Redbot Config
                 await ctx.send(f"Skill '{old_name}' has been renamed to '{new_name}'.")
             else:
                 await ctx.send(f"Skill '{old_name}' was not found.")

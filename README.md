@@ -119,7 +119,7 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !deleteInvestigator                      | Delete your investigator (you will be prompted to confirm deletion)                   |
 | !mb                                      | Show backstory and inventory                |
 | !cb category - item                   | Add a record to backstory or inventory     |
-| !rb category - itemID                | Delete a record from backstory or inventory|
+| !rb category itemID                | Delete a record from backstory or inventory|
 | !cname male/female                     | Generate a random name                      |
 | !cNPC male/female                      | Generate an NPC                             |
 | !skillinfo skillName                  | Get info about a specific skill (without name of the skill you will get list of skills)            |                    |

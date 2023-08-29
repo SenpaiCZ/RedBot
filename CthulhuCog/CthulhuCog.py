@@ -396,38 +396,33 @@ class CthulhuCog(commands.Cog):
         else:
             await ctx.send("Start by creating investigator !newInv.")
 
-
-    
-    @commands.command(aliases=["rSkill"], guild_only=True)
-    async def renameSkill(self, ctx, *, args):
-        user_id = str(ctx.author.id)
-        player_stats = await self.config.user(ctx.author).player_stats()
-        await ctx.send(player_stats)
-    
-        try:
-            old_name, new_name = [part.strip() for part in args.split("->")]
-        except ValueError:
-            await ctx.send("Incorrect command format. Please use: !renameSkill old_name -> new_name")
+    @commands.command(aliases=["rskill"], guild_only=True)
+    async def renameSkill(self, ctx, *, old_and_new_name):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
+        old_and_new_name = old_and_new_name.rsplit(maxsplit=1)
+        
+        if len(old_and_new_name) != 2:
+            await ctx.send("Invalid input. Please provide old skill name and new skill name.")
             return
-    
-        if user_id in player_stats:
-            await ctx.send(f"Old name: '{old_name}', New name: '{new_name}'")
-            temp_player_stats = player_stats[user_id].copy()
-            if old_name in temp_player_stats:
-                await ctx.send(temp_player_stats)
-                skill_value = temp_player_stats[old_name]
-                del temp_player_stats[old_name]
-                temp_player_stats[new_name] = skill_value
-                player_stats[user_id] = temp_player_stats
-                await self.config.user(ctx.author).player_stats.set(player_stats)
-                await ctx.send(f"Skill '{old_name}' has been renamed to '{new_name}'.")
+        
+        old_skill_name = old_and_new_name[0].title()  # Convert the old skill name to title case
+        new_skill_name = old_and_new_name[1].title()  # Convert the new skill name to title case
+        
+        if user_id in self.player_stats:
+            normalized_old_skill_name = old_skill_name.lower()  # Normalize old skill name to lowercase
+            matching_skills = [s for s in self.player_stats[user_id] if s.lower().replace(" ", "") == normalized_old_skill_name.replace(" ", "")]
+            
+            if matching_skills:
+                try:
+                    self.player_stats[user_id][new_skill_name] = self.player_stats[user_id].pop(matching_skills[0])
+                    await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
+                    await ctx.send(f"Your skill '{matching_skills[0]}' has been updated to '{new_skill_name}'.")
+                except KeyError:
+                    await ctx.send("An error occurred while updating the skill. Please try again.")
             else:
-                await ctx.send(f"Skill '{old_name}' was not found.")
+                await ctx.send("Skill not found in your skills list.")
         else:
-            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
-
-
-
+            await ctx.send("Start by creating investigator !newInv.")
 
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)

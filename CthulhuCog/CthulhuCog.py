@@ -255,7 +255,7 @@ class CthulhuCog(commands.Cog):
                     
                     embed = discord.Embed(
                         title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                        description=f":game_die: Rolls: {rolls_str}\nLower: {total}",
+                        description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
                         color=discord.Color.green()
                     )
                 
@@ -786,7 +786,7 @@ class CthulhuCog(commands.Cog):
             
             embed = discord.Embed(
                 title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
-                description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Higher: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Lower roll: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
                 color=discord.Color.green()
             )
             
@@ -882,7 +882,7 @@ class CthulhuCog(commands.Cog):
             
             embed = discord.Embed(
                 title=f"{name_value}'s Skill Check for '{skill_name}' with Penalty Die",
-                description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Higher roll: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
                 color=discord.Color.green()
             )
             

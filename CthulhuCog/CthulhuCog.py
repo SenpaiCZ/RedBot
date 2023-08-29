@@ -353,7 +353,7 @@ class CthulhuCog(commands.Cog):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         stat_name = stat_name.upper()
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
             if stat_name in self.player_stats[user_id]:
                 try:
@@ -428,7 +428,7 @@ class CthulhuCog(commands.Cog):
             else:
                 await ctx.send("Skill not found in your skills list.")
         else:
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
     #Debugging command to check if your data are corrupted        
     @commands.command()
@@ -440,7 +440,7 @@ class CthulhuCog(commands.Cog):
             user_data_formatted = "\n".join([f"{skill}: {value}" for skill, value in user_data.items()])
             await ctx.send(f"Here is your user data:\n```{user_data_formatted}```")
         else:
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)
@@ -450,10 +450,10 @@ class CthulhuCog(commands.Cog):
     
         user_id = str(member.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
     
-        name = self.player_stats.get(user_id, {}).get("NAME", f"{member.display_name}'s Investigator Stats")
+        name = self.player_stats.get(user_id, {}).get("NAME", f"{ctx.author.display_name}'s Investigator Stats")
     
         stats_embed = discord.Embed(
             title=name,
@@ -638,7 +638,7 @@ class CthulhuCog(commands.Cog):
                 await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated dictionary
                 await ctx.send(f"Investigator '{investigator_name}' has been deleted.")
         else:
-            await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
          
     @commands.command(aliases=["cb"], guild_only=True)

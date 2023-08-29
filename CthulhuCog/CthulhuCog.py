@@ -408,11 +408,13 @@ class CthulhuCog(commands.Cog):
                 skill_value = self.player_stats[user_id][old_name]
                 self.player_stats[user_id][new_name] = skill_value
                 del self.player_stats[user_id][old_name]
+                await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
                 await ctx.send(f"Skill '{old_name}' has been renamed to '{new_name}'.")
             else:
                 await ctx.send(f"Skill '{old_name}' was not found.")
         else:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+
 
 
     @commands.command(aliases=["mychar", "mcs"], guild_only=True)

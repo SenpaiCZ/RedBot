@@ -29,6 +29,13 @@ Whether you're a Keeper masterfully crafting the storyline or an investigator na
 
 Step into the realm of eldritch horrors and gripping narratives with the Cthulhu Discord Cog. Level up your Call of Cthulhu gameplay and embark on unforgettable adventures with the power of Discord and this versatile COG. Uncover the unknown and challenge the cosmic horrors that await!
 
+# To-Do list
+- Automatic Chase
+- Beasts and Gods
+- Magic
+- Traveltime between cities
+- Cars, horses and other trasport
+- More random stuff and info :)
 
 # Generate random name with !cname male/female
 

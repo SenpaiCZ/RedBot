@@ -203,6 +203,13 @@ class CthulhuCog(commands.Cog):
                 full_name = f"{first_name} {last_name}-{second_last_name}"
     
         return full_name
+
+    @commands.command()
+    async def hardResetData()
+        default_guild = {
+            "player_stats": {}
+        }
+        
         
     @commands.command(aliases=["diceroll"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
@@ -651,6 +658,28 @@ class CthulhuCog(commands.Cog):
                 await ctx.send(f"Investigator '{investigator_name}' has been deleted.")
         else:
             await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+
+    @commands.command(guild_only=True)
+    async def deleteInvestigatorOld(self, ctx):
+        user_id = str(ctx.author.id)  # Get the user's ID as a string
+        
+        if user_id in self.player_stats:
+            await ctx.send("Are you sure you want to delete your investigator? If you're sure, type 'YES' to confirm.")
+            
+            def check(message):
+                return message.author == ctx.author and message.content.upper() == "YES"
+            
+            try:
+                confirm_message = await self.bot.wait_for("message", check=check, timeout=30)
+            except TimeoutError:
+                await ctx.send("Confirmation timeout. Investigator deletion canceled.")
+                return
+            
+            del self.player_stats[user_id]
+            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn do souboru
+            await ctx.send("Investigator has been deleted.")
+        else:
+            await ctx.send("You don't have an investigator to delete.")
 
 
          

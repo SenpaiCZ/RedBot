@@ -1098,20 +1098,18 @@ class CthulhuCog(commands.Cog):
             try:
                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                 if str(reaction.emoji) == "✅":
-                    self.player_stats[user_id] = {
-                        "STR": STR,
-                        "DEX": DEX,
-                        "CON": CON,
-                        "INT": INT,
-                        "POW": POW,
-                        "APP": APP,
-                        "EDU": EDU,
-                        "SIZ": SIZ,
-                        "HP": HP,
-                        "SAN": SAN,
-                        "MP": MP,
-                        "LUCK": LUCK
-                    }
+                    self.player_stats[user_id]["STR"] = STR
+                    self.player_stats[user_id]["DEX"] = DEX
+                    self.player_stats[user_id]["CON"] = CON
+                    self.player_stats[user_id]["INT"] = INT
+                    self.player_stats[user_id]["POW"] = POW
+                    self.player_stats[user_id]["CHA"] = APP
+                    self.player_stats[user_id]["EDU"] = EDU
+                    self.player_stats[user_id]["SIZ"] = SIZ
+                    self.player_stats[user_id]["HP"] = HP
+                    self.player_stats[user_id]["SAN"] = SAN
+                    self.player_stats[user_id]["MP"] = MP
+                    self.player_stats[user_id]["LUCK"] = LUCK
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated stats
                     await ctx.send("Your character's stats have been saved!")
                 elif str(reaction.emoji) == "❌":

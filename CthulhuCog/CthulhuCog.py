@@ -563,6 +563,15 @@ class CthulhuCog(commands.Cog):
                 stat_name, value = stats_list[i]
                 if stat_name == "NAME":
                     continue  # Skip displaying NAME in the list
+                if stat_name == "MAX_HP":
+                    continue
+                if stat_name == "MAX_MP":
+                    continue
+                if stat_name == "MAX_SAN":
+                    continue
+                if stat_name == "Backstory":
+                    continue
+                
                 emoji = get_stat_emoji(stat_name)
                 value = get_stat_value(stat_name, value)
                 stats_embed.add_field(name=f"{stat_name} {emoji}", value=value, inline=True)

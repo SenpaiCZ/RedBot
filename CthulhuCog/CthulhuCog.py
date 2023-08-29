@@ -328,6 +328,10 @@ class CthulhuCog(commands.Cog):
             "HP": 0,
             "MP": 0,
             "LUCK": 0,
+            "Move": -1,
+            "Build": -1,
+            "Damage Bonus": -1,
+            "Age": 20,
             "Accounting": 5,
             "Anthropology": 1,
             "Appraise": 5,
@@ -372,10 +376,6 @@ class CthulhuCog(commands.Cog):
             "Swim": 20,
             "Throw": 20,
             "Track": 10,
-            "Age": 20,
-            "Move": -1,
-            "Build": -1,
-            "Damage Bonus": -1,
             "MAX_HP": -1,
             "MAX_MP": -1,
             "MAX_SAN": -1,
@@ -478,6 +478,10 @@ class CthulhuCog(commands.Cog):
                 "MP": ":sparkles:",
                 "LUCK": ":four_leaf_clover:",
                 "SAN": ":scales:",
+                "Age": ":birthday:",
+                "Move": ":person_running:",
+                "Build": ":restroom: ",
+                "Damage Bonus": ":mending_heart:",
                 "Accounting": ":ledger:",
                 "Anthropology": ":earth_americas:",
                 "Appraise": ":mag:",
@@ -522,10 +526,6 @@ class CthulhuCog(commands.Cog):
                 "Swim": ":swimmer:",
                 "Throw": ":dart:",
                 "Track": ":mag_right:",
-                "Age": ":birthday:",
-                "Move": ":person_running:",
-                "Build": ":restroom: ",
-                "Damage Bonus": ":mending_heart:"
             }
             return stat_emojis.get(stat_name, ":question:")
 
@@ -567,13 +567,13 @@ class CthulhuCog(commands.Cog):
             stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
     
             if page == 1:
-                stats_range = range(0, 13)
+                stats_range = range(0, 17)
             elif page == 2:
-                stats_range = range(13, 37)
+                stats_range = range(17, 41)
             elif page == 3:
-                stats_range = range(37, 61)
+                stats_range = range(41, 65)
             else:
-                stats_range = range(62, len(stats_list))
+                stats_range = range(65, len(stats_list))
     
             for i in stats_range:
                 stat_name, value = stats_list[i]

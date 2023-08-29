@@ -376,14 +376,16 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Invalid input. Please provide skill name and new value.")
             return
         
-        skill_name = skill_and_value[0].title()  # Convert the skill name to title case
+        skill_name = skill_and_value[0].capitalize()  # Convert the skill name to capitalize case
         new_value = skill_and_value[1]
         
+        normalized_skill_name = skill_name.lower()  # Normalize skill name to lowercase
+        
         if user_id in self.player_stats:
-            if skill_name in self.player_stats[user_id]:
+            if normalized_skill_name in [s.lower() for s in self.player_stats[user_id]]:
                 try:
                     new_value = int(new_value)
-                    self.player_stats[user_id][skill_name] = new_value
+                    self.player_stats[user_id][normalized_skill_name] = new_value
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
                     await ctx.send(f"Your {skill_name} has been updated to {new_value}.")
                 except ValueError:
@@ -392,6 +394,7 @@ class CthulhuCog(commands.Cog):
                 await ctx.send("Skill not found in your skills list.")
         else:
             await ctx.send("Start by creating investigator !newInv.")
+
 
     @commands.command(aliases=["rSkill"], guild_only=True)
     async def renameSkill(self, ctx, *, args):

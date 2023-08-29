@@ -396,6 +396,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send("Start by creating investigator !newInv.")
 
 
+
     @commands.command(aliases=["rSkill"], guild_only=True)
     async def renameSkill(self, ctx, *, args):
         user_id = str(ctx.author.id)

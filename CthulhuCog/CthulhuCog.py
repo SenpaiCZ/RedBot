@@ -410,8 +410,10 @@ class CthulhuCog(commands.Cog):
             return
     
         if user_id in player_stats:
+            await ctx.send(f"Old name: '{old_name}', New name: '{new_name}'")
             temp_player_stats = player_stats[user_id].copy()
             if old_name in temp_player_stats:
+                await ctx.send(temp_player_stats)
                 skill_value = temp_player_stats[old_name]
                 del temp_player_stats[old_name]
                 temp_player_stats[new_name] = skill_value

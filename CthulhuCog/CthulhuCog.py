@@ -380,12 +380,15 @@ class CthulhuCog(commands.Cog):
         new_value = skill_and_value[1]
         
         if user_id in self.player_stats:
-            if skill_name in self.player_stats[user_id]:
+            normalized_skill_name = skill_name.lower()  # Normalize skill name to lowercase
+            matching_skills = [s for s in self.player_stats[user_id] if s.lower().replace(" ", "") == normalized_skill_name.replace(" ", "")]
+            
+            if matching_skills:
                 try:
                     new_value = int(new_value)
-                    self.player_stats[user_id][skill_name] = new_value
+                    self.player_stats[user_id][matching_skills[0]] = new_value
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
-                    await ctx.send(f"Your {skill_name} has been updated to {new_value}.")
+                    await ctx.send(f"Your {matching_skills[0]} has been updated to {new_value}.")
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")
             else:

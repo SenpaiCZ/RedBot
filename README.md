@@ -61,6 +61,10 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d.jpg)
 
+![Complex roll](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/complex%20die.JPG)
+
+![Complex roll](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/complex%20die.JPG)
+
 # Check for skill
 
 ![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d%20listen.jpg)

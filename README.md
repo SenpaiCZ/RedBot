@@ -89,10 +89,6 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 ![List of occupations](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/occupations.jpg)
 ![Get info about librarian](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/occupations%20librarian.jpg)
 
-# Get info about year
-
-![Year info](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/year%201923.jpg)
-
 # Generate backstory
 
 ![Generate random backstory](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/backstory%20generator.jpg)
@@ -102,10 +98,6 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 ![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms.jpg)
 
 ![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms2.jpg)
-
-# Random loot generator
-
-![Loot generator](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/loot%20generator.jpg)
 
 # Rename skill
 

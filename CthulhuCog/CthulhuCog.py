@@ -252,7 +252,7 @@ class CthulhuCog(commands.Cog):
                     
                     total = 0
                     # Inicializace proměnných
-                    rolls_str = ":game_die: Rolls: "
+                    rolls_str = ""
                     current_operator = "+"  # Předpokládejme začátek sčítání
                     negative_sign = False  # Proměnná pro určení, zda má být před zápornými hodnotami znaménko "-"
                     
@@ -278,6 +278,7 @@ class CthulhuCog(commands.Cog):
                                 rolls_str += "-"
                                 negative_sign = False
                             rolls_str += ", ".join(map(str, rolls))
+                            rolls_str += ")"  # Přidejte uzavírací závorku pro tuto kostku
                             if current_operator == "+":
                                 total += sum(rolls)
                             else:
@@ -300,6 +301,7 @@ class CthulhuCog(commands.Cog):
                                 rolls_str += f" {current_operator} "
                             if fixed_value < 0:
                                 negative_sign = True  # Nastavení proměnné pro znaménko před následujícími hodnotami
+
 
                     
                     embed = discord.Embed(

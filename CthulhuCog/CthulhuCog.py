@@ -271,7 +271,7 @@ class CthulhuCog(commands.Cog):
                             
                             rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
                             rolls_str += f"{num_dice}d{dice_type}("
-                            if current_operator == "-":  # Upraveno znaménko zde
+                            if current_operator == "-":
                                 rolls_str += "-"
                             rolls_str += f"{', '.join(map(str, rolls))})"
                             if current_operator == "+":
@@ -279,19 +279,19 @@ class CthulhuCog(commands.Cog):
                             else:
                                 total -= sum(rolls)
                             
-                            if i < len(components) - 1:  # Přidání aktuálního operátoru
+                            if i < len(components) - 1 and components[i + 1] not in ["+", "-"]:
                                 rolls_str += f" {current_operator} "
                         else:  # Část s pevnou hodnotou
                             fixed_value = int(part)
-                            if current_operator == "-":  # Upraveno znaménko zde
+                            if current_operator == "-":
                                 rolls_str += "-"
-                            rolls_str += str(fixed_value)
+                            rolls_str += str(abs(fixed_value))  # Použijeme abs() pro zobrazení hodnoty bez znaménka
                             if current_operator == "+":
                                 total += fixed_value
                             else:
                                 total -= fixed_value
                             
-                            if i < len(components) - 1:  # Přidání aktuálního operátoru
+                            if i < len(components) - 1 and components[i + 1] not in ["+", "-"]:
                                 rolls_str += f" {current_operator} "
                     
                     embed = discord.Embed(

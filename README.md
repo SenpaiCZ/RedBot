@@ -51,15 +51,15 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 # Show character stats
 
-![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.jpg)
+![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.JPG)
 
-![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs2.jpg)
+![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs2.JPG)
 
-![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs3.jpg)
+![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs3.JPG)
 
 # Roll die or multiple
 
-![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d.jpg)
+![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/normal%20roll.JPG)
 
 ![Complex roll](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/complex%20die.JPG)
 

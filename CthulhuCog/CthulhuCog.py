@@ -162,7 +162,7 @@ class CthulhuCog(commands.Cog):
         }
         return self.get_stat_description(value, descriptions)
         
-    @commands.command(aliases=["diceroll"], guild_only=True)
+    @commands.command(aliases=["diceroll","D"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:  

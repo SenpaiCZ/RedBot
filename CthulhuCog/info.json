@@ -1,7 +1,7 @@
 {
     "name": "CthulhuCog",
     "short": "Call of Cthulhu Helper",
-    "description": "Roll die, make notes, create investigator. Everything you need to play CoC over discord.",
+    "description": "Roll die, make notes, create investigator. Everything you need to play CoC over discord. Ehm, you will still need Call of Cthulhu books by Chaosium .inc.",
     "end_user_data_statement": "This cog stores \"stats\" on users via ids.",
     "install_msg": "Thank you for installing Call of Cthulhu Cog.\nThis cog helps you play Call of Cthulhu over discord.\n Buy books by Chaosium.inc for full experience of playing Call of Cthulhu.",
     "author": [

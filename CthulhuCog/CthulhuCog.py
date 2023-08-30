@@ -251,13 +251,16 @@ class CthulhuCog(commands.Cog):
                     sign_parts = [part for part in components if part == "+" or part == "-"]  # Znaménka
                     
                     total = 0
-                    rolls_str = ""
-                    current_operator = "+"  # Aktuální operátor je +
+                    # Inicializace proměnných
+                    rolls_str = ":game_die: Rolls: "
+                    current_operator = "+"  # Předpokládejme začátek sčítání
+                    negative_sign = False  # Proměnná pro určení, zda má být před zápornými hodnotami znaménko "-"
                     
                     for i, part in enumerate(components):
                         if part in ["+", "-"]:
                             current_operator = part
                             rolls_str += part
+                            negative_sign = False  # Resetujte proměnnou pro znaménko při změně operátoru
                         elif "d" in part.lower():  # Část s typem kostky
                             num_dice, dice_type = map(int, re.split(r'[dD]', part))
                             if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
@@ -271,9 +274,10 @@ class CthulhuCog(commands.Cog):
                             
                             rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
                             rolls_str += f"{num_dice}d{dice_type}("
-                            if current_operator == "-":
+                            if negative_sign:  # Přidání znaménka "-" před zápornými hodnotami
                                 rolls_str += "-"
-                            rolls_str += f"{', '.join(map(str, rolls))})"
+                                negative_sign = False
+                            rolls_str += ", ".join(map(str, rolls))
                             if current_operator == "+":
                                 total += sum(rolls)
                             else:
@@ -283,8 +287,9 @@ class CthulhuCog(commands.Cog):
                                 rolls_str += f" {current_operator} "
                         else:  # Část s pevnou hodnotou
                             fixed_value = int(part)
-                            if current_operator == "-":
+                            if negative_sign:  # Přidání znaménka "-" před zápornými hodnotami
                                 rolls_str += "-"
+                                negative_sign = False
                             rolls_str += str(abs(fixed_value))  # Použijeme abs() pro zobrazení hodnoty bez znaménka
                             if current_operator == "+":
                                 total += fixed_value
@@ -293,6 +298,9 @@ class CthulhuCog(commands.Cog):
                             
                             if i < len(components) - 1 and components[i + 1] not in ["+", "-"]:
                                 rolls_str += f" {current_operator} "
+                            if fixed_value < 0:
+                                negative_sign = True  # Nastavení proměnné pro znaménko před následujícími hodnotami
+
                     
                     embed = discord.Embed(
                         title=f"Rolled Dice Expression: {dice_expression}",

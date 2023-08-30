@@ -166,10 +166,10 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["coc", "cthulhuhelp", "helpcthulhu"])
     async def cthulhu(self, ctx):
         description = (
-            ":exclamation: Important :exclamation: \n"
-            "To be able to play Call of Cthulhu you will need [Call of Cthulhu Keeper Rulebook](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/), [Call of Cthulhu Starter Set](https://www.chaosium.com/call-of-cthulhu-starter-set/) or [Pulp Cthulhu](https://www.chaosium.com/pulp-cthulhu-hardcover/) published by [Chaosium.inc](https://www.chaosium.com/)\n\n"
-            ":exclamation: Commands Descriptions :exclamation: \n"
-            ":bulb: `!d YDX` :arrow_right: Roll dice (e.g. !d 3D6)\n"
+            ":exclamation: **Important** :exclamation: \n"
+            "To be able to play **Call of Cthulhu** you will need [Call of Cthulhu Keeper Rulebook](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/), [Call of Cthulhu Starter Set](https://www.chaosium.com/call-of-cthulhu-starter-set/) or [Pulp Cthulhu](https://www.chaosium.com/pulp-cthulhu-hardcover/) published by [Chaosium.inc](https://www.chaosium.com/)\n\n"
+            "**Commands Descriptions** \n"
+            ":bulb: `!d YDX` :arrow_right: Roll dice (e.g. !d 3D6 or !d 3D6 + 1D10 or !d 1D6 + 2)\n"
             ":bulb: `!d skill-name` :arrow_right: Roll D100 against a skill (e.g. !d Listen)\n"
             # Add other command descriptions here
         )

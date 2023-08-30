@@ -272,7 +272,7 @@ class CthulhuCog(commands.Cog):
                 )
                 await ctx.send(embed=embed)
     
-    @commands.command(aliases=["newInv"], guild_only=True)
+    @commands.command(aliases=["newInv","newinv"], guild_only=True)
     async def newInvestigator(self, ctx, *, investigator_name):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:
@@ -435,7 +435,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
     #Debugging command to check if your data are corrupted        
-    @commands.command()
+    @commands.command(guild_only=True)
     async def showUserData(self, ctx):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         
@@ -753,7 +753,14 @@ class CthulhuCog(commands.Cog):
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
-        if skill_name in self.player_stats[user_id]:
+        
+        normalized_skill_name = skill_name.lower()  # Převod na malá písmena
+        
+        if normalized_skill_name in map(str.lower, self.player_stats[user_id].keys()):
+            skill_name = next(
+                name for name in self.player_stats[user_id] if name.lower() == normalized_skill_name
+            )
+            
             skill_value = self.player_stats[user_id][skill_name]
             luck_value = self.player_stats[user_id]["LUCK"]
             name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
@@ -849,7 +856,13 @@ class CthulhuCog(commands.Cog):
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
         
-        if skill_name in self.player_stats[user_id]:
+        normalized_skill_name = skill_name.lower()  # Převod na malá písmena
+        
+        if normalized_skill_name in map(str.lower, self.player_stats[user_id].keys()):
+            skill_name = next(
+                name for name in self.player_stats[user_id] if name.lower() == normalized_skill_name
+            )
+            
             skill_value = self.player_stats[user_id][skill_name]
             luck_value = self.player_stats[user_id]["LUCK"]
             name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)

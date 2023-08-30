@@ -254,7 +254,7 @@ class CthulhuCog(commands.Cog):
                     rolls_str = ""
                     current_operator = "+"  # Aktuální operátor je +
                     
-                     for i, part in enumerate(components):
+                    for i, part in enumerate(components):
                         if part in ["+", "-"]:
                             current_operator = part
                             rolls_str += part
@@ -273,7 +273,7 @@ class CthulhuCog(commands.Cog):
                             rolls_str += f"{num_dice}d{dice_type}("
                             if current_operator == "-":
                                 rolls_str += "-"
-                            rolls_str += ", ".join(map(str, rolls))
+                            rolls_str += f"{', '.join(map(str, rolls))})"
                             if current_operator == "+":
                                 total += sum(rolls)
                             else:

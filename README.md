@@ -103,6 +103,10 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Loot generator](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/loot%20generator.jpg)
 
+# Rename skill
+
+![Rename skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/rskill.JPG)
+
 # Cthulhu Cog Commands
 
 | Command                                  | Description                                 |
@@ -128,6 +132,6 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !cyear year                            | Historical information about a year         |
 | !firearms name                            | Information about firearms in CoC from 1920s and modern (without name you will get list of weapons)        |
 | !cloot                       | Generate random loot from 1920 (25% for money being inclooded)        |
-| !rskill                    | Rename skill to your liking. If your language is English you can rename Language (own) to English. You can also use 3 custom skills.    |
+| !rskill skill1 skill2                    | Rename skill to your liking. If your language is English you can rename Language (own) to English. You can also use 3 custom skills.    |
 | !showUserData                  | Debug command. Shows raw data saved for user who calls the command (stats, skill, backstory).  |
 

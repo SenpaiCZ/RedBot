@@ -163,6 +163,27 @@ class CthulhuCog(commands.Cog):
         }
         return self.get_stat_description(value, descriptions)
         
+    @commands.command(aliases=["coc", "cthulhuhelp", "helpcthulhu"])
+    async def cthulhu(self, ctx):
+        description = (
+            "To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthulhu Starter set or Pulp of Cthulhu published by Chaosium .inc\n\n"
+            "Call of Cthulhu Keeper Rulebook - [Link](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/)\n"
+            "Call of Cthulhu Starter Set - [Link](https://www.chaosium.com/call-of-cthulhu-starter-set/)\n"
+            "Pulp Cthulhu - [Link](https://www.chaosium.com/pulp-cthulhu-hardcover/)\n\n"
+            "Commands Descriptions:\n"
+            ":bulb: !d YDX :arrow_right: Roll dice (e.g. !d 3D6)\n"
+            ":bulb: !d :arrow_right: Roll D100 against a skill (e.g. !d Listen)\n"
+            # Add other command descriptions here
+        )
+
+        embed = discord.Embed(
+            title="Call of Cthulhu Commands",
+            description=description,
+            color=discord.Color.blue()
+        )
+
+        await ctx.send(embed=embed)
+        
     @commands.command(aliases=["diceroll","D"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
         user_id = str(ctx.author.id)

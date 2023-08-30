@@ -252,32 +252,41 @@ class CthulhuCog(commands.Cog):
                     
                     total = 0
                     rolls_str = ""
+                    current_operator = "+"  # Aktuální operátor je +
                     
-                    for i, dice_part in enumerate(dice_parts):
-                        num_dice, dice_type = map(int, re.split(r'[dD]', dice_part))  # Rozdělení typu kostky
-                        if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
-                            embed = discord.Embed(
-                                title="Invalid Dice Type",
-                                description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
-                                color=discord.Color.red()
-                            )
-                            await ctx.send(embed=embed)
-                            return
-                        
-                        rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
-                        rolls_str += f"{num_dice}d{dice_type}({', '.join(map(str, rolls))})"  # Zahrnutí hodů kostky do výsledku
-                        total += sum(rolls)
-                        
-                        if i < len(sign_parts):  # Přidání znaménka + nebo -
-                            rolls_str += f" {sign_parts[i]} "
-                    
-                    for fixed_part in fixed_parts:
-                        fixed_value = int(fixed_part)
-                        rolls_str += str(fixed_value)
-                        if sign_parts:
-                            total += fixed_value * (1 if sign_parts[0] == "+" else -1)
-                        if i < len(sign_parts):  # Přidání znaménka + nebo -
-                            rolls_str += f" {sign_parts[i]} "
+                    for i, part in enumerate(components):
+                        if part in ["+", "-"]:
+                            current_operator = part
+                        elif "d" in part.lower():  # Část s typem kostky
+                            num_dice, dice_type = map(int, re.split(r'[dD]', part))
+                            if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
+                                embed = discord.Embed(
+                                    title="Invalid Dice Type",
+                                    description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
+                                    color=discord.Color.red()
+                                )
+                                await ctx.send(embed=embed)
+                                return
+                            
+                            rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
+                            rolls_str += f"{num_dice}d{dice_type}({', '.join(map(str, rolls))})"  # Zahrnutí hodů kostky do výsledku
+                            if current_operator == "+":
+                                total += sum(rolls)
+                            else:
+                                total -= sum(rolls)
+                            
+                            if i < len(components) - 1:  # Přidání aktuálního operátoru
+                                rolls_str += f" {current_operator} "
+                        else:  # Část s pevnou hodnotou
+                            fixed_value = int(part)
+                            rolls_str += str(fixed_value)
+                            if current_operator == "+":
+                                total += fixed_value
+                            else:
+                                total -= fixed_value
+                            
+                            if i < len(components) - 1:  # Přidání aktuálního operátoru
+                                rolls_str += f" {current_operator} "
                     
                     embed = discord.Embed(
                         title=f"Rolled Dice Expression: {dice_expression}",

@@ -1,10 +1,5 @@
 from redbot.core import Config, commands
-import random
-import discord
-import json
-import os
-import asyncio
-import re
+import random, discord, json, os, asyncio, re
 
 class CthulhuCog(commands.Cog):
     def __init__(self, bot):

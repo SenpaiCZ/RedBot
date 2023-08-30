@@ -166,10 +166,7 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["coc", "cthulhuhelp", "helpcthulhu"])
     async def cthulhu(self, ctx):
         description = (
-            "To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthulhu Starter set or Pulp of Cthulhu published by Chaosium .inc\n\n"
-            "Call of Cthulhu Keeper Rulebook - [Link](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/)\n"
-            "Call of Cthulhu Starter Set - [Link](https://www.chaosium.com/call-of-cthulhu-starter-set/)\n"
-            "Pulp Cthulhu - [Link](https://www.chaosium.com/pulp-cthulhu-hardcover/)\n\n"
+            "To be able to play Call of Cthulhu you will need [Call of Cthulhu Keeper Rulebook](https://www.chaosium.com/call-of-cthulhu-keeper-rulebook-hardcover/), [Call of Cthulhu Starter Set](https://www.chaosium.com/call-of-cthulhu-starter-set/) or [Pulp Cthulhu](https://www.chaosium.com/pulp-cthulhu-hardcover/) published by [Chaosium.inc](https://www.chaosium.com/)\n\n"
             "Commands Descriptions:\n"
             ":bulb: !d YDX :arrow_right: Roll dice (e.g. !d 3D6)\n"
             ":bulb: !d :arrow_right: Roll D100 against a skill (e.g. !d Listen)\n"

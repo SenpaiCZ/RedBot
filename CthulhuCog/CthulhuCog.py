@@ -172,7 +172,7 @@ class CthulhuCog(commands.Cog):
             ":bulb:`!randomname gender` - Generate random name form 1920s era. (e.g. `!randomname female`)\n\n"
             ":bulb:`!newInv Inv-name` - Create a new investigator (e.g. `!newInv Oswald Chester Razner`)\n\n"
             ":bulb:`!autoChar` - Generates random stats for your investigator. You can re-roll, dismiss or save stats.\n\n"
-            ":bulb:`!cstat stat-name` - Edit your investigators stats. (e.g. `!cstat STR 50`)\n"
+            ":bulb:`!cstat stat-name` - Edit your investigators stats. (e.g. `!cstat STR 50`)\n\n"
             ":bulb:`!sinfo skill-name` - Get information about specific skill (without skill-name you will get list of skills). (e.g. `!sinfo Listen`)\n\n"
             ":bulb:`!cskill skill-name number` - Edit your investigators skill. (e.g. `!cskill Listen 50`)\n\n"
             ":bulb:`!oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. `!oinfo bartender`)\n\n"

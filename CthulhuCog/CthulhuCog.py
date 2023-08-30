@@ -169,13 +169,16 @@ class CthulhuCog(commands.Cog):
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
             try:
-                if dice_expression in self.player_stats[user_id]:
-                    skill_name = dice_expression
-                    
+                normalized_dice_expression = dice_expression.lower()  # Převod na malá písmena
+                if normalized_dice_expression in map(str.lower, self.player_stats[user_id].keys()):
+                    skill_name = next(
+                        name for name in self.player_stats[user_id] if name.lower() == normalized_dice_expression
+                    )
+    
                     skill_value = self.player_stats[user_id][skill_name]
                     luck_value = self.player_stats[user_id]["LUCK"]
                     name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
-                    
+    
                     roll = random.randint(1, 100)
                     
                     if roll == 1:

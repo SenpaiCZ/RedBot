@@ -243,29 +243,6 @@ class CthulhuCog(commands.Cog):
                     
                     await ctx.send(embed=embed)
                 else:
-                    num_dice, dice_type = map(int, dice_expression.lower().split('d'))
-                    if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
-                        embed = discord.Embed(
-                            title="Invalid Dice Type",
-                            description="Use :game_die: D4, D6, D8, D10, D12, D20, or D100.",
-                            color=discord.Color.red()
-                        )
-                        await ctx.send(embed=embed)
-                        return
-                    
-                    rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
-                    total = sum(rolls)
-                    rolls_str = ", ".join(map(str, rolls))
-                    
-                    embed = discord.Embed(
-                        title=f"Rolled {num_dice} :game_die:d{dice_type}:",
-                        description=f":game_die: Rolls: {rolls_str}\nTotal: {total}",
-                        color=discord.Color.green()
-                    )
-                
-                    await ctx.send(embed=embed)
-            except ValueError:
-                try:
                     components = re.split(r'\s*([+-])\s*', dice_expression)  # Rozdělení výrazu na složky
                     
                     dice_parts = [part for part in components if part.lower() != "+" and part.lower() != "-"]
@@ -275,8 +252,8 @@ class CthulhuCog(commands.Cog):
                     rolls_str = ""
                     
                     for i, dice_part in enumerate(dice_parts):
-                        if "d" in dice_part:  # Pokud obsahuje "d", jde o výraz vrhání kostky
-                            num_dice, dice_type = map(int, dice_part.lower().split('d'))
+                        if "d" in dice_part.lower():  # Pokud obsahuje "d", jde o výraz vrhání kostky
+                            num_dice, dice_type = map(int, re.split(r'[dD]', dice_part))  # Rozdělení typu kostky
                             if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
                                 embed = discord.Embed(
                                     title="Invalid Dice Type",
@@ -304,13 +281,13 @@ class CthulhuCog(commands.Cog):
                     )
                 
                     await ctx.send(embed=embed)
-                except:
-                    embed = discord.Embed(
-                        title="Invalid Input",
-                        description="Use format !d <skill_name>, XdY, XdY+Z, or XdY-Z where X is the number of dice, Y is the dice type, and Z is the modifier.",
-                        color=discord.Color.red()
-                    )
-                    await ctx.send(embed=embed)
+            except ValueError:
+                embed = discord.Embed(
+                    title="Invalid Input",
+                    description="Use format !d <skill_name>, XdY, XdY+Z, or XdY-Z where X is the number of dice, Y is the dice type, and Z is the modifier.",
+                    color=discord.Color.red()
+                )
+                await ctx.send(embed=embed)
     
     @commands.command(aliases=["newInv","newinv"], guild_only=True)
     async def newInvestigator(self, ctx, *, investigator_name):

@@ -257,6 +257,7 @@ class CthulhuCog(commands.Cog):
                     for i, part in enumerate(components):
                         if part in ["+", "-"]:
                             current_operator = part
+                            rolls_str += part
                         elif "d" in part.lower():  # Část s typem kostky
                             num_dice, dice_type = map(int, re.split(r'[dD]', part))
                             if dice_type not in [4, 6, 8, 10, 12, 20, 100]:
@@ -269,7 +270,10 @@ class CthulhuCog(commands.Cog):
                                 return
                             
                             rolls = [random.randint(1, dice_type) for _ in range(num_dice)]
-                            rolls_str += f"{num_dice}d{dice_type}({', '.join(map(str, rolls))})"  # Zahrnutí hodů kostky do výsledku
+                            rolls_str += f"{num_dice}d{dice_type}("
+                            if current_operator == "-":  # Upraveno znaménko zde
+                                rolls_str += "-"
+                            rolls_str += f"{', '.join(map(str, rolls))})"
                             if current_operator == "+":
                                 total += sum(rolls)
                             else:
@@ -279,6 +283,8 @@ class CthulhuCog(commands.Cog):
                                 rolls_str += f" {current_operator} "
                         else:  # Část s pevnou hodnotou
                             fixed_value = int(part)
+                            if current_operator == "-":  # Upraveno znaménko zde
+                                rolls_str += "-"
                             rolls_str += str(fixed_value)
                             if current_operator == "+":
                                 total += fixed_value

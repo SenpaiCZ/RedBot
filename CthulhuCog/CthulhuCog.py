@@ -1,5 +1,5 @@
 from redbot.core import Config, commands
-from skills_info import skills_info
+#from skills_info import skills_info
 import random
 import discord
 import json

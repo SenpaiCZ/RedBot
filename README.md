@@ -115,6 +115,7 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 | Command                                  | Description                                 |
 |------------------------------------------|---------------------------------------------|
+| !coc / !cthulhuhelp                                  | Show all commands in discord with examples and descriptions.                    |
 | !d YDX                                   | Roll dice (e.g. !d 3D6)                     |
 | !d <skill>                               | Roll D100 against a skill (e.g. !d Listen)                |
 | !db <skill>                              | Roll D100 against a skill with a bonus      |

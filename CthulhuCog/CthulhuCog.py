@@ -447,7 +447,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
 
-    @commands.command(aliases=["mychar", "mcs"], guild_only=True)
+    @commands.command(aliases=["mychar", "mcs","myChar","MyChar"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
         if member is None:
             member = ctx.author
@@ -645,7 +645,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
          
-    @commands.command(aliases=["cb"], guild_only=True)
+    @commands.command(aliases=["cb","CB"], guild_only=True)
     async def CthulhuBackstory(self, ctx, *, input_text):
         user_id = str(ctx.author.id)
     
@@ -676,7 +676,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
 
-    @commands.command(aliases=["mb"], guild_only=True)
+    @commands.command(aliases=["mb","MB"], guild_only=True)
     async def MyCthulhuBackstory(self, ctx):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
@@ -706,7 +706,7 @@ class CthulhuCog(commands.Cog):
 
 
 
-    @commands.command(aliases=["rb"], guild_only=True)
+    @commands.command(aliases=["rb","RB"], guild_only=True)
     async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
@@ -747,7 +747,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
 
 
-    @commands.command(guild_only=True)
+    @commands.command(aliases=["DB"], guild_only=True)
     async def db(self, ctx, *, skill_name):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
@@ -849,7 +849,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send(embed=embed)
 
     
-    @commands.command(guild_only=True)
+    @commands.command(aliases=["DP"], guild_only=True)
     async def dp(self, ctx, *, skill_name):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
@@ -951,7 +951,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send(embed=embed)
 
 
-    @commands.command()
+    @commands.command(aliases=["randomname"])
     async def cname(self, ctx, gender):
         gender = gender.lower()
         if gender not in ["male", "female"]:
@@ -1003,7 +1003,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command()
+    @commands.command(aliases=["createNPC"])
     async def cNPC(self, ctx, gender):
         gender = gender.lower()
         if gender not in ["male", "female"]:
@@ -1097,7 +1097,7 @@ class CthulhuCog(commands.Cog):
         
         await ctx.send(embed=embed)
 
-    @commands.command(guild_only=True)
+    @commands.command(aliases=["autochar","generatestats"], guild_only=True)
     async def autoChar(self, ctx):
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
@@ -1173,7 +1173,7 @@ class CthulhuCog(commands.Cog):
 
 
 
-    @commands.command()
+    @commands.command(aliases=["sinfo"])
     async def skillinfo(self, ctx, *, skill_name: str = None):
         # Zde můžete definovat informace o dovednostech (malá písmena)
         skills_info = {
@@ -1244,7 +1244,7 @@ class CthulhuCog(commands.Cog):
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["cocc"])
+    @commands.command(aliases=["cocc","oinfo"])
     async def coccupations(self, ctx, *, occupation_name: str = None):
         occupations_info = {
             "accountant": {
@@ -2080,7 +2080,7 @@ class CthulhuCog(commands.Cog):
         await ctx.send(embed=embed)
             
     @commands.command(aliases=["gbackstory"])
-    async def generate_backstory(self, ctx):
+    async def generatebackstory(self, ctx):
         personal_descriptions = [
             "Rugged", "Handsome", "Ungainly",
             "Pretty", "Glamorous", "Baby-faced",
@@ -2195,7 +2195,8 @@ class CthulhuCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=["firearms"])
+    @commands.command(aliases=["firearms","finfo"
+                              ])
     async def cfirearms(self, ctx, *, weapon_name=None):
         firearms_data = {
             "Remington Double Derringer M95": {
@@ -2705,7 +2706,7 @@ class CthulhuCog(commands.Cog):
     
         await ctx.send(embed=embed)
         
-    @commands.command()
+    @commands.command(aliases=["yinfo"])
     async def cyear(self, ctx, year: int):
         event_info = self.get_year_events(year)
         
@@ -3857,7 +3858,7 @@ class CthulhuCog(commands.Cog):
         }
         return events.get(year, [])
         
-    @commands.command()
+    @commands.command(aliases=["randomLoot","randomloot"])
     async def cloot(self, ctx):
         items = ["A Mysterious Journal", "A Cultist Robes", "A Whispering Locket", "A Mysterious Puzzle Box", "A Map of the area", "An Ornate dagger", "Binoculars", "An Old journal", "A Gas mask", "Handcuffs", "A Pocket watch", "A Police badge", "A Vial of poison", "A Rope (20 m)", "A Vial of holy water", "A Hunting knife", "A Lockpick", "A Vial of acid", "A Hammer", "Pliers", "A Bear trap", "A Bottle of poison", "A Perfume", "Flint and steel", "A Vial of blood", "A Round mirror", "A Pocket knife", "Matchsticks", "Cigarettes", "Sigars", "A Compass", "An Opium pipe", "A Vial of snake venom", "A Handkerchief", "A Personal diary", "A Wooden cross", "A Business card", "A Cultist's mask", "Cultist’s robes", "A Pocket watch", "A Bottle of absinthe", "A Vial of morphine", "A Vial of ether", "A Black candle", "A Flashlight", "A Baton", "A Bottle of whiskey", "A Bulletproof vest", "A First-aid kit", "A Baseball bat", "A Crowbar", "A Cigarillo case", "Brass knuckles", "A Switchblade knife", "A Bottle of chloroform", "Leather gloves", "A Sewing kit", "A Deck of cards", "Fishing Line", "An Axe", "A Saw", "A Rope (150 ft)", "A Water bottle", "A Lantern", "A Signaling mirror", "A Steel helmet", "A Waterproof cape", "A Colt 1911 Auto Handgun", "A Luger P08 Handgun", "A S&W .44 Double Action Handgun", "A Colt NS Revolver", "A Colt M1877 Pump-Action Rifle", "A Remington Model 12 Pump-Action Rifle", "A Savage Model 99 Lever-Action Rifle", "A Winchester M1897 Pump-Action Rifle", "A Browning Auto-5 Shotgun", "A Remington Model 11 Shotgun", "A Winchester Model 12 Shotgun", "A Beretta M1918 Submachine Gun", "An MP28 Submachine Gun", "Handgun Bullets (10)", "Handgun Bullets (20)", "Handgun Bullets (30)", "Rifle Bullets (10)", "Rifle Bullets (20)", "Rifle Bullets (30)", "Shotgun Shells (10)", "Shotgun Shells (20)", "Shotgun Shells (30)", "A Bowie Knife", "A Katana Sword", "Nunchucks", "A Tomahawk", "A Bayonet", "A Rifle Scope", "A Rifle Bipod", "A Shotgun Stock", "A Dynamite Stick", "A Dissecting Kit", "A Bolt Cutter", "A Hacksaw", "A Screwdriver Set", "A Sledge Hammer", "A Wire Cutter", "Canned Meat", "Dried Meat", "An Airmail Stamp", "A Postage Stamp", "A Camera", "A Chemical Test Kit", "A Codebreaking Kit", "A Geiger Counter", "A Magnifying Glass", "A Sextant", "Federal agent credentials", "Moonshine", "A Skeleton key", "A Can of tear gas", "A Trench coat", "Leather gloves", "A Fountain pen", "A Shoe shine kit", "A Straight razor", "Cufflinks", "A Snuff box", "A Perfume bottle", "Playing cards", "An Oil lantern", "A Mess kit", "A Folding shovel", "A Sewing kit", "A Grappling hook", "A Portable radio", "A Dice set", "Poker chips", "A Pipe", "Pipe tobacco", "A Hairbrush", "Reading glasses", "A Police whistle", "An Altimeter", "A Barometer", "A Scalpel", "A Chemistry set", "A Glass cutter", "A Trench periscope", "A Hand Grenade", "A Signal flare", "An Army ration", "A Can of kerosene", "A Butcher's knife", "A Pickaxe", "A Fishing kit", "An Antiseptic ointment", "Bandages", "A Cigarette Case", "A Matchbox", "A pair of Cufflinks", "A pair of Spectacles", "A pair of Sunglasses", "A set of Keys", "A tube of Lipstick", "A set of Hairpins", "A Checkbook", "An Address Book", "An Umbrella", "A pair of Gloves", "A Notebook", "A Gas cooker", "Rubber Bands", "A Water Bottle", "A Towel", "A Cigar Cutter", "A Magnifying Glass", "A Magnesium Flare", "A Hairbrush", "A Sketchbook", "A Police Badge", "A Fingerprinting Kit", "Lecture Notes", "A Measuring Tape", "Charcoal", "A Pencil Sharpener", "An Ink Bottle", "Research Notes", "A Crowbar", "A Fake ID", "A Stethoscope", "Bandages", "Business Cards", "A Leather-bound Journal", "A Prescription Pad", "Dog Tags", "A Pipe", "A Chocolate bar", "Strange bones", "A Prayer Book", "Surgical Instruments", "Fishing Lures", "Fishing Line", "Pliers", "A Bottle Opener", "A Wire Cutter", "A Wrench", "A Pocket Watch", "A Travel Guidebook", "A Passport", "Dental Tools", "A Surgical Mask", "A Bottle of red paint", "An Electricity cable (15 ft)", "A Smoke Grenade ", "A Heavy duty jacket", "A pair of Heavy duty trousers", "Motor Oil", "Army overalls", "A small scale", "A bottle of Snake Oil", "A Cane with a hidden sword", "A Monocle on a chain", "A Carved ivory chess piece", "Antique marbles", "A Bullwhip", "A Folding Fan", "A Folding Pocket Knife", "A Travel Chess Set", "A Pocket Book of Etiquette", "A Pocket Guide to Stars", "A Pocket Book of Flowers", "A Mandolin", "An Ukulele", "A Vial of Laudanum", "A Leather Bound Flask (empty)", "A Lock of Hair", "A Tobacco Pouch", "A flare gun", "A pipe bomb", "A Molotov cocktail", "An anti-personnel mine", "A machete", "A postcard", "A wristwatch", "A shovel", "A padlock", "A light chain (20 ft)", "A heavy chain (20 ft)", "A handsaw", "A telescope", "A water pipe", "A box of candles", "Aspirin (16 pills)", "Chewing Tobacco", "A Gentleman's Pocket Comb", "A Sailor's Knot Tying Guide", "A Leather Map Case", "A Camera", "Crystal Rosary Beads", "A Handmade Silver Bracelet", "Herbal Supplements", "A Bloodletting Tool", "A Spiritualist Seance Kit", "A Morphine Syringe", "A Bottle of Radioactive Water", "An Astrology Chart", "An Alchemy Kit", "A Mortar and Pestle", "A Scalpel", "An Erlenmeyer Flask", "A Chemistry Textbook", "Nautical Charts", "A Bottle of Sulfuric Acid", "Protective Gloves", "Safety Goggles", "A Kerosene Lamp", "Painkillers"]
         # Pravděpodobnost 50% na získání peněz

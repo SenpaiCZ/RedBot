@@ -450,7 +450,7 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of HP
                     if stat_name == "CON" or stat_name == "SIZ":
                         if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
-                            hp_message = await ctx.send("You filled all stats required to calculate *HP*. Do you want me to calculate HP?")
+                            hp_message = await ctx.send("You filled all stats required to calculate **HP**. Do you want me to calculate HP?")
                             await hp_message.add_reaction("✅")
                             await hp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -470,7 +470,7 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of MP
                     if stat_name == "POW":
                         if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["MP"] == 0:
-                            mp_message = await ctx.send("You filled all stats required to calculate *MP*. Do you want me to calculate MP?")
+                            mp_message = await ctx.send("You filled all stats required to calculate **MP**. Do you want me to calculate MP?")
                             await mp_message.add_reaction("✅")
                             await mp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -485,7 +485,29 @@ class CthulhuCog(commands.Cog):
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"The calculation of **MP** will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send("You took too long to react. The calculation of **MP** will not proceed.")                    
+                                await ctx.send("You took too long to react. The calculation of **MP** will not proceed.") 
+
+                    #automatic calculation of SAN
+                    if stat_name == "POW":
+                        if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["SAN"] == 0:
+                            san_message = await ctx.send("You filled all stats required to calculate **SAN**. Do you want me to calculate SAN?")
+                            await san_message.add_reaction("✅")
+                            await san_message.add_reaction("❌")
+                            def check(reaction, user):
+                                return user == ctx.author and reaction.message.id == san_message.id and str(reaction.emoji) in ["✅", "❌"]
+                            try:
+                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                if str(reaction.emoji) == "✅":
+                                    SAN = self.player_stats[user_id]["POW"]
+                                    self.player_stats[user_id]["SAN"] = SAN
+                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                    await ctx.send(f"Your **SAN** has been calculated as **{SAN}** and successfully saved.")
+                                elif str(reaction.emoji) == "❌":
+                                    await ctx.send(f"The calculation of **SAN** will not proceed.")
+                            except asyncio.TimeoutError:
+                                await ctx.send("You took too long to react. The calculation of **SAN** will not proceed.")   
+
+
 
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")

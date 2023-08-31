@@ -448,7 +448,7 @@ class CthulhuCog(commands.Cog):
                     await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
 
                     if stat_name == "CON" or stat_name == "SIZ":
-                        if "CON" in self.player_stats[user_id] != 0 and "SIZ" in self.player_stats[user_id] != 0 and self.player_stats[user_id]["HP"] == 0:
+                        if "CON" in self.player_stats[user_id] != "0" and "SIZ" in self.player_stats[user_id] != "0" and self.player_stats[user_id]["HP"] == "0":
                             hp_message = await ctx.send("You filled all stats required to calculate *HP*. Do you want me to calculate HP?")
                             await hp_message.add_reaction("✅")
                             await hp_message.add_reaction("❌")
@@ -459,6 +459,7 @@ class CthulhuCog(commands.Cog):
                                 if str(reaction.emoji) == "✅":
                                     HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
                                     self.player_stats[user_id]["HP"] = HP
+                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                     await ctx.send(f"Your **HP** has been calculated to {HP} and saved.")
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"**HP** will not be calculated.")

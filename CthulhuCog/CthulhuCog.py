@@ -511,8 +511,7 @@ class CthulhuCog(commands.Cog):
 
                     #automatic calculation of MOV
                     if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
-                        if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and \
-                           self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["MOV"] == 0:
+                        if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["MOV"] == 0:
                             mov_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
                             await mov_message.add_reaction("✅")
                             await mov_message.add_reaction("❌")

@@ -511,7 +511,10 @@ class CthulhuCog(commands.Cog):
 
                     #automatic calculation of MOV
                     if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
-                        if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["MOV"] == 0:
+                        if  self.player_stats[user_id]["DEX"] != 0 and \
+                            self.player_stats[user_id]["SIZ"] != 0 and \
+                            self.player_stats[user_id]["STR"] != 0 and \
+                            self.player_stats[user_id]["MOV"] == 0:
                             mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
                             await mo_message.add_reaction("✅")
                             await mo_message.add_reaction("❌")
@@ -520,11 +523,16 @@ class CthulhuCog(commands.Cog):
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    if self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                                    if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
+                                        self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
                                         MOV = 7
-                                    elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                                    elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
+                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or \
+                                         self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                                         self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
                                         MOV = 8
-                                    elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
+                                    elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
+                                         self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
                                         MOV = 9
                                     else:
                                         #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.

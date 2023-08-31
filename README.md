@@ -39,69 +39,63 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 # Generate random name with !cname male/female
 
-![Generating random name](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/name.jpg)
+![Generating random name](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/randomName.jpg)
+
+# Create Investigator
+
+![Create Investigator](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/newInv.jpg)
 
 # Generate random character stats
 
-![Generating random character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/autochar.jpg)
+![Generating random character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/autoChar.jpg)
 
 # Change skill or stat
 
-![Edit skill of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/cskill.jpg)
+![Edit stat of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/cstat%20STR.jpg)
+
+![Edit skill of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/cstat%20Listen.jpg)
 
 # Show character stats
 
-![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs1.JPG)
+![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/myChar1.jpg)
 
-![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs2.JPG)
+![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/myChar2.jpg)
 
-![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/mcs3.JPG)
+![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/myChar3.jpg)
 
 # Roll die or multiple
 
-![Roll 3D6](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/normal%20roll.JPG)
-
-![Complex roll](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/complex%20die.JPG)
-
-![Complex roll](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/complex%20die.JPG)
+![Roll die](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/d%203D6.jpg)
 
 # Check for skill
 
-![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/d%20listen.jpg)
+![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/d%20Listen.jpg)
+
+![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/db%20Listen.jpg)
+
+![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/dp%20Listen.jpg)
 
 # Using luck for rolls (in this example its roll with bonus die)
 
-![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck.jpg)
+![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/d%20Listen%20Use%20luck.jpg)
 
-![using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/use%20luck%202.jpg)
+![using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/d%20Listen%20Used%20luck.jpg)
+
+# Inventory and backstory
+
+![Generate random backstory](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/Inventory%20and%20backstory.jpg)
 
 # Generate random NPC
 
-![Generated random NPC](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/random%20npc.jpg)
-
-# Get info about skills
-
-![List of skills](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/skillinfo.jpg)
-![Show occult skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/skillinfo%20occult.jpg)
-
-# Get info about occupations
-
-![List of occupations](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/occupations.jpg)
-![Get info about librarian](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/occupations%20librarian.jpg)
-
-# Generate backstory
-
-![Generate random backstory](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/backstory%20generator.jpg)
-
-# Show information about firearms
-
-![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms.jpg)
-
-![Firearms information](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/firearms2.jpg)
+![Generated random NPC](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/cNPC.jpg)
 
 # Rename skill
 
-![Rename skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/src-images/rskill.JPG)
+![Rename skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/renameSkill.jpg)
+
+# Delete investigator
+
+![Delete Investigator](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/deleteInvestigator.jpg)
 
 # Cthulhu Cog Commands
 

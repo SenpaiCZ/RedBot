@@ -2245,15 +2245,18 @@ class CthulhuCog(commands.Cog):
             response = f"List of occupations:\n{occupations_list}"
             embed_title = "Occupations List"
         else:
-            lower_occupation_name = occupation_name.lower()
-            occupation_info = occupations_info.get(lower_occupation_name)
-            if occupation_info is None:
+            matching_occupations = [
+                name for name in occupations_info.keys() if occupation_name.lower() in name.lower()
+            ]
+            if not matching_occupations:
                 response = (
-                    f"Occupation '{occupation_name}' not found.\n"
+                    f"No matching occupations found for '{occupation_name}'.\n"
                     f"Please choose an occupation from the list or check your spelling."
                 )
-                embed_title = "Invalid Occupation"
-            else:
+                embed_title = "No Matching Occupations"
+            elif len(matching_occupations) == 1:
+                occupation_name = matching_occupations[0]
+                occupation_info = occupations_info[occupation_name]
                 embed_title = occupation_name.capitalize()
                 description = occupation_info["description"]
                 era = occupation_info["era"]
@@ -2263,15 +2266,23 @@ class CthulhuCog(commands.Cog):
                 skills = occupation_info["skills"]
                 response = (
                     f":clipboard: Description: {description}\n"
-                    f"::clock:  Era: {era}\n"
+                    f"::clock: Era: {era}\n"
                     f":black_joker: Occupation Skill Points: {skill_points}\n"
                     f":moneybag: Credit Rating: {credit_rating}\n"
                     f":telephone: Suggested Contacts: {suggested_contacts}\n"
                     f":zap: Skills: {skills}"
                 )
-        
+            else:
+                matching_occupations_list = ", ".join(matching_occupations)
+                response = (
+                    f"Multiple matching occupations found for '{occupation_name}':\n"
+                    f"{matching_occupations_list}"
+                )
+                embed_title = "Multiple Matching Occupations"
+
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
+
             
     @commands.command(aliases=["gbackstory"])
     async def generatebackstory(self, ctx):

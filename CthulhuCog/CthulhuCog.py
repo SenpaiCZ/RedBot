@@ -851,8 +851,12 @@ class CthulhuCog(commands.Cog):
             return stat_emojis.get(stat_name, ":question:")
 
         def get_stat_value(stat_name, value):
-            if stat_name in ["Move", "Build", "Damage Bonus","HP","MP","Age"]:
+            if stat_name in ["Move", "Build", "Damage Bonus","Age"]:
                 formatted_value = f"{value}"
+            elif stat_name in ["HP"]:
+                formatted_value = f"{value}/" + self.player_stats[user_id]["MAX_HP"]
+            elif stat_name in ["MP"]:
+                formatted_value = f"{value}/" + self.player_stats[user_id]["MAX_MP"]
             elif stat_name in ["LUCK"]:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
             else:

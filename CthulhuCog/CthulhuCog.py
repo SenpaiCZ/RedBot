@@ -524,17 +524,17 @@ class CthulhuCog(commands.Cog):
                                     if self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
                                        self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
                                         MOV = 7
-                                    elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
-                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or \
-                                         self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
-                                         self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
-                                        MOV = 8
+                                    #elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
+                                     #    self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or \
+                                      #   self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                                       #  self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                                        #MOV = 8
                                     elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
                                          self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
                                         MOV = 9
                                     else:
                                         #This should be impossible to happen. If you see MOV over 9000, i totaly fucked up this code.
-                                        MOV = 9001
+                                        MOV = 8
                                     self.player_stats[user_id]["MOV"] = MOV
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                     await ctx.send(f"{ctx.author.display_name}'s **MOV** has been calculated as **{MOV}** and successfully saved.")

@@ -2282,7 +2282,47 @@ class CthulhuCog(commands.Cog):
 
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
-
+        
+    @commands.command(aliases=["cArchetype"])
+    async def pulpofcthulhuarchetype(self, ctx, *, archetype_name: str = None):
+        archetypes_info = {
+            "Adventurer": {
+                "description": "A life without adventure is not worth living. The world is a big place and there is much to be experienced and many chances for glory. Sitting behind the desk, working a job nine to five is a death sentence for such folk. The adventurer yearns for excitement, fun, and challenge.",
+                "adjustments": [
+                    "Core characteristic: Choose either DEX or APP",
+                    "Add 100 bonus points divided among any of the following skills: Climb, Diving, Drive Auto, First-Aid, Fighting (any), Firearms (any), Jump, Language (other), Mechanical repair, Pilot (any), Ride, Stealth, Survival (any), Swim.",
+                    "Suggested occupations: Actor, Archaeologist, Athlete, Aviator, Bank Robber, Big Game Hunter, Cat Burglar, Dilettante, Drifter, Gambler, Gangster, Hobo, Investigative Journalist, Missionary, Nurse, Photographer, Ranger, Sailor, Soldier, Tribe Member",
+                    "Talents: any two",
+                    "Suggested traits: easily bored, tenacious, glory hunter, egocentric",
+                ],
+            },
+            # Více archetypů v stejném formátu,
+        }
+        if archetype_name is None:
+            archetypes_list = ", ".join(archetypes_info.keys())
+            response = f"List of archetypes:\n{archetypes_list}"
+            embed_title = "Archetypes List"
+        else:
+            matching_archetypes = [archetype for archetype in archetypes_info.keys() if archetype_name.lower() in archetype.lower()]
+            if not matching_archetypes:
+                response = (
+                    f"Archetype '{archetype_name}' not found.\n"
+                    f"Please choose an archetype from the list or check your spelling."
+                )
+                embed_title = "Invalid Archetype"
+            elif len(matching_archetypes) > 1:
+                response = f"Multiple archetypes found matching '{archetype_name}': {', '.join(matching_archetypes)}"
+                embed_title = "Multiple Archetypes Found"
+            else:
+                matched_archetype = matching_archetypes[0]
+                archetype_info = archetypes_info[matched_archetype]
+                embed_title = matched_archetype.capitalize()
+                description = archetype_info["description"]
+                adjustments = "\n".join(archetype_info["adjustments"])
+                response = f":scroll: Description: {description}\n\n:gear: Adjustments:\n{adjustments}"
+            
+        embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
+        await ctx.send(embed=embed)
             
     @commands.command(aliases=["gbackstory"])
     async def generatebackstory(self, ctx):

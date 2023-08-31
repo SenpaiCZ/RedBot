@@ -1200,23 +1200,62 @@ class CthulhuCog(commands.Cog):
             HP = (CON + SIZ) // 10
             SAN = POW
             MP = POW // 5
+
+            #Bonus DMG and Build
+            STRSIZ = STR + SIZ
+            if 2 <= STRSIZ <= 64:
+                BONUSDMG = -2
+                BUILD = -2
+            elif 65 <= STRSIZ <= 84:
+                BONUSDMG = -1
+                BUILD = -1
+            elif 85 <= STRSIZ <= 124:
+                BONUSDMG = 0
+                BUILD = 0
+            elif 125 <= STRSIZ <= 164:
+                BONUSDMG = "1D4"
+                BUILD = 1
+            elif 165 <= STRSIZ <= 204:
+                BONUSDMG = "1D6"
+                BUILD = 2
+            elif 205 <= STRSIZ <= 284:
+                BONUSDMG = "2D6"
+                BUILD = 3
+            elif 285 <= STRSIZ <= 364:
+                BONUSDMG = "3D6"
+                BUILD = 4
+            elif 365 <= STRSIZ <= 444:
+                BONUSDMG = "4D6"
+                BUILD = 5
+            elif 445 <= STRSIZ <= 524:
+                BONUSDMG = "5D6"
+                BUILD = 6
+            else:
+                # if fuking broken
+                BONUSDMG = 0
+                BUILD = 0
+
+
             stats_embed = discord.Embed(
                 title="Character Creation Assistant",
                 description="New stats have been generated for your character.",
                 color=discord.Color.green()
             )
-            stats_embed.add_field(name="STR", value=f":muscle: :game_die: {STR}", inline=True)
-            stats_embed.add_field(name="DEX", value=f":runner: :game_die: {DEX}", inline=True)
-            stats_embed.add_field(name="CON", value=f":heart: :game_die: {CON}", inline=True)
-            stats_embed.add_field(name="INT", value=f":brain: :game_die: {INT}", inline=True)
-            stats_embed.add_field(name="POW", value=f":zap: :game_die: {POW}", inline=True)
-            stats_embed.add_field(name="CHA", value=f":sparkles: :game_die: {APP}", inline=True)
-            stats_embed.add_field(name="EDU", value=f":mortar_board: :game_die: {EDU}", inline=True)
-            stats_embed.add_field(name="SIZ", value=f":bust_in_silhouette: :game_die: {SIZ}", inline=True)
-            stats_embed.add_field(name="HP", value=f":heartpulse: :game_die: {HP}", inline=True)
-            stats_embed.add_field(name="SAN", value=f":scales: :game_die: {SAN}", inline=True)
-            stats_embed.add_field(name="MP", value=f":sparkles: :game_die: {MP}", inline=True)
-            stats_embed.add_field(name="LUCK", value=f":four_leaf_clover: :game_die: {LUCK}", inline=True)
+            stats_embed.add_field(name="STR", value=f":muscle: 3D6 x 5 :game_die: {STR}", inline=True)
+            stats_embed.add_field(name="DEX", value=f":runner: 3D6 x 5 :game_die: {DEX}", inline=True)
+            stats_embed.add_field(name="CON", value=f":heart: 3D6 x 5 :game_die: {CON}", inline=True)
+            stats_embed.add_field(name="INT", value=f":brain: 3D6 x 5 :game_die: {INT}", inline=True)
+            stats_embed.add_field(name="POW", value=f":zap: 3D6 x 5 :game_die: {POW}", inline=True)
+            stats_embed.add_field(name="CHA", value=f":sparkles: 3D6 x 5 :game_die: {APP}", inline=True)
+            stats_embed.add_field(name="EDU", value=f":mortar_board: 2D6 x 5 + 5 :game_die: {EDU}", inline=True)
+            stats_embed.add_field(name="SIZ", value=f":bust_in_silhouette: 2D6 x 5 + 5 :game_die: {SIZ}", inline=True)
+            stats_embed.add_field(name="HP", value=f":heartpulse: (CON + SIZ) / 5 :game_die: {HP}", inline=True)
+            stats_embed.add_field(name="SAN", value=f":scales: POW :game_die: {SAN}", inline=True)
+            stats_embed.add_field(name="MP", value=f":sparkles: POW / 5 :game_die: {MP}", inline=True)
+            stats_embed.add_field(name="LUCK", value=f":four_leaf_clover: 3D6 x 5 :game_die: {LUCK}", inline=True)
+            stats_embed.add_field(name="Damage Bonus", value=f":boxing_glove: Based of STR & SIZ :game_die: {BONUSDMG}", inline=True)
+            stats_embed.add_field(name="Build", value=f":restroom: Based of STR & SIZ :game_die: {BUILD}", inline=True)
+            
 
             message = await ctx.send(embed=stats_embed)
             await message.add_reaction("✅")  # Add checkmark emoji
@@ -1238,9 +1277,16 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id]["EDU"] = EDU
                     self.player_stats[user_id]["SIZ"] = SIZ
                     self.player_stats[user_id]["HP"] = HP
+                    self.player_stats[user_id]["MAX_HP"] = HP
                     self.player_stats[user_id]["SAN"] = SAN
                     self.player_stats[user_id]["MP"] = MP
+                    self.player_stats[user_id]["MAX_MP"] = MP
                     self.player_stats[user_id]["LUCK"] = LUCK
+                    self.player_stats[user_id]["Dodge"] = DEX/5
+                    self.player_stats[user_id]["Language (own)"] = EDU
+                    self.player_stats[user_id]["Build"] = BUILD
+                    self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
+
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated stats
                     await ctx.send("Your character's stats have been saved!")
                 elif str(reaction.emoji) == "❌":
@@ -2507,7 +2553,6 @@ class CthulhuCog(commands.Cog):
                     ":brain: **Suggested traits:** tough, capable, determined, quick to anger, violent, dirty, corrupt, underhand.",
                 ],
             },           
-            # Více archetypů v stejném formátu,
         }
         if archetype_name is None:
             archetypes_list = ", ".join(archetypes_info.keys())

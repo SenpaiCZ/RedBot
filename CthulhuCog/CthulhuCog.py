@@ -675,37 +675,8 @@ class CthulhuCog(commands.Cog):
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")
             else:
-                await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP.")
+                await ctx.send("Invalid name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
 
-            
-    @commands.command(aliases=["cskill"], guild_only=True)
-    async def CthulhuChangeSkills(self, ctx, *, skill_and_value):
-        user_id = str(ctx.author.id)  # Get the user's ID as a string
-        skill_and_value = skill_and_value.rsplit(maxsplit=1)
-        
-        if len(skill_and_value) != 2:
-            await ctx.send("Invalid input. Please provide skill name and new value.")
-            return
-        
-        skill_name = skill_and_value[0].title()  # Convert the skill name to title case
-        new_value = skill_and_value[1]
-        
-        if user_id in self.player_stats:
-            normalized_skill_name = skill_name.lower()  # Normalize skill name to lowercase
-            matching_skills = [s for s in self.player_stats[user_id] if s.lower().replace(" ", "") == normalized_skill_name.replace(" ", "")]
-            
-            if matching_skills:
-                try:
-                    new_value = int(new_value)
-                    self.player_stats[user_id][matching_skills[0]] = new_value
-                    await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
-                    await ctx.send(f"Your {matching_skills[0]} has been updated to {new_value}.")
-                except ValueError:
-                    await ctx.send("Invalid new value. Please provide a number.")
-            else:
-                await ctx.send("Skill not found in your skills list.")
-        else:
-            await ctx.send("Start by creating investigator !newInv.")
 
     @commands.command(aliases=["rskill"], guild_only=True)
     async def renameSkill(self, ctx, *, old_and_new_name):
@@ -727,7 +698,7 @@ class CthulhuCog(commands.Cog):
                 try:
                     self.player_stats[user_id][new_skill_name] = self.player_stats[user_id].pop(matching_skills[0])
                     
-                    # Move "Backstory" to the end of the dictionary
+                    # Move "Backstory" to the end of the dictionarya
                     if "Backstory" in self.player_stats[user_id]:
                         backstory = self.player_stats[user_id].pop("Backstory")
                         self.player_stats[user_id]["Backstory"] = backstory

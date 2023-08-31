@@ -132,3 +132,14 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !rskill skill1 skill2                    | Rename skill to your liking. If your language is English you can rename Language (own) to English. You can also use 3 custom skills.    |
 | !showUserData                  | Debug command. Shows raw data saved for user who calls the command (stats, skill, backstory).  |
 
+# Change Log
+
+31st August 2023 - New Features and Enhancements
+
+**Automatic Calculations:** After filling in all the required stats, the system now automatically calculates HP, MP, LUCK, MOV, BUILD, and Damage Bonus. This streamlines the process and ensures accurate character progression.
+
+**Simplified Language (own) and Dodge:** Language (own) and Dodge stats will now be automatically populated as you fill in other related stats, reducing manual input.
+
+**MAX_MP and MAX_HP:** Introducing MAX_MP and MAX_HP stats that are automatically updated upon calculation. You can edit these values just like regular stats.
+
+These enhancements aim to make character management more efficient and provide you with a smoother gameplay experience. Enjoy your adventures in the world of Cthulhu!

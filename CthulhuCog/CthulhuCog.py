@@ -514,7 +514,7 @@ class CthulhuCog(commands.Cog):
                         if  self.player_stats[user_id]["DEX"] != 0 and \
                             self.player_stats[user_id]["SIZ"] != 0 and \
                             self.player_stats[user_id]["STR"] != 0 and \
-                            self.player_stats[user_id]["MOV"] == 0:
+                            self.player_stats[user_id]["Move"] == 0:
                             mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
                             await mo_message.add_reaction("✅")
                             await mo_message.add_reaction("❌")
@@ -542,7 +542,7 @@ class CthulhuCog(commands.Cog):
                                     else:
                                         #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
                                         MOV = 9001
-                                    self.player_stats[user_id]["MOV"] = MOV
+                                    self.player_stats[user_id]["Move"] = MOV
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                     await ctx.send(f"{ctx.author.display_name}'s **MOV** has been calculated as **{MOV}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":

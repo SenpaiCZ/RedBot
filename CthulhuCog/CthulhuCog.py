@@ -1234,7 +1234,13 @@ class CthulhuCog(commands.Cog):
                 # if fuking broken
                 BONUSDMG = 0
                 BUILD = 0
-
+            #calculatin MOV
+            if DEX < SIZ and STR < SIZ:
+                MOV = 7
+            elif DEX < SIZ or STR < SIZ or (DEX == STR == SIZ):
+                MOV = 8
+            elif DEX > SIZ and STR > SIZ:
+                MOV = 9
 
             stats_embed = discord.Embed(
                 title="Character Creation Assistant",
@@ -1253,6 +1259,7 @@ class CthulhuCog(commands.Cog):
             stats_embed.add_field(name="SAN", value=f":scales: POW :game_die: {SAN}", inline=True)
             stats_embed.add_field(name="MP", value=f":sparkles: POW / 5 :game_die: {MP}", inline=True)
             stats_embed.add_field(name="LUCK", value=f":four_leaf_clover: 3D6 x 5 :game_die: {LUCK}", inline=True)
+            stats_embed.add_field(name="MOV", value=f":person_running: Based of DEX, STR & SIZ :game_die: {MOV}", inline=True)
             stats_embed.add_field(name="Damage Bonus", value=f":boxing_glove: Based of STR & SIZ :game_die: {BONUSDMG}", inline=True)
             stats_embed.add_field(name="Build", value=f":restroom: Based of STR & SIZ :game_die: {BUILD}", inline=True)
             
@@ -1286,6 +1293,7 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id]["Language (own)"] = EDU
                     self.player_stats[user_id]["Build"] = BUILD
                     self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
+                    self.player_stats[user_id]["Move"] = MOV
 
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated stats
                     await ctx.send("Your character's stats have been saved!")

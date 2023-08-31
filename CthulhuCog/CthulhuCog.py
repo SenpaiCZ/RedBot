@@ -526,14 +526,19 @@ class CthulhuCog(commands.Cog):
                                     if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
                                         MOV = 7
+                                        
                                     elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
-                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or \
-                                         self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                                        MOV = 8
+
+                                    elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
                                          self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
                                         MOV = 8
+                                        
                                     elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
                                          self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
                                         MOV = 9
+                                        
                                     else:
                                         #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
                                         MOV = 9001

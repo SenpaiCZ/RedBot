@@ -436,7 +436,6 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["cstat"], guild_only=True)
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
-        stat_name = stat_name.upper()
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
@@ -671,6 +670,7 @@ class CthulhuCog(commands.Cog):
                                     await ctx.send(f"The calculation of **Language (own)** will not proceed.")
                             except asyncio.TimeoutError:
                                 await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)** will not proceed.")   
+
 
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")

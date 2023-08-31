@@ -428,7 +428,7 @@ class CthulhuCog(commands.Cog):
             "Backstory":{}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
-            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing command !autoChar or you can fill your stats with `!cstat`")
+            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing `!autoChar` or you can fill your stats with `!cstat`")
         else:
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one with `!deleteInvestigator`.")
             

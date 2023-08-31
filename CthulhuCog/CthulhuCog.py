@@ -446,6 +446,26 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id][stat_name] = new_value
                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                     await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
+
+                    if stat_name == "CON" or stat_name == "SIZ":
+                        if "CON" in self.player_stats[user_id] != 0 and "SIZ" in self.player_stats[user_id] != 0 and self.player_stats[user_id]["HP"] == 0:
+                            hp_message = await ctx.send("You filled all stats required to calculate *HP*. Do you want me to calculate HP?")
+                            await hp_message.add_reaction("✅")
+                            await hp_message.add_reaction("❌")
+                            def check(reaction, user):
+                                return user == ctx.author and reaction.message.id == hp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                            try:
+                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                if str(reaction.emoji) == "✅":
+                                    HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
+                                    self.player_stats[user_id]["HP"] = HP
+                                    await ctx.send(f"Your **HP** has been calculated to {HP} and saved.")
+                                elif str(reaction.emoji) == "❌":
+                                    await ctx.send(f"**HP** will not be calculated.")
+                            except asyncio.TimeoutError:
+                                await ctx.send("You took too long to react. **HP** will not be calculated.")
+                    
+
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")
             else:

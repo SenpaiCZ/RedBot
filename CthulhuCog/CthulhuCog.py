@@ -2282,18 +2282,18 @@ class CthulhuCog(commands.Cog):
 
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
-        
+
     @commands.command(aliases=["cArchetype"])
     async def pulpofcthulhuarchetype(self, ctx, *, archetype_name: str = None):
         archetypes_info = {
             "Adventurer": {
                 "description": "A life without adventure is not worth living. The world is a big place and there is much to be experienced and many chances for glory. Sitting behind the desk, working a job nine to five is a death sentence for such folk. The adventurer yearns for excitement, fun, and challenge.",
                 "adjustments": [
-                    "Core characteristic: Choose either DEX or APP",
-                    "Add 100 bonus points divided among any of the following skills: Climb, Diving, Drive Auto, First-Aid, Fighting (any), Firearms (any), Jump, Language (other), Mechanical repair, Pilot (any), Ride, Stealth, Survival (any), Swim.",
-                    "Suggested occupations: Actor, Archaeologist, Athlete, Aviator, Bank Robber, Big Game Hunter, Cat Burglar, Dilettante, Drifter, Gambler, Gangster, Hobo, Investigative Journalist, Missionary, Nurse, Photographer, Ranger, Sailor, Soldier, Tribe Member",
-                    "Talents: any two",
-                    "Suggested traits: easily bored, tenacious, glory hunter, egocentric",
+                    ":heart_decoration: **Core characteristic:** Choose either DEX or APP",
+                    ":zap: **Add 100 bonus points divided among any of the following skills:** Climb, Diving, Drive Auto, First-Aid, Fighting (any), Firearms (any), Jump, Language (other), Mechanical repair, Pilot (any), Ride, Stealth, Survival (any), Swim.",
+                    ":construction_worker: **Suggested occupations:** Actor, Archaeologist, Athlete, Aviator, Bank Robber, Big Game Hunter, Cat Burglar, Dilettante, Drifter, Gambler, Gangster, Hobo, Investigative Journalist, Missionary, Nurse, Photographer, Ranger, Sailor, Soldier, Tribe Member",
+                    ":man_cartwheeling: **Talents:** any two",
+                    ":brain: **Suggested traits:** easily bored, tenacious, glory hunter, egocentric",
                 ],
             },
             # Více archetypů v stejném formátu,
@@ -2319,7 +2319,7 @@ class CthulhuCog(commands.Cog):
                 embed_title = matched_archetype.capitalize()
                 description = archetype_info["description"]
                 adjustments = "\n".join(archetype_info["adjustments"])
-                response = f":scroll: Description: {description}\n\n:gear: Adjustments:\n{adjustments}"
+                response = f":scroll: **Description:** {description}\n\n:gear: **Adjustments:**\n{adjustments}"
             
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)

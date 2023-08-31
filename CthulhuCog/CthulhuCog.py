@@ -1188,6 +1188,9 @@ class CthulhuCog(commands.Cog):
         # Check if the player has a character with all stats at 0
         if user_id in self.player_stats and all(self.player_stats[user_id][stat] == 0 for stat in ["STR", "DEX", "CON", "INT", "POW", "CHA", "EDU", "SIZ"]):
             # Generate stats
+            BUILD = 0
+            BONUSDMG = 0
+            MOV = 0
             STR = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
             CON = 5 * sum(sorted([random.randint(1, 6) for _ in range(3)])[1:])
             SIZ = 5 * (sum(sorted([random.randint(1, 6) for _ in range(2)])) + 6)

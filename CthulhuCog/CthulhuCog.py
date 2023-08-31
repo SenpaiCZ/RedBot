@@ -2266,7 +2266,7 @@ class CthulhuCog(commands.Cog):
                 skills = occupation_info["skills"]
                 response = (
                     f":clipboard: Description: {description}\n"
-                    f"::clock: Era: {era}\n"
+                    f":clock: Era: {era}\n"
                     f":black_joker: Occupation Skill Points: {skill_points}\n"
                     f":moneybag: Credit Rating: {credit_rating}\n"
                     f":telephone: Suggested Contacts: {suggested_contacts}\n"

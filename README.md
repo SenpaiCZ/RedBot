@@ -12,6 +12,10 @@ To be able to play Call of Cthulhu you will need Keepers Rulebook, Call of Cthul
 
 !cog install senpaicz CthulhuCog
 
+# Test bot on playground
+
+[Playground Discord Server](https://discord.gg/6XYgNZsxTk)
+
 # Cthulhu Cog Info
 🐙 Elevate Your Call of Cthulhu RPG Experience with the Cthulhu Discord Cog! 🤖🎲
 
@@ -21,21 +25,11 @@ Attention all tabletop RPG enthusiasts! I'm thrilled to introduce the Cthulhu Di
 
 🕵️‍♂️ Create Investigators on the Fly: Generate investigator characters with ease, complete with random stats, backstories, and even inventory management.
 
-🔍 Quick References at Your Fingertips: Access valuable game information, including skill lists, occupations, historical context, NPC generation, and more.
-
 📜 Enhance the Storytelling: Unleash your creativity with the ability to generate random names and NPCs, injecting spontaneity into your narratives.
 
 Whether you're a Keeper masterfully crafting the storyline or an investigator navigating through the mysteries, the Cthulhu Discord Cog is your trusty ally, making the Call of Cthulhu RPG smoother and more captivating than ever before.
 
 Step into the realm of eldritch horrors and gripping narratives with the Cthulhu Discord Cog. Level up your Call of Cthulhu gameplay and embark on unforgettable adventures with the power of Discord and this versatile COG. Uncover the unknown and challenge the cosmic horrors that await!
-
-# To-Do list
-- Automatic Chase
-- Beasts and Gods
-- Magic
-- Traveltime between cities
-- Cars, horses and other trasport
-- More random stuff and info :)
 
 # Generate random name with !cname male/female
 
@@ -121,11 +115,6 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !rb category itemID                | Delete a record from backstory or inventory|
 | !cname male/female                     | Generate a random name                      |
 | !cNPC male/female                      | Generate an NPC                             |
-| !skillinfo skillName                  | Get info about a specific skill (without name of the skill you will get list of skills)            |                    |
-| !coccupations occupationName          | Get info about a specific occupation (without name you will get list of occupations)       |
-| !gbackstory                              | Generate a random backstory (it will not be saved to your investigator)                 |
-| !cyear year                            | Historical information about a year         |
-| !firearms name                            | Information about firearms in CoC from 1920s and modern (without name you will get list of weapons)        |
 | !cloot                       | Generate random loot from 1920 (25% for money being inclooded)        |
 | !rskill skill1 skill2                    | Rename skill to your liking. If your language is English you can rename Language (own) to English. You can also use 3 custom skills.    |
 | !showUserData                  | Debug command. Shows raw data saved for user who calls the command (stats, skill, backstory).  |

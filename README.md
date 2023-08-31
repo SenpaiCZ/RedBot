@@ -55,6 +55,10 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Edit skill of your character](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/cstat%20Listen.jpg)
 
+# After filling all requered stat bot will calculate HP, MP, SAN, MOV, Damage Bonus and Build and save them to your investigator.
+
+![Autofill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/cstat%20POW%20calculate.jpg)
+
 # Show character stats
 
 ![Show character stats](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/myChar1.jpg)
@@ -75,7 +79,7 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 
 ![Roll for skill](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/dp%20Listen.jpg)
 
-# Using luck for rolls (in this example its roll with bonus die)
+# Using luck for rolls (max is 10 LUCK)
 
 ![Using luck](https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/d%20Listen%20Use%20luck.jpg)
 

@@ -385,7 +385,7 @@ class CthulhuCog(commands.Cog):
             "Credit Rating": 0,
             "Cthulhu Mythos": 0,
             "Disguise": 5,
-            "Dodge": -1,
+            "Dodge": 0,
             "Drive Auto":20,
             "Elec. Repair": 10,
             "Fast Talk": 5,
@@ -663,10 +663,10 @@ class CthulhuCog(commands.Cog):
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    LANGUAGEOWN = self.player_stats[user_id]["Language (own)"]
+                                    LANGUAGEOWN = self.player_stats[user_id]["EDU"]
                                     self.player_stats[user_id]["Language (own)"] = LANGUAGEOWN
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge** has been calculated as **{LANGUAGEOWN}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **Language (own)** has been calculated as **{LANGUAGEOWN}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"The calculation of **Language (own)** will not proceed.")
                             except asyncio.TimeoutError:

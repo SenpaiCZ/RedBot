@@ -167,9 +167,8 @@ class CthulhuCog(commands.Cog):
             ":bulb:`!randomname gender` - Generate random name form 1920s era. (e.g. `!randomname female`)\n\n"
             ":bulb:`!newInv Inv-name` - Create a new investigator (e.g. `!newInv Oswald Chester Razner`)\n\n"
             ":bulb:`!autoChar` - Generates random stats for your investigator. You can re-roll, dismiss or save stats.\n\n"
-            ":bulb:`!cstat stat-name` - Edit your investigators stats. (e.g. `!cstat STR 50`)\n\n"
+            ":bulb:`!cstat stat-name` - Edit your investigators stats. (e.g. `!cstat STR 50` or `!cstat Listen 50`) This can also calculate \n\n"
             ":bulb:`!sinfo skill-name` - Get information about specific skill (without skill-name you will get list of skills). (e.g. `!sinfo Listen`)\n\n"
-            ":bulb:`!cskill skill-name number` - Edit your investigators skill. (e.g. `!cskill Listen 50`)\n\n"
             ":bulb:`!oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. `!oinfo bartender`)\n\n"
             ":bulb:`!myChar` - Show your investigators stats and skills. With @ you can show other players stats (e.g. `!myChar @potato`)\n\n"
             ":bulb:`!d YDX` - Roll dice (e.g. `!d 3D6` or `!d 3D6 + 1D10` or `!d 1D6 + 2`)\n\n"
@@ -429,9 +428,9 @@ class CthulhuCog(commands.Cog):
             "Backstory":{}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
-            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing command !autoChar or you can fill your stats with !cstat and !cskill.")
+            await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing command !autoChar or you can fill your stats with `!cstat`")
         else:
-            await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one.")
+            await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one with `!deleteInvestigator`.")
             
     @commands.command(aliases=["cstat"], guild_only=True)
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):

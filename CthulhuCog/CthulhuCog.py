@@ -1,5 +1,5 @@
 from redbot.core import Config, commands
-import random, discord, json, os, asyncio, re
+import random, discord, json, os, asyncio, re, math
 
 class CthulhuCog(commands.Cog):
     def __init__(self, bot):
@@ -1282,7 +1282,7 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id]["MP"] = MP
                     self.player_stats[user_id]["MAX_MP"] = MP
                     self.player_stats[user_id]["LUCK"] = LUCK
-                    self.player_stats[user_id]["Dodge"] = DEX/5
+                    self.player_stats[user_id]["Dodge"] = math.floor(DEX/5)
                     self.player_stats[user_id]["Language (own)"] = EDU
                     self.player_stats[user_id]["Build"] = BUILD
                     self.player_stats[user_id]["Damage Bonus"] = BONUSDMG

@@ -2511,7 +2511,7 @@ class CthulhuCog(commands.Cog):
         }
         if archetype_name is None:
             archetypes_list = ", ".join(archetypes_info.keys())
-            response = f"List of archetypes:\n{archetypes_list}"
+            response = f"Archetypes are used only in Pulp of Cthulhu \n\n List of archetypes:\n{archetypes_list}"
             embed_title = "Archetypes List"
         else:
             matching_archetypes = [archetype for archetype in archetypes_info.keys() if archetype_name.lower() in archetype.lower()]
@@ -2530,7 +2530,7 @@ class CthulhuCog(commands.Cog):
                 embed_title = matched_archetype.capitalize()
                 description = archetype_info["description"]
                 adjustments = "\n".join(archetype_info["adjustments"])
-                response = f":scroll: **Description:** {description}\n\n:gear: **Adjustments:**\n\n{adjustments}"
+                response = f"Archetypes are used only in Pulp of Cthulhu \n\n :scroll: **Description:** {description}\n\n:gear: **Adjustments:**\n\n{adjustments}"
             
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)

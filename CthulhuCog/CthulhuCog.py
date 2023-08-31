@@ -371,9 +371,9 @@ class CthulhuCog(commands.Cog):
             "HP": 0,
             "MP": 0,
             "LUCK": 0,
-            "Move": -1,
-            "Build": -1,
-            "Damage Bonus": -1,
+            "Move": 0,
+            "Build": 0,
+            "Damage Bonus": 0,
             "Age": 20,
             "Accounting": 5,
             "Anthropology": 1,
@@ -397,7 +397,7 @@ class CthulhuCog(commands.Cog):
             "Intimidate": 15,
             "Jump":10,
             "Language (other)": 1,
-            "Language (own)": -1,
+            "Language (own)": 0,
             "Law":5,
             "Library Use":20,
             "Listen":20,
@@ -420,12 +420,12 @@ class CthulhuCog(commands.Cog):
             "Swim": 20,
             "Throw": 20,
             "Track": 10,
-            "CustomSkill": -1,
-            "CustomSkills": -1,
-            "CustomSkillss": -1,
-            "MAX_HP": -1,
-            "MAX_MP": -1,
-            "MAX_SAN": -1,
+            "CustomSkill": 0,
+            "CustomSkills": 0,
+            "CustomSkillss": 0,
+            "MAX_HP": 100,
+            "MAX_MP": 100,
+            "MAX_SAN": 1000,
             "Backstory":{}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
@@ -450,7 +450,7 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of HP
                     if stat_name == "CON" or stat_name == "SIZ":
                         if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
-                            hp_message = await ctx.send(f"@{ctx.author.display_name} filled all stats required to calculate **HP**. Do you want me to calculate HP?")
+                            hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**. Do you want me to calculate HP(MAX_HP)?")
                             await hp_message.add_reaction("✅")
                             await hp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -460,17 +460,18 @@ class CthulhuCog(commands.Cog):
                                 if str(reaction.emoji) == "✅":
                                     HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
                                     self.player_stats[user_id]["HP"] = HP
+                                    self.player_stats[user_id]["MAX_HP"] = HP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"@{ctx.author.display_name}'s **HP** has been calculated as **{HP}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **HP** has been calculated as **{HP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"The calculation of **HP** will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"@{ctx.author.display_name} took too long to react. The calculation of **HP** will not proceed.")
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **HP** will not proceed.")
 
                     #automatic calculation of MP
                     if stat_name == "POW":
                         if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["MP"] == 0:
-                            mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**. Do you want me to calculate MP?")
+                            mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**. Do you want me to calculate MP(MAX_MP)?")
                             await mp_message.add_reaction("✅")
                             await mp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -480,6 +481,7 @@ class CthulhuCog(commands.Cog):
                                 if str(reaction.emoji) == "✅":
                                     MP = math.floor(self.player_stats[user_id]["POW"] / 10)
                                     self.player_stats[user_id]["MP"] = MP
+                                    self.player_stats[user_id]["MAX_MP"] = MP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                     await ctx.send(f"{ctx.author.display_name}'s **MP** has been calculated as **{MP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
@@ -507,12 +509,44 @@ class CthulhuCog(commands.Cog):
                             except asyncio.TimeoutError:
                                 await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN** will not proceed.")   
 
+                    #automatic calculation of MOV
+                    if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
+                        if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and \
+                           self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["MOV"] == 0:
+                            mov_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
+                            await mov_message.add_reaction("✅")
+                            await mov_message.add_reaction("❌")
+                            def check(reaction, user):
+                                return user == ctx.author and reaction.message.id == mov_message.id and str(reaction.emoji) in ["✅", "❌"]
+                            try:
+                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                if str(reaction.emoji) == "✅":
+                                    if self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
+                                       self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                                        MOV = 7
+                                    elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
+                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or \
+                                         self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                                        MOV = 8
+                                    elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
+                                         self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
+                                        MOV = 9
+                                    else:
+                                        #This should be impossible to happen. If you see MOV over 9000, i totaly fucked up this code.
+                                        MOV = 9001
+                                    self.player_stats[user_id]["MOV"] = MOV
+                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                    await ctx.send(f"{ctx.author.display_name}'s **MOV** has been calculated as **{MOV}** and successfully saved.")
+                                elif str(reaction.emoji) == "❌":
+                                    await ctx.send(f"The calculation of **MOV** will not proceed.")
+                            except asyncio.TimeoutError:
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MOV** will not proceed.")
 
 
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")
             else:
-                await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, or SAN.")
+                await ctx.send("Invalid stat name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP.")
 
             
     @commands.command(aliases=["cskill"], guild_only=True)

@@ -512,11 +512,11 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of MOV
                     if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
                         if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["MOV"] == 0:
-                            mov_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
-                            await mov_message.add_reaction("✅")
-                            await mov_message.add_reaction("❌")
+                            mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
+                            await mo_message.add_reaction("✅")
+                            await mo_message.add_reaction("❌")
                             def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == mov_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                return user == ctx.author and reaction.message.id == mo_message.id and str(reaction.emoji) in ["✅", "❌"]
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":

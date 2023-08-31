@@ -526,7 +526,8 @@ class CthulhuCog(commands.Cog):
                                         MOV = 7
                                     elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
                                          self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"] or \
-                                         self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                                         self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                                         self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
                                         MOV = 8
                                     elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
                                          self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:

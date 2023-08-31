@@ -450,7 +450,7 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of HP
                     if stat_name == "CON" or stat_name == "SIZ":
                         if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
-                            hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**. Do you want me to calculate HP?")
+                            hp_message = await ctx.send(f"@{ctx.author.display_name} filled all stats required to calculate **HP**. Do you want me to calculate HP?")
                             await hp_message.add_reaction("✅")
                             await hp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -461,11 +461,11 @@ class CthulhuCog(commands.Cog):
                                     HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
                                     self.player_stats[user_id]["HP"] = HP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **HP** has been calculated as **{HP}** and successfully saved.")
+                                    await ctx.send(f"@{ctx.author.display_name}'s **HP** has been calculated as **{HP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"The calculation of **HP** will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **HP** will not proceed.")
+                                await ctx.send(f"@{ctx.author.display_name} took too long to react. The calculation of **HP** will not proceed.")
 
                     #automatic calculation of MP
                     if stat_name == "POW":

@@ -655,7 +655,7 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of Language (own)
                     if stat_name == "EDU":
                         if self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["Language (own)"] == 0:
-                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**. Do you want me to calculate Dodge?")
+                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Language (own)**. Do you want me to calculate Language (own)?")
                             await dod_message.add_reaction("✅")
                             await dod_message.add_reaction("❌")
                             def check(reaction, user):

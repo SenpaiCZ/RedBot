@@ -474,7 +474,7 @@ class CthulhuCog(commands.Cog):
                             await mp_message.add_reaction("✅")
                             await mp_message.add_reaction("❌")
                             def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == hp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                return user == ctx.author and reaction.message.id == mp_message.id and str(reaction.emoji) in ["✅", "❌"]
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":

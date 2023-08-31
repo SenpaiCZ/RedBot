@@ -854,9 +854,9 @@ class CthulhuCog(commands.Cog):
             if stat_name in ["Move", "Build", "Damage Bonus","Age"]:
                 formatted_value = f"{value}"
             elif stat_name in ["HP"]:
-                formatted_value = f"{value}/" + self.player_stats[user_id]["MAX_HP"]
+                formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_HP"])
             elif stat_name in ["MP"]:
-                formatted_value = f"{value}/" + self.player_stats[user_id]["MAX_MP"]
+                formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_MP"])
             elif stat_name in ["LUCK"]:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
             else:

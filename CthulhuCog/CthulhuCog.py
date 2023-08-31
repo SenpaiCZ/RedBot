@@ -632,6 +632,46 @@ class CthulhuCog(commands.Cog):
                             except asyncio.TimeoutError:
                                 await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Build* will not proceed.")
 
+                    #automatic calculation of Dodge
+                    if stat_name == "DEX":
+                        if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["Dodge"] == 0:
+                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**. Do you want me to calculate Dodge?")
+                            await dod_message.add_reaction("✅")
+                            await dod_message.add_reaction("❌")
+                            def check(reaction, user):
+                                return user == ctx.author and reaction.message.id == dod_message.id and str(reaction.emoji) in ["✅", "❌"]
+                            try:
+                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                if str(reaction.emoji) == "✅":
+                                    DODGE = math.floor(self.player_stats[user_id]["DEX"] / 2)
+                                    self.player_stats[user_id]["Dodge"] = DODGE
+                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge** has been calculated as **{DODGE}** and successfully saved.")
+                                elif str(reaction.emoji) == "❌":
+                                    await ctx.send(f"The calculation of **Dodge** will not proceed.")
+                            except asyncio.TimeoutError:
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Dodge** will not proceed.")   
+
+                    #automatic calculation of Language (own)
+                    if stat_name == "EDU":
+                        if self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["Language (own)"] == 0:
+                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**. Do you want me to calculate Dodge?")
+                            await dod_message.add_reaction("✅")
+                            await dod_message.add_reaction("❌")
+                            def check(reaction, user):
+                                return user == ctx.author and reaction.message.id == dod_message.id and str(reaction.emoji) in ["✅", "❌"]
+                            try:
+                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                if str(reaction.emoji) == "✅":
+                                    LANGUAGEOWN = self.player_stats[user_id]["Language (own)"]
+                                    self.player_stats[user_id]["Language (own)"] = LANGUAGEOWN
+                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge** has been calculated as **{LANGUAGEOWN}** and successfully saved.")
+                                elif str(reaction.emoji) == "❌":
+                                    await ctx.send(f"The calculation of **Language (own)** will not proceed.")
+                            except asyncio.TimeoutError:
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)** will not proceed.")   
+
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")
             else:

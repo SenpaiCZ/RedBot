@@ -435,6 +435,73 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["cstat"], guild_only=True)
     async def CthulhuChangeStats(self, ctx, stat_name, new_value):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
+
+        def get_stat_emoji(stat_name):
+            stat_emojis = {
+                "STR": ":muscle:",
+                "DEX": ":runner:",
+                "CON": ":heart:",
+                "INT": ":brain:",
+                "POW": ":zap:",
+                "CHA": ":sparkles:",
+                "EDU": ":mortar_board:",
+                "SIZ": ":bust_in_silhouette:",
+                "HP": ":heartpulse:",
+                "MP": ":sparkles:",
+                "LUCK": ":four_leaf_clover:",
+                "SAN": ":scales:",
+                "Age": ":birthday:",
+                "Move": ":person_running:",
+                "Build": ":restroom: ",
+                "Damage Bonus": ":mending_heart:",
+                "Accounting": ":ledger:",
+                "Anthropology": ":earth_americas:",
+                "Appraise": ":mag:",
+                "Archaeology": ":pick:",
+                "Charm": ":heart_decoration:",
+                "Art/Craft": ":art:",
+                "Climb": ":mountain:",
+                "Credit Rating": ":moneybag:",
+                "Cthulhu Mythos": ":octopus:",
+                "Disguise": ":dress:",
+                "Dodge": ":warning:",
+                "Drive Auto": ":blue_car:",
+                "Elec. Repair": ":wrench:",
+                "Fast Talk": ":pinched_fingers:",
+                "Fighting (Brawl)": ":boxing_glove:",
+                "Firearms (Handgun)": ":gun:",
+                "Firearms (Rifle/Shotgun)": ":gun:",
+                "First Aid": ":ambulance:",
+                "History": ":scroll:",
+                "Intimidate": ":fearful:",
+                "Jump": ":athletic_shoe:",
+                "Language (other)": ":globe_with_meridians:",
+                "Language (own)": ":speech_balloon:",
+                "Law": ":scales:",
+                "Library Use": ":books:",
+                "Listen": ":ear:",
+                "Locksmith": ":key:",
+                "Mech. Repair": ":wrench:",
+                "Medicine": ":pill:",
+                "Natural World": ":deciduous_tree:",
+                "Navigate": ":compass:",
+                "Ocult": ":crystal_ball:",
+                "Persuade": ":speech_balloon:",
+                "Pilot": ":airplane:",
+                "Psychoanalysis": ":brain:",
+                "Psychology": ":brain:",
+                "Ride": ":horse_racing:",
+                "Science (specific)": ":microscope:",
+                "Sleight of Hand": ":mage:",
+                "Spot Hidden": ":eyes:",
+                "Stealth": ":footprints:",
+                "Survival": ":camping:",
+                "Swim": ":swimmer:",
+                "Throw": ":dart:",
+                "Track": ":mag_right:",
+            }
+            return stat_emojis.get(stat_name, ":question:")
+
         if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
@@ -444,7 +511,7 @@ class CthulhuCog(commands.Cog):
 
                     #Surpassing MAX_HP
                     if stat_name == "HP" and new_value > self.player_stats[user_id]["MAX_HP"]:
-                        maxhp_message = await ctx.send(f"You're attempting to surpass your **HP** limit. Would you like me to increase the **maximum HP**?")
+                        maxhp_message = await ctx.send(f"You're attempting to surpass your **HP**:heartpulse: limit. Would you like me to increase the **maximum HP**:chart_with_upwards_trend::heartpulse:?")
                         await maxhp_message.add_reaction("✅")
                         await maxhp_message.add_reaction("❌")
                         def check(reaction, user):
@@ -455,15 +522,15 @@ class CthulhuCog(commands.Cog):
                                 newMAXHP = new_value
                                 self.player_stats[user_id]["MAX_HP"] = newMAXHP
                                 await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP** has been increased to **{newMAXHP}** and successfully saved.")
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: has been increased to **{newMAXHP}** and successfully saved.")
                             elif str(reaction.emoji) == "❌":
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP** will not been increased.")
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")
                         except asyncio.TimeoutError:
-                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum HP** will not been increased.")                        
+                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")                        
 
                     #Surpassing MAX_MP
                     if stat_name == "MP" and new_value > self.player_stats[user_id]["MAX_MP"]:
-                        maxmp_message = await ctx.send(f"You're attempting to surpass your **MP** limit. Would you like me to increase the **maximum MP**?")
+                        maxmp_message = await ctx.send(f"You're attempting to surpass your **MP**:sparkles: limit. Would you like me to increase the **maximum MP**:chart_with_upwards_trend::sparkles:?")
                         await maxmp_message.add_reaction("✅")
                         await maxmp_message.add_reaction("❌")
                         def check(reaction, user):
@@ -474,20 +541,24 @@ class CthulhuCog(commands.Cog):
                                 newMAXMP = new_value
                                 self.player_stats[user_id]["MAX_MP"] = newMAXMP
                                 await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP** has been increased to **{newMAXMP}** and successfully saved.")
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: has been increased to **{newMAXMP}** and successfully saved.")
                             elif str(reaction.emoji) == "❌":
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP** will not been increased.")
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")
                         except asyncio.TimeoutError:
-                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum MP** will not been increased.")                        
+                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")                        
 
                     self.player_stats[user_id][stat_name] = new_value
                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                    await ctx.send(f"{ctx.author.display_name}'s **{stat_name}** has been updated to **{new_value}**.")
+                    #Adding emoji to stat update message
+                    emoji = get_stat_emoji(stat_name)
+
+
+                    await ctx.send(f"{ctx.author.display_name}'s **{stat_name}**{emoji} has been updated to **{new_value}**.")
 
                     #automatic calculation of HP
                     if stat_name == "CON" or stat_name == "SIZ":
                         if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
-                            hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**. Do you want me to calculate HP(MAX_HP)?")
+                            hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**:heartpulse:. Do you want me to calculate HP(MAX_HP):chart_with_upwards_trend::heartpulse:?")
                             await hp_message.add_reaction("✅")
                             await hp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -499,11 +570,11 @@ class CthulhuCog(commands.Cog):
                                     self.player_stats[user_id]["HP"] = HP
                                     self.player_stats[user_id]["MAX_HP"] = HP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **HP** has been calculated as **{HP}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **HP**:heartpulse: has been calculated as **{HP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **HP** will not proceed.")
+                                    await ctx.send(f"The calculation of **HP**:heartpulse: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **HP** will not proceed.")
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **HP**:heartpulse: will not proceed.")
 
                     #automatic calculation of MP
                     if stat_name == "POW":

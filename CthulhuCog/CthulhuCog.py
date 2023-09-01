@@ -518,7 +518,7 @@ class CthulhuCog(commands.Cog):
                 if len(matching_skills) > 1:
                     await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")
                 else:
-                    skill_name = matching_skills[0]
+                    stat_name = matching_skills[0]
                     try:
                         #Surpassing MAX_HP
                         if stat_name == "HP" and new_value > self.player_stats[user_id]["MAX_HP"]:

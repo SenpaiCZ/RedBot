@@ -1230,7 +1230,10 @@ class CthulhuCog(commands.Cog):
                     await prompt_message.delete()
             
             await ctx.send(embed=embed)
-        if skill_value is None:
+
+        if skill_value is not None:
+            return
+        else:
             embed = discord.Embed(
                 title="Skill Not Found",
                 description=f"Skill '{skill_name}' was not found for this user.",

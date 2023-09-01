@@ -667,14 +667,38 @@ class CthulhuCog(commands.Cog):
                                     await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)**:speech_balloon: will not proceed.")   
 
                         #Prompt about Age
-                        #if stat_name == "STR" or stat_name == "DEX" or stat_name == "CON" or stat_name == "INT" or stat_name == "EDU" or stat_name == "APP" or stat_name == "SIZ" or stat_name == "LUCK":
+                        if stat_name == "STR" or stat_name == "DEX" or stat_name == "CON" or stat_name == "EDU" or stat_name == "APP" or stat_name == "SIZ" or stat_name == "LUCK":
+                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["APP"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["LUCK"]:
+                                await ctx.send(f"{ctx.author.display_name} filled all stats that are affected by Age. Fill your age with `!cstat Age`")
+
+                        #Age mod help
+                        if stat_name == "Age":
+                            if self.player_stats[user_id]["Age"] > 15:
+                                await ctx.send(f"Age Modifiers: There are no official rules about investigators under 15 years old.")
+                            elif self.player_stats[user_id]["Age"] > 20:
+                                await ctx.send(f"Age Modifiers: Deduct 5 points among STR:muscle: and SIZ:bust_in_silhouette:. Deduct 5 points from EDU:mortar_board:. Roll twice to generate a Luck score and use the higher value.")
+                            elif self.player_stats[user_id]["Age"] > 40:
+                                await ctx.send(f"Age Modifiers: Make an improvement check for EDU:mortar_board:.")
+                            elif self.player_stats[user_id]["Age"] > 50:
+                                await ctx.send(f"Age Modifiers: Make 2 improvement checks for EDU:mortar_board: and deduct 5 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 5.")
+                            elif self.player_stats[user_id]["Age"] > 60:
+                                await ctx.send(f"Age Modifiers: Make 3 improvement checks for EDU:mortar_board: and deduct 10 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 10")
+                            elif self.player_stats[user_id]["Age"] > 70:
+                                await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 20 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 15.")
+                            elif self.player_stats[user_id]["Age"] > 80:
+                                await ctx.send(f"Age Modifiers:  Make 4 improvement checks for EDU:mortar_board: and deduct 40 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 20.")
+                            elif self.player_stats[user_id]["Age"] > 90:
+                                await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 80 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 25.")
+                            else:
+                                await ctx.send(f"Age Modifiers: There are no official rules about investigators above the age of 90.")
+                            await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
 
 
 
                     except ValueError:
                         await ctx.send("Invalid new value. Please provide a number.")
             else:
-                await ctx.send(f"Invalid name {stat_name}. Use STR, DEX, CON, INT, POW, APP, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
+                await ctx.send(f"Invalid name {stat_name}. Use STR, DEX, CON, INT, POW, APP, EDU, SIZ, HP, MP, LUCK or SAN. You can also use any name of your skills `!mcs`")
 
 
     @commands.command(aliases=["rskill"], guild_only=True)

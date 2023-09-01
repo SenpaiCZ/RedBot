@@ -512,7 +512,7 @@ class CthulhuCog(commands.Cog):
                 await ctx.send("Invalid new value. Please provide a number.")
                 return
 
-            matching_skills = [stat for stat in self.player_stats[user_id] if re.search(stat_name, stat, re.IGNORECASE)]
+            matching_skills = [stat for stat in self.player_stats[user_id] if re.search(re.escape(stat_name), stat, re.IGNORECASE)]
             
             if matching_skills:
                 if len(matching_skills) > 1:

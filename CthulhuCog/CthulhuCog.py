@@ -441,10 +441,49 @@ class CthulhuCog(commands.Cog):
             if stat_name in self.player_stats[user_id]:
                 try:
                     new_value = int(new_value)
+
+                    #Surpassing MAX_HP
+                    if stat_name == "HP" and new_value > self.player_stats[user_id]["MAX_HP"]:
+                        maxhp_message = await ctx.send(f"You're attempting to surpass your **HP** limit. Would you like me to increase the **maximum HP**?")
+                        await maxhp_message.add_reaction("✅")
+                        await maxhp_message.add_reaction("❌")
+                        def check(reaction, user):
+                            return user == ctx.author and reaction.message.id == maxhp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                        try:
+                            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                            if str(reaction.emoji) == "✅":
+                                newMAXHP = new_value
+                                self.player_stats[user_id]["MAX_HP"] = newMAXHP
+                                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP** has been increased to **{newMAXHP}** and successfully saved.")
+                            elif str(reaction.emoji) == "❌":
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP** will not been increased.")
+                        except asyncio.TimeoutError:
+                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum HP** will not been increased.")                        
+
+                    #Surpassing MAX_MP
+                    if stat_name == "MP" and new_value > self.player_stats[user_id]["MAX_MP"]:
+                        maxmp_message = await ctx.send(f"You're attempting to surpass your **MP** limit. Would you like me to increase the **maximum MP**?")
+                        await maxmp_message.add_reaction("✅")
+                        await maxmp_message.add_reaction("❌")
+                        def check(reaction, user):
+                            return user == ctx.author and reaction.message.id == maxmp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                        try:
+                            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                            if str(reaction.emoji) == "✅":
+                                newMAXMP = new_value
+                                self.player_stats[user_id]["MAX_MP"] = newMAXMP
+                                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP** has been increased to **{newMAXMP}** and successfully saved.")
+                            elif str(reaction.emoji) == "❌":
+                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP** will not been increased.")
+                        except asyncio.TimeoutError:
+                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum MP** will not been increased.")                        
+
                     self.player_stats[user_id][stat_name] = new_value
                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                     await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
-                    
+
                     #automatic calculation of HP
                     if stat_name == "CON" or stat_name == "SIZ":
                         if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:

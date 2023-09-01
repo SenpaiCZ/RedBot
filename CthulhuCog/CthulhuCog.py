@@ -443,7 +443,7 @@ class CthulhuCog(commands.Cog):
                 "CON": ":heart:",
                 "INT": ":brain:",
                 "POW": ":zap:",
-                "APP": ":sparkles:",
+                "APP": ":heart_eyes:",
                 "EDU": ":mortar_board:",
                 "SIZ": ":bust_in_silhouette:",
                 "HP": ":heartpulse:",

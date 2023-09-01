@@ -624,48 +624,7 @@ class CthulhuCog(commands.Cog):
                                     elif str(reaction.emoji) == "❌":
                                         await ctx.send(f"The calculation of **SAN**:scales: will not proceed.")
                                 except asyncio.TimeoutError:
-                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN**:scales: will not proceed.")   
-
-                        #automatic calculation of MOV
-                        if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
-                            if  self.player_stats[user_id]["DEX"] != 0 and \
-                                self.player_stats[user_id]["SIZ"] != 0 and \
-                                self.player_stats[user_id]["STR"] != 0 and \
-                                self.player_stats[user_id]["Move"] == 0:
-                                mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**:person_running:. Do you want me to calculate MOV:person_running:?")
-                                await mo_message.add_reaction("✅")
-                                await mo_message.add_reaction("❌")
-                                def check(reaction, user):
-                                    return user == ctx.author and reaction.message.id == mo_message.id and str(reaction.emoji) in ["✅", "❌"]
-                                try:
-                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                    if str(reaction.emoji) == "✅":
-                                        if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
-                                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
-                                            MOV = 7
-                                            
-                                        elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
-                                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
-                                            MOV = 8
-
-                                        elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
-                                            self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
-                                            MOV = 8
-                                            
-                                        elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
-                                            self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
-                                            MOV = 9
-                                            
-                                        else:
-                                            #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
-                                            MOV = 9001
-                                        self.player_stats[user_id]["Move"] = MOV
-                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                        await ctx.send(f"{ctx.author.display_name}'s **MOV**:person_running: has been calculated as **{MOV}** and successfully saved.")
-                                    elif str(reaction.emoji) == "❌":
-                                        await ctx.send(f"The calculation of **MOV**:person_running: will not proceed.")
-                                except asyncio.TimeoutError:
-                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MOV**:person_running: will not proceed.")
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN**:scales: will not proceed.")
 
                         #automatic calculation of Damage Bonus
                         if stat_name == "STR" or stat_name == "SIZ":
@@ -944,7 +903,7 @@ class CthulhuCog(commands.Cog):
             return stat_emojis.get(stat_name, ":question:")
 
         def get_stat_value(stat_name, value):
-            if stat_name in ["Move", "Build", "Damage Bonus","Age"]:
+            if stat_name in ["Build", "Damage Bonus","Age"]:
                 formatted_value = f"{value}"
             elif stat_name in ["HP"]:
                 formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_HP"])
@@ -976,6 +935,29 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n{self.get_charisma_description(value)}"
                 elif stat_name == "SAN":
                     formatted_value += f"\n{self.get_sanity_description(value)}"
+                elif stat_name == "Move":
+                    if self.player_stats[user_id]["DEX"] != 0 and \
+                       self.player_stats[user_id]["SIZ"] != 0 and \
+                       self.player_stats[user_id]["STR"] != 0:
+                        if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
+                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                            MOV = 7                            
+                        elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
+                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                            MOV = 8
+                        elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                            self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                            MOV = 8                           
+                        elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
+                            self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
+                            MOV = 9                            
+                        else:
+                            #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
+                            MOV = 9001
+                        formatted_value = f"{MOV}-autocal"
+                    else:
+                        formatted_value = f"Can not be calculated. Fill DEX, STR and SIZ."
+
                 else:
                     formatted_value += f"\n{self.get_skill_description(value)}"
             return formatted_value

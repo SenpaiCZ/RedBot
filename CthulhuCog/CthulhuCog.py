@@ -875,7 +875,7 @@ class CthulhuCog(commands.Cog):
                     else:
                         #Not posible if used correctly!
                         BUILD = "You are CHONKER! (7+)"
-                        formatted_value = f"{BUILD}"
+                    formatted_value = f"{BUILD}"
                 else:
                     formatted_value = f"Fill your STR and SIZ."
 
@@ -903,7 +903,7 @@ class CthulhuCog(commands.Cog):
                     else:
                         #Not posible if used correctly!
                         BONUSDMG = "You are too strong! (6D6+)"
-                        formatted_value = f"{BONUSDMG}"
+                    formatted_value = f"{BONUSDMG}"
                 else:
                     formatted_value = f"Fill your STR and SIZ."            
             elif stat_name in ["LUCK"]:

@@ -1144,6 +1144,7 @@ class CthulhuCog(commands.Cog):
         
         normalized_skill_name = skill_name.lower()  # Převod na malá písmena
         matching_skills = [stat for stat in self.player_stats[user_id] if re.search(fr'\b{re.escape(normalized_skill_name)}\b', stat, re.IGNORECASE)]
+        skill_value = None
         
         if matching_skills:
             if len(matching_skills) > 1:

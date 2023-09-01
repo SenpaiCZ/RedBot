@@ -512,7 +512,7 @@ class CthulhuCog(commands.Cog):
                 await ctx.send("Invalid new value. Please provide a number.")
                 return
 
-            matching_skills = [stat for stat in self.player_stats[user_id] if re.search(stat_name, stat)]
+            matching_skills = [stat for stat in self.player_stats[user_id] if re.search(stat_name, stat, re.IGNORECASE)]
             
             if matching_skills:
                 if len(matching_skills) > 1:
@@ -797,7 +797,7 @@ class CthulhuCog(commands.Cog):
                     except ValueError:
                         await ctx.send("Invalid new value. Please provide a number.")
             else:
-                await ctx.send("Invalid name. Use STR, DEX, CON, INT, POW, APP, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
+                await ctx.send(f"Invalid name {stat_name}. Use STR, DEX, CON, INT, POW, APP, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
 
 
     @commands.command(aliases=["rskill"], guild_only=True)

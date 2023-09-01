@@ -365,15 +365,15 @@ class CthulhuCog(commands.Cog):
             "POW": 0,
             "EDU": 0,
             "SIZ": 0,
-            "CHA": 0,
-            "SAN": 0,
+            "APP": 0,
+            "LUCK": 0,
             "HP": 0,
             "MP": 0,
-            "LUCK": 0,
+            "SAN": 0,
             "Move": 0,
             "Build": 0,
             "Damage Bonus": 0,
-            "Age": 20,
+            "Age": 0,
             "Accounting": 5,
             "Anthropology": 1,
             "Appraise": 5,
@@ -443,7 +443,7 @@ class CthulhuCog(commands.Cog):
                 "CON": ":heart:",
                 "INT": ":brain:",
                 "POW": ":zap:",
-                "CHA": ":sparkles:",
+                "APP": ":sparkles:",
                 "EDU": ":mortar_board:",
                 "SIZ": ":bust_in_silhouette:",
                 "HP": ":heartpulse:",
@@ -778,11 +778,13 @@ class CthulhuCog(commands.Cog):
                             except asyncio.TimeoutError:
                                 await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)**:speech_balloon: will not proceed.")   
 
+                    #Prompt about Age
+                    #if stat_name == "STR" or stat_name == "DEX" or stat_name == "CON" or stat_name == "INT" or stat_name == "EDU" or stat_name == "APP" or stat_name == "SIZ" or stat_name == "LUCK":
 
                 except ValueError:
                     await ctx.send("Invalid new value. Please provide a number.")
             else:
-                await ctx.send("Invalid name. Use STR, DEX, CON, INT, POW, CHA, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
+                await ctx.send("Invalid name. Use STR, DEX, CON, INT, POW, APP, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
 
 
     @commands.command(aliases=["rskill"], guild_only=True)
@@ -869,7 +871,7 @@ class CthulhuCog(commands.Cog):
                 "CON": ":heart:",
                 "INT": ":brain:",
                 "POW": ":zap:",
-                "CHA": ":sparkles:",
+                "APP": ":heart_eyes:",
                 "EDU": ":mortar_board:",
                 "SIZ": ":bust_in_silhouette:",
                 "HP": ":heartpulse:",
@@ -957,7 +959,7 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n{self.get_education_description(value)}"
                 elif stat_name == "Credit Rating":
                     formatted_value += f"\n{self.get_credit_rating_description(value)}"
-                elif stat_name == "CHA":
+                elif stat_name == "APP":
                     formatted_value += f"\n{self.get_charisma_description(value)}"
                 elif stat_name == "SAN":
                     formatted_value += f"\n{self.get_sanity_description(value)}"
@@ -1443,7 +1445,7 @@ class CthulhuCog(commands.Cog):
                 "CON": ":heart:",
                 "INT": ":brain:",
                 "POW": ":zap:",
-                "CHA": ":sparkles:",
+                "APP": ":heart_eyes:",
                 "EDU": ":mortar_board:",
                 "SIZ": ":bust_in_silhouette:",
                 "HP": ":heartpulse:",
@@ -1469,7 +1471,7 @@ class CthulhuCog(commands.Cog):
             "CON": CON,
             "INT": INT,
             "POW": POW,
-            "CHA": APP,
+            "APP": APP,
             "EDU": EDU,
             "SIZ": SIZ,
             "HP": HP,
@@ -1494,7 +1496,7 @@ class CthulhuCog(commands.Cog):
             return
         
         # Check if the player has a character with all stats at 0
-        if user_id in self.player_stats and all(self.player_stats[user_id][stat] == 0 for stat in ["STR", "DEX", "CON", "INT", "POW", "CHA", "EDU", "SIZ"]):
+        if user_id in self.player_stats and all(self.player_stats[user_id][stat] == 0 for stat in ["STR", "DEX", "CON", "INT", "POW", "APP", "EDU", "SIZ"]):
             # Generate stats
             BUILD = 0
             BONUSDMG = 0
@@ -1554,7 +1556,7 @@ class CthulhuCog(commands.Cog):
                 MOV = 9
 
             stats_embed = discord.Embed(
-                title="Character Creation Assistant",
+                title=":detective: Investigator Creation Assistant",
                 description="New stats have been generated for your character.",
                 color=discord.Color.green()
             )
@@ -1563,7 +1565,7 @@ class CthulhuCog(commands.Cog):
             stats_embed.add_field(name="CON", value=f":heart: 3D6 x 5 :game_die: {CON}", inline=True)
             stats_embed.add_field(name="INT", value=f":brain: 3D6 x 5 :game_die: {INT}", inline=True)
             stats_embed.add_field(name="POW", value=f":zap: 3D6 x 5 :game_die: {POW}", inline=True)
-            stats_embed.add_field(name="CHA", value=f":sparkles: 3D6 x 5 :game_die: {APP}", inline=True)
+            stats_embed.add_field(name="APP", value=f":sparkles: 3D6 x 5 :game_die: {APP}", inline=True)
             stats_embed.add_field(name="EDU", value=f":mortar_board: 2D6 x 5 + 5 :game_die: {EDU}", inline=True)
             stats_embed.add_field(name="SIZ", value=f":bust_in_silhouette: 2D6 x 5 + 5 :game_die: {SIZ}", inline=True)
             stats_embed.add_field(name="HP", value=f":heartpulse: (CON + SIZ) / 5 :game_die: {HP}", inline=True)
@@ -1591,7 +1593,7 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id]["CON"] = CON
                     self.player_stats[user_id]["INT"] = INT
                     self.player_stats[user_id]["POW"] = POW
-                    self.player_stats[user_id]["CHA"] = APP
+                    self.player_stats[user_id]["APP"] = APP
                     self.player_stats[user_id]["EDU"] = EDU
                     self.player_stats[user_id]["SIZ"] = SIZ
                     self.player_stats[user_id]["HP"] = HP
@@ -1607,7 +1609,7 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id]["Move"] = MOV
 
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated stats
-                    await ctx.send("Your character's stats have been saved!")
+                    await ctx.send("Your character's stats have been saved! You should set your Age with `!cstat Age` now.")
                 elif str(reaction.emoji) == "❌":
                     await ctx.send("Character creation canceled. Stats have not been saved.")
                 elif str(reaction.emoji) == "🔁":

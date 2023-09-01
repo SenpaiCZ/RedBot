@@ -752,7 +752,7 @@ class CthulhuCog(commands.Cog):
                                     DODGE = math.floor(self.player_stats[user_id]["DEX"] / 2)
                                     self.player_stats[user_id]["Dodge"] = DODGE
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge** has been calculated as **{DODGE}**:warning: and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge**:warning: has been calculated as **{DODGE}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"The calculation of **Dodge**:warning: will not proceed.")
                             except asyncio.TimeoutError:

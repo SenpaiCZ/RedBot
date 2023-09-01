@@ -668,7 +668,7 @@ class CthulhuCog(commands.Cog):
 
                         #Prompt about Age
                         if stat_name == "STR" or stat_name == "DEX" or stat_name == "CON" or stat_name == "EDU" or stat_name == "APP" or stat_name == "SIZ" or stat_name == "LUCK":
-                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["APP"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["LUCK"] and self.player_stats[user_id]["Age"] != 0:
+                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["APP"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["LUCK"] and self.player_stats[user_id]["Age"] == 0:
                                 await ctx.send(f"{ctx.author.display_name} filled all stats that are affected by Age. Fill your age with `!cstat Age`")
 
                         #Age mod help

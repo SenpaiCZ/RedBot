@@ -1143,96 +1143,91 @@ class CthulhuCog(commands.Cog):
             return
         
         normalized_skill_name = skill_name.lower()  # Převod na malá písmena
-        matching_skills = [stat for stat in self.player_stats[user_id] if re.search(fr'\b{re.escape(normalized_skill_name)}\b', stat, re.IGNORECASE)]
-        skill_value = None
         
-        if matching_skills:
-            if len(matching_skills) > 1:
-                await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")
+        if normalized_skill_name in map(str.lower, self.player_stats[user_id].keys()):
+            skill_name = next(
+                name for name in self.player_stats[user_id] if name.lower() == normalized_skill_name
+            )
+            
+            skill_value = self.player_stats[user_id][skill_name]
+            luck_value = self.player_stats[user_id]["LUCK"]
+            name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
+            
+            rolls_1 = [i for i in range(0, 100, 10)]
+            roll_1 = random.choice(rolls_1)
+            
+            rolls_2 = [i for i in range(0, 100, 10)]
+            roll_2 = random.choice(rolls_2)
+            
+            if roll_1 <= roll_2:
+                total = roll_1
             else:
-                skill_name = matching_skills[0]
-                skill_value = self.player_stats[user_id][skill_name]
-                luck_value = self.player_stats[user_id]["LUCK"]
-                name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
-
-            if skill_value is not None:
-                rolls_1 = [i for i in range(0, 100, 10)]
-                roll_1 = random.choice(rolls_1)
-                
-                rolls_2 = [i for i in range(0, 100, 10)]
-                roll_2 = random.choice(rolls_2)
-                
-                if roll_1 <= roll_2:
-                    total = roll_1
-                else:
-                    total = roll_2
-                
-                roll_3 = random.randint(0, 9)
-                roll = total + roll_3
-                
-                if roll == 1:
-                    result = "CRITICAL! :star2:"
-                elif roll <= skill_value // 5:
-                    result = "Extreme Success :star:"
-                elif roll <= skill_value // 2:
-                    result = "Hard Success :white_check_mark:"
-                elif roll <= skill_value:
-                    result = "Regular Success :heavy_check_mark:"
-                elif roll > 95:
-                    result = "Fumble :warning:"
-                else:
-                    result = "Fail :x:"
-                
-                formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
-                skill_value = None
-                
-                embed = discord.Embed(
-                    title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
-                    description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Lower roll: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
-                    color=discord.Color.green()
+                total = roll_2
+            
+            roll_3 = random.randint(0, 9)
+            roll = total + roll_3
+            
+            if roll == 1:
+                result = "CRITICAL! :star2:"
+            elif roll <= skill_value // 5:
+                result = "Extreme Success :star:"
+            elif roll <= skill_value // 2:
+                result = "Hard Success :white_check_mark:"
+            elif roll <= skill_value:
+                result = "Regular Success :heavy_check_mark:"
+            elif roll > 95:
+                result = "Fumble :warning:"
+            else:
+                result = "Fail :x:"
+            
+            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+            
+            embed = discord.Embed(
+                title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
+                description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Lower roll: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                color=discord.Color.green()
+            )
+            
+            if roll > skill_value and roll <= skill_value + 10 and luck_value >= roll - skill_value:
+                difference = roll - skill_value
+                prompt_embed = discord.Embed(
+                    title="Use LUCK?",
+                    description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
+                                "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
+                    color=discord.Color.orange()
                 )
+                prompt_message = await ctx.send(embed=prompt_embed)
                 
-                if roll > skill_value and roll <= skill_value + 10 and luck_value >= roll - skill_value:
-                    difference = roll - skill_value
-                    prompt_embed = discord.Embed(
-                        title="Use LUCK?",
-                        description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}\n\nYour roll is close to your skill ({difference}). Do you want to use LUCK to turn it into a Regular Success?\n"
-                                    "Reply with 'YES' to use LUCK or 'NO' to skip within 1 minute.",
-                        color=discord.Color.orange()
+                def check(message):
+                    return message.author == ctx.author and message.content.lower() in ["yes", "no"]
+                
+                try:
+                    response = await self.bot.wait_for("message", timeout=60, check=check)
+                    await prompt_message.delete()
+                    
+                    if response.content.lower() == "yes":
+                        luck_used = min(luck_value, difference)
+                        luck_value -= luck_used
+                        self.player_stats[user_id]["LUCK"] = luck_value
+                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn LUCK do dat
+                        formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
+                        result = "Regular Success (LUCK Used) :heavy_check_mark:"
+                        skill_value += luck_used
+                        
+                        formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+                    else:
+                        result = "Fail :x:"
+                    
+                    embed = discord.Embed(
+                        title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
+                        description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
+                        color=discord.Color.green()
                     )
-                    prompt_message = await ctx.send(embed=prompt_embed)
-                    
-                    def check(message):
-                        return message.author == ctx.author and message.content.lower() in ["yes", "no"]
-                    
-                    try:
-                        response = await self.bot.wait_for("message", timeout=60, check=check)
-                        await prompt_message.delete()
-                        
-                        if response.content.lower() == "yes":
-                            luck_used = min(luck_value, difference)
-                            luck_value -= luck_used
-                            self.player_stats[user_id]["LUCK"] = luck_value
-                            await self.save_data(ctx.guild.id, self.player_stats)  # Uložení změn LUCK do dat
-                            formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
-                            result = "Regular Success (LUCK Used) :heavy_check_mark:"
-                            skill_value += luck_used
-                            
-                            formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
-                        else:
-                            result = "Fail :x:"
-                        
-                        embed = discord.Embed(
-                            title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",
-                            description=f":game_die: Rolled: {roll_1}, {roll_2}, {roll_3} (Total: {total}) + {roll}\n{result}\n{formatted_skill}\n{formatted_luck}",
-                            color=discord.Color.green()
-                        )
-                    except asyncio.TimeoutError:
-                        await prompt_message.delete()
-                
-                await ctx.send(embed=embed)
-
+                except asyncio.TimeoutError:
+                    await prompt_message.delete()
+            
+            await ctx.send(embed=embed)
         else:
             embed = discord.Embed(
                 title="Skill Not Found",

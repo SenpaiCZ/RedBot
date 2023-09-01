@@ -433,7 +433,7 @@ class CthulhuCog(commands.Cog):
             await ctx.send("You already have an investigator. You can't create a new one until you delete the existing one with `!deleteInvestigator`.")
             
     @commands.command(aliases=["cstat"], guild_only=True)
-    async def CthulhuChangeStats(self, ctx, stat_name, new_value):
+    async def CthulhuChangeStats(self, ctx, *args):
         user_id = str(ctx.author.id)  # Get the user's ID as a string
 
         def get_stat_emoji(stat_name):
@@ -505,6 +505,16 @@ class CthulhuCog(commands.Cog):
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
+            stat_name = " ".join(args[:-1]).upper()  # Všechny argumenty kromě posledního
+            try:
+                if stat_name != "Damage Bonus":
+                    new_value = int(args[-1])
+                else:
+                    new_value = args[-1]
+            except ValueError:
+                await ctx.send("Invalid new value. Please provide a number.")
+                return
+
             matching_skills = [stat for stat in self.player_stats[user_id] if re.search(stat_name, stat, re.IGNORECASE)]
             
             if matching_skills:

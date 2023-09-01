@@ -507,10 +507,7 @@ class CthulhuCog(commands.Cog):
         else:
             stat_name = " ".join(args[:-1])  # Všechny argumenty kromě posledního
             try:
-                if stat_name != "Damage Bonus":
-                    new_value = int(args[-1])
-                else:
-                    new_value = args[-1]
+                new_value = int(args[-1])
             except ValueError:
                 await ctx.send("Invalid new value. Please provide a number.")
                 return

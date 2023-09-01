@@ -821,12 +821,90 @@ class CthulhuCog(commands.Cog):
             return stat_emojis.get(stat_name, ":question:")
 
         def get_stat_value(stat_name, value):
-            if stat_name in ["Age"]:
+            if stat_name == "Age":
                 formatted_value = f"{value}"
-            elif stat_name in ["HP"]:
+            elif stat_name == "HP":
                 formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_HP"])
-            elif stat_name in ["MP"]:
+            elif stat_name == "MP":
                 formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_MP"])
+            elif stat_name == "Move":
+                if self.player_stats[user_id]["DEX"] != 0 and \
+                    self.player_stats[user_id]["SIZ"] != 0 and \
+                    self.player_stats[user_id]["STR"] != 0:
+                    if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
+                        self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                        MOV = 7                            
+                    elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
+                        self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                        MOV = 8
+                    elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                        self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                        MOV = 8                           
+                    elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
+                        self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
+                        MOV = 9                            
+                    else:
+                        #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
+                        MOV = 9001
+                    formatted_value = f"{MOV}"
+                else:
+                    formatted_value = f"Fill your DEX, STR and SIZ."
+
+            elif stat_name == "Build":
+                if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0:
+                    STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
+                    if 2 <= STRSIZ <= 64:
+                        BUILD = -2
+                    elif 65 <= STRSIZ <= 84:
+                        BUILD = -1
+                    elif 85 <= STRSIZ <= 124:
+                        BUILD = 0
+                    elif 125 <= STRSIZ <= 164:
+                        BUILD = 1
+                    elif 165 <= STRSIZ <= 204:
+                        BUILD = 2
+                    elif 205 <= STRSIZ <= 284:
+                        BUILD = 3
+                    elif 285 <= STRSIZ <= 364:
+                        BUILD = 4
+                    elif 365 <= STRSIZ <= 444:
+                        BUILD = 5
+                    elif 445 <= STRSIZ <= 524:
+                        BUILD = 6
+                    else:
+                        #Not posible if used correctly!
+                        BUILD = "You are CHONKER! (7+)"
+                        formatted_value = f"{BUILD}"
+                else:
+                    formatted_value = f"Fill your STR and SIZ."
+
+            elif stat_name == "Damage Bonus":
+                if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0:
+                    STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
+                    if 2 <= STRSIZ <= 64:
+                        BONUSDMG = -2
+                    elif 65 <= STRSIZ <= 84:
+                        BONUSDMG = -1
+                    elif 85 <= STRSIZ <= 124:
+                        BONUSDMG = 0
+                    elif 125 <= STRSIZ <= 164:
+                        BONUSDMG = "1D4"
+                    elif 165 <= STRSIZ <= 204:
+                        BONUSDMG = "1D6"
+                    elif 205 <= STRSIZ <= 284:
+                        BONUSDMG = "2D6"
+                    elif 285 <= STRSIZ <= 364:
+                        BONUSDMG = "3D6"
+                    elif 365 <= STRSIZ <= 444:
+                        BONUSDMG = "4D6"
+                    elif 445 <= STRSIZ <= 524:
+                        BONUSDMG = "5D6"
+                    else:
+                        #Not posible if used correctly!
+                        BONUSDMG = "You are too strong! (6D6+)"
+                        formatted_value = f"{BONUSDMG}"
+                else:
+                    formatted_value = f"Fill your STR and SIZ."            
             elif stat_name in ["LUCK"]:
                 formatted_value = f"{value} - {value // 2} - {value // 5}"
             else:
@@ -853,85 +931,6 @@ class CthulhuCog(commands.Cog):
                     formatted_value += f"\n{self.get_charisma_description(value)}"
                 elif stat_name == "SAN":
                     formatted_value += f"\n{self.get_sanity_description(value)}"
-                elif stat_name == "Move":
-                    if self.player_stats[user_id]["DEX"] != 0 and \
-                       self.player_stats[user_id]["SIZ"] != 0 and \
-                       self.player_stats[user_id]["STR"] != 0:
-                        if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
-                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
-                            MOV = 7                            
-                        elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
-                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
-                            MOV = 8
-                        elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
-                            self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
-                            MOV = 8                           
-                        elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
-                            self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
-                            MOV = 9                            
-                        else:
-                            #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
-                            MOV = 9001
-                        formatted_value = f"{MOV}"
-                    else:
-                        formatted_value = f"Fill your DEX, STR and SIZ."
-
-                elif stat_name == "Build":
-                    if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0:
-                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
-                        if 2 <= STRSIZ <= 64:
-                            BUILD = -2
-                        elif 65 <= STRSIZ <= 84:
-                            BUILD = -1
-                        elif 85 <= STRSIZ <= 124:
-                            BUILD = 0
-                        elif 125 <= STRSIZ <= 164:
-                            BUILD = 1
-                        elif 165 <= STRSIZ <= 204:
-                            BUILD = 2
-                        elif 205 <= STRSIZ <= 284:
-                            BUILD = 3
-                        elif 285 <= STRSIZ <= 364:
-                            BUILD = 4
-                        elif 365 <= STRSIZ <= 444:
-                            BUILD = 5
-                        elif 445 <= STRSIZ <= 524:
-                            BUILD = 6
-                        else:
-                            #Not posible if used correctly!
-                            BUILD = "You are CHONKER! (7+)"
-                            formatted_value = f"{BUILD}"
-                    else:
-                        formatted_value = f"Fill your STR and SIZ."
-
-                elif stat_name == "Damage Bonus":
-                    if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0:
-                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
-                        if 2 <= STRSIZ <= 64:
-                            BONUSDMG = -2
-                        elif 65 <= STRSIZ <= 84:
-                            BONUSDMG = -1
-                        elif 85 <= STRSIZ <= 124:
-                            BONUSDMG = 0
-                        elif 125 <= STRSIZ <= 164:
-                            BONUSDMG = "1D4"
-                        elif 165 <= STRSIZ <= 204:
-                            BONUSDMG = "1D6"
-                        elif 205 <= STRSIZ <= 284:
-                            BONUSDMG = "2D6"
-                        elif 285 <= STRSIZ <= 364:
-                            BONUSDMG = "3D6"
-                        elif 365 <= STRSIZ <= 444:
-                            BONUSDMG = "4D6"
-                        elif 445 <= STRSIZ <= 524:
-                            BONUSDMG = "5D6"
-                        else:
-                            #Not posible if used correctly!
-                            BONUSDMG = "You are too strong! (6D6+)"
-                            formatted_value = f"{BUILD}"
-                    else:
-                        formatted_value = f"Fill your STR and SIZ."
-
                 else:
                     formatted_value += f"\n{self.get_skill_description(value)}"
             return formatted_value

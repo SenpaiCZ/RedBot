@@ -3543,6 +3543,966 @@ class CthulhuCog(commands.Cog):
     
     def get_year_events(self, year):
         events = {
+                1590: [
+                    "The Battle of Ivry takes place during the French Wars of Religion, resulting in a victory for Henry IV of France.",
+                    "John White returns to Roanoke Island in the New World to find the colony abandoned, leading to the mystery of the Lost Colony.",
+                    "The first documented performance of William Shakespeare's play 'Henry VI, Part 1.'"
+                ],
+                1591: [
+                    "The Siege of Knin marks a significant battle in the Croatian-Ottoman Wars.",
+                    "Shakespeare's 'Henry VI, Part 2' is performed for the first time.",
+                    "Tokugawa Ieyasu, a Japanese warlord, begins his rise to power."
+                ],
+                1592: [
+                    "The Japanese invasions of Korea begin, lasting until 1598.",
+                    "University of Santo Tomas, the oldest existing university in Asia, is established in Manila, Philippines.",
+                    "Shakespeare writes his narrative poem 'Venus and Adonis.'"
+                ],
+                1593: [
+                    "The Siege of Pyongyang is a major battle during the Japanese invasions of Korea.",
+                    "Shakespeare's 'The Rape of Lucrece' is published.",
+                    "Elizabethan playwright Christopher Marlowe dies under mysterious circumstances."
+                ],
+                1594: [
+                    "The Russo-Swedish War begins, leading to the Treaty of Teusina in 1595.",
+                    "The French explorer Jean Ribault establishes a settlement in Florida known as Fort Caroline.",
+                    "William Shakespeare becomes a shareholder in the Lord Chamberlain's Men, a theater company."
+                ],
+                1595: [
+                    "The Treaty of Teusina ends the Russo-Swedish War, restoring peace between Russia and Sweden.",
+                    "Henry IV of France converts to Catholicism to secure his rule as King of France.",
+                    "The construction of the Globe Theatre, where many of Shakespeare's plays would be performed, begins."
+                ],
+                1596: [
+                    "The Dutch explorer Willem Barentsz discovers Spitsbergen, an Arctic archipelago.",
+                    "The Japanese shogun Toyotomi Hideyoshi issues the Buke Shohatto, a code of conduct for the samurai class.",
+                    "Shakespeare's 'A Midsummer Night's Dream' is first performed."
+                ],
+                1597: [
+                    "The Battle of Myeongnyang is a decisive naval battle during the Japanese invasions of Korea.",
+                    "The Union of Brest-Litovsk is signed, leading to the establishment of the Eastern Catholic Church in Eastern Europe.",
+                    "Shakespeare's 'Henry IV, Part 1' is performed."
+                ],
+                1598: [
+                    "The Edict of Nantes is issued in France, granting religious tolerance to Protestants and ending the French Wars of Religion.",
+                    "Tokugawa Ieyasu emerges victorious in the Japanese invasions of Korea.",
+                    "Shakespeare's 'Henry IV, Part 2' is performed."
+                ],
+                1599: [
+                    "The Globe Theatre, where many of Shakespeare's plays are performed, opens in London.",
+                    "The Nine Years' War, also known as Tyrone's Rebellion, begins in Ireland.",
+                    "Shakespeare's 'Julius Caesar' is first performed."
+                ],
+                1600: [
+                    "The Battle of Sekigahara in Japan establishes Tokugawa Ieyasu as the ruler of Japan.",
+                    "The British East India Company is chartered.",
+                    "Giordano Bruno, an Italian philosopher, is executed for heresy by the Roman Catholic Church."
+                ],
+                1601: [
+                    "The Robert Devereux, 2nd Earl of Essex, leads a failed rebellion against Queen Elizabeth I in England.",
+                    "The 'Hamlet' play by William Shakespeare is performed for the first time.",
+                    "The Dutch East India Company is established."
+                ],
+                1602: [
+                    "The Dutch establish a trading post on the island of Java in Indonesia.",
+                    "Galileo Galilei invents a thermometer.",
+                    "The first recorded performance of 'Macbeth' by William Shakespeare."
+                ],
+                1603: [
+                    "Queen Elizabeth I of England dies, and James VI of Scotland becomes James I of England, uniting the two kingdoms.",
+                    "The Tokugawa shogunate is established in Japan, leading to the Edo period.",
+                    "The 'Mona Lisa' is returned to Italy after being stolen by an Italian handyman."
+                ],
+                1604: [
+                    "The Treaty of London ends the Anglo-Spanish War.",
+                    "Shakespeare's 'Othello' is first performed.",
+                    "The first European telescope is built by Hans Lippershey."
+                ],
+                1605: [
+                    "The Gunpowder Plot, a failed assassination attempt against King James I of England, is foiled.",
+                    "The University of Oviedo is founded in Spain.",
+                    "The first edition of Miguel de Cervantes' 'Don Quixote' is published."
+                ],
+                1606: [
+                    "The Virginia Company of London is established, leading to the founding of Jamestown, Virginia.",
+                    "Guy Fawkes and his co-conspirators are executed for their involvement in the Gunpowder Plot.",
+                    "The first recorded performance of Shakespeare's 'Macbeth'."
+                ],
+                1607: [
+                    "English settlers establish the Jamestown colony in Virginia, the first permanent English settlement in North America.",
+                    "The Treaty of Susa is signed, ending the war between the Ottoman Empire and Safavid Persia.",
+                    "Johannes Kepler publishes his work on planetary motion."
+                ],
+                1608: [
+                    "The city of Quebec is founded by Samuel de Champlain in New France (Canada).",
+                    "John Smith is elected president of the Jamestown colony in Virginia.",
+                    "The telescope is patented by Hans Lippershey in the Netherlands."
+                ],
+                1609: [
+                    "The Dutch explorer Henry Hudson, in the employ of the Dutch East India Company, explores the river that would later bear his name, the Hudson River.",
+                    "Galileo Galilei observes the moons of Jupiter with a telescope.",
+                    "The 'Tempest' by William Shakespeare is first performed."
+                ],
+                1610: [
+                    "Galileo Galilei discovers the four largest moons of Jupiter (Galilean moons).",
+                    "Henry Hudson explores the Hudson River and the surrounding region.",
+                    "The first English settlers establish the colony of Bermuda."
+                ],
+                1611: [
+                    "The King James Version of the Bible is first published.",
+                    "Johannes Kepler publishes his work 'Dioptrice' on the optics of lenses.",
+                    "The Dutch establish a trading post on the island of Manhattan, later becoming New Amsterdam (New York City)."
+                ],
+                1612: [
+                    "The Pendle Witch Trials take place in England, resulting in the execution of ten people.",
+                    "The first recorded lottery in England is held to raise money for public projects.",
+                    "The Mughal Emperor Jahangir marries Nur Jahan, who becomes a powerful influence in the empire."
+                ],
+                1613: [
+                    "The Treaty of Pärnu is signed, ending the Ingrian War between Sweden and Russia.",
+                    "The Globe Theatre in London burns down during a performance of Shakespeare's 'Henry VIII'.",
+                    "Samuel de Champlain founds Quebec City in New France (Canada)."
+                ],
+                1614: [
+                    "English explorer John Smith maps the New England coast and names it 'New England'.",
+                    "The University of Groningen is founded in the Netherlands.",
+                    "Pocahontas, daughter of Powhatan, is captured by English settlers in Virginia."
+                ],
+                1615: [
+                    "The first European settlement in the Delaware Valley is established by the Dutch.",
+                    "Japanese military leader Tokugawa Ieyasu reunifies Japan, beginning the Edo period.",
+                    "The University of Havana is founded in Cuba."
+                ],
+                1616: [
+                    "The Dutch establish the Dutch East India Company (VOC) to monopolize the spice trade.",
+                    "William Shakespeare, the famous English playwright, dies.",
+                    "Francis Bacon publishes 'Novum Organum', a work on the scientific method."
+                ],
+                1617: [
+                    "The Treaty of Stolbovo ends the Ingrian War between Sweden and Russia.",
+                    "The first one-way streets are established in London to regulate traffic.",
+                    "The first recorded slave sale in North America takes place in Jamestown, Virginia."
+                ],
+                1618: [
+                    "The beginning of the Thirty Years' War, a major European conflict.",
+                    "Sir Walter Raleigh, English explorer, is executed for his involvement in the Main Plot.",
+                    "The University of Leiden is founded in the Netherlands."
+                ],
+                1619: [
+                    "The House of Burgesses, the first representative assembly in America, meets in Virginia.",
+                    "Dutch explorer Adriaen Block explores and maps areas of New England and Long Island Sound.",
+                    "The first enslaved Africans are brought to English North America, marking the beginning of slavery in the English colonies."
+                ],
+                1620: [
+                    "The Mayflower Compact is signed by Pilgrims on board the Mayflower, establishing a self-governing colony in Plymouth, Massachusetts.",
+                    "The Dutch West India Company is founded.",
+                    "The first performance of Shakespeare's play 'The Tempest' is recorded."
+                ],
+                1621: [
+                    "The First Thanksgiving is celebrated by Pilgrims and Native Americans in Plymouth, Massachusetts.",
+                    "The Dutch establish the colony of New Netherland in North America.",
+                    "The University of Oxford botanic garden is founded in England."
+                ],
+                1622: [
+                    "The Powhatan Confederacy attacks English settlers in the Jamestown colony during the Anglo-Powhatan War.",
+                    "The English mathematician and physicist, Christopher Wren, is born.",
+                    "The first American cookbook, 'The Compleat Housewife' by Eliza Smith, is published in England."
+                ],
+                1623: [
+                    "The Dutch West India Company establishes the colony of New Amsterdam (later New York City) on Manhattan Island.",
+                    "The first folio edition of William Shakespeare's plays, known as the First Folio, is published.",
+                    "The University of Tartu is founded in Sweden (modern-day Estonia)."
+                ],
+                1624: [
+                    "Virginia becomes a royal colony under the control of King James I of England.",
+                    "Cardinal Richelieu becomes the Chief Minister of France.",
+                    "The University of Massachusetts Harvard College is founded in Cambridge, Massachusetts."
+                ],
+                1625: [
+                    "King Charles I ascends to the English throne.",
+                    "The city of St. Petersburg is founded by Peter the Great of Russia.",
+                    "The Catholic Church places Galileo Galilei's works on the Index of Forbidden Books."
+                ],
+                1626: [
+                    "Peter Minuit purchases Manhattan Island from Native Americans, establishing New Amsterdam (New York City).",
+                    "The philosopher and mathematician René Descartes settles in the Netherlands.",
+                    "The University of Innsbruck is founded in Austria."
+                ],
+                1627: [
+                    "The English establish the Massachusetts Bay Colony, with John Endecott as its governor.",
+                    "The English poet and playwright John Dryden is born.",
+                    "The University of Naples Federico II is founded in Italy."
+                ],
+                1628: [
+                    "The Massachusetts Bay Colony receives its first royal charter, establishing self-governance.",
+                    "The philosopher and political theorist John Locke enters Christ Church, Oxford.",
+                    "The city of Salem, Massachusetts is founded."
+                ],
+                1629: [
+                    "King Charles I grants the Puritans a royal charter for the Massachusetts Bay Company.",
+                    "The English scientist and architect Christopher Wren enters Wadham College, Oxford.",
+                    "The University of Quebec is founded in Canada."
+                ],
+                1630: [
+                    "The Massachusetts Bay Colony is founded by English Puritans.",
+                    "Publication of Johannes Kepler's 'Astronomia Nova,' containing his laws of planetary motion.",
+                    "The Taj Mahal construction in India begins."
+                ],
+                1631: [
+                    "The Gustavus Adolphus-led Swedish forces capture Frankfurt during the Thirty Years' War.",
+                    "The Mount Vesuvius eruption devastates Naples, Italy.",
+                    "The University of Dublin, Trinity College, is founded in Ireland."
+                ],
+                1632: [
+                    "The Treaty of Stettin ends hostilities between Sweden and the Holy Roman Empire during the Thirty Years' War.",
+                    "The construction of the Taj Mahal in India continues.",
+                    "The philosopher John Locke is born in England."
+                ],
+                1633: [
+                    "Galileo Galilei is tried by the Roman Catholic Church for heresy due to his support for heliocentrism.",
+                    "The Ming Dynasty completes construction of the Great Wall of China.",
+                    "The Banaras Hindu University, one of India's largest residential universities, is founded."
+                ],
+                1634: [
+                    "The Battle of Nördlingen takes place during the Thirty Years' War, leading to an Imperial victory.",
+                    "The Massachusetts Bay Colony receives a royal charter from King Charles I of England.",
+                    "The University of Utrecht is established in the Netherlands."
+                ],
+                1635: [
+                    "The Treaty of Prague is signed, ending the second phase of the Thirty Years' War.",
+                    "The French Academy of Sciences, known as the Académie des Sciences, is founded in France.",
+                    "The city of Boston is officially incorporated in Massachusetts."
+                ],
+                1636: [
+                    "Harvard College is founded in Massachusetts, becoming one of the oldest institutions of higher education in the United States.",
+                    "The Ming Dynasty completes the construction of the Forbidden City in Beijing, China.",
+                    "The Rhode Island colony is founded by Roger Williams, promoting religious freedom."
+                ],
+                1637: [
+                    "The Dutch capture Breda from the Spanish during the Eighty Years' War.",
+                    "The Pequot War erupts in New England between English settlers and Native American tribes.",
+                    "The University of Aberdeen is founded in Scotland."
+                ],
+                1638: [
+                    "The Treaty of Hartford ends the Pequot War in New England.",
+                    "The city of Salem is founded in the Massachusetts Bay Colony.",
+                    "The Swedish Empire establishes a colony on the Delaware River in North America."
+                ],
+                1639: [
+                    "The Fundamental Orders of Connecticut, one of the first written constitutions, is adopted in the Connecticut Colony.",
+                    "The Shimabara Rebellion, a Christian uprising, occurs in Japan.",
+                    "The University of Newcastle upon Tyne is established in England."
+                ],
+                1640: [
+                    "The Treaty of Ripon ends the Bishops' Wars in Scotland, marking the beginning of the English Civil War.",
+                    "Cardinal Richelieu of France dies.",
+                    "The Ming-Qing transition in China begins with the fall of the Ming Dynasty."
+                ],
+                1641: [
+                    "The Irish Rebellion of 1641 begins with the uprising of Catholic Irish against English and Protestant settlers.",
+                    "The Treaty of Pera is signed, ending the war between the Ottoman Empire and Venice.",
+                    "The English Parliament passes the Grand Remonstrance, a list of grievances against King Charles I."
+                ],
+                1642: [
+                    "The English Civil War officially begins with the Battle of Edgehill.",
+                    "Galileo Galilei, the Italian physicist, mathematician, and astronomer, dies.",
+                    "Blaise Pascal, the French mathematician and physicist, begins studying geometry at the age of 18."
+                ],
+                1643: [
+                    "The Covenanters, a Scottish Presbyterian movement, sign the Solemn League and Covenant with the English Parliament.",
+                    "Louis XIV becomes King of France at the age of 4.",
+                    "Harvard College, the oldest institution of higher education in the United States, is founded."
+                ],
+                1644: [
+                    "The Ming Dynasty in China is overthrown by the Qing Dynasty, led by Emperor Shunzhi.",
+                    "The Battle of Marston Moor takes place during the English Civil War, resulting in a Parliamentarian victory.",
+                    "Evangelista Torricelli invents the mercury barometer, an important development in physics."
+                ],
+                1645: [
+                    "The Battle of Naseby, a decisive engagement in the English Civil War, leads to Parliamentarian victory.",
+                    "René Descartes publishes 'Meditations on First Philosophy,' a foundational work in modern philosophy.",
+                    "The Treaty of Brömsebro is signed, ending the Torstenson War between Sweden and Denmark-Norway."
+                ],
+                1646: [
+                    "The Royalists surrender to the Parliamentarians at the end of the First English Civil War.",
+                    "Roger Williams founds Rhode Island as a colony that promotes religious freedom.",
+                    "Blaise Pascal begins conducting experiments on atmospheric pressure."
+                ],
+                1647: [
+                    "The Putney Debates occur, discussing constitutional and political reforms in England.",
+                    "Margaret Cavendish, a pioneer in science fiction literature, publishes 'The Description of a New World, Called The Blazing World.'",
+                    "The philosopher Baruch Spinoza is excommunicated from the Portuguese Synagogue in Amsterdam."
+                ],
+                1648: [
+                    "The Peace of Westphalia is signed, ending the Thirty Years' War in Europe.",
+                    "The Fronde, a series of civil wars in France, begins as a rebellion against the government of Louis XIV.",
+                    "The English Parliament passes the Engagers' Act, allowing negotiations with King Charles I."
+                ],
+                1649: [
+                    "King Charles I of England is executed, marking the end of the English Civil War and the beginning of the Commonwealth of England.",
+                    "The Levellers, a political movement advocating for democratic reforms, present 'The Agreement of the People' to Parliament.",
+                    "The philosopher and mathematician René Descartes dies."
+                ],
+                1650: [
+                    "The Treaty of Hartford ends the Dutch-Portuguese War, recognizing Dutch control of Brazil.",
+                    "Blaise Pascal invents the mechanical calculator known as the Pascaline.",
+                    "The Battle of Dunbar takes place during the Third English Civil War.",
+                    "John Churchill, 1st Duke of Marlborough, is born."
+                ],
+                1651: [
+                    "The English Parliament passes the Navigation Acts, regulating colonial trade and shipping.",
+                    "The Battle of Worcester marks the final major battle of the English Civil War.",
+                    "Molière's play 'L'Étourdi' is performed for the first time.",
+                    "The Dutch establish New Amsterdam (later New York) in North America."
+                ],
+                1652: [
+                    "The First Anglo-Dutch War begins, leading to naval conflicts between England and the Dutch Republic.",
+                    "The mathematician and physicist Christiaan Huygens invents the pendulum clock.",
+                    "Cape Town is founded by the Dutch East India Company in South Africa.",
+                    "The philosopher John Locke begins his studies at Christ Church, Oxford."
+                ],
+                1653: [
+                    "Oliver Cromwell becomes Lord Protector of the Commonwealth of England, Scotland, and Ireland.",
+                    "The Battle of the Gabbard takes place during the First Anglo-Dutch War.",
+                    "The philosopher and mathematician Blaise Pascal publishes 'Pascal's Theorem.'",
+                    "The first recorded steam engine is built by Edward Somerset, 2nd Marquess of Worcester."
+                ],
+                1654: [
+                    "The Treaty of Westminster ends the First Anglo-Dutch War, recognizing Dutch territorial gains.",
+                    "The Dutch capture the Portuguese colony of Ceylon (now Sri Lanka).",
+                    "The mathematician Pierre de Fermat's work 'Arithmetica' is published posthumously.",
+                    "Louis XIV becomes King of France at the age of 15."
+                ],
+                1655: [
+                    "The Treaty of Königsberg is signed, ending the Northern Wars between Sweden and Poland.",
+                    "The Jamaican town of Port Royal is destroyed by an earthquake and tsunami.",
+                    "Christiaan Huygens describes the rings of Saturn for the first time.",
+                    "The Dutch capture the Swedish colony of New Sweden (now Delaware) in North America."
+                ],
+                1656: [
+                    "The Flushing Remonstrance is signed in New Netherland (now New York), advocating for religious tolerance.",
+                    "Blaise Pascal invents the hydraulic press, a device used for various applications.",
+                    "The painter Johannes Vermeer creates his masterpiece 'The Girl with a Pearl Earring.'",
+                    "Christiaan Huygens discovers Titan, the largest moon of Saturn."
+                ],
+                1657: [
+                    "Oliver Cromwell refuses the English crown and continues as Lord Protector.",
+                    "The Treaty of Breda ends the Anglo-Spanish War between England and Spain.",
+                    "The mathematician and philosopher René Descartes publishes 'Discourse on the Method.'",
+                    "The Dutch East India Company establishes a trading post at the Cape of Good Hope."
+                ],
+                1658: [
+                    "Oliver Cromwell dies, leading to the end of the Commonwealth and the eventual restoration of the English monarchy.",
+                    "The Treaty of Hadiach is signed, granting autonomy to Ukraine under Polish rule.",
+                    "The French playwright Jean Racine writes his first tragedy, 'La Thébaïde.'",
+                    "A great frost occurs in England, leading to the freezing of the Thames River."
+                ],
+                1659: [
+                    "Richard Cromwell resigns as Lord Protector, marking the start of the Interregnum crisis in England.",
+                    "The Treaty of the Pyrenees ends the war between France and Spain.",
+                    "The Dutch scientist Christiaan Huygens publishes 'Systema Saturnium,' describing the Saturnian system.",
+                    "The philosopher and mathematician Blaise Pascal dies at the age of 39."
+                ],
+                1660: [
+                    "The English monarchy is restored with the return of King Charles II.",
+                    "The Royal Society of London for Improving Natural Knowledge is founded.",
+                    "Samuel Pepys begins his famous diary, providing valuable insights into life in the 17th century.",
+                    "The Treaty of Copenhagen ends the Second Northern War."
+                ],
+                1661: [
+                    "The Dutch sign the Treaty of The Hague with Portugal, recognizing Dutch possessions in Brazil.",
+                    "The French Academy of Sciences is established by Louis XIV.",
+                    "The University of Cambridge establishes the Lucasian Chair of Mathematics, later held by Isaac Newton.",
+                    "The city of Charleston, South Carolina, is founded."
+                ],
+                1662: [
+                    "The Royal Society receives its royal charter from King Charles II.",
+                    "Blaise Pascal's calculator, the Pascaline, is completed.",
+                    "John Flamsteed is appointed as the first Astronomer Royal at the Royal Observatory, Greenwich.",
+                    "The Marriage Act 1662 is enacted in England, regulating marriages."
+                ],
+                1663: [
+                    "The Carolinas are officially designated as a British colony.",
+                    "John Locke begins his influential work in political philosophy.",
+                    "The first documented sighting of the Aurora Borealis in North America is recorded in New England.",
+                    "The Dutch capture the Portuguese colony of Recife in Brazil."
+                ],
+                1664: [
+                    "The English capture New Amsterdam from the Dutch, renaming it New York.",
+                    "The French East India Company is founded.",
+                    "The Second Anglo-Dutch War begins.",
+                    "The University of Maryland, the sixth-oldest college in the United States, is chartered."
+                ],
+                1665: [
+                    "The Great Plague of London leads to a significant loss of life in the city.",
+                    "Isaac Newton makes significant discoveries in mathematics and optics while at home due to the plague.",
+                    "The Royal Observatory, Greenwich, is founded in England.",
+                    "The Second Anglo-Dutch War continues with naval battles and conflicts."
+                ],
+                1666: [
+                    "The Great Fire of London devastates the city, destroying a large part of its buildings.",
+                    "The Royal Exchange in London, designed by Sir Christopher Wren, opens.",
+                    "The French invade the Spanish Netherlands during the War of Devolution.",
+                    "The French artist Claude Lorrain completes his masterpiece 'Pastoral Landscape.'"
+                ],
+                1667: [
+                    "The Treaty of Breda ends the Second Anglo-Dutch War, with territorial exchanges.",
+                    "The French navy attacks the Dutch Republic, marking the beginning of the War of Devolution.",
+                    "John Milton publishes 'Paradise Lost,' an epic poem.",
+                    "The scientific journal 'Philosophical Transactions of the Royal Society' is first published."
+                ],
+                1668: [
+                    "The Triple Alliance is formed between England, Sweden, and the Dutch Republic against France.",
+                    "The Treaty of Lisbon is signed between Portugal and Spain, ending the Portuguese Restoration War.",
+                    "The first recorded horse race in America takes place on the Newmarket Course in Salisbury, New York.",
+                    "François Couperin, a renowned French composer, is born."
+                ],
+                1669: [
+                    "The Treaty of Aix-la-Chapelle ends the War of Devolution.",
+                    "Isaac Newton builds his first reflecting telescope.",
+                    "The Swedish naturalist Olof Rudbeck publishes the first volume of 'Atlantica,' a work on Sweden's past and geography.",
+                    "The city of Charleston, South Carolina, is incorporated."
+                ],
+                1670: [
+                    "The Hudson's Bay Company is founded in Canada for fur trading.",
+                    "The Treaty of Dover is signed between England and France, forming an alliance against the Netherlands.",
+                    "John Ray publishes 'Catalogus Plantarum Angliae,' a pioneering work in botany.",
+                    "The population of London reaches an estimated 500,000 people."
+                ],
+                1671: [
+                    "Thomas Blood attempts to steal the English Crown Jewels from the Tower of London.",
+                    "The city of Tucson, Arizona, is founded by Spanish missionaries.",
+                    "The first documented decaffeination of coffee occurs in Germany.",
+                    "The Dutch explorer Abel Tasman becomes the first European to reach the islands of Fiji."
+                ],
+                1672: [
+                    "The Franco-Dutch War begins, pitting France against a coalition of European powers.",
+                    "The Royal African Company is granted a monopoly on the English slave trade.",
+                    "Isaac Newton develops early theories on calculus and the nature of colors.",
+                    "The city of New Haven, Connecticut, merges with Connecticut Colony."
+                ],
+                1673: [
+                    "Louis Jolliet and Jacques Marquette explore the Mississippi River, reaching the confluence with the Arkansas River.",
+                    "The Test Act is passed in England, restricting public office to members of the Church of England.",
+                    "Gottfried Wilhelm Leibniz invents a calculating machine called the 'Stepped Reckoner.'",
+                    "The city of Charleston, South Carolina, is founded."
+                ],
+                1674: [
+                    "The Treaty of Westminster ends the Third Anglo-Dutch War and returns New Netherland (New York) to the English.",
+                    "John Milton publishes 'Paradise Lost,' an epic poem.",
+                    "Blaise Pascal invents the first mechanical calculator, known as the 'Pascaline.'",
+                    "The French East India Company is established to compete with the Dutch and British trading companies in India."
+                ],
+                1675: [
+                    "The Great Swamp Fight occurs during King Philip's War between English settlers and Native American tribes in New England.",
+                    "Leibniz publishes his paper on the differential calculus, independently of Isaac Newton.",
+                    "The Royal Observatory, Greenwich, is founded in England.",
+                    "The construction of the Royal Palace of Amsterdam begins."
+                ],
+                1676: [
+                    "Bacon's Rebellion, an armed uprising in the Virginia Colony, takes place.",
+                    "The Royal Society of London receives its royal charter, formalizing its status as a scientific organization.",
+                    "The Danish scientist Ole Rømer measures the speed of light for the first time.",
+                    "The province of Carolina is officially created in the American colonies."
+                ],
+                1677: [
+                    "The Treaty of Middle Plantation ends Bacon's Rebellion in Virginia.",
+                    "Baruch Spinoza, a Dutch philosopher, publishes 'Ethics,' a work on metaphysics.",
+                    "The world's first known copyright law is enacted in England.",
+                    "Jean-François Regnard, a French dramatist, premieres his comedy 'Le Joueur.'"
+                ],
+                1678: [
+                    "The Treaty of Nijmegen ends the Franco-Dutch War.",
+                    "John Bunyan publishes 'The Pilgrim's Progress,' a Christian allegory.",
+                    "Ehrenfried Walther von Tschirnhaus invents porcelain in Germany.",
+                    "The city of San Juan, Puerto Rico, is besieged by Dutch forces."
+                ],
+                1679: [
+                    "Habeas Corpus Act 1679 is passed in England, safeguarding individual liberty by preventing unlawful detention.",
+                    "The French explorer René-Robert Cavelier, Sieur de La Salle, explores the Mississippi River, claiming the region for France.",
+                    "Denis Papin, a French physicist, invents the pressure cooker.",
+                    "The town of Exeter, New Hampshire, is incorporated."
+                ],
+                1680: [
+                    "Pueblo Indians in New Mexico revolt against Spanish rule in the Pueblo Revolt.",
+                    "The Ashmolean Museum in Oxford, England, opens as the world's first university museum.",
+                    "English astronomer John Flamsteed is appointed as the first Astronomer Royal at the newly built Greenwich Observatory.",
+                    "The population of London reaches an estimated 460,000 people."
+                ],
+                1681: [
+                    "Pennsylvania, named after William Penn, is founded as a British colony in North America.",
+                    "The Rye House Plot to assassinate King Charles II is uncovered, leading to arrests and trials.",
+                    "The last dodo bird is sighted on the island of Mauritius, becoming extinct shortly after.",
+                    "The city of Nizhny Novgorod in Russia is granted city status by Tsar Peter the Great."
+                ],
+                1682: [
+                    "René-Robert Cavelier, Sieur de La Salle, explores the Mississippi River and claims the region for France, naming it Louisiana in honor of King Louis XIV.",
+                    "Isaac Newton presents his laws of motion and universal gravitation in 'Philosophiæ Naturalis Principia Mathematica.'",
+                    "The city of Philadelphia is founded by William Penn as the capital of Pennsylvania.",
+                    "The last dodo bird is sighted on the island of Mauritius, becoming extinct shortly after."
+                ],
+                1683: [
+                    "The Ottoman Empire lays siege to Vienna but is defeated by a coalition of European forces, marking the end of Ottoman expansion in Europe.",
+                    "The first university in the American colonies, Harvard College, holds its first commencement ceremony.",
+                    "The British East India Company builds a trading post at Madras (Chennai) in India.",
+                    "Antonie van Leeuwenhoek, a Dutch scientist, describes microorganisms for the first time using a microscope."
+                ],
+                1684: [
+                    "The Treaty of Radzin ends the Russo-Polish War, resulting in territorial changes in Eastern Europe.",
+                    "The Code Noir, a set of laws governing the treatment of slaves in French colonies, is enacted in France.",
+                    "The colony of New Jersey is divided into East Jersey and West Jersey, each with its own government.",
+                    "The first known book on shorthand, 'Brachygraphy' by Thomas Shelton, is published in England."
+                ],
+                1685: [
+                    "James II becomes King of England, succeeding his brother Charles II.",
+                    "The Edict of Fontainebleau revokes the Edict of Nantes, leading to the persecution of French Protestants (Huguenots).",
+                    "The mathematician and physicist Gottfried Wilhelm Leibniz publishes his 'Dissertatio de Arte Combinatoria,' introducing his binary system.",
+                    "The city of La Paz, Bolivia, is founded."
+                ],
+                1686: [
+                    "The League of Augsburg is formed in Europe as a coalition against the expansionist policies of King Louis XIV of France.",
+                    "The Royal Society of London publishes Isaac Newton's 'Mathematical Principles of Natural Philosophy' (Principia Mathematica).",
+                    "The town of Albany, New York, is chartered.",
+                    "The Mughal Emperor Aurangzeb re-imposes the jizya tax on non-Muslims in India."
+                ],
+                1687: [
+                    "Isaac Newton's 'Philosophiæ Naturalis Principia Mathematica' is published, containing his laws of motion and universal gravitation.",
+                    "The Venetian ambassador to the Ottoman Empire, Francesco Morosini, captures the city of Athens during the Morean War.",
+                    "The first public opera house, Teatro San Cassiano, opens in Venice, Italy.",
+                    "The city of Nazareth in present-day Israel is destroyed by an earthquake."
+                ],
+                1688: [
+                    "The Glorious Revolution in England leads to the overthrow of King James II and the ascension of William III and Mary II to the throne.",
+                    "The Bill of Rights 1689 is enacted in England, limiting the powers of the monarchy and strengthening parliamentary authority.",
+                    "The first permanent English settlement in India, Fort St. George (Chennai), is founded by the British East India Company.",
+                    "The Siege of Yorktown during the Nine Years' War results in a French victory over English forces."
+                ],
+                1689: [
+                    "The English Bill of Rights is signed into law, further limiting the powers of the monarchy and guaranteeing certain civil liberties.",
+                    "The War of the Grand Alliance (Nine Years' War) begins in Europe as a coalition opposes the expansionist policies of Louis XIV of France.",
+                    "William III and Mary II are crowned as joint monarchs of England, marking the beginning of constitutional monarchy.",
+                    "Russia's first newspaper, 'Vedomosti,' is published in Moscow."
+                ],
+                1690: [
+                    "The Battle of the Boyne takes place in Ireland, a significant conflict in the Williamite War.",
+                    "John Locke's 'Two Treatises of Government' is published, laying the groundwork for modern political philosophy.",
+                    "The first paper money in the American colonies is issued in Massachusetts.",
+                    "The population of the American colonies is estimated to be over 200,000."
+                ],
+                1691: [
+                    "The Treaty of Limerick ends the Williamite War in Ireland.",
+                    "The Massachusetts Bay Colony establishes the first paper mill in North America.",
+                    "Scottish-born pirate William Kidd is captured and arrested in Boston.",
+                    "A major earthquake strikes Jamaica, causing significant damage."
+                ],
+                1692: [
+                    "The Salem witch trials take place in Massachusetts, resulting in the execution of several accused individuals.",
+                    "The Bank of England, one of the world's first central banks, is chartered.",
+                    "French explorer Pierre Le Moyne d'Iberville founds the city of Mobile in present-day Alabama.",
+                    "Italian composer Alessandro Scarlatti's opera 'Il Pirro e Demetrio' premieres in Naples."
+                ],
+                1693: [
+                    "The College of William & Mary is founded in Virginia, becoming the second-oldest institution of higher education in the United States.",
+                    "The eruption of Mount Vesuvius in Italy causes significant destruction.",
+                    "The first women's magazine, 'The Ladies' Mercury,' is published in London.",
+                    "The Manchu Qing dynasty conquers Taiwan from the Ming dynasty loyalists."
+                ],
+                1694: [
+                    "The Bank of England issues its first banknotes, becoming the first central bank to do so.",
+                    "English philosopher John Locke's 'Essay Concerning Human Understanding' is published.",
+                    "The Royal Society of London publishes Isaac Newton's 'Mathematical Principles of Natural Philosophy' (Principia Mathematica).",
+                    "The Kingdom of Prussia is established under Frederick I."
+                ],
+                1695: [
+                    "The Parliament of Scotland passes the Act of Union, merging the parliaments of England and Scotland.",
+                    "Andrei Kivshenko, a Russian stonemason, uncovers the buried Church of the Savior on Blood in Saint Petersburg.",
+                    "English composer Henry Purcell's opera 'The Fairy-Queen' premieres in London.",
+                    "The town of Salem, Massachusetts, compensates the heirs of those wrongly accused and executed during the witch trials."
+                ],
+                1696: [
+                    "The Board of Trade and Plantations is established in England to oversee colonial affairs.",
+                    "Scottish economist and philosopher David Hume is born in Edinburgh, Scotland.",
+                    "Russian explorer Vladimir Atlasov explores the Kamchatka Peninsula.",
+                    "The Royal Society of London publishes 'The Account of the New River,' describing the construction of an aqueduct in London."
+                ],
+                1697: [
+                    "The Treaty of Ryswick ends the War of the Grand Alliance (Nine Years' War) in Europe.",
+                    "English playwright and author William Congreve's play 'The Mourning Bride' premieres in London.",
+                    "The city of Gloucester, Massachusetts, is established.",
+                    "Chinese mathematician and polymath Mei Wending publishes 'Writings on Mathematical and Observational Sciences,' a comprehensive mathematical work."
+                ],
+                1698: [
+                    "The Darien scheme, a failed Scottish attempt to establish a colony in Panama, leads to significant financial losses.",
+                    "French composer Marc-Antoine Charpentier's opera 'Médée' premieres in Paris.",
+                    "German composer Georg Friedrich Handel moves to Italy to study music.",
+                    "The Russian Orthodox Church adopts the Nikonian reforms, standardizing its liturgy and practices."
+                ],
+                1699: [
+                    "The First Great Northern War concludes with the Treaty of Karlowitz.",
+                    "The Parliament of Scotland passes the Act of Security, allowing it to choose a different monarch from England if necessary.",
+                    "Japanese samurai and artist Miyamoto Musashi publishes 'The Book of Five Rings,' a martial arts manual.",
+                    "The Scottish capital, Edinburgh, is rocked by an earthquake."
+                ],
+                1700: [
+                    "The Great Northern War begins, involving many European countries.",
+                    "The Japanese daimyo Asano Naganori is forced to commit seppuku (ritual suicide) for assaulting a court official.",
+                    "French composer Jean-Baptiste Lully dies from an infection after striking his foot with a conducting staff during a performance.",
+                    "The population of the world is estimated to be around 600 million."
+                ],
+                1701: [
+                    "The War of the Spanish Succession officially begins with the Treaty of the Hague.",
+                    "The Kingdom of Prussia is founded under the rule of Frederick I.",
+                    "German composer Johann Pachelbel, known for his 'Canon in D,' passes away in Nuremberg.",
+                    "The first successful human blood transfusion is performed by Richard Lower in England."
+                ],
+                1702: [
+                    "Queen Anne becomes the monarch of England, Scotland, and Ireland.",
+                    "The War of the Spanish Succession spreads to the American colonies as Queen Anne's War.",
+                    "Italian composer Alessandro Scarlatti premieres his opera 'Il Pirro e Demetrio.'",
+                    "The first regular English-language newspaper, 'The Daily Courant,' is published in London."
+                ],
+                1703: [
+                    "Peter the Great founds the city of Saint Petersburg, Russia.",
+                    "The Great Storm of 1703 strikes southern England, causing significant damage and loss of life.",
+                    "German mathematician Gottfried Wilhelm Leibniz, co-inventor of calculus, passes away.",
+                    "Hungarian Count Ferenc Nádasdy and his wife, Elizabeth Báthory, are accused of torturing and killing young girls."
+                ],
+                1704: [
+                    "The Battle of Blenheim is a decisive victory for the Grand Alliance in the War of the Spanish Succession.",
+                    "Isaac Newton publishes his work 'Opticks,' describing his experiments with light and color.",
+                    "The city of Detroit is founded by Antoine de la Mothe Cadillac as Fort Pontchartrain du Détroit.",
+                    "The Bank of England issues the first banknotes in Europe."
+                ],
+                1705: [
+                    "The Battle of Cassano is fought during the War of the Spanish Succession.",
+                    "French composer Jean-Baptiste Lully's opera 'Armide' premieres in Paris.",
+                    "Bavarian composer Johann David Heinichen introduces the 'Dresden Amen,' a famous musical motif.",
+                    "The Tokyo Kōbu Daishi Festival, one of Japan's major religious festivals, is established."
+                ],
+                1706: [
+                    "The Battle of Ramillies is a significant victory for the Grand Alliance in the War of the Spanish Succession.",
+                    "Italian composer Arcangelo Corelli's 'Concerti Grossi' is published.",
+                    "Benjamin Franklin, American polymath and Founding Father, is born in Boston, Massachusetts.",
+                    "French explorer Pierre Le Moyne d'Iberville captures St. John's, Newfoundland, during Queen Anne's War."
+                ],
+                1707: [
+                    "The Kingdom of Great Britain is officially established through the Act of Union, merging England and Scotland.",
+                    "The second Battle of Lake George takes place during Queen Anne's War.",
+                    "Japanese poet and artist Basho Matsuo completes his travelogue 'Narrow Road to the Interior.'",
+                    "The first edition of 'The Spectator,' a British daily publication, is published."
+                ],
+                1708: [
+                    "The Battle of Oudenarde is a decisive Allied victory in the War of the Spanish Succession.",
+                    "French composer Jean-Philippe Rameau's opera 'Hippolyte et Aricie' premieres in Paris.",
+                    "German composer Georg Friedrich Handel's 'Te Deum' is performed for the first time in London.",
+                    "The first known ascent of Mount Fuji by a European, Hans Scharl, takes place."
+                ],
+                1709: [
+                    "The Battle of Malplaquet is one of the largest and bloodiest battles of the War of the Spanish Succession.",
+                    "Scottish sailor and privateer Alexander Selkirk, the inspiration for Robinson Crusoe, is rescued from a desert island.",
+                    "Swiss mathematician Leonhard Euler is born, later becoming one of the most influential mathematicians in history.",
+                    "The Statute of Anne, the world's first copyright law, comes into effect in Great Britain."
+                ],
+                1710: [
+                    "The Statute of Anne, the world's first copyright law, is enacted in Great Britain.",
+                    "The Battle of Helsingborg takes place during the Great Northern War between Sweden and Denmark-Norway.",
+                    "Japanese poet and writer Basho Matsuo, famous for his haikus, passes away in Osaka.",
+                    "The city of Birmingham, England, begins to grow as an industrial center."
+                ],
+                1711: [
+                    "The Treaty of Szatmár is signed, ending the ongoing Ottoman-Habsburg conflict.",
+                    "Alexander Pope publishes 'An Essay on Criticism,' a work of literary criticism.",
+                    "Heinrich von Kleist, a German poet, and playwright is born in Frankfurt (Oder).",
+                    "Russia's Peter the Great establishes the Russian Academy of Sciences in St. Petersburg."
+                ],
+                1712: [
+                    "The Riot Act is passed in Great Britain, allowing authorities to disperse public gatherings.",
+                    "Philosopher Jean-Jacques Rousseau is born in Geneva, Switzerland.",
+                    "Anne, Queen of Great Britain, forms the 1st Dragoon Guards, the oldest British Army cavalry regiment.",
+                    "The New York City Slave Revolt of 1712 results in the execution of 21 enslaved Africans."
+                ],
+                1713: [
+                    "The Treaty of Utrecht ends the War of the Spanish Succession and reshapes European boundaries.",
+                    "The Peace of Uusikaupunki is signed, ending the Great Northern War between Sweden and Russia.",
+                    "Aphra Behn, one of the first professional female writers in English literature, passes away.",
+                    "Ahmed III becomes Sultan of the Ottoman Empire, marking a period of reform."
+                ],
+                1714: [
+                    "Queen Anne dies in Great Britain, and the Hanoverian succession brings George I to the throne.",
+                    "The Longitude Act is passed in the UK, offering rewards for the accurate determination of longitude at sea.",
+                    "Gottfried Wilhelm Leibniz, a German polymath and philosopher, passes away in Hanover.",
+                    "The Boston News-Letter, the first continuously published newspaper in British North America, begins."
+                ],
+                1715: [
+                    "The Jacobite Rising of 1715, an attempt to restore the Stuart monarchy in the UK, takes place.",
+                    "Peter the Great of Russia founds the city of Petrograd (later Leningrad, now St. Petersburg).",
+                    "The first recorded cricket match is played in England.",
+                    "James Francis Edward Stuart, known as the 'Old Pretender,' claims the throne of Great Britain."
+                ],
+                1716: [
+                    "The Triple Alliance of 1716 is formed by the Dutch Republic, France, and Great Britain.",
+                    "Antoine Watteau, a French Rococo painter, completes 'The Embarkation for Cythera.'",
+                    "The first lighthouse built on Little Brewster Island in Boston Harbor becomes operational.",
+                    "Elector Charles Albert of Bavaria becomes Holy Roman Emperor Charles VII."
+                ],
+                1717: [
+                    "The Bank of Sweden (Sveriges Riksbank), the world's oldest central bank, is established.",
+                    "Jean-Baptiste Le Moyne de Bienville founds New Orleans as a French colony in North America.",
+                    "Maria Theresa of Austria, later Empress of the Holy Roman Empire, is born.",
+                    "The Premier Grand Lodge of England, the first Masonic Grand Lodge, is founded in London."
+                ],
+                1718: [
+                    "The Quadruple Alliance is formed by Great Britain, France, Austria, and the Dutch Republic.",
+                    "James Puckle invents the Puckle Gun, one of the earliest attempts at a machine gun.",
+                    "Blackbeard, the notorious English pirate, is killed in a battle off the coast of North Carolina.",
+                    "Voltaire, the influential French philosopher and writer, is imprisoned in the Bastille."
+                ],
+                1719: [
+                    "The Battle of Glen Shiel takes place during the Jacobite Rising of 1719.",
+                    "Daniel Defoe publishes 'Robinson Crusoe,' a classic adventure novel.",
+                    "The Principality of Liechtenstein is established within the Holy Roman Empire.",
+                    "John Flamsteed, the first Astronomer Royal of England, passes away in Greenwich."
+                ],
+                1720: [
+                    "The South Sea Bubble, one of the world's first stock market crashes, occurs in England.",
+                    "Calico Jack, an infamous pirate, is captured by the Royal Navy.",
+                    "Carlo Goldoni, a renowned Italian playwright, is born in Venice.",
+                    "Anne Bonny, a notorious female pirate, is born in Ireland."
+                ],
+                1721: [
+                    "The Treaty of Nystad ends the Great Northern War, resulting in territorial changes in Northern Europe.",
+                    "Jonathan Swift publishes 'Gulliver's Travels,' a satirical novel that becomes a classic of English literature.",
+                    "Peter the Great, Tsar of Russia, founds the city of Ekaterinburg in the Ural Mountains.",
+                    "Jean-Philippe Rameau, a French composer and music theorist, composes his first opera, 'Hippolyte et Aricie.'"
+                ],
+                1722: [
+                    "The Dutch explorer Jacob Roggeveen becomes one of the first Europeans to reach Easter Island.",
+                    "Lady Mary Wortley Montagu introduces smallpox inoculation to England after witnessing it in the Ottoman Empire.",
+                    "The opera 'Orlando' by George Frideric Handel premieres in London.",
+                    "The Kamchatka Peninsula in Russia is mapped by explorers Daniel Gottlieb Messerschmidt and Martin Spangberg."
+                ],
+                1723: [
+                    "Christopher Wren completes the construction of St. Mary-le-Bow, a famous church in London.",
+                    "Christian Ernst, Margrave of Brandenburg-Bayreuth, commissions Johann David Heinichen to compose the 'Dresden Concertos.'",
+                    "The Province of Georgia is founded in North America under the leadership of James Oglethorpe.",
+                    "Daniel Bernoulli formulates the principle of conservation of kinetic energy in fluid dynamics."
+                ],
+                1724: [
+                    "Immanuel Kant, a German philosopher who would later become influential, is born in Königsberg, Prussia.",
+                    "Alexander Selkirk, a Scottish sailor, is rescued from a deserted island, inspiring Daniel Defoe's 'Robinson Crusoe.'",
+                    "Johann Sebastian Bach composes the 'Sinfonia in D Major' (BWV 1045) for orchestra.",
+                    "The Treaty of Constantinople between the Ottoman Empire and Persia ends the Ottoman-Persian War."
+                ],
+                1725: [
+                    "Peter the Great of Russia introduces the Table of Ranks, a system of social hierarchy.",
+                    "Benjamin Heath publishes 'Clarissa,' one of the earliest English novels.",
+                    "Sir Joshua Reynolds, a prominent English portrait painter, is born.",
+                    "The city of New Orleans is founded by French settlers in Louisiana."
+                ],
+                1726: [
+                    "Isaac Newton publishes 'Method of Fluxions,' describing his mathematical discoveries.",
+                    "Russo-Persian War begins with the Russian Empire's invasion of Persia.",
+                    "Giacomo Casanova, the famous Italian adventurer and writer, is born in Venice.",
+                    "The Code Noir, a set of laws governing slavery, is enacted in French Louisiana."
+                ],
+                1727: [
+                    "King George I of Great Britain dies, and is succeeded by his son, George II.",
+                    "The Royal Society for the Protection of Birds (RSPB) is founded in England.",
+                    "Thomas Gainsborough, an English portrait and landscape painter, is born.",
+                    "Ahmed III, Sultan of the Ottoman Empire, is deposed in a Janissary rebellion."
+                ],
+                1728: [
+                    "The city of Baltimore is founded in the Province of Maryland.",
+                    "John Gay's 'The Beggar's Opera' premieres in London, becoming a popular satirical ballad opera.",
+                    "James Cook, the famous British explorer and navigator, is born in Yorkshire, England.",
+                    "The Treaty of Seville restores peace between Spain and Portugal, resolving territorial disputes."
+                ],
+                1729: [
+                    "Jonathan Swift publishes 'A Modest Proposal,' a satirical essay addressing the Irish famine.",
+                    "Natchez Revolt: Native American Natchez people attack French colonists in Louisiana, resulting in significant casualties.",
+                    "The first Catholic mission is established in San Antonio, Texas, by Spanish friars.",
+                    "The Treaty of Vienna reaffirms the alliance between Great Britain, France, and the Dutch Republic against Spain."
+                ],
+                1730: [
+                    "The city of Berlin experiences a population boom, becoming the largest city in Germany.",
+                    "The Great Awakening, a religious revival movement, begins in the American colonies.",
+                    "Robert Walpole becomes the first de facto Prime Minister of Great Britain.",
+                    "Daniel Bernoulli formulates Bernoulli's principle, a fundamental concept in fluid dynamics."
+                ],
+                1731: [
+                    "The Treaty of Vienna establishes peace in Europe, marking the end of the Russo-Turkish War.",
+                    "Benjamin Franklin opens the first library in the American colonies, the Library Company of Philadelphia.",
+                    "The War of the Polish Succession begins with the election of Stanisław Leszczyński as King of Poland.",
+                    "Anders Celsius introduces the centigrade temperature scale, now known as the Celsius scale."
+                ],
+                1732: [
+                    "George Washington, the first President of the United States, is born in Westmoreland County, Virginia.",
+                    "James Oglethorpe founds the colony of Georgia, the last of the original thirteen American colonies.",
+                    "The Royal Opera House opens in Covent Garden, London, as the Theatre Royal.",
+                    "Johann Christian Bach, a composer and one of Johann Sebastian Bach's sons, is born."
+                ],
+                1733: [
+                    "The Treaty of Ryswick ends the War of the Polish Succession, recognizing Augustus III as King of Poland.",
+                    "Georgia becomes a British colony after the Spanish surrender their claim to the territory.",
+                    "John Kay invents the flying shuttle, revolutionizing the textile industry.",
+                    "The Alamo Mission is established in San Antonio, Texas."
+                ],
+                1734: [
+                    "Antonio Vivaldi's 'L'Estro Armonico,' a collection of concertos, is published.",
+                    "Russian explorer Vitus Bering sails through the Bering Strait, separating Asia and North America.",
+                    "A major slave revolt, known as the St. John's Conspiracy, occurs in the British colony of Antigua.",
+                    "French mathematician Pierre-Simon Laplace is born, later known for his work in astronomy and physics."
+                ],
+                1735: [
+                    "John Peter Zenger is acquitted in a landmark trial, establishing the principle of freedom of the press in the American colonies.",
+                    "Carl Linnaeus publishes 'Systema Naturae,' laying the foundation for modern taxonomy and biological classification.",
+                    "The Boston Latin School, the oldest public school in the United States, is founded in Boston, Massachusetts.",
+                    "The Freedom of the Press Act is enacted in Sweden, promoting press freedom and abolishing censorship."
+                ],
+                1736: [
+                    "The Kingdom of Corsica is established under the rule of Theodore I, with support from the Republic of Genoa.",
+                    "James Watt, the inventor of the steam engine, is born in Greenock, Scotland.",
+                    "The Treaty of Belgrade ends the Austro-Turkish War, resulting in territorial changes in Southeastern Europe.",
+                    "The Real Academia Española, the official institution responsible for the Spanish language, is founded in Madrid."
+                ],
+                1737: [
+                    "French mathematician Leonhard Euler introduces the concept of the Eulerian path in graph theory.",
+                    "The Teatro di San Carlo, the oldest continuously active opera house in the world, opens in Naples, Italy.",
+                    "The Treaty of Niš ends the Ottoman-Persian War, defining the modern borders between the Ottoman Empire and Persia.",
+                    "John Hancock, a prominent American revolutionary leader, is born in Braintree, Massachusetts."
+                ],
+                1738: [
+                    "The Russo-Turkish War begins with the Russian Empire's invasion of the Crimean Khanate.",
+                    "John Wesley is converted to Methodism, leading to the founding of the Methodist movement within the Church of England.",
+                    "Ethan Allen, a key figure in the American Revolutionary War, is born in Litchfield, Connecticut.",
+                    "The University of Göttingen is founded in the Holy Roman Empire, becoming a center of Enlightenment scholarship."
+                ],
+                1739: [
+                    "The War of Jenkins' Ear begins between Britain and Spain, triggered by a maritime incident.",
+                    "The Royal Swedish Academy of Sciences is established in Stockholm, promoting scientific research and innovation.",
+                    "Rebecca Lukens, a pioneering American industrialist, is born and later becomes the owner of the Lukens Iron and Steel Company.",
+                    "The Treaty of Belgrade ends the Austro-Russian-Turkish War, resulting in territorial adjustments in Eastern Europe."
+                ],
+                1740: [
+                    "The Great Northern War ends with the Treaty of Turku, resulting in significant territorial changes in Northern Europe.",
+                    "Samuel Richardson publishes 'Pamela; or, Virtue Rewarded,' considered one of the first novels in English literature.",
+                    "Maria Theresa becomes the Archduchess of Austria and Queen of Hungary and Bohemia.",
+                    "The 'Principia Mathematica' by Thomas Simpson is published, contributing to the field of calculus."
+                ],
+                1741: [
+                    "Vitus Bering, a Danish explorer, and Alexei Chirikov, a Russian explorer, independently discover the Aleutian Islands.",
+                    "Benjamin Franklin's electrical experiments, including his work with electricity and lightning, gain scientific recognition.",
+                    "Henry Fielding publishes 'Joseph Andrews,' a satirical novel and precursor to his famous work 'Tom Jones.'",
+                    "The British Royal Navy defeats a combined Franco-Spanish fleet at the Battle of Cartagena de Indias in the War of Jenkins' Ear."
+                ],
+                1742: [
+                    "The War of the Austrian Succession continues with the Battle of Chotusitz, a decisive victory for Maria Theresa's forces.",
+                    "Swedish botanist Carl Linnaeus publishes 'Flora Lapponica,' a pioneering work in the classification of plant species.",
+                    "Spencer Compton, 1st Earl of Wilmington, becomes Prime Minister of Great Britain.",
+                    "A severe earthquake strikes Istanbul, causing significant damage and loss of life."
+                ],
+                1743: [
+                    "Jean-Pierre Christin invents the Celsius temperature scale, which is widely adopted in Europe.",
+                    "The Battle of Dettingen takes place during the War of the Austrian Succession, with British and Hanoverian forces defeating the French.",
+                    "John Harrison presents his marine chronometer, a breakthrough in solving the problem of determining longitude at sea.",
+                    "The first recorded women's cricket match is played in Surrey, England."
+                ],
+                1744: [
+                    "The War of the Austrian Succession continues with the Battle of Toulon, a French victory.",
+                    "French philosopher Denis Diderot begins work on the 'Encyclopédie,' a comprehensive reference work.",
+                    "The Treaty of Lancaster establishes peace between the Iroquois Confederacy and British colonies in North America.",
+                    "The New York City slave revolt occurs, leading to the execution of numerous slaves."
+                ],
+                1745: [
+                    "The Jacobite Rising of 1745, led by Bonnie Prince Charlie, begins in Scotland, aiming to restore the Stuart monarchy.",
+                    "Emanuel Swedenborg publishes 'Philosophical and Mineralogical Works,' exploring various scientific and theological subjects.",
+                    "The Battle of Prestonpans takes place during the Jacobite Rising, resulting in a Jacobite victory.",
+                    "The city of Birmingham, England, experiences significant growth and industrial development."
+                ],
+                1746: [
+                    "The Battle of Culloden marks the end of the Jacobite Rising in Britain, with a decisive government victory.",
+                    "James Lind conducts experiments to discover the cure for scurvy, eventually leading to the use of citrus fruits to prevent the disease.",
+                    "The College of New Jersey (now Princeton University) is founded in New Jersey, USA.",
+                    "The city of Lima, Peru, is struck by a devastating earthquake, causing widespread destruction."
+                ],
+                1747: [
+                    "John Wesley forms the Methodist Church in England, emphasizing religious revival and social reform.",
+                    "The Famine of 1747-1748, caused by crop failures and harsh weather, leads to widespread food shortages and suffering in Europe.",
+                    "Anders Celsius, the inventor of the Celsius temperature scale, dies in Uppsala, Sweden.",
+                    "The Venetian painter Canaletto completes a series of views of London, contributing to the popularity of cityscapes."
+                ],
+                1748: [
+                    "The Treaty of Aix-la-Chapelle ends the War of the Austrian Succession, restoring most territories to their pre-war status.",
+                    "David Hume's 'An Enquiry Concerning Human Understanding' is published, exploring philosophical skepticism.",
+                    "The British capture Pondicherry, India, from the French during the Carnatic Wars.",
+                    "The Royal Danish Academy of Sciences and Letters is founded in Copenhagen."
+                ],
+                1749: [
+                    "The first recorded performance of Handel's 'Music for the Royal Fireworks' takes place in London's Green Park.",
+                    "The Oath of Allegiance Act requires English Jews to take an oath of allegiance to the monarchy, granting them certain rights.",
+                    "The Nova Scotia Gazette, Canada's first newspaper, is published in Halifax.",
+                    "Scottish economist and philosopher Adam Smith becomes a professor of moral philosophy at the University of Glasgow."
+                ],
+                1750: [
+                    "The Great Upheaval (Le Grand Dérangement) begins, leading to the expulsion of Acadians from Nova Scotia by the British authorities.",
+                    "The first cricket match is played in North America, in New York.",
+                    "Benjamin Franklin conducts his famous kite experiment to demonstrate the nature of electricity.",
+                    "The first recorded ascent of Mount Kenya by European explorers is made by Johann Ludwig Krapf and Johann Rebmann."
+                ],
+                1751: [
+                    "Philadelphia Hospital, the first hospital in the United States, is founded by Benjamin Franklin.",
+                    "The first volume of Denis Diderot and Jean le Rond d'Alembert's 'Encyclopédie' is published in France.",
+                    "The Treaty of Pardo ends a conflict between Spain and Portugal over territorial disputes in South America.",
+                    "The earliest known cricket match in Sussex, England, is played, becoming a major cricketing event in the future."
+                ],
+                1752: [
+                    "The British Empire adopts the Gregorian calendar, skipping 11 days to bring the calendar in line with the rest of Europe.",
+                    "Philadelphia's first American-style theater opens, showcasing plays and performances.",
+                    "John Adams, the future second President of the United States, is born in Massachusetts.",
+                    "The last major eruption of Mount Papandayan in Indonesia occurs, causing significant damage."
+                ],
+                1753: [
+                    "George Washington becomes a Master Mason in the Masonic Lodge of Fredericksburg, Virginia.",
+                    "Carl Linnaeus publishes 'Species Plantarum,' a groundbreaking work in botanical taxonomy.",
+                    "The British Museum is founded in London, housing a vast collection of art and antiquities.",
+                    "The first steam engine in the American colonies is installed in a Philadelphia brewery."
+                ],
+                1754: [
+                    "The Albany Congress is convened in North America to discuss colonial unity and cooperation against the French and Native American threats.",
+                    "Horace Walpole coins the word 'serendipity' in a letter to a friend.",
+                    "The Treaty of Pondicherry ends the First Carnatic War between France and Britain in India.",
+                    "The first recorded women's cricket match is played in Surrey, England."
+                ],
+                1755: [
+                    "The Lisbon earthquake, one of the deadliest earthquakes in history, strikes Portugal, killing tens of thousands of people.",
+                    "Samuel Johnson publishes 'A Dictionary of the English Language,' a landmark in English lexicography.",
+                    "The British Expedition against Acadia, part of the French and Indian War, leads to the capture of Fort Beauséjour in Nova Scotia.",
+                    "The second Eddystone Lighthouse off the coast of Plymouth, England, is completed."
+                ],
+                1756: [
+                    "The Seven Years' War begins, a global conflict involving major European powers and their colonies.",
+                    "Wolfgang Amadeus Mozart is born in Salzburg, Austria.",
+                    "The Province of Pennsylvania becomes the first to approve a plan for a gradual abolition of slavery.",
+                    "The British capture Calcutta, India, during the East India Company's expansion in the region."
+                ],
+                1757: [
+                    "The Battle of Plassey takes place in India, leading to British East India Company control over Bengal.",
+                    "Robert Clive becomes a prominent figure in the British Empire's expansion in India.",
+                    "The poet Christopher Smart is confined to a mental asylum but continues to write poetry, including 'Jubilate Agno.'",
+                    "The opening of St. Mark's Basilica in Venice, Italy, after a lengthy renovation."
+                ],
+                1758: [
+                    "The Treaty of Easton is signed between British colonial governments and Native American tribes during the French and Indian War.",
+                    "Voltaire publishes 'Candide,' a satirical novella criticizing social norms and institutions.",
+                    "Halley's Comet makes a close approach to Earth, becoming visible to the naked eye.",
+                    "The British capture Louisbourg in Canada, a strategic victory in the Seven Years' War."
+                ],
+                1759: [
+                    "The Battle of Quebec takes place during the Seven Years' War, resulting in a British victory and the end of French rule in Canada.",
+                    "Arthur Guinness signs a 9,000-year lease for the St. James's Gate Brewery in Dublin, Ireland, where Guinness beer is produced.",
+                    "The publication of Adam Smith's 'The Theory of Moral Sentiments,' a precursor to his famous work on economics, 'The Wealth of Nations.'",
+                    "The British Museum opens its doors to the public, showcasing a vast collection of artifacts and art."
+                ],
                 1760: [
                     "George III becomes King of Great Britain and Ireland.",
                     "The Great Fire of Boston destroys a large part of the city.",

@@ -1143,15 +1143,16 @@ class CthulhuCog(commands.Cog):
             return
         
         normalized_skill_name = skill_name.lower()  # Převod na malá písmena
+        matching_skills = [stat for stat in self.player_stats[user_id] if re.search(fr'\b{re.escape(normalized_skill_name)}\b', stat, re.IGNORECASE)]
         
-        if normalized_skill_name in map(str.lower, self.player_stats[user_id].keys()):
-            skill_name = next(
-                name for name in self.player_stats[user_id] if name.lower() == normalized_skill_name
-            )
-            
-            skill_value = self.player_stats[user_id][skill_name]
-            luck_value = self.player_stats[user_id]["LUCK"]
-            name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
+        if matching_skills:
+            if len(matching_skills) > 1:
+                await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")
+            else:
+                skill_name = matching_skills[0]
+                skill_value = self.player_stats[user_id][skill_name]
+                luck_value = self.player_stats[user_id]["LUCK"]
+                name_value = self.player_stats.get(user_id, {}).get("NAME", ctx.author.display_name)
             
             rolls_1 = [i for i in range(0, 100, 10)]
             roll_1 = random.choice(rolls_1)

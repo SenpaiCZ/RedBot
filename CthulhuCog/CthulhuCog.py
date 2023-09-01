@@ -626,88 +626,6 @@ class CthulhuCog(commands.Cog):
                                 except asyncio.TimeoutError:
                                     await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN**:scales: will not proceed.")
 
-                        #automatic calculation of Damage Bonus
-                        if stat_name == "STR" or stat_name == "SIZ":
-                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Damage Bonus"] == 0:
-                                db_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Damage Bonus**:mending_heart:. Do you want me to calculate Damge Bonus:mending_heart:?")
-                                await db_message.add_reaction("✅")
-                                await db_message.add_reaction("❌")
-                                def check(reaction, user):
-                                    return user == ctx.author and reaction.message.id == db_message.id and str(reaction.emoji) in ["✅", "❌"]
-                                try:
-                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                    if str(reaction.emoji) == "✅":
-                                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
-                                        if 2 <= STRSIZ <= 64:
-                                            BONUSDMG = -2
-                                        elif 65 <= STRSIZ <= 84:
-                                            BONUSDMG = -1
-                                        elif 85 <= STRSIZ <= 124:
-                                            BONUSDMG = 0
-                                        elif 125 <= STRSIZ <= 164:
-                                            BONUSDMG = "1D4"
-                                        elif 165 <= STRSIZ <= 204:
-                                            BONUSDMG = "1D6"
-                                        elif 205 <= STRSIZ <= 284:
-                                            BONUSDMG = "2D6"
-                                        elif 285 <= STRSIZ <= 364:
-                                            BONUSDMG = "3D6"
-                                        elif 365 <= STRSIZ <= 444:
-                                            BONUSDMG = "4D6"
-                                        elif 445 <= STRSIZ <= 524:
-                                            BONUSDMG = "5D6"
-                                        else:
-                                            #Not posible if used correctly!
-                                            BONUSDMG = "Bruh, too strong!"
-                                        self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
-                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                        await ctx.send(f"{ctx.author.display_name}'s **Damage Bonus**:mending_heart: has been calculated as **{BONUSDMG}** and successfully saved.")
-                                    elif str(reaction.emoji) == "❌":
-                                        await ctx.send(f"The calculation of **Damage Bonus**:mending_heart: will not proceed.")
-                                except asyncio.TimeoutError:
-                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Damage Bonus**:mending_heart: will not proceed.")
-
-                        #automatic calculation of Build
-                        if stat_name == "STR" or stat_name == "SIZ":
-                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Build"] == 0:
-                                bu_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Build**:restroom:. Do you want me to calculate Build:restroom:?")
-                                await bu_message.add_reaction("✅")
-                                await bu_message.add_reaction("❌")
-                                def check(reaction, user):
-                                    return user == ctx.author and reaction.message.id == bu_message.id and str(reaction.emoji) in ["✅", "❌"]
-                                try:
-                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                    if str(reaction.emoji) == "✅":
-                                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
-                                        if 2 <= STRSIZ <= 64:
-                                            BUILD = -2
-                                        elif 65 <= STRSIZ <= 84:
-                                            BUILD = -1
-                                        elif 85 <= STRSIZ <= 124:
-                                            BUILD = 0
-                                        elif 125 <= STRSIZ <= 164:
-                                            BUILD = 1
-                                        elif 165 <= STRSIZ <= 204:
-                                            BUILD = 2
-                                        elif 205 <= STRSIZ <= 284:
-                                            BUILD = 3
-                                        elif 285 <= STRSIZ <= 364:
-                                            BUILD = 4
-                                        elif 365 <= STRSIZ <= 444:
-                                            BUILD = 5
-                                        elif 445 <= STRSIZ <= 524:
-                                            BUILD = 6
-                                        else:
-                                            #Not posible if used correctly!
-                                            BUILD = "You are CHONKER!"
-                                        self.player_stats[user_id]["Build"] = BUILD
-                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                        await ctx.send(f"{ctx.author.display_name}'s **Build**:restroom: has been calculated as **{BUILD}** and successfully saved.")
-                                    elif str(reaction.emoji) == "❌":
-                                        await ctx.send(f"The calculation of **Build**:restroom: will not proceed.")
-                                except asyncio.TimeoutError:
-                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Build**:restroom: will not proceed.")
-
                         #automatic calculation of Dodge
                         if stat_name == "DEX":
                             if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["Dodge"] == 0:
@@ -954,9 +872,65 @@ class CthulhuCog(commands.Cog):
                         else:
                             #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
                             MOV = 9001
-                        formatted_value = f"{MOV}-autocal"
+                        formatted_value = f"{MOV}"
                     else:
-                        formatted_value = f"Can not be calculated. Fill DEX, STR and SIZ."
+                        formatted_value = f"Fill your DEX, STR and SIZ."
+
+                elif stat_name == "Build":
+                    if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0:
+                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
+                        if 2 <= STRSIZ <= 64:
+                            BUILD = -2
+                        elif 65 <= STRSIZ <= 84:
+                            BUILD = -1
+                        elif 85 <= STRSIZ <= 124:
+                            BUILD = 0
+                        elif 125 <= STRSIZ <= 164:
+                            BUILD = 1
+                        elif 165 <= STRSIZ <= 204:
+                            BUILD = 2
+                        elif 205 <= STRSIZ <= 284:
+                            BUILD = 3
+                        elif 285 <= STRSIZ <= 364:
+                            BUILD = 4
+                        elif 365 <= STRSIZ <= 444:
+                            BUILD = 5
+                        elif 445 <= STRSIZ <= 524:
+                            BUILD = 6
+                        else:
+                            #Not posible if used correctly!
+                            BUILD = "You are CHONKER! (7+)"
+                            formatted_value = f"{BUILD}"
+                    else:
+                        formatted_value = f"Fill your STR and SIZ."
+
+                elif stat_name == "Damage Bonus":
+                    if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0:
+                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
+                        if 2 <= STRSIZ <= 64:
+                            BONUSDMG = -2
+                        elif 65 <= STRSIZ <= 84:
+                            BONUSDMG = -1
+                        elif 85 <= STRSIZ <= 124:
+                            BONUSDMG = 0
+                        elif 125 <= STRSIZ <= 164:
+                            BONUSDMG = "1D4"
+                        elif 165 <= STRSIZ <= 204:
+                            BONUSDMG = "1D6"
+                        elif 205 <= STRSIZ <= 284:
+                            BONUSDMG = "2D6"
+                        elif 285 <= STRSIZ <= 364:
+                            BONUSDMG = "3D6"
+                        elif 365 <= STRSIZ <= 444:
+                            BONUSDMG = "4D6"
+                        elif 445 <= STRSIZ <= 524:
+                            BONUSDMG = "5D6"
+                        else:
+                            #Not posible if used correctly!
+                            BONUSDMG = "You are too strong! (6D6+)"
+                            formatted_value = f"{BUILD}"
+                    else:
+                        formatted_value = f"Fill your STR and SIZ."
 
                 else:
                     formatted_value += f"\n{self.get_skill_description(value)}"

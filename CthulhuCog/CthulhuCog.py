@@ -551,8 +551,6 @@ class CthulhuCog(commands.Cog):
                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                     #Adding emoji to stat update message
                     emoji = get_stat_emoji(stat_name)
-
-
                     await ctx.send(f"{ctx.author.display_name}'s **{stat_name}**{emoji} has been updated to **{new_value}**.")
 
                     #automatic calculation of HP
@@ -579,7 +577,7 @@ class CthulhuCog(commands.Cog):
                     #automatic calculation of MP
                     if stat_name == "POW":
                         if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["MP"] == 0:
-                            mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**. Do you want me to calculate MP(MAX_MP)?")
+                            mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**:sparkles:. Do you want me to calculate MP(MAX_MP)chart_with_upwards_trend::sparkles:?")
                             await mp_message.add_reaction("✅")
                             await mp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -591,16 +589,16 @@ class CthulhuCog(commands.Cog):
                                     self.player_stats[user_id]["MP"] = MP
                                     self.player_stats[user_id]["MAX_MP"] = MP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **MP** has been calculated as **{MP}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **MP**:sparkles: has been calculated as **{MP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **MP** will not proceed.")
+                                    await ctx.send(f"The calculation of **MP**:sparkles: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MP** will not proceed.") 
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MP**:sparkles: will not proceed.") 
 
                     #automatic calculation of SAN
                     if stat_name == "POW":
                         if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["SAN"] == 0:
-                            san_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **SAN**. Do you want me to calculate SAN?")
+                            san_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **SAN**:scales:. Do you want me to calculate SAN:scales:?")
                             await san_message.add_reaction("✅")
                             await san_message.add_reaction("❌")
                             def check(reaction, user):
@@ -611,11 +609,11 @@ class CthulhuCog(commands.Cog):
                                     SAN = self.player_stats[user_id]["POW"]
                                     self.player_stats[user_id]["SAN"] = SAN
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **SAN** has been calculated as **{SAN}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **SAN**:scales: has been calculated as **{SAN}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **SAN** will not proceed.")
+                                    await ctx.send(f"The calculation of **SAN**:scales: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN** will not proceed.")   
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN**:scales: will not proceed.")   
 
                     #automatic calculation of MOV
                     if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
@@ -623,7 +621,7 @@ class CthulhuCog(commands.Cog):
                             self.player_stats[user_id]["SIZ"] != 0 and \
                             self.player_stats[user_id]["STR"] != 0 and \
                             self.player_stats[user_id]["Move"] == 0:
-                            mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**. Do you want me to calculate MOV?")
+                            mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**:person_running:. Do you want me to calculate MOV:person_running:?")
                             await mo_message.add_reaction("✅")
                             await mo_message.add_reaction("❌")
                             def check(reaction, user):
@@ -652,16 +650,16 @@ class CthulhuCog(commands.Cog):
                                         MOV = 9001
                                     self.player_stats[user_id]["Move"] = MOV
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **MOV** has been calculated as **{MOV}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **MOV**:person_running: has been calculated as **{MOV}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **MOV** will not proceed.")
+                                    await ctx.send(f"The calculation of **MOV**:person_running: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MOV** will not proceed.")
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MOV**:person_running: will not proceed.")
 
                     #automatic calculation of Damage Bonus
                     if stat_name == "STR" or stat_name == "SIZ":
                         if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Damage Bonus"] == 0:
-                            db_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Damage Bonus**. Do you want me to calculate Damge Bonus?")
+                            db_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Damage Bonus**:mending_heart:. Do you want me to calculate Damge Bonus:mending_heart:?")
                             await db_message.add_reaction("✅")
                             await db_message.add_reaction("❌")
                             def check(reaction, user):
@@ -693,16 +691,16 @@ class CthulhuCog(commands.Cog):
                                         BONUSDMG = "Bruh, too strong!"
                                     self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Damage Bonus** has been calculated as **{BONUSDMG}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **Damage Bonus**:mending_heart: has been calculated as **{BONUSDMG}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Damage Bonus** will not proceed.")
+                                    await ctx.send(f"The calculation of **Damage Bonus**:mending_heart: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Damage Bonus** will not proceed.")
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Damage Bonus**:mending_heart: will not proceed.")
 
                     #automatic calculation of Build
                     if stat_name == "STR" or stat_name == "SIZ":
                         if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Build"] == 0:
-                            bu_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Build**. Do you want me to calculate Build?")
+                            bu_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Build**:restroom:. Do you want me to calculate Build:restroom:?")
                             await bu_message.add_reaction("✅")
                             await bu_message.add_reaction("❌")
                             def check(reaction, user):
@@ -734,16 +732,16 @@ class CthulhuCog(commands.Cog):
                                         BUILD = "You are CHONKER!"
                                     self.player_stats[user_id]["Build"] = BUILD
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Build** has been calculated as **{BUILD}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **Build**:restroom: has been calculated as **{BUILD}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Build** will not proceed.")
+                                    await ctx.send(f"The calculation of **Build**:restroom: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Build* will not proceed.")
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Build**:restroom: will not proceed.")
 
                     #automatic calculation of Dodge
                     if stat_name == "DEX":
                         if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["Dodge"] == 0:
-                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**. Do you want me to calculate Dodge?")
+                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**:warning:. Do you want me to calculate Dodge:warning:?")
                             await dod_message.add_reaction("✅")
                             await dod_message.add_reaction("❌")
                             def check(reaction, user):
@@ -754,16 +752,16 @@ class CthulhuCog(commands.Cog):
                                     DODGE = math.floor(self.player_stats[user_id]["DEX"] / 2)
                                     self.player_stats[user_id]["Dodge"] = DODGE
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge** has been calculated as **{DODGE}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge** has been calculated as **{DODGE}**:warning: and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Dodge** will not proceed.")
+                                    await ctx.send(f"The calculation of **Dodge**:warning: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Dodge** will not proceed.")   
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Dodge**:warning: will not proceed.")   
 
                     #automatic calculation of Language (own)
                     if stat_name == "EDU":
                         if self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["Language (own)"] == 0:
-                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Language (own)**. Do you want me to calculate Language (own)?")
+                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Language (own)**:speech_balloon:. Do you want me to calculate Language (own):speech_balloon:?")
                             await dod_message.add_reaction("✅")
                             await dod_message.add_reaction("❌")
                             def check(reaction, user):
@@ -774,11 +772,11 @@ class CthulhuCog(commands.Cog):
                                     LANGUAGEOWN = self.player_stats[user_id]["EDU"]
                                     self.player_stats[user_id]["Language (own)"] = LANGUAGEOWN
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Language (own)** has been calculated as **{LANGUAGEOWN}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **Language (own)**:speech_balloon: has been calculated as **{LANGUAGEOWN}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Language (own)** will not proceed.")
+                                    await ctx.send(f"The calculation of **Language (own)**:speech_balloon: will not proceed.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)** will not proceed.")   
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)**:speech_balloon: will not proceed.")   
 
 
                 except ValueError:

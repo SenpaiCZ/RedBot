@@ -821,6 +821,7 @@ class CthulhuCog(commands.Cog):
             return stat_emojis.get(stat_name, ":question:")
 
         def get_stat_value(stat_name, value):
+            formatted_value = ""
             if stat_name == "Age":
                 formatted_value = f"{value}"
             elif stat_name == "HP":

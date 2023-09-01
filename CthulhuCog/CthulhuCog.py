@@ -482,7 +482,7 @@ class CthulhuCog(commands.Cog):
 
                     self.player_stats[user_id][stat_name] = new_value
                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                    await ctx.send(f"Your {stat_name} has been updated to {new_value}.")
+                    await ctx.send(f"{ctx.author.display_name}'s **{stat_name}** has been updated to **{new_value}**.")
 
                     #automatic calculation of HP
                     if stat_name == "CON" or stat_name == "SIZ":

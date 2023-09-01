@@ -1183,6 +1183,7 @@ class CthulhuCog(commands.Cog):
             
             formatted_luck = f":four_leaf_clover: LUCK: {luck_value}"
             formatted_skill = f"**{skill_name}**: {skill_value} - {skill_value // 2} - {skill_value // 5}"
+            skill_value = None
             
             embed = discord.Embed(
                 title=f"{name_value}'s Skill Check for '{skill_name}' with Bonus Die",

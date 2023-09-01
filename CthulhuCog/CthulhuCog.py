@@ -505,7 +505,7 @@ class CthulhuCog(commands.Cog):
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
-            stat_name = " ".join(args[:-1]).upper()  # Všechny argumenty kromě posledního
+            stat_name = " ".join(args[:-1])  # Všechny argumenty kromě posledního
             try:
                 if stat_name != "Damage Bonus":
                     new_value = int(args[-1])

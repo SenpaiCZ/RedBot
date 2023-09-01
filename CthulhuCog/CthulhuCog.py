@@ -673,26 +673,26 @@ class CthulhuCog(commands.Cog):
 
                         #Age mod help
                         if stat_name == "Age":
-                            if self.player_stats[user_id]["Age"] > 15:
+                            if self.player_stats[user_id]["Age"] < 15:
                                 await ctx.send(f"Age Modifiers: There are no official rules about investigators under 15 years old.")
-                            elif self.player_stats[user_id]["Age"] > 20:
+                            elif self.player_stats[user_id]["Age"] < 20:
                                 await ctx.send(f"Age Modifiers: Deduct 5 points among STR:muscle: and SIZ:bust_in_silhouette:. Deduct 5 points from EDU:mortar_board:. Roll twice to generate a Luck score and use the higher value.")
-                            elif self.player_stats[user_id]["Age"] > 40:
+                            elif self.player_stats[user_id]["Age"] < 40:
                                 await ctx.send(f"Age Modifiers: Make an improvement check for EDU:mortar_board:.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
-                            elif self.player_stats[user_id]["Age"] > 50:
+                            elif self.player_stats[user_id]["Age"] < 50:
                                 await ctx.send(f"Age Modifiers: Make 2 improvement checks for EDU:mortar_board: and deduct 5 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 5.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
-                            elif self.player_stats[user_id]["Age"] > 60:
+                            elif self.player_stats[user_id]["Age"] < 60:
                                 await ctx.send(f"Age Modifiers: Make 3 improvement checks for EDU:mortar_board: and deduct 10 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 10")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
-                            elif self.player_stats[user_id]["Age"] > 70:
+                            elif self.player_stats[user_id]["Age"] < 70:
                                 await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 20 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 15.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
-                            elif self.player_stats[user_id]["Age"] > 80:
+                            elif self.player_stats[user_id]["Age"] < 80:
                                 await ctx.send(f"Age Modifiers:  Make 4 improvement checks for EDU:mortar_board: and deduct 40 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 20.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
-                            elif self.player_stats[user_id]["Age"] > 90:
+                            elif self.player_stats[user_id]["Age"] < 90:
                                 await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 80 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 25.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
                             else:

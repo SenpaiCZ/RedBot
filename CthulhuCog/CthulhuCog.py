@@ -502,287 +502,293 @@ class CthulhuCog(commands.Cog):
             }
             return stat_emojis.get(stat_name, ":question:")
 
-        if user_id not in self.player_stats:  # Initialize the user's stats if they don't exist
+        if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
-            if stat_name in self.player_stats[user_id]:
-                try:
-                    new_value = int(new_value)
-
-                    #Surpassing MAX_HP
-                    if stat_name == "HP" and new_value > self.player_stats[user_id]["MAX_HP"]:
-                        maxhp_message = await ctx.send(f"You're attempting to surpass your **HP**:heartpulse: limit. Would you like me to increase the **maximum HP**:chart_with_upwards_trend::heartpulse:?")
-                        await maxhp_message.add_reaction("✅")
-                        await maxhp_message.add_reaction("❌")
-                        def check(reaction, user):
-                            return user == ctx.author and reaction.message.id == maxhp_message.id and str(reaction.emoji) in ["✅", "❌"]
-                        try:
-                            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                            if str(reaction.emoji) == "✅":
-                                newMAXHP = new_value
-                                self.player_stats[user_id]["MAX_HP"] = newMAXHP
-                                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: has been increased to **{newMAXHP}** and successfully saved.")
-                            elif str(reaction.emoji) == "❌":
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")
-                        except asyncio.TimeoutError:
-                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")                        
-
-                    #Surpassing MAX_MP
-                    if stat_name == "MP" and new_value > self.player_stats[user_id]["MAX_MP"]:
-                        maxmp_message = await ctx.send(f"You're attempting to surpass your **MP**:sparkles: limit. Would you like me to increase the **maximum MP**:chart_with_upwards_trend::sparkles:?")
-                        await maxmp_message.add_reaction("✅")
-                        await maxmp_message.add_reaction("❌")
-                        def check(reaction, user):
-                            return user == ctx.author and reaction.message.id == maxmp_message.id and str(reaction.emoji) in ["✅", "❌"]
-                        try:
-                            reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                            if str(reaction.emoji) == "✅":
-                                newMAXMP = new_value
-                                self.player_stats[user_id]["MAX_MP"] = newMAXMP
-                                await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: has been increased to **{newMAXMP}** and successfully saved.")
-                            elif str(reaction.emoji) == "❌":
-                                await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")
-                        except asyncio.TimeoutError:
-                            await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")                        
-
-                    self.player_stats[user_id][stat_name] = new_value
-                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                    #Adding emoji to stat update message
-                    emoji = get_stat_emoji(stat_name)
-                    await ctx.send(f"{ctx.author.display_name}'s **{stat_name}**{emoji} has been updated to **{new_value}**.")
-
-                    #automatic calculation of HP
-                    if stat_name == "CON" or stat_name == "SIZ":
-                        if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
-                            hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**:heartpulse:. Do you want me to calculate HP(MAX_HP):chart_with_upwards_trend::heartpulse:?")
-                            await hp_message.add_reaction("✅")
-                            await hp_message.add_reaction("❌")
+            matching_skills = [stat for stat in self.player_stats[user_id] if re.search(stat_name, stat, re.IGNORECASE)]
+            
+            if matching_skills:
+                if len(matching_skills) > 1:
+                    await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")
+                else:
+                    skill_name = matching_skills[0]
+                    try:
+                        #Surpassing MAX_HP
+                        if stat_name == "HP" and new_value > self.player_stats[user_id]["MAX_HP"]:
+                            maxhp_message = await ctx.send(f"You're attempting to surpass your **HP**:heartpulse: limit. Would you like me to increase the **maximum HP**:chart_with_upwards_trend::heartpulse:?")
+                            await maxhp_message.add_reaction("✅")
+                            await maxhp_message.add_reaction("❌")
                             def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == hp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                return user == ctx.author and reaction.message.id == maxhp_message.id and str(reaction.emoji) in ["✅", "❌"]
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
-                                    self.player_stats[user_id]["HP"] = HP
-                                    self.player_stats[user_id]["MAX_HP"] = HP
+                                    newMAXHP = new_value
+                                    self.player_stats[user_id]["MAX_HP"] = newMAXHP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **HP**:heartpulse: has been calculated as **{HP}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: has been increased to **{newMAXHP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **HP**:heartpulse: will not proceed.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **HP**:heartpulse: will not proceed.")
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")                        
 
-                    #automatic calculation of MP
-                    if stat_name == "POW":
-                        if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["MP"] == 0:
-                            mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**:sparkles:. Do you want me to calculate MP(MAX_MP)chart_with_upwards_trend::sparkles:?")
-                            await mp_message.add_reaction("✅")
-                            await mp_message.add_reaction("❌")
+                        #Surpassing MAX_MP
+                        if stat_name == "MP" and new_value > self.player_stats[user_id]["MAX_MP"]:
+                            maxmp_message = await ctx.send(f"You're attempting to surpass your **MP**:sparkles: limit. Would you like me to increase the **maximum MP**:chart_with_upwards_trend::sparkles:?")
+                            await maxmp_message.add_reaction("✅")
+                            await maxmp_message.add_reaction("❌")
                             def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == mp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                return user == ctx.author and reaction.message.id == maxmp_message.id and str(reaction.emoji) in ["✅", "❌"]
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    MP = math.floor(self.player_stats[user_id]["POW"] / 10)
-                                    self.player_stats[user_id]["MP"] = MP
-                                    self.player_stats[user_id]["MAX_MP"] = MP
+                                    newMAXMP = new_value
+                                    self.player_stats[user_id]["MAX_MP"] = newMAXMP
                                     await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **MP**:sparkles: has been calculated as **{MP}** and successfully saved.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: has been increased to **{newMAXMP}** and successfully saved.")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **MP**:sparkles: will not proceed.")
+                                    await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MP**:sparkles: will not proceed.") 
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")                        
 
-                    #automatic calculation of SAN
-                    if stat_name == "POW":
-                        if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["SAN"] == 0:
-                            san_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **SAN**:scales:. Do you want me to calculate SAN:scales:?")
-                            await san_message.add_reaction("✅")
-                            await san_message.add_reaction("❌")
-                            def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == san_message.id and str(reaction.emoji) in ["✅", "❌"]
-                            try:
-                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                if str(reaction.emoji) == "✅":
-                                    SAN = self.player_stats[user_id]["POW"]
-                                    self.player_stats[user_id]["SAN"] = SAN
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **SAN**:scales: has been calculated as **{SAN}** and successfully saved.")
-                                elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **SAN**:scales: will not proceed.")
-                            except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN**:scales: will not proceed.")   
+                        self.player_stats[user_id][stat_name] = new_value
+                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                        #Adding emoji to stat update message
+                        emoji = get_stat_emoji(stat_name)
+                        await ctx.send(f"{ctx.author.display_name}'s **{stat_name}**{emoji} has been updated to **{new_value}**.")
 
-                    #automatic calculation of MOV
-                    if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
-                        if  self.player_stats[user_id]["DEX"] != 0 and \
-                            self.player_stats[user_id]["SIZ"] != 0 and \
-                            self.player_stats[user_id]["STR"] != 0 and \
-                            self.player_stats[user_id]["Move"] == 0:
-                            mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**:person_running:. Do you want me to calculate MOV:person_running:?")
-                            await mo_message.add_reaction("✅")
-                            await mo_message.add_reaction("❌")
-                            def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == mo_message.id and str(reaction.emoji) in ["✅", "❌"]
-                            try:
-                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                if str(reaction.emoji) == "✅":
-                                    if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
-                                        self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
-                                        MOV = 7
-                                        
-                                    elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
-                                         self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
-                                        MOV = 8
+                        #automatic calculation of HP
+                        if stat_name == "CON" or stat_name == "SIZ":
+                            if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
+                                hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**:heartpulse:. Do you want me to calculate HP(MAX_HP):chart_with_upwards_trend::heartpulse:?")
+                                await hp_message.add_reaction("✅")
+                                await hp_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == hp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
+                                        self.player_stats[user_id]["HP"] = HP
+                                        self.player_stats[user_id]["MAX_HP"] = HP
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **HP**:heartpulse: has been calculated as **{HP}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **HP**:heartpulse: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **HP**:heartpulse: will not proceed.")
 
-                                    elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
-                                         self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
-                                        MOV = 8
-                                        
-                                    elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
-                                         self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
-                                        MOV = 9
-                                        
-                                    else:
-                                        #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
-                                        MOV = 9001
-                                    self.player_stats[user_id]["Move"] = MOV
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **MOV**:person_running: has been calculated as **{MOV}** and successfully saved.")
-                                elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **MOV**:person_running: will not proceed.")
-                            except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MOV**:person_running: will not proceed.")
+                        #automatic calculation of MP
+                        if stat_name == "POW":
+                            if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["MP"] == 0:
+                                mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**:sparkles:. Do you want me to calculate MP(MAX_MP)chart_with_upwards_trend::sparkles:?")
+                                await mp_message.add_reaction("✅")
+                                await mp_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == mp_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        MP = math.floor(self.player_stats[user_id]["POW"] / 10)
+                                        self.player_stats[user_id]["MP"] = MP
+                                        self.player_stats[user_id]["MAX_MP"] = MP
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **MP**:sparkles: has been calculated as **{MP}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **MP**:sparkles: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MP**:sparkles: will not proceed.") 
 
-                    #automatic calculation of Damage Bonus
-                    if stat_name == "STR" or stat_name == "SIZ":
-                        if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Damage Bonus"] == 0:
-                            db_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Damage Bonus**:mending_heart:. Do you want me to calculate Damge Bonus:mending_heart:?")
-                            await db_message.add_reaction("✅")
-                            await db_message.add_reaction("❌")
-                            def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == db_message.id and str(reaction.emoji) in ["✅", "❌"]
-                            try:
-                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                if str(reaction.emoji) == "✅":
-                                    STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
-                                    if 2 <= STRSIZ <= 64:
-                                        BONUSDMG = -2
-                                    elif 65 <= STRSIZ <= 84:
-                                        BONUSDMG = -1
-                                    elif 85 <= STRSIZ <= 124:
-                                        BONUSDMG = 0
-                                    elif 125 <= STRSIZ <= 164:
-                                        BONUSDMG = "1D4"
-                                    elif 165 <= STRSIZ <= 204:
-                                        BONUSDMG = "1D6"
-                                    elif 205 <= STRSIZ <= 284:
-                                        BONUSDMG = "2D6"
-                                    elif 285 <= STRSIZ <= 364:
-                                        BONUSDMG = "3D6"
-                                    elif 365 <= STRSIZ <= 444:
-                                        BONUSDMG = "4D6"
-                                    elif 445 <= STRSIZ <= 524:
-                                        BONUSDMG = "5D6"
-                                    else:
-                                        #Not posible if used correctly!
-                                        BONUSDMG = "Bruh, too strong!"
-                                    self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Damage Bonus**:mending_heart: has been calculated as **{BONUSDMG}** and successfully saved.")
-                                elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Damage Bonus**:mending_heart: will not proceed.")
-                            except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Damage Bonus**:mending_heart: will not proceed.")
+                        #automatic calculation of SAN
+                        if stat_name == "POW":
+                            if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["SAN"] == 0:
+                                san_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **SAN**:scales:. Do you want me to calculate SAN:scales:?")
+                                await san_message.add_reaction("✅")
+                                await san_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == san_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        SAN = self.player_stats[user_id]["POW"]
+                                        self.player_stats[user_id]["SAN"] = SAN
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **SAN**:scales: has been calculated as **{SAN}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **SAN**:scales: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **SAN**:scales: will not proceed.")   
 
-                    #automatic calculation of Build
-                    if stat_name == "STR" or stat_name == "SIZ":
-                        if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Build"] == 0:
-                            bu_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Build**:restroom:. Do you want me to calculate Build:restroom:?")
-                            await bu_message.add_reaction("✅")
-                            await bu_message.add_reaction("❌")
-                            def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == bu_message.id and str(reaction.emoji) in ["✅", "❌"]
-                            try:
-                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                if str(reaction.emoji) == "✅":
-                                    STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
-                                    if 2 <= STRSIZ <= 64:
-                                        BUILD = -2
-                                    elif 65 <= STRSIZ <= 84:
-                                        BUILD = -1
-                                    elif 85 <= STRSIZ <= 124:
-                                        BUILD = 0
-                                    elif 125 <= STRSIZ <= 164:
-                                        BUILD = 1
-                                    elif 165 <= STRSIZ <= 204:
-                                        BUILD = 2
-                                    elif 205 <= STRSIZ <= 284:
-                                        BUILD = 3
-                                    elif 285 <= STRSIZ <= 364:
-                                        BUILD = 4
-                                    elif 365 <= STRSIZ <= 444:
-                                        BUILD = 5
-                                    elif 445 <= STRSIZ <= 524:
-                                        BUILD = 6
-                                    else:
-                                        #Not posible if used correctly!
-                                        BUILD = "You are CHONKER!"
-                                    self.player_stats[user_id]["Build"] = BUILD
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Build**:restroom: has been calculated as **{BUILD}** and successfully saved.")
-                                elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Build**:restroom: will not proceed.")
-                            except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Build**:restroom: will not proceed.")
+                        #automatic calculation of MOV
+                        if stat_name == "DEX" or stat_name == "SIZ" or stat_name == "STR":
+                            if  self.player_stats[user_id]["DEX"] != 0 and \
+                                self.player_stats[user_id]["SIZ"] != 0 and \
+                                self.player_stats[user_id]["STR"] != 0 and \
+                                self.player_stats[user_id]["Move"] == 0:
+                                mo_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MOV**:person_running:. Do you want me to calculate MOV:person_running:?")
+                                await mo_message.add_reaction("✅")
+                                await mo_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == mo_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        if  self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] and \
+                                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                                            MOV = 7
+                                            
+                                        elif self.player_stats[user_id]["DEX"] < self.player_stats[user_id]["SIZ"] or \
+                                            self.player_stats[user_id]["STR"] < self.player_stats[user_id]["SIZ"]:
+                                            MOV = 8
 
-                    #automatic calculation of Dodge
-                    if stat_name == "DEX":
-                        if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["Dodge"] == 0:
-                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**:warning:. Do you want me to calculate Dodge:warning:?")
-                            await dod_message.add_reaction("✅")
-                            await dod_message.add_reaction("❌")
-                            def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == dod_message.id and str(reaction.emoji) in ["✅", "❌"]
-                            try:
-                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                if str(reaction.emoji) == "✅":
-                                    DODGE = math.floor(self.player_stats[user_id]["DEX"] / 2)
-                                    self.player_stats[user_id]["Dodge"] = DODGE
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Dodge**:warning: has been calculated as **{DODGE}** and successfully saved.")
-                                elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Dodge**:warning: will not proceed.")
-                            except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Dodge**:warning: will not proceed.")   
+                                        elif self.player_stats[user_id]["DEX"] == self.player_stats[user_id]["SIZ"] and \
+                                            self.player_stats[user_id]["SIZ"] == self.player_stats[user_id]["STR"]:
+                                            MOV = 8
+                                            
+                                        elif self.player_stats[user_id]["DEX"] > self.player_stats[user_id]["SIZ"] and \
+                                            self.player_stats[user_id]["STR"] > self.player_stats[user_id]["SIZ"]:
+                                            MOV = 9
+                                            
+                                        else:
+                                            #This should be impossible. If you see MOV over 9000, i totaly fucked up this code.
+                                            MOV = 9001
+                                        self.player_stats[user_id]["Move"] = MOV
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **MOV**:person_running: has been calculated as **{MOV}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **MOV**:person_running: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **MOV**:person_running: will not proceed.")
 
-                    #automatic calculation of Language (own)
-                    if stat_name == "EDU":
-                        if self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["Language (own)"] == 0:
-                            dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Language (own)**:speech_balloon:. Do you want me to calculate Language (own):speech_balloon:?")
-                            await dod_message.add_reaction("✅")
-                            await dod_message.add_reaction("❌")
-                            def check(reaction, user):
-                                return user == ctx.author and reaction.message.id == dod_message.id and str(reaction.emoji) in ["✅", "❌"]
-                            try:
-                                reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
-                                if str(reaction.emoji) == "✅":
-                                    LANGUAGEOWN = self.player_stats[user_id]["EDU"]
-                                    self.player_stats[user_id]["Language (own)"] = LANGUAGEOWN
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **Language (own)**:speech_balloon: has been calculated as **{LANGUAGEOWN}** and successfully saved.")
-                                elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"The calculation of **Language (own)**:speech_balloon: will not proceed.")
-                            except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)**:speech_balloon: will not proceed.")   
+                        #automatic calculation of Damage Bonus
+                        if stat_name == "STR" or stat_name == "SIZ":
+                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Damage Bonus"] == 0:
+                                db_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Damage Bonus**:mending_heart:. Do you want me to calculate Damge Bonus:mending_heart:?")
+                                await db_message.add_reaction("✅")
+                                await db_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == db_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
+                                        if 2 <= STRSIZ <= 64:
+                                            BONUSDMG = -2
+                                        elif 65 <= STRSIZ <= 84:
+                                            BONUSDMG = -1
+                                        elif 85 <= STRSIZ <= 124:
+                                            BONUSDMG = 0
+                                        elif 125 <= STRSIZ <= 164:
+                                            BONUSDMG = "1D4"
+                                        elif 165 <= STRSIZ <= 204:
+                                            BONUSDMG = "1D6"
+                                        elif 205 <= STRSIZ <= 284:
+                                            BONUSDMG = "2D6"
+                                        elif 285 <= STRSIZ <= 364:
+                                            BONUSDMG = "3D6"
+                                        elif 365 <= STRSIZ <= 444:
+                                            BONUSDMG = "4D6"
+                                        elif 445 <= STRSIZ <= 524:
+                                            BONUSDMG = "5D6"
+                                        else:
+                                            #Not posible if used correctly!
+                                            BONUSDMG = "Bruh, too strong!"
+                                        self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **Damage Bonus**:mending_heart: has been calculated as **{BONUSDMG}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **Damage Bonus**:mending_heart: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Damage Bonus**:mending_heart: will not proceed.")
 
-                    #Prompt about Age
-                    #if stat_name == "STR" or stat_name == "DEX" or stat_name == "CON" or stat_name == "INT" or stat_name == "EDU" or stat_name == "APP" or stat_name == "SIZ" or stat_name == "LUCK":
+                        #automatic calculation of Build
+                        if stat_name == "STR" or stat_name == "SIZ":
+                            if self.player_stats[user_id]["STR"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["Build"] == 0:
+                                bu_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Build**:restroom:. Do you want me to calculate Build:restroom:?")
+                                await bu_message.add_reaction("✅")
+                                await bu_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == bu_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        STRSIZ = self.player_stats[user_id]["STR"] + self.player_stats[user_id]["SIZ"]
+                                        if 2 <= STRSIZ <= 64:
+                                            BUILD = -2
+                                        elif 65 <= STRSIZ <= 84:
+                                            BUILD = -1
+                                        elif 85 <= STRSIZ <= 124:
+                                            BUILD = 0
+                                        elif 125 <= STRSIZ <= 164:
+                                            BUILD = 1
+                                        elif 165 <= STRSIZ <= 204:
+                                            BUILD = 2
+                                        elif 205 <= STRSIZ <= 284:
+                                            BUILD = 3
+                                        elif 285 <= STRSIZ <= 364:
+                                            BUILD = 4
+                                        elif 365 <= STRSIZ <= 444:
+                                            BUILD = 5
+                                        elif 445 <= STRSIZ <= 524:
+                                            BUILD = 6
+                                        else:
+                                            #Not posible if used correctly!
+                                            BUILD = "You are CHONKER!"
+                                        self.player_stats[user_id]["Build"] = BUILD
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **Build**:restroom: has been calculated as **{BUILD}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **Build**:restroom: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Build**:restroom: will not proceed.")
 
-                except ValueError:
-                    await ctx.send("Invalid new value. Please provide a number.")
+                        #automatic calculation of Dodge
+                        if stat_name == "DEX":
+                            if self.player_stats[user_id]["DEX"] != 0 and self.player_stats[user_id]["Dodge"] == 0:
+                                dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Dodge**:warning:. Do you want me to calculate Dodge:warning:?")
+                                await dod_message.add_reaction("✅")
+                                await dod_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == dod_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        DODGE = math.floor(self.player_stats[user_id]["DEX"] / 2)
+                                        self.player_stats[user_id]["Dodge"] = DODGE
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **Dodge**:warning: has been calculated as **{DODGE}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **Dodge**:warning: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Dodge**:warning: will not proceed.")   
+
+                        #automatic calculation of Language (own)
+                        if stat_name == "EDU":
+                            if self.player_stats[user_id]["EDU"] != 0 and self.player_stats[user_id]["Language (own)"] == 0:
+                                dod_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **Language (own)**:speech_balloon:. Do you want me to calculate Language (own):speech_balloon:?")
+                                await dod_message.add_reaction("✅")
+                                await dod_message.add_reaction("❌")
+                                def check(reaction, user):
+                                    return user == ctx.author and reaction.message.id == dod_message.id and str(reaction.emoji) in ["✅", "❌"]
+                                try:
+                                    reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                                    if str(reaction.emoji) == "✅":
+                                        LANGUAGEOWN = self.player_stats[user_id]["EDU"]
+                                        self.player_stats[user_id]["Language (own)"] = LANGUAGEOWN
+                                        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+                                        await ctx.send(f"{ctx.author.display_name}'s **Language (own)**:speech_balloon: has been calculated as **{LANGUAGEOWN}** and successfully saved.")
+                                    elif str(reaction.emoji) == "❌":
+                                        await ctx.send(f"The calculation of **Language (own)**:speech_balloon: will not proceed.")
+                                except asyncio.TimeoutError:
+                                    await ctx.send(f"{ctx.author.display_name} took too long to react. The calculation of **Language (own)**:speech_balloon: will not proceed.")   
+
+                        #Prompt about Age
+                        #if stat_name == "STR" or stat_name == "DEX" or stat_name == "CON" or stat_name == "INT" or stat_name == "EDU" or stat_name == "APP" or stat_name == "SIZ" or stat_name == "LUCK":
+
+
+
+                    except ValueError:
+                        await ctx.send("Invalid new value. Please provide a number.")
             else:
                 await ctx.send("Invalid name. Use STR, DEX, CON, INT, POW, APP, EDU, SIZ, HP, MP, LUCK, SAN, MAX_HP or MAX_MP. You can also use any name of your skills `!mcs`")
 

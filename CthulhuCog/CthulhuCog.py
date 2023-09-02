@@ -2353,7 +2353,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Library Use, Other Language, Own Language, any four other skills as personal specialties or specialist reading topics."
             },
              "Mechanic": {
-                "description": "Mechanics and skilled tradespeople include various trades requiring specialized training and experience, such as carpenters, plumbers, electricians, and mechanics. They often have their own unions and contacts within the trade.",
+                "description": "Mechanics and skilled tradespeople encompass a range of professions that demand specialized training and expertise. This category includes carpenters, plumbers, electricians, mechanics, and others with skills in various trades. Many of them are part of trade unions and have valuable connections within their respective fields.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40",
@@ -2361,7 +2361,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Carpentry, Welding, Plumbing, etc.), Climb, Drive Auto, Electrical Repair, Mechanical Repair, Operate Heavy Machinery, any two other skills as personal, era or trade specialties."
             },
             "Military Officer": {
-                "description": "Military officers are command ranks requiring higher education. They undergo training and are often graduates of military academies. They have contacts in the military and federal government.",
+                "description": "Military officers hold commanding positions in the armed forces, typically requiring advanced education and training. Many of them have graduated from military academies and undergone rigorous training. These officers maintain important contacts within the military and federal government.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–70",
@@ -2369,7 +2369,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Firearms, Navigate, First Aid, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one other skill as personal or era specialties."
             },
             "Missionary": {
-                "description": "Missionaries spread religious teachings in remote or urban areas. They can be backed by churches or independent. Missionaries of various faiths exist worldwide.",
+                "description": "Missionaries are individuals who actively work to spread religious teachings, often in remote or urban areas. They can be affiliated with churches or work independently. Missionaries represent various faiths and can be found all over the world.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "0–30",
@@ -2377,7 +2377,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (any), First Aid, Mechanical Repair, Medicine, Natural World, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), any two other skills as personal or era specialties."
             },
             "Mountain Climber": {
-                "description": "Mountain climbers engage in climbing peaks as a sport or profession. They seek challenges in various environments and often have contacts with other climbers, rescue services, and sponsors.",
+                "description": "Mountain climbers are individuals who pursue the challenge of ascending peaks as a sport or profession. They thrive on the physical and mental challenges of climbing in various environments. Mountain climbers often have connections within the climbing community, with rescue services, and potential sponsors to support their expeditions.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "30–60",
@@ -2385,7 +2385,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, First Aid, Jump, Listen, Navigate, Other Language, Survival (Alpine or as appropriate), Track."
             },
             "Museum Curator": {
-                "description": "Museum curators manage and oversee exhibits and collections in museums, often specializing in specific topics. They have contacts with local universities, scholars, and patrons.",
+                "description": "Museum curators are responsible for the management and curation of exhibits and collections in museums, often specializing in specific topics or areas of interest. They maintain connections with local universities, scholars, and patrons to ensure the museum's collections and exhibitions are well-maintained and relevant to the community.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2393,7 +2393,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Appraise, Archaeology, History, Library Use, Occult, Other Language, Spot Hidden."
             },
             "Musician": {
-                "description": "Musicians perform individually or in groups, playing various instruments. While it's difficult to achieve success, some manage to find regular work or become wealthy through their talent.",
+                "description": "Musicians are individuals who perform either individually or as part of musical groups, showcasing their skills with various instruments or vocal talents. While achieving success in the music industry can be challenging, some musicians are fortunate enough to secure regular work or even attain wealth through their exceptional talent and dedication to their craft.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "9–30",
@@ -2401,7 +2401,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Instrument), one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Listen, Psychology, any four other skills."
             },
             "Nurse": {
-                "description": "Nurses provide healthcare assistance in hospitals, nursing homes, and medical practices. They assist patients with various health-related activities and have contacts with healthcare professionals.",
+                "description": "Nurses are essential healthcare professionals who offer vital medical assistance in hospitals, nursing homes, medical practices, and various healthcare settings. They play a crucial role in patient care, aiding individuals with a wide range of health-related tasks. Additionally, nurses often have extensive networks within the healthcare field, including connections with other healthcare professionals and organizations.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2409,7 +2409,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "First Aid, Listen, Medicine, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Science (Biology) and (Chemistry), Spot Hidden."
             },
             "Occultist": {
-                "description": "Occultists study esoteric secrets, paranormal phenomena, and arcane magic. They seek to uncover paranormal abilities and often have knowledge of various magical theories.",
+                "description": "Occultists are dedicated individuals who immerse themselves in the study of esoteric secrets, paranormal phenomena, and arcane magic. Their primary goal is to unravel the mysteries of the supernatural world and understand its hidden forces and energies. In their pursuit of knowledge, occultists often delve into various magical theories and practices, seeking to unlock the potential of paranormal abilities. Their expertise in the occult may lead them to uncover extraordinary insights and abilities beyond the comprehension of ordinary individuals.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–65",
@@ -2417,7 +2417,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Anthropology, History, Library Use, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Occult, Other Language, Science (Astronomy), any one other skill as a personal or era specialty."
             },
             "Outdoorsman Woman": {
-                "description": "Outdoorsmen/women are skilled in surviving and thriving in the wilderness. They may work as guides, rangers, or simply live a self-sufficient lifestyle in nature.",
+                "description": "Outdoorsmen and women are individuals highly skilled in the art of surviving and thriving in the wilderness. Their expertise allows them to navigate and adapt to the challenges of the great outdoors, making them valuable guides, rangers, or even those who choose to live a self-sufficient lifestyle in harmony with nature. These individuals possess a deep understanding of wilderness survival techniques, including shelter building, navigation, foraging, and wildlife knowledge, making them well-equipped to handle the rigors of life in untamed environments.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "5–20",
@@ -2425,7 +2425,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Firearms, First Aid, Listen, Natural World, Navigate, Spot Hidden, Survival (any), Track."
             },
             "Parapsychologist": {
-                "description": "Parapsychologists study and investigate paranormal phenomena, often using technology to capture evidence. They specialize in areas like extrasensory perception, telekinesis, and hauntings.",
+                "description": "Parapsychologists are dedicated professionals who specialize in the study and investigation of paranormal phenomena. They employ various scientific and technological methods to gather evidence and gain insights into the unexplained. These experts focus on areas such as extrasensory perception, telekinesis, and hauntings, seeking to unravel the mysteries of the supernatural world and better understand the boundaries of human consciousness. Their work often involves conducting controlled experiments, analyzing data, and exploring the realms of the unknown in their quest for answers to paranormal phenomena.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2433,7 +2433,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Anthropology, Art/Craft (Photography), History, Library Use, Occult, Other Language, Psychology, any one other skill as a personal or era specialty."
             },
             "Pharmacist": {
-                "description": "Pharmacists are licensed professionals who dispense medications. They may work in hospitals, drug stores, or dispensaries, and have access to a wide range of chemicals and drugs.",
+                "description": "Pharmacists are licensed professionals with expertise in dispensing medications and ensuring their safe and effective use. They can be found working in various settings, including hospitals, drug stores, and dispensaries. Pharmacists have access to an extensive inventory of chemicals and drugs, and their responsibilities encompass verifying prescriptions, counseling patients on medication usage, and collaborating with healthcare providers to optimize patient care. These professionals play a crucial role in the healthcare system, combining their knowledge of pharmaceuticals with a commitment to patient well-being.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "35–75",
@@ -2441,7 +2441,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, First Aid, Other Language (Latin), Library Use, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Science (Pharmacy), (Chemistry)."
             },
             "Photographer": {
-                "description": "Photographers capture images using various techniques. They can work in fields like art, journalism, and wildlife conservation, often finding fame and recognition in their specialization.",
+                "description": "Photographers are skilled individuals who employ various techniques to capture captivating images. Their work spans diverse fields, including art, journalism, wildlife conservation, and more. Photographers have the capacity to achieve fame and recognition through their specialization, mastering the art of visual storytelling and preserving moments in time through their lens. Whether they're documenting history, showcasing the beauty of the natural world, or expressing their creativity through visual artistry, photographers play a vital role in shaping how we perceive and remember the world around us.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2449,7 +2449,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Photography), one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Science (Chemistry), Stealth, Spot Hidden, any two other skills as personal or era specialties."
             },
             "Photojournalist": {
-                "description": "Photojournalists are reporters who use photography to accompany news stories. They work in industries like news and film, often covering events and producing images for publication.",
+                "description": "Photojournalists are dedicated reporters who utilize the power of photography to complement their news stories. Operating primarily within industries like news and film, these professionals are tasked with the crucial responsibility of covering events and generating compelling visual content for publication. Through their lenses, they capture the essence of significant moments, enabling the public to gain a deeper understanding of the world's happenings. Whether documenting breaking news, investigative reports, or human interest stories, photojournalists provide a vital visual narrative that enhances our comprehension of current events.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2457,7 +2457,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Photography), Climb, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Other Language, Psychology, Science (Chemistry), any two other skills as personal or era specialties."
             },
             "Pilot": {
-                "description": "Pilots fly aircraft for various purposes, including commercial airlines and businesses. They may also work as stunt pilots, aviators, or military pilots.",
+                "description": "Pilots are skilled aviators responsible for operating aircraft across various sectors, encompassing commercial airlines, corporate aviation, and specialized roles like stunt flying or military aviation. These professionals possess the expertise to safely navigate and control aircraft, ensuring the smooth transport of passengers, cargo, or the execution of specific aerial maneuvers. Whether guiding commercial flights to distant destinations, performing daring aerobatics, or conducting strategic military missions, pilots play a crucial role in the world of aviation, mastering the skies with precision and finesse.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "20–70",
@@ -2465,7 +2465,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Electrical Repair, Mechanical Repair, Navigate, Operate Heavy Machine, Pilot (Aircraft), Science (Astronomy), any two other skills as personal or era specialties."
             },
             "Aviator": {
-                "description": "Aviators are stunt pilots who perform at carnivals and air races. They may also work as test pilots or in other aviation-related roles. Some aviators have military backgrounds.",
+                "description": "Aviators are fearless daredevils of the skies, renowned for their breathtaking aerial stunts and captivating performances at carnivals, air races, and similar events. These skilled pilots possess the audacity to push the boundaries of aviation, executing jaw-dropping maneuvers that leave audiences in awe. Aviators may also find themselves in crucial roles such as test pilots, fearlessly pushing new aircraft to their limits to ensure safety and performance. With some aviators hailing from military backgrounds, their expertise in the art of flight extends to both entertainment and practical applications in the world of aviation.",
                 "era":"Classic - 1920s period.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–60",
@@ -2473,7 +2473,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Electrical Repair, Listen, Mechanical Repair, Navigate, Pilot (Aircraft), Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Police Detective": {
-                "description": "Police detectives investigate crimes, gather evidence, and try to solve major felonies. They work closely with uniformed patrol officers and aim to build cases for criminal prosecution.",
+                "description": "Police detectives are skilled investigators dedicated to solving complex crimes and unraveling the mysteries that shroud major felonies. These professionals meticulously gather evidence, question witnesses, and meticulously piece together the puzzle of unlawful activities. Their work often involves close collaboration with uniformed patrol officers, as they strive to build solid cases for criminal prosecution, ensuring that justice prevails. Police detectives are the frontline defenders of law and order, committed to upholding the principles of justice and safeguarding their communities from criminal elements.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–50",
@@ -2481,7 +2481,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Acting) or Disguise, Firearms, Law, Listen, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Spot Hidden, any one other skill."
             },
             "Uniformed Police Officer": {
-                "description": "Uniformed police officers work in cities, towns, or other law enforcement agencies. They patrol on foot, in vehicles, or at a desk, maintaining public safety and enforcing laws.",
+                "description": "Uniformed police officers are the guardians of our communities, working diligently in cities, towns, and various law enforcement agencies. They serve on the frontlines, patrolling our streets on foot, in vehicles, or stationed at desks, all with the overarching goal of maintaining public safety and upholding the laws that govern our society. These dedicated individuals are the visible symbols of law enforcement, ensuring that our neighborhoods remain secure and our citizens protected. They are committed to the well-being of their communities, often putting themselves in harm's way to ensure that justice is served.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2489,7 +2489,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Fighting (Brawl), Firearms, First Aid, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Law, Psychology, Spot Hidden, and one of the following as a personal specialty: Drive Automobile or Ride."
             },
             "Private Investigator": {
-                "description": "Private investigators gather information and evidence for private clients. They may work on civil cases, track down individuals, or assist in criminal defense. Licensing is often required.",
+                "description": "Private investigators are the unsung heroes of the investigative world, using their skills to gather critical information and evidence for private clients. Whether it's untangling complex civil cases, locating elusive individuals, or providing essential support in criminal defense, these professionals play a pivotal role in the pursuit of truth and justice.O perating within the boundaries of the law and often requiring licensing, private investigators are masters of surveillance, research, and analysis. They employ a wide array of techniques and tools to uncover hidden facts and connect the dots. Their work can make a substantial difference in legal proceedings, personal matters, and business affairs, offering invaluable insights that can shape the course of action. With determination, resourcefulness, and a commitment to their clients' best interests, private investigators are indispensable allies for those in need of specialized investigative services. They stand ready to navigate the labyrinth of information and secrets, shedding light on the most challenging and enigmatic situations.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2497,7 +2497,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Photography), Disguise, Law, Library Use, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Spot Hidden, and any one other skill as personal or era specialty (e.g. Computer Use, Locksmith, Fighting, Firearms)."
             },
             "Professor": {
-                "description": "Professors are academics employed by colleges and universities. They may also work for corporations in research and development roles. They often hold a Ph.D. and have expertise in their field.",
+                "description": "Professors are esteemed academics who play a pivotal role in the world of higher education. Typically employed by colleges and universities, these individuals are highly educated and often hold a Ph.D. in their respective fields. Their expertise is not confined to the ivory towers of academia, as many professors also find themselves working in research and development roles for corporations and institutions. These dedicated educators are responsible for imparting knowledge, conducting research, and mentoring the next generation of thinkers and innovators. They excel in their chosen disciplines, contributing to the advancement of human understanding in a wide range of subjects, from the sciences and humanities to business and the arts. With a passion for learning and a commitment to intellectual growth, professors serve as beacons of wisdom and guidance, shaping the minds of students and pushing the boundaries of knowledge through their research. Their work extends far beyond the classroom, influencing the trajectory of academic fields and industries alike.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–70",
@@ -2505,7 +2505,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Library Use, Other Language, Own Language, Psychology, any four other skills as academic, era, or personal specialties."
             },
             "Prospector": {
-                "description": "Prospectors search for valuable resources like gold or oil. While the days of the Gold Rush are gone, independent prospectors still search for valuable finds.",
+                "description": "Prospectors are intrepid individuals who embark on quests to discover valuable natural resources such as gold, oil, minerals, and more. While the exhilarating days of the Gold Rush may be a thing of the past, these modern-day treasure hunters continue to seek their fortunes through independent exploration. Armed with geological knowledge, geological tools, and a keen eye for potential deposits, prospectors scour remote and often unforgiving landscapes in the hope of striking it rich. Their quest for valuable resources can take them to remote wilderness areas, deserts, mountains, and even beneath the Earth's surface. While the challenges they face may be daunting, the potential rewards can be substantial. Prospectors play a vital role in the discovery and development of valuable resources, contributing to the global economy and the advancement of industries that rely on these raw materials. Their work demands a unique blend of scientific expertise, perseverance, and a touch of entrepreneurial spirit as they navigate the ever-changing terrain of resource exploration.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "0–10",
@@ -2513,7 +2513,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, First Aid, History, Mechanical Repair, Navigate, Science (Geology), Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Prostitute": {
-                "description": "Prostitutes engage in various forms of sex work, driven by circumstance or coercion. They may work independently or under the control of pimps.",
+                "description": "Prostitutes engage in various forms of sex work, often driven by circumstances or coercion. They may work independently or under the control of pimps. While some enter the profession as a means of survival or to support themselves and their families, others are tragically forced into this line of work against their will.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "5–50",
@@ -2521,7 +2521,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (any), two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Dodge, Psychology, Sleight of Hand, Stealth, any one other skill as a personal or era specialty."
             },
             "Psychiatrist": {
-                "description": "Psychiatrists are physicians specialized in diagnosing and treating mental disorders. They often use psychopharmacology and other techniques in their practice.",
+                "description": "Psychiatrists are medical professionals who specialize in the diagnosis and treatment of mental disorders. Their expertise encompasses various therapeutic approaches, including the use of psychopharmacology and other therapeutic techniques. Psychiatrists play a crucial role in addressing the complex and diverse mental health needs of their patients.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–80",
@@ -2529,7 +2529,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Other Language, Listen, Medicine, Persuade, Psychoanalysis, Psychology, Science (Biology) and (Chemistry)."
             },
             "Psychologist": {
-                "description": "Psychologists study human behavior and can specialize in various areas, including psychotherapy, research, and teaching. They may not be medical doctors.",
+                "description": "Psychologists are professionals who investigate and analyze human behavior, often focusing on specific areas such as psychotherapy, research, or education. Unlike psychiatrists, psychologists are typically not medical doctors but rather experts in understanding the intricacies of human cognition and behavior. They contribute significantly to the fields of psychology and mental health through their research, therapy, and educational roles.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–40",
@@ -2537,7 +2537,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Library Use, Listen, Persuade, Psychoanalysis, Psychology, any two other skills as academic, era or personal specialties."
             },
             "Researcher": {
-                "description": "Researchers are involved in academic or private sector research. They can work in various fields, such as astronomy, physics, and chemistry.",
+                "description": "Researchers are individuals engaged in research activities, which can encompass a wide range of fields, including but not limited to astronomy, physics, and chemistry. They contribute to the advancement of knowledge in their respective areas, whether in academic or private sector settings. Researchers often conduct experiments, gather data, and analyze information to make new discoveries and expand our understanding of the world. Their work plays a vital role in scientific and technological progress.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2545,7 +2545,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "History, Library Use, one interpersonal skill (Charm, Fast Talk Intimidate, or Persuade), Other Language, Spot Hidden, any three fields of study."
             },
             "Sailor Naval": {
-                "description": "Naval sailors serve in the military and go through training. They have various roles, including mechanics, radio operators, and more.",
+                "description": "Naval sailors are dedicated military personnel who undergo training and serve in various roles within the navy. These roles encompass a wide range of responsibilities, including mechanics, radio operators, and many others. Naval sailors are essential to the operation of naval vessels, ensuring their proper functioning and readiness for various missions and tasks. Their training and expertise contribute to the strength and effectiveness of their respective naval forces.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2553,14 +2553,14 @@ class CthulhuCog(commands.Cog):
                 "skills": "Electrical or Mechanical Repair, Fighting, Firearms, First Aid, Navigate, Pilot (Boat), Survival (Sea), Swim."
             },
             "Sailor Commercial": {
-                "description": "Commercial sailors work on fishing vessels, charter boats, or haulage tankers. They may be involved in legal or illegal activities, such as smuggling.",
+                "description": "Commercial sailors are individuals employed in various maritime roles, including working on fishing vessels, charter boats, or haulage tankers. While many engage in legitimate maritime activities, some may be involved in illegal undertakings such as smuggling. These sailors navigate the waters to conduct their jobs, whether it's to catch fish, transport cargo, or provide recreational services to passengers. Their roles can vary widely, but they all play a part in the complex and diverse world of maritime operations.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–40",
                 "suggested_contacts": "Coast Guard, smugglers, organized crime.",
                 "skills": "First Aid, Mechanical Repair, Natural World, Navigate, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Pilot (Boat), Spot Hidden, Swim."
             },
             "Salesperson": {
-                "description": "Salespeople promote and sell goods or services for businesses. They may travel to meet clients or work in offices, making calls.",
+                "description": "Salespeople are professionals who play a crucial role in promoting and selling goods or services on behalf of businesses. Their responsibilities often involve interacting with potential clients, presenting products or services, and closing deals to generate revenue for their companies. Salespeople can work in various settings, such as traveling to meet clients in person or conducting sales activities from office environments, which may include making phone calls or utilizing digital communication methods. Their ability to effectively communicate and persuade potential customers is essential for achieving sales targets and contributing to a company's success.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "9–40",
@@ -2568,7 +2568,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Drive Auto, Listen, Psychology, Stealth or Sleight of Hand, any one other skill."
             },
             "Scientist": {
-                "description": "Scientists are involved in research and expanding the bounds of knowledge in various fields. They work for businesses and universities.",
+                "description": "Scientists are professionals dedicated to the pursuit of knowledge and advancement in various fields through research and experimentation. They contribute to the expansion of human understanding and often find employment in both academic institutions and private-sector businesses. Whether they work in universities, research institutions, or corporate settings, scientists play a pivotal role in pushing the boundaries of human knowledge and contributing to innovations that can benefit society as a whole. Their work involves conducting experiments, gathering data, analyzing results, and drawing conclusions to further scientific understanding and solve complex problems in their respective disciplines.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–50",
@@ -2576,7 +2576,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Any three science specialisms, Computer Use or Library Use, Other Language, Own Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Spot Hidden."
             },
             "Secretary": {
-                "description": "Secretaries provide communication and organizational support to executives and managers. They have insights into the inner workings of the business.",
+                "description": "Secretaries are professionals who play a crucial role in providing communication and organizational support to executives and managers within a business or organization. They serve as the backbone of administrative operations, ensuring that information flows smoothly and tasks are efficiently managed. Secretaries often have valuable insights into the inner workings of the business, as they are responsible for handling correspondence, scheduling meetings, maintaining records, and coordinating various administrative tasks. Their attention to detail and organizational skills contribute to the overall efficiency and effectiveness of the office or department they serve.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or APP × 2)",
                 "credit_rating": "9–30",
@@ -2584,7 +2584,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Art/Craft (Typing or Short Hand), two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Own Language, Library Use or Computer Use, Psychology, any one other skill as a personal or era specialty."
             },
             "Shopkeeper": {
-                "description": "Shopkeepers own and manage small shops, market stalls, or restaurants. They are usually self-employed and may run family businesses.",
+                "description": "Shopkeepers are individuals who own and oversee the daily operations of small shops, market stalls, or restaurants. Typically, they are self-employed entrepreneurs who may also run family businesses. Shopkeepers play a vital role in their communities by providing goods and services to local residents and visitors. They are responsible for various aspects of their businesses, including inventory management, customer service, financial transactions, and ensuring the smooth functioning of their establishments. Shopkeepers often have a deep understanding of their products and customers, contributing to the success and sustainability of their businesses.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "20–40",
@@ -2592,14 +2592,14 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Electrical Repair, Listen, Mechanical Repair, Psychology, Spot Hidden."
             },
             "Soldier Marine": {
-                "description": "Soldiers and Marines serve in the enlisted ranks of the Army and Marines. They undergo training and may serve in combat or non-combat roles.",
+                "description": "Soldiers and Marines are dedicated individuals who serve as enlisted personnel in the Army and Marines. They undergo rigorous training to prepare for various roles, which can include combat and non-combat positions. These servicemembers play a crucial role in ensuring the security and defense of their respective countries. They may be deployed in various domestic and international operations, and their commitment to duty is essential to the success of their units and missions. Whether on the frontlines or in support roles, soldiers and Marines demonstrate unwavering dedication to their military service.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
                 "suggested_contacts": "Military, veterans associations.",
                 "skills": "Climb or Swim, Dodge, Fighting, Firearms, Stealth, Survival and two of the following: First Aid, Mechanical Repair or Other Language."
             },
             "Spy": {
-                "description": "Spies work undercover for intelligence agencies to gather information and carry out various tasks. They may have deep cover identities.",
+                "description": "Spies are covert operatives employed by intelligence agencies to operate undercover, gathering critical information and performing various clandestine missions. These skilled individuals often assume deep cover identities, allowing them to blend seamlessly into their surroundings while carrying out espionage activities. Their work is shrouded in secrecy, and they are trained in various espionage techniques, including surveillance, code-breaking, and counterintelligence. Spies play a vital role in national security, working tirelessly to protect their country's interests by acquiring valuable intelligence and thwarting potential threats.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "20–60",
@@ -2607,7 +2607,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Acting) or Disguise, Firearms, Listen, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Sleight of Hand, Stealth."
             },
             "Student Intern": {
-                "description": "Students or interns may be enrolled at educational institutions or receive on-the-job training. They may work for minimal compensation.",
+                "description": "Students or interns are individuals who are typically enrolled in educational institutions or undergoing on-the-job training. They often work in exchange for minimal compensation or academic credit. This period of learning and skill development is crucial for their future careers, providing practical experience and insights into their chosen fields. Students and interns can be found in various industries, from business and healthcare to technology and the arts, where they gain valuable knowledge and hands-on training to prepare them for their professional journeys.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "5–10",
@@ -2615,7 +2615,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Language (Own or Other), Library Use, Listen, three fields of study and any two other skills as personal or era specialties."
             },
             "Stuntman": {
-                "description": "Stuntmen and women work in the film and television industry to perform dangerous stunts. They often simulate falls, crashes, and other catastrophes.",
+                "description": "Stunt performers, both men and women, are professionals who specialize in executing daring and hazardous stunts within the film and television industry. Their primary role involves simulating dangerous situations, such as falls, crashes, and other high-impact scenarios, to create thrilling and realistic action sequences for entertainment purposes. Stunt performers are highly trained and skilled individuals who prioritize safety while delivering thrilling on-screen performances that captivate audiences.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "10–50",
@@ -2623,7 +2623,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Dodge, Electrical Repair or Mechanical Repair, Fighting, First Aid, Jump, Swim, plus one from either Diving, Drive Automobile, Pilot (any), Ride."
             },
             "Tribe Member": {
-                "description": "Tribe members belong to small groups characterized by kinship and custom. Personal honor, praise, and vengeance play important roles in tribal life.",
+                "description": "Members of tribes are part of close-knit communities defined by shared kinship ties and traditional customs. Within these tribal societies, concepts like personal honor, praise, and the pursuit of vengeance hold significant importance. These values shape the dynamics of tribal life, fostering strong bonds among members while also influencing their interactions with other tribes and outsiders.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "0–15",
@@ -2631,7 +2631,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Fighting or Throw, Listen, Natural World, Occult, Spot Hidden, Swim, Survival (any)."
             },
             "Undertaker": {
-                "description": "Undertakers, also known as morticians or funeral directors, manage funeral rites, including burials or cremations. They are licensed professionals.",
+                "description": "Undertakers, alternatively referred to as morticians or funeral directors, are licensed professionals responsible for overseeing various aspects of funeral services, including burials or cremations.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–40",
@@ -2639,7 +2639,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Drive Auto, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), History, Occult, Psychology, Science (Biology) and (Chemistry)."
             },
             "Union Activist": {
-                "description": "Union activists organize and lead labor unions in various industries. They face challenges from businesses, politicians, and other groups.",
+                "description": "Union activists take on the responsibility of organizing and leading labor unions across different industries. They often encounter challenges from businesses, politicians, and various interest groups.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "5–30",
@@ -2647,7 +2647,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Fighting (Brawl), Law, Listen, Operate Heavy Machinery, Psychology."
             },
             "Waitress Waiter": {
-                "description": "Waitresses and waiters serve customers in eating or drinking establishments. Tips are earned by providing good service and building rapport.",
+                "description": "Waitresses and waiters perform the role of serving customers in dining or drinking establishments. They earn tips through the provision of excellent service and by establishing rapport with patrons.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "9–20",
@@ -2655,7 +2655,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Art/Craft (any), Dodge, Listen, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one skill as a personal or era specialty."
             },
             "Clerk Executive": {
-                "description": "This could range from the lowest-level white-collar position of a clerk to a middle or senior manager. The employer could be a small to medium-sized locally-owned business, up to a large national or multinational corporation. Clerks are habitually underpaid and the work is drudgery, with those recognized as having talent being earmarked for promotion someday. Middle and senior managers attract higher salaries, with greater responsibilities and say in how the business is managed day-to-day. Although unmarried white-collar workers are not infrequent, most executive types are family-oriented, with a spouse at home and children—it is often expected of them.",
+                "description": "This job category spans a wide spectrum, encompassing roles from entry-level clerks to mid-level and senior managers. These positions can be found in businesses of various sizes, ranging from small, locally-owned enterprises to large national or multinational corporations. Clerks often face the challenge of relatively low wages and routine tasks, but those with recognized talent may be considered for future promotions. Middle and senior managers, on the other hand, command higher salaries and carry greater responsibilities, including influencing daily business operations. While unmarried individuals working in white-collar positions are not uncommon, many executives in these roles prioritize family life, with a spouse at home and children – often fulfilling societal expectations in this regard.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–20",
@@ -2663,7 +2663,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Language (Own or Other), Law, Library Use or Computer Use, Listen, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), any two other skills as personal or era specialties."
             },
              "Middle Senior Manager": {
-                "description": "This could range from the lowest-level white-collar position of a clerk to a middle or senior manager. The employer could be a small to medium-sized locally-owned business, up to a large national or multinational corporation. Clerks are habitually underpaid and the work is drudgery, with those recognized as having talent being earmarked for promotion someday. Middle and senior managers attract higher salaries, with greater responsibilities and say in how the business is managed day-to-day. Although unmarried white-collar workers are not infrequent, most executive types are family-oriented, with a spouse at home and children—it is often expected of them.",
+                "description": "These roles span a wide range, from entry-level white-collar positions, such as clerks, to mid-level and senior managers. They can be found in businesses of varying sizes, including small to medium-sized locally-owned enterprises, as well as large national or multinational corporations. Clerks often contend with low salaries and mundane tasks, with the hope that those who exhibit talent may eventually be considered for promotion. In contrast, middle and senior managers command higher incomes, carry more significant responsibilities, and have a greater say in the day-to-day management of the business. While unmarried white-collar workers are not uncommon, a significant portion of executive-level professionals prioritize family life. Many of them have spouses at home a",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–80",
@@ -2671,7 +2671,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Other Language, Law, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any two other skills as personal or era specialties."
             },
             "Zealot": {
-                "description": "Zealots are intense and vision-driven individuals who are passionate about their beliefs. They may agitate for change through various means.",
+                "description": "Zealots are fervent and driven individuals who are deeply committed to their beliefs. They often pursue their causes with unwavering passion and can be highly dedicated to effecting change through a variety of methods.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or POW × 2)",
                 "credit_rating": "0–30",
@@ -2679,7 +2679,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "History, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Stealth, and any three other skills as personal or era specialties."
             },
             "Zookeeper": {
-                "description": "Zookeepers care for animals in zoos, ensuring their feeding and well-being. They may specialize in specific animal breeds.",
+                "description": "Zookeepers are responsible for the care and welfare of animals in zoos, taking care of their feeding, health, and overall well-being. Some zookeepers may specialize in specific breeds or types of animals to provide specialized care.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40",

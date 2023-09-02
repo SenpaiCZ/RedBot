@@ -182,7 +182,6 @@ class CthulhuCog(commands.Cog):
             ":bulb:`!deleteInvestigator` - Delete your investigator, all data, backstory and inventory. You will be promptet to write your investigators name to confirm deletion.\n\n"
             ":bulb:`!cyear number` - Get basic information about events in year (1890-2012) (e.g. `!cyear 1920`)\n\n"
             ":bulb:`!firearm name` - Get basic information about firearms. If you use just `!firearm` you will get list of firearms. (e.g. `!firearm m1911`)\n\n"
-            ":bulb:`!randomLoot` - Generate random loot from 1920s. 25% chance of finding $0.1-$10. This will not be saved.\n\n"
             ":bulb:`!rskill skill1 skill2` - Rename skill to your liking. (e.g. `!rskill Language (other) German`)\n\n"
             ":bulb:`!cNPC gender` - Generate NPC with random name and stats. (e.g. `!cNPC male`)\n\n"
             ":bulb:`!showUserData` - Debug command showing raw user data (stats, skill, backstory)\n\n"
@@ -772,7 +771,7 @@ class CthulhuCog(commands.Cog):
     
         stats_list = list(self.player_stats[user_id].items())
         stats_page = 1
-        max_page = 3
+        max_page = 4
     
         def get_emoji(index):
             if index == 0:
@@ -966,7 +965,16 @@ class CthulhuCog(commands.Cog):
     
         def generate_stats_page(page):
             stats_embed.clear_fields()
-            stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
+            if page == 4:  # Zobrazení zápisu Backstory na 4. stránce
+                stats_embed.title = f"{name}'s Backstory and Inventory"
+                stats_embed.description = "Your backstory and Inventory:"
+                backstory_data = self.player_stats[user_id].get("Backstory", {})
+                for category, entries in backstory_data.items():
+                    formatted_entries = "\n".join([f"{index + 1}. {entry}" for index, entry in enumerate(entries)])
+                    stats_embed.add_field(name=category, value=formatted_entries, inline=False)
+            else:
+                stats_embed.title = name
+                stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
     
             if page == 1:
                 stats_range = range(0, 17)
@@ -1714,7 +1722,7 @@ class CthulhuCog(commands.Cog):
 
             "Ride": ":chart_with_upwards_trend:  Base stat - 05% \n :horse_racing: The Ride skill is used to handle and ride animals like saddle horses, donkeys, or mules. It involves knowledge of animal care, riding gear, and riding techniques. Falling from a mount due to an accident or failed skill roll can result in hit point loss. The success of a ride roll depends on the speed and terrain. Riding side-saddle or on unfamiliar mounts increases the difficulty. \n :grimacing: Pushing examples might involve attempting risky maneuvers or trying to control a frightened or unruly mount. \n :x: Failing a Pushed roll might lead to a fall from the mount or the mount becoming uncontrollable.",
 
-            "Science Specializations": ":chart_with_upwards_trend:  Base stat - X% \n :microscope: Science is a broad skill category that represents knowledge and expertise in various scientific disciplines. Each specialization focuses on a particular field of science and grants the character practical and theoretical abilities within that field. Characters can spend skill points to purchase specialization in a specific field. The generic Science skill cannot be directly purchased and instead, characters must choose from the available specializations. Many specialties overlap, and knowledge in one field may contribute to understanding another related field.",
+            "Science Specializations": ":chart_with_upwards_trend:  Base stat - X% \n :microscope: Science is a broad skill category that represents knowledge and expertise in various scientific disciplines. Each specialization focuses on a particular field of science and grants the character practical and theoretical abilities within that field. Characters can spend skill points to purchase specialization in a specific field. The generic Science skill cannot be directly purchased and instead, characters must choose from the available specializations. Many specialties overlap, and knowledge in one field may contribute to understanding another related field. You can look at Astronomy, Biology, Botany, Chemistry, Cryptography, Engineering, Forensics, Geology, Mathematics, Meteorology, Pharmacy, Physics, Zoology.",
             
             "Astronomy ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: This specialization involves understanding celestial bodies, their positions, and movements. The character can identify stars, planets, and predict celestial events like eclipses. More advanced knowledge might include concepts of galaxies and extraterrestrial life. \n :grimacing: Pushing examples could involve making complex astronomical calculations or analyzing celestial phenomena. \n :x: Failing a Pushed roll might result in misinterpretations of astronomical data or incorrect predictions.",
 
@@ -6608,14 +6616,14 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["randomLoot","randomloot"])
     async def cloot(self, ctx):
         items = ["A Mysterious Journal", "A Cultist Robes", "A Whispering Locket", "A Mysterious Puzzle Box", "A Map of the area", "An Ornate dagger", "Binoculars", "An Old journal", "A Gas mask", "Handcuffs", "A Pocket watch", "A Police badge", "A Vial of poison", "A Rope (20 m)", "A Vial of holy water", "A Hunting knife", "A Lockpick", "A Vial of acid", "A Hammer", "Pliers", "A Bear trap", "A Bottle of poison", "A Perfume", "Flint and steel", "A Vial of blood", "A Round mirror", "A Pocket knife", "Matchsticks", "Cigarettes", "Sigars", "A Compass", "An Opium pipe", "A Vial of snake venom", "A Handkerchief", "A Personal diary", "A Wooden cross", "A Business card", "A Cultist's mask", "Cultist’s robes", "A Pocket watch", "A Bottle of absinthe", "A Vial of morphine", "A Vial of ether", "A Black candle", "A Flashlight", "A Baton", "A Bottle of whiskey", "A Bulletproof vest", "A First-aid kit", "A Baseball bat", "A Crowbar", "A Cigarillo case", "Brass knuckles", "A Switchblade knife", "A Bottle of chloroform", "Leather gloves", "A Sewing kit", "A Deck of cards", "Fishing Line", "An Axe", "A Saw", "A Rope (150 ft)", "A Water bottle", "A Lantern", "A Signaling mirror", "A Steel helmet", "A Waterproof cape", "A Colt 1911 Auto Handgun", "A Luger P08 Handgun", "A S&W .44 Double Action Handgun", "A Colt NS Revolver", "A Colt M1877 Pump-Action Rifle", "A Remington Model 12 Pump-Action Rifle", "A Savage Model 99 Lever-Action Rifle", "A Winchester M1897 Pump-Action Rifle", "A Browning Auto-5 Shotgun", "A Remington Model 11 Shotgun", "A Winchester Model 12 Shotgun", "A Beretta M1918 Submachine Gun", "An MP28 Submachine Gun", "Handgun Bullets (10)", "Handgun Bullets (20)", "Handgun Bullets (30)", "Rifle Bullets (10)", "Rifle Bullets (20)", "Rifle Bullets (30)", "Shotgun Shells (10)", "Shotgun Shells (20)", "Shotgun Shells (30)", "A Bowie Knife", "A Katana Sword", "Nunchucks", "A Tomahawk", "A Bayonet", "A Rifle Scope", "A Rifle Bipod", "A Shotgun Stock", "A Dynamite Stick", "A Dissecting Kit", "A Bolt Cutter", "A Hacksaw", "A Screwdriver Set", "A Sledge Hammer", "A Wire Cutter", "Canned Meat", "Dried Meat", "An Airmail Stamp", "A Postage Stamp", "A Camera", "A Chemical Test Kit", "A Codebreaking Kit", "A Geiger Counter", "A Magnifying Glass", "A Sextant", "Federal agent credentials", "Moonshine", "A Skeleton key", "A Can of tear gas", "A Trench coat", "Leather gloves", "A Fountain pen", "A Shoe shine kit", "A Straight razor", "Cufflinks", "A Snuff box", "A Perfume bottle", "Playing cards", "An Oil lantern", "A Mess kit", "A Folding shovel", "A Sewing kit", "A Grappling hook", "A Portable radio", "A Dice set", "Poker chips", "A Pipe", "Pipe tobacco", "A Hairbrush", "Reading glasses", "A Police whistle", "An Altimeter", "A Barometer", "A Scalpel", "A Chemistry set", "A Glass cutter", "A Trench periscope", "A Hand Grenade", "A Signal flare", "An Army ration", "A Can of kerosene", "A Butcher's knife", "A Pickaxe", "A Fishing kit", "An Antiseptic ointment", "Bandages", "A Cigarette Case", "A Matchbox", "A pair of Cufflinks", "A pair of Spectacles", "A pair of Sunglasses", "A set of Keys", "A tube of Lipstick", "A set of Hairpins", "A Checkbook", "An Address Book", "An Umbrella", "A pair of Gloves", "A Notebook", "A Gas cooker", "Rubber Bands", "A Water Bottle", "A Towel", "A Cigar Cutter", "A Magnifying Glass", "A Magnesium Flare", "A Hairbrush", "A Sketchbook", "A Police Badge", "A Fingerprinting Kit", "Lecture Notes", "A Measuring Tape", "Charcoal", "A Pencil Sharpener", "An Ink Bottle", "Research Notes", "A Crowbar", "A Fake ID", "A Stethoscope", "Bandages", "Business Cards", "A Leather-bound Journal", "A Prescription Pad", "Dog Tags", "A Pipe", "A Chocolate bar", "Strange bones", "A Prayer Book", "Surgical Instruments", "Fishing Lures", "Fishing Line", "Pliers", "A Bottle Opener", "A Wire Cutter", "A Wrench", "A Pocket Watch", "A Travel Guidebook", "A Passport", "Dental Tools", "A Surgical Mask", "A Bottle of red paint", "An Electricity cable (15 ft)", "A Smoke Grenade ", "A Heavy duty jacket", "A pair of Heavy duty trousers", "Motor Oil", "Army overalls", "A small scale", "A bottle of Snake Oil", "A Cane with a hidden sword", "A Monocle on a chain", "A Carved ivory chess piece", "Antique marbles", "A Bullwhip", "A Folding Fan", "A Folding Pocket Knife", "A Travel Chess Set", "A Pocket Book of Etiquette", "A Pocket Guide to Stars", "A Pocket Book of Flowers", "A Mandolin", "An Ukulele", "A Vial of Laudanum", "A Leather Bound Flask (empty)", "A Lock of Hair", "A Tobacco Pouch", "A flare gun", "A pipe bomb", "A Molotov cocktail", "An anti-personnel mine", "A machete", "A postcard", "A wristwatch", "A shovel", "A padlock", "A light chain (20 ft)", "A heavy chain (20 ft)", "A handsaw", "A telescope", "A water pipe", "A box of candles", "Aspirin (16 pills)", "Chewing Tobacco", "A Gentleman's Pocket Comb", "A Sailor's Knot Tying Guide", "A Leather Map Case", "A Camera", "Crystal Rosary Beads", "A Handmade Silver Bracelet", "Herbal Supplements", "A Bloodletting Tool", "A Spiritualist Seance Kit", "A Morphine Syringe", "A Bottle of Radioactive Water", "An Astrology Chart", "An Alchemy Kit", "A Mortar and Pestle", "A Scalpel", "An Erlenmeyer Flask", "A Chemistry Textbook", "Nautical Charts", "A Bottle of Sulfuric Acid", "Protective Gloves", "Safety Goggles", "A Kerosene Lamp", "Painkillers"]
-        # Pravděpodobnost 50% na získání peněz
+        # Pravděpodobnost 25% na získání peněz
         has_money = random.choice([True, False, False, False])
         money = None
         if has_money:
-            money = random.randint(1, 1000) / 100  # Peníze od 0.01 do 10.00
+            money = random.randint(1, 500) / 100  # Peníze od 0.01 do 10.00
     
         # Náhodně vyber počet předmětů od 1 do 7
-        num_items = random.randint(1, 7)
+        num_items = random.randint(1, 5)
         # Náhodně vyber předměty
         chosen_items = random.sample(items, num_items)
     

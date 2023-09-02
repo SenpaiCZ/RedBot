@@ -966,15 +966,15 @@ class CthulhuCog(commands.Cog):
         def generate_stats_page(page):
             stats_embed.clear_fields()
             if page == 4:  # Zobrazení zápisu Backstory na 4. stránce
-                stats_embed.title = f"{name}'s Backstory and Inventory"
-                stats_embed.description = "Your backstory and Inventory:"
+                stats_embed.title = f"{name}'s statistics - Page {page}/{max_page}:"
+                stats_embed.description = f"{name}'s Backstory and Inventory:"
                 backstory_data = self.player_stats[user_id].get("Backstory", {})
                 for category, entries in backstory_data.items():
                     formatted_entries = "\n".join([f"{index + 1}. {entry}" for index, entry in enumerate(entries)])
                     stats_embed.add_field(name=category, value=formatted_entries, inline=False)
             else:
                 stats_embed.title = name
-                stats_embed.description = f"Investigator statistics - Page {page}/{max_page}:"
+                stats_embed.description = f"{name}'s statistics - Page {page}/{max_page}:"
     
             if page == 1:
                 stats_range = range(0, 17)

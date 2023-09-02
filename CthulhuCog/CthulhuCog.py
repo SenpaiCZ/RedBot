@@ -1762,9 +1762,13 @@ class CthulhuCog(commands.Cog):
             skills_list = ", ".join(skills_info.keys())
             response = f":zap: List of skills: :zap: \n{skills_list}"
         else:
-            skill_description = skills_info.get(skill_name, "Skill not found.")
-            
-            response = f":zap: Skill Info: {skill_name}\n {skill_description}"
+            matching_skills = [skill for skill in skills_info if re.search(fr'\b{re.escape(skill_name)}\b', skill, re.IGNORECASE)]
+            if matching_skills:
+                if len(matching_skills) > 1:
+                    await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")
+                else:
+                    skill_description = skills_info.get(skill_name, "Skill not found.")
+                    response = f":zap: Skill Info: {skill_name}\n {skill_description}"
         
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)

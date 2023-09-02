@@ -1827,7 +1827,7 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["cocc","oinfo"])
     async def coccupations(self, ctx, *, occupation_name: str = None):
         """
-        !oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. !oinfo bartender)
+        `!oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. !oinfo bartender)
         """
         occupations_info = {
             "Accountant": {

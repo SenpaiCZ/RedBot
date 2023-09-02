@@ -1018,27 +1018,33 @@ class CthulhuCog(commands.Cog):
                 break
                 
     @commands.command(guild_only=True)
-    async def deleteInvestigator(self, ctx):
-        user_id = str(ctx.author.id)  # Get the user's ID as a string
+    async def deleteInvestigator(self, ctx, member: discord.Member):
+        # Zjistit, zda je autor zprávy majitelem serveru
+        is_server_owner = ctx.author == ctx.guild.owner
     
-        if user_id in self.player_stats:
-            investigator_name = self.player_stats[user_id]["NAME"]
-            await ctx.send(f"Are you sure you want to delete investigator '{investigator_name}'? "
-                           f"Type '{investigator_name}' to confirm or anything else to cancel.")
-            
-            def check(message):
-                return message.author == ctx.author and message.content.strip().title() == investigator_name
-            
-            try:
-                confirmation_msg = await self.bot.wait_for("message", timeout=30.0, check=check)
-            except asyncio.TimeoutError:
-                await ctx.send("Confirmation timed out. Investigator was not deleted.")
+        if is_server_owner or ctx.author == member:
+            user_id = str(member.id)  # Získat ID hráče, jehož postavu chcete smazat
+    
+            if user_id in self.player_stats:
+                investigator_name = self.player_stats[user_id]["NAME"]
+                await ctx.send(f"Are you sure you want to delete investigator '{investigator_name}' for {member.display_name}? "
+                               f"Type '{investigator_name}' to confirm or anything else to cancel.")
+                
+                def check(message):
+                    return message.author == ctx.author and message.content.strip().title() == investigator_name
+                
+                try:
+                    confirmation_msg = await self.bot.wait_for("message", timeout=30.0, check=check)
+                except asyncio.TimeoutError:
+                    await ctx.send("Confirmation timed out. Investigator was not deleted.")
+                else:
+                    del self.player_stats[user_id]
+                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložit aktualizovaný slovník
+                    await ctx.send(f"Investigator '{investigator_name}' for {member.display_name} has been deleted.")
             else:
-                del self.player_stats[user_id]
-                await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated dictionary
-                await ctx.send(f"Investigator '{investigator_name}' has been deleted.")
+                await ctx.send(f"{member.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
         else:
-            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+            await ctx.send("Only the server owner or the user themselves can delete their investigator.")
 
          
     @commands.command(aliases=["cb", "CB"], guild_only=True)

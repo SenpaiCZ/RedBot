@@ -1089,34 +1089,41 @@ class CthulhuCog(commands.Cog):
 
 
     @commands.command(aliases=["rb", "RB"], guild_only=True)
-    async def removeCthulhuBackstory(self, ctx, category: str, entry_index: int):
+    async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
         user_id = str(ctx.author.id)
-
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
-
-        if "Backstory" not in self.player_stats[user_id]:
-            await ctx.send("You don't have any backstory entries.")
+        
+        backstory_data = self.player_stats[user_id]["Backstory"]
+        
+        parts = category_and_index.split()
+        if len(parts) < 2:
+            await ctx.send("Invalid input format. Please provide both the category and the index.")
             return
-
-        category = category.strip().capitalize()
-
-        if category not in self.player_stats[user_id]["Backstory"]:
-            await ctx.send(f"No entries found in the '{category}' category.")
+        
+        category = " ".join(parts[:-1])
+        
+        # Zde použijeme regulární výraz k odstranění všech ne-alfanumerických znaků v kategorii
+        category = re.sub(r'[^a-zA-Z0-9\s]', '', category)
+        
+        index = int(parts[-1])
+        
+        if category not in backstory_data:
+            await ctx.send(f"There is no category named '{category}' in your backstory.")
             return
-
-        entries = self.player_stats[user_id]["Backstory"][category]
-
-        if entry_index < 1 or entry_index > len(entries):
-            await ctx.send("Invalid entry index. Please specify a valid index.")
+        
+        entries = backstory_data[category]
+        
+        if not entries or index < 1 or index > len(entries):
+            await ctx.send("Invalid index. Please provide a valid index.")
             return
+        
+        removed_entry = entries.pop(index - 1)
+        
+        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
+        await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
 
-        deleted_entry = entries.pop(entry_index - 1)  # Subtract 1 to convert to 0-based index
-
-        await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
-
-        await ctx.send(f"Entry '{deleted_entry}' in the '{category}' category has been deleted.")
 
 
     @commands.command(aliases=["DB"], guild_only=True)

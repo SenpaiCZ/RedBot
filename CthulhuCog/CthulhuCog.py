@@ -200,6 +200,9 @@ class CthulhuCog(commands.Cog):
         
     @commands.command(aliases=["diceroll","D"], guild_only=True)
     async def d(self, ctx, *, dice_expression):
+        """
+        `!d YDX` - Roll dice (e.g. `!d 3D6` or `!d 3D6 + 1D10` or `!d 1D6 + 2`)
+        """
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:  
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")

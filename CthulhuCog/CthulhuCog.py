@@ -1761,7 +1761,7 @@ class CthulhuCog(commands.Cog):
             skills_list = ", ".join(skills_info.keys())
             response = f":zap: List of skills: :zap: \n{skills_list}"
         else:
-            matching_skills = [skill for skill in skills_info if re.search(fr'\b{re.escape(skill_name)}\b', skill, re.IGNORECASE)]
+            matching_skills = [skill for skill in skills_info if skill_name.lower() in skill.lower()]
             if matching_skills:
                 if len(matching_skills) > 1:
                     await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")

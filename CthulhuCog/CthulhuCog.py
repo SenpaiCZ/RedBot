@@ -3094,18 +3094,22 @@ class CthulhuCog(commands.Cog):
             category = category.lower()
             if category == "physical":
                 selected_talents = physical_talents
+                category = "Physical Talents"
             elif category == "mental":
                 selected_talents = mental_talents
+                category = "Mental Talents"
             elif category == "combat":
                 selected_talents = combat_talents
+                category = "Combat Talents"
             elif category == "miscellaneous":
                 selected_talents = miscellaneous_talents
+                category = "Miscellaneous Talents"
             else:
                 await ctx.send("Invalid category. Available categories: Physical, Mental, Combat, Miscellaneous")
                 return
 
         # Nyní můžeme sestavit výstupní embed.
-        embed = discord.Embed(title=f"{category} Talents", color=discord.Color.blue())
+        embed = discord.Embed(title=f"{category}", color=discord.Color.blue())
         for index, talent in enumerate(selected_talents, 1):
             embed.add_field(name=f"Talent {index}", value=talent, inline=False)
 

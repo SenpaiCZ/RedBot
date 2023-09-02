@@ -359,6 +359,9 @@ class CthulhuCog(commands.Cog):
     
     @commands.command(aliases=["newInv","newinv"], guild_only=True)
     async def newInvestigator(self, ctx, *, investigator_name):
+        """
+        `!newInv Inv-name` - Create a new investigator (e.g. `!newInv Oswald Chester Razner`)
+        """
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         if user_id not in self.player_stats:
             self.player_stats[user_id] = {
@@ -439,6 +442,9 @@ class CthulhuCog(commands.Cog):
             
     @commands.command(aliases=["cstat"], guild_only=True)
     async def CthulhuChangeStats(self, ctx, *args):
+        """
+        `!cstat stat-name` - Edit your investigators stats. (e.g. `!cstat STR 50` or `!cstat Listen 50`)
+        """
         user_id = str(ctx.author.id)  # Get the user's ID as a string
 
         def get_stat_emoji(stat_name):
@@ -712,6 +718,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["rskill"], guild_only=True)
     async def renameSkill(self, ctx, *, old_and_new_name):
+        """
+        `!rskill skill1 skill2` - Rename skill to your liking. (e.g. `!rskill Language (other) German`)
+        """
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         old_and_new_name = old_and_new_name.rsplit(maxsplit=1)
         
@@ -747,6 +756,9 @@ class CthulhuCog(commands.Cog):
     #Debugging command to check if your data are corrupted        
     @commands.command(guild_only=True)
     async def showUserData(self, ctx):
+        """
+        `!showUserData` - Debug command showing raw user data (stats, skill, backstory)
+        """
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         
         if user_id in self.player_stats:
@@ -759,6 +771,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["mychar", "mcs","myChar","MyChar"], guild_only=True)
     async def MyCthulhuStats(self, ctx, *, member: discord.Member = None):
+        """
+        `!myChar` - Show your investigators stats, skills, inventory and Backstory. With @ you can show other players stats (e.g. `!myChar @potato`)
+        """
         if member is None:
             member = ctx.author
     
@@ -1025,6 +1040,9 @@ class CthulhuCog(commands.Cog):
                 
     @commands.command(guild_only=True)
     async def deleteInvestigator(self, ctx, member: discord.Member = None):
+        """
+        `!deleteInvestigator` - Delete your investigator, all data, backstory and inventory. You will be promptet to write your investigators name to confirm deletion. Server owner can delete other investigators
+        """
         if member is None:
             member = ctx.author  # Pokud není nikdo označen, použijeme autora zprávy
     
@@ -1059,6 +1077,9 @@ class CthulhuCog(commands.Cog):
          
     @commands.command(aliases=["cb", "CB"], guild_only=True)
     async def createCthulhuBackstory(self, ctx, *, input_text):
+        """
+        `!cb category - item` - Add a record to your backstory or inventory. (e.g. `!cb Inventory - Colt .45 Automatic M1911` or `!cb Significant People - Mr. Pickles`)
+        """
         user_id = str(ctx.author.id)
 
         if user_id not in self.player_stats:
@@ -1106,6 +1127,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["rb", "RB"], guild_only=True)
     async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
+        """
+        `!rb category itemID` - Remove a record from your backstory or inventory. You can see ID with `!mb` (e.g. `!cb Assets 1`)
+        """
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
@@ -1144,6 +1168,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["DB"], guild_only=True)
     async def db(self, ctx, *, skill_name):
+        """
+        `!db skill-name` - Roll D100 with bonus die against a skill. (e.g. `!db Listen`)
+        """
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
@@ -1246,6 +1273,9 @@ class CthulhuCog(commands.Cog):
     
     @commands.command(aliases=["DP"], guild_only=True)
     async def dp(self, ctx, *, skill_name):
+        """
+        `!dp skill-name` - Roll D100 with penality die against a skill. (e.g. `!dp Listen`)
+        """
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
@@ -1348,6 +1378,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["randomname"])
     async def cname(self, ctx, gender):
+        """
+        `!randomname gender` - Generate random name form 1920s era. (e.g. `!randomname female`)
+        """
         gender = gender.lower()
         if gender not in ["male", "female"]:
             await ctx.send("Invalid gender. Use 'male' or 'female'.")
@@ -1400,6 +1433,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["createNPC"])
     async def cNPC(self, ctx, gender):
+        """
+        `!cNPC gender` - Generate NPC with random name and stats. (e.g. `!cNPC male`)
+        """
         gender = gender.lower()
         if gender not in ["male", "female"]:
             await ctx.send("Invalid gender. Use 'male' or 'female'.")
@@ -1494,6 +1530,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["autochar","generatestats"], guild_only=True)
     async def autoChar(self, ctx):
+        """
+        `!autoChar` - Generates random stats for your investigator. You can re-roll, dismiss or save stats.
+        """
         user_id = str(ctx.author.id)
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
@@ -1627,6 +1666,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["sinfo"])
     async def skillinfo(self, ctx, *, skill_name: str = None):
+        """
+        `!sinfo skill-name` - Get information about specific skill (without skill-name you will get list of skills). (e.g. `!sinfo Listen`)
+        """
         # Zde můžete definovat informace o dovednostech (malá písmena)
         skills_info = {
             "Accounting": ":chart_with_upwards_trend:  Base stat - 05% \n :ledger: Accounting skill grants the ability to understand financial operations, detecting discrepancies and fraud in financial records, and evaluating the financial health of businesses or individuals. It involves inspecting account books to uncover misappropriations, bribes, or discrepancies in claimed financial conditions. Difficulty varies based on how well accounts are concealed. \n :grimacing: Pushing examples involve spending more time reviewing documents or double-checking findings. \n :x: Failing a Pushed roll could lead to revealing the investigators' intentions or damaging the accounts, with insane investigators possibly eating them.",
@@ -1784,6 +1826,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["cocc","oinfo"])
     async def coccupations(self, ctx, *, occupation_name: str = None):
+        """
+        !oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. `!oinfo bartender`)
+        """
         occupations_info = {
             "Accountant": {
                 "description": "Whether holding a position within a corporation or operating as an independent consultant serving a roster of self-employed clients or enterprises, accountants are an integral part of the financial landscape. Their meticulous nature and unwavering focus on detail render them adept researchers, proficiently supporting inquiries by methodically scrutinizing personal and corporate transactions, financial documents, and various records.",
@@ -2741,6 +2786,9 @@ class CthulhuCog(commands.Cog):
 
     @commands.command(aliases=["cArchetype"])
     async def pulpofcthulhuarchetype(self, ctx, *, archetype_name: str = None):
+        """
+        `!cArchetype name` - Get information about archetypes from Pulp of Cthulhu (e.g. `!cArchetype Adventurer`)
+        """
         archetypes_info = {
             "Adventurer": {
                 "description": "For those embracing the adventurer archetype, a life devoid of excitement holds little appeal. They view the world as an expansive playground, filled with uncharted territories and opportunities for heroic deeds. The mundane routine of a nine-to-five desk job is a prospect they find utterly unfulfilling. Adventurers crave the thrill of the unknown, the exhilaration of new experiences, and the trials that test their mettle. To them, life is a grand adventure waiting to be embarked upon, where excitement, joy, and the pursuit of challenges reign supreme.",
@@ -2992,6 +3040,9 @@ class CthulhuCog(commands.Cog):
             
     @commands.command(aliases=["gbackstory"])
     async def generatebackstory(self, ctx):
+        """
+        `!gbackstory` - Generate random backstory for your investigator. This will not be saved.
+        """
         personal_descriptions = [
             "Adventurous", "Athletic", "Awkward", "Baby-faced", "Bookish", "Brawny", "Charming",
             "Cheerful", "Dainty", "Dazzling", "Delicate", "Dirty", "Determined", "Dull", "Elegant",
@@ -3126,9 +3177,11 @@ class CthulhuCog(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=["firearms","finfo"
-                              ])
+    @commands.command(aliases=["firearms","finfo"])
     async def cfirearms(self, ctx, *, weapon_name=None):
+        """
+        `!firearm name` - Get basic information about firearms. If you use just `!firearm` you will get list of firearms. (e.g. `!firearm m1911`)
+        """
         firearms_data = {
             "Remington Double Derringer M95": {
                 "description": "The Remington Double Derringer M95, a unique and compact firearm, earned its reputation as a pocket pistol in the late 19th century. Its distinctive feature is the double-barrel design, allowing for two rapid shots in close-quarters self-defense situations. Despite its diminutive size, it played a role in history, associated with figures like Wyatt Earp. ",
@@ -3639,6 +3692,9 @@ class CthulhuCog(commands.Cog):
         
     @commands.command(aliases=["yinfo"])
     async def cyear(self, ctx, year: int):
+        """
+        `!cyear number` - Get basic information about events in year (1890-2012) (e.g. `!cyear 1920`)
+        """
         event_info = self.get_year_events(year)
         
         if not event_info:
@@ -6614,6 +6670,9 @@ class CthulhuCog(commands.Cog):
         
     @commands.command(aliases=["randomLoot","randomloot"])
     async def cloot(self, ctx):
+        """
+        `!randomLoot` - Generate random loot from 1920s. 25% chance of finding $0.1-$10. This will not be saved.
+        """
         items = ["A Mysterious Journal", "A Cultist Robes", "A Whispering Locket", "A Mysterious Puzzle Box", "A Map of the area", "An Ornate dagger", "Binoculars", "An Old journal", "A Gas mask", "Handcuffs", "A Pocket watch", "A Police badge", "A Vial of poison", "A Rope (20 m)", "A Vial of holy water", "A Hunting knife", "A Lockpick", "A Vial of acid", "A Hammer", "Pliers", "A Bear trap", "A Bottle of poison", "A Perfume", "Flint and steel", "A Vial of blood", "A Round mirror", "A Pocket knife", "Matchsticks", "Cigarettes", "Sigars", "A Compass", "An Opium pipe", "A Vial of snake venom", "A Handkerchief", "A Personal diary", "A Wooden cross", "A Business card", "A Cultist's mask", "Cultist’s robes", "A Pocket watch", "A Bottle of absinthe", "A Vial of morphine", "A Vial of ether", "A Black candle", "A Flashlight", "A Baton", "A Bottle of whiskey", "A Bulletproof vest", "A First-aid kit", "A Baseball bat", "A Crowbar", "A Cigarillo case", "Brass knuckles", "A Switchblade knife", "A Bottle of chloroform", "Leather gloves", "A Sewing kit", "A Deck of cards", "Fishing Line", "An Axe", "A Saw", "A Rope (150 ft)", "A Water bottle", "A Lantern", "A Signaling mirror", "A Steel helmet", "A Waterproof cape", "A Colt 1911 Auto Handgun", "A Luger P08 Handgun", "A S&W .44 Double Action Handgun", "A Colt NS Revolver", "A Colt M1877 Pump-Action Rifle", "A Remington Model 12 Pump-Action Rifle", "A Savage Model 99 Lever-Action Rifle", "A Winchester M1897 Pump-Action Rifle", "A Browning Auto-5 Shotgun", "A Remington Model 11 Shotgun", "A Winchester Model 12 Shotgun", "A Beretta M1918 Submachine Gun", "An MP28 Submachine Gun", "Handgun Bullets (10)", "Handgun Bullets (20)", "Handgun Bullets (30)", "Rifle Bullets (10)", "Rifle Bullets (20)", "Rifle Bullets (30)", "Shotgun Shells (10)", "Shotgun Shells (20)", "Shotgun Shells (30)", "A Bowie Knife", "A Katana Sword", "Nunchucks", "A Tomahawk", "A Bayonet", "A Rifle Scope", "A Rifle Bipod", "A Shotgun Stock", "A Dynamite Stick", "A Dissecting Kit", "A Bolt Cutter", "A Hacksaw", "A Screwdriver Set", "A Sledge Hammer", "A Wire Cutter", "Canned Meat", "Dried Meat", "An Airmail Stamp", "A Postage Stamp", "A Camera", "A Chemical Test Kit", "A Codebreaking Kit", "A Geiger Counter", "A Magnifying Glass", "A Sextant", "Federal agent credentials", "Moonshine", "A Skeleton key", "A Can of tear gas", "A Trench coat", "Leather gloves", "A Fountain pen", "A Shoe shine kit", "A Straight razor", "Cufflinks", "A Snuff box", "A Perfume bottle", "Playing cards", "An Oil lantern", "A Mess kit", "A Folding shovel", "A Sewing kit", "A Grappling hook", "A Portable radio", "A Dice set", "Poker chips", "A Pipe", "Pipe tobacco", "A Hairbrush", "Reading glasses", "A Police whistle", "An Altimeter", "A Barometer", "A Scalpel", "A Chemistry set", "A Glass cutter", "A Trench periscope", "A Hand Grenade", "A Signal flare", "An Army ration", "A Can of kerosene", "A Butcher's knife", "A Pickaxe", "A Fishing kit", "An Antiseptic ointment", "Bandages", "A Cigarette Case", "A Matchbox", "A pair of Cufflinks", "A pair of Spectacles", "A pair of Sunglasses", "A set of Keys", "A tube of Lipstick", "A set of Hairpins", "A Checkbook", "An Address Book", "An Umbrella", "A pair of Gloves", "A Notebook", "A Gas cooker", "Rubber Bands", "A Water Bottle", "A Towel", "A Cigar Cutter", "A Magnifying Glass", "A Magnesium Flare", "A Hairbrush", "A Sketchbook", "A Police Badge", "A Fingerprinting Kit", "Lecture Notes", "A Measuring Tape", "Charcoal", "A Pencil Sharpener", "An Ink Bottle", "Research Notes", "A Crowbar", "A Fake ID", "A Stethoscope", "Bandages", "Business Cards", "A Leather-bound Journal", "A Prescription Pad", "Dog Tags", "A Pipe", "A Chocolate bar", "Strange bones", "A Prayer Book", "Surgical Instruments", "Fishing Lures", "Fishing Line", "Pliers", "A Bottle Opener", "A Wire Cutter", "A Wrench", "A Pocket Watch", "A Travel Guidebook", "A Passport", "Dental Tools", "A Surgical Mask", "A Bottle of red paint", "An Electricity cable (15 ft)", "A Smoke Grenade ", "A Heavy duty jacket", "A pair of Heavy duty trousers", "Motor Oil", "Army overalls", "A small scale", "A bottle of Snake Oil", "A Cane with a hidden sword", "A Monocle on a chain", "A Carved ivory chess piece", "Antique marbles", "A Bullwhip", "A Folding Fan", "A Folding Pocket Knife", "A Travel Chess Set", "A Pocket Book of Etiquette", "A Pocket Guide to Stars", "A Pocket Book of Flowers", "A Mandolin", "An Ukulele", "A Vial of Laudanum", "A Leather Bound Flask (empty)", "A Lock of Hair", "A Tobacco Pouch", "A flare gun", "A pipe bomb", "A Molotov cocktail", "An anti-personnel mine", "A machete", "A postcard", "A wristwatch", "A shovel", "A padlock", "A light chain (20 ft)", "A heavy chain (20 ft)", "A handsaw", "A telescope", "A water pipe", "A box of candles", "Aspirin (16 pills)", "Chewing Tobacco", "A Gentleman's Pocket Comb", "A Sailor's Knot Tying Guide", "A Leather Map Case", "A Camera", "Crystal Rosary Beads", "A Handmade Silver Bracelet", "Herbal Supplements", "A Bloodletting Tool", "A Spiritualist Seance Kit", "A Morphine Syringe", "A Bottle of Radioactive Water", "An Astrology Chart", "An Alchemy Kit", "A Mortar and Pestle", "A Scalpel", "An Erlenmeyer Flask", "A Chemistry Textbook", "Nautical Charts", "A Bottle of Sulfuric Acid", "Protective Gloves", "Safety Goggles", "A Kerosene Lamp", "Painkillers"]
         # Pravděpodobnost 25% na získání peněz
         has_money = random.choice([True, False, False, False])

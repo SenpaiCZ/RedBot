@@ -1042,7 +1042,7 @@ class CthulhuCog(commands.Cog):
 
          
     @commands.command(aliases=["cb", "CB"], guild_only=True)
-    async def CthulhuBackstory(self, ctx, *, input_text):
+    async def createCthulhuBackstory(self, ctx, *, input_text):
         user_id = str(ctx.author.id)
 
         if user_id not in self.player_stats:
@@ -1088,76 +1088,35 @@ class CthulhuCog(commands.Cog):
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
 
 
-
-    @commands.command(aliases=["mb","MB"], guild_only=True)
-    async def MyCthulhuBackstory(self, ctx):
+    @commands.command(aliases=["rb", "RB"], guild_only=True)
+    async def removeCthulhuBackstory(self, ctx, category: str, entry_index: int):
         user_id = str(ctx.author.id)
+
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
-        
-        if user_id not in self.player_stats or "Backstory" not in self.player_stats[user_id]:
+
+        if "Backstory" not in self.player_stats[user_id]:
             await ctx.send("You don't have any backstory entries.")
             return
-        
-        name = self.player_stats.get(user_id, {}).get("NAME", "Your")
-        backstory_data = self.player_stats[user_id]["Backstory"]
-        
-        entries_embed = discord.Embed(
-            title=f"{name}'s Inventory and Backstory",
-            description="Your inventory and backstory entries:",
-            color=discord.Color.gold()
-        )
-        
-        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-        
-        for category, entries in backstory_data.items():
-            formatted_entries = "\n".join([f"{index + 1}. {entry}" for index, entry in enumerate(entries)])
-            entries_embed.add_field(name=category, value=formatted_entries, inline=False)
-        
-        await ctx.send(embed=entries_embed)
 
+        category = category.strip().capitalize()
 
+        if category not in self.player_stats[user_id]["Backstory"]:
+            await ctx.send(f"No entries found in the '{category}' category.")
+            return
 
-    @commands.command(aliases=["rb","RB"], guild_only=True)
-    async def RemoveCthulhuBackstory(self, ctx, *, category_and_index: str):
-        user_id = str(ctx.author.id)
-        if user_id not in self.player_stats:
-            await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+        entries = self.player_stats[user_id]["Backstory"][category]
+
+        if entry_index < 1 or entry_index > len(entries):
+            await ctx.send("Invalid entry index. Please specify a valid index.")
             return
-        
-        if user_id not in self.player_stats or "Backstory" not in self.player_stats[user_id]:
-            await ctx.send("You don't have any backstory entries.")
-            return
-        
-        backstory_data = self.player_stats[user_id]["Backstory"]
-        
-        # Rozdělíme vstup na název kategorie a index
-        parts = category_and_index.split()
-        if len(parts) < 2:
-            await ctx.send("Invalid input format. Please provide both the category and the index.")
-            return
-        
-        category = " ".join(parts[:-1])
-        index = int(parts[-1])
-        
-        if category not in backstory_data:
-            await ctx.send(f"There is no category named '{category}' in your backstory.")
-            return
-        
-        entries = backstory_data[category]
-        
-        if not entries or index < 1 or index > len(entries):
-            await ctx.send("Invalid index. Please provide a valid index.")
-            return
-        
-        removed_entry = entries.pop(index - 1)
-        
-        if not entries:
-            del backstory_data[category]
-        
-        await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-        await ctx.send(f"Removed entry '{removed_entry}' from the '{category}' category.")
+
+        deleted_entry = entries.pop(entry_index - 1)  # Subtract 1 to convert to 0-based index
+
+        await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
+
+        await ctx.send(f"Entry '{deleted_entry}' in the '{category}' category has been deleted.")
 
 
     @commands.command(aliases=["DB"], guild_only=True)

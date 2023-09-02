@@ -173,17 +173,18 @@ class CthulhuCog(commands.Cog):
             ":bulb:`!cstat stat-name` - Edit your investigators stats. (e.g. `!cstat STR 50` or `!cstat Listen 50`) This can also calculate \n\n"
             ":bulb:`!sinfo skill-name` - Get information about specific skill (without skill-name you will get list of skills). (e.g. `!sinfo Listen`)\n\n"
             ":bulb:`!oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. `!oinfo bartender`)\n\n"
-            ":bulb:`!myChar` - Show your investigators stats and skills. With @ you can show other players stats (e.g. `!myChar @potato`)\n\n"
+            ":bulb:`!ainfo archetype-name` - Get information about archetype (without archetype-name you will get list of archetypes). (e.g. `!ainfo grease monkey`) \n\n"
+            ":bulb:`!tinfo` - Get two random talents. If you use argument combat, mental, physical or myscellaneous you will get list of talents. (e.g. `!oinfo physical`)\n\n"
+            ":bulb:`!mcs` - Show your investigators stats, skills, backstory and inventory. With @ you can show other players stats (e.g. `!mcs @potato`)\n\n"
             ":bulb:`!d YDX` - Roll dice (e.g. `!d 3D6` or `!d 3D6 + 1D10` or `!d 1D6 + 2`)\n\n"
             ":bulb:`!d skill-name` - Roll D100 against a skill. (e.g. `!d Listen`)\n\n"
             ":bulb:`!db skill-name` - Roll D100 with bonus die against a skill. (e.g. `!db Listen`)\n\n"
             ":bulb:`!dp skill-name` - Roll D100 with penality die against a skill. (e.g. `!dp Listen`)\n\n"
-            ":bulb:`!mb` - Show your investigators inventory and backstory.\n\n"
             ":bulb:`!cb category - item` - Add a record to your backstory or inventory. (e.g. `!cb Inventory - Colt .45 Automatic M1911` or `!cb Significant People - Mr. Pickles`)\n\n"
             ":bulb:`!rb category itemID` - Remove a record from your backstory or inventory. You can see ID with `!mb` (e.g. `!cb Inventory 1`)\n\n"
             ":bulb:`!gbackstory` - Generate random backstory for your investigator. This will not be saved.\n\n"
-            ":bulb:`!deleteInvestigator` - Delete your investigator, all data, backstory and inventory. You will be promptet to write your investigators name to confirm deletion.\n\n"
-            ":bulb:`!cyear number` - Get basic information about events in year (1890-2012) (e.g. `!cyear 1920`)\n\n"
+            ":bulb:`!deleteInvestigator` - Delete your investigator, all data, backstory and inventory. You will be promptet to write your investigators name to confirm deletion. Server owners can delete other players investigators.\n\n"
+            ":bulb:`!cyear number` - Get basic information about events in year (1590-2012) (e.g. `!cyear 1920`)\n\n"
             ":bulb:`!firearm name` - Get basic information about firearms. If you use just `!firearm` you will get list of firearms. (e.g. `!firearm m1911`)\n\n"
             ":bulb:`!rskill skill1 skill2` - Rename skill to your liking. (e.g. `!rskill Language (other) German`)\n\n"
             ":bulb:`!cNPC gender` - Generate NPC with random name and stats. (e.g. `!cNPC male`)\n\n"
@@ -2784,7 +2785,7 @@ class CthulhuCog(commands.Cog):
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["cArchetype"])
+    @commands.command(aliases=["cArchetype", "ainfo"])
     async def pulpofcthulhuarchetype(self, ctx, *, archetype_name: str = None):
         """
         `!cArchetype name` - Get information about archetypes from Pulp of Cthulhu (e.g. !cArchetype Adventurer)
@@ -3038,7 +3039,7 @@ class CthulhuCog(commands.Cog):
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["cTalents"])
+    @commands.command(aliases=["cTalents","tInfo"])
     async def cthulhu_talents(self, ctx, category: str = None):
         """
         `!cTalents` - Generate two random talents or get a list of talents.

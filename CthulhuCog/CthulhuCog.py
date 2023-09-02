@@ -424,7 +424,7 @@ class CthulhuCog(commands.Cog):
             "MAX_HP": 100,
             "MAX_MP": 100,
             "MAX_SAN": 1000,
-            "Backstory":{}
+            "Backstory":{'My Story':[],'Personal Description':[],'Ideology and Beliefs':[],'Significant People':[],'Meaningful Locations':[],'Treasured Possessions':[],'Traits':[],'Injuries and Scars':[],'Phobias and Manias':[],'Arcane Tome and Spells':[],'Encounters with Strange Entities':[],'Fellow Investigators':[],}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing `!autoChar` or you can fill your stats with `!cstat`")

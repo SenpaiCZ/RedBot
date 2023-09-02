@@ -424,7 +424,7 @@ class CthulhuCog(commands.Cog):
             "MAX_HP": 100,
             "MAX_MP": 100,
             "MAX_SAN": 1000,
-            "Backstory":{'My Story':[],'Personal Description':[],'Ideology and Beliefs':[],'Significant People':[],'Meaningful Locations':[],'Treasured Possessions':[],'Traits':[],'Injuries and Scars':[],'Phobias and Manias':[],'Arcane Tome and Spells':[],'Encounters with Strange Entities':[],'Fellow Investigators':[],}
+            "Backstory":{'My Story':[],'Personal Description':[],'Ideology and Beliefs':[],'Significant People':[],'Meaningful Locations':[],'Treasured Possessions':[],'Traits':[],'Injuries and Scars':[],'Phobias and Manias':[],'Arcane Tome and Spells':[],'Encounters with Strange Entities':[],'Fellow Investigators':[],'Gear and Possesions':[], 'Spending Level':[],'Cash':[],'Assets':[],}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
             await ctx.send(f"Investigator '{investigator_name}' has been created with all stats set to 0. You can generate random stats by ussing `!autoChar` or you can fill your stats with `!cstat`")
@@ -1041,35 +1041,52 @@ class CthulhuCog(commands.Cog):
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
 
          
-    @commands.command(aliases=["cb","CB"], guild_only=True)
+    @commands.command(aliases=["cb", "CB"], guild_only=True)
     async def CthulhuBackstory(self, ctx, *, input_text):
         user_id = str(ctx.author.id)
-    
+
         if user_id not in self.player_stats:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
             return
-    
+
         input_text = input_text.strip()
         parts = input_text.split(" - ")
-    
+
         if len(parts) < 2:
             await ctx.send("Invalid input format. Please use 'Category - Entry' format.")
             return
-    
-        category = parts[0].strip().capitalize()
+
+        requested_category = parts[0].strip().capitalize()
         entry = " - ".join(parts[1:]).strip()
-    
+
+        default_categories = [
+            'My Story', 'Personal Description', 'Ideology and Beliefs', 'Significant People',
+            'Meaningful Locations', 'Treasured Possessions', 'Traits', 'Injuries and Scars',
+            'Phobias and Manias', 'Arcane Tome and Spells', 'Encounters with Strange Entities',
+            'Fellow Investigators', 'Gear and Possesions', 'Spending Level', 'Cash', 'Assets'
+        ]
+
+        # Check if the requested category matches any of the default categories (case-insensitive)
+        matching_categories = [cat for cat in default_categories if re.search(fr'\b{re.escape(requested_category)}\b', cat, re.IGNORECASE)]
+
+        if not matching_categories:
+            await ctx.send("Invalid category. Please use one of the predefined categories.")
+            return
+
+        category = matching_categories[0]  # Use the first matching category
+
         if "Backstory" not in self.player_stats[user_id]:
             self.player_stats[user_id]["Backstory"] = {}
-    
+
         if category not in self.player_stats[user_id]["Backstory"]:
             self.player_stats[user_id]["Backstory"][category] = []
-    
+
         self.player_stats[user_id]["Backstory"][category].append(entry)
-    
+
         await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
-    
+
         await ctx.send(f"Entry '{entry}' has been added to the '{category}' category in your Backstory.")
+
 
 
     @commands.command(aliases=["mb","MB"], guild_only=True)

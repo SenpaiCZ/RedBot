@@ -174,7 +174,7 @@ class CthulhuCog(commands.Cog):
             ":bulb:`!sinfo skill-name` - Get information about specific skill (without skill-name you will get list of skills). (e.g. `!sinfo Listen`)\n\n"
             ":bulb:`!oinfo occupation-name` - Get information about occupation (without occupation-name you will get list of occupations). (e.g. `!oinfo bartender`)\n\n"
             ":bulb:`!ainfo archetype-name` - Get information about archetype (without archetype-name you will get list of archetypes). (e.g. `!ainfo grease monkey`) \n\n"
-            ":bulb:`!tinfo` - Get two random talents. If you use argument combat, mental, physical or myscellaneous you will get list of talents. (e.g. `!oinfo physical`)\n\n"
+            ":bulb:`!tinfo` - Get two random talents. If you use argument combat, mental, physical or myscellaneous you will get list of talents. (e.g. `!tinfo physical`)\n\n"
             ":bulb:`!mcs` - Show your investigators stats, skills, backstory and inventory. With @ you can show other players stats (e.g. `!mcs @potato`)\n\n"
             ":bulb:`!d YDX` - Roll dice (e.g. `!d 3D6` or `!d 3D6 + 1D10` or `!d 1D6 + 2`)\n\n"
             ":bulb:`!d skill-name` - Roll D100 against a skill. (e.g. `!d Listen`)\n\n"
@@ -3039,7 +3039,7 @@ class CthulhuCog(commands.Cog):
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["cTalents","tInfo"])
+    @commands.command(aliases=["cTalents","tinfo"])
     async def cthulhu_talents(self, ctx, category: str = None):
         """
         `!cTalents` - Generate two random talents or get a list of talents.

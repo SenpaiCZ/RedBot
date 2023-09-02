@@ -1622,60 +1622,140 @@ class CthulhuCog(commands.Cog):
     async def skillinfo(self, ctx, *, skill_name: str = None):
         # Zde můžete definovat informace o dovednostech (malá písmena)
         skills_info = {
-            "Accounting": ":chart_with_upwards_trend:  Base stat - 05% \n :ledger: Accounting skill grants the ability to understand financial operations, detecting discrepancies and fraud in financial records, and evaluating the financial health of businesses or individuals. It involves inspecting account books to uncover misappropriations, bribes, or discrepancies in claimed financial conditions. Difficulty varies based on how well accounts are concealed. Pushing examples involve spending more time reviewing documents or double-checking findings. Failing a Pushed roll could lead to revealing the investigators' intentions or damaging the accounts, with insane investigators possibly eating them.",
-            "Animal Handling": ":chart_with_upwards_trend:  Base stat - 05% \n :lion_face: Animal Handling allows one to command and train domesticated animals like dogs to perform tasks. It's also applicable to other animals like birds, cats, and monkeys. This skill isn't used for riding animals (use the Ride skill instead). Difficulty varies based on the animal's training and familiarity. Pushing examples involve greater personal risk while handling animals. Failing a Pushed roll might result in the animal attacking or escaping. Insane investigators might mimic the behavior of the animal they were trying to control.",
-            "Anthropology":":chart_with_upwards_trend:  Base stat - 01% \n :earth_americas: Anthropology enables understanding of other cultures through observation. Spending time within a culture allows basic predictions about its ways and morals. Extensive study helps comprehend cultural functioning, allowing predictions of actions and beliefs. Difficulty depends on exposure to the subject culture. Pushing examples involve deeper study or immersion. Failing a Pushed roll might lead to attack or imprisonment by the studied culture or side effects from participating in ceremonies.",
-            "Appraise":":chart_with_upwards_trend:  Base stat - 01% \n :mag: Appraise skill estimates item values, including quality, materials, and historical significance. It helps determine age, relevance, and detect forgeries. Difficulty varies based on the rarity and complexity of the item. Pushing examples involve validation from experts or testing. Failing a Pushed roll could damage the item, draw attention to it, or trigger its function. Insane investigators might destroy the item, believing it's cursed or refuse to give it up.",
-            "Archaeology":":chart_with_upwards_trend:  Base stat - 01% \n :pick: Archaeology enables dating and identifying artifacts, detecting fakes, and expertise in setting up excavation sites. Users can deduce the purposes and lifestyles of past cultures from remains. It assists in identifying extinct human languages. Difficulty varies based on time and resources. Pushing examples involve further study or research. Failing a Pushed roll could spoil a site, result in seizure of finds, or attract unwanted attention. If an insane investigator fails, they might keep digging deeper.",
-            "Art and Craft":":chart_with_upwards_trend:  Base stat - 05% \n :art: Art and Craft skills involve creating or repairing items, possibly with specializations like acting, painting, forgery, and more. Skills can be used to make quality items, duplicate items, or create fakes. Different difficulty levels correspond to crafting different qualities of items. Pushing examples include reworking items or conducting additional research. Failing a Pushed roll might waste time and resources or offend customers. Insane investigators might create unusual works that provoke strong reactions.",
-            "Artillery":":chart_with_upwards_trend:  Base stat - 01% \n :crossed_swords: Artillery is the operation of field weapons in warfare. The user is experienced in operating large weapons requiring crews. Specializations exist based on the period, including cannon and rocket launcher. Difficulty varies with maintenance and conditions. This combat skill cannot be pushed.",
-            "Charm":":chart_with_upwards_trend:  Base stat - 15% \n :heart_decoration: Charm involves physical attraction, seduction, flattery, or a warm personality to influence someone. It can be used for persuasion, bargaining, and haggling. Opposed by Charm or Psychology skills. Difficulty levels depend on the context. Pushing examples involve extravagant flattery, offering gifts, or building trust. Failure might lead to offense, exposure, or interference by third parties. If an insane investigator fails a pushed roll, they might fall in love with the target.",
-            "Climb":":chart_with_upwards_trend:  Base stat - 20% \n :mountain: Climb skill allows a character to ascend vertical surfaces using ropes, climbing gear, or bare hands. Conditions like surface firmness, handholds, weather, and visibility affect the difficulty. Failing on the first roll might indicate the climb's impossibility. A pushed roll failure likely results in a fall with damage. A successful Climb roll usually completes the climb in one attempt. Increased difficulty applies for challenging or longer climbs. Pushing examples include reassessing the climb or finding alternate routes. Consequences of failing a Pushed roll could be falling and suffering damage, losing possessions, or becoming stranded. If an insane investigator fails a pushed roll, they might hold on for dear life and scream.",
-            "Computer Use":":chart_with_upwards_trend:  Base stat - 05% \n :computer: This skill is for programming in computer languages, analyzing data, breaking into secure systems, exploring networks, and detecting intrusions, back doors, and viruses. The Internet provides vast information, often requiring combined rolls with Library Use. It's not necessary for regular computer use. Difficulty varies for tasks like programming and hacking into networks. Pushing examples include using shortcuts or untested software. Consequences of failing a Pushed roll might include erasing files, leaving evidence, or infecting the system with a virus. If an insane investigator fails a pushed roll, they might become absorbed in the virtual world.",
-            "Credit Rating":":chart_with_upwards_trend:  Base stat - 00% \n :moneybag: Credit Rating represents the investigator's financial status and confidence. It's not a skill per se, but a measure of wealth and prosperity. A high Credit Rating can aid in achieving goals using financial status. It can also substitute for APP for first impressions. Credit Rating varies for different occupations and can change over time. A high Credit Rating can open doors and provide resources. It's not meticulously tracked in gameplay but helps gauge the investigator's financial reach. Failing a Pushed roll might lead to negative consequences, such as involvement with loan sharks or loss of possessions. If an insane investigator fails a pushed roll, they might become overly generous with their money.",
-            "Cthulhu Mythos":":chart_with_upwards_trend:  Base stat - 00% \n :octopus: This skill reflects understanding of the Cthulhu Mythos, the Lovecraftian cosmic horrors. Points in this skill are gained through encounters, insanity, insights, and reading forbidden texts. An investigator's Sanity can't exceed 99 minus their Cthulhu Mythos skill. Successful rolls allow identification of Mythos entities, knowledge about them, remembering facts, identifying spells, and manifesting magical effects. The skill starts at zero and is often low. Regular difficulty rolls are common, while hard difficulty might involve identifying entities from rumors or finding vulnerabilities through research. Failing a Pushed roll can lead to dangerous consequences, like exposing oneself to harm or activating spells inadvertently. If an insane investigator fails a pushed roll, they might experience a vision or revelation about the Cthulhu Mythos.",
-            "Demolitions":":chart_with_upwards_trend:  Base stat - 01% \n :exploding_head: This skill involves safely setting and defusing explosive charges, including mines and military-grade demolitions. Skilled individuals can rig charges for demolition, clearing tunnels, and constructing explosive devices. Regular difficulty might involve defusing explosive devices or knowing where to place charges for maximum effect, while hard difficulty could involve defusing a device under time pressure. Failing a pushed roll when defusing could result in an explosion, while improper detonation might result from placing charges. If an insane investigator fails a pushed roll, they might come up with eccentric ways to deliver explosives.",
-            "Disguise":":chart_with_upwards_trend:  Base stat - 05% \n :dress: This skill is used when the investigator wants to appear as someone else. It involves changing posture, costume, voice, and possibly makeup or fake ID. Regular difficulty involves convincing strangers of the disguise's authenticity, while hard difficulty requires convincing professionals in face-to-face meetings. Pushing examples could include thorough preparation, stealing personal items, or feigning illness to distract observers. Consequences of failing a pushed roll might involve arrest, offense, or unintended consequences due to the disguise. If an insane investigator fails a pushed roll, they might struggle to recognize their own face even without the disguise.",
-            "Diving":":chart_with_upwards_trend:  Base stat - 01% \n :diving_mask: This skill covers the use of diving equipment for underwater swimming, including navigation, weighting, and emergency procedures. It includes both historical diving suits and modern scuba diving. Regular difficulty applies to routine dives with proper equipment, while hard difficulty might involve dangerous conditions or poorly maintained gear. Pushing examples could be pushing equipment limits or seeking professional assistance. Consequences of failing a pushed roll might involve becoming trapped underwater or suffering decompression sickness. If an insane investigator fails a pushed roll, they might believe they can understand whale-song.",
-            "Dodge":":chart_with_upwards_trend:  Base stat - half DEX% \n :warning: Dodge allows an investigator to instinctively evade blows, projectiles, and attacks. It's mostly used in combat as part of opposed rolls. There's no set difficulty level for Dodge, and it cannot be pushed. The skill is related to an investigator's Dexterity stat and can increase through experience.",
-            "Drive Auto":":chart_with_upwards_trend:  Base stat - 20% \n :blue_car: This skill allows the investigator to drive a car or light truck, make ordinary maneuvers, and handle common vehicle issues. It's used for driving in various situations, including escaping pursuers or tailing someone. Regular difficulty might involve weaving through light traffic, while hard difficulty could involve weaving through heavy traffic. Pushing examples might involve driving to the vehicle's limit. Consequences of failing a Pushed roll might involve crashing, being pursued by the police, or other complications. If an insane investigator fails a pushed roll, they might act as if they're driving a stationary vehicle and making engine noises.",
-            "Electrical Repair":":chart_with_upwards_trend:  Base stat - 10% \n :wrench: This skill allows the investigator to repair or reconfigure electrical equipment like auto ignitions, electric motors, and burglar alarms. It's separate from Electronics and involves physical repairs rather than dealing with microchips or circuit boards. Regular difficulty tasks include repairing or creating standard electrical devices, while hard difficulty tasks involve more significant repairs or working without proper tools. Pushing examples might involve taking longer to repair or researching new methods. Consequences of failing a Pushed roll could lead to electric shock or damaging the equipment further. If an insane investigator fails a pushed roll, they might attempt to harness the power of living organisms into devices.",
-            "Electronics":":chart_with_upwards_trend:  Base stat - 01% \n :electric_plug:  Electronics skill is for troubleshooting, repairing, and creating electronic devices. It's different from Electrical Repair, as it involves microchips, circuit boards, and modern technology. Regular difficulty tasks might involve minor repairs, while hard difficulty tasks might involve jury-rigging devices with scavenged parts. The availability of correct parts and instructions is essential. Successful skill use can lead to repairs, constructions, or modifications of electronic devices. If an investigator has the right parts and instructions, constructing a standard computer might not require a skill roll. Consequences of failing a Pushed roll might involve damaging circuitry or creating unintended outcomes. If an insane investigator fails a pushed roll, they might become paranoid about electronic surveillance.",
-            "Fast Talk":":chart_with_upwards_trend:  Base stat - 05% \n :pinched_fingers: Fast Talk involves verbal trickery, deception, and misdirection to achieve short-term effects. It can be used to deceive, haggle, or manipulate people into temporary actions. The effect is usually temporary, and the target might realize the trick after a while. Regular and hard difficulty levels are similar to other social skills. Pushing examples could involve talking outlandishly or getting close to the target. Fast Talk can't be changed to other skills mid-discussion. Failing a pushed roll might lead to offense or violence. If an insane investigator fails a pushed roll, they might start hurling abusive phrases.",
-            "Fighting":":chart_with_upwards_trend:  Base stat - 0X% \n :boxing_glove: Fighting skills cover melee combat and come in different specializations based on the type of weapon or fighting style. There's no generic Fighting skill; instead, characters choose specialized skills like Axe, Brawl, Chainsaw, Flail, Garrote, Spear, Sword, and Whip. These skills determine proficiency in various weapons and combat styles. They can't be pushed and involve opposed rolls in combat.",
-            "Firearms":":chart_with_upwards_trend:  Base stat - 0X% \n :gun: Firearms skill covers various types of firearms, bows, and crossbows. Characters choose specialized skills like Bow, Handgun, Heavy Weapons, Flamethrower, Machine Gun, Rifle/Shotgun, and Submachine Gun. These skills determine proficiency in using different firearms and ranged weapons. They can't be pushed and involve opposed rolls in combat.",
-            "First Aid":":chart_with_upwards_trend:  Base stat - 30% \n :ambulance: First Aid skill enables an investigator to provide emergency medical care, like splinting broken limbs, stopping bleeding, treating burns, and more. Successful First Aid treatment must be delivered within an hour, granting 1 hit point. Two people can work together for First Aid, with either one rolling successfully for a joint success. Successful use of First Aid can rouse an unconscious person to consciousness. First Aid can stabilize a dying character for an hour, granting 1 temporary hit point, and can be repeated until stabilization or death. Successful First Aid can save the life of a dying character, but further treatment with the Medicine skill or hospitalization is required afterward.",
-            "History":":chart_with_upwards_trend:  Base stat - 05% \n :scroll: History skill allows an investigator to remember the significance of places, people, and events. Regular difficulty tasks involve recalling pertinent information, while hard difficulty tasks involve knowing obscure details. Pushing examples might involve taking more time for research or consulting experts. Consequences of failing a Pushed roll could include wasting time and resources or providing erroneous information. If an insane investigator fails a pushed roll, they might believe they're displaced in time or start acting and speaking in an archaic manner.",
-            "Hypnosis":":chart_with_upwards_trend:  Base stat - 01% \n :face_with_spiral_eyes: Hypnosis skill allows the user to induce a trancelike state in a target, increasing suggestibility and relaxation. It can be used as hypnotherapy to reduce the effects of phobias or manias, with a series of successful sessions potentially curing the patient. Hypnosis can be opposed by Psychology or POW for unwilling subjects. Pushing examples might involve using lights, props, or drugs to enhance the effect. Consequences of failing a Pushed roll could include triggering forgotten memories or traumas or even leading the target to dangerous situations. If an insane investigator fails a pushed roll, they might regress to a childlike state until treated.",
-            "Intimidate":":chart_with_upwards_trend:  Base stat - 05% \n :fearful: Intimidation involves using physical force, psychological manipulation, or threats to frighten or compel someone. It's opposed by Intimidate or Psychology. Successful intimidation can be used to achieve specific outcomes, like lowering prices or gaining compliance. Backing up threats with weapons or incentives can reduce the difficulty level. Pushing an Intimidation roll might lead to unintended consequences, such as carrying out threats beyond the intended level. Failure consequences could involve accidental harm, a target's unexpected resistance, or backlash from the target.",
-            "Jump":":chart_with_upwards_trend:  Base stat - 20% \n :athletic_shoe: Jumping skill allows investigators to perform various types of jumps, both vertically and horizontally. Regular, hard, and extreme difficulties determine the distances and heights that can be successfully jumped. Jump can also be used to mitigate fall damage when falling from heights. Regular success might involve safely jumping down your own height, while extreme success could mean leaping twice your height. Falling damage can be reduced with a successful Jump roll.",
-            "Language (Other)":":chart_with_upwards_trend:  Base stat - 01% \n :globe_with_meridians: This skill represents a character's ability to understand, speak, read, and write in a language other than their own. The exact language must be specified when choosing this skill. Different levels of skill allow for different degrees of proficiency, from basic communication to fluency and even passing as a native speaker. Success at the skill can encompass understanding an entire book or having a conversation. Different levels of success in Other Languages skill are also described.",
-            "Language (Own)":":chart_with_upwards_trend:  Base stat - EUD% \n :speech_balloon: This skill represents an investigator's proficiency in their own language. The skill percentage starts at the investigator's EDU characteristic, and they understand, speak, read, and write in their own language at that percentage or higher. No skill roll is normally required to use one's own language, even when dealing with technical or uncommon terms. However, if a document is particularly difficult to read or in an archaic dialect, the Keeper may require a roll.",
-            "Law":":chart_with_upwards_trend:  Base stat - 05% \n :scales: The Law skill represents a character's knowledge of relevant laws, precedents, legal maneuvers, and court procedures. It's used to understand and utilize legal details. This skill is important for legal professions and political office. The difficulty level may increase when using Law in a foreign country. The skill can be used for cross-examining witnesses and understanding legal situations.",
-            "Library Use":":chart_with_upwards_trend:  Base stat - 20% \n :books: Library Use allows investigators to locate specific information, such as books, newspapers, or references, in libraries or collections. The skill can be used to find locked cases or rare-book collections, though access might require other skills like Persuade or Credit Rating. Regular difficulty involves locating information, while hard difficulty applies when searching in a disorganized library or under time pressure.",
-            "Listen":":chart_with_upwards_trend:  Base stat - 20% \n :ear: Listen skill measures an investigator's ability to interpret and understand sounds, including conversations and distant noises. High Listen skill indicates heightened awareness. The skill can be used to detect approaching sounds or eavesdrop on conversations. Listen can be opposed by the Stealth skill when someone is trying to remain hidden.",
-            "Locksmith":":chart_with_upwards_trend:  Base stat - 01% \n :key: Locksmith skill allows an investigator to open locks, repair them, create keys, and utilize lock-picking tools. Regular difficulty involves opening or repairing standard locks, while hard difficulty applies to high-security locks. Pushing a roll might involve taking longer, dismantling the lock, or using force to open it.",
-            "Lore":":chart_with_upwards_trend:  Base stat - 01% \n :scroll: The Lore skill represents expert understanding of a specialized subject that falls outside the normal bounds of human knowledge. Specializations can include areas like Dream Lore, Necronomicon Lore, UFO Lore, and more. This skill is used to test an investigator's knowledge of specific topics that are central to the campaign or to convey the knowledge of non-player characters to the Keeper.",
-            "Mechanical Repair":":chart_with_upwards_trend:  Base stat - 10% \n :wrench: This skill allows investigators to repair machines, perform basic carpentry and plumbing, and construct or repair items. It's a companion skill to Electrical Repair and is used for fixing devices and creating new ones. Basic carpentry and plumbing projects are also within the scope of this skill. Mechanical Repair can open basic locks, but for more complex locks, refer to the Locksmith skill.",
-            "Medicine":":chart_with_upwards_trend:  Base stat - 01% \n :pill: The Medicine skill involves diagnosing and treating accidents, injuries, diseases, poisonings, etc. It allows the user to provide medical care and make public health recommendations. Successful use of the Medicine skill can recover hit points, and the skill is useful for treating major wounds. A successful roll with Medicine provides a bonus die on a weekly recovery roll. The skill takes a minimum of one hour to use for treatment.",
-            "Natural World":":chart_with_upwards_trend:  Base stat - 10% \n :deciduous_tree: Natural World represents an investigator's traditional and general knowledge of plants and animals in their environment. It's used to identify species, habits, and habitats in a more folkloric and enthusiastic manner. This skill is not as scientifically accurate as disciplines like Biology or Botany. Natural World can be used to judge the quality of animals, plants, or collections.",
-            "Navigate":":chart_with_upwards_trend:  Base stat - 10% \n :compass: Navigate skill enables an investigator to find their way in various weather conditions, day or night. The skill involves using landmarks, astronomical tables, charts, instruments, and modern technology for mapping and location. It can be used to measure and map an area. Familiarity with the area grants a bonus die. This skill can also be used as concealed rolls by the Keeper.",
-            "Occult":":chart_with_upwards_trend:  Base stat - 05% \n :crystal_ball: The Occult skill involves recognizing occult paraphernalia, words, concepts, and folk traditions. It's used to identify magical grimoires, occult codes, and general knowledge of secret traditions. The skill doesn't apply to Cthulhu Mythos magic. Successful use of Occult can be used for bargaining and haggling as well.",
-            "Operate Heavy Machinery":":chart_with_upwards_trend:  Base stat - 01% \n :bullettrain_front: This skill is required to operate large-scale construction machinery, such as tanks, backhoes, and steam shovels. It's also used for complex machinery, like ship engines. Operating heavy machinery successfully involves making skill rolls, especially in challenging conditions. Failure can result in damage or accidents.",
-            "Persuade":":chart_with_upwards_trend:  Base stat - 10% \n :speech_balloon: Persuade is used to convince others about specific ideas or concepts through reasoned argument and discussion. It's a skill that takes time and can be used for bargaining and haggling. Successful persuasion can have lasting effects on the target's beliefs. This skill can be used to haggle prices down.",
-            "Pilot":":chart_with_upwards_trend:  Base stat - 01% \n :airplane: The Pilot skill is specialized for flying or operating specific types of vehicles, such as aircraft or boats. Each specialization starts at 01%. The success of pilot rolls depends on the situation and conditions, with bad weather or damage raising the difficulty level.",
-            "Psychoanalysis":":chart_with_upwards_trend:  Base stat - 01% \n :brain: Psychoanalysis involves emotional therapies and can return Sanity points to investigator patients. It can be used to cope with phobias or see through delusions for a brief period. Psychoanalysis cannot increase a character's Sanity points above 99 (Cthulhu Mythos). Successful therapy can help during indefinite insanity.",
-            "Psychology":":chart_with_upwards_trend:  Base stat - 10% \n :brain: Psychology allows the user to study an individual and form ideas about their motives and character. It can be used to oppose social interaction rolls and see through disguises. The skill roll's difficulty level depends on the target's relevant social interaction skill. It's a skill that can be used to understand and predict behavior.",
-            "Read Lips":":chart_with_upwards_trend:  Base stat - 01% \n :lips: This skill allows the investigator to understand spoken communication by observing lip movements. It can be used to eavesdrop on conversations or silently communicate with another proficient individual. The skill's effectiveness depends on the situation, visibility, and distance.",
-            "Ride":":chart_with_upwards_trend:  Base stat - 05% \n :horse_racing: The Ride skill is used to handle and ride animals like saddle horses, donkeys, or mules. It involves knowledge of animal care, riding gear, and riding techniques. Falling from a mount due to an accident or failed skill roll can result in hit point loss. The success of a ride roll depends on the speed and terrain. Riding side-saddle or on unfamiliar mounts increases the difficulty.",
-            "Science Specializations":":chart_with_upwards_trend:  Base stat - X% \n :microscope: Science is a broad skill category that represents knowledge and expertise in various scientific disciplines. Each specialization focuses on a particular field of science and grants the character practical and theoretical abilities within that field. Characters can spend skill points to purchase specialization in a specific field. The generic Science skill cannot be directly purchased and instead, characters must choose from the available specializations. Many specialties overlap, and knowledge in one field may contribute to understanding another related field. \n Astronomy (01%): This specialization involves understanding celestial bodies, their positions, and movements. The character can identify stars, planets, and predict celestial events like eclipses. More advanced knowledge might include concepts of galaxies and extraterrestrial life. \n Biology (01%): The study of life and living organisms. This specialization covers various sub-disciplines such as cytology, genetics, microbiology, and more. Characters with this specialization can analyze organisms, study their functions, and even develop vaccines or treatments for diseases. \n Botany (01%): Botany focuses on plant life. The character can identify plant species, understand their growth patterns, reproductive mechanisms, and chemical properties. This specialization is useful for recognizing plants, their uses, and potential dangers. \n Chemistry (01%): The study of substances, their composition, properties, and interactions. Characters with this specialization can create chemical compounds, analyze unknown substances, and understand chemical reactions. This includes making simple explosives, poisons, and acids. \n Cryptography (01%): This specialization involves the study of secret codes and languages. Characters can create, decipher, and analyze codes used to conceal information. This skill is crucial for cracking complex codes and understanding hidden messages. \n Engineering (01%): While technically not a science, engineering involves practical applications of scientific principles. Characters with this specialization can design and build structures, machines, and materials for various purposes. \n Forensics (01%): Forensics focuses on analyzing evidence, often related to crime scenes. This specialization includes the examination of fingerprints, DNA, hair, and body fluids. Characters can identify and interpret evidence for legal disputes. \n Geology (01%): Geology encompasses the study of Earth's structure, rocks, minerals, and geological processes. Characters with this specialization can evaluate soil, recognize fossils, and anticipate geological events like earthquakes and volcanic eruptions. \n Mathematics (10%): Mathematics involves the study of numbers, logic, and mathematical theories. Characters with this specialization can solve complex mathematical problems, identify patterns, and decrypt intricate codes. \n Meteorology (01%): This specialization covers the scientific study of the atmosphere and weather patterns. Characters can predict weather changes, forecast rain, snow, and fog, and understand atmospheric phenomena. \n Pharmacy (01%): Pharmacy focuses on chemical compounds and their effects on living organisms. Characters with this specialization can formulate medications, identify toxins, and understand pharmaceutical properties and side effects. \n Physics (01%): Physics involves the study of physical phenomena such as motion, magnetism, electricity, and optics. Characters with this specialization have theoretical understanding and can create experimental devices to test ideas. \n Zoology (01%): Zoology centers on the study of animals, their behaviors, structures, and classifications. Characters with this specialization can identify animal species, understand behaviors, and analyze tracks and markings.",
-            "Sleight of Hand":":chart_with_upwards_trend:  Base stat - 10% \n :mage: This skill enables the user to conceal and manipulate objects using various techniques like palming, pick-pocketing, and creating illusions. It includes hiding items with debris or fabric and performing clandestine actions such as pick-pocketing or hiding objects on a person.",
-            "Spot Hidden":":chart_with_upwards_trend:  Base stat - 25% \n :eyes: Spot Hidden allows the character to notice hidden clues, secret doors, or concealed objects. The skill is essential for detecting subtle details, even in challenging environments. It can also be used to spot hidden intruders or recognize hidden dangers.",
-            "Stealth":":chart_with_upwards_trend:  Base stat - 20% \n :footprints: Stealth involves moving silently and hiding effectively to avoid detection. This skill is crucial for remaining unnoticed by others, whether it's sneaking past guards or hiding from pursuers. Characters can use Stealth to move quietly and maintain a low profile.",
-            "Survival":":chart_with_upwards_trend:  Base stat - 10% \n :camping: Survival is specialized for different environments such as desert, sea, or arctic conditions. It provides the knowledge needed to survive in extreme situations, including finding shelter, food, and water. Characters can adapt to their chosen environment and overcome challenges specific to it.",
-            "Swim":":chart_with_upwards_trend:  Base stat - 20% \n :swimmer: Swim skill represents the ability to navigate through water and other liquids. It's useful in situations where characters need to cross bodies of water, avoid drowning, or swim against currents. Successful Swim rolls can prevent drowning and navigate dangerous waters.",
-            "Throw":":chart_with_upwards_trend:  Base stat - 20% \n :dart: The Throw skill involves accurately hitting a target with a thrown object. Characters can use this skill to throw weapons like knives or spears and hit specific targets. The distance and accuracy of the throw depend on the skill level and the weight of the object.",
-            "Track":":chart_with_upwards_trend:  Base stat - 10% \n :mag_right: Track allows characters to follow trails left by people, animals, or vehicles. This skill is useful for pursuing individuals or uncovering hidden paths. The difficulty of tracking depends on factors such as time passed and the condition of the terrain.",
+            "Accounting": ":chart_with_upwards_trend:  Base stat - 05% \n :ledger: Accounting skill grants the ability to understand financial operations, detecting discrepancies and fraud in financial records, and evaluating the financial health of businesses or individuals. It involves inspecting account books to uncover misappropriations, bribes, or discrepancies in claimed financial conditions. Difficulty varies based on how well accounts are concealed. \n :grimacing: Pushing examples involve spending more time reviewing documents or double-checking findings. \n :x: Failing a Pushed roll could lead to revealing the investigators' intentions or damaging the accounts, with insane investigators possibly eating them.",
+
+            "Animal Handling": ":chart_with_upwards_trend:  Base stat - 05% \n :lion_face: Animal Handling allows one to command and train domesticated animals like dogs to perform tasks. It's also applicable to other animals like birds, cats, and monkeys. This skill isn't used for riding animals (use the Ride skill instead). Difficulty varies based on the animal's training and familiarity. \n :grimacing: Pushing examples involve greater personal risk while handling animals. For instance, an investigator might push their Animal Handling skill to calm a frightened, aggressive dog during an investigation, risking injury or bites in the process. \n :x: Failing a Pushed roll might result in the animal attacking or escaping. For example, if the investigator fails to control a panicked bird they were trying to use as a messenger, the bird could fly away or peck them in fear. Insane investigators might mimic the behavior of the animal they were trying to control.",
+
+            "Anthropology": ":chart_with_upwards_trend:  Base stat - 01% \n :earth_americas: Anthropology enables understanding of other cultures through observation. Spending time within a culture allows basic predictions about its ways and morals. Extensive study helps comprehend cultural functioning, allowing predictions of actions and beliefs. Difficulty depends on exposure to the subject culture. \n :grimacing: Pushing examples involve deeper study or immersion. \n :x: Failing a Pushed roll might lead to attack or imprisonment by the studied culture or side effects from participating in ceremonies.",
+
+            "Appraise": ":chart_with_upwards_trend:  Base stat - 01% \n :mag: Appraise skill estimates item values, including quality, materials, and historical significance. It helps determine age, relevance, and detect forgeries. Difficulty varies based on the rarity and complexity of the item. \n :grimacing: Pushing examples involve validation from experts or testing. \n :x: Failing a Pushed roll could damage the item, draw attention to it, or trigger its function. Insane investigators might destroy the item, believing it's cursed or refuse to give it up.",
+
+            "Archaeology": ":chart_with_upwards_trend:  Base stat - 01% \n :pick: Archaeology enables dating and identifying artifacts, detecting fakes, and expertise in setting up excavation sites. Users can deduce the purposes and lifestyles of past cultures from remains. It assists in identifying extinct human languages. Difficulty varies based on time and resources. \n :grimacing: Pushing examples involve further study or research. \n :x: Failing a Pushed roll could spoil a site, result in seizure of finds, or attract unwanted attention. If an insane investigator fails, they might keep digging deeper.",
+
+            "Art and Craft": ":chart_with_upwards_trend:  Base stat - 05% \n :art: Art and Craft skills involve creating or repairing items, possibly with specializations like acting, painting, forgery, and more. Skills can be used to make quality items, duplicate items, or create fakes. Different difficulty levels correspond to crafting different qualities of items. \n :grimacing: Pushing examples include reworking items or conducting additional research. \n :x: Failing a Pushed roll might waste time and resources or offend customers. Insane investigators might create unusual works that provoke strong reactions.",
+
+            "Artillery": ":chart_with_upwards_trend:  Base stat - 01% \n :crossed_swords: Artillery is the operation of field weapons in warfare. The user is experienced in operating large weapons requiring crews. Specializations exist based on the period, including cannon and rocket launcher. Difficulty varies with maintenance and conditions. This combat skill cannot be pushed.",
+
+            "Charm": ":chart_with_upwards_trend:  Base stat - 15% \n :heart_decoration: Charm involves physical attraction, seduction, flattery, or a warm personality to influence someone. It can be used for persuasion, bargaining, and haggling. Opposed by Charm or Psychology skills. Difficulty levels depend on the context. \n :grimacing: Pushing examples involve extravagant flattery, offering gifts, or building trust. \n :x: Failure might lead to offense, exposure, or interference by third parties. If an insane investigator fails a pushed roll, they might fall in love with the target.",
+
+            "Climb": ":chart_with_upwards_trend:  Base stat - 20% \n :mountain: Climb skill allows a character to ascend vertical surfaces using ropes, climbing gear, or bare hands. Conditions like surface firmness, handholds, weather, and visibility affect the difficulty. Failing on the first roll might indicate the climb's impossibility. A pushed roll failure likely results in a fall with damage. A successful Climb roll usually completes the climb in one attempt. Increased difficulty applies for challenging or longer climbs. \n :grimacing: Pushing examples include reassessing the climb or finding alternate routes. \n :x: Consequences of failing a Pushed roll could be falling and suffering damage, losing possessions, or becoming stranded. If an insane investigator fails a pushed roll, they might hold on for dear life and scream.",
+
+            "Computer Use": ":chart_with_upwards_trend:  Base stat - 05% \n :computer: This skill is for programming in computer languages, analyzing data, breaking into secure systems, exploring networks, and detecting intrusions, back doors, and viruses. The Internet provides vast information, often requiring combined rolls with Library Use. It's not necessary for regular computer use. Difficulty varies for tasks like programming and hacking into networks. \n :grimacing: Pushing examples include using shortcuts or untested software. \n :x: Consequences of failing a Pushed roll might include erasing files, leaving evidence, or infecting the system with a virus. If an insane investigator fails a pushed roll, they might become absorbed in the virtual world.",
+
+            "Credit Rating": ":chart_with_upwards_trend:  Base stat - 00% \n :moneybag: Credit Rating represents the investigator's financial status and confidence. It's not a skill per se, but a measure of wealth and prosperity. A high Credit Rating can aid in achieving goals using financial status. It can also substitute for APP for first impressions. Credit Rating varies for different occupations and can change over time. A high Credit Rating can open doors and provide resources. It's not meticulously tracked in gameplay but helps gauge the investigator's financial reach. \n :grimacing: Failing a Pushed roll might lead to negative consequences, such as involvement with loan sharks or loss of possessions. \n :x: If an insane investigator fails a pushed roll, they might become overly generous with their money.",
+
+            "Cthulhu Mythos": ":chart_with_upwards_trend:  Base stat - 00% \n :octopus: This skill reflects understanding of the Cthulhu Mythos, the Lovecraftian cosmic horrors. Points in this skill are gained through encounters, insanity, insights, and reading forbidden texts. An investigator's Sanity can't exceed 99 minus their Cthulhu Mythos skill. Successful rolls allow identification of Mythos entities, knowledge about them, remembering facts, identifying spells, and manifesting magical effects. The skill starts at zero and is often low. Regular difficulty rolls are common, while hard difficulty might involve identifying entities from rumors or finding vulnerabilities through research. \n :grimacing: Failing a Pushed roll can lead to dangerous consequences, like exposing oneself to harm or activating spells inadvertently. \n :x: If an insane investigator fails a pushed roll, they might experience a vision or revelation about the Cthulhu Mythos.",
+
+            "Demolitions": ":chart_with_upwards_trend:  Base stat - 01% \n :exploding_head: This skill involves safely setting and defusing explosive charges, including mines and military-grade demolitions. Skilled individuals can rig charges for demolition, clearing tunnels, and constructing explosive devices. Regular difficulty might involve defusing explosive devices or knowing where to place charges for maximum effect, while hard difficulty could involve defusing a device under time pressure. \n :grimacing: Failing a pushed roll when defusing could result in an explosion, while improper detonation might result from placing charges. \n :x: If an insane investigator fails a pushed roll, they might come up with eccentric ways to deliver explosives.",
+
+            "Disguise": ":chart_with_upwards_trend:  Base stat - 05% \n :dress: This skill is used when the investigator wants to appear as someone else. It involves changing posture, costume, voice, and possibly makeup or fake ID. Regular difficulty involves convincing strangers of the disguise's authenticity, while hard difficulty requires convincing professionals in face-to-face meetings. \n :grimacing: Pushing examples could include thorough preparation, stealing personal items, or feigning illness to distract observers. \n :x: Consequences of failing a pushed roll might involve arrest, offense, or unintended consequences due to the disguise. If an insane investigator fails a pushed roll, they might struggle to recognize their own face even without the disguise.",
+
+            "Diving": ":chart_with_upwards_trend:  Base stat - 01% \n :diving_mask: This skill covers the use of diving equipment for underwater swimming, including navigation, weighting, and emergency procedures. It includes both historical diving suits and modern scuba diving. Regular difficulty applies to routine dives with proper equipment, while hard difficulty might involve dangerous conditions or poorly maintained gear. \n :grimacing: Pushing examples could be pushing equipment limits or seeking professional assistance. \n :x: Consequences of failing a pushed roll might involve becoming trapped underwater or suffering decompression sickness. If an insane investigator fails a pushed roll, they might believe they can understand whale-song.",
+
+            "Dodge": ":chart_with_upwards_trend:  Base stat - half DEX% \n :warning: Dodge allows an investigator to instinctively evade blows, projectiles, and attacks. It's mostly used in combat as part of opposed rolls. There's no set difficulty level for Dodge, and it cannot be pushed. The skill is related to an investigator's Dexterity stat and can increase through experience.",
+
+            "Drive Auto": ":chart_with_upwards_trend:  Base stat - 20% \n :blue_car: This skill allows the investigator to drive a car or light truck, make ordinary maneuvers, and handle common vehicle issues. It's used for driving in various situations, including escaping pursuers or tailing someone. Regular difficulty might involve weaving through light traffic, while hard difficulty could involve weaving through heavy traffic. \n :grimacing: Pushing examples might involve driving to the vehicle's limit. \n :x: Consequences of failing a Pushed roll might involve crashing, being pursued by the police, or other complications. If an insane investigator fails a pushed roll, they might act as if they're driving a stationary vehicle and making engine noises.",
+
+            "Electrical Repair": ":chart_with_upwards_trend:  Base stat - 10% \n :wrench: This skill allows the investigator to repair or reconfigure electrical equipment like auto ignitions, electric motors, and burglar alarms. It's separate from Electronics and involves physical repairs rather than dealing with microchips or circuit boards. Regular difficulty tasks include repairing or creating standard electrical devices, while hard difficulty tasks involve more significant repairs or working without proper tools. \n :grimacing: Pushing examples might involve taking longer to repair or researching new methods. \n :x: Consequences of failing a Pushed roll could lead to electric shock or damaging the equipment further. If an insane investigator fails a pushed roll, they might attempt to harness the power of living organisms into devices.",
+
+            "Electronics": ":chart_with_upwards_trend:  Base stat - 01% \n :electric_plug:  Electronics skill is for troubleshooting, repairing, and creating electronic devices. It's different from Electrical Repair, as it involves microchips, circuit boards, and modern technology. Regular difficulty tasks might involve minor repairs, while hard difficulty tasks might involve jury-rigging devices with scavenged parts. The availability of correct parts and instructions is essential. Successful skill use can lead to repairs, constructions, or modifications of electronic devices. If an investigator has the right parts and instructions, constructing a standard computer might not require a skill roll. \n :grimacing: Consequences of failing a Pushed roll might involve damaging circuitry or creating unintended outcomes. If an insane investigator fails a pushed roll, they might become paranoid about electronic surveillance.",
+
+            "Fast Talk": ":chart_with_upwards_trend:  Base stat - 05% \n :pinched_fingers: Fast Talk involves verbal trickery, deception, and misdirection to achieve short-term effects. It can be used to deceive, haggle, or manipulate people into temporary actions. The effect is usually temporary, and the target might realize the trick after a while. Regular and hard difficulty levels are similar to other social skills. \n :grimacing: Pushing examples could involve talking outlandishly or getting close to the target. \n :x: Failing a pushed roll might lead to offense or violence. If an insane investigator fails a pushed roll, they might start hurling abusive phrases.",
+
+            "Fighting": ":chart_with_upwards_trend: Base stat - 0X% \n :boxing_glove: Fighting skills cover melee combat and come in different specializations based on the type of weapon or fighting style. There's no generic Fighting skill; instead, characters choose specialized skills like Axe, Brawl, Chainsaw, Flail, Garrote, Spear, Sword, and Whip. These skills determine proficiency in various weapons and combat styles. They can't be pushed and involve opposed rolls in combat. \n Axe (15%): This skill is for larger wood axes. A small hatchet can be used with basic brawling skill. If thrown, use the Throw skill. \nBrawl (25%): Brawl includes all unarmed fighting and basic weapons that anyone could pick up and make use of, such as clubs (up to cricket bats or baseball bats), knives, and many improvised weapons, such as bottles and chair legs. To determine the damage done with an improvised weapon, the Keeper should refer to the weapons list and pick something comparable. \n Chainsaw (10%): Chainsaw skill is for using the first gasoline-powered, mass-produced chainsaws that appeared in 1927, as well as earlier versions. \n Flail (10%): Flail covers weapons like nunchaku, morning stars, and similar medieval weapons. \n Garrote (15%): Garrote skill involves using any length of material to strangle. Victims must make a Fighting Maneuver to escape, or they suffer 1D6 damage per round. \nSpear (20%): This skill is for lances and spears. If thrown, use the Throw skill. \n Sword (20%): Sword skill covers all blades over two feet in length. \n Whip (05%): Whip skill includes weapons like bolas and whips. \n Weapons and their skill categories are listed in the Weapons Table (see pages 250-255). While the above specializations may not cover all weapons, try to fit other weapons into one of the above categories where possible. Chainsaw is included as a weapon due to its use in numerous films, but players should note that the chance of a fumble is doubled, and they risk killing their investigator (or removing a limb) should this happen.",
+
+            "Firearms": ":chart_with_upwards_trend: Base stat - 0X% \n :gun: Firearms (Specializations) (varies %) \n Firearms skill covers all manner of firearms, as well as bows and crossbows. You may spend skill points to purchase any skill specialization. The generic Firearms skill cannot be purchased. Choose specializations appropriate to your investigator’s occupation and history. Note: as a combat skill, this cannot be pushed \n Firearms Specializations: \n Bow (15%): Bow skill covers the use of bows and crossbows, ranging from medieval longbows to modern, high-powered compound bows. \n Handgun (20%): Handgun skill is used for all pistol-like firearms when firing discrete shots. For machine pistols (MAC-11, Uzi, etc.) in modern-era games, use the Submachine Gun skill when firing bursts. \n Heavy Weapons (10%): Heavy Weapons skill is used for grenade launchers, anti-tank rockets, etc. \n Flamethrower (10%): Flamethrower skill is for weapons projecting a stream of ignited flammable liquid or gas. These weapons may either be carried by the operator or mounted on a vehicle. \n Machine Gun (10%): Machine Gun skill covers weapons firing bursts from bipods, tripods, and mounted weapons. If single shots are fired from a bipod, use Rifle skill. The differences between assault rifles, submachine guns, and light machine guns are tenuous today. \n Rifle/Shotgun (25%): With this skill, any type of rifle (whether lever-action, bolt-action, or semi-automatic) or scatter-gun can be fired. Since the load from a shotgun expands in a spreading pattern, the user’s chance to hit does not decrease with range, but the damage dealt does. When an assault rifle fires a single shot (or multiple singles), use this skill. \n Submachine Gun (15%): Submachine Gun skill is used when firing any machine pistol or submachine gun, as well as for assault rifles set on burst or full automatic fire.",
+
+            "First Aid": ":chart_with_upwards_trend:  Base stat - 30% \n :ambulance: First Aid skill enables an investigator to provide emergency medical care, like splinting broken limbs, stopping bleeding, treating burns, and more. Successful First Aid treatment must be delivered within an hour, granting 1 hit point. Two people can work together for First Aid, with either one rolling successfully for a joint success. Successful use of First Aid can rouse an unconscious person to consciousness. First Aid can stabilize a dying character for an hour, granting 1 temporary hit point, and can be repeated until stabilization or death. Successful First Aid can save the life of a dying character, but further treatment with the Medicine skill or hospitalization is required afterward.",
+
+            "History": ":chart_with_upwards_trend:  Base stat - 05% \n :scroll: History skill allows an investigator to remember the significance of places, people, and events. Regular difficulty tasks involve recalling pertinent information, while hard difficulty tasks involve knowing obscure details. Pushing examples might involve taking more time for research or consulting experts. \n :grimacing: Consequences of failing a Pushed roll could include wasting time and resources or providing erroneous information. If an insane investigator fails a pushed roll, they might believe they're displaced in time or start acting and speaking in an archaic manner.",
+
+            "Hypnosis": ":chart_with_upwards_trend:  Base stat - 01% \n :face_with_spiral_eyes: Hypnosis skill allows the user to induce a trancelike state in a target, increasing suggestibility and relaxation. It can be used as hypnotherapy to reduce the effects of phobias or manias, with a series of successful sessions potentially curing the patient. Hypnosis can be opposed by Psychology or POW for unwilling subjects. \n :grimacing: Pushing examples might involve using lights, props, or drugs to enhance the effect. \n :x: Consequences of failing a Pushed roll could include triggering forgotten memories or traumas or even leading the target to dangerous situations. If an insane investigator fails a pushed roll, they might regress to a childlike state until treated.",
+
+            "Intimidate": ":chart_with_upwards_trend:  Base stat - 05% \n :fearful: Intimidation involves using physical force, psychological manipulation, or threats to frighten or compel someone. It's opposed by Intimidate or Psychology. Successful intimidation can be used to achieve specific outcomes, like lowering prices or gaining compliance. Backing up threats with weapons or incentives can reduce the difficulty level. \n :grimacing: Pushing an Intimidation roll might lead to unintended consequences, such as carrying out threats beyond the intended level. \n :x: Failure consequences could involve accidental harm, a target's unexpected resistance, or backlash from the target.",
+
+            "Jump": ":chart_with_upwards_trend:  Base stat - 20% \n :athletic_shoe: Jumping skill allows investigators to perform various types of jumps, both vertically and horizontally. Regular, hard, and extreme difficulties determine the distances and heights that can be successfully jumped. Jump can also be used to mitigate fall damage when falling from heights. \n :grimacing: Regular success might involve safely jumping down your own height, while extreme success could mean leaping twice your height. \n :x: Falling damage can be reduced with a successful Jump roll.",
+
+            "Language (Other)": ":chart_with_upwards_trend:  Base stat - 01% \n :globe_with_meridians: This skill represents a character's ability to understand, speak, read, and write in a language other than their own. The exact language must be specified when choosing this skill. Different levels of skill allow for different degrees of proficiency, from basic communication to fluency and even passing as a native speaker. Success at the skill can encompass understanding an entire book or having a conversation. Different levels of success in Other Languages skill are also described.",
+
+            "Language (Own)": ":chart_with_upwards_trend:  Base stat - EUD% \n :speech_balloon: This skill represents an investigator's proficiency in their own language. The skill percentage starts at the investigator's EDU characteristic, and they understand, speak, read, and write in their own language at that percentage or higher. No skill roll is normally required to use one's own language, even when dealing with technical or uncommon terms. However, if a document is particularly difficult to read or in an archaic dialect, the Keeper may require a roll.",
+
+            "Law": ":chart_with_upwards_trend:  Base stat - 05% \n :scales: The Law skill represents a character's knowledge of relevant laws, precedents, legal maneuvers, and court procedures. It's used to understand and utilize legal details. This skill is important for legal professions and political office. The difficulty level may increase when using Law in a foreign country. The skill can be used for cross-examining witnesses and understanding legal situations.",
+
+            "Library Use": ":chart_with_upwards_trend:  Base stat - 20% \n :books: Library Use allows investigators to locate specific information, such as books, newspapers, or references, in libraries or collections. The skill can be used to find locked cases or rare-book collections, though access might require other skills like Persuade or Credit Rating. Regular difficulty involves locating information, while hard difficulty applies when searching in a disorganized library or under time pressure.",
+
+            "Listen": ":chart_with_upwards_trend:  Base stat - 20% \n :ear: Listen skill measures an investigator's ability to interpret and understand sounds, including conversations and distant noises. High Listen skill indicates heightened awareness. The skill can be used to detect approaching sounds or eavesdrop on conversations. Listen can be opposed by the Stealth skill when someone is trying to remain hidden.",
+
+            "Locksmith": ":chart_with_upwards_trend:  Base stat - 01% \n :key: Locksmith skill allows an investigator to open locks, repair them, create keys, and utilize lock-picking tools. Regular difficulty involves opening or repairing standard locks, while hard difficulty applies to high-security locks. \n :grimacing: Pushing a roll might involve taking longer, dismantling the lock, or using force to open it. \n :x: Failing a Pushed roll could result in a lock becoming more damaged or even jammed.",
+
+            "Lore": ":chart_with_upwards_trend:  Base stat - 01% \n :scroll: The Lore skill represents expert understanding of a specialized subject that falls outside the normal bounds of human knowledge. Specializations can include areas like Dream Lore, Necronomicon Lore, UFO Lore, and more. This skill is used to test an investigator's knowledge of specific topics that are central to the campaign or to convey the knowledge of non-player characters to the Keeper.",
+
+            "Mechanical Repair": ":chart_with_upwards_trend:  Base stat - 10% \n :wrench: This skill allows investigators to repair machines, perform basic carpentry and plumbing, and construct or repair items. It's a companion skill to Electrical Repair and is used for fixing devices and creating new ones. Basic carpentry and plumbing projects are also within the scope of this skill. \n :grimacing: Mechanical Repair can open basic locks, but for more complex locks, refer to the Locksmith skill. \n :x: Failing a Pushed roll might result in further damage to the device or item being repaired.",
+
+            "Medicine": ":chart_with_upwards_trend:  Base stat - 01% \n :pill: The Medicine skill involves diagnosing and treating accidents, injuries, diseases, poisonings, etc. It allows the user to provide medical care and make public health recommendations. Successful use of the Medicine skill can recover hit points, and the skill is useful for treating major wounds. A successful roll with Medicine provides a bonus die on a weekly recovery roll. The skill takes a minimum of one hour to use for treatment. \n :grimacing: Pushing a Medicine roll might involve attempting riskier procedures or experimental treatments. \n :x: Failing a Pushed roll could worsen the patient's condition or cause complications.",
+
+            "Natural World": ":chart_with_upwards_trend:  Base stat - 10% \n :deciduous_tree: Natural World represents an investigator's traditional and general knowledge of plants and animals in their environment. It's used to identify species, habits, and habitats in a more folkloric and enthusiastic manner. This skill is not as scientifically accurate as disciplines like Biology or Botany. Natural World can be used to judge the quality of animals, plants, or collections. \n :grimacing: Pushing examples might involve attempting to track rare or elusive animals or identify unique plant species. \n :x: Failing a Pushed roll could lead to misidentification or other errors.",
+
+            "Navigate": ":chart_with_upwards_trend:  Base stat - 10% \n :compass: Navigate skill enables an investigator to find their way in various weather conditions, day or night. The skill involves using landmarks, astronomical tables, charts, instruments, and modern technology for mapping and location. It can be used to measure and map an area. Familiarity with the area grants a bonus die. This skill can also be used as concealed rolls by the Keeper. \n :grimacing: Pushing examples might involve navigating in extreme conditions or using improvised tools. \n :x: Failing a Pushed roll could lead to getting lost or making critical navigation errors.",
+
+            "Occult": ":chart_with_upwards_trend:  Base stat - 05% \n :crystal_ball: The Occult skill involves recognizing occult paraphernalia, words, concepts, and folk traditions. It's used to identify magical grimoires, occult codes, and general knowledge of secret traditions. The skill doesn't apply to Cthulhu Mythos magic. Successful use of Occult can be used for bargaining and haggling as well. \n :grimacing: Pushing a roll might involve deciphering complex occult symbols or rituals. \n :x: Failing a Pushed roll could lead to misinterpretations or misunderstandings of occult knowledge.",
+
+            "Operate Heavy Machinery": ":chart_with_upwards_trend:  Base stat - 01% \n :bullettrain_front: This skill is required to operate large-scale construction machinery, such as tanks, backhoes, and steam shovels. It's also used for complex machinery, like ship engines. Operating heavy machinery successfully involves making skill rolls, especially in challenging conditions. Failure can result in damage or accidents. \n :grimacing: Attempting to operate heavy machinery under adverse conditions or with inadequate training might be a pushing example. \n :x: Failing a Pushed roll while operating heavy machinery could result in catastrophic accidents or damage to the equipment.",
+
+            "Persuade": ":chart_with_upwards_trend:  Base stat - 10% \n :speech_balloon: Persuade is used to convince others about specific ideas or concepts through reasoned argument and discussion. It's a skill that takes time and can be used for bargaining and haggling. Successful persuasion can have lasting effects on the target's beliefs. This skill can be used to haggle prices down. \n :grimacing: Pushing examples might involve using highly emotional or impassioned arguments. \n :x: Failing a Pushed roll might result in the target becoming more resistant or even hostile.",
+
+            "Pilot": ":chart_with_upwards_trend:  Base stat - 01% \n :airplane: The Pilot skill is specialized for flying or operating specific types of vehicles, such as aircraft or boats. Each specialization starts at 01%. The success of pilot rolls depends on the situation and conditions, with bad weather or damage raising the difficulty level. \n :grimacing: Pushing a roll in adverse conditions could involve attempting risky maneuvers. \n :x: Failing a Pushed roll might lead to accidents or further damage to the vehicle.",
+
+            "Psychoanalysis": ":chart_with_upwards_trend:  Base stat - 01% \n :brain: Psychoanalysis involves emotional therapies and can return Sanity points to investigator patients. It can be used to cope with phobias or see through delusions for a brief period. Psychoanalysis cannot increase a character's Sanity points above 99 (Cthulhu Mythos). Successful therapy can help during indefinite insanity. \n :grimacing: Pushing a Psychoanalysis roll might involve using unconventional or intense therapy techniques. \n :x: Failing a Pushed roll could result in the patient's condition worsening.",
+
+            "Psychology": ":chart_with_upwards_trend:  Base stat - 10% \n :brain: Psychology allows the user to study an individual and form ideas about their motives and character. It can be used to oppose social interaction rolls and see through disguises. The skill roll's difficulty level depends on the target's relevant social interaction skill. It's a skill that can be used to understand and predict behavior. \n :grimacing: Pushing examples might involve delving deeper into a target's psyche or analyzing complex psychological situations. \n :x: Failing a Pushed roll might result in misinterpretations of the target's behavior or missing important psychological cues.",
+
+            "Read Lips": ":chart_with_upwards_trend:  Base stat - 01% \n :lips: This skill allows the investigator to understand spoken communication by observing lip movements. It can be used to eavesdrop on conversations or silently communicate with another proficient individual. The skill's effectiveness depends on the situation, visibility, and distance. \n :grimacing: Pushing a Read Lips roll might involve trying to interpret obscured or distant lip movements. \n :x: Failing a Pushed roll could result in misinterpretation of the lip movements or failure to understand the conversation.",
+
+            "Ride": ":chart_with_upwards_trend:  Base stat - 05% \n :horse_racing: The Ride skill is used to handle and ride animals like saddle horses, donkeys, or mules. It involves knowledge of animal care, riding gear, and riding techniques. Falling from a mount due to an accident or failed skill roll can result in hit point loss. The success of a ride roll depends on the speed and terrain. Riding side-saddle or on unfamiliar mounts increases the difficulty. \n :grimacing: Pushing examples might involve attempting risky maneuvers or trying to control a frightened or unruly mount. \n :x: Failing a Pushed roll might lead to a fall from the mount or the mount becoming uncontrollable.",
+
+            "Science Specializations": ":chart_with_upwards_trend:  Base stat - X% \n :microscope: Science is a broad skill category that represents knowledge and expertise in various scientific disciplines. Each specialization focuses on a particular field of science and grants the character practical and theoretical abilities within that field. Characters can spend skill points to purchase specialization in a specific field. The generic Science skill cannot be directly purchased and instead, characters must choose from the available specializations. Many specialties overlap, and knowledge in one field may contribute to understanding another related field.",
+            
+            "Astronomy ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: This specialization involves understanding celestial bodies, their positions, and movements. The character can identify stars, planets, and predict celestial events like eclipses. More advanced knowledge might include concepts of galaxies and extraterrestrial life. \n :grimacing: Pushing examples could involve making complex astronomical calculations or analyzing celestial phenomena. \n :x: Failing a Pushed roll might result in misinterpretations of astronomical data or incorrect predictions.",
+
+            "Biology": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: The study of life and living organisms. This specialization covers various sub-disciplines such as cytology, genetics, microbiology, and more. Characters with this specialization can analyze organisms, study their functions, and even develop vaccines or treatments for diseases. \n :grimacing: Pushing examples might involve conducting intricate genetic experiments or identifying rare and elusive species. \n :x: Failing a Pushed roll could lead to experimental errors or misinterpretation of biological data.",
+
+            "Botany": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: Botany focuses on plant life. The character can identify plant species, understand their growth patterns, reproductive mechanisms, and chemical properties. This specialization is useful for recognizing plants, their uses, and potential dangers. \n :grimacing: Pushing examples could involve identifying highly obscure or rare plant species or conducting complex botanical research. \n :x: Failing a Pushed roll might result in the misidentification of plants or misunderstanding their properties.",
+
+            "Chemistry ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: The study of substances, their composition, properties, and interactions. Characters with this specialization can create chemical compounds, analyze unknown substances, and understand chemical reactions. This includes making simple explosives, poisons, and acids. \n :grimacing: Pushing examples might involve attempting to synthesize highly complex compounds or analyzing extremely volatile substances. \n :x: Failing a Pushed roll could result in dangerous chemical reactions or accidental explosions.",
+
+            "Cryptography ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: This specialization involves the study of secret codes and languages. Characters can create, decipher, and analyze codes used to conceal information. This skill is crucial for cracking complex codes and understanding hidden messages. \n :grimacing: Pushing examples might involve tackling exceptionally intricate codes or deciphering messages under extreme time pressure. \n :x: Failing a Pushed roll could lead to code-breaking errors or misinterpretation of encoded messages.",
+
+            "Engineering ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: While technically not a science, engineering involves practical applications of scientific principles. Characters with this specialization can design and build structures, machines, and materials for various purposes. \n :grimacing: Pushing examples might involve designing highly advanced or experimental engineering projects. \n :x: Failing a Pushed roll might result in structural failures or the creation of non-functional devices.",
+
+            "Forensics ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: Forensics focuses on analyzing evidence, often related to crime scenes. This specialization includes the examination of fingerprints, DNA, hair, and body fluids. Characters can identify and interpret evidence for legal disputes. \n :grimacing: Pushing examples might involve analyzing extremely degraded or contaminated evidence or reconstructing complex crime scenes. \n :x: Failing a Pushed roll might lead to misinterpretation of forensic evidence or contamination of samples.",
+
+            "Geology ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: Geology encompasses the study of Earth's structure, rocks, minerals, and geological processes. Characters with this specialization can evaluate soil, recognize fossils, and anticipate geological events like earthquakes and volcanic eruptions. \n :grimacing: Pushing examples could involve making highly accurate geological predictions or analyzing geological phenomena in extreme conditions. \n :x: Failing a Pushed roll might result in incorrect geological assessments or failure to predict geological events.",
+
+            "Mathematics ": ":chart_with_upwards_trend:  Base stat - 10% \n :microscope: Mathematics involves the study of numbers, logic, and mathematical theories. Characters with this specialization can solve complex mathematical problems, identify patterns, and decrypt intricate codes. \n :grimacing: Pushing examples might involve tackling unsolved mathematical problems or solving complex mathematical puzzles under extreme time pressure. \n :x: Failing a Pushed roll could lead to mathematical errors or incorrect solutions.",
+
+            "Meteorology ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: This specialization covers the scientific study of the atmosphere and weather patterns. Characters can predict weather changes, forecast rain, snow, and fog, and understand atmospheric phenomena. \n :grimacing: Pushing examples might involve making highly accurate weather predictions or analyzing unusual atmospheric phenomena. \n :x: Failing a Pushed roll might result in inaccurate weather forecasts or failure to understand complex weather patterns.",
+
+            "Pharmacy ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: Pharmacy focuses on chemical compounds and their effects on living organisms. Characters with this specialization can formulate medications, identify toxins, and understand pharmaceutical properties and side effects. \n :grimacing: Pushing examples could involve developing experimental pharmaceuticals or identifying extremely rare toxins. \n :x: Failing a Pushed roll might lead to the creation of ineffective medications or misinterpretation of pharmaceutical data.",
+
+            "Physics ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: Physics involves the study of physical phenomena such as motion, magnetism, electricity, and optics. Characters with this specialization have theoretical understanding and can create experimental devices to test ideas. \n :grimacing: Pushing examples might involve conducting groundbreaking experiments or developing advanced technological devices. \n :x: Failing a Pushed roll might result in experimental failures or misinterpretation of physical principles.",
+
+            "Zoology ": ":chart_with_upwards_trend:  Base stat - 01% \n :microscope: Zoology centers on the study of animals, their behaviors, structures, and classifications. Characters with this specialization can identify animal species, understand behaviors, and analyze tracks and markings. \n :grimacing: Pushing examples might involve studying highly elusive or dangerous animals or conducting complex behavioral research. \n :x: Failing a Pushed roll could lead to misinterpretations of animal behavior or mistakes in identifying species.",
+
+            "Sleight of Hand": ":chart_with_upwards_trend:  Base stat - 10% \n :mage: This skill enables the user to conceal and manipulate objects using various techniques like palming, pick-pocketing, and creating illusions. It includes hiding items with debris or fabric and performing clandestine actions such as pick-pocketing or hiding objects on a person. \n :grimacing: Pushing examples might involve attempting a riskier theft or creating a more elaborate illusion. \n :x: Failing a Pushed roll could lead to the target noticing the attempted theft or the failure of the illusion.",
+
+            "Spot Hidden": ":chart_with_upwards_trend:  Base stat - 25% \n :eyes: Spot Hidden allows the character to notice hidden clues, secret doors, or concealed objects. The skill is essential for detecting subtle details, even in challenging environments. It can also be used to spot hidden intruders or recognize hidden dangers. \n :grimacing: Pushing examples might involve scrutinizing the environment more intensively or searching for hidden threats more thoroughly. \n :x: Failing a Pushed roll might result in missing critical clues or overlooking concealed dangers.",
+
+            "Stealth": ":chart_with_upwards_trend:  Base stat - 20% \n :footprints: Stealth involves moving silently and hiding effectively to avoid detection. This skill is crucial for remaining unnoticed by others, whether it's sneaking past guards or hiding from pursuers. Characters can use Stealth to move quietly and maintain a low profile. \n :grimacing: Pushing examples could involve attempting to pass unseen in particularly challenging situations or trying to hide from especially vigilant pursuers. \n :x: Failing a Pushed roll might result in making noise or being spotted by those you're trying to avoid.",
+
+            "Survival": ":chart_with_upwards_trend:  Base stat - 10% \n :camping: Survival is specialized for different environments such as desert, sea, or arctic conditions. It provides the knowledge needed to survive in extreme situations, including finding shelter, food, and water. Characters can adapt to their chosen environment and overcome challenges specific to it. \n :grimacing: Pushing examples might involve attempting to find food or water in especially harsh conditions or creating a makeshift shelter in extreme weather. \n :x: Failing a Pushed roll could lead to difficulty finding essential resources or making mistakes that worsen the survival situation.",
+
+            "Swim": ":chart_with_upwards_trend:  Base stat - 20% \n :swimmer: Swim skill represents the ability to navigate through water and other liquids. It's useful in situations where characters need to cross bodies of water, avoid drowning, or swim against currents. Successful Swim rolls can prevent drowning and navigate dangerous waters. \n :grimacing: Pushing examples might involve attempting a challenging swim in rough waters or trying to swim long distances without rest. \n :x: Failing a Pushed roll might result in exhaustion, difficulty staying afloat, or even drowning.",
+
+            "Throw": ":chart_with_upwards_trend:  Base stat - 20% \n :dart: The Throw skill involves accurately hitting a target with a thrown object. Characters can use this skill to throw weapons like knives or spears and hit specific targets. The distance and accuracy of the throw depend on the skill level and the weight of the object. \n :grimacing: Pushing examples might involve attempting a particularly precise or long-range throw in challenging conditions. \n :x: Failing a Pushed roll might lead to missing the target, damaging the thrown object, or exposing the character's position.",
+
+            "Track": ":chart_with_upwards_trend:  Base stat - 10% \n :mag_right: Track allows characters to follow trails left by people, animals, or vehicles. This skill is useful for pursuing individuals or uncovering hidden paths. The difficulty of tracking depends on factors such as time passed and the condition of the terrain. \n :grimacing: Pushing examples might involve tracking in adverse weather conditions or following a trail that is difficult to discern. \n :x: Failing a Pushed roll could result in losing the trail or misinterpreting signs, leading the character in the wrong direction.",
+
         }
         if skill_name is None:
             # Pokud není poskytnuto žádné jméno dovednosti, vypíše seznam všech dovedností
@@ -1693,7 +1773,7 @@ class CthulhuCog(commands.Cog):
     async def coccupations(self, ctx, *, occupation_name: str = None):
         occupations_info = {
             "Accountant": {
-                "description": "Either employed within a business or working as a freelance consultant with a portfolio of self-employed clients or businesses. Diligence and an attention to detail means that most accountants can make good researchers, being able to support investigations through the careful analysis of personal and business transactions, financial statements, and other records.",
+                "description": "Whether holding a position within a corporation or operating as an independent consultant serving a roster of self-employed clients or enterprises, accountants are an integral part of the financial landscape. Their meticulous nature and unwavering focus on detail render them adept researchers, proficiently supporting inquiries by methodically scrutinizing personal and corporate transactions, financial documents, and various records.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
@@ -1701,7 +1781,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Law, Library Use, Listen, Persuade, Spot Hidden, any two other skills as personal or era specialties (e.g. Computer Use)."
             },
             "Acrobat": {
-                "description": "Acrobats may be either amateur athletes competing in staged meets—possibly even the Olympics—or professionals employed within the entertainment sector (e.g. circuses, carnivals, theatrical performances).",
+                "description": "Acrobats can fall into two main categories: they may either be dedicated amateur athletes, participating in formal competitions such as those found in the Olympics, or they can be skilled professionals working within the realm of entertainment, including circuses, carnivals, and theatrical productions.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "9–20",
@@ -1709,7 +1789,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Dodge, Jump, Throw, Spot Hidden, Swim, any two other skills as personal or era specialties."
             },
             "Stage Actor": {
-                "description": "Usually a stage or film actor. Many stage actors have a background in the classics and, considering themselves 'legitimate,' have a tendency to look down upon the commercial efforts of the film industry. By the late twentieth century, this is diminished, with film actors able to command greater respect and higher fees. Movie stars and the film industry have long captured the interest of people across the world. Many stars are made overnight and most of them lead flashy, high-profile lives, always in the media spotlight. In the 1920s, the theatrical center of the U.S. is in New York City, although there are major stages in most cities across the country. A similar situation exists in England, with touring repertory companies traveling the counties, and London is the heart of theatrical shows. Touring companies travel by train, presenting new plays, as well as classics by Shakespeare and others. Some companies spend considerable amounts of time touring foreign parts, such as Canada, Hawaii, Australia, and Europe. With the introduction of 'talkies' in the latter part of the 1920s, many stars of the silent film era cannot cope with the transition to sound. The arm-waving histrionics of silent actors give way to more subtle characterizations. John Garfield and Francis Bushman are forgotten for new stars, such as Gary Cooper and Joan Crawford.",
+                "description": "Typically, an individual who performs on stage or in the realm of cinema. Stage actors often possess a foundation in classical acting and may view themselves as part of the \"legitimate\" theater, occasionally looking down upon the commercial aspects of the film industry. However, as the late twentieth century unfolds, this distinction begins to wane, with film actors gaining increased recognition and earning higher salaries. The allure of movie stars and the film industry has consistently captivated audiences worldwide. Many celebrities achieve overnight stardom and lead glamorous, high-profile lives, frequently under the scrutiny of the media spotlight. During the 1920s, the epicenter of theater in the United States resides in New York City, although significant theatrical venues exist in most cities across the nation.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "9–40",
@@ -1717,7 +1797,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Acting), Disguise, Fighting, History, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one other skill as a personal or era specialty."
             },
             "Film star": {
-                "description": "Film stars are usually actors who have gained fame and recognition in the film industry. Many stars are made overnight and most of them lead flashy, high-profile lives, always in the media spotlight...",
+                "description": "Film stars typically refer to actors who have attained fame and renown within the film industry. A considerable number of these stars experience rapid ascension to stardom, and the majority of them live glamorous, high-profile lives, continuously under the scrutiny of the media spotlight.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "20–90",
@@ -1725,7 +1805,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Acting), Disguise, Drive Auto, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any two other skills as personal or era specialties (e.g. Ride or Fighting)."
             },
            "Agency detective": {
-                "description": "Numerous well-known detective agencies exist around the world, with probably the most famous being the Pinkerton and Burns agencies (merged into one in modern times). Large agencies employ two types of agents: security guards and operatives. Guards are uniformed patrolmen, hired by companies and individuals to protect property and people against burglars, assassins, and kidnappers. Use the Uniformed Police Officer’s (page 87) description for these characters. Company Operatives are plainclothes detectives, sent out on cases requiring them to solve mysteries, prevent murders, locate missing people, and so on.",
+                "description": "Detective agencies are prevalent worldwide, boasting several renowned names, with the Pinkerton and Burns agencies being among the most famous, having merged into a single entity in contemporary times. These expansive agencies maintain two distinct categories of personnel: security guards and operatives. Guards are uniformed officers engaged by corporations and private individuals to safeguard assets and individuals from potential threats such as burglars, assassins, and kidnappers. You can refer to the Uniformed Police Officer's description for a detailed portrayal of these characters. On the other hand, Company Operatives operate incognito, working as plainclothes detectives tasked with handling cases that involve unraveling mysteries, preventing homicides, locating missing persons, and various other investigative tasks.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "20–45",
@@ -1733,7 +1813,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "One interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Fighting (Brawl), Firearms, Law, Library Use, Psychology, Stealth, Track."
             },
             "Alienist": {
-                "description": "In the 1920s, 'alienist' is the term given for those who treat mental illness (early psychiatrists). Psychoanalysis is barely known in the U.S., and its basis in sexual life and toilet training is felt to be indecent. Psychiatry, a standard medical education augmented by behaviorism, is more common. Intellectual wars rage between alienists, psychiatrists, and neurologists.",
+                "description": "During the 1920s, the term \"alienist\" was used to describe professionals who specialized in the treatment of mental illness, essentially early psychiatrists. At that time, psychoanalysis was not widely recognized in the United States, and its focus on aspects like sexual development and toilet training was often considered inappropriate. Instead, psychiatry, which involved a standard medical education supplemented by behaviorism, was more prevalent. This era saw intense intellectual conflicts between various groups, including alienists, psychiatrists, and neurologists, as they grappled with different approaches to the understanding and treatment of mental health issues.",
                 "era":"Classic - 1920s period",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–60",
@@ -1741,7 +1821,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Law, Listen, Medicine, Other Language, Psychoanalysis, Psychology, Science (Biology), (Chemistry)."
             },
             "Animal trainer": {
-                "description": "May be employed by film studios, a traveling circus, a horse stable, or possibly working freelance. Whether training guide dogs for the blind or teaching a lion to jump through a flaming hoop, the animal trainer usually works alone, spending long hours in close proximity with the animals in their care.",
+                "description": "Animal trainers in the 1920s could find employment with film studios, traveling circuses, horse stables, or even work as freelancers. Their responsibilities varied widely, from training guide dogs for the blind to teaching lions to perform daring tricks, like jumping through flaming hoops. Typically, animal trainers worked independently and spent extended hours in close contact with the animals they were responsible for, nurturing strong bonds and trust with their animal charges.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or POW × 2)",
                 "credit_rating": "10–40",
@@ -1749,7 +1829,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Animal Handling, Jump, Listen, Natural World, Science (Zoology), Stealth, Track, any one other skill as a personal or era specialty."
             },
             "Antiquarian": {
-                "description": "A person who delights in the timeless excellence of design and execution, and in the power of ancient lore. Probably the most Lovecraft-like occupation available to an investigator. An independent income allows the antiquarian to explore things old and obscure, perhaps sharpening their focus down particular lines of enquiry based on personal preference and interest. Usually a person with an appreciative eye and a swift mind, who frequently finds mordant or contemptuous humor in the foolishness of the ignorant, the pompous, and the greedy.",
+                "description": "An individual who derives immense pleasure from the enduring craftsmanship of bygone eras and the enigmatic knowledge of antiquity. This occupation epitomizes the Lovecraftian essence within an investigator's choices. Typically possessing a private source of income, the antiquarian enjoys the freedom to delve into the mysteries of the past, often honing their investigative pursuits to align with personal fascinations and curiosities. Their keen discernment, nimble intellect, and penchant for sardonic wit often lead them to see humor in the ignorance, arrogance, and avarice of others.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
@@ -1757,7 +1837,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Appraise, Art/Craft (any), History, Library Use, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Antique dealer": {
-                "description": "Antique dealers usually own their own shop, retail items out of their homes, or go on extended buying trips, making a profit on reselling to urban stores.",
+                "description": "Antique dealers typically operate their own storefronts, sell items from their residences, or embark on extended purchasing journeys, turning a profit by reselling these antiques to urban retailers.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–50",
@@ -1765,7 +1845,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Appraise, Drive Auto, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), History, Library Use, Navigate."
             },
             "Archaeologist": {
-                "description": "The study and exploration of the past. Primarily the identification, examination, and analysis of recovered materials relating to human history. The work involves painstaking research and meticulous study, not to mention a willing attitude to getting one’s hands dirty. In the 1920s, successful archaeologists became celebrities, seen as explorers and adventurers. While some used scientific methods, many were happy to apply brute force when unveiling the secrets of the past—a few less reputable types even used dynamite. Such bullish behavior would be frowned upon in modern times.",
+                "description": "Archaeology is the discipline dedicated to the study and investigation of the past, primarily involving the identification, examination, and analysis of recovered artifacts and materials related to human history. This work necessitates thorough research, detailed scrutiny, and a readiness to engage in hands-on excavation. During the 1920s, accomplished archaeologists attained celebrity status, often regarded as daring explorers and adventurers. While some adhered to scientific methods, many were not averse to using sheer physical force to uncover the mysteries of antiquity – a few unscrupulous individuals even resorted to dynamite. Such aggressive approaches would be highly criticized in contemporary times.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–40",
@@ -1773,7 +1853,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Appraise, Archaeology, History, Other Language (any), Library Use, Spot Hidden, Mechanical Repair, Navigate or Science (e.g. chemistry, physics, geology, etc.)"
             },
             "Architect": {
-                "description": "Architects are trained to design and plan buildings, whether a small conversion to a private house or a multi-million dollar construction project. The architect will work closely with the project manager and oversee the construction. Architects must be aware of local planning laws, health and safety regulation, and general public safety. Some may work for large firms or work freelance. A lot will depend on reputation. In the 1920s, many try and go it alone, working out of their house or a small office. Few manage to sell the grandiose designs they all nurse. Architecture may also encompass specialist areas like naval architecture and landscape architecture.",
+                "description": "Architects are skilled professionals responsible for the design and planning of various structures, ranging from small residential conversions to massive multimillion-dollar construction projects. They collaborate closely with project managers and assume a supervisory role during the construction phase. Architects must possess a comprehensive understanding of local building regulations, health and safety standards, and public safety considerations. Some architects may find employment within large architectural firms, while others opt for freelance work, with their reputation playing a significant role in their success. In the 1920s, numerous architects ventured out on their own, operating from home offices or small establishments. However, few managed to secure commissions for their ambitious design visions. Additionally, architecture encompasses specialized fields such as naval architecture and landscape architecture.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
@@ -1781,7 +1861,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Art/Craft (Technical Drawing), Law, Own Language, Computer Use or Library Use, Persuade, Psychology, Science (Mathematics)."
             },
             "Artist": {
-                "description": "May be a painter, sculptor, etc. Sometimes self-absorbed and driven with a particular vision, sometimes blessed with a great talent that is able to inspire passion and understanding. Talented or not, the artist’s ego must be hardy and strong to surmount initial obstacles and critical appraisal, and to keep them working if success arrives. Some artists care not for material enrichment, while others have a keen entrepreneurial streak.",
+                "description": "Artists encompass a diverse group of individuals who may excel in various creative disciplines, such as painting, sculpting, and more. They can range from being intensely self-absorbed with a unique vision to possessing exceptional talent that ignites passion and comprehension in their audience. Regardless of their level of talent, artists must possess robust and unwavering egos to overcome initial challenges, withstand critical scrutiny, and persevere in their work if they achieve success. Some artists prioritize the pursuit of their craft over material wealth, while others exhibit a keen entrepreneurial spirit to capitalize on their creative endeavors.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or POW × 2)",
                 "credit_rating": "9–50",
@@ -1789,7 +1869,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (any), History or Natural World, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Other Language, Psychology, Spot Hidden, any two other skills as personal or era specialties."
             },
             "Asylum Attendant": {
-                "description": "Although there are private sanitariums for those few who can afford them, the vast bulk of the mentally ill are housed in state and county facilities. Aside from a few doctors and nurses, they employ a large number of attendants, often chosen more for their strength and size rather than medical learning.",
+                "description": "The care of the mentally ill in the 1920s primarily involves two types of institutions: private sanitariums catering to a privileged few with the means to afford them, and state and county facilities responsible for housing the majority of mentally ill individuals. In these state and county facilities, the staff typically includes a limited number of doctors and nurses, while a significant portion consists of attendants. These attendants are often selected more for their physical strength and size than for their medical expertise, reflecting the prevailing practices of the time.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "8–20",
@@ -1797,7 +1877,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Dodge, Fighting (Brawl), First Aid, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Listen, Psychology, Stealth."
             },
            "Athlete": {
-                "description": "Probably plays in a professional baseball, football, cricket, or basketball team. This may be a major league team with a regular salary and national attention or—particularly in the case of 1920s baseball—one of many minor league teams, some of them owned and operated by major league owners. The latter pay barely enough to keep players fed and on the team. Successful professional athletes will enjoy a certain amount of celebrity within the arena of their expertise—more so in the present day where sporting heroes stand side by side with film stars on red carpets around the world.",
+                "description": "Athletes in the 1920s, whether playing professional baseball, football, cricket, or basketball, often find themselves in one of two situations. Some are fortunate enough to be part of a major league team, receiving regular salaries and garnering national attention. Others, particularly in the case of 1920s baseball, may be members of minor league teams, with some of these teams owned and operated by major league owners. However, the compensation for players in minor league teams is often meager, barely sufficient to cover their basic needs and keep them on the team. Successful professional athletes, regardless of their league, can attain a level of celebrity within their sports that rivals the fame of film stars, especially in the modern era where sporting heroes share the limelight on red carpets worldwide.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–70",
@@ -1805,15 +1885,14 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Jump, Fighting (Brawl), Ride, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Swim, Throw, any one other skill as a personal or era specialty."
             },
             "Author": {
-                "description": "As distinct from the journalist, the author uses words to define and explore the human condition, especially the range of human emotions. Their labors are solitary and the rewards solipsistic: only a relative handful make much money in the present day, though in previous eras the trade once provided a regular living wage. The work habits of authors vary widely. Typically an author might spend months or years researching in preparation for a book, then withdrawing for periods of intense creation.",
-                "era":"Lovecraftian - Important in Lovecraft’s stories.",
+                "description": "Authors, distinct from journalists, employ words as their tools to delve into and examine the various facets of the human condition, with a particular focus on the spectrum of human emotions. Their work is often a solitary endeavor, and the rewards they reap are often more personal and introspective. In the present day, only a select few authors achieve significant financial success, although in past times, this profession could provide a steady and respectable income. Authors' work habits can vary widely. It's common for an author to dedicate months or even years to research as they prepare for a book, followed by periods of seclusion and intense creative output during the writing process.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
                 "suggested_contacts": "Publishers, critics, historians, etc.",
                 "skills": "Art (Literature), History, Library Use, Natural World or Occult, Other Language, Own Language, Psychology, any one other skill as a personal or era specialty."
             },
             "Bartender": {
-                "description": "Normally not the owner of the bar, the bartender is everyone’s friend. For some it’s a career or their business, for many it's a means to an end. In the 1920s the profession is made illegal by the Prohibition Act; however, there’s no shortage of work for a bartender, as someone has to serve the drinks in the speakeasies and secret gin joints.",
+                "description": "Bartenders, typically not the proprietors of the establishment, often serve as the friendly face behind the bar. For some, bartending is a lifelong career or even their own business, while for many others, it's a means to an end. During the 1920s, the Prohibition Act made this profession illegal, but there was still a high demand for bartenders as someone had to skillfully mix and serve drinks in the hidden speakeasies and secret gin joints that proliferated during that era.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "8–25",
@@ -1821,7 +1900,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Fighting (Brawl), Listen, Psychology, Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Big Game Hunter": {
-                "description": "Big game hunters are skilled trackers and hunters who usually earn their living leading safaris for wealthy clients. Most are specialized in one part of the world, such as the Canadian woods, African plains, and other locales. Some hunters may work for the black market, capturing live exotic species for private collectors, or trading in illegal or morally objectionable animal products like skins, ivory, and the like—although in the 1920s such activities were more common and were permissible under most countries’ laws. Although the great white hunter is the quintessential type, others may be simply local indigenous people who escort hunters through the backwoods of the Yukon in search of moose or bear.",
+                "description": "Big game hunters are highly skilled trackers and hunters, often earning their livelihood by guiding wealthy clients on safaris. They typically specialize in a specific region, such as the Canadian wilderness or the African plains. Some hunters, however, engage in illegal activities, such as capturing exotic animals for private collectors or trading in prohibited animal products like skins and ivory. During the 1920s, such activities were more common and were often legal under the laws of many countries. While the great white hunter is the classic archetype, others may include indigenous guides from local communities who lead hunters through remote areas in search of animals like moose or bears.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–50",
@@ -1829,7 +1908,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Firearms, Listen or Spot Hidden, Natural World, Navigate, Other Language or Survival (any), Science (Biology, Botany, or Zoology), Stealth, Track."
             },
             "Book Dealer": {
-                "description": "A book dealer may be the owner of a retail outlet or niche mail order service, or specialize in buying trips across the country and even overseas. Many will have wealthy or regular clients, who provide lists of sought-after and rare works.",
+                "description": "A book dealer can take on various roles, from owning a retail store or running a specialized mail-order service to engaging in buying trips both nationally and internationally. They often cater to a diverse clientele, including both affluent individuals and regular customers who supply lists of desired and rare books.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–40",
@@ -1837,14 +1916,14 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Appraise, Drive Auto, History, Library Use, Own Language, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade)."
             },
            "Bounty Hunter": {
-                "description": "Bounty hunters track down and return fugitives to justice. Most often, freelancers are employed by Bail Bondsmen to track down bail jumpers. Bounty hunters may freely cross state lines in pursuit of their quarry and may show little regard for civil rights and other technicalities when capturing their prey. Breaking and entering, threats, and physical abuse are all part of the successful bounty hunter’s bag of tricks. In modern times this may stem to illegal phone taps, computer hacking, and other covert surveillance.",
+                "description": "Bounty hunters are individuals hired to locate and apprehend fugitives, typically working as freelancers under the employ of Bail Bondsmen to recover bail jumpers. They have the authority to pursue their targets across state lines and often employ aggressive tactics, such as breaking and entering, threats, and physical force, to capture their quarry. In contemporary times, these methods may extend to illegal activities like phone tapping, computer hacking, and covert surveillance to achieve their objectives.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
                 "suggested_contacts": "Bail bondsmen, local police, criminal informants.",
                 "skills": "Drive Auto, Electronic or Electrical Repair, Fighting or Firearms, one interpersonal skill (Fast Talk, Charm, Intimidate, or Persuade), Law, Psychology, Track, Stealth."
             },
             "Boxer Wrestler": {
-                "description": "Professional boxers and wrestlers are managed by individuals (promoters) possibly backed by outside interests, and usually locked into contracts. Professional boxers and wrestlers work and train full-time. Amateur boxing competitions abound; a training ground for those aspiring to professional status. In addition, amateur and post-professional boxers and wrestlers can sometimes be found making a living from illegal bareknuckle fights, usually arranged by organized crime gangs or entrepreneurial locals.",
+                "description": "Professional boxers and wrestlers are typically under the management of promoters, who may have support from external backers and often enter into contractual agreements with the athletes. These professionals dedicate themselves to full-time training and competing in their respective sports. Amateur boxing competitions serve as a common stepping stone for those with aspirations of turning professional. Additionally, both amateur and retired professional boxers and wrestlers may sometimes engage in underground bareknuckle fights, often organized by criminal syndicates or local entrepreneurs, as a means of earning income.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + STR × 2",
                 "credit_rating": "9–60",
@@ -1852,7 +1931,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Dodge, Fighting (Brawl), Intimidate, Jump, Psychology, Spot Hidden, any two other skills as personal or era specialties."
             },
             "Butler Valet Maid": {
-                "description": "This occupation covers those who are employed in a servant capacity and includes butler, valet, and lady’s maid. A butler is usually employed as a domestic servant for a large household. Traditionally the butler is in charge of the dining room, wine cellar and pantry, and ranks as the highest male servant. Usually male—a housekeeper would be the female equivalent—the butler is responsible for male servants within the household. The duties of the butler will vary according to the requirements of his employer. A valet or lady’s maid provides personal services, such as maintaining her employer's clothes, running baths, and effectively acting as a personal assistant. The work might include making travel arrangements, managing their employer’s diary, and organizing household finances.",
+                "description": "This occupation encompasses various roles in domestic service, including butlers, valets, and lady's maids. A butler typically serves as a domestic servant in a large household and is traditionally responsible for overseeing the dining room, wine cellar, and pantry. The butler holds the highest-ranking position among male servants and often supervises other male staff members within the household. While typically male, a housekeeper fulfills the female equivalent role. A valet or lady's maid, on the other hand, provides personalized services to their employer, which may involve tasks such as maintaining their clothes, preparing baths, and acting as a personal assistant. These duties can extend to making travel arrangements, managing their employer's schedule, and handling household finances. The specific responsibilities of these roles can vary depending on the needs and preferences of the employer.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40 (dependent on their employer’s status and credit rating).",
@@ -1860,7 +1939,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting or Appraise, Art/Craft (any, e.g. Cook, Tailor, Barber), First Aid, Listen, Psychology, Spot Hidden, any two other skills as personal or era specialties."
             },
             "Clergy": {
-                "description": "The hierarchy of the Church usually assigns clergy to their respective parishes or sends them on evangelical missions, most often to a foreign country (see Missionary page 84). Different churches have different priorities and hierarchies: for example, in the Catholic Church a priest may rise through the ranks of bishop, archbishop, and cardinal, while a Methodist pastor may in turn rise to district superintendent and bishop. Many clergy (not just Catholic priests) bear witness to confessions and, though they are not at liberty to divulge such secrets, they are free to act upon them. Some who work in the church are trained in professional skills, acting as doctors, lawyers, and scholars—as appropriate, use the occupation template which best describes the nature of the investigator’s work.",
+                "description": "In the Church's hierarchy, clergy members are typically assigned to specific parishes or sent on missionary journeys, often to foreign countries. The structure and priorities of different churches may vary; for instance, in the Catholic Church, a priest can advance through the ranks to become a bishop, archbishop, and even a cardinal. In contrast, a Methodist pastor may progress to the roles of district superintendent and bishop within the Methodist hierarchy. Clergy members from various denominations may also serve as confessors, hearing the confessions of their parishioners. While they are bound by the confidentiality of these confessions, they have the freedom to act upon them as needed. Additionally, some individuals within the Church may have professional training in fields such as medicine, law, or scholarship, and they may serve in these capacities as part of their church-related work. The specific occupation template used would depend on the nature of the investigator's role within the church.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–60",
@@ -1868,7 +1947,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, History, Library Use, Listen, Other Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one other skill."
             },
             "Computer Programmer Technician Hacker": {
-                "description": "Usually designing, writing, testing, debugging, and/or maintaining the source code of computer programs, the computer programmer is an expert in many different subjects, including formal logic and application platforms. May work freelance or within the confines of a software development house. The computer technician is tasked with the development and maintenance of computer systems and networks, often working alongside other office staff (such as project managers) to ensure systems maintain integrity and provide desired functionality. Similar occupations may include: Database Administrator, IT Systems Manager, Multimedia Developer, Network Administrator, Software Engineer, Webmaster, etc. The computer hacker uses computers and computer networks as a means of protest to promote political ends (sometimes referred to as 'hacktivists') or for criminal gain. Illegally breaking into computers and other user accounts is required, the outcome of which could be anything from defacing web pages, doxing, and swatting, to email bombing designed to enact denials of service.",
+                "description": "omputer professionals work in various capacities related to computing and technology. Computer programmers are skilled in designing, writing, testing, debugging, and maintaining computer program source code. They possess expertise in subjects like formal logic and application platforms. Computer programmers may work independently as freelancers or within software development companies. Computer technicians, on the other hand, are responsible for developing and maintaining computer systems and networks. They often collaborate with office staff, such as project managers, to ensure the integrity and functionality of computer systems. Related occupations in this field include Database Administrator, IT Systems Manager, Multimedia Developer, Network Administrator, Software Engineer, and Webmaster. In contrast, computer hackers use their knowledge of computers and networks for various purposes. Some, known as \"hacktivists\", engage in cyber activities to promote political causes, while others pursue criminal objectives. Hacking typically involves illegal activities such as unauthorized access to computers and user accounts, leading to consequences like defacing websites, doxing, swatting, or carrying out email bombing attacks aimed at causing denials of service.",
                 "era":"Modern - Only available for modern-day game settings.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–70",
@@ -1876,7 +1955,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Computer Use, Electrical Repair, Electronics, Library Use, Science (Mathematics), Spot Hidden, any two other skills as personal or era specialties."
             },
             "Cowboy Girl": {
-                "description": "Cowboys work the ranges and ranches of the West. Some own their own ranches, but many are simply hired where and when work is available. Good money can also be made by those willing to risk life and limb on the rodeo circuit, traveling between events for fame and glory. During the 1920s, a few found employment in Hollywood as stuntmen and extras in westerns; for example, Wyatt Earp worked as a technical advisor to the film industry. In modern times some ranches have opened their gates to holidaymakers wishing to experience life as a cowboy.",
+                "description": "Cowboys are individuals who labor on the vast ranges and ranches of the Western United States. While some own their ranches, many are employed as hired hands, taking on work as it becomes available. Those who embrace the thrill and danger of rodeo events can earn substantial income by participating in the rodeo circuit, traveling between events in pursuit of fame and fortune. In the 1920s, a handful of cowboys found opportunities in Hollywood, working as stuntmen and extras in Western films. Notably, Wyatt Earp contributed as a technical advisor to the film industry during this era. In modern times, some ranches have opened their doors to tourists seeking a taste of cowboy life through holiday packages.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–20",
@@ -1884,7 +1963,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Dodge, Fighting or Firearms, First Aid or Natural World, Jump, Ride, Survival (any), Throw, Track."
             },
             "Craftsperson": {
-                "description": "May be equally termed an artisan or master craftsperson. The craftsperson is essentially skilled in the manual production of items or materials. Normally quite talented individuals, some gaining a high reputation for works of art, while others provide a needed community service. Possible trades include: furniture, jewelry, watchmaker, potter, blacksmith, textiles, calligraphy, sewing, carpentry, book binding, glassblowing, toy maker, stained glass, and so on.",
+                "description": "The craftsperson, often referred to as an artisan or master craftsperson, is highly skilled in the manual production of various items and materials. These individuals are typically quite talented, with some earning prestigious reputations for creating works of art, while others provide essential community services. Craftspersons are proficient in a wide range of trades, including furniture making, jewelry crafting, watchmaking, pottery, blacksmithing, textiles, calligraphy, sewing, carpentry, bookbinding, glassblowing, toy making, stained glass production, and more.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "10–40",
@@ -1988,7 +2067,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Fighting, Firearms, Jump, Sleight of Hand, Stealth, Throw. Also, see Gangster."
             },
             "Cult Leader": {
-                "description": "America has always generated new religions, from the New England Transcendentalists to the Children of God, as well as many others, right up to modern times. The leader is either a firm believer in the dogma they impart to the cult’s members or simply in it for the money and power.",
+                "description": "Throughout its history, America has been a breeding ground for the emergence of new religions and belief systems. From the New England Transcendentalists to more recent examples like the Children of God and many others, the country has witnessed the rise of various religious movements. These movements are typically led by charismatic individuals who may genuinely believe in the doctrines they preach or are primarily motivated by financial gain and the acquisition of power.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "30–60",
@@ -1996,7 +2075,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Occult, Psychology, Spot Hidden, any two other skills as specialties."
             },
             "Deprogrammer": {
-                "description": "Deprogramming is the act of persuading (or forcing) a person to abandon their belief or allegiance to a religious or social community. Normally, the deprogrammer is hired by relatives of an individual, who has joined some form of cult, in order to break them free (usually by kidnapping) and then subject them to psychological techniques to free them of their association ('conditioning') with the cult. Less extreme deprogrammers exist, who work with those who have voluntarily left a cult. In such cases, the deprogrammer effectively acts as an exit counselor.",
+                "description": "Deprogramming is a controversial practice involving efforts to convince or compel an individual to renounce their affiliation with a religious or social group, particularly when the person has joined what is perceived as a cult. Typically, deprogramming is initiated by concerned family members who may hire a deprogrammer to intervene, which can sometimes involve extreme measures like kidnapping. Once separated from the group, deprogrammers employ psychological techniques to help individuals sever their ties to the cult and its influence, a process often referred to as \"conditioning\". In less extreme cases, deprogrammers may work with individuals who have voluntarily left a cult, assisting them in the process of reintegration into mainstream society. These individuals often function as exit counselors, providing support and guidance to former cult members as they adjust to life outside the group.",
                 "era":"Modern - Only available for modern-day game settings.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–50",
@@ -2004,7 +2083,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Drive Auto, Fighting (Brawl) or Firearms, History, Occult, Psychology, Stealth. Note: With the Keeper’s agreement, the Hypnosis skill may be substituted for one of the listed skills."
             },
             "Designer": {
-                "description": "Designers work in many fields, from fashion to furniture and most points in-between. The designer may work freelance, for a design house, or for a business designing consumer products, processes, laws, games, graphics, and so on. The investigator’s particular design specialty might influence the choice of skills—adjust the skills as appropriate.",
+                "description": "Designers are creative professionals who specialize in various fields, including fashion, furniture, graphics, consumer products, and more. They may choose to work independently as freelancers, collaborate with design houses, or be employed by businesses to contribute to the design of a wide range of products, processes, laws, or graphics. The specific design focus of an investigator may influence their skill set, so adjustments to their skills should be made accordingly to reflect their expertise.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–60",
@@ -2012,7 +2091,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Art (Photography), Art/Craft (any), Computer Use or Library Use, Mechanical Repair, Psychology, Spot Hidden, any one other skill as personal specialty."
             },
             "Dilettante": {
-                "description": "Dilettantes are self-supporting, living off an inheritance, trust fund, or some other source of income that does not require them to work. Usually, the dilettante has enough money that specialist financial advisers are needed to take care of it. Probably well-educated, though not necessarily accomplished in anything. Money frees the dilettante to be eccentric and outspoken. In the 1920s, some dilettantes might be flappers or sheiks—as per the parlance of the time—of course, one didn't need to be rich to be a party person. In modern times, 'hipster' might also be an appropriate term. The dilettante has had plenty of time to learn how to be charming and sophisticated; what else has been done with that free time is likely to betray the dilettante’s true character and interests.",
+                "description": "Dilettantes are individuals who do not need to work for a living and are financially supported by inheritances, trust funds, or other sources of income. They typically have significant wealth that requires the expertise of financial advisors to manage. While they are often well-educated, they may not have achieved significant accomplishments in any particular field. Their financial independence allows them to express eccentricities and outspoken views. In the 1920s, some dilettantes might have been known as flappers or sheiks, although not all partygoers needed to be wealthy. In modern times, the term \"hipster\" may also be fitting. Dilettantes have had the opportunity to develop charm and sophistication, but their interests and character may reveal more about their true nature and passions.",
                "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "50–99",
@@ -2020,7 +2099,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Any), Firearms, Other Language, Ride, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), any three other skills as personal or era specialties."
             },
             "Diver": {
-                "description": "Divers could work in various fields such as the military, law enforcement, sponge gathering, salvage, conservation, or treasure hunting. They are skilled in underwater activities and often have contacts in maritime and related industries.",
+                "description": "Divers can be found in a range of professions, including the military, law enforcement, sponge gathering, salvage operations, conservation efforts, and treasure hunting. They possess expertise in underwater activities and frequently have connections within maritime and related sectors.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "9–30",
@@ -2028,7 +2107,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Diving, First Aid, Mechanical Repair, Pilot (Boat), Science (Biology), Spot Hidden, Swim, any one other skill as personal or era specialty."
             },
             "Doctor of Medicine": {
-                "description": "Doctors of Medicine are medical professionals who specialize in various fields such as general practice, surgery, psychiatry, or medical research. They aim to help patients, gain prestige, and contribute to a rational society. They might work in rural practices, urban hospitals, or as medical examiners.",
+                "description": "Doctors of Medicine are healthcare specialists with expertise in various fields, including general practice, surgery, psychiatry, or medical research. Their primary objectives are to provide medical care to patients, establish professional reputations, and contribute to a well-functioning society. They may practice medicine in rural clinics, urban hospitals, or serve as medical examiners.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–80",
@@ -2036,7 +2115,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "First Aid, Medicine, Other Language (Latin), Psychology, Science (Biology and Pharmacy), any two other skills as academic or personal specialties."
             },
             "Drifter": {
-                "description": "Drifters are individuals who choose a wandering and transient lifestyle, often moving from place to place. They may be motivated by a desire for freedom, philosophical reasons, or other factors. Their skills are adapted for mobility and survival on the road.",
+                "description": "Drifters are individuals who embrace a nomadic and itinerant way of life, frequently journeying from one location to another. Their choice of this lifestyle can be driven by a longing for independence, philosophical beliefs, or various personal factors. Drifters possess skills that are well-suited for a mobile and survival-oriented existence.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2 or STR × 2)",
                 "credit_rating": "0–5",
@@ -2044,7 +2123,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Jump, Listen, Navigate, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Stealth, any two other skills as personal or era specialties."
             },
             "Chauffeur": {
-                "description": "A chauffeur is either directly employed by an individual or firm, or works for an agency that hires both car and chauffeur out for single engagements or on a retainer basis. Chauffeurs often serve successful business people and may have political connections.",
+                "description": "A chauffeur is someone who is typically employed either directly by an individual or a company, or they may work for an agency that provides chauffeur services for single occasions or on an ongoing basis. Chauffeurs often cater to affluent businesspeople and may have ties to political circles.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "10–40",
@@ -2052,7 +2131,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Drive Auto, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Listen, Mechanical Repair, Navigate, Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Driver": {
-                "description": "Professional drivers may work for companies, private individuals, or have their own vehicles. They include taxi drivers and general drivers who navigate various environments. Drivers often have contacts in businesses, law enforcement, and street-level life.",
+                "description": "Professional drivers can be employed by companies, individuals, or may even operate their own vehicles. This category encompasses taxi drivers and drivers who are skilled at maneuvering through diverse environments. Drivers often have connections in various industries, law enforcement, and the local community.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–20",
@@ -2060,7 +2139,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Drive Auto, Listen, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Mechanical Repair, Navigate, Psychology, any one other skill as personal or era specialty."
             },
             "Taxi driver": {
-                "description": "Taxi drivers provide transportation services for passengers, often working for taxi companies or as independent operators. They navigate the streets and may encounter various customers. Taxi drivers often have knowledge of street scenes and notable customers.",
+                "description": "Taxi drivers offer transportation services to passengers, typically working for taxi companies or as self-employed drivers. They navigate city streets and interact with a diverse range of customers. Taxi drivers often have a deep understanding of the local street network and may have memorable encounters with passengers.",
                 "era":"Any",
                 "skill_points": "EDU x 2 + DEX x 2",
                 "credit_rating": "9–30",
@@ -2076,7 +2155,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, History, Own Language, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Spot Hidden, any one other skill as personal or era specialty."
             },
             "Elected Official": {
-                "description": "Elected officials hold positions of power and influence, ranging from local mayors to federal senators. Their prestige varies based on the level of government and jurisdiction they represent. They often have connections in politics, government, media, business, and sometimes organized crime.",
+                "description": "Editors are integral to the news industry, responsible for assigning stories, crafting editorials, and managing tight deadlines. Their role is pivotal in shaping content and upholding journalistic standards. Editors typically have a network of contacts within the news industry, local government, and specialized fields, aiding them in their work.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "50–90",
@@ -2084,7 +2163,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Charm, History, Intimidate, Fast Talk, Listen, Own Language, Persuade, Psychology."
             },
             "Engineer": {
-                "description": "Engineers are specialists in mechanical or electrical devices, often employed in civilian businesses or the military. They use scientific knowledge and creativity to solve technical problems. Engineers have contacts in business, military, and related fields.",
+                "description": "Engineers are experts in mechanical or electrical systems, commonly working in civilian enterprises or the military. They leverage their scientific expertise and ingenuity to address technical challenges. Engineers typically have connections in the business world, military circles, and related fields, enabling them to collaborate effectively on complex projects.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–60",
@@ -2092,7 +2171,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Technical Drawing), Electrical Repair, Library Use, Mechanical Repair, Operate Heavy Machine, Science (Engineering and Physics), any one other skill as personal or era specialty."
             },
             "Entertainer": {
-                "description": "This occupation includes various roles like clowns, singers, dancers, comedians, musicians, and more, who perform in front of audiences. Entertainers thrive on attention and applause, and their professions gained respect with the rise of Hollywood stars in the 1920s.",
+                "description": "This occupation encompasses a wide range of roles, including clowns, singers, dancers, comedians, musicians, and more, all of whom perform in front of live audiences. Entertainers thrive on the spotlight and the applause of their fans, and their professions gained significant respect and recognition with the rise of Hollywood stars in the 1920s.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "9–70",
@@ -2100,7 +2179,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (e.g. Acting, Singer, Comedian, etc.), Disguise, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Listen, Psychology, any two other skills as personal or era specialties."
             },
             "Explorer": {
-                "description": "Explorers in the early twentieth century embark on careers exploring unknown areas of the world. They often secure funding through grants, donations, and contracts to document their findings through various media. Much of the world remains unexplored, including parts of Africa, South America, Australia, deserts, and Asian interiors.",
+                "description": "Explorers in the early twentieth century pursued careers dedicated to exploring uncharted regions of the world. They frequently obtained financial support through grants, donations, and contracts to meticulously document their discoveries through various media. Despite the advancements of the era, large portions of the globe remained unexplored, encompassing regions in Africa, South America, Australia, deserts, and the remote interiors of Asia, offering these explorers a wealth of uncharted territory to traverse and document.",
                 "era":"Classic - 1920s period.",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2 or STR × 2)",
                 "credit_rating": "55–80",
@@ -2108,7 +2187,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb or Swim, Firearms, History, Jump, Natural World, Navigate, Other Language, Survival."
             },
             "Farmer": {
-                "description": "Farmers are agricultural workers who raise crops or livestock, either owning the land or being employed. Farming is physically demanding and suited for those who enjoy outdoor labor. Independent farmers in the 1920s face competition from corporate farms and fluctuating commodity markets.",
+                "description": "Farmers are dedicated agricultural laborers responsible for cultivating crops or raising livestock. They may either own the land they work on or be employed by larger agricultural operations. Farming is a physically demanding occupation that requires a strong affinity for outdoor labor. During the 1920s, independent farmers often contended with competition from corporate agricultural enterprises and the volatile nature of commodity markets, which could pose significant challenges to their livelihoods.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2116,7 +2195,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Farming), Drive Auto (or Wagon), one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Mechanical Repair, Natural World, Operate Heavy Machinery, Track, any one other skill as a personal or era specialty."
             },
             "Federal Agent": {
-                "description": "Federal agents work in various law enforcement agencies, both uniformed and plainclothes. They are responsible for enforcing federal laws and investigating crimes. Federal agents often have contacts within law enforcement, government, and organized crime.",
+                "description": "Federal agents are law enforcement officers employed by various federal agencies, serving in both uniformed and undercover capacities. They play a crucial role in enforcing federal laws and conducting investigations into criminal activities that fall under federal jurisdiction. Federal agents often possess extensive networks of contacts within law enforcement, government agencies, and organized crime, which they may leverage in the course of their duties.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–40",
@@ -2124,7 +2203,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Drive Auto, Fighting (Brawl), Firearms, Law, Persuade, Stealth, Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Firefighter": {
-                "description": "Firefighters are civil servants who work to prevent and combat fires. They often work in shifts and live at fire stations. Firefighting is organized in a hierarchical structure with potential for promotions. Firefighters often have contacts in civic works, medical services, and law enforcement.",
+                "description": "Firefighters are public servants dedicated to preventing and extinguishing fires. They typically work in shifts and reside at fire stations, ready to respond to emergencies at a moment's notice. Firefighting organizations have a hierarchical structure, offering opportunities for career advancement through promotions. Firefighters may have connections within various sectors, including civic works, medical services, and law enforcement, as they collaborate closely with these entities during emergency situations.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2132,7 +2211,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Dodge, Drive Auto, First Aid, Jump, Mechanical Repair, Operate Heavy Machinery, Throw."
             },
             "Foreign Correspondent": {
-                "description": "Foreign correspondents are top-tier news reporters who travel the world to cover international events. They work for major news outlets and may focus on various media forms. Foreign correspondents often report on natural disasters, political upheavals, and wars.",
+                "description": "Foreign correspondents are highly regarded journalists specializing in global news coverage. They are employed by prestigious news organizations and report on international events using various media formats. Foreign correspondents frequently cover significant topics such as natural disasters, political turmoil, and armed conflicts occurring across the world. Their work plays a crucial role in providing a comprehensive understanding of global events to the public.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–40",
@@ -2140,7 +2219,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "History, Other Language, Own Language, Listen, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one other skill as a personal or era specialty."
             },
             "Forensic Surgeon": {
-                "description": "Forensic surgeons conduct autopsies, determine causes of death, and provide recommendations to prosecutors. They often testify in criminal proceedings and have contacts in laboratories, law enforcement, and the medical profession.",
+                "description": "Forensic surgeons are skilled medical professionals who perform autopsies to determine the causes of death. Their expertise is vital in assisting law enforcement investigations and providing valuable insights in criminal cases. These professionals often serve as expert witnesses in legal proceedings, providing testimony based on their findings. Forensic surgeons maintain connections with laboratories, law enforcement agencies, and the broader medical community to facilitate their work in unraveling the mysteries of death and assisting the justice system.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "40–60",
@@ -2148,7 +2227,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Other Language (Latin), Library Use, Medicine, Persuade, Science (Biology), (Forensics), (Pharmacy), Spot Hidden."
             },
             "Gambler": {
-                "description": "Gamblers are stylish individuals who take chances in games of chance. They may frequent racetracks, casinos, or underground gambling establishments. Gamblers often have contacts in bookies, organized crime, and street scenes.",
+                "description": "Gamblers are individuals who embrace risk and excitement in games of chance, whether at racetracks, casinos, or illicit gambling dens. Their lifestyle revolves around the thrill of betting and wagering, often leading to high-stakes situations. Gamblers frequently establish connections with bookmakers, those involved in organized crime, and the street-level gambling scene to fuel their passion for games of chance and potentially lucrative opportunities.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "8–50",
@@ -2156,7 +2235,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Art/Craft (Acting), two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Listen, Psychology, Sleight of Hand, Spot Hidden."
             },
             "Gangster Boss": {
-                "description": "Gangster bosses lead criminal organizations, making deals and overseeing illegal activities. They have a network of underlings to carry out their orders. Gangsters rose to prominence in the 1920s, controlling various criminal enterprises.",
+                "description": "Gangster bosses are the masterminds behind criminal organizations, orchestrating deals and supervising a wide range of illegal activities. They command a network of underlings and associates who carry out their directives. The era of gangsters reached its zenith during the 1920s when they exercised substantial control over various criminal enterprises, including bootlegging, gambling, and organized crime. These bosses are often known for their ruthless tactics and cunning strategies to maintain their power and influence.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "60–95",
@@ -2164,7 +2243,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Fighting, Firearms, Law, Listen, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Spot Hidden."
             },
             "Gangster Underling": {
-                "description": "Gangster underlings work for the gangster boss, overseeing specific areas of responsibility. They are involved in illegal activities like protection, gambling, and more. Modern gangster bosses focus on the drug trade and other criminal enterprises.",
+                "description": "Gangster underlings are the loyal members of a criminal organization who work directly under the gangster boss, each overseeing specific areas of responsibility. They are deeply involved in various illegal activities, which can include protection rackets, illegal gambling operations, and more. In modern times, gangster bosses have shifted their focus to lucrative criminal enterprises such as the drug trade, expanding their criminal influence and power. These underlings are known for their unwavering loyalty to the boss and their commitment to maintaining the organization's operations.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–20",
@@ -2172,7 +2251,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Drive Auto, Fighting, Firearms, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any two other skills as personal or era specialties."
             },
             "Gentleman Lady": {
-                "description": "A gentleman or lady is a well-mannered and courteous individual, often from the upper class. In the 1920s, they would have had servants and likely owned both city and country residences. Family status is often more important than wealth in this social class.",
+                "description": "A gentleman or lady is characterized by their impeccable manners, courtesy, and refined demeanor, typically belonging to the upper class. During the 1920s, individuals of this social class often maintained large households with servants and owned both city and country residences. In this social stratum, family status and heritage often held greater importance than mere wealth or financial status.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "40–90",
@@ -2180,7 +2259,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (any), two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Firearms (Rifle/Shotgun), History, Other Language (any), Navigate, Ride."
             },
             "Hobo": {
-                "description": "Hobos are wandering workers who travel from town to town, often riding the rails. They are penniless explorers of the road, facing danger from police, communities, and railroad staff. Hobos have contacts among other hobos and some friendly railroad guards.",
+                "description": "Hobos are itinerant laborers who lead a nomadic life, journeying from one town to another, frequently hopping onto freight trains. They are destitute wanderers, continually on the move and encountering risks posed by law enforcement, local communities, and railroad personnel. Hobos maintain connections with fellow travelers of their kind and occasionally establish rapport with amicable railroad security personnel.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "0–5",
@@ -2188,7 +2267,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (any), Climb, Jump, Listen, Locksmith or Sleight of Hand, Navigate, Stealth, any one other skill as a personal or era specialty."
             },
             "Hospital Orderly": {
-                "description": "Hospital orderlies perform various tasks in medical facilities, including cleaning, transporting patients, and other odd jobs. They have contacts among hospital and medical workers as well as access to drugs and medical records.",
+                "description": "Hospital orderlies undertake a range of responsibilities within medical institutions, such as cleaning, patient transportation, and miscellaneous tasks. They maintain connections with colleagues in the healthcare field and possess access to medications and medical records.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + STR × 2",
                 "credit_rating": "6–15",
@@ -2196,7 +2275,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Electrical Repair, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Fighting (Brawl), First Aid, Listen, Mechanical Repair, Psychology, Stealth."
             },
             "Investigative Journalist": {
-                "description": "Investigative journalists report on topics and incidents, often working independently to expose corruption and self-serving agendas. They gather information similar to private detectives and may resort to subterfuge.",
+                "description": "Investigative journalists are dedicated reporters who cover a wide range of subjects and events. They frequently work independently to uncover corruption and hidden motives, employing investigative techniques akin to those used by private detectives, sometimes resorting to subterfuge to obtain crucial information.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2204,7 +2283,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Art or Photography), one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), History, Library Use, Own Language, Psychology, any two other skills as personal or era specialties."
             },
             "Reporter": {
-                "description": "Reporters use words to report and comment on current events. They work for various media outlets and often gather stories by interviewing witnesses and checking records. Reporters may use subterfuge to gather information.",
+                "description": "Reporters are skilled communicators who use their words to relay and provide commentary on contemporary events. They are typically employed by a variety of media organizations and excel in sourcing stories through interviews with eyewitnesses and meticulous record checks. On occasion, reporters may employ subterfuge to acquire critical information for their stories.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2212,7 +2291,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Art/Craft (Acting), History, Listen, Own Language, one interpersonal skill (Charm, Fast Talk, Intimidate, or Persuade), Psychology, Stealth, Spot Hidden."
             },
             "Judge": {
-                "description": "Judges preside over legal proceedings, making decisions and judgments either alone or within a group. They can be appointed or elected and are usually licensed attorneys. Judges have legal connections and possibly contacts with organized crime.",
+                "description": "Judges are legal professionals who oversee and make rulings in legal proceedings, whether independently or as part of a judicial panel. They often hold their positions through appointments or elections and are typically licensed attorneys. Judges maintain connections within the legal field and may, in some cases, have associations with organized crime.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "50–80",
@@ -2220,7 +2299,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "History, Intimidate, Law, Library Use, Listen, Own Language, Persuade, Psychology"
             },
             "Laboratory Assistant": {
-                "description": "Laboratory assistants work in scientific environments, performing various tasks under the supervision of lead scientists. Their tasks depend on the discipline and could include testing, recording results, preparing specimens, and more.",
+                "description": "Laboratory assistants are valuable members of scientific teams who operate in laboratory settings. They execute diverse tasks, often under the guidance of lead scientists. Their responsibilities vary according to the specific scientific discipline and may encompass duties such as conducting experiments, recording and analyzing results, preparing specimens, and more.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2228,7 +2307,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Computer Use or Library Use, Electrical Repair, Other Language, Science (Chemistry and two others), Spot Hidden, any one other skill as a personal specialty."
             },
             "Laborer Unskilled": {
-                "description": "Unskilled laborers include factory workers, road crews, and more. Despite being unskilled, they are often experts in using power tools and equipment. They have contacts within their industry.",
+                "description": "Unskilled laborers form a vital segment of the workforce, engaging in various roles such as factory workers and road crew members, among others. While their roles may not require specific skills or qualifications, they often develop expertise in operating power tools and machinery relevant to their fields of work. Unskilled laborers typically have connections within their respective industries.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2236,7 +2315,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Drive Auto, Electrical Repair, Fighting, First Aid, Mechanical Repair, Operate Heavy Machinery, Throw, any one other skill as a personal or era specialty."
             },
             "Lumberjack": {
-                "description": "Lumberjacks work in forestry, often involved in cutting down trees and handling logs. They have contacts among forestry workers, wilderness guides, and conservationists.",
+                "description": "Lumberjacks play a crucial role in the forestry industry, specializing in activities like felling trees and managing logs. They are well-connected within their field, often maintaining contacts with fellow forestry workers, wilderness guides, and conservationists.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2244,7 +2323,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Dodge, Fighting (Chainsaw), First Aid, Jump, Mechanical Repair, Natural World or Science (Biology or Botany), Throw."
             },
             "Miner": {
-                "description": "Miners work in various fields such as mining, often dealing with extraction of minerals and ores. They have contacts among union officials and political organizations.",
+                "description": "Miners are professionals who operate in fields like mining, where they engage in the extraction of valuable minerals and ores. They frequently maintain connections with union officials and political organizations relevant to their industry.",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2252,7 +2331,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Climb, Geology, Jump, Mechanical Repair, Operate Heavy Machinery, Stealth, Spot Hidden, any one other skill as a personal or era specialty."
             },
             "Lawyer": {
-                "description": "Lawyers are legal professionals who provide legal counsel, representing clients and presenting legal solutions. They can be hired or appointed and usually have legal connections, including organized crime.",
+                "description": "Lawyers are legal professionals who offer legal guidance, representing clients and advocating for legal remedies. They may be retained by clients or appointed by the court, and they typically have connections within the legal field, including potential associations with organized crime.",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–80",
@@ -2260,7 +2339,7 @@ class CthulhuCog(commands.Cog):
                 "skills": "Accounting, Law, Library Use, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any two other skills."
             },
             "Librarian": {
-                "description": "Librarians manage and maintain libraries, cataloging and overseeing the collection. They have contacts with booksellers, community groups, and specialist researchers.",
+                "description": "Librarians are responsible for the administration and organization of libraries, including cataloging and curating the collection. They often have connections with booksellers, community organizations, and specialized researchers in their field.",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–35",
@@ -2651,7 +2730,7 @@ class CthulhuCog(commands.Cog):
     async def pulpofcthulhuarchetype(self, ctx, *, archetype_name: str = None):
         archetypes_info = {
             "Adventurer": {
-                "description": "A life without adventure is not worth living. The world is a big place and there is much to be experienced and many chances for glory. Sitting behind the desk, working a job nine to five is a death sentence for such folk. The adventurer yearns for excitement, fun, and challenge.",
+                "description": "For those embracing the adventurer archetype, a life devoid of excitement holds little appeal. They view the world as an expansive playground, filled with uncharted territories and opportunities for heroic deeds. The mundane routine of a nine-to-five desk job is a prospect they find utterly unfulfilling. Adventurers crave the thrill of the unknown, the exhilaration of new experiences, and the trials that test their mettle. To them, life is a grand adventure waiting to be embarked upon, where excitement, joy, and the pursuit of challenges reign supreme.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either DEX or APP",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Climb, Diving, Drive Auto, First-Aid, Fighting (any), Firearms (any), Jump, Language (other), Mechanical repair, Pilot (any), Ride, Stealth, Survival (any), Swim.",
@@ -2661,7 +2740,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Beefcake": {
-                "description": "Physical, muscular, and capable of handling themselves when the chips are down. Born that way or has worked hard in the pursuit of physical perfection. You won't find these guys and gals in the library, but you might see their faces on a billboard. Beefcakes come in two varieties: the caring, silent type, or the brazen loud-mouth.",
+                "description": "Possessing formidable physical strength and the ability to hold their own in challenging situations, the beefcake archetype embodies robustness and muscularity, either through innate gifts or relentless dedication to honing their physique. They're unlikely to be found engrossed in books at the library but could easily grace the pages of billboards. Beefcakes fall into two distinct categories: the nurturing, reserved individuals who convey strength through their silence, and the audacious, outspoken ones who wear their muscularity like a badge of honor.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** STR.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Climb, Fighting (Brawl), Intimidate, Listen, Mechanical Repair, Psychology, Swim, Throw.",
@@ -2671,7 +2750,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Bon Vivant": {
-                "description": "A bon vivant is 'one who lives well,' but that doesn't necessarily mean they are rich. While many are accustomed to wealth, the bon vivant is someone who could be said to enjoy life to the fullest and damn the consequences! Why wait until tomorrow when you can start living life today? Enjoying food and drink, as well as other pleasurable pursuits, is the key to a lifestyle where excess is the norm. Whether poor or rich, such a person puts little thought to saving for a rainy day, preferring to be the center of attention and a friend to all.",
+                "description": "A bon vivant, often associated with a life of opulence, isn't solely defined by wealth. Instead, they're individuals who wholeheartedly embrace life without worrying about the aftermath. Why delay the pleasures of today for tomorrow? This archetype relishes in savoring delectable cuisines, indulging in libations, and pursuing various enjoyable pastimes, making extravagance their way of life. Regardless of their financial status, they rarely prioritize saving for the future and opt to bask in the limelight while cultivating friendships and connections with everyone they encounter.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** SIZ.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Appraise, Art/Craft (any), Charm, Fast Talk, Language Other (any), Listen, Spot Hidden, Psychology.",
@@ -2681,7 +2760,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Cold Blooded": {
-                "description": "A rationalist who is capable of just about anything. Cold blooded types may follow some twisted moral code, however, their view of humanity is cold and stark; you're either good or bad. There are no shades of gray to navigate, just the harsh realities of life and death. Such people make effective killers as they have little self-doubt; they are ready to follow orders to the letter, or pursue some personal agenda for revenge. Such people may do anything to get the job done. They are rarely spontaneous people; instead, they embody ruthlessness and premeditation. Sometimes they will try to fool themselves into believing they have a 'line' they will not cross, when in reality they are merciless and will go to any length to fulfill what they see as their goal.",
+                "description": "Cold-blooded rationalists who possess the capacity for nearly anything imaginable. These individuals might adhere to a peculiar moral framework, yet their perspective on humanity remains chillingly straightforward: you're either virtuous or wicked, with no moral ambiguity to navigate. Their outlook on life and death is brutally pragmatic. As efficient executioners, they harbor little self-doubt, readily adhering to orders or pursuing personal vendettas. Achieving their objectives takes precedence, and they will stop at nothing to get the job done. Spontaneity rarely characterizes them; instead, they epitomize unrelenting resolve and calculated planning. At times, they may attempt to convince themselves of certain boundaries they won't cross, but in reality, they are unyielding and will go to any lengths to accomplish what they perceive as their ultimate goal.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** INT.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (Acting), Disguise, Fighting (any), Firearms (any), First Aid, History, Intimidate, Law, Listen, Mechanical Repair, Psychology, Stealth, Survival (any), Track.",
@@ -2691,7 +2770,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Dreamer": {
-                "description": "Whether an idealist or visionary, the dreamer has a strong and powerful mind. Such types tend to follow their own direction in life. 'The dreamer looks beyond the mundane realities of life, perhaps as a form of escapism or because they yearn for what could be, wishing to right wrongs or improve the world around them.",
+                "description": "Whether categorized as an idealist or visionary, the dreamer possesses a formidable and imaginative intellect. Individuals of this archetype often chart their unique course in life. They gaze beyond the ordinary facets of existence, possibly seeking an escape from reality or fueled by a desire for a better world. Their aspirations transcend the status quo, aiming to rectify injustices or enhance the world they inhabit.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Charm, History, Language Other (any), Library Use, Listen, Natural World, Occult.",
@@ -2701,7 +2780,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Egghead": {
-                "description": "Everything can be broken down and analyzed in order to understand how it works. Knowledge is a treasure and a joy - a puzzle to explore. Where the scholar is bookish, the egghead is practical and thoroughly enjoys getting their hands dirty. Whether it's wires and gears, valves and computational engines, or blood and bones, the egghead likes to figure out what makes things tick. Perhaps an absent-minded genius or a razor-sharp virtuoso, the egghead can easily become absorbed in the problem before them, leaving them exposed and unaware of what is actually happening around them. Depending on the pulp level of your game, the egghead may be able to invent all manner of gizmos, useful or otherwise.",
+                "description": "Deconstructing and comprehending the inner workings of all things is a relentless pursuit for the egghead. They regard knowledge as a valuable treasure, a source of joy, and an intricate puzzle to unravel. Unlike the bookish scholar, the egghead thrives on practicality and revels in hands-on exploration. Whether delving into wires and gears, valves and computational machinery, or the intricacies of biology and anatomy, the egghead is driven to uncover the secrets behind the mechanisms of existence. Whether portrayed as an absent-minded genius or a keen virtuoso, the egghead tends to become engrossed in their current problem, often losing awareness of their surroundings. Depending on the level of pulp in your game, the egghead might possess the ability to invent a wide array of contraptions, some of which may prove incredibly useful, while others could be rather eccentric.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either INT or EDU.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Anthropology, Appraise, Computer Use, Electrical Repair, Language Other (any), Library Use, Mechanical Repair, Operate Heavy Machinery, Science (any).",
@@ -2711,7 +2790,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },  
             "Explorer": {
-                "description": "\"Don't fence me in,\" is the oft-heard cry of the explorer, who wishes for a more authentic and fulfilling life. Strong-willed and virtually unshakeable, the explorer is ever questing for what lies over the horizon. Possibly at one with nature, such types are content to sleep where they fall, happily disdaining the soft comforts of urban life. Whether hacking through jungles, squeezing through caverns, or simply charting the hidden quarters of the city, the explorer is often a misfit who grows restless and annoyed by those they consider to be weak or cowards.",
+                "description": "The explorer's mantra is \"Don't confine me,\" expressing a deep longing for a genuine and enriching existence. Possessing unwavering determination and unshakable resolve, explorers are in a perpetual search for the mysteries that await beyond the visible horizon. Some may find harmony with nature, embracing a life where they rest wherever they find themselves, showing little regard for the soft comforts of urban living. Whether traversing dense jungles, navigating labyrinthine caves, or diligently mapping the concealed corners of the city, explorers are often perceived as misfits who grow restless and frustrated with individuals they view as feeble or timid.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either DEX or POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Animal Handling, Anthropology, Archaeology, Climb, Fighting (Brawl), First Aid, Jump, Language Other (any), Natural World, Navigate, Pilot (any), Ride, Stealth, Survival (any), Track.",
@@ -2721,7 +2800,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },  
             "Femme Fatale": {
-                "description": "A deadly woman or man whose outward beauty usually masks a self-centered approach to life; one who is ever vigilant. By constructing an alluring and glamorous persona the femme fatale is akin to a spider. She draws others to her web in order to possess what she desires or destroy her target. Brave and cunning, the femme fatale is not shy of getting her hands dirty and is a capable foe. Neither is she foolhardy, and she will wait until her web is constructed before dealing out a sudden and well-timed assault (be it mental or physical). A classic pulp archetype, the femme fatale could as easily be termed homme fatale if so desired.",
+                "description": "A dangerous individual, often possessing captivating beauty, who conceals a self-centered approach to life; someone constantly vigilant. Much like a spider, the femme fatale creates an enticing and glamorous facade, luring others into her intricate web to either acquire what she desires or eliminate her target. Fearless and astute, the femme fatale is unafraid of getting her hands dirty and proves to be a formidable adversary. Yet, she is not recklessly impulsive, preferring to bide her time until her web is meticulously constructed before executing a sudden and well-timed strike, whether it be through psychological manipulation or physical action. This classic pulp archetype can also be referred to as the \"homme fatale\" if the need arises.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either APP or INT.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (Acting), Appraise, Charm, Disguise, Drive Auto, Fast Talk, Fighting (Brawl), Firearms (Handgun), Listen, Psychology, Sleight of Hand, Stealth.",
@@ -2731,7 +2810,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },            
             "Grease Monkey": {
-                "description": "The grease monkey is practically minded, able to make and repair all manner of things, be they useful inventions, machines, engines, or other devices. Grease Monkeys may be found lurking under the hood of a car, or playing with the telephone exchange wires. Such types have a 'can do' attitude, able to make the most of what they have at hand, using their skills and experience to wow those around them. Depending on the pulp level of your game, the grease monkey may be able to 'jury-rig' all manner of gizmos, useful or otherwise (Weird Science).",
+                "description": "The grease monkey possesses a pragmatic mindset, proficient in crafting and mending a wide array of objects, whether they be practical inventions, machinery, engines, or other contraptions. These individuals can often be found beneath a car's hood or tinkering with telephone exchange wires. Grease monkeys exhibit a resolute \"can-do\" attitude, adept at optimizing available resources and showcasing their talents and expertise to impress those in their vicinity. Depending on the level of pulp adventure in your game, these adept individuals may possess the ability to ingeniously cobble together various gadgets, whether for practical or unconventional purposes (Weird Science).",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** INT.",
                     ":zap: **Add 100 bonus points divided amongst any of the following skills:** Appraise, Art/Craft (any), Fighting (Brawl), Drive Auto, Electrical Repair, Locksmith, Mechanical Repair, Operate Heavy Machinery, Spot Hidden, Throw.",
@@ -2741,7 +2820,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Hard Boiled": {
-                "description": "Tough and streetwise, someone who is hard boiled understands that to catch a thief you have to think like a thief. Usually, such a person isn't above breaking the law in order to get the job done. They'll use whatever tools are at their disposal and may crack a few skulls in the process. Often, at their core, they are honest souls who wish the world wasn't so despicable and downright nasty; however, in order to fight for justice, they can be just as nasty as they need to be.",
+                "description": "Resilient and savvy, an individual with a hard-boiled disposition possesses a profound understanding that to apprehend a wrongdoer, one must delve into the mindset of a wrongdoer. Typically, such individuals don't hesitate to bend or break the law to achieve their objectives. They'll employ any available means and might resort to physical force if necessary. Frequently, at their essence, they are principled individuals who yearn for a less corrupt and vile world. Nevertheless, to champion justice, they are willing to adopt the same ruthlessness as their adversaries demand.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Fighting (Brawl), Firearms (any), Drive Auto, Fast Talk, Intimidate, Law, Listen, Locksmith, Sleight of Hand, Spot Hidden, Stealth, Throw.",
@@ -2751,7 +2830,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },   
             "Harlequin": {
-                "description": "While similar to the femme fatale, the harlequin does not like to get their hands dirty (if they can help it). Usually possessing a magnetic personality, although not necessarily classically beautiful, such types find enjoyment in manipulating others to do their bidding, and often hide their own agendas behind outright lies or subtle deceptions. Sometimes they are committed to a cause (personal or otherwise), or act like agents of chaos, delighting in watching how people react to the situations they construe.",
+                "description": "Closely resembling the femme fatale, the harlequin has an aversion to direct involvement in any nefarious activities (whenever possible). Typically endowed with a captivating charm, although not necessarily adhering to traditional standards of beauty, these individuals relish the art of manipulating others into carrying out their wishes. They frequently shroud their true motives beneath a veneer of deceit, whether through blatant falsehoods or artful subterfuge. Occasionally, they champion a specific cause, whether personal or not, while at other times, they revel in sowing chaos and observing the ensuing reactions of those ensnared in their schemes.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** APP.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (Acting), Charm, Climb, Disguise, Fast Talk, Jump, Language Other (any), Listen, Persuade, Psychology, Sleight of Hand, Stealth.",
@@ -2761,7 +2840,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },  
             "Hunter": {
-                "description": "Maybe it's the thrill of the chase, the prize at the end, or just because they have an innate drive to master their environment, the hunter is relentless in pursuing their prey. Calm and calculated, the hunter is willing to wait for the most opportune moment, despising the reckless behavior of the unwary.",
+                "description": "Whether driven by the exhilaration of the pursuit, the ultimate reward, or an inherent urge to dominate their surroundings, the hunter exhibits unwavering determination in tracking their quarry. Composed and strategic, the hunter demonstrates a willingness to exercise patience, harboring disdain for the impulsive actions of the careless.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either INT or CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Animal Handling, Fighting (any), Firearms (Rifle and/or Handgun), First Aid, Listen, Natural World, Navigate, Spot Hidden, Stealth, Survival (any), Swim, Track.",
@@ -2771,7 +2850,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },            
             "Mystic": {
-                "description": "A seeker of the hidden, explorer of the unseen realm; the mystic quests for secrets and the fundamental truth of existence. They may be book-learned academics, shamanistic healers, circus diviners, or visionaries, but all pursue knowledge and the experience of forces outside of the natural order, be it for personal gain or the betterment of mankind.",
+                "description": "Mystics are relentless seekers of the concealed, adventurers in the ethereal domains, in pursuit of enigmatic truths and the essence of existence. Whether they are erudite scholars, shamanic healers, fortune-tellers in a traveling circus, or profound visionaries, their common goal is the acquisition of knowledge and the communion with forces beyond the ordinary realm. Their motivations may range from personal enrichment to the advancement of humanity's welfare.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Science (Astronomy), Disguise, History, Hypnosis, Language Other (any), Natural World, Occult, Psychology, Sleight of Hand, Stealth; if the Psychic talent is taken, allocate skill points to the chosen psychic skill(s).",
@@ -2781,7 +2860,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Outsider": {
-                "description": "The outsider stands apart from the rest of society, either figuratively or literally. Such people may be alien to the environment in which they find themselves, perhaps from a different country or culture, or they are part of the society but find themselves at odds with it. The outsider is usually on some form of journey, physically or spiritually, and must complete their objective before they can return to, or at last feel part of, the greater whole. Often the outsider will have distinct skills, different way of approaching things, utilizing forgotten, secret, or alien knowledge.",
+                "description": "Outsiders exist on the fringes of society, both in a literal and metaphorical sense. They may hail from distant lands or cultures, rendering them foreign to their surroundings. Alternatively, they could be part of the same society but estranged from it, feeling out of place. Typically, outsiders embark on a voyage, be it physical or spiritual, and must fulfill their mission before they can reintegrate into or truly belong to the broader community. Frequently, outsiders possess unique skills and unconventional perspectives, employing obscure, clandestine, or foreign wisdom to navigate their path.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either INT or CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Animal Handling, Fighting (any), First Aid, Intimidate, Language Other (any), Listen, Medicine, Navigation, Stealth, Survival (any), Track.",
@@ -2791,7 +2870,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Rogue": {
-                "description": "The rogue disobeys rules of society openly questioning the status quo and mocking those in authority. They delight in being non-conformists, acting on impulse and deriding conventional behavior. Laws are there to be broken or skirted around. Most rogues are not necessarily criminals or anarchists intent on spreading chaos, but rather they find amusement in pulling off stunts that will confound others. They are often sophisticated, governed by their own unique moral codes, lovable, and careless.",
+                "description": "Rogues are the outspoken challengers of societal norms, never hesitating to question the established order and ridicule those in power. They relish their non-conformity, embracing spontaneity and poking fun at conventional conduct. Rules, in their view, are meant to be bent or artfully circumvented. While not necessarily criminals or anarchists seeking to sow discord, rogues take pleasure in executing bewildering feats that leave others in awe. Often, they exude sophistication, guided by their distinctive sets of morals. Despite their endearing qualities, rogues remain carefree and untamed.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or APP.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Appraise, Art/Craft (any), Charm, Disguise, Fast Talk, Law, Locksmith, Psychology, Read Lips, Spot Hidden, Stealth.",
@@ -2801,7 +2880,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Scholar": {
-                "description": "Uses intelligence and analysis to understand the world around them. Normally quite happy sitting in the library with a book (rather than actually facing the realities of life). A seeker of knowledge, the scholar is not particularly action-oriented; however, when it comes to the crunch, he or she might be the only person who knows what to do.",
+                "description": "Scholars rely on their intellect and analytical skills to comprehend the world they inhabit. They often find contentment within the confines of a library, engrossed in books rather than dealing with the practicalities of life. Driven by an unquenchable thirst for knowledge, scholars may not be inherently action-oriented, but in moments of crisis, they can emerge as the sole individuals equipped with the know-how to navigate challenges.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** EDU.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Accounting, Anthropology, Cryptography, History, Language Other (any), Library Use, Medicine, Natural World, Occult, Science (any).",
@@ -2812,7 +2891,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Seeker": {
-                "description": "Puzzles and riddles enthrall the seeker, who uses intelligence and reasoning to uncover mysteries and solve problems. They look for and enjoy mental challenges, always focused on finding the truth, no matter the consequences or tribulations they must face.",
+                "description": "Enigmas and conundrums captivate the seeker, engaging their intellect and logic to unravel mysteries and resolve dilemmas. They actively seek out and relish mental puzzles, their unwavering commitment to uncovering the truth unyielding, even in the face of adversity and trials.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** INT.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Accounting, Appraise, Disguise, History, Law, Library Use, Listen, Occult, Psychology, Science (any), Spot Hidden, Stealth.",
@@ -2822,7 +2901,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Sidekick": {
-                "description": "The sidekick embodies aspects of the steadfast, rogue, and thrill seeker archetypes. Usually, a younger person who has yet to live up to their full potential, someone who seeks to learn from a mentor type figure, or those content not to be the center of attention. Alternatively, the sidekick wishes to belong, to be the hero but is overshadowed by their peers or mentor. Subordinate sidekicks can at times struggle against their (usually) self-imposed restraints, venturing off on flights of fancy that mostly just get them into trouble. Sidekicks usually possess a strong moral code of duty and responsibility.",
+                "description": "The sidekick archetype embodies elements of the loyal companion, renegade, and thrill-seeker archetypes. Typically, a youthful individual who has yet to reach their full potential, they seek guidance from a mentor figure or are content with a supporting role rather than the spotlight. Alternatively, some sidekicks yearn to become heroes themselves but find themselves overshadowed by their mentors or peers. Those in a subordinate sidekick role may occasionally struggle against their self-imposed limitations, embarking on reckless adventures that often lead to trouble. Sidekicks generally adhere to a strong moral code centered on duty and responsibility.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Animal Handling, Climb, Electrical Repair, Fast Talk, First Aid, Jump, Library Use, Listen, Navigate, Photography, Science (any), Stealth, Track.",
@@ -2832,7 +2911,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Steadfast": {
-                "description": "Moral righteousness runs thickly in the blood of the steadfast. They protect the weak, put the interests of others before themselves, and would willingly sacrifice their life for another's safety. Whether they follow a clear spiritual or religious path or some internal moral code, they do not stoop to the depths of others, fighting with honor and acting as role models to those around them. Whatever else they fight for, they also fight for justice.",
+                "description": "The steadfast archetype is marked by a profound commitment to moral integrity. They champion the cause of the vulnerable, prioritize others' well-being above their own, and are prepared to lay down their lives for the safety of others. Guided by a strong sense of morality, whether rooted in spirituality, religion, or a personal moral compass, they uphold the highest ethical standards and refrain from engaging in unethical behavior. They lead by example, inspiring those in their vicinity. Among their various causes, the pursuit of justice remains a steadfast priority.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Accounting, Drive Auto, Fighting (any), Firearms (Handgun), First Aid, History, Intimidate, Law, Natural World, Navigate, Persuade, Psychology, Ride, Spot Hidden, Survival (any).",
@@ -2842,7 +2921,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Swashbuckler": {
-                "description": "Passionate and idealistic souls who are always looking to rescue damsels in distress. Gallant and heroic, the swashbuckler is action-oriented and fights fairly, disdaining the use of firearms as the tools of cowards. Most likely boastful, noisy, and joyous, even when in the direst of situations. A romantic at heart, a swashbuckler possesses a strong code of honor but is prone to reckless behavior that risks more than just their own life.",
+                "description": "Swashbucklers are spirited and idealistic individuals perpetually seeking opportunities to rescue those in need. They exude gallantry and heroism, thriving in the midst of action and combat, and they firmly reject firearms, considering them the choice of the unscrupulous. Typically characterized by their exuberance and boisterous nature, swashbucklers maintain their joyful demeanor even in the direst circumstances. At their core, they are romantics, guided by a robust code of honor, yet their penchant for recklessness often places them and others in perilous situations.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or APP.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Charm, Climb, Fighting (any), Jump, Language Other (any), Mechanical Repair, Navigate, Pilot (any), Stealth, Swim, Throw.",
@@ -2852,7 +2931,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Thrill Seeker": {
-                "description": "Some people are like moths to a flame. For them, the easy life is no life at all, and they must seek out adventure and danger in order to feel alive. The stakes are never high enough for thrill seekers, who are always ready to bet large in order to feel the rush of adrenaline pumping through their veins. Such daredevils are drawn to high-octane sports and activities, and for them, a mountain is a challenge to master. Foolhardy to a fault, they cannot understand why no one else is prepared to take the same risks as they do.",
+                "description": "Certain individuals are irresistibly drawn to danger and excitement, much like moths to a flame. They find the ordinary life devoid of meaning, seeking adventure and peril as a means to truly experience existence. Thrill seekers perpetually crave greater challenges and elevated stakes, readily wagering it all for the exhilarating surge of adrenaline. These daredevils gravitate toward high-octane sports and activities, viewing mountains and obstacles as invitations to conquer. Their recklessness knows no bounds, leaving them bewildered as to why others are not as willing to embrace similar risks.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Charm, Climb, Diving, Drive Auto, Fast Talk, Jump, Mechanical Repair, Navigate, Pilot (any), Ride, Stealth, Survival (any), Swim, Throw.",
@@ -2862,7 +2941,7 @@ class CthulhuCog(commands.Cog):
                 ],
             },
             "Two-Fisted": {
-                "description": "\"Live fast, die hard\" is the motto of the two-fisted. Such individuals are storehouses of energy, strong, tough, and very capable. Such types are inclined to resolve disputes with their fists rather than words. Usually hard-drinking and hard-talking, they like getting straight to the point and dislike pomp and ceremony. They do not suffer fools gladly. The two-fisted seem to live life in a hurry, quick to anger, contemptuous of authority, and ready to play as dirty as the next guy.",
+                "description": "\"Live at full throttle, never back down\" serves as the mantra for those embodying the two-fisted archetype. These individuals are bundles of dynamism, possessing formidable strength, unyielding resilience, and impressive capability. They have a penchant for settling conflicts through physicality rather than discourse, preferring straightforwardness over ceremony. Fueled by spirited conversations and strong spirits, they prioritize efficiency and have little patience for incompetence. Two-fisted individuals live life at a rapid pace, exhibiting a propensity for quick tempers, a disdain for authority, and an unwavering readiness to engage in any challenge, no matter how gritty.",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either STR or SIZ.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Drive Auto, Fighting (Brawl), Firearms (any), Intimidate, Listen, Mechanical Repair, Spot Hidden, Swim, Throw.",
@@ -2901,106 +2980,126 @@ class CthulhuCog(commands.Cog):
     @commands.command(aliases=["gbackstory"])
     async def generatebackstory(self, ctx):
         personal_descriptions = [
-            "Rugged", "Handsome", "Ungainly",
-            "Pretty", "Glamorous", "Baby-faced",
-            "Smart", "Untidy", "Dull",
-            "Dirty", "Dazzler", "Bookish",
-            "Youthful", "Weary", "Plump",
-            "Stout", "Hairy", "Slim",
-            "Elegant", "Scruffy", "Stocky",
-            "Pale", "Sullen", "Ordinary",
-            "Rosy", "Tanned", "Wrinkled",
-            "Sturdy", "Mousy", "Sharp",
-            "Brawny", "Dainty", "Muscular",
-            "Strapping", "Gawky", "Frail"
+            "Adventurous", "Athletic", "Awkward", "Baby-faced", "Bookish", "Brawny", "Charming",
+            "Cheerful", "Dainty", "Dazzling", "Delicate", "Dirty", "Determined", "Dull", "Elegant",
+            "Ethereal", "Exquisite", "Frail", "Gawky", "Glamorous", "Gentle", "Groomed", "Handsome",
+            "Hairy", "Ingenious", "Jovial", "Mousy", "Muscular", "Mysterious", "Ordinary", "Pale",
+            "Plump", "Pretty", "Resilient", "Robust", "Rosy", "Rugged", "Scruffy", "Sharp", "Slim",
+            "Sloppy", "Smart", "Sophisticated", "Stoic", "Stocky", "Strapping", "Sturdy", "Sullen",
+            "Tanned", "Untidy", "Ungainly", "Weary", "Wrinkled", "Youthful"
         ]
+
+
         
         personal_description_text = ""
         for description in personal_descriptions:
             personal_description_text += f"{description}, "
     
         ideology_beliefs = [
-            "There is a higher power that you worship and pray to (e.g. Vishnu, Jesus Christ, Haile Selassie I).",
-            "Mankind can do fine without religions (e.g. staunch atheist, humanist, secularist).",
-            "Science has all the answers. Pick a particular aspect of interest (e.g. evolution, cryogenics, space exploration).",
-            "A belief in fate (e.g. karma, the class system, superstitious).",
-            "Member of a society or secret society (e.g. Freemason, Women’s Institute, Anonymous).",
-            "There is evil in society that should be rooted out. What is this evil? (e.g. drugs, violence, racism).",
-            "The occult (e.g. astrology, spiritualism, tarot).",
-            "Politics (e.g. conservative, socialist, liberal).",
-            "\"Money is power, and I’m going to get all I can\" (e.g. greedy, enterprising, ruthless).",
-            "Campaigner/Activist (e.g. feminism, gay rights, union power)."
+            "You devoutly follow a higher power and engage in regular worship and prayer (e.g. Vishnu, Jesus Christ, Haile Selassie I).",
+            "You firmly believe that mankind can thrive without the influence of religions, embracing atheism, humanism, or secularism.",
+            "You are a dedicated follower of science, putting your faith in its ability to provide answers. Choose a specific scientific area of interest (e.g. evolution, cryogenics, space exploration).",
+            "You hold a strong belief in fate, whether through concepts like karma, class systems, or superstitions.",
+            "You are a member of a society or secret organization, such as the Freemasons, Women's Institute, or Anonymous.",
+            "You are deeply convinced that there is inherent evil in society that needs to be eradicated. Identify this societal evil (e.g. drugs, violence, racism).",
+            "You are deeply involved in the occult, exploring practices like astrology, spiritualism, or tarot card readings.",
+            "Your ideology revolves around politics, and you align yourself with conservative, socialist, or liberal principles.",
+            "You firmly believe in the adage that \"money is power,\" and you are determined to accumulate as much wealth as possible, often seen as greedy, enterprising, or ruthless.",
+            "You are a passionate campaigner or activist, advocating for causes such as feminism, gay rights, or union power.",
+            "You are a staunch environmentalist, deeply concerned about the state of the planet and dedicated to conservation efforts.",
+            "You are a pacifist, opposing all forms of violence and promoting peaceful conflict resolution.",
+            "You are a staunch traditionalist, valuing long-standing customs and practices over modern innovations.",
+            "You are a technology enthusiast, believing that advancements in science and technology hold the key to a better future.",
+            "You are a hedonist, seeking pleasure and enjoyment above all else and often indulging in various vices.",
+            "You are an advocate for social justice, fighting against discrimination, inequality, and injustice in society.",
         ]
+
         selected_ideology_beliefs = random.choice(ideology_beliefs)
     
         significant_people_first = [
-            "Parent (e.g. mother, father, stepmother).",
-            "Grandparent (e.g. maternal grandmother, paternal grandfather).",
-            "Sibling (e.g. brother, half-brother, stepsister).",
-            "Child (e.g. son or daughter).",
-            "Partner (e.g. spouse, fiancé, lover).",
-            "Person who taught you your highest occupational skill. Identify the skill and consider who taught you (e.g. a schoolteacher, the person you apprenticed with, your father).",
-            "Childhood Friend (e.g. classmate, neighbor, imaginary friend).",
-            "A famous person. Your idol or hero. You may never have even met (e.g. film star, politician, musician).",
-            "A fellow investigator in your game. Pick one or choose randomly.",
-            "A non-player character (NPC) in the game. Ask the Keeper to pick one for you."
+            "Your mentor (e.g. a wise old wizard, a seasoned warrior).",
+            "A childhood bully who made your life miserable (e.g. schoolyard tormentor, neighborhood tough).",
+            "A long-lost relative who suddenly reappeared in your life (e.g. estranged cousin, mysterious uncle).",
+            "A professional rival who constantly challenges you (e.g. a competing journalist, a rival scientist).",
+            "A loyal pet or animal companion that has been with you through thick and thin (e.g. a faithful dog, a wise owl).",
+            "A spiritual leader or guru who has profoundly influenced your beliefs (e.g. a wise monk, a New Age mystic).",
+            "A former business partner who betrayed you (e.g. a scheming colleague, a duplicitous friend).",
+            "A supernatural being or entity that haunts your dreams and visions (e.g. a vengeful ghost, an enigmatic cosmic entity).",
+            "A mysterious informant who provides you with cryptic clues and valuable information (e.g. a cryptic letter writer, an anonymous hacker).",
+            "A celebrity you once crossed paths with, leaving a lasting impression (e.g. a chance encounter with a famous actor, a brief conversation with a renowned author).",
+            "A legendary figure from history or mythology who you believe holds the key to unraveling mysteries (e.g. King Arthur, Cleopatra, Sherlock Holmes).",
+            "An influential political figure or leader who you admire or despise (e.g. a charismatic statesperson, a corrupt politician).",
+            "A fellow explorer or adventurer who shared perilous journeys with you (e.g. an intrepid mountaineer, a daring deep-sea diver).",
+            "A mysterious guardian spirit or protector who watches over you from the shadows (e.g. a shadowy figure, an otherworldly guardian).",
+            "A wise old sage who imparts cryptic wisdom and guidance (e.g. an ancient sage, a mystical hermit).",
+            "A childhood pen pal or online friend who vanished without a trace (e.g. a pen pal from a foreign land, an online gaming buddy).",
         ]
+
         selected_significant_people_first = random.choice(significant_people_first)
         
         significant_people_why = [
-            "You are indebted to them. How did they help you? (e.g. financially, they protected you through hard times, got you your first job).",
-            "They taught you something. What? (e.g. a skill, to love, to be a man).",
-            "They give your life meaning. How? (e.g. you aspire to be like them, you seek to be with them, you seek to make them happy).",
-            "You wronged them and seek reconciliation. What did you do? (e.g. stole money from them, informed the police about them, refused to help when they were desperate).",
-            "Shared experience. What? (e.g. you lived through hard times together, you grew up together, you served in the war together).",
-            "You seek to prove yourself to them. How? (e.g. by getting a good job, by finding a good spouse, by getting an education).",
-            "You idolize them (e.g. for their fame, their beauty, their work).",
-            "A feeling of regret (e.g. you should have died in their place, you fell out over something you said, you didn’t step up and help them when you had the chance).",
-            "You wish to prove yourself better than them. What was their flaw? (e.g. lazy, drunk, unloving).",
-            "They have crossed you and you seek revenge. For what do you blame them? (e.g. death of a loved one, your financial ruin, marital breakup)."
+            "You are indebted to them because they lent you a substantial amount of money when you were in a financial crisis.",
+            "They taught you the art of survival in the urban jungle, showing you how to navigate the streets and avoid trouble.",
+            "They give your life meaning by being your source of inspiration; you strive to honor their memory in everything you do.",
+            "You wronged them years ago by spreading false rumors about them that damaged their reputation; now, you want to make amends.",
+            "You both served together in a military unit during a dangerous conflict, forging a deep bond through shared experiences.",
+            "You seek to prove yourself to them by achieving success in your chosen field, hoping to earn their respect and admiration.",
+            "You idolize them for their unparalleled musical talent, which has left a lasting impact on your life.",
+            "A feeling of regret haunts you because you once failed to support them when they needed it most, and you've carried the guilt ever since.",
+            "You wish to prove yourself as a better parent than they were, driven by the memory of their neglectful and distant behavior.",
+            "They crossed you by betraying your trust, leading to the collapse of your once-thriving business; now, you harbor a deep desire for revenge.",
+            "You owe them for saving your life when you were on the brink of death, forever grateful for their timely intervention.",
+            "They taught you the art of craftsmanship, instilling in you a passion for creating beautiful and intricate objects.",
+            "They give your life meaning by being the person who introduced you to your lifelong hobby or interest, shaping your identity.",
+            "You wronged them by betraying a confidence they shared with you, causing significant harm to their personal and professional life; now, you seek redemption.",
+            "Your shared experience involved surviving a natural disaster together, creating an unbreakable bond forged in the face of death.",
+            "You aim to prove yourself by outshining their achievements in the field they excel in, eager to prove your superiority.",
         ]
+
         selected_significant_people_why = random.choice(significant_people_why)
     
         meaningful_locations = [
-            "Your seat of learning (e.g. school, university, apprenticeship).",
-            "Your hometown (e.g. rural village, market town, busy city).",
-            "The place you met your first love (e.g. a music concert, on holiday, a bomb shelter).",
-            "A place for quiet contemplation (e.g. the library, country walks on your estate, fishing).",
-            "A place for socializing (e.g. gentlemen’s club, local bar, uncle’s house).",
-            "A place connected with your ideology/belief (e.g. parish church, Mecca, Stonehenge).",
-            "The grave of a significant person. Who? (e.g. a parent, a child, a lover).",
-            "Your family home (e.g. a country estate, a rented flat, the orphanage in which you were raised).",
-            "The place you were happiest in your life (e.g. the park bench where you first kissed, your university, your grandmother’s home).",
-            "Your workplace (e.g. the office, library, bank)."
+            "The hidden cave where you discovered an ancient relic that changed your life's course.",
+            "The remote mountain cabin where you found solitude and clarity during a difficult period.",
+            "The bustling city square where you once witnessed a life-changing event or protest.",
+            "The abandoned factory that holds a secret you've been trying to unravel for years.",
+            "The quaint seaside town where you spent idyllic summers as a child, forming cherished memories.",
+            "The eerie cemetery where you had a paranormal encounter that still haunts your dreams.",
+            "The sacred temple atop a mist-covered mountain, where you found spiritual enlightenment.",
+            "The forgotten underground tunnel system you stumbled upon, filled with mysteries waiting to be explored.",
+            "The historic battlefield where you uncovered artifacts that shed new light on a famous historical event.",
+            "The hidden garden behind an old mansion, where you once made a promise that changed the course of your life.",
         ]
         selected_meaningful_locations = random.choice(meaningful_locations)
     
         treasured_possessions = [
-            "An item connected with your highest skill (e.g. expensive suit, false ID, brass knuckles).",
-            "An essential item for your occupation (e.g. doctor’s bag, car, lock picks).",
-            "A memento from your childhood (e.g. comics, pocketknife, lucky coin).",
-            "A memento of a departed person (e.g. jewelry, a photograph in your wallet, a letter).",
-            "Something given to you by your Significant Person (e.g. a ring, a diary, a map).",
-            "Your collection. What is it? (e.g. bus tickets, stuffed animals, records).",
-            "Something you found but you don’t know what it is—you seek answers (e.g. a letter you found in a cupboard written in an unknown language, a curious pipe of unknown origin found among your late father’s effects, a strange silver ball you dug up in your garden).",
-            "A sporting item (e.g. cricket bat, a signed baseball, a fishing rod).",
-            "A weapon (e.g. service revolver, your old hunting rifle, the hidden knife in your boot).",
-            "A pet (e.g. a dog, a cat, a tortoise)."
+            "A handwritten journal filled with your thoughts and observations from your travels.",
+            "A mysterious ancient artifact that you acquired during an expedition and can't decipher its purpose.",
+            "A locket containing a picture of a loved one who mysteriously disappeared years ago.",
+            "A rare and valuable first edition book that you cherish as a symbol of knowledge.",
+            "A vintage typewriter that you use to document your investigations and thoughts.",
+            "A small vial of peculiar, glowing liquid that you believe has mysterious properties.",
+            "A worn and weathered map that hints at the location of a hidden treasure or secret society.",
+            "A pocket watch passed down through generations, said to have mystical qualities.",
+            "A peculiar amulet with intricate symbols that you found in a remote temple.",
+            "A loyal animal companion, such as a trained raven or a mystical cat with unusual powers."
         ]
+
         selected_treasured_possessions = random.choice(treasured_possessions)
     
         traits = [
-            "Generous (e.g. generous tipper, always helps out a person in need, philanthropist).",
-            "Good with Animals (e.g. loves cats, grew up on a farm, good with horses).",
-            "Dreamer (e.g. given to flights of fancy, visionary, highly creative).",
-            "Hedonist (e.g. life and soul of the party, entertaining drunk, \"live fast and die young\").",
-            "Gambler and a risk-taker (e.g. poker-faced, try anything once, lives on the edge).",
-            "Good Cook (e.g. bakes wonderful cakes, can make a meal from almost nothing, refined palate).",
-            "Ladies’ man/seductress (e.g. suave, charming voice, enchanting eyes).",
-            "Loyal (e.g. stands by his or her friends, never breaks a promise, would die for his or her beliefs).",
-            "A good reputation (e.g. the best after-dinner speaker in the country, the most pious of men, fearless in the face of danger).",
-            "Ambitious (e.g. to achieve a goal, to become the boss, to have it all)."
+            "Meticulous Planner (e.g. always has a backup plan, never leaves things to chance, highly organized).",
+            "Adventurous Spirit (e.g. always seeking new experiences, loves exploring the unknown, embraces challenges).",
+            "Keen Observer (e.g. notices the smallest details, excellent at solving puzzles, perceptive).",
+            "Empathetic (e.g. sensitive to others' emotions, a good listener, always lends a sympathetic ear).",
+            "Resourceful (e.g. can make the most of limited resources, great problem solver, creative thinker).",
+            "Eloquent Speaker (e.g. persuasive communicator, excellent public speaker, can charm with words).",
+            "Fearless (e.g. unflinching in the face of danger, never backs down from a challenge, courageous).",
+            "Eccentric (e.g. marches to the beat of their own drum, unconventional, delightfully quirky).",
+            "Resilient (e.g. bounces back from setbacks, mentally tough, unwavering determination).",
+            "Charismatic Leader (e.g. natural leader, inspires others, commands respect and loyalty)."
         ]
+
         selected_traits = random.choice(traits)
     
         embed = discord.Embed(title="Character Backstory Generator", color=0x00ff00)
@@ -3019,7 +3118,7 @@ class CthulhuCog(commands.Cog):
     async def cfirearms(self, ctx, *, weapon_name=None):
         firearms_data = {
             "Remington Double Derringer M95": {
-                "description": "A classic double-barrel derringer design.",
+                "description": "The Remington Double Derringer M95, a unique and compact firearm, earned its reputation as a pocket pistol in the late 19th century. Its distinctive feature is the double-barrel design, allowing for two rapid shots in close-quarters self-defense situations. Despite its diminutive size, it played a role in history, associated with figures like Wyatt Earp. ",
                 "year": "1866 onwards",
                 "cost": "$60 (1920s price)",
                 "range": "3 yards",
@@ -3029,7 +3128,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Colt Single Action Army Revolver M1873": {
-                "description": 'Called "the Peacemaker" or the "Frontier Six-Shooter," the single-action Colt is an Old West classic.',
+                "description": 'The Colt Single Action Army Revolver M1873, often referred to as the "Peacemaker," is an iconic firearm renowned for its role in the American Old West. Introduced in 1873, it quickly became a symbol of the frontier era. This single-action, six-shot revolver played a pivotal role in the expansion of the American frontier, carried by lawmen, outlaws, and cowboys alike. With its robust design and various calibers, including .45 Colt, the Colt SAA became a legendary piece of American history. It is celebrated for its accuracy, reliability, and the distinctive sound of its hammer being cocked.',
                 "year": "1872 onwards",
                 "cost": "$30 (1920s price)",
                 "range": "15 yards",
@@ -3039,7 +3138,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Colt .45 Automatic M1911": {
-                "description": "First adopted by the military in 1911, this popular handgun saw service in numerous wars, law enforcement, and in civilian sectors. Using the powerful .45 ACP round, this gun has excellent stopping power. It has a seven-round detachable box magazine that loads into the grip. It is extremely reliable even under adverse conditions.",
+                "description": "The Colt .45 Automatic M1911, commonly known as the M1911 or simply the 1911, is a legendary semi-automatic pistol that has left an indelible mark on firearms history. Designed by John Browning and adopted by the U.S. military in 1911, this handgun has a storied legacy as the standard-issue sidearm for American forces for over seven decades. Chambered in .45 ACP (Automatic Colt Pistol), the M1911 is celebrated for its stopping power and reliability. It features a single-stack magazine, typically holding seven or eight rounds, and operates on a short recoil system. The M1911's design has influenced countless other handguns, and its enduring popularity extends to both military and civilian use. Due to its robust construction and excellent ergonomics, the M1911 has been a favorite among competitive shooters, law enforcement, and concealed carry enthusiasts. With its timeless design and reputation for accuracy and durability, the Colt M1911 continues to be a symbol of American firearms craftsmanship and innovation.",
                 "year": "1911 onwards",
                 "cost": "$40",
                 "range": "15 yards",
@@ -3049,7 +3148,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Mauser 'Broomhandle' Pistol M1912": {
-                "description": 'One of the most distinctive handguns ever produced, the semiautomatic "Broomhandle" takes its name from its narrow wooden grip. The Mauser first appeared in 1896 and has been constantly updated since. It is available in a range of calibers, including 9mm parabellum, and a Chinese version that accepts .45 ACP rounds. A Spanish version, the Astra M900, appears in 1928. Most models accept a shoulder stock. The slender grip is too small to house a magazine, which is instead mounted in front of the trigger guard. Clumsy to handle and expensive to manufacture, by the time of the Second World War the Broomhandle was relegated to secondary troops. In the 1920s they are used mostly by law enforcement personnel and security troops.',
+                "description": 'The Mauser \'Broomhandle\' Pistol M1912, also known as the Mauser C96, is a legendary semi-automatic handgun with a unique design. Introduced in 1896, it features an elongated wooden grip, earning it the nickname \'Broomhandle.\' This iconic firearm comes in various calibers, including 9mm Parabellum and 7.63x25mm Mauser, providing versatility in ammunition choices. Notably, the Mauser M1912 features an internal magazine located in front of the trigger guard, giving it a distinctive appearance. Praised for its accuracy and reliability, it gained popularity among both military and civilian users.',
                 "year": "1896 onwards",
                 "cost": "$50 (1920s price)",
                 "range": "15 yards",
@@ -3059,7 +3158,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Webley-Fosbery Automatic Revolver": {
-                "description": "A unique weapon, the Webley uses the force of its recoil to rotate the chamber rather than trigger-pull, making it the only semiautomatic revolver on the market. Despite rejection by the British military, it is manufactured until 1939 in both .38 and .455 calibers. The Webley-Fosbery is prone to jams unless kept clean but, unlike most revolvers, it features a safety.",
+                "description": "The Webley-Fosbery Automatic Revolver is a remarkable firearm known for its innovative design. Introduced in the early 20th century, it combines the features of a revolver with semi-automatic functionality, offering a unique shooting experience. Unlike traditional revolvers, the Webley-Fosbery employs a recoil-operated mechanism, enabling semi-automatic fire while maintaining the revolver's iconic cylinder.",
                 "year": "1901 onwards",
                 "cost": "$30-40",
                 "range": "15 yards",
@@ -3069,17 +3168,17 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "97-100"
             },
             "Winchester M1895 Rifle": {
-                "description": "This popular model was produced between 1895 and 1931, one of several Winchesters taken by Theodore Roosevelt on his hunting trip to Africa. Of lever-action design, it differs from the usual tubular magazine below the barrel, instead using a non-detachable box forward of the trigger guard. This reduces the rifle's capacity to four rounds, five in the .303 British version. Other calibers manufactured include a 7.62mm Spitzer made for the Russian government during the Great War, the only version incorporating stripper clips. Barrel lengths include the standard 30, 28, and 24-inch rifle lengths, as well as a cumbersome 36-inch long range version, and a 22-inch carbine model. The latter is available only in .30-30, .30-06, and .303 British calibers. Most military versions feature lugs for an 8-inch bayonet.",
+                "description": "The Winchester M1895 Rifle, also known as the Model 1895, is a lever-action firearm that holds a significant place in the history of American firearms. Designed by John Browning, this rifle was one of the first successful lever-action designs capable of handling high-powered, smokeless ammunition. Chambered in various calibers, including the powerful .30-06 Springfield, the Winchester M1895 offered versatility and firepower. It featured a unique box magazine located underneath the action, allowing for the use of pointed or spitzer bullets. This innovation made it a popular choice among hunters and military users. The rifle gained recognition as it served in various roles, including as a hunting firearm, a military rifle during conflicts like the Spanish-American War, and even as a favorite of Russian forces during World War I. Its reliability and ability to handle different ammunition types contributed to its widespread adoption.",
                 "year": "1895 onwards",
                 "cost": "$80 (1920s price)",
                 "range": "110 yards",
                 "shots_per_round": "1 shot per round",
                 "capacity": "4",
-                "damage": "2D6+4 (.30-30, 30-06 or 7.62mm)",
+                "damage": "2D6+4",
                 "malfunction": "99-100"
             },
             "Mauser M1898 Rifle": {
-                "description": "Available in both rifle and carbine versions, this successor to the M1888 is perhaps the ultimate in bolt-action design. Using the powerful 7.92mm Mauser round, a five-round stripper clip permits quick reloading. The M1898 accommodates any one of several types of bayonets, including the notorious saw-backed 'butcher blade.' This weapon was produced in massive quantities and proved as capable of bringing down big game as well as waging war.",
+                "description": "The Mauser M1898 Rifle, often referred to as the Gewehr 98 or Karabiner 98, is an iconic bolt-action rifle known for its accuracy, reliability, and influence on firearm design. Designed by Peter Paul Mauser, this rifle served as the standard-issue firearm for the German military during both World War I and World War II. Chambered in the powerful 7.92x57mm Mauser cartridge, the M1898 boasted a five-round internal magazine and a robust bolt-action mechanism. Its innovative features included a controlled-feed system, a strong and durable receiver, and an integral five-round magazine. These attributes contributed to the rifle's reputation for accuracy and dependability. The Mauser M1898 gained worldwide recognition and was used by many countries and military forces, earning a reputation as one of the finest bolt-action rifles of its time. Its design influenced numerous other rifles and served as a basis for many subsequent firearms, including sporting rifles and sniper rifles.",
                 "year": "1898 onwards",
                 "cost": "$80 (1920s price)",
                 "range": "110 yards",
@@ -3089,7 +3188,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "99-100"
             },
             "Springfield M1903 Rifle": {
-                "description": "This rugged, bolt-action rifle, regular issue for U.S. troops during the Great War, was a close copy of the Mauser M1898. Standard caliber after 1906 was the .30-06 cartridge in a five-round clip. Barrel length is a short 24 inches. These models are still prized by serious marksmen.",
+                "description": "The Springfield M1903 Rifle is a renowned bolt-action rifle that served as the standard-issue firearm for the United States military during both World War I and World War II. Designed at the Springfield Armory, this rifle earned a reputation for accuracy and reliability. Chambered in .30-06 Springfield, the M1903 featured a five-round internal magazine and a bolt-action mechanism known for its smooth operation. The rifle's design was heavily influenced by the Mauser action, resulting in a robust and dependable firearm.",
                 "year": "1903 onwards",
                 "cost": "$80 (1920s price)",
                 "range": "110 yards",
@@ -3099,7 +3198,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "99-100"
             },
             "Lee-Enfield Mark III Rifle": {
-                "description": "A replacement for the outdated Lee-Metford series, this British rifle uses the .303 British cartridge. Features a smooth bolt-action design, but takes advantage of a ten-round magazine for longer firing. The Mark III was the most common Lee-Enfield of the Great War.",
+                "description": "The Lee-Enfield Mark III Rifle, often simply referred to as the Lee-Enfield, is a renowned bolt-action rifle that served as the standard-issue firearm for the British Army and other Commonwealth nations during the early 20th century. Designed in the late 19th century, the Lee-Enfield became one of the most iconic and widely used rifles in military history. Chambered in .303 British caliber, the Lee-Enfield Mark III featured a ten-round detachable magazine, making it one of the first rifles with such a high magazine capacity. Its bolt-action design was known for its smooth and rapid cycling, allowing for relatively fast follow-up shots in the hands of a skilled shooter.",
                 "year": "1907 onwards",
                 "cost": "$50",
                 "range": "110 yards",
@@ -3109,7 +3208,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Remington M1889": {
-                "description": "The last in a series that began with the M1883, this double-barrel shotgun with exposed hammers is available in 10, 12, and 16-gauge, with barrel lengths ranging between 28 and 32 inches. When production ceased in 1909, over 37,500 of these firearms had been produced.",
+                "description": "The Remington Model 1889 is a shotgun, specifically a side-by-side double-barreled shotgun. It was manufactured by the Remington Arms Company in the late 19th century. This shotgun was a popular choice for hunters, sportsmen, and shooters during its time. The Remington Model 1889 shotgun typically came in various gauges, including 10-gauge, 12-gauge, and 16-gauge. It featured a break-action design, allowing the shooter to open the action and load shells into the breech manually. After loading, the action was closed, making the shotgun ready to fire.",
                 "year": "1889 onwards",
                 "cost": "$35-40",
                 "range": "50 yards",
@@ -3119,7 +3218,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Winchester M1887 Shotgun and M1901 Shotgun": {
-                "description": "This distinctive, lever-action, hammer shotgun was popular despite its strange, even ugly appearance. Two models were produced: the M1887 in 10- and 12-gauge black powder, and the M1901 in 10-gauge smokeless powder. Both feature five-round, tubular magazines. In 1898, both versions became available in short-barrel riot versions.",
+                "description": "This distinctive, lever-action, hammer shotgun was popular despite its strange, even ugly appearance. Two models were produced: the M1887 in 10- and 12-gauge black powder, and the M1901 in 10-gauge smokeless powder. Both feature five-round, tubular magazines. In 1898, both versions became available in short-barrel riot versions. The lever-action design of the Model 1901 allowed for relatively rapid follow-up shots compared to break-action shotguns of the era. It was favored by hunters, law enforcement agencies, and even the U.S. military for a time.",
                 "year": "1897 and 1901 onwards",
                 "cost": "$50",
                 "range": "50 yards",
@@ -3129,7 +3228,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Winchester M1897 Shotgun": {
-                "description": "Intended as a replacement for the trouble-plagued M1893, this shotgun was a tremendous success. Pump-action, with an exposed hammer, over a million were produced between 1897 and 1957. A popular hunting weapon, seeing great use in the civilian sector. Thousands of trench versions served the military, while a riot version was marketed to law enforcement agencies.",
+                "description": "The Winchester Model 1897 Shotgun, often referred to as the Winchester 97, is a renowned pump-action shotgun with a rich history. Introduced in 1897 by the Winchester Repeating Arms Company, it came in various gauges, with the 12-gauge version being the most prominent. Known for its durability, the shotgun served in both World War I and World War II, earning the nickname \"trench gun\" during the First World War. Its ability to hold five rounds and adapt to different barrel lengths made it versatile for hunting, sport shooting, and military use.",
                 "year": "1897 onwards",
                 "cost": "$45",
                 "range": "50 yards",
@@ -3139,7 +3238,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Winchester M1912 Shotgun": {
-                "description": "This common firearm, a pump-action hammerless design, is available in 12, 16, and 20-gauge (28-gauge in 1934). Riot and trench versions were first produced in 1918. The riot gun is fairly common but after the end of the Great War the trench model must be special-ordered.",
+                "description": "The Winchester Model 1912, often called the Winchester 12, is a pump-action shotgun that became a classic in its own right. Introduced in 1912 by the Winchester Repeating Arms Company, it quickly gained popularity and is considered one of the most successful pump-action shotguns in history. Available in various gauges, it was known for its smooth action and reliability.",
                 "year": "1912 onwards",
                 "cost": "$70",
                 "range": "50 yards",
@@ -3149,7 +3248,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Bergmann MP18I": {
-                "description": "This weapon was developed near the end of the Great War. Chambered for 9mm Parabellum, it fired automatic only at a cyclic rate of 350-400 rounds per minute from a 20-round drum magazine. The MP28II is a later version, developed in secret in violation of Germany's surrender conditions. It features minor internal modifications, better sights, and a choice of 20 or 30-round box magazines, or a 32-round snail drum. A selector switch allows a choice of semiautomatic or fully automatic fire.",
+                "description": "The Bergmann MP18, also known as the MP-18/I, was one of the earliest submachine guns ever developed. It was designed by German engineer Hugo Schmeisser and saw significant use during World War I. The MP18/I was chambered for the 9mm Parabellum cartridge and featured a distinctive snail drum magazine that could hold either 20 or 32 rounds. This submachine gun played a pivotal role in changing the face of modern warfare, as it was the first true submachine gun to see mass production and combat use. Its compact design, high rate of fire, and relatively manageable recoil made it effective in the trenches of World War I.",
                 "year": "1918 onwards",
                 "cost": "$1000+ (black market)",
                 "range": "20 yards",
@@ -3159,7 +3258,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "96-100"
             },
             "Thompson M1921": {
-                "description": "M1921 is a modified version of the original model introduced in 1919. Chambered for the .45 ACP, the 'Tommy gun' uses either 20 or 30-round box magazines, or the more cumbersome 50 or 100-round drums. It has a cyclic firing rate of 800 rounds per minute. The 1928 model features a horizontal forward grip (in place of the original pistol-grip) and a reduced firing rate of 650 rounds per minute.",
+                "description": "The Thompson M1921, colloquially known as the \"Tommy Gun\", is a historic submachine gun designed by John T. Thompson in 1919. It gained notoriety during the Prohibition era in the United States when it became a favored weapon of gangsters and law enforcement. Chambered for the .45 ACP cartridge, the M1921 featured a distinctive drum magazine, pistol grip, and sleek design, making it an iconic firearm. It saw extensive military use during World War II but was later replaced by more cost-effective variants. Despite its associations with both criminality and heroism, the Thompson M1921 remains a symbol of the Roaring Twenties and American firearms history.",
                 "year": "1921 onwards",
                 "cost": "$200+ ($1000+ black market)",
                 "range": "20 yards",
@@ -3169,7 +3268,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "96-100"
             },
             "Mark I Lewis Gun": {
-                "description": "The Lewis gun debuted in Belgium in 1913, soon after making its way into the arsenals of England, the U.S., and Japan. Chambered in either .303 British or .30-06 calibers, the fully automatic Lewis gun is fed by a circular drum holding 97 rounds mounted horizontally atop the gun. Although it has a shoulder stock, the Lewis gun's loaded weight of 47 pounds makes its short bipod and a prone firing position almost essential. Lewis Guns are particularly prone to jams. Lewis Guns were routinely fitted to aircraft, mounted on a swivel, and fired by a passenger. These usually dispense with the shoulder stock and opt for the larger, 97-round drum. They fire at a cyclic rate of 450-500 rounds per minute.",
+                "description": "The Mark I Lewis Gun, designed by U.S. Army Colonel Isaac Newton Lewis, was a World War I-era light machine gun known for its distinctive top-mounted pan magazine. Introduced in 1911, it was one of the first portable machine guns used by infantry. Chambered in .303 British, the Lewis Gun featured a unique cooling system using a metal shroud that helped prevent overheating during sustained fire. It saw widespread use with British and American forces and was highly regarded for its reliability and firepower. Despite its effectiveness, it was gradually replaced by other machine guns in the interwar years. The Mark I Lewis Gun played a significant role in early 20th-century warfare and paved the way for future developments in automatic weaponry.",
                 "year": "1912 onwards",
                 "cost": "$3000+ (black market)",
                 "range": "110 yards",
@@ -3179,7 +3278,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "96-100"
             },
             "Browning M1918 Automatic Rifle": {
-                "description": "The famed BAR debuted in 1918. Chambered for the .30-06 round, it weighs an imposing 16 pounds but with the aid of its sling can still be supported and fired from a standing position. A selector switch allows a choice of semiautomatic or full automatic. It carries a 20-round box magazine.",
+                "description": "The Browning M1918 Automatic Rifle, also known as the BAR, was a renowned American firearm used during World War I and beyond. Designed by John Browning, it was chambered in .30-06 Springfield and introduced in 1918. The BAR had a distinctive appearance with its wooden furniture and a detachable magazine, typically holding 20 rounds. It served as both a light machine gun and a semi-automatic rifle and was highly appreciated for its versatility and firepower. The BAR continued to see service in various conflicts, including World War II and the Korean War, solidifying its status as an iconic American military weapon.",
                 "year": "1918 onwards",
                 "cost": "$800+ (black market)",
                 "range": "90 yards",
@@ -3189,7 +3288,7 @@ class CthulhuCog(commands.Cog):
                 "malfunction": "100"
             },
             "Vickers .303 Caliber Machine Gun": {
-                "description": "Belt-fed and mounted on a heavy tripod, the British Vickers was first introduced in 1912. Firing a .303 cartridge, it has a cyclic rate of 450-500 rounds per minute. Water-cooled, the early models had a problem with steam rising from the barrel, obscuring the shooter's vision. Later models corrected this. This weapon features dual spade-handle handgrips, the trigger is depressed by the thumbs. A special, air-cooled version is suitable for aircraft only.",
+                "description": "The Vickers .303 Caliber Machine Gun, often referred to simply as the Vickers machine gun, was a prominent British firearm used extensively during the early 20th century. Designed by Hiram Maxim, it became the standard machine gun of the British Army during World War I and continued to serve into World War II. Chambered for the .303 British cartridge, it had a water-cooled barrel to prevent overheating during sustained fire. The Vickers machine gun was known for its reliability and accuracy, capable of a high rate of fire, and typically operated by a crew of several soldiers. It played a pivotal role in the trench warfare of World War I and was used in various military roles for decades, earning its place in history as a reliable and effective weapon.",
                 "year": "1912 onwards",
                 "cost": "$5000+ (black market)",
                 "range": "110 yards",
@@ -5323,1177 +5422,1177 @@ class CthulhuCog(commands.Cog):
                     "The Oklahoma Land Run opens up unassigned lands for settlement, leading to the founding of Oklahoma City.",
                     "Vincent van Gogh paints 'Starry Night,' a masterpiece of post-impressionist art."
                 ],
-            1890: [
-                "The first entirely steel-framed building is erected in Chicago, a pivotal moment in architecture.",
-                "London introduces the world's first electric tube railway, transforming urban transportation.",
-                "Tragedy strikes as the British cruiser Serpent is wrecked off the Spanish coast during a fierce storm, resulting in the loss of 167 lives.",
-                "Sitting Bull, a prominent figure in the Sioux uprising, meets his demise.",
-                "The delightful ice-cream sundae makes its debut as a sweet treat.",
-                "The United States boasts a resident population of 62.9 million, reflecting its continued growth.",
-                "Thomas Edison patents the motion picture camera, laying the foundation for the film industry."
-            ],
-            1891: [
-                "Japan endures a catastrophic earthquake that levels 20,000 structures and claims the lives of 25,000 people.",
-                "A groundbreaking moment arrives with the creation of the first practical hydroelectric station, ushering in a new era of energy production.",
-                "England embraces the electric torch, a technological advancement with far-reaching implications.",
-                "Whitcomb Judson invents the zipper, a convenient fastening device with various applications."
-            ],
-            1892: [
-                "Oil City, Pennsylvania, descends into chaos as fires and floods lead to a harrowing ordeal, resulting in 130 casualties.",
-                "A crucial breakthrough occurs with the development of a cholera vaccine, a significant stride in public health.",
-                "The completion of the Cape-Johannesburg railroad connects distant regions, facilitating transportation and trade.",
-                "Innovation takes the form of the crown top for bottles and the patenting of the Diesel engine.",
-                "The first automatic escalator is patented by Jesse W. Reno, revolutionizing vertical transportation."
-            ],
-            1893: [
-                "Hurricane-driven floods wreak havoc along the U.S. South Atlantic coast, causing a staggering loss of 2000 lives.",
-                "Chicago hosts the World Exposition, showcasing human achievement and innovation on a global scale.",
-                "A major leap in photography occurs with the invention of practical roll film.",
-                "Breakfast tables are forever changed with the creation of shredded wheat cereal.",
-                "Rudolf Diesel develops the concept of the diesel engine, paving the way for efficient and powerful engines."
-            ],
-            1894: [
-                "Tensions escalate into war between China and Japan, marking a turning point in East Asian history.",
-                "A devastating forest fire in Minnesota claims the lives of 480 people, leaving a lasting impact on the region.",
-                "Captain Dreyfus is exiled to Devil’s Island amid a controversial and politically charged case.",
-                "The world witnesses the birth of wireless communication, a technology that would shape the future.",
-                "The first kinetoscope parlor opens in New York City, offering a glimpse into the world of moving pictures."
-            ],
-            1895: [
-                "Wilhelm Conrad Roentgen makes a groundbreaking discovery with the identification of X-rays, revolutionizing medicine and imaging.",
-                "The cigarette-making machine is invented, streamlining the production of a popular consumer product.",
-                "The Lumieres introduce their Cinematographie, a precursor to modern cinema, setting the stage for a new era of entertainment.",
-                "Alfred Nobel establishes the Nobel Prize, recognizing outstanding contributions to humanity in various fields."
-            ],
-            1896: [
-                "The Klondike gold rush commences, sparking a frenzied search for precious metals in the icy wilderness of Canada.",
-                "Addressograph patents are officially granted, revolutionizing the field of data processing and record-keeping.",
-                "Henry Ford unveils his first motorcar, laying the foundation for the modern automobile industry.",
-                "Innovative periscopes for submarines are invented, enhancing the stealth and capabilities of underwater vessels.",
-                "The inaugural modern Olympic Games are hosted in Athens, Greece, celebrating athleticism and international unity.",
-                "Wilhelm Röntgen discovers the X-ray, revolutionizing medical diagnostics and imaging technology.",
-                "Marconi sends the first wireless telegraph transmission across the English Channel, marking a major advancement in wireless communication."
-            ],
-            1897: [
-                "The invention of mimeo stencils revolutionizes duplicating documents and publications.",
-                "Scientist Karl Ferdinand Braun introduces the world's first cathode ray tube (CRT), a milestone in the development of electronic displays.",
-                "Aspirin is synthesized for the first time, leading to the widespread use of this pain-relief medication."
-            ],
-            1898: [
-                "A devastating tropical cyclone strikes the southern United States, causing widespread destruction and claiming hundreds of lives.",
-                "The Spanish-American War unfolds, resulting in the loss of 2446 U.S. soldiers and marking a turning point in American foreign policy.",
-                "The practicality of disc recordings is realized, revolutionizing the music industry and audio technology.",
-                "Commercial aspirin makes its debut, providing a widely accessible remedy for pain and fever.",
-                "Kellogg’s Corn Flakes are introduced as a wholesome breakfast option, becoming a household staple.",
-                "The tubular flashlight is invented, illuminating the way for portable and reliable light sources.",
-                "Emile Zola publishes his famous open letter \"J'Accuse!\" in defense of Captain Alfred Dreyfus, igniting a national debate in France."
-            ],
-            1899: [
-                "The Windsor Hotel in New York City is engulfed in flames, causing millions in damages and tragically claiming 14 lives.",
-                "Ernest Rutherford makes groundbreaking discoveries about alpha and beta particles, advancing our understanding of atomic structure.",
-                "The general adoption of typewriters accelerates, transforming written communication and office work.",
-                "The Wright brothers, Orville and Wilbur, start experimenting with their first powered aircraft, paving the way for the age of aviation."
-            ],
-            1900: [
-                "The tragic wreck of the steamship Rio de Janeiro pierces the heart of San Francisco harbor, resulting in the loss of 128 lives.",
-                "The devastating Galveston hurricane strikes, leaving a trail of destruction and claiming the lives of 6,000 people.",
-                "A mine explosion in Utah leads to the tragic loss of 200 lives, highlighting the dangers faced by miners.",
-                "The Boxer Rebellion erupts in China, marking a violent struggle against foreign influence and imperialism.",
-                "Eastman Kodak introduces the revolutionary “Brownie” camera, making photography accessible to the masses.",
-                "Count Ferdinand von Zeppelin launches his 420-foot airship, pioneering the era of modern air travel.",
-                "The U.S. public debt stands at $1.263 billion, reflecting economic and financial trends of the time.",
-                "Sigmund Freud publishes \"The Interpretation of Dreams,\" laying the foundation for modern psychoanalysis."
-            ],
-            1901: [
-                "The assassination of President William McKinley sends shockwaves through the nation.",
-                "Two significant typhoid outbreaks strike the United States, raising concerns about public health.",
-                "The passing of Queen Victoria marks the end of an era in British history.",
-                "Advancements in medicine occur with the classification of human blood groups.",
-                "Guglielmo Marconi achieves a groundbreaking milestone by successfully establishing the first transatlantic wireless communication link.",
-                "The inaugural Nobel Prizes are awarded, recognizing outstanding contributions to humanity in various fields."
-            ],
-            1902: [
-                "The Boer War continues to shape the geopolitical landscape in South Africa.",
-                "The catastrophic eruption of Mt. Pelée on Martinique claims the lives of 40,000 people in a devastating natural disaster.",
-                "The launch of the first steam-turbine-driven passenger ship revolutionizes maritime transportation.",
-                "The development of modern macadam improves road construction techniques, benefiting infrastructure worldwide.",
-                "Alum-dried powdered milk is introduced, revolutionizing food preservation and accessibility.",
-                "Puffed cereals make their debut in the breakfast market, offering a novel and convenient choice for consumers.",
-                "The iconic Teddy bear is born, becoming a beloved childhood toy.",
-                "Enrico Caruso, the legendary tenor, makes his historic debut in gramophone recordings, sharing his vocal prowess with the world.",
-                "The development of economical hydrogenated fats makes fats readily available for soap and cooking, impacting daily life."
-            ],
-            1903: [
-                "A devastating fire at the Iroquois Theatre in Chicago claims the lives of 602 people, marking one of the deadliest theater fires in U.S. history.",
-                "The Wright Brothers successfully achieve powered flight with their heavier-than-air aircraft, marking a historic milestone in aviation.",
-                "The first fluorescent light is developed, revolutionizing interior lighting and energy efficiency.",
-                "The invention of the postal meter streamlines mail processing and postage payment.",
-                "The introduction of the center-frame motorcycle engine improves motorcycle design and performance.",
-                "Marie Curie becomes the first woman to win a Nobel Prize, receiving the Nobel Prize in Physics for her groundbreaking research on radioactivity."
-            ],
-            1904: [
-                "A tragic train derailment into a flood in Eden, Colorado, results in the loss of 96 lives, highlighting the risks of rail travel.",
-                "The Broadway subway opens in New York City, expanding the city's transportation network and facilitating urban growth.",
-                "The patenting of the thermos flask revolutionizes the way people keep liquids hot or cold for extended periods.",
-                "Farm machinery sees a significant advancement as tracks (as opposed to wheels) are introduced, enhancing agricultural efficiency.",
-                "Kapok life belts are introduced, improving water safety for sailors and passengers on ships.",
-                "The Russo-Japanese War begins, reshaping the political and territorial landscape in East Asia."
-            ],
-            1905: [
-                "The discovery of the Cullinan diamond, weighing a staggering 3,000 carats, captures the world's attention as the largest diamond find to date.",
-                "Steam turbines become the standard propulsion system for the British navy, enhancing the capabilities of naval vessels.",
-                "An abortive revolution in Russia hints at the impending political changes that will transform the country.",
-                "The invention of the electric motor horn enhances automotive safety and communication on the road.",
-                "The creation of the chemical foam fire extinguisher marks a significant advancement in fire suppression technology.",
-                "Albert Einstein proposes his Special Theory of Relativity, revolutionizing our fundamental understanding of the universe."
-            ],
-            1906: [
-                "A devastating earthquake and fire strike San Francisco, resulting in the destruction of 28,818 houses and an announced death toll of 700.",
-                "U.S. troops occupy Cuba until 1909, shaping the nation's foreign policy and influence in the Caribbean.",
-                "The grand ocean liners Lusitania and Mauretania are launched, setting new standards in transatlantic travel.",
-                "The jukebox makes its debut, revolutionizing music entertainment in public spaces.",
-                "Mass-production of marine outboard motors begins, transforming boating and water transportation.",
-                "Albert Einstein introduces his theory of Special Relativity, reshaping our understanding of the universe."
-            ],
-            1907: [
-                "A tragic West Virginian coal mine explosion claims the lives of 361 miners, highlighting the dangers of coal mining.",
-                "Rasputin gains significant influence in Czarist Russia, becoming a mysterious and controversial figure in the Russian court.",
-                "The world is introduced to animated cartoons, a form of entertainment that will captivate audiences for generations.",
-                "The electric washing machine is invented, revolutionizing household chores and laundry practices.",
-                "Household detergent is introduced, providing a more effective means of cleaning and laundry care.",
-                "The upright vacuum cleaner is created, simplifying home cleaning and maintenance.",
-                "The first electric iron is patented, revolutionizing garment care."
-            ],
-            1908: [
-                "Hermann Minkowski formulates his groundbreaking 4-dimensional geometry, advancing the understanding of space and time.",
-                "Paper cups for drinking are introduced, offering a convenient and hygienic way to consume beverages.",
-                "The Ford Model T, the first mass-produced automobile, hits the market, revolutionizing transportation.",
-                "The concept of the \"Boy Scouts\" is introduced, paving the way for the establishment of the Boy Scouts of America."
-            ],
-            1909: [
-                "Explorer Robert E. Peary reaches the North Pole, achieving a historic milestone in polar exploration.",
-                "A devastating hurricane strikes Louisiana and Mississippi, claiming the lives of 350 people and causing widespread destruction.",
-                "The first powered flight across the English Channel takes place, showcasing the possibilities of aviation.",
-                "Double-decker buses are introduced in the United Kingdom, becoming an iconic sight on British streets.",
-                "The first neon lights are demonstrated, opening new possibilities in signage and advertising.",
-                "The invention of instant coffee revolutionizes coffee consumption, offering a quick and convenient way to enjoy the beverage."
-            ],
-            1911: [
-                "A massive explosion of forty tons of dynamite occurs at the Communipaw terminal in New Jersey, resulting in the tragic loss of 30 lives.",
-                "The Triangle Shirtwaist Factory fire in New York City becomes a tragic landmark, leaving 145 people dead and prompting labor reform efforts.",
-                "Emiliano Zapata arrives in Mexico City, marking a significant moment in the Mexican Revolution, but the battles continue.",
-                "A revolution in China leads to the establishment of a republic under the leadership of Sun Yat-sen.",
-                "The electric frying pan is introduced, simplifying and modernizing cooking techniques.",
-                "Norwegian explorer Roald Amundsen achieves a historic milestone by reaching the South Pole.",
-                "The development of stainless steel revolutionizes industry and manufacturing."
-            ],
-            1912: [
-                "The RMS Titanic collides with an iceberg, resulting in the tragic loss of 1,517 passengers and crew, one of the most infamous maritime disasters in history.",
-                "Woodrow Wilson's cloud chamber leads to the detection of protons and electrons, advancing the field of particle physics.",
-                "Cellophane, a transparent packaging material, is patented, offering new possibilities for food preservation and presentation.",
-                "Savile Row tailors create what will be named the “trench coat,” which becomes an iconic garment during World War I.",
-                "Cadillac introduces the first electric self-starter for automobiles, making cars more accessible and user-friendly.",
-                "The first self-service grocery stores open in California, revolutionizing the retail industry.",
-                "The crossword puzzle is invented, becoming a popular pastime and form of entertainment."
-            ],
-            1913: [
-                "The Balkan War begins, reshaping the geopolitical landscape in Southeastern Europe.",
-                "The British steamer Calvados is lost in a blizzard in the Sea of Marmara, resulting in the tragic loss of 200 lives.",
-                "Woodrow Wilson is inaugurated as President of the United States, ushering in a new era of American leadership.",
-                "Electric starters for motorcycles are introduced, improving motorcycle usability and safety.",
-                "Vitamin A is discovered, leading to advancements in nutrition and health.",
-                "The U.S. Constitution is amended to include income tax and the popular election of senators, shaping American governance.",
-                "Stainless steel cutlery is introduced, offering a durable and rust-resistant alternative to traditional materials."
-            ],
-            1914: [
-                "The Great War (World War I) begins, launching a devastating conflict that reshapes the course of history.",
-                "The first air raids occur, marking the beginning of aerial warfare in the Great War.",
-                "The Panama Canal is used for the first time, revolutionizing global trade and transportation.",
-                "The Canadian Pacific steamship Empress of India is sunk in a collision with the Storstad in the St. Lawrence River, resulting in the tragic loss of 1,024 lives.",
-                "The first successful blood transfusion is performed, advancing the field of medicine.",
-                "The invention of the traffic signal improves road safety and traffic management in cities.",
-                "The brassiere (bra) is patented, revolutionizing women's undergarments and fashion."
-            ],
-            1915: [
-                "The sinking of the Lusitania by a German submarine results in the tragic loss of 1,199 lives and sparks consternation and anger in the United States.",
-                "The Great War witnesses enormous and unprecedented casualties, reshaping the global political landscape.",
-                "Cereal flakes are marketed as a convenient and nutritious breakfast option, changing morning routines.",
-                "Chlorine gas is used as a weapon in the Great War, introducing a new and deadly form of warfare.",
-                "The gas mask is invented, providing protection for soldiers against chemical weapons.",
-                "The zipper is patented, revolutionizing clothing fasteners and becoming a staple in fashion and industry.",
-                "Einstein's theory of General Relativity is published, furthering our understanding of gravity and the universe."
-            ],
-            1916: [
-                "The Battle of Verdun claims the lives of some 700,000 soldiers, becoming one of the deadliest battles of World War I.",
-                "One million lives are lost in the Battle of the Somme, marking a harrowing chapter in the Great War.",
-                "A polio epidemic in the United States results in 7,000 deaths and leaves 27,000 youngsters paralyzed, highlighting the need for medical advances.",
-                "The Gallipoli Campaign is waged, leading to significant casualties and reshaping the course of World War I.",
-                "The Easter Uprising takes place in Ireland, marking a pivotal moment in the struggle for Irish independence.",
-                "The Battle of Jutland in the North Sea becomes the largest naval battle of World War I.",
-                "Mechanical windshield wipers are invented, improving visibility and safety in automobiles.",
-                "Albert Einstein proposes his General Theory of Relativity, revolutionizing our understanding of the laws governing the universe.",
-                "General John J. Pershing leads a raid into Mexico in pursuit of Pancho Villa, escalating tensions between the U.S. and Mexico."
-            ],
-            1917: [
-                "The United States enters World War I, changing the course of the conflict and becoming a major player in the Allied forces.",
-                "The Russian Revolution unfolds, leading to the Bolsheviks seizing power and transforming Russia into a communist state.",
-                "Mustard gas is used in warfare for the first time, introducing a new and devastating form of chemical warfare.",
-                "Ford begins mass-producing tractors, revolutionizing agriculture and farming practices.",
-                "The steamer Castalia is wrecked on Lake Superior, resulting in the loss of 22 lives.",
-                "A munitions plant explosion in Pennsylvania kills 133 workers and underscores the dangers of wartime production.",
-                "A ship collision and explosion in Halifax, Nova Scotia, result in the tragic loss of 1,600 lives.",
-                "The United States establishes its first regular airmail service, advancing aviation and communication.",
-                "The development of the first tank prototype in World War I leads to advancements in armored warfare."
-            ],
-            1918: [
-                "World War I comes to an end, bringing an end to one of the most devastating conflicts in history.",
-                "The Russian Civil War erupts, leading to a protracted struggle for power and control in post-revolutionary Russia.",
-                "Regular U.S. airmail service is established, connecting the nation through air travel.",
-                "A world influenza epidemic, known as the Spanish flu, sweeps the globe and claims the lives of 21.6 million people.",
-                "The USS Cyclops disappears without a trace after leaving Barbados, becoming one of the greatest mysteries of maritime history.",
-                "Powered flight reaches speeds exceeding 150 mph and altitudes exceeding 30,000 feet, pushing the boundaries of aviation.",
-                "Electric clocks are introduced, becoming a common household timekeeping device."
-            ],
-            1919: [
-                "Prohibition is enacted in the United States, ushering in an era of alcohol prohibition and the rise of bootlegging.",
-                "The first transatlantic flight covers 1,880 miles in 16 hours and 12 minutes, marking a historic achievement in aviation.",
-                "Grease guns are invented, becoming essential tools in various industries and maintenance work.",
-                "Parachutes are introduced, revolutionizing safety measures for aviation and parachuting sports."
-            ],
-            1920: [
-                "Prohibition is in effect in the United States, leading to a significant impact on the alcohol industry and culture.",
-                "The Bolsheviks consolidate power in Russia, establishing the Soviet Union and reshaping global politics.",
-                "An earthquake in Gansu province, China, claims the lives of 200,000 people, highlighting the vulnerability of populated regions to natural disasters.",
-                "The first radio broadcasting station goes on the air, revolutionizing mass communication and entertainment.",
-                "Teabags are introduced as a convenient and mess-free way to prepare tea, changing tea consumption habits.",
-                "The U.S. public debt stands at $24.3 billion, reflecting the economic and financial challenges of the era.",
-                "Women's suffrage is ratified in the United States, granting women the right to vote and marking a milestone in the fight for gender equality.",
-                "The United States boasts a resident population of 105.7 million, reflecting the nation's continued growth and development."
-            ],
-            1921: [
-                "Hermann Rorschach devises his inkblot tests, pioneering a psychological assessment method.",
-                "Inflation of the German Mark begins, leading to economic turmoil and hyperinflation in Germany.",
-                "KDKA in Pittsburgh broadcasts sports events, marking a significant milestone in radio broadcasting.",
-                "Karel Čapek coins the word “robot” in his play \"R.U.R.\", introducing the concept of artificial beings."
-            ],
-            1922: [
-                "The Ku Klux Klan experiences a revival and growth in the United States, sparking concerns about racial violence and discrimination.",
-                "The British dirigible AR-2 breaks in two, resulting in the tragic loss of 62 lives and raising safety concerns in air travel.",
-                "Insulin is isolated, revolutionizing the treatment of diabetes and saving countless lives.",
-                "The first practical postal franking machine is introduced, streamlining mail processing and postage payment.",
-                "Soviet May Day slogans omit “world revolution,” reflecting shifts in Soviet foreign policy.",
-                "Water-skiing is invented, creating a popular water sport and recreational activity.",
-                "Benito Mussolini and his supporters march on Rome, leading to his appointment as Prime Minister of Italy."
-            ],
-            1923: [
-                "The Teapot Dome scandal rocks the administration of President Warren G. Harding, revealing corruption in government oil leases.",
-                "A big fire in Berkeley, California, destroys 600 buildings, causes $10 million in damage, and results in 60 deaths.",
-                "The German Mark is stabilized, bringing economic relief to Germany after a period of hyperinflation.",
-                "Continuing Ku Klux Klan violence is reported in Georgia, prompting concerns about civil rights and racial tensions.",
-                "The Nazi putsch in Munich fails, marking an early attempt by Adolf Hitler to seize power.",
-                "The tomb of King Tutankhamun (King Tut) is opened, unveiling treasures and insights into ancient Egypt.",
-                "A vaccine for whooping cough is developed, improving child health and reducing mortality rates."
-            ],
-            1924: [
-                "Leopold and Loeb are convicted of the kidnap and slaying of Bobby Franks in a sensational trial.",
-                "Paper egg cartons are developed, providing a more convenient and sanitary way to package eggs.",
-                "Kleenex facial tissues are introduced, becoming a household staple for personal hygiene."
-            ],
-            1925: [
-                "Wolfgang Pauli formulates the Exclusion Principle, a fundamental concept in quantum mechanics.",
-                "I.G. Farben, a major chemical conglomerate, is formed, playing a significant role in the chemical industry.",
-                "Sun Yat-sen, a key figure in Chinese history, dies, leading to political changes in China.",
-                "In the Midwest, 792 people die in a single day from tornadoes, highlighting the destructive power of natural disasters.",
-                "The U.S. dirigible Shenandoah breaks apart in mid-air, resulting in the tragic loss of 14 lives and raising safety concerns in airship travel.",
-                "The German SS (Schutzstaffel) is formed, becoming a key organization in Nazi Germany.",
-                "The Scopes “Monkey Trial” takes place, testing the teaching of evolution in American schools and sparking a national debate.",
-                "Aerial commercial crop-dusting is introduced, improving agricultural efficiency."
-            ],
-            1926: [
-                "Dr. Robert H. Goddard fires his first liquid-fuel rocket, laying the foundation for modern rocketry and space exploration.",
-                "Lightning starts a massive explosion at the U.S. Naval ammunition dump in Lake Denmark, New Jersey, causing $85 million in damages and resulting in 30 deaths.",
-                "A hurricane sweeps through Florida and Alabama, leaving 243 people dead and causing extensive destruction.",
-                "Chiang Kai-Shek stages a coup in Canton, marking a significant development in Chinese politics.",
-                "Leon Trotsky is expelled from the Politburo, leading to political shifts within the Soviet Union.",
-                "Rolex introduces a waterproof watch, setting a new standard for timepieces."
-            ],
-            1927: [
-                "Charles A. Lindbergh achieves fame by flying solo and non-stop between New York City and Paris, becoming a pioneering aviator.",
-                "The Jazz Singer becomes the first feature-length sound film, ushering in the era of \"talkies\" in the motion picture industry.",
-                "The first remote jukebox is introduced, transforming the way people enjoy music in public spaces.",
-                "The pop-up toaster is introduced, simplifying and modernizing breakfast preparation.",
-                "Nicola Sacco and Bartolomeo Vanzetti are executed, later cleared of charges by proclamation in 1977, sparking debate and protests."
-            ],
-            1928: [
-                "Television experiments pave the way for the development of television as a medium for entertainment and communication.",
-                "A devastating hurricane strikes southern Florida, resulting in the tragic loss of 1,836 lives and significant damage.",
-                "Admiral Richard E. Byrd leads an expedition to Antarctica, advancing exploration of the continent.",
-                "Teletypes come into use, improving telecommunication and printing technology.",
-                "Waterproof cellophane is developed, offering new possibilities for packaging and preserving products.",
-                "The Geiger counter is introduced, revolutionizing the detection of ionizing radiation.",
-                "Vitamin C is discovered, leading to insights into nutrition and health."
-            ],
-            1929: [
-                "The Great Stock Market Crash occurs on October 24, leading to the Wall Street Crash of 1929 and the onset of the Great Depression.",
-                "The Graf Zeppelin completes a historic circumnavigation of the world, demonstrating the potential of airship travel.",
-                "The Russian passenger steamer Volga is struck by a remnant World War I mine in the Black Sea, resulting in the loss of 31 lives.",
-                "16mm color film is developed, enhancing the visual quality of motion pictures.",
-                "Scotch tape is introduced, becoming a versatile adhesive tape for various applications.",
-                "The tune-playing automobile horn is invented, adding musicality to car horns."
-            ],
-            1930: [
-                "The Technocracy movement reaches its peak, advocating for the application of scientific principles to social and economic governance.",
-                "The flash bulb ends flash powder explosions at press conferences and photography, improving safety and convenience.",
-                "The first frozen foods are marketed, transforming food preservation and convenience for consumers.",
-                "The bathysphere is invented, enabling deep-sea exploration and research.",
-                "The cyclotron, a particle accelerator, is invented, advancing the field of nuclear physics.",
-                "Pluto is discovered, expanding our understanding of the solar system.",
-                "The telescopic umbrella is introduced, offering enhanced protection from rain and sun.",
-                "The U.S. public debt reaches $16.18 billion, reflecting the economic challenges of the era.",
-                "The U.S. resident population grows to 122.8 million, indicating continued demographic growth."
-            ],
-            1931: [
-                "German millionaire support builds for the Nazi Party, contributing to the rise of Adolf Hitler.",
-                "A mutiny occurs in the British Navy at Invergordon, highlighting labor disputes and unrest within the military.",
-                "The Empire State Building formally opens, becoming an iconic symbol of New York City.",
-                "Al Capone is imprisoned, marking a significant moment in the prosecution of organized crime figures.",
-                "Alka-Seltzer is introduced as an antacid and pain reliever.",
-                "The electric razor is introduced, offering a more convenient and efficient shaving experience.",
-                "The George Washington Bridge, spanning 3,500 feet, is completed, becoming a vital transportation link."
-            ],
-            1932: [
-                "Mahatma Gandhi is arrested in India as part of his civil disobedience campaign for independence.",
-                "A British submarine sinks in the English Channel, raising questions about naval safety.",
-                "Franklin D. Roosevelt is elected President of the United States in a landslide victory, bringing hope during the Great Depression.",
-                "Benito Mussolini initiates the draining of the Pontine Marshes in Italy, addressing a long-standing environmental issue.",
-                "The Lindbergh baby is kidnapped, leading to a high-profile investigation and public fascination.",
-                "The first car radios are introduced, changing the way people enjoy music and news while driving.",
-                "The first Gallup Poll is conducted, revolutionizing public opinion research and polling.",
-                "Mars Bars are introduced as a popular candy bar.",
-                "The invention of the zoom lens enhances photography and filmmaking.",
-                "The Zippo lighter is introduced, becoming a classic and iconic product."
-            ],
-            1933: [
-                "Adolf Hitler is named Chancellor of Germany, marking a turning point in German politics and history.",
-                "Japan withdraws from the League of Nations, signaling increasing militarism and expansionist ambitions.",
-                "The United States abandons the gold standard, a major economic policy shift during the Great Depression.",
-                "The Long Beach earthquake kills 123 people and causes significant damage in California.",
-                "Hundreds of lives are lost in a Cuban rebellion against the government of Gerardo Machado.",
-                "Freed from imprisonment, Mahatma Gandhi weighs 90 pounds due to his hunger strikes and dedication to nonviolent resistance.",
-                "The first German concentration camp, Dachau, is established, marking a grim chapter in history.",
-                "Day-Glo pigments are introduced, leading to the creation of vibrant and fluorescent colors.",
-                "The game Monopoly is published, becoming one of the most popular board games worldwide.",
-                "Fluorescent lights are introduced commercially, offering energy-efficient lighting options."
-            ],
-            1934: [
-                "The economic depression deepens as starvation and unrest spread in the United States, reflecting the challenges of the Great Depression.",
-                "Drought extends from New York State to California, leading to the Dust Bowl and agricultural hardships.",
-                "Augusto César Sandino is assassinated by supporters of Anastasio Somoza García, shaping the political landscape in Nicaragua.",
-                "A general strike in San Francisco ends, concluding a period of labor unrest and strikes in the city.",
-                "Huey Long assumes a dictatorship of Louisiana, implementing populist policies and consolidating power.",
-                "The first commercial launderette is established, providing a new approach to laundry services."
-            ],
-            1935: [
-                "Increasingly severe dust storms batter the High Plains and Midwest of the United States, leading to the Dust Bowl era.",
-                "The first Pan-Am Clipper departs from San Francisco for China, marking the dawn of transpacific flight.",
-                "The Social Security system is enacted in the United States, providing a safety net for retirees and disabled individuals.",
-                "Huey Long, the charismatic Louisiana politician, is assassinated, altering the political landscape in the state.",
-                "Mao Zedong's Long March concludes in Yenan, a pivotal moment in the Chinese Communist Party's history.",
-                "The first passenger flight for the Douglas DC-3 aircraft takes place, revolutionizing air travel.",
-                "Mass-market paperback books are introduced, making literature more accessible to the general public.",
-                "The Richter earthquake scale is developed, allowing for more accurate measurement of earthquake magnitudes.",
-                "The tape recorder is retailed, enabling the recording and playback of audio recordings."
-            ],
-            1936: [
-                "The Nazis enter the Rhineland, a significant violation of the Treaty of Versailles and a precursor to further aggression.",
-                "Italy conquers Ethiopia, marking a brutal episode of colonialism in East Africa.",
-                "The Spanish Civil War begins, leading to years of conflict and ideological battles in Spain.",
-                "A severe U.S. heat wave kills 3,000 people, underscoring the impact of extreme weather events.",
-                "Dust-bowl conditions continue to plague the Great Plains, causing ecological and agricultural challenges.",
-                "Jesse Owens wins four gold medals at the Berlin Olympics, challenging racial stereotypes and Nazi ideology.",
-                "Axis powers, including Germany, Italy, and Japan, sign the Anti-Comintern Pact, signaling closer collaboration.",
-                "The Boulder Dam (later known as the Hoover Dam) becomes operational, providing hydroelectric power and water storage.",
-                "The first Volkswagen (VW) car is introduced, laying the foundation for a globally recognized automobile brand."
-            ],
-            1937: [
-                "A devastating gas explosion kills 294 people in a Texas school, highlighting the need for safety measures in schools.",
-                "The Hindenburg dirigible explodes while attempting to dock in Lakehurst, New Jersey, resulting in the loss of 36 lives.",
-                "Eight Soviet generals die in Stalinist purges, reflecting the brutal political climate in the Soviet Union.",
-                "DuPont patents nylon, a synthetic material that revolutionizes various industries, including fashion and manufacturing.",
-                "Japanese forces sink the U.S. gunboat Panay in the Yangtze River, leading to diplomatic tensions.",
-                "The Golden Gate Bridge, spanning 4,200 feet, is completed, becoming an iconic landmark in San Francisco.",
-                "The first supermarket shopping carts are introduced, simplifying the grocery shopping experience.",
-                "Buchenwald concentration camp opens in Germany, foreshadowing the horrors of the Holocaust."
-            ],
-            1938: [
-                "Mexico expropriates all foreign oil holdings, asserting national control over the country's oil resources.",
-                "German forces, unopposed, enter Austria, leading to the Anschluss and the annexation of Austria by Nazi Germany.",
-                "Kristallnacht, or the Night of Broken Glass, marks a violent pogrom against Jews and Jewish-owned businesses in Nazi Germany.",
-                "An electric steam iron with a thermostat is invented, improving the efficiency and safety of ironing.",
-                "Instant coffee is introduced, offering a convenient and quick way to prepare coffee.",
-                "Nylon, the synthetic fabric, is introduced to the market, influencing fashion and industry.",
-                "The ball-point pen is patented, replacing fountain pens and revolutionizing writing instruments.",
-                "A prototype of the photocopy machine is developed, paving the way for modern document reproduction technology.",
-                "A major German-American Bund rally takes place at Madison Square Garden, showcasing Nazi sympathizers in the United States.",
-                "Arrests of Jews throughout Germany and Austria foreshadow the escalating persecution of Jewish communities."
-            ],
-            1939: [
-                "Germany annexes Czechoslovakia, signaling further aggression and territorial expansion.",
-                "Madrid falls to General Francisco Franco's forces, marking a turning point in the Spanish Civil War.",
-                "The U.S. submarine Squalus sinks with the loss of 26 crew members, highlighting submarine safety concerns.",
-                "The French submarine Phoenix sinks with the loss of 63 lives, raising questions about naval operations.",
-                "Two IRA bombs explode in London, reflecting political tensions and violence in Northern Ireland.",
-                "Cellophane wrappers for products first appear in stores, offering transparent and protective packaging.",
-                "Annexation of the Baltic states by the Soviet Union occurs, reshaping the geopolitical landscape.",
-                "Germany invades Poland, leading to the outbreak of World War II, with France and Britain declaring war.",
-                "Rockefeller Center opens in New York City, becoming an iconic entertainment and commercial complex.",
-                "DDT, an insecticide, is introduced, influencing pest control practices.",
-                "A yellow-fever vaccine is developed, advancing public health measures against tropical diseases.",
-                "Radar technology is developed and deployed, playing a crucial role in military and aviation applications."
-            ],
-            1940: [
-                "Finland surrenders to Soviet forces, ending the Russo-Finnish War.",
-                "Nazi Germany strikes at Denmark and Norway, expanding its territorial control in Europe.",
-                "Winston Churchill becomes Prime Minister of the United Kingdom, leading during a critical period of World War II.",
-                "Holland and Belgium fall to German forces, marking further Nazi advances in Western Europe.",
-                "The Dunkirk evacuation, also known as Operation Dynamo, rescues British and Allied troops from the beaches of Dunkirk, France.",
-                "Thousands of lives are lost in the Russo-Finnish War, a conflict between Finland and the Soviet Union.",
-                "German blitzkrieg tactics bring Nazi forces to the English Channel, threatening an invasion of Britain.",
-                "Bombings in Germany and England result in tens of thousands of casualties and extensive damage.",
-                "Franklin D. Roosevelt is elected for a third term as President of the United States, a historic and unprecedented move.",
-                "The automatic gearbox for automobiles is introduced, simplifying driving and improving comfort.",
-                "Inflatable life vests are introduced, enhancing safety for individuals involved in water activities.",
-                "Radar becomes operational and is deployed in Britain, playing a critical role in defense and aviation.",
-                "Artificial insemination is developed, contributing to advances in reproductive medicine.",
-                "Penicillin is produced in quantity, revolutionizing medicine and antibiotics.",
-                "The U.S. public debt reaches $42.97 billion, reflecting the economic challenges of World War II.",
-                "The U.S. resident population grows to 131.7 million, indicating continued demographic growth."
-            ],
-            1941: [
-                "The aerial Battle of Britain is joined, as the Royal Air Force defends against German bombing raids.",
-                "The Lend-Lease policy is enacted in the United States, providing military aid to Allied nations during World War II.",
-                "The U.S. institutes a military draft as it prepares for its involvement in World War II.",
-                "Approximately 2,500 people die in the Japanese raid on Pearl Harbor, a major event that leads to U.S. entry into World War II.",
-                "The Coconut Grove nightclub fire in Boston kills 491 people, leading to improved safety regulations for public venues.",
-                "The Jeep is adopted as a general-purpose military vehicle, becoming an iconic part of military history.",
-                "German forces invade the Soviet Union, initiating the Eastern Front of World War II."
-            ],
-            1942: [
-                "Singapore and the Philippines fall to Japanese forces, marking significant losses for the Allies in the Pacific theater of World War II.",
-                "A major carrier battle occurs off Midway Island, a pivotal engagement that shifts the balance in the Pacific War.",
-                "The German siege of Leningrad continues, leading to a long and brutal siege during World War II.",
-                "The Crimea falls to German forces, impacting the Eastern Front of World War II.",
-                "The Doolittle raid on Tokyo is carried out by U.S. Army Air Forces, delivering a morale boost to the United States.",
-                "The Battle of Stalingrad is joined, becoming one of the deadliest battles in history.",
-                "U.S. forces land on Guadalcanal, marking the beginning of the Guadalcanal Campaign in the Pacific War.",
-                "Allied forces land in North Africa, initiating the North African Campaign in World War II.",
-                "Atomic fission is achieved, a significant step towards the development of atomic weapons.",
-                "The Bazooka is introduced, providing anti-tank firepower to infantry units.",
-                "Napalm, a highly flammable weapon, is introduced, influencing warfare tactics."
-            ],
-            1943: [
-                "Approximately 190,000 Germans, along with greater numbers of Soviet soldiers and civilians, lose their lives in the Battle of Stalingrad, one of the deadliest battles in history.",
-                "German forces surrender at Stalingrad, marking a turning point in World War II's Eastern Front.",
-                "The Warsaw Ghetto uprising demonstrates the resistance of Jewish inhabitants against Nazi oppression.",
-                "Germany faces defeat in the Battle of Kursk, the largest tank battle in history.",
-                "Allied forces land in Sicily, advancing the liberation of Italy from Axis control.",
-                "Benito Mussolini is deposed and later reseated by German forces, reflecting the fluid political situation in Italy.",
-                "Allied forces invade Italy, contributing to the weakening of Axis control in Southern Europe.",
-                "Soviet forces crack the Dnieper River line, pushing back German defenses in Eastern Europe.",
-                "The Marshall Islands fall to U.S. forces in the Pacific theater of World War II.",
-                "29 individuals lose their lives in Detroit race riots, highlighting racial tensions and social issues.",
-                "Ball-point pens gain acceptance as a practical writing instrument, replacing fountain pens for many.",
-                "Jacques-Yves Cousteau and Emile Gagnan invent the Aqualung, revolutionizing underwater exploration.",
-                "Lysergic acid diethylamide (LSD) is synthesized, leading to its use in psychological research."
-            ],
-            1944: [
-                "Charles de Gaulle becomes the Free-French commander-in-chief, leading the French resistance during World War II.",
-                "Massive air raids on Germany continue as Allied forces intensify their strategic bombing campaign.",
-                "The Crimea is liberated from German forces, relieving Soviet control of the region.",
-                "Allied forces take control of Rome, marking a significant victory in the Italian Campaign.",
-                "D-Day landings in Normandy (Operation Overlord) initiate the liberation of Western Europe from Nazi occupation.",
-                "The Marianas Islands come under attack as Allied forces continue to advance in the Pacific theater.",
-                "Paris falls to Allied forces, marking the liberation of the French capital from Nazi control.",
-                "Franklin D. Roosevelt is re-elected for a fourth term as President of the United States, a record-setting achievement.",
-                "The mass killings in Nazi concentration camps are revealed to the world, exposing the horrors of the Holocaust.",
-                "V-1 and V-2 missiles launched by Germany target London and other Allied cities.",
-                "General Douglas MacArthur returns to the Philippines, fulfilling his promise to return after its capture by Japanese forces.",
-                "The Battle of the Bulge is fought as German forces launch a surprise offensive in the Ardennes region.",
-                "A hurricane kills 46 people along the U.S. East Coast and claims the lives of 344 individuals at sea.",
-                "A fire at a Ringling Bros. circus tent in Hartford, Connecticut, kills 168 people and injures many more.",
-                "An ammunition explosion at Port Chicago, California, results in the deaths of 322 people and raises safety concerns.",
-                "Nerve gas is developed as a chemical weapon, adding to the arsenal of deadly substances in warfare."
-            ],
-            1945: [
-                "Approximately 130,000 people die in the firebombing of Dresden, a devastating aerial attack during World War II.",
-                "The nuclear blast at Nagasaki kills approximately 60,000 people, and mass bombings in Japan claim hundreds of thousands more lives.",
-                "The total casualties of World War II are estimated at 50 million people, reflecting the staggering human cost of the war.",
-                "Europe and Japan require 15 years to achieve significant recovery in the aftermath of World War II.",
-                "The U.S. war-related deaths reach a total of 405,399, underscoring the sacrifices made during the conflict.",
-                "Auschwitz concentration camp is liberated by Allied forces, exposing the extent of Nazi atrocities.",
-                "The Yalta Conference brings together Allied leaders to discuss post-war Europe and the division of Germany.",
-                "Iwo Jima falls to U.S. Marines after intense fighting on the island.",
-                "The Remagen Bridge is captured by U.S. forces, providing a key crossing of the Rhine River.",
-                "President Franklin D. Roosevelt passes away, leading to the succession of Harry S. Truman.",
-                "Benito Mussolini is executed by Italian partisans, marking the end of his fascist regime.",
-                "Adolf Hitler commits suicide in his bunker in Berlin as Allied forces close in on the German capital.",
-                "The full extent of Nazi death camps is revealed to the world, prompting outrage and condemnation.",
-                "Berlin falls to Allied forces, effectively ending World War II in Europe.",
-                "Winston Churchill resigns as Prime Minister of the United Kingdom, a role he held during much of the war.",
-                "The Battle of Okinawa is fought in the Pacific theater, resulting in significant casualties on both sides.",
-                "The United Nations is officially formed, providing a platform for international cooperation and diplomacy.",
-                "The Potsdam Conference convenes to address post-war issues and the occupation of Germany.",
-                "Japan surrenders, officially ending World War II and leading to the occupation of Japan by Allied forces.",
-                "Korea is partitioned along the 38th parallel, setting the stage for future conflicts on the Korean Peninsula.",
-                "Jackie Robinson breaks the color barrier in Major League Baseball, becoming the first modern African-American player.",
-                "The Nuremberg war-crime trials begin, prosecuting Nazi officials for their roles in war crimes and atrocities.",
-                "Tupperware, a popular food storage product, is introduced to consumers."
-            ],
-            1946: [
-                "A fire at a Chicago hotel claims the lives of 58 people, highlighting the importance of fire safety measures.",
-                "The Electronic Numerical Integrator and Computer (ENIAC), an early computer, is unveiled by the U.S. War Department.",
-                "Winston Churchill delivers his Iron Curtain speech, foreshadowing the Cold War division of Europe.",
-                "Violence continues in Palestine as tensions persist between Jewish and Arab communities.",
-                "Labor strikes occur across the United States, reflecting post-war labor disputes and demands.",
-                "The Chinese Civil War is renewed as Nationalist and Communist forces clash in a struggle for control.",
-                "Scientific research suggests a link between smoking and lung cancer, leading to increased awareness of health risks.",
-                "An uprising occurs in Vietnam as resistance against colonial rule intensifies.",
-                "Chester F. Carlson unveils 'xerography,' a pioneering technology that will later become known as photocopying.",
-                "Bikini swimsuits are introduced, making a splash in swimwear fashion.",
-                "Espresso coffee machines are invented, contributing to the popularity of espresso-based beverages."
-            ],
-            1947: [
-                "The United States abandons attempts to broker a peace in China's ongoing civil war.",
-                "Religious strife and communal violence escalate in India following its independence from British colonial rule.",
-                "The Marshall Plan, officially known as the European Recovery Program, is advanced to aid European post-war reconstruction.",
-                "The last New York streetcar is retired as cities transition to other forms of public transportation.",
-                "India and Pakistan gain independence from British rule, marking the end of the British Raj and the beginning of new nations.",
-                "The Polaroid Land Camera is introduced, revolutionizing instant photography.",
-                "The House Un-American Activities Committee (HUAC) investigates alleged subversive activities in the film industry.",
-                "The Cold War climate prompts concerns about communist influence and loyalty in the United States."
-            ],
-            1948: [
-                "Mahatma Gandhi is assassinated by a Hindu nationalist, leading to mourning in India and beyond.",
-                "A communist coup takes place in Czechoslovakia, consolidating communist control over the country.",
-                "Civil war continues in the Palestine Mandate as tensions between Jewish and Arab populations persist.",
-                "The Berlin Airlift begins as Allied forces provide essential supplies to West Berlin during the Soviet blockade.",
-                "The State of Israel is officially recognized, but conflict with neighboring states continues.",
-                "The 200-inch Hale Telescope at Mount Palomar is completed, becoming a landmark in astronomical observation.",
-                "The New York City subway fare doubles to ten cents, affecting daily commuters.",
-                "The Kinsey Report on human sexuality is published, shedding light on previously taboo subjects.",
-                "Scrabble, the popular word game, is introduced, challenging players' vocabulary and strategy.",
-                "The solid-body electric guitar is developed, revolutionizing music and instrument design.",
-                "Velcro, a versatile fastening system, is invented, finding numerous practical applications.",
-                "The first 33 1/3 long-playing (LP) records are introduced, changing the music industry."
-            ],
-            1949: [
-                "Chinese Communists, led by Mao Zedong, take control of Beijing (Peking), leading to the establishment of the People's Republic of China.",
-                "The North Atlantic Treaty Organization (NATO) is organized, forming a military alliance among Western nations during the Cold War.",
-                "The Berlin Blockade, a Soviet attempt to isolate West Berlin, concludes without achieving its objectives.",
-                "The Federal Republic of Germany (West Germany) is officially established as a separate entity from East Germany.",
-                "The Red Scare and anti-communist sentiments continue in the United States during the early years of the Cold War.",
-                "The Soviet Union successfully detonates its first nuclear device, entering the nuclear arms race.",
-                "Nationalist Chinese forces, led by Chiang Kai-shek, retreat to Taiwan, where they establish a separate government.",
-                "Cable television is introduced as a means of delivering television broadcasts to a wider audience.",
-                "The development of color television tubes contributes to the eventual introduction of color television.",
-                "Key-starting automobile ignitions are introduced, simplifying the process of starting vehicles."
-            ],
-            1950: [
-                "One-piece windshields become a feature of Cadillacs, improving automotive design.",
-                "RCA announces the development of color television technology, signaling advancements in television broadcasting.",
-                "France appeals for international aid in its struggle against the Viet Minh in Indochina (Vietnam).",
-                "Blizzards in the United States result in hundreds of deaths and significant challenges to transportation and infrastructure.",
-                "The Korean War begins, leading to the loss of thousands of lives and international conflict.",
-                "U.S. forces conduct successful landings at Inchon, Korea, altering the course of the Korean War.",
-                "China enters the Korean War on the side of North Korea, escalating the conflict and international tensions.",
-                "Tennis player Gussie Moran gains attention by sporting lace underwear at Wimbledon, sparking controversy.",
-                "The Diners' Club card is introduced, pioneering the concept of a credit card for dining and entertainment expenses.",
-                "The Xerox 914, a commercial photocopier, is introduced, revolutionizing document reproduction.",
-                "The U.S. public debt reaches $256 billion, reflecting post-war economic challenges and government spending.",
-                "The U.S. resident population grows to 150.7 million, indicating demographic growth in the post-war era."
-            ],
-            1951: [
-                "General Douglas MacArthur is stripped of all commands, marking a significant development in the Korean War and U.S. military leadership.",
-                "A U.S. plane crash claims the lives of 50 individuals, highlighting the importance of aviation safety measures.",
-                "Color television transmission from the Empire State Building represents a milestone in the evolution of television technology.",
-                "Hydrogen bomb tests take place at Eniwetok, showcasing the growing capabilities of nuclear weaponry.",
-                "Truce talks in Korea aim to bring an end to the Korean War, a conflict that has endured for several years.",
-                "Cinerama, a widescreen film format, is introduced, enhancing the cinematic experience.",
-                "Chrysler introduces power steering, a feature that improves vehicle handling and maneuverability.",
-                "Three-color stoplights for automobiles are introduced, enhancing traffic control and safety."
-            ],
-            1952: [
-                "Queen Elizabeth II accedes to the British throne, marking a significant moment in British monarchy.",
-                "The worst U.S. bus crash to date kills 28 individuals, prompting increased attention to road safety.",
-                "The French submarine La Sybille disappears in the Mediterranean with 49 individuals aboard, leading to maritime safety concerns.",
-                "A U.S. polio epidemic claims the lives of 3,300 people and affects 57,000 children, emphasizing the importance of polio vaccination.",
-                "Walk/Don't Walk lighted pedestrian signs are introduced in New York City, enhancing pedestrian safety.",
-                "General Motors (GM) offers built-in air conditioning in some 1953 cars, improving passenger comfort.",
-                "Eva Peron, a prominent political figure in Argentina, passes away.",
-                "The first transistorized hearing aid is introduced, offering improved hearing assistance technology.",
-                "The announcement of the hydrogen bomb underscores the ongoing development of nuclear weaponry.",
-                "Videotape technology is introduced, revolutionizing recording and playback of video content."
-            ],
-            1953: [
-                "Joseph Stalin, the leader of the Soviet Union, passes away, leading to a period of transition and uncertainty in the USSR.",
-                "Storms off the North Sea result in the loss of 200 lives in Britain, highlighting the impact of severe weather events.",
-                "The structure of DNA is described as a double helix, a groundbreaking discovery in genetics.",
-                "Pope Pius XII approves of psychoanalysis in therapy, marking a shift in the Catholic Church's stance on psychology.",
-                "Julius and Ethel Rosenberg are executed in the United States following their espionage conviction during the Cold War.",
-                "An uprising in East Berlin is quashed by Soviet forces, reflecting political tensions in post-war Germany.",
-                "The Korean Armistice is signed, bringing an end to the active combat phase of the Korean War.",
-                "A trend of suburbanization is noted in the United States as more people move away from urban centers.",
-                "John F. Kennedy and Jacqueline Bouvier are married, marking the beginning of a prominent political family.",
-                "An expedition searches for the elusive yeti, a mythical creature in Himalayan folklore.",
-                "The measles vaccine is introduced, contributing to the prevention of this infectious disease."
-            ],
-            1954: [
-                "The USS Nautilus becomes the first atomic-powered submarine, showcasing advancements in naval technology.",
-                "The Army-McCarthy hearings take place, scrutinizing Senator Joseph McCarthy's allegations of communist influence in the U.S. Army.",
-                "Edward R. Murrow challenges McCarthy's tactics and investigates allegations in a series of televised reports.",
-                "The French garrison at Dien Bien Phu falls to Vietnamese forces, leading to increased involvement of the United States in Vietnam.",
-                "The first hydrogen bomb is successfully detonated, signifying a major milestone in nuclear weapons development.",
-                "The U.S. Supreme Court orders the integration of public schools, a pivotal moment in the civil rights movement.",
-                "North and South Vietnam are formally established as separate entities, setting the stage for future conflicts.",
-                "The retractable ball-point pen is introduced, providing a convenient writing instrument.",
-                "The silicon transistor is developed, contributing to the miniaturization of electronic devices."
-            ],
-            1955: [
-                "A missile with an atomic warhead is exploded in a Nevada test, showcasing advances in military technology.",
-                "Hurricane Diane strikes, resulting in the deaths of 184 individuals and highlighting the destructive power of natural disasters.",
-                "Albert Einstein, the renowned physicist, passes away, leaving a lasting legacy in the field of science.",
-                "The Warsaw Pact treaty is signed, solidifying the Soviet Union's influence over Eastern European nations.",
-                "Rebellion erupts in Algeria as resistance against French colonial rule intensifies.",
-                "The Mickey Mouse Club debuts on television, becoming a popular children's program.",
-                "Air-to-air guided missiles are introduced, enhancing military aviation capabilities.",
-                "Disneyland, a famous theme park, opens its doors to the public, becoming a major entertainment attraction."
-            ],
-            1956: [
-                "Over 10,000 Mau-Mau rebels are killed in a four-year conflict in Kenya, marking a significant chapter in the Mau-Mau Uprising.",
-                "A bus boycott takes place in Montgomery, Alabama, as part of the civil rights movement against racial segregation.",
-                "Suburbs experience significant growth in the United States as more people move away from urban centers.",
-                "Soviet Premier Nikita Khrushchev denounces the actions and policies of his predecessor, Joseph Stalin.",
-                "Gamal Abdel Nasser seizes control of the Suez Canal, leading to the Suez Crisis and international tensions.",
-                "The Hungarian Revolution unfolds as Hungarians rebel against Soviet domination but are ultimately suppressed by Soviet forces.",
-                "The Teon Company is formed, contributing to advancements in technology and industry.",
-                "Go-karts are introduced as a recreational and competitive activity, popularizing kart racing."
-            ],
-            1957: [
-                "Scientific research demonstrates that smoking is linked to the promotion of cancer, leading to increased awareness of smoking-related health risks.",
-                "Nike Hercules missiles with atomic warheads are deployed to defend U.S. cities from potential enemy aircraft attacks.",
-                "The launch of Sputnik, the world's first artificial satellite, shocks the United States and initiates the space race.",
-                "The Mackinac Straits Bridge, spanning 3,800 feet, is completed, connecting Michigan's Upper and Lower Peninsulas."
-            ],
-            1958: [
-                "Elvis Presley is drafted into the U.S. Army, temporarily leaving his music career.",
-                "A tragic fire in a Chicago school claims the lives of 90 people, highlighting the importance of fire safety measures.",
-                "The U.S. Navy submarine Nautilus successfully sails across the North Pole under the ice, achieving a historic feat.",
-                "Governor Orval Faubus of Arkansas closes Little Rock's high schools to resist desegregation efforts.",
-                "Pan American World Airways (Pan Am) inaugurates the first commercial flight of the Boeing 707 jet service to Paris, marking a milestone in air travel.",
-                "Dr. Albert Sabin introduces the oral polio vaccine, a significant step in combating the polio epidemic.",
-                "The era of communications satellites begins with the successful launch of the first artificial satellite for global communication.",
-                "The hula-hoop becomes a popular toy and exercise equipment in the United States."
-            ],
-            1959: [
-                "Fidel Castro gains power in Cuba after the Cuban Revolution, leading to significant political changes in the country.",
-                "Ford's Edsel, a highly anticipated automobile model, is judged a commercial failure, impacting the automotive industry.",
-                "Volvo introduces safety belts (seatbelts) in its vehicles, contributing to automotive safety standards."
-            ],
-            1960: [
-                "Unrest continues in Algeria as the struggle for independence from French colonial rule intensifies.",
-                "Hurricane Donna devastates the U.S. East Coast and Puerto Rico, causing significant destruction and loss of life.",
-                "The artificial kidney is introduced, revolutionizing the treatment of kidney diseases through dialysis.",
-                "Lunch counter sit-ins begin as part of the civil rights movement, challenging segregation and discrimination.",
-                "Brasilia, the planned capital of Brazil, officially opens for business, symbolizing modern urban planning.",
-                "The birth control pill becomes available for sale in the United States, revolutionizing contraception and family planning.",
-                "The first weather satellite is launched, enhancing weather forecasting and monitoring capabilities.",
-                "The popularity of portable transistor radios begins, transforming the way people listen to music and news.",
-                "The U.S. public debt reaches $284 billion, reflecting economic challenges and government expenditures.",
-                "The U.S. resident population reaches 179.3 million, indicating continued population growth."
-            ],
-            1961: [
-                "President Dwight D. Eisenhower warns against the influence of the military-industrial complex in his farewell address, highlighting concerns about the growing defense industry.",
-                "The Leakeys, a family of paleoanthropologists, discover some of the earliest human remains, providing insights into human evolution.",
-                "The Berlin Wall is erected by East Germany, dividing the city and symbolizing the Cold War's division of Europe.",
-                "The Peace Corps is established by President John F. Kennedy, promoting international volunteer service and cultural exchange.",
-                "The Bay of Pigs invasion, a failed U.S.-backed attempt to overthrow Fidel Castro's regime, takes place in Cuba.",
-                "Valium, a popular tranquilizer and anti-anxiety medication, is introduced, influencing psychiatric treatment."
-            ],
-            1962: [
-                "The Cuban missile crisis brings the world to the brink of nuclear war as the United States and the Soviet Union engage in a tense standoff over missile installations in Cuba.",
-                "Gallium-arsenide semiconductor lasers are developed, advancing laser technology and telecommunications.",
-                "The first satellite link between the United States and the United Kingdom is established, improving global communication.",
-                "Polaroid introduces color instant film, allowing for instant color photography."
-            ],
-            1963: [
-                "An enormous civil rights demonstration takes place in Washington, D.C., where Dr. Martin Luther King Jr. delivers his famous \"I Have a Dream\" speech.",
-                "President John F. Kennedy is tragically assassinated in Dallas, Texas, leading to a period of national mourning and investigation.",
-                "A coup in Vietnam removes President Ngo Dinh Diem, contributing to political instability in the region.",
-                "A cold wave sweeps across the United States, resulting in the deaths of 150 people and highlighting the dangers of extreme weather conditions.",
-                "Hurricane Flora causes the deaths of 7,000 people in Haiti and Cuba, underscoring the destructive power of hurricanes.",
-                "Mob actions become increasingly common in the Southern United States, reflecting social tensions and resistance to civil rights."
-            ],
-            1964: [
-                "The Aswan Dam becomes operational, providing hydroelectric power and water resources in Egypt.",
-                "The Beatles become enormously popular, revolutionizing music and popular culture.",
-                "The United States accidentally releases a kilogram of plutonium into the atmosphere, raising concerns about nuclear safety.",
-                "Jawaharlal Nehru, the first Prime Minister of India, passes away, leading to political changes in India.",
-                "The Verrazano-Narrows Bridge, with a span of 4,260 feet, is completed, connecting Staten Island and Brooklyn in New York.",
-                "President Lyndon B. Johnson signs the Civil Rights Act into law, marking a significant step in the civil rights movement.",
-                "The Tonkin Gulf Resolution is passed by the U.S. Congress, authorizing military actions in Vietnam.",
-                "3-D laser-holography is introduced, advancing holographic technology and imaging.",
-                "The Moog synthesizer is introduced, revolutionizing electronic music production.",
-                "The Federal Trade Commission (FTC) requires health warnings on cigarette packaging, acknowledging the health risks of smoking."
-            ],
-            1965: [
-                "Malcolm X, a prominent civil rights activist, is assassinated, leading to debates about his legacy and contributions.",
-                "Race riots erupt in the Watts neighborhood of Los Angeles, highlighting racial tensions and inequality in the United States.",
-                "Pope Paul VI issues a declaration disassociating Jews from guilt for the crucifixion of Jesus Christ, fostering interfaith dialogue.",
-                "A great electrical blackout affects northeastern states in the United States, emphasizing the vulnerability of electrical systems.",
-                "Kevlar, a strong and lightweight synthetic material, is introduced, with applications in various industries, including body armor.",
-                "Radial tires are introduced, improving vehicle safety and performance.",
-                "IBM introduces its word processor, revolutionizing document preparation and office work."
-            ],
-            1966: [
-                "The Cultural Revolution begins in China, leading to significant social and political upheaval under Mao Zedong's leadership.",
-                "Opposition to the Vietnam War increases, with growing protests against U.S. involvement in Southeast Asia.",
-                "A sniper kills 12 people at the University of Texas at Austin, prompting discussions about gun control and campus safety.",
-                "Miniskirts are introduced as a fashion trend, challenging traditional dress norms and reflecting cultural changes.",
-                "Edward Brooke becomes the first African American to be elected as a U.S. Senator by popular vote, marking a milestone in U.S. politics.",
-                "Dolby-A noise reduction technology is introduced, improving audio recording and playback quality.",
-                "Skateboards are introduced as a popular recreational activity for youth.",
-                "The concept of \"body counts\" is introduced as a metric in Vietnam War reports, reflecting the measurement of enemy casualties.",
-                "Bell-bottom pants are introduced as a distinctive fashion style."
-            ],
-            1967: [
-                "The Six-Day War takes place in the Middle East, resulting in significant territorial changes and geopolitical shifts.",
-                "The \"Summer of Love\" is a cultural phenomenon marked by countercultural movements, music festivals, and social experimentation.",
-                "Thurgood Marshall becomes the first African American Supreme Court justice, making history in the U.S. judicial system.",
-                "A tragic fire in the Apollo 1 spacecraft claims the lives of three astronauts during a pre-launch test, leading to safety improvements in space exploration.",
-                "The United States experiences the loss of its 500th aircraft over Vietnam, underscoring the challenges of aerial warfare in the conflict.",
-                "Race riots erupt in Newark, New Jersey, leaving 26 people dead in four days of violence and unrest.",
-                "Detroit experiences race riots that result in 43 deaths and significant property damage, highlighting racial tensions in urban centers.",
-                "Antiwar protests against the Vietnam War accelerate, with growing opposition to U.S. military involvement.",
-                "The \"body count\" metric becomes a regular feature in Vietnam War reports, quantifying the number of enemy casualties.",
-                "Law enforcement seizes 209 pounds of heroin in Georgia, reflecting ongoing efforts to combat drug trafficking.",
-                "Bell-bottom pants become a prominent fashion trend, symbolizing the fashion of the era."
-            ],
-            1968: [
-                "The Tet Offensive in Vietnam stuns the civilian population in the United States, raising questions about the progress of the war.",
-                "Dr. Martin Luther King Jr., a civil rights leader, is assassinated, leading to nationwide mourning and protests against racial injustice.",
-                "Black riots erupt in various U.S. cities, reflecting deep-seated social and racial tensions.",
-                "Student revolts and protests take place in Paris and around the world, advocating for political and social change.",
-                "Senator Robert F. Kennedy is tragically assassinated during his presidential campaign, altering the political landscape.",
-                "A B-52 bomber carrying four hydrogen bombs crashes in a Greenland bay, raising concerns about nuclear accidents.",
-                "Soviet forces quash a liberalizing government in Czechoslovakia, demonstrating Soviet influence in Eastern Europe.",
-                "Spain officially voids a 1492 law that banned Jews, reflecting changing attitudes toward religious tolerance.",
-                "The Democratic National Convention in Chicago faces protests and clashes with antiwar demonstrators.",
-                "Apollo 8 astronauts become the first humans to orbit the Moon, marking a significant achievement in space exploration."
-            ],
-            1969: [
-                "Skyjackings to Cuba continue, reflecting a trend of hijackings for political and personal motives.",
-                "Barnard College in New York City begins to admit men, marking a milestone in gender integration in higher education.",
-                "The first artificial heart implant is performed, paving the way for advancements in organ transplantation and medical technology.",
-                "Anti-Vietnam War demonstrations take place in more than 40 cities across the United States on the same weekend, illustrating widespread opposition to the war.",
-                "The Woodstock Music & Art Fair becomes a cultural icon, symbolizing the counterculture movement and music of the era.",
-                "Approximately 250,000 protesters march on Washington, D.C., demanding an end to the Vietnam War and social change.",
-                "Apollo 11 successfully lands on the Moon, with astronauts Neil Armstrong and Buzz Aldrin becoming the first humans to walk on the lunar surface.",
-                "A snowstorm of the decade closes New York City, disrupting daily life and transportation.",
-                "The My Lai massacre, which took place in 1968, is revealed to the public, sparking outrage and investigations into war crimes.",
-                "The Boeing 747 jumbo jet is introduced, revolutionizing long-distance air travel with its large passenger capacity.",
-                "An oil spill fouls Santa Barbara beaches in California, raising environmental awareness and concerns.",
-                "The Concorde Mach 2 jetliner conducts its first flight, representing a technological leap in supersonic aviation."
-            ],
-            1970: [
-                "The concept of \"radical chic\" becomes popular, reflecting a fascination with political activism and social change.",
-                "A Palestinian group hijacks five airplanes in a coordinated operation, drawing international attention to the Palestinian-Israeli conflict.",
-                "Charles de Gaulle, the former President of France, passes away, marking the end of an era in French politics.",
-                "The Asbury Park riots result in the shooting of 46 people, highlighting issues of racial tension and urban unrest.",
-                "Members of the radical activist group known as the \"Weathermen\" are arrested for a bomb plot, raising concerns about domestic terrorism.",
-                "Tuna is recalled from the market due to mercury contamination, leading to food safety awareness.",
-                "Bar codes are introduced as a technology for product identification and inventory management.",
-                "Floppy disks are introduced as a storage medium for computer data, revolutionizing data transfer and storage.",
-                "Windsurfing is introduced as a recreational water sport, combining elements of sailing and surfing.",
-                "The U.S. public debt reaches $370 billion, reflecting economic challenges and government spending.",
-                "The U.S. resident population reaches 203.3 million, indicating demographic growth."
-            ],
-            1971: [
-                "A powerful earthquake in Los Angeles claims the lives of 51 people and causes significant damage to the city.",
-                "A strong reaction against drug use in the armed forces intensifies, leading to anti-drug policies and enforcement.",
-                "Hot pants are introduced as a fashion trend, characterized by short, tight-fitting shorts for women.",
-                "The Pentagon Papers, a classified government report, are printed by newspapers, revealing government secrets and decisions related to the Vietnam War.",
-                "Liquid crystal displays (LCDs) are introduced as a technology for displaying digital information in calculators and screens."
-            ],
-            1972: [
-                "Ten European nations become members of the European Common Market, promoting economic integration and cooperation.",
-                "U.S. President Richard Nixon makes a historic visit to China, marking a thaw in U.S.-China relations.",
-                "Burglars are caught inside the Democratic Party's Watergate headquarters, leading to the Watergate scandal and political investigations.",
-                "A tragic terrorist attack during the Munich Olympics results in the massacre of 11 Israeli athletes by Palestinian militants.",
-                "Airline anti-hijacking procedures are established in the United States to enhance aviation security.",
-                "Electronic pocket calculators are introduced, simplifying mathematical calculations and becoming portable tools.",
-                "The Pong video game is introduced, pioneering the video game industry and electronic entertainment."
-            ],
-            1973: [
-                "The last manned mission to the Moon, Apollo 17, takes place, marking the end of the Apollo program and lunar exploration.",
-                "An oil embargo is imposed by oil-producing nations, leading to an energy crisis and fuel shortages in many countries.",
-                "The Bosporus Bridge, with a span of 3,524 feet, is completed in Istanbul, Turkey, connecting Europe and Asia.",
-                "Recombinant DNA technology is introduced, allowing scientists to manipulate and modify DNA, leading to advancements in biotechnology."
-            ],
-            1974: [
-                "Patty Hearst, the granddaughter of publisher William Randolph Hearst, is kidnapped by the Symbionese Liberation Army (SLA), leading to a high-profile kidnapping case.",
-                "A widespread gasoline shortage occurs in the United States, causing long lines at gas stations and highlighting energy dependency.",
-                "Richard Nixon resigns from the Presidency of the United States in the wake of the Watergate scandal, making him the first U.S. President to resign from office.",
-                "A series of tornadoes kills 315 people in the United States in two days, underscoring the destructive power of severe weather.",
-                "The Green Revolution, an agricultural technology initiative, is introduced, leading to increased food production and global agricultural advancements."
-            ],
-            1975: [
-                "South Vietnam falls to North Vietnamese forces, marking the end of the Vietnam War and leading to the reunification of Vietnam.",
-                "Cambodia falls to the Khmer Rouge regime, resulting in a period of mass atrocities and social upheaval.",
-                "Civil war erupts in Beirut, Lebanon, leading to a protracted conflict and instability in the region.",
-                "Atari video games, including the iconic game Pong, are introduced, contributing to the growth of the video game industry."
-            ],
-            1976: [
-                "Concerns about the extinction of animal species become a prominent public issue, leading to conservation efforts.",
-                "Mao Tse-tung, the founding father of the People's Republic of China, passes away, marking a significant moment in Chinese history.",
-                "Hurricane Lizzie devastates Mexico, resulting in the tragic loss of 2,500 lives.",
-                "The Cray-1 supercomputer is introduced, representing a major advancement in high-performance computing."
-            ],
-            1977: [
-                "The Trans-Alaskan oil pipeline becomes operational, facilitating the transportation of oil from Alaska to the continental United States.",
-                "Three Israeli settlements are approved on the West Bank, contributing to the ongoing Israeli-Palestinian conflict.",
-                "Optical fiber telephone lines are introduced, revolutionizing long-distance communication with improved speed and capacity.",
-                "The Orient Express, a famous luxury train service, makes its last trip, marking the end of an era in train travel.",
-                "Protesters attempt to halt the construction of the Seabrook nuclear power plant, reflecting concerns about nuclear energy."
-            ],
-            1978: [
-                "An agreement is reached for the Panama Canal to be controlled by Panama, ending U.S. control over the strategic waterway.",
-                "Proposition 13, a California ballot initiative, wins approval and triggers a nationwide trend of reduced capital expenditures.",
-                "The exchange rate reaches 1 U.S. dollar equaling 175 Japanese yen, impacting international trade and currency markets.",
-                "A tragic air collision over San Diego claims the lives of 150 people, raising questions about aviation safety.",
-                "The Jonestown mass suicide occurs, resulting in the deaths of 909 people following the orders of cult leader Jim Jones.",
-                "The world witnesses the birth of the first test-tube baby in London, a significant milestone in reproductive medicine."
-            ],
-            1979: [
-                "The Shah of Iran flees the country amid growing unrest and revolution, leading to the Iranian Revolution.",
-                "The Three Mile Island nuclear power plant experiences a partial meltdown, causing concerns about nuclear safety and environmental impact.",
-                "Anastasio Somoza is ousted from power in Nicaragua, marking a turning point in the Nicaraguan Revolution.",
-                "The U.S. embassy in Tehran is seized by Iranian militants, and hostages are held, leading to a diplomatic crisis known as the Iran hostage crisis.",
-                "Soviet forces enter Afghanistan, initiating the Soviet-Afghan War and a protracted conflict in the region.",
-                "The Rubik's Cube, a popular puzzle toy, is introduced and becomes a global sensation.",
-                "Sony introduces the Walkman, a portable cassette player that revolutionizes personal music listening."
-            ],
-            1980: [
-                "The price of an ounce of gold reaches $802 in the United States, reflecting economic challenges and fluctuations in the precious metals market.",
-                "The United States experiences the highest inflation rate in 33 years, impacting the economy and consumer purchasing power.",
-                "Banking deregulation policies are implemented, leading to changes in the financial industry and increased competition.",
-                "The eruption of Mount St. Helens in Washington State results in the deaths of over 50 people and significant environmental damage.",
-                "A hostage rescue mission in Iran fails, further intensifying the Iran hostage crisis.",
-                "Solidarity, a trade union in Poland, gains recognition, challenging communist authorities and leading to political changes.",
-                "A gold rush in the Amazon rainforest attracts prospectors and environmental concerns.",
-                "Dolby-C noise reduction technology is introduced, enhancing audio quality in cassette tapes and other audio recordings.",
-                "The U.S. public debt reaches $908 billion, reflecting fiscal challenges and government spending.",
-                "The U.S. resident population reaches 226.5 million, indicating continued demographic growth."
-            ],
-            1981: [
-                "Iran releases the embassy hostages, ending the 444-day-long Iran hostage crisis and improving U.S.-Iran relations.",
-                "Millions of workers in Poland participate in strikes, demanding workers' rights and political reforms.",
-                "The U.S. public debt reaches one trillion dollars, marking a significant fiscal milestone.",
-                "An Israeli raid successfully destroys an Iraqi nuclear reactor, raising concerns about nuclear proliferation in the Middle East.",
-                "The Humber Bridge, with a span of 4,626 feet, is completed in the United Kingdom, becoming one of the world's longest suspension bridges.",
-                "Widespread marches and rallies against nuclear weapons and arms take place in Europe, reflecting global concerns about nuclear disarmament.",
-                "The CDC notes a strange immune-system disease, later identified as AIDS, marking the beginning of a major public health crisis."
-            ],
-            1982: [
-                "The world experiences a worldwide oil glut, leading to fluctuations in oil prices and changes in the global energy market.",
-                "The Falklands War erupts between the United Kingdom and Argentina, resulting in territorial conflicts and military operations.",
-                "An airliner crashes into the Potomac River bridge, resulting in the tragic deaths of 78 passengers and crew members.",
-                "An oil rig sinks off Newfoundland, Canada, causing the loss of 84 lives and highlighting the dangers of offshore drilling.",
-                "A major airliner crash in New Orleans claims the lives of 149 people, raising concerns about aviation safety.",
-                "Approximately 800,000 people participate in a march against nuclear weapons in New York City, advocating for disarmament.",
-                "Israeli forces reach Beirut, Lebanon, during the Lebanon War, leading to significant developments in the ongoing conflict."
-            ],
-            1983: [
-                "The assassination of Benigno \"Ninoy\" Aquino Jr. occurs upon his arrival in Manila, leading to political turmoil in the Philippines.",
-                "Widespread protests against missile deployments take place in Europe, reflecting concerns about the arms race and nuclear weapons.",
-                "The world population is estimated to reach 4.7 billion, highlighting global demographic trends."
-            ],
-            1984: [
-                "The legalization of VCR taping is implemented in the United States, addressing copyright and intellectual property issues.",
-                "The Iran-Iraq war escalates to involve oil tankers in the Persian Gulf, impacting regional stability and oil markets.",
-                "Reports emerge of Indonesian death squads allegedly responsible for the deaths of approximately 4,000 people, raising human rights concerns.",
-                "Continued battles and conflicts persist in Beirut, Lebanon, contributing to the city's instability.",
-                "The isolation of the AIDS virus represents a significant breakthrough in understanding the disease.",
-                "A federal estimate indicates that there are approximately 350,000 homeless individuals in the United States, prompting discussions on homelessness.",
-                "Research suggests that passive inhalation of cigarette smoke can cause diseases, leading to increased awareness of the dangers of secondhand smoke.",
-                "A massive demonstration in Manila, Philippines, involving around 900,000 participants occurs, prompting President Reagan to reflect on economic conditions.",
-                "An additional historical event or invention for this year: The Apple Macintosh personal computer is introduced, revolutionizing the computer industry with its graphical user interface."
-            ],
-            1985: [
-                "Kidnappings continue to be a pressing issue in Beirut, affecting the safety of foreign nationals and journalists.",
-                "Mikhail Gorbachev is selected as the Chairman of the USSR, marking the beginning of significant political reforms in the Soviet Union.",
-                "Actor Rock Hudson's hospitalization for AIDS raises awareness of the disease in the entertainment industry.",
-                "France sinks the Greenpeace vessel Rainbow Warrior in a controversial act of sabotage.",
-                "A devastating earthquake strikes Mexico City, resulting in the tragic loss of 25,000 lives and widespread destruction.",
-                "The U.S. trade balance becomes negative, reflecting trade deficits and economic challenges.",
-                "Terrorism emerges as a widespread tactic employed by various splinter groups, posing security threats globally.",
-                "The Achille Lauro cruise ship is hijacked, leading to the murder of a passenger and international tensions.",
-                "Massive federal spending continues to drive economic expansion in the United States.",
-                "The U.S. public debt reaches $1.82 trillion, doubling since 1980 as fiscal concerns grow."
-            ],
-            1986: [
-                "The Challenger space shuttle experiences a tragic explosion, resulting in the loss of the entire crew and suspending NASA's manned space program for several years.",
-                "The English Channel tunnel project receives approval, paving the way for a major transportation link between the United Kingdom and mainland Europe.",
-                "The Chernobyl nuclear disaster unfolds, with dozens of heroes sacrificing themselves to contain the disaster, and experts anticipate long-term health impacts from the released atomic cloud.",
-                "The emergence of a crack cocaine epidemic in the United States raises concerns about drug addiction and its social consequences.",
-                "An additional historical event or invention for this year: The Hubble Space Telescope is launched into orbit, revolutionizing astronomical observation."
-            ],
-            1987: [
-                "The Iran-Iraq War results in approximately one million casualties, highlighting the devastating toll of the prolonged conflict.",
-                "The Dow Jones Industrial Average experiences a significant drop of 508 points in one day, known as \"Black Monday,\" impacting financial markets.",
-                "In the United States, there are 13,468 reported AIDS-related deaths, underlining the severity of the AIDS epidemic.",
-                "Arabs living within Israel initiate a general resistance movement, contributing to tensions in the region.",
-                "The number of VCRs in the United States reaches 50 million, indicating widespread adoption of the technology."
-            ],
-            1988: [
-                "The term \"Greenhouse Effect\" becomes widely used in discussions about climate change and global warming, raising environmental awareness.",
-                "A Pan-Am jetliner explodes over Lockerbie, Scotland, with 259 people aboard, leading to investigations into the bombing and its perpetrators.",
-                "An Armenian earthquake kills 25,000 people and leaves 400,000 homeless, prompting international relief efforts.",
-                "RU-486, a controversial medication used for medical abortions, is introduced, sparking debates about reproductive rights.",
-                "Widespread drought conditions affect the United States, impacting agriculture and water resources.",
-                "The number of reported AIDS cases in the United States exceeds 60,000, underscoring the continued spread of the epidemic.",
-                "Estimates suggest that the United States has spent $51.6 billion on illegal drugs this year, highlighting the challenges of drug-related issues."
-            ],
-            1989: [
-                "The U.S. intensifies its \"war on drugs\" with increased efforts to combat drug trafficking and substance abuse.",
-                "Political stress and significant changes take place in the Soviet Union, leading to political transformations and the eventual dissolution of the USSR.",
-                "The U.S.S. Iowa experiences a turret explosion, resulting in the tragic loss of 42 lives and investigations into the incident.",
-                "Hurricane Hugo strikes, leaving 71 people dead and causing widespread devastation in the affected areas.",
-                "The Salman Rushdie affair begins, centered around the publication of Rushdie's novel \"The Satanic Verses\" and the subsequent fatwa issued against him.",
-                "The U.S. conducts a military invasion of Panama, leading to the toppling of General Manuel Noriega's regime.",
-                "Tiananmen Square demonstrations in Beijing, China, lead to a pro-democracy movement and a government crackdown, resulting in significant unrest.",
-                "Federally insured bank losses in the United States are estimated at a staggering $500 billion, raising concerns about the stability of the financial sector.",
-                "Compact discs (CDs) become the dominant playback medium in the United States, revolutionizing the music industry with digital audio technology."
-            ],
-            1990: [
-                "Iraq's invasion of Kuwait triggers international condemnation, and the United States organizes an expeditionary force to oppose the invasion, setting the stage for the Gulf War.",
-                "The South African government lifts emergency decrees, signaling political changes in the country.",
-                "The U.S. public debt reaches $3.23 trillion, reflecting fiscal challenges and government spending.",
-                "The Hubble Space Telescope encounters technical issues, leading to a space shuttle mission to correct its optics.",
-                "The United States is estimated to have spent approximately $40 billion on illegal drugs this year, highlighting the persistent issue of drug-related problems.",
-                "The U.S. resident population reaches 248.7 million, indicating ongoing demographic changes and growth."
-            ],
-            1991: [
-                "The Gulf War results in the deaths of at least 50,000 Iraqis and significant destruction during the conflict in the Middle East.",
-                "Iraq releases approximately 40 million gallons of crude oil into the Persian Gulf, leading to environmental and ecological disasters in the region.",
-                "The Oakland Hills fire in California burns around 3,000 homes and claims dozens of lives, emphasizing the destructive power of wildfires.",
-                "Massive volcanic eruptions of Mt. Pinatubo on Luzon have far-reaching impacts on climate and air travel.",
-                "A coup attempt is foiled in the USSR, while Arab-Israeli talks continue in the Middle East.",
-                "By the end of May, AIDS-related deaths in the United States total 113,426, highlighting the ongoing AIDS epidemic.",
-                "Imported automobile sales account for one-third of the U.S. market, reflecting changing consumer preferences.",
-                "The USSR dissolves into its constituent republics, and Mikhail Gorbachev resigns from his leadership position, marking the end of an era in Soviet history.",
-                "Approximately one-fifth of sub-Saharan college graduates are believed to be HIV-positive, underlining the global impact of the AIDS crisis."
-            ],
-            1992: [
-                "Economic recession grips industrial nations, resulting in increased homelessness and widespread reports of mass layoffs.",
-                "Riots erupt in Los Angeles and other U.S. cities following the verdict in the Rodney King trial, resulting in 52 deaths and over $1 billion in damages.",
-                "The U.S. military is deployed to aid famine relief efforts amid the civil war in Somalia, highlighting humanitarian crises in conflict zones.",
-                "Tens of thousands of people are massacred during \"ethnic cleansing\" in the former Yugoslavia, underscoring the brutality of the Balkan conflict.",
-                "Hurricanes strike Florida, Louisiana, and Hawaii, causing dozens of deaths and leaving thousands homeless, emphasizing the destructive power of natural disasters.",
-                "Major earthquakes in Southern California and Egypt cause extensive damage and disrupt communities.",
-                "An estimated 13 million people are now infected with the HIV virus, highlighting the global scale of the AIDS epidemic.",
-                "The Czech Republic and Slovakia separate, marking significant changes in the political landscape of Eastern Europe."
-            ],
-            1993: [
-                "Terrorists bomb the World Trade Center in New York, resulting in casualties and raising concerns about domestic terrorism.",
-                "The FBI lays siege to the Branch Davidians near Waco, Texas, and 80 individuals ultimately lose their lives in the incident.",
-                "Bill Clinton becomes the first Democratic President since Jimmy Carter, marking a change in U.S. political leadership.",
-                "Strife and conflict continue in Bosnia, contributing to the complex and protracted Balkan Wars.",
-                "North Korea withdraws from the nuclear nonproliferation treaty, raising concerns about nuclear proliferation.",
-                "U.S. troops are withdrawn from Somalia, reflecting shifts in U.S. foreign policy.",
-                "Congress votes to close over 130 U.S. military bases, leading to changes in the nation's defense infrastructure.",
-                "U.S. unemployment rates decline, reflecting improvements in the labor market.",
-                "The U.S. national debt reaches $4.35 trillion, emphasizing ongoing fiscal challenges."
-            ],
-            1994: [
-                "The North American Free Trade Agreement (NAFTA) agreement is ratified by all participating parties, promoting trade and economic cooperation in North America.",
-                "The CIA's Aldrich Ames is exposed as a Russian spy, highlighting intelligence breaches within U.S. agencies.",
-                "The Anglican Church ordains its first female priests, marking a historic moment in religious leadership.",
-                "South Africa holds its first universal-suffrage election, signaling the end of white minority rule and apartheid.",
-                "Israel and the Palestine Liberation Organization (PLO) sign a self-rule accord, aiming for peace and autonomy in the Middle East.",
-                "O.J. Simpson is charged in connection with two murders, leading to a high-profile trial and discussions on race, justice, and celebrity.",
-                "Fifty years since World War II Normandy landings, commemorations take place to remember the D-Day invasion and its significance.",
-                "A professional baseball strike disrupts the sport's season, raising questions about labor relations in professional sports.",
-                "The United States intervenes in Haiti and successfully restores Jean-Bertrand Aristide to the presidency, addressing political turmoil in the country."
-            ],
-            1995: [
-                "The Shoemaker-Levy 9 comet cluster collides with Jupiter, providing a rare astronomical spectacle.",
-                "A devastating terrorist bomb attack targets the Oklahoma City federal building, resulting in the tragic loss of 161 lives.",
-                "Approximately one in ten people in the United States is connected to the internet, marking the growing influence of the World Wide Web.",
-                "O.J. Simpson is acquitted of murder charges in a highly publicized trial, sparking debates and discussions about the legal system and justice.",
-                "Peace initiatives make progress in Northern Ireland, Bosnia, and the Middle East, fostering hope for conflict resolution.",
-                "The assassination of Israeli Prime Minister Yitzhak Rabin leads to a period of mourning and uncertainty in Israel.",
-                "General Colin Powell declines to run for the U.S. presidency, affecting the political landscape and potential candidates.",
-                "The U.S. federal debt reaches a significant milestone, surpassing $5 trillion, raising concerns about fiscal responsibility."
-            ],
-            1996: [
-                "U.S. federal workers return to work following a budget crisis, highlighting the impact of government shutdowns on public services.",
-                "A bomb explodes at the Atlanta Olympic Games, resulting in one fatality and raising security concerns at major international events.",
-                "Earth experiences a rise in its recent average surface temperature, contributing to discussions about climate change and global warming.",
-                "Minnesota faces one of its coldest winters in nearly a century, with extreme cold weather affecting the region.",
-                "Mount Everest climbing deaths continue to rise, underscoring the risks and challenges of high-altitude mountaineering.",
-                "Islamic rebels capture Kabul, leading to political changes and conflict in Afghanistan.",
-                "The struggle over abortion continues in the U.S. Senate, reflecting ongoing debates about reproductive rights and legislation.",
-                "Copyright piracy remains a source of friction between the United States and China, impacting intellectual property rights.",
-                "The U.S. national debt surpasses $5.2 trillion, highlighting long-term fiscal challenges.",
-                "The United States experiences economic prosperity, with positive economic indicators and growth.",
-                "Efforts to control immigration and drug addiction face criticism and challenges in their implementation.",
-                "Timothy McVeigh is held in connection with the Oklahoma City bombing, one of the deadliest domestic terrorist attacks in U.S. history.",
-                "The Unabomber suspect, Ted Kaczynski, is indicted, leading to legal proceedings and discussions about domestic terrorism."
-            ],
-            1997: [
-                "The Haitian ferry Pride of la Gonave sinks, resulting in a tragic maritime disaster with over 200 casualties.",
-                "New AIDS infections are estimated to exceed 3 million, highlighting the ongoing global health crisis.",
-                "Approximately 5.8 million people have died from AIDS-related illnesses, underscoring the magnitude of the HIV/AIDS pandemic.",
-                "The United States has an estimated resident population of approximately 275 million, reflecting demographic changes.",
-                "Approximately 40% of the U.S. population is now connected to the internet, marking a significant milestone in the digital age.",
-                "President Bill Clinton faces heavy scrutiny and political pressure regarding allegations of sexual misconduct, leading to a national conversation.",
-                "The Dow-Jones average surpasses 8,000 points in July, indicating stock market growth and economic stability.",
-                "Tobacco companies admit that tobacco is addictive, leading to legal and public health implications.",
-                "Comet Hale-Bopp passes nearby in March, offering a celestial spectacle visible from Earth.",
-                "Hong Kong reverts to Chinese sovereignty, marking a historic moment in international relations.",
-                "NASA's Ames Research Center establishes a department of astrobiology, advancing the study of life beyond Earth.",
-                "The world mourns the death of Diana, Princess of Wales, in a tragic auto crash, triggering global expressions of grief and remembrance.",
-                "Media mogul Ted Turner donates $1 billion to the United Nations, making a significant philanthropic contribution to international causes."
-            ],
-            1998: [
-                "President Bill Clinton faces allegations of perjury and obstruction of justice, leading to a cloud of controversy and legal proceedings.",
-                "The U.S. economic expansion shows signs of slowing, raising concerns about economic stability and growth.",
-                "El Niño weather patterns lead to heavy rains in California and violent storms across the Midwest, impacting weather and agriculture.",
-                "Storms cause significant damage in Europe, affecting infrastructure and communities.",
-                "Tornadoes strike Alabama, resulting in the loss of 34 lives and causing destruction in affected areas.",
-                "Ted Kaczynski pleads guilty to the Unabomber attacks, acknowledging his involvement in a series of domestic bombings.",
-                "The U.S. federal budget shows a small surplus for the first time in 30 years, indicating progress in fiscal management.",
-                "Rwanda executes 22 individuals for their roles in the genocide, marking a significant moment in the pursuit of justice.",
-                "Iraq appears to achieve successful outcomes in ending UN weapons inspections, raising concerns about international security.",
-                "Russia experiences economic and social turmoil, reflecting challenges in the post-Soviet era.",
-                "Chicago O’Hare International Airport records approximately 70 million passenger arrivals and departures in 1997, highlighting its significance as a major transportation hub."
-            ],
-            1999: [
-                "President Bill Clinton is impeached by the House of Representatives, triggering a historic impeachment trial in the Senate.",
-                "The U.S. economy experiences a surge, with the Dow Jones average finishing above 11,000 points for the first time in history.",
-                "The United States faces very large balance of payment deficits, raising concerns about international trade and economic stability.",
-                "Violent crime in the United States reaches its lowest level since 1973, reflecting positive trends in public safety.",
-                "The American Medical Association (AMA) approves a union for medical doctors, addressing labor issues within the medical profession."
-            ],
-            2000: [
-                "The U.S. stock market experiences a burst of bubbles, leading to discussions about the stock market's impact on social security.",
-                "A Russian nuclear submarine sinks in the Barents Sea, resulting in the tragic loss of 118 lives and raising questions about submarine safety.",
-                "An Air France Concorde crashes into a hotel, resulting in the tragic deaths of 113 individuals and marking a significant aviation disaster.",
-                "Mexico's Institutional Revolutionary Party (PRI) loses the presidency for the first time in 71 years, signifying a political shift in Mexico.",
-                "Edward Gorey, acclaimed author and illustrator, passes away at the age of 75, leaving behind a legacy of unique and imaginative works.",
-                "George W. Bush is elected as the President of the United States, shaping the country's political landscape and policies."
-            ],
-            2001: [
-                "A series of coordinated terrorist attacks kills approximately 3,000 people in New York and Virginia, leading to significant changes in security and international relations.",
-                "The submarine U.S.S. Greenville surfaces underneath a Japanese trawler, resulting in the tragic loss of 9 lives and international attention.",
-                "New observations of \"dark energy\" and \"dark matter\" force a re-evaluation of previously held cosmological theories, reshaping our understanding of the universe.",
-                "The solar-powered aircraft Helios reaches an altitude of 96,500 feet, demonstrating the potential of renewable energy in aviation.",
-                "Approximately 55% of U.S. households now contain computers, signifying the growing presence of technology in homes.",
-                "Senate and House offices are closed due to anthrax contamination, resulting in heightened concerns about bioterrorism threats.",
-                "U.S. armed forces enter Afghanistan as part of the global response to terrorism, marking the beginning of a significant military campaign."
-            ],
-            2002: [
-                "President George W. Bush identifies an \"axis of evil,\" shaping U.S. foreign policy and international perceptions.",
-                "North Korea reports that it has secretly produced nuclear bombs, intensifying concerns about nuclear proliferation.",
-                "Enormous accounting frauds and business bankruptcies come to light in the United States, leading to financial scandals and corporate reforms.",
-                "Piracy is blamed, rather than quality, for the continued decline in sales of recorded music and music videos worldwide, impacting the music industry.",
-                "The Euro becomes the official currency of multiple European countries, solidifying the Eurozone's economic integration.",
-                "The war crimes trial of Slobodan Milosevic begins, addressing allegations of human rights abuses during the Balkan conflicts."
-            ],
-            2003: [
-                "An enormous power outage affects the northeastern United States and eastern Canada during the summertime, revealing vulnerabilities in electrical infrastructure.",
-                "Europe experiences an unprecedented heatwave, with more than 11,000 deaths in France alone attributed to extreme temperatures above 105°F.",
-                "Primatologists discover a previously unknown species of ape in the northern Congo, resembling a cross between a gorilla and a chimpanzee, but larger, expanding our knowledge of primate diversity.",
-                "The Galileo space probe is deliberately crashed into Jupiter, concluding its fourteen-year mission exploring the outer planets of our solar system.",
-                "A mysterious monolith is discovered in a remote desert, sparking intrigue and speculation about its origin and purpose.",
-                "The first privately funded spacecraft successfully reaches orbit, marking a milestone in commercial space exploration.",
-                "The European Space Agency's Mars Express mission confirms the presence of water ice on Mars, increasing the likelihood of future human exploration."
-            ],
-            2004: [
-                "Terrorist attacks on four rush hour trains result in the tragic deaths of 191 people in Madrid, Spain, and a siege of a school in Beslan, Northern Ossetia, leads to the loss of 335 lives and injuries to at least 700 people.",
-                "The largest passenger ship afloat, named the Queen Mary 2 by Her Majesty Queen Elizabeth II, sets off on its maiden voyage, symbolizing advancements in maritime technology.",
-                "Taipei 101, the world's tallest skyscraper at 509 meters, opens to the public, representing architectural and engineering achievements.",
-                "The Hubble Space Telescope captures stunning images of distant galaxies, providing valuable insights into the cosmos.",
-                "A breakthrough in stem cell research offers new possibilities for regenerative medicine and disease treatment.",
-                "Google goes public in a highly anticipated initial public offering, transforming the tech industry and investment landscape.",
-                "The European Space Agency's Rosetta spacecraft successfully lands a probe on a comet's surface, advancing our understanding of cometary bodies."
-            ],
-            2005: [
-                "Hurricane Katrina makes landfall along the U.S. Gulf Coast, resulting in the tragic loss of over 1,800 lives and significant damage to communities.",
-                "The Virgin Atlantic Global Flyer breaks the world record for the fastest solo flight around the world, pushing the boundaries of aviation.",
-                "A leap second is added to the end of the year, fine-tuning our understanding of time and precision.",
-                "The Kyoto Protocol enters into force, marking a global commitment to address climate change.",
-                "YouTube is launched, revolutionizing online video sharing and content creation.",
-                "The Cassini-Huygens mission successfully lands a probe on Saturn's moon Titan, providing valuable data about this enigmatic world."
-            ],
-            2006: [
-                "North Korea claims to have conducted its first nuclear test, raising concerns about nuclear proliferation and international security.",
-                "The 250th anniversary of the birth of Wolfgang Amadeus Mozart is celebrated, honoring the legacy of a prolific composer and musician.",
-                "Twitter is founded, shaping the way people communicate and share information in the digital age.",
-                "NASA's New Horizons spacecraft embarks on a mission to Pluto, promising new discoveries about the distant dwarf planet.",
-                "Researchers achieve the first successful cloning of a mammal from an adult cell, opening new possibilities in genetics and biotechnology.",
-                "The International Space Station expands with the addition of new modules, enhancing scientific research in space."
-            ],
-            2007: [
-                "Russia declares the resumption of strategic bomber flight exercises, signaling military assertiveness on the global stage.",
-                "Harry Potter and the Deathly Hallows is released and becomes the fastest-selling book in publishing history, captivating readers worldwide.",
-                "Apple releases the iPhone, revolutionizing the smartphone industry and changing the way people interact with technology.",
-                "China's Chang'e-1 lunar probe successfully enters lunar orbit, marking a significant milestone in China's space exploration efforts.",
-                "Live Earth concerts are held across the world to raise awareness about climate change and environmental conservation.",
-                "Researchers discover a new species of deep-sea creature in the Mariana Trench, shedding light on Earth's most extreme environments."
-            ],
-            2008: [
-                "Bernard Madoff is arrested for committing the largest financial fraud in history, exposing vulnerabilities in the financial sector.",
-                "Barack Obama is elected as the 44th President of the United States, making history as the first President of African-American origin.",
-                "The Wilkins Ice Shelf in Antarctica disintegrates, raising concerns about climate change and its impact on polar regions.",
-                "Lehman Brothers goes bankrupt, triggering a global financial crisis and reshaping the world's economic landscape.",
-                "Pirate activity increases off the coast of Somalia, drawing international attention to maritime security issues.",
-                "The Large Hadron Collider (LHC) at CERN becomes operational, enabling groundbreaking experiments in particle physics."
-            ],
-            2009: [
-                "The Icelandic banking system collapses, highlighting vulnerabilities in global financial markets and banking systems.",
-                "An outbreak of the H1N1 influenza strain, 'Swine Flu,' reaches pandemic proportions, affecting global public health and healthcare systems.",
-                "The longest total solar eclipse of the 21st century takes place on July 22, lasting up to 6 minutes and 38.8 seconds, captivating skywatchers across Asia and the Pacific Ocean.",
-                "The Kepler Space Telescope is launched to search for exoplanets, revolutionizing our understanding of planets beyond our solar system.",
-                "The Large Hadron Collider (LHC) at CERN achieves record energy levels, enabling experiments to explore fundamental particles and the early universe.",
-                "The Copenhagen Climate Summit brings world leaders together to address climate change and set emissions targets for the future."
-            ],
-            2010: [
-                "The Deepwater Horizon oil platform explodes in the Gulf of Mexico, leading to the tragic deaths of eleven oil workers and a seven-month-long oil spill, highlighting environmental risks associated with offshore drilling.",
-                "The Eyjafjallajökull volcano erupts beneath an Icelandic ice cap, spewing ash into the atmosphere and disrupting air travel across Europe, revealing vulnerabilities in global transportation.",
-                "Hundreds of thousands of secret American diplomatic cables are released by the website WikiLeaks, sparking debates about transparency, security, and international relations.",
-                "Apple introduces the iPad, revolutionizing the tablet computer market and changing the way people consume digital content.",
-                "Scientists create the first synthetic organism with a human-made genetic code, opening new possibilities in biotechnology.",
-                "The United Nations adopts the 2030 Agenda for Sustainable Development, setting ambitious goals for global sustainability and development."
-            ],
-            2011: [
-                "The Iraq War is declared over by the United States, marking a significant milestone in U.S. foreign policy.",
-                "Japan is hit by a 9.1 magnitude earthquake, followed by a devastating tsunami that adds to the death toll and triggers a nuclear crisis in four coastal nuclear power plants.",
-                "The global population is judged to have reached seven billion, underscoring the challenges and opportunities of demographic growth.",
-                "Osama bin Laden, the figurehead of Al-Qaeda, is killed by American special forces in Pakistan, leading to discussions about the impact on counterterrorism efforts.",
-                "Street vendor Mohamed Bouazizi sets himself on fire in Tunisia, sparking a revolutionary movement that leads to the overthrow of the Tunisian government and similar revolutions across the Middle East, known as the Arab Spring.",
-                "NASA's Juno spacecraft is launched on a mission to study Jupiter's composition and evolution, providing insights into the solar system's history.",
-                "Scientists discover evidence of water on Mars, raising the possibility of past or present life on the Red Planet."
-            ],
-            2012: [
-                "The Diamond Jubilee of Queen Elizabeth II is celebrated, commemorating her 60-year reign as the monarch of the United Kingdom and other Commonwealth realms.",
-                "The Arab Spring continues to unfold, shaping political transitions and unrest in several countries across the Middle East and North Africa.",
-                "The century's second and last solar transit of Venus occurs, offering a rare celestial event for astronomers and skywatchers.",
-                "The Tokyo Skytree, the tallest self-supporting tower in the world at 634 meters, opens to the public, showcasing architectural and engineering excellence.",
-                "CERN announces the discovery of the Higgs Boson, often referred to as the 'god particle,' providing insights into fundamental particles and the nature of the universe.",
-                "Austrian skydiver Felix Baumgartner becomes the first person to break the sound barrier without machine assistance, achieving this feat with a 24-mile jump to Earth at Roswell, New Mexico.",
-                "Curiosity, NASA's Mars rover, successfully lands on the Martian surface, embarking on a mission to explore the Red Planet's geology and search for signs of past life."
-            ],
+                1890: [
+                    "The first entirely steel-framed building is erected in Chicago, a pivotal moment in architecture.",
+                    "London introduces the world's first electric tube railway, transforming urban transportation.",
+                    "Tragedy strikes as the British cruiser Serpent is wrecked off the Spanish coast during a fierce storm, resulting in the loss of 167 lives.",
+                    "Sitting Bull, a prominent figure in the Sioux uprising, meets his demise.",
+                    "The delightful ice-cream sundae makes its debut as a sweet treat.",
+                    "The United States boasts a resident population of 62.9 million, reflecting its continued growth.",
+                    "Thomas Edison patents the motion picture camera, laying the foundation for the film industry."
+                ],
+                1891: [
+                    "Japan endures a catastrophic earthquake that levels 20,000 structures and claims the lives of 25,000 people.",
+                    "A groundbreaking moment arrives with the creation of the first practical hydroelectric station, ushering in a new era of energy production.",
+                    "England embraces the electric torch, a technological advancement with far-reaching implications.",
+                    "Whitcomb Judson invents the zipper, a convenient fastening device with various applications."
+                ],
+                1892: [
+                    "Oil City, Pennsylvania, descends into chaos as fires and floods lead to a harrowing ordeal, resulting in 130 casualties.",
+                    "A crucial breakthrough occurs with the development of a cholera vaccine, a significant stride in public health.",
+                    "The completion of the Cape-Johannesburg railroad connects distant regions, facilitating transportation and trade.",
+                    "Innovation takes the form of the crown top for bottles and the patenting of the Diesel engine.",
+                    "The first automatic escalator is patented by Jesse W. Reno, revolutionizing vertical transportation."
+                ],
+                1893: [
+                    "Hurricane-driven floods wreak havoc along the U.S. South Atlantic coast, causing a staggering loss of 2000 lives.",
+                    "Chicago hosts the World Exposition, showcasing human achievement and innovation on a global scale.",
+                    "A major leap in photography occurs with the invention of practical roll film.",
+                    "Breakfast tables are forever changed with the creation of shredded wheat cereal.",
+                    "Rudolf Diesel develops the concept of the diesel engine, paving the way for efficient and powerful engines."
+                ],
+                1894: [
+                    "Tensions escalate into war between China and Japan, marking a turning point in East Asian history.",
+                    "A devastating forest fire in Minnesota claims the lives of 480 people, leaving a lasting impact on the region.",
+                    "Captain Dreyfus is exiled to Devil’s Island amid a controversial and politically charged case.",
+                    "The world witnesses the birth of wireless communication, a technology that would shape the future.",
+                    "The first kinetoscope parlor opens in New York City, offering a glimpse into the world of moving pictures."
+                ],
+                1895: [
+                    "Wilhelm Conrad Roentgen makes a groundbreaking discovery with the identification of X-rays, revolutionizing medicine and imaging.",
+                    "The cigarette-making machine is invented, streamlining the production of a popular consumer product.",
+                    "The Lumieres introduce their Cinematographie, a precursor to modern cinema, setting the stage for a new era of entertainment.",
+                    "Alfred Nobel establishes the Nobel Prize, recognizing outstanding contributions to humanity in various fields."
+                ],
+                1896: [
+                    "The Klondike gold rush commences, sparking a frenzied search for precious metals in the icy wilderness of Canada.",
+                    "Addressograph patents are officially granted, revolutionizing the field of data processing and record-keeping.",
+                    "Henry Ford unveils his first motorcar, laying the foundation for the modern automobile industry.",
+                    "Innovative periscopes for submarines are invented, enhancing the stealth and capabilities of underwater vessels.",
+                    "The inaugural modern Olympic Games are hosted in Athens, Greece, celebrating athleticism and international unity.",
+                    "Wilhelm Röntgen discovers the X-ray, revolutionizing medical diagnostics and imaging technology.",
+                    "Marconi sends the first wireless telegraph transmission across the English Channel, marking a major advancement in wireless communication."
+                ],
+                1897: [
+                    "The invention of mimeo stencils revolutionizes duplicating documents and publications.",
+                    "Scientist Karl Ferdinand Braun introduces the world's first cathode ray tube (CRT), a milestone in the development of electronic displays.",
+                    "Aspirin is synthesized for the first time, leading to the widespread use of this pain-relief medication."
+                ],
+                1898: [
+                    "A devastating tropical cyclone strikes the southern United States, causing widespread destruction and claiming hundreds of lives.",
+                    "The Spanish-American War unfolds, resulting in the loss of 2446 U.S. soldiers and marking a turning point in American foreign policy.",
+                    "The practicality of disc recordings is realized, revolutionizing the music industry and audio technology.",
+                    "Commercial aspirin makes its debut, providing a widely accessible remedy for pain and fever.",
+                    "Kellogg’s Corn Flakes are introduced as a wholesome breakfast option, becoming a household staple.",
+                    "The tubular flashlight is invented, illuminating the way for portable and reliable light sources.",
+                    "Emile Zola publishes his famous open letter \"J'Accuse!\" in defense of Captain Alfred Dreyfus, igniting a national debate in France."
+                ],
+                1899: [
+                    "The Windsor Hotel in New York City is engulfed in flames, causing millions in damages and tragically claiming 14 lives.",
+                    "Ernest Rutherford makes groundbreaking discoveries about alpha and beta particles, advancing our understanding of atomic structure.",
+                    "The general adoption of typewriters accelerates, transforming written communication and office work.",
+                    "The Wright brothers, Orville and Wilbur, start experimenting with their first powered aircraft, paving the way for the age of aviation."
+                ],
+                1900: [
+                    "The tragic wreck of the steamship Rio de Janeiro pierces the heart of San Francisco harbor, resulting in the loss of 128 lives.",
+                    "The devastating Galveston hurricane strikes, leaving a trail of destruction and claiming the lives of 6,000 people.",
+                    "A mine explosion in Utah leads to the tragic loss of 200 lives, highlighting the dangers faced by miners.",
+                    "The Boxer Rebellion erupts in China, marking a violent struggle against foreign influence and imperialism.",
+                    "Eastman Kodak introduces the revolutionary “Brownie” camera, making photography accessible to the masses.",
+                    "Count Ferdinand von Zeppelin launches his 420-foot airship, pioneering the era of modern air travel.",
+                    "The U.S. public debt stands at $1.263 billion, reflecting economic and financial trends of the time.",
+                    "Sigmund Freud publishes \"The Interpretation of Dreams,\" laying the foundation for modern psychoanalysis."
+                ],
+                1901: [
+                    "The assassination of President William McKinley sends shockwaves through the nation.",
+                    "Two significant typhoid outbreaks strike the United States, raising concerns about public health.",
+                    "The passing of Queen Victoria marks the end of an era in British history.",
+                    "Advancements in medicine occur with the classification of human blood groups.",
+                    "Guglielmo Marconi achieves a groundbreaking milestone by successfully establishing the first transatlantic wireless communication link.",
+                    "The inaugural Nobel Prizes are awarded, recognizing outstanding contributions to humanity in various fields."
+                ],
+                1902: [
+                    "The Boer War continues to shape the geopolitical landscape in South Africa.",
+                    "The catastrophic eruption of Mt. Pelée on Martinique claims the lives of 40,000 people in a devastating natural disaster.",
+                    "The launch of the first steam-turbine-driven passenger ship revolutionizes maritime transportation.",
+                    "The development of modern macadam improves road construction techniques, benefiting infrastructure worldwide.",
+                    "Alum-dried powdered milk is introduced, revolutionizing food preservation and accessibility.",
+                    "Puffed cereals make their debut in the breakfast market, offering a novel and convenient choice for consumers.",
+                    "The iconic Teddy bear is born, becoming a beloved childhood toy.",
+                    "Enrico Caruso, the legendary tenor, makes his historic debut in gramophone recordings, sharing his vocal prowess with the world.",
+                    "The development of economical hydrogenated fats makes fats readily available for soap and cooking, impacting daily life."
+                ],
+                1903: [
+                    "A devastating fire at the Iroquois Theatre in Chicago claims the lives of 602 people, marking one of the deadliest theater fires in U.S. history.",
+                    "The Wright Brothers successfully achieve powered flight with their heavier-than-air aircraft, marking a historic milestone in aviation.",
+                    "The first fluorescent light is developed, revolutionizing interior lighting and energy efficiency.",
+                    "The invention of the postal meter streamlines mail processing and postage payment.",
+                    "The introduction of the center-frame motorcycle engine improves motorcycle design and performance.",
+                    "Marie Curie becomes the first woman to win a Nobel Prize, receiving the Nobel Prize in Physics for her groundbreaking research on radioactivity."
+                ],
+                1904: [
+                    "A tragic train derailment into a flood in Eden, Colorado, results in the loss of 96 lives, highlighting the risks of rail travel.",
+                    "The Broadway subway opens in New York City, expanding the city's transportation network and facilitating urban growth.",
+                    "The patenting of the thermos flask revolutionizes the way people keep liquids hot or cold for extended periods.",
+                    "Farm machinery sees a significant advancement as tracks (as opposed to wheels) are introduced, enhancing agricultural efficiency.",
+                    "Kapok life belts are introduced, improving water safety for sailors and passengers on ships.",
+                    "The Russo-Japanese War begins, reshaping the political and territorial landscape in East Asia."
+                ],
+                1905: [
+                    "The discovery of the Cullinan diamond, weighing a staggering 3,000 carats, captures the world's attention as the largest diamond find to date.",
+                    "Steam turbines become the standard propulsion system for the British navy, enhancing the capabilities of naval vessels.",
+                    "An abortive revolution in Russia hints at the impending political changes that will transform the country.",
+                    "The invention of the electric motor horn enhances automotive safety and communication on the road.",
+                    "The creation of the chemical foam fire extinguisher marks a significant advancement in fire suppression technology.",
+                    "Albert Einstein proposes his Special Theory of Relativity, revolutionizing our fundamental understanding of the universe."
+                ],
+                1906: [
+                    "A devastating earthquake and fire strike San Francisco, resulting in the destruction of 28,818 houses and an announced death toll of 700.",
+                    "U.S. troops occupy Cuba until 1909, shaping the nation's foreign policy and influence in the Caribbean.",
+                    "The grand ocean liners Lusitania and Mauretania are launched, setting new standards in transatlantic travel.",
+                    "The jukebox makes its debut, revolutionizing music entertainment in public spaces.",
+                    "Mass-production of marine outboard motors begins, transforming boating and water transportation.",
+                    "Albert Einstein introduces his theory of Special Relativity, reshaping our understanding of the universe."
+                ],
+                1907: [
+                    "A tragic West Virginian coal mine explosion claims the lives of 361 miners, highlighting the dangers of coal mining.",
+                    "Rasputin gains significant influence in Czarist Russia, becoming a mysterious and controversial figure in the Russian court.",
+                    "The world is introduced to animated cartoons, a form of entertainment that will captivate audiences for generations.",
+                    "The electric washing machine is invented, revolutionizing household chores and laundry practices.",
+                    "Household detergent is introduced, providing a more effective means of cleaning and laundry care.",
+                    "The upright vacuum cleaner is created, simplifying home cleaning and maintenance.",
+                    "The first electric iron is patented, revolutionizing garment care."
+                ],
+                1908: [
+                    "Hermann Minkowski formulates his groundbreaking 4-dimensional geometry, advancing the understanding of space and time.",
+                    "Paper cups for drinking are introduced, offering a convenient and hygienic way to consume beverages.",
+                    "The Ford Model T, the first mass-produced automobile, hits the market, revolutionizing transportation.",
+                    "The concept of the \"Boy Scouts\" is introduced, paving the way for the establishment of the Boy Scouts of America."
+                ],
+                1909: [
+                    "Explorer Robert E. Peary reaches the North Pole, achieving a historic milestone in polar exploration.",
+                    "A devastating hurricane strikes Louisiana and Mississippi, claiming the lives of 350 people and causing widespread destruction.",
+                    "The first powered flight across the English Channel takes place, showcasing the possibilities of aviation.",
+                    "Double-decker buses are introduced in the United Kingdom, becoming an iconic sight on British streets.",
+                    "The first neon lights are demonstrated, opening new possibilities in signage and advertising.",
+                    "The invention of instant coffee revolutionizes coffee consumption, offering a quick and convenient way to enjoy the beverage."
+                ],
+                1911: [
+                    "A massive explosion of forty tons of dynamite occurs at the Communipaw terminal in New Jersey, resulting in the tragic loss of 30 lives.",
+                    "The Triangle Shirtwaist Factory fire in New York City becomes a tragic landmark, leaving 145 people dead and prompting labor reform efforts.",
+                    "Emiliano Zapata arrives in Mexico City, marking a significant moment in the Mexican Revolution, but the battles continue.",
+                    "A revolution in China leads to the establishment of a republic under the leadership of Sun Yat-sen.",
+                    "The electric frying pan is introduced, simplifying and modernizing cooking techniques.",
+                    "Norwegian explorer Roald Amundsen achieves a historic milestone by reaching the South Pole.",
+                    "The development of stainless steel revolutionizes industry and manufacturing."
+                ],
+                1912: [
+                    "The RMS Titanic collides with an iceberg, resulting in the tragic loss of 1,517 passengers and crew, one of the most infamous maritime disasters in history.",
+                    "Woodrow Wilson's cloud chamber leads to the detection of protons and electrons, advancing the field of particle physics.",
+                    "Cellophane, a transparent packaging material, is patented, offering new possibilities for food preservation and presentation.",
+                    "Savile Row tailors create what will be named the “trench coat,” which becomes an iconic garment during World War I.",
+                    "Cadillac introduces the first electric self-starter for automobiles, making cars more accessible and user-friendly.",
+                    "The first self-service grocery stores open in California, revolutionizing the retail industry.",
+                    "The crossword puzzle is invented, becoming a popular pastime and form of entertainment."
+                ],
+                1913: [
+                    "The Balkan War begins, reshaping the geopolitical landscape in Southeastern Europe.",
+                    "The British steamer Calvados is lost in a blizzard in the Sea of Marmara, resulting in the tragic loss of 200 lives.",
+                    "Woodrow Wilson is inaugurated as President of the United States, ushering in a new era of American leadership.",
+                    "Electric starters for motorcycles are introduced, improving motorcycle usability and safety.",
+                    "Vitamin A is discovered, leading to advancements in nutrition and health.",
+                    "The U.S. Constitution is amended to include income tax and the popular election of senators, shaping American governance.",
+                    "Stainless steel cutlery is introduced, offering a durable and rust-resistant alternative to traditional materials."
+                ],
+                1914: [
+                    "The Great War (World War I) begins, launching a devastating conflict that reshapes the course of history.",
+                    "The first air raids occur, marking the beginning of aerial warfare in the Great War.",
+                    "The Panama Canal is used for the first time, revolutionizing global trade and transportation.",
+                    "The Canadian Pacific steamship Empress of India is sunk in a collision with the Storstad in the St. Lawrence River, resulting in the tragic loss of 1,024 lives.",
+                    "The first successful blood transfusion is performed, advancing the field of medicine.",
+                    "The invention of the traffic signal improves road safety and traffic management in cities.",
+                    "The brassiere (bra) is patented, revolutionizing women's undergarments and fashion."
+                ],
+                1915: [
+                    "The sinking of the Lusitania by a German submarine results in the tragic loss of 1,199 lives and sparks consternation and anger in the United States.",
+                    "The Great War witnesses enormous and unprecedented casualties, reshaping the global political landscape.",
+                    "Cereal flakes are marketed as a convenient and nutritious breakfast option, changing morning routines.",
+                    "Chlorine gas is used as a weapon in the Great War, introducing a new and deadly form of warfare.",
+                    "The gas mask is invented, providing protection for soldiers against chemical weapons.",
+                    "The zipper is patented, revolutionizing clothing fasteners and becoming a staple in fashion and industry.",
+                    "Einstein's theory of General Relativity is published, furthering our understanding of gravity and the universe."
+                ],
+                1916: [
+                    "The Battle of Verdun claims the lives of some 700,000 soldiers, becoming one of the deadliest battles of World War I.",
+                    "One million lives are lost in the Battle of the Somme, marking a harrowing chapter in the Great War.",
+                    "A polio epidemic in the United States results in 7,000 deaths and leaves 27,000 youngsters paralyzed, highlighting the need for medical advances.",
+                    "The Gallipoli Campaign is waged, leading to significant casualties and reshaping the course of World War I.",
+                    "The Easter Uprising takes place in Ireland, marking a pivotal moment in the struggle for Irish independence.",
+                    "The Battle of Jutland in the North Sea becomes the largest naval battle of World War I.",
+                    "Mechanical windshield wipers are invented, improving visibility and safety in automobiles.",
+                    "Albert Einstein proposes his General Theory of Relativity, revolutionizing our understanding of the laws governing the universe.",
+                    "General John J. Pershing leads a raid into Mexico in pursuit of Pancho Villa, escalating tensions between the U.S. and Mexico."
+                ],
+                1917: [
+                    "The United States enters World War I, changing the course of the conflict and becoming a major player in the Allied forces.",
+                    "The Russian Revolution unfolds, leading to the Bolsheviks seizing power and transforming Russia into a communist state.",
+                    "Mustard gas is used in warfare for the first time, introducing a new and devastating form of chemical warfare.",
+                    "Ford begins mass-producing tractors, revolutionizing agriculture and farming practices.",
+                    "The steamer Castalia is wrecked on Lake Superior, resulting in the loss of 22 lives.",
+                    "A munitions plant explosion in Pennsylvania kills 133 workers and underscores the dangers of wartime production.",
+                    "A ship collision and explosion in Halifax, Nova Scotia, result in the tragic loss of 1,600 lives.",
+                    "The United States establishes its first regular airmail service, advancing aviation and communication.",
+                    "The development of the first tank prototype in World War I leads to advancements in armored warfare."
+                ],
+                1918: [
+                    "World War I comes to an end, bringing an end to one of the most devastating conflicts in history.",
+                    "The Russian Civil War erupts, leading to a protracted struggle for power and control in post-revolutionary Russia.",
+                    "Regular U.S. airmail service is established, connecting the nation through air travel.",
+                    "A world influenza epidemic, known as the Spanish flu, sweeps the globe and claims the lives of 21.6 million people.",
+                    "The USS Cyclops disappears without a trace after leaving Barbados, becoming one of the greatest mysteries of maritime history.",
+                    "Powered flight reaches speeds exceeding 150 mph and altitudes exceeding 30,000 feet, pushing the boundaries of aviation.",
+                    "Electric clocks are introduced, becoming a common household timekeeping device."
+                ],
+                1919: [
+                    "Prohibition is enacted in the United States, ushering in an era of alcohol prohibition and the rise of bootlegging.",
+                    "The first transatlantic flight covers 1,880 miles in 16 hours and 12 minutes, marking a historic achievement in aviation.",
+                    "Grease guns are invented, becoming essential tools in various industries and maintenance work.",
+                    "Parachutes are introduced, revolutionizing safety measures for aviation and parachuting sports."
+                ],
+                1920: [
+                    "Prohibition is in effect in the United States, leading to a significant impact on the alcohol industry and culture.",
+                    "The Bolsheviks consolidate power in Russia, establishing the Soviet Union and reshaping global politics.",
+                    "An earthquake in Gansu province, China, claims the lives of 200,000 people, highlighting the vulnerability of populated regions to natural disasters.",
+                    "The first radio broadcasting station goes on the air, revolutionizing mass communication and entertainment.",
+                    "Teabags are introduced as a convenient and mess-free way to prepare tea, changing tea consumption habits.",
+                    "The U.S. public debt stands at $24.3 billion, reflecting the economic and financial challenges of the era.",
+                    "Women's suffrage is ratified in the United States, granting women the right to vote and marking a milestone in the fight for gender equality.",
+                    "The United States boasts a resident population of 105.7 million, reflecting the nation's continued growth and development."
+                ],
+                1921: [
+                    "Hermann Rorschach devises his inkblot tests, pioneering a psychological assessment method.",
+                    "Inflation of the German Mark begins, leading to economic turmoil and hyperinflation in Germany.",
+                    "KDKA in Pittsburgh broadcasts sports events, marking a significant milestone in radio broadcasting.",
+                    "Karel Čapek coins the word “robot” in his play \"R.U.R.\", introducing the concept of artificial beings."
+                ],
+                1922: [
+                    "The Ku Klux Klan experiences a revival and growth in the United States, sparking concerns about racial violence and discrimination.",
+                    "The British dirigible AR-2 breaks in two, resulting in the tragic loss of 62 lives and raising safety concerns in air travel.",
+                    "Insulin is isolated, revolutionizing the treatment of diabetes and saving countless lives.",
+                    "The first practical postal franking machine is introduced, streamlining mail processing and postage payment.",
+                    "Soviet May Day slogans omit “world revolution,” reflecting shifts in Soviet foreign policy.",
+                    "Water-skiing is invented, creating a popular water sport and recreational activity.",
+                    "Benito Mussolini and his supporters march on Rome, leading to his appointment as Prime Minister of Italy."
+                ],
+                1923: [
+                    "The Teapot Dome scandal rocks the administration of President Warren G. Harding, revealing corruption in government oil leases.",
+                    "A big fire in Berkeley, California, destroys 600 buildings, causes $10 million in damage, and results in 60 deaths.",
+                    "The German Mark is stabilized, bringing economic relief to Germany after a period of hyperinflation.",
+                    "Continuing Ku Klux Klan violence is reported in Georgia, prompting concerns about civil rights and racial tensions.",
+                    "The Nazi putsch in Munich fails, marking an early attempt by Adolf Hitler to seize power.",
+                    "The tomb of King Tutankhamun (King Tut) is opened, unveiling treasures and insights into ancient Egypt.",
+                    "A vaccine for whooping cough is developed, improving child health and reducing mortality rates."
+                ],
+                1924: [
+                    "Leopold and Loeb are convicted of the kidnap and slaying of Bobby Franks in a sensational trial.",
+                    "Paper egg cartons are developed, providing a more convenient and sanitary way to package eggs.",
+                    "Kleenex facial tissues are introduced, becoming a household staple for personal hygiene."
+                ],
+                1925: [
+                    "Wolfgang Pauli formulates the Exclusion Principle, a fundamental concept in quantum mechanics.",
+                    "I.G. Farben, a major chemical conglomerate, is formed, playing a significant role in the chemical industry.",
+                    "Sun Yat-sen, a key figure in Chinese history, dies, leading to political changes in China.",
+                    "In the Midwest, 792 people die in a single day from tornadoes, highlighting the destructive power of natural disasters.",
+                    "The U.S. dirigible Shenandoah breaks apart in mid-air, resulting in the tragic loss of 14 lives and raising safety concerns in airship travel.",
+                    "The German SS (Schutzstaffel) is formed, becoming a key organization in Nazi Germany.",
+                    "The Scopes “Monkey Trial” takes place, testing the teaching of evolution in American schools and sparking a national debate.",
+                    "Aerial commercial crop-dusting is introduced, improving agricultural efficiency."
+                ],
+                1926: [
+                    "Dr. Robert H. Goddard fires his first liquid-fuel rocket, laying the foundation for modern rocketry and space exploration.",
+                    "Lightning starts a massive explosion at the U.S. Naval ammunition dump in Lake Denmark, New Jersey, causing $85 million in damages and resulting in 30 deaths.",
+                    "A hurricane sweeps through Florida and Alabama, leaving 243 people dead and causing extensive destruction.",
+                    "Chiang Kai-Shek stages a coup in Canton, marking a significant development in Chinese politics.",
+                    "Leon Trotsky is expelled from the Politburo, leading to political shifts within the Soviet Union.",
+                    "Rolex introduces a waterproof watch, setting a new standard for timepieces."
+                ],
+                1927: [
+                    "Charles A. Lindbergh achieves fame by flying solo and non-stop between New York City and Paris, becoming a pioneering aviator.",
+                    "The Jazz Singer becomes the first feature-length sound film, ushering in the era of \"talkies\" in the motion picture industry.",
+                    "The first remote jukebox is introduced, transforming the way people enjoy music in public spaces.",
+                    "The pop-up toaster is introduced, simplifying and modernizing breakfast preparation.",
+                    "Nicola Sacco and Bartolomeo Vanzetti are executed, later cleared of charges by proclamation in 1977, sparking debate and protests."
+                ],
+                1928: [
+                    "Television experiments pave the way for the development of television as a medium for entertainment and communication.",
+                    "A devastating hurricane strikes southern Florida, resulting in the tragic loss of 1,836 lives and significant damage.",
+                    "Admiral Richard E. Byrd leads an expedition to Antarctica, advancing exploration of the continent.",
+                    "Teletypes come into use, improving telecommunication and printing technology.",
+                    "Waterproof cellophane is developed, offering new possibilities for packaging and preserving products.",
+                    "The Geiger counter is introduced, revolutionizing the detection of ionizing radiation.",
+                    "Vitamin C is discovered, leading to insights into nutrition and health."
+                ],
+                1929: [
+                    "The Great Stock Market Crash occurs on October 24, leading to the Wall Street Crash of 1929 and the onset of the Great Depression.",
+                    "The Graf Zeppelin completes a historic circumnavigation of the world, demonstrating the potential of airship travel.",
+                    "The Russian passenger steamer Volga is struck by a remnant World War I mine in the Black Sea, resulting in the loss of 31 lives.",
+                    "16mm color film is developed, enhancing the visual quality of motion pictures.",
+                    "Scotch tape is introduced, becoming a versatile adhesive tape for various applications.",
+                    "The tune-playing automobile horn is invented, adding musicality to car horns."
+                ],
+                1930: [
+                    "The Technocracy movement reaches its peak, advocating for the application of scientific principles to social and economic governance.",
+                    "The flash bulb ends flash powder explosions at press conferences and photography, improving safety and convenience.",
+                    "The first frozen foods are marketed, transforming food preservation and convenience for consumers.",
+                    "The bathysphere is invented, enabling deep-sea exploration and research.",
+                    "The cyclotron, a particle accelerator, is invented, advancing the field of nuclear physics.",
+                    "Pluto is discovered, expanding our understanding of the solar system.",
+                    "The telescopic umbrella is introduced, offering enhanced protection from rain and sun.",
+                    "The U.S. public debt reaches $16.18 billion, reflecting the economic challenges of the era.",
+                    "The U.S. resident population grows to 122.8 million, indicating continued demographic growth."
+                ],
+                1931: [
+                    "German millionaire support builds for the Nazi Party, contributing to the rise of Adolf Hitler.",
+                    "A mutiny occurs in the British Navy at Invergordon, highlighting labor disputes and unrest within the military.",
+                    "The Empire State Building formally opens, becoming an iconic symbol of New York City.",
+                    "Al Capone is imprisoned, marking a significant moment in the prosecution of organized crime figures.",
+                    "Alka-Seltzer is introduced as an antacid and pain reliever.",
+                    "The electric razor is introduced, offering a more convenient and efficient shaving experience.",
+                    "The George Washington Bridge, spanning 3,500 feet, is completed, becoming a vital transportation link."
+                ],
+                1932: [
+                    "Mahatma Gandhi is arrested in India as part of his civil disobedience campaign for independence.",
+                    "A British submarine sinks in the English Channel, raising questions about naval safety.",
+                    "Franklin D. Roosevelt is elected President of the United States in a landslide victory, bringing hope during the Great Depression.",
+                    "Benito Mussolini initiates the draining of the Pontine Marshes in Italy, addressing a long-standing environmental issue.",
+                    "The Lindbergh baby is kidnapped, leading to a high-profile investigation and public fascination.",
+                    "The first car radios are introduced, changing the way people enjoy music and news while driving.",
+                    "The first Gallup Poll is conducted, revolutionizing public opinion research and polling.",
+                    "Mars Bars are introduced as a popular candy bar.",
+                    "The invention of the zoom lens enhances photography and filmmaking.",
+                    "The Zippo lighter is introduced, becoming a classic and iconic product."
+                ],
+                1933: [
+                    "Adolf Hitler is named Chancellor of Germany, marking a turning point in German politics and history.",
+                    "Japan withdraws from the League of Nations, signaling increasing militarism and expansionist ambitions.",
+                    "The United States abandons the gold standard, a major economic policy shift during the Great Depression.",
+                    "The Long Beach earthquake kills 123 people and causes significant damage in California.",
+                    "Hundreds of lives are lost in a Cuban rebellion against the government of Gerardo Machado.",
+                    "Freed from imprisonment, Mahatma Gandhi weighs 90 pounds due to his hunger strikes and dedication to nonviolent resistance.",
+                    "The first German concentration camp, Dachau, is established, marking a grim chapter in history.",
+                    "Day-Glo pigments are introduced, leading to the creation of vibrant and fluorescent colors.",
+                    "The game Monopoly is published, becoming one of the most popular board games worldwide.",
+                    "Fluorescent lights are introduced commercially, offering energy-efficient lighting options."
+                ],
+                1934: [
+                    "The economic depression deepens as starvation and unrest spread in the United States, reflecting the challenges of the Great Depression.",
+                    "Drought extends from New York State to California, leading to the Dust Bowl and agricultural hardships.",
+                    "Augusto César Sandino is assassinated by supporters of Anastasio Somoza García, shaping the political landscape in Nicaragua.",
+                    "A general strike in San Francisco ends, concluding a period of labor unrest and strikes in the city.",
+                    "Huey Long assumes a dictatorship of Louisiana, implementing populist policies and consolidating power.",
+                    "The first commercial launderette is established, providing a new approach to laundry services."
+                ],
+                1935: [
+                    "Increasingly severe dust storms batter the High Plains and Midwest of the United States, leading to the Dust Bowl era.",
+                    "The first Pan-Am Clipper departs from San Francisco for China, marking the dawn of transpacific flight.",
+                    "The Social Security system is enacted in the United States, providing a safety net for retirees and disabled individuals.",
+                    "Huey Long, the charismatic Louisiana politician, is assassinated, altering the political landscape in the state.",
+                    "Mao Zedong's Long March concludes in Yenan, a pivotal moment in the Chinese Communist Party's history.",
+                    "The first passenger flight for the Douglas DC-3 aircraft takes place, revolutionizing air travel.",
+                    "Mass-market paperback books are introduced, making literature more accessible to the general public.",
+                    "The Richter earthquake scale is developed, allowing for more accurate measurement of earthquake magnitudes.",
+                    "The tape recorder is retailed, enabling the recording and playback of audio recordings."
+                ],
+                1936: [
+                    "The Nazis enter the Rhineland, a significant violation of the Treaty of Versailles and a precursor to further aggression.",
+                    "Italy conquers Ethiopia, marking a brutal episode of colonialism in East Africa.",
+                    "The Spanish Civil War begins, leading to years of conflict and ideological battles in Spain.",
+                    "A severe U.S. heat wave kills 3,000 people, underscoring the impact of extreme weather events.",
+                    "Dust-bowl conditions continue to plague the Great Plains, causing ecological and agricultural challenges.",
+                    "Jesse Owens wins four gold medals at the Berlin Olympics, challenging racial stereotypes and Nazi ideology.",
+                    "Axis powers, including Germany, Italy, and Japan, sign the Anti-Comintern Pact, signaling closer collaboration.",
+                    "The Boulder Dam (later known as the Hoover Dam) becomes operational, providing hydroelectric power and water storage.",
+                    "The first Volkswagen (VW) car is introduced, laying the foundation for a globally recognized automobile brand."
+                ],
+                1937: [
+                    "A devastating gas explosion kills 294 people in a Texas school, highlighting the need for safety measures in schools.",
+                    "The Hindenburg dirigible explodes while attempting to dock in Lakehurst, New Jersey, resulting in the loss of 36 lives.",
+                    "Eight Soviet generals die in Stalinist purges, reflecting the brutal political climate in the Soviet Union.",
+                    "DuPont patents nylon, a synthetic material that revolutionizes various industries, including fashion and manufacturing.",
+                    "Japanese forces sink the U.S. gunboat Panay in the Yangtze River, leading to diplomatic tensions.",
+                    "The Golden Gate Bridge, spanning 4,200 feet, is completed, becoming an iconic landmark in San Francisco.",
+                    "The first supermarket shopping carts are introduced, simplifying the grocery shopping experience.",
+                    "Buchenwald concentration camp opens in Germany, foreshadowing the horrors of the Holocaust."
+                ],
+                1938: [
+                    "Mexico expropriates all foreign oil holdings, asserting national control over the country's oil resources.",
+                    "German forces, unopposed, enter Austria, leading to the Anschluss and the annexation of Austria by Nazi Germany.",
+                    "Kristallnacht, or the Night of Broken Glass, marks a violent pogrom against Jews and Jewish-owned businesses in Nazi Germany.",
+                    "An electric steam iron with a thermostat is invented, improving the efficiency and safety of ironing.",
+                    "Instant coffee is introduced, offering a convenient and quick way to prepare coffee.",
+                    "Nylon, the synthetic fabric, is introduced to the market, influencing fashion and industry.",
+                    "The ball-point pen is patented, replacing fountain pens and revolutionizing writing instruments.",
+                    "A prototype of the photocopy machine is developed, paving the way for modern document reproduction technology.",
+                    "A major German-American Bund rally takes place at Madison Square Garden, showcasing Nazi sympathizers in the United States.",
+                    "Arrests of Jews throughout Germany and Austria foreshadow the escalating persecution of Jewish communities."
+                ],
+                1939: [
+                    "Germany annexes Czechoslovakia, signaling further aggression and territorial expansion.",
+                    "Madrid falls to General Francisco Franco's forces, marking a turning point in the Spanish Civil War.",
+                    "The U.S. submarine Squalus sinks with the loss of 26 crew members, highlighting submarine safety concerns.",
+                    "The French submarine Phoenix sinks with the loss of 63 lives, raising questions about naval operations.",
+                    "Two IRA bombs explode in London, reflecting political tensions and violence in Northern Ireland.",
+                    "Cellophane wrappers for products first appear in stores, offering transparent and protective packaging.",
+                    "Annexation of the Baltic states by the Soviet Union occurs, reshaping the geopolitical landscape.",
+                    "Germany invades Poland, leading to the outbreak of World War II, with France and Britain declaring war.",
+                    "Rockefeller Center opens in New York City, becoming an iconic entertainment and commercial complex.",
+                    "DDT, an insecticide, is introduced, influencing pest control practices.",
+                    "A yellow-fever vaccine is developed, advancing public health measures against tropical diseases.",
+                    "Radar technology is developed and deployed, playing a crucial role in military and aviation applications."
+                ],
+                1940: [
+                    "Finland surrenders to Soviet forces, ending the Russo-Finnish War.",
+                    "Nazi Germany strikes at Denmark and Norway, expanding its territorial control in Europe.",
+                    "Winston Churchill becomes Prime Minister of the United Kingdom, leading during a critical period of World War II.",
+                    "Holland and Belgium fall to German forces, marking further Nazi advances in Western Europe.",
+                    "The Dunkirk evacuation, also known as Operation Dynamo, rescues British and Allied troops from the beaches of Dunkirk, France.",
+                    "Thousands of lives are lost in the Russo-Finnish War, a conflict between Finland and the Soviet Union.",
+                    "German blitzkrieg tactics bring Nazi forces to the English Channel, threatening an invasion of Britain.",
+                    "Bombings in Germany and England result in tens of thousands of casualties and extensive damage.",
+                    "Franklin D. Roosevelt is elected for a third term as President of the United States, a historic and unprecedented move.",
+                    "The automatic gearbox for automobiles is introduced, simplifying driving and improving comfort.",
+                    "Inflatable life vests are introduced, enhancing safety for individuals involved in water activities.",
+                    "Radar becomes operational and is deployed in Britain, playing a critical role in defense and aviation.",
+                    "Artificial insemination is developed, contributing to advances in reproductive medicine.",
+                    "Penicillin is produced in quantity, revolutionizing medicine and antibiotics.",
+                    "The U.S. public debt reaches $42.97 billion, reflecting the economic challenges of World War II.",
+                    "The U.S. resident population grows to 131.7 million, indicating continued demographic growth."
+                ],
+                1941: [
+                    "The aerial Battle of Britain is joined, as the Royal Air Force defends against German bombing raids.",
+                    "The Lend-Lease policy is enacted in the United States, providing military aid to Allied nations during World War II.",
+                    "The U.S. institutes a military draft as it prepares for its involvement in World War II.",
+                    "Approximately 2,500 people die in the Japanese raid on Pearl Harbor, a major event that leads to U.S. entry into World War II.",
+                    "The Coconut Grove nightclub fire in Boston kills 491 people, leading to improved safety regulations for public venues.",
+                    "The Jeep is adopted as a general-purpose military vehicle, becoming an iconic part of military history.",
+                    "German forces invade the Soviet Union, initiating the Eastern Front of World War II."
+                ],
+                1942: [
+                    "Singapore and the Philippines fall to Japanese forces, marking significant losses for the Allies in the Pacific theater of World War II.",
+                    "A major carrier battle occurs off Midway Island, a pivotal engagement that shifts the balance in the Pacific War.",
+                    "The German siege of Leningrad continues, leading to a long and brutal siege during World War II.",
+                    "The Crimea falls to German forces, impacting the Eastern Front of World War II.",
+                    "The Doolittle raid on Tokyo is carried out by U.S. Army Air Forces, delivering a morale boost to the United States.",
+                    "The Battle of Stalingrad is joined, becoming one of the deadliest battles in history.",
+                    "U.S. forces land on Guadalcanal, marking the beginning of the Guadalcanal Campaign in the Pacific War.",
+                    "Allied forces land in North Africa, initiating the North African Campaign in World War II.",
+                    "Atomic fission is achieved, a significant step towards the development of atomic weapons.",
+                    "The Bazooka is introduced, providing anti-tank firepower to infantry units.",
+                    "Napalm, a highly flammable weapon, is introduced, influencing warfare tactics."
+                ],
+                1943: [
+                    "Approximately 190,000 Germans, along with greater numbers of Soviet soldiers and civilians, lose their lives in the Battle of Stalingrad, one of the deadliest battles in history.",
+                    "German forces surrender at Stalingrad, marking a turning point in World War II's Eastern Front.",
+                    "The Warsaw Ghetto uprising demonstrates the resistance of Jewish inhabitants against Nazi oppression.",
+                    "Germany faces defeat in the Battle of Kursk, the largest tank battle in history.",
+                    "Allied forces land in Sicily, advancing the liberation of Italy from Axis control.",
+                    "Benito Mussolini is deposed and later reseated by German forces, reflecting the fluid political situation in Italy.",
+                    "Allied forces invade Italy, contributing to the weakening of Axis control in Southern Europe.",
+                    "Soviet forces crack the Dnieper River line, pushing back German defenses in Eastern Europe.",
+                    "The Marshall Islands fall to U.S. forces in the Pacific theater of World War II.",
+                    "29 individuals lose their lives in Detroit race riots, highlighting racial tensions and social issues.",
+                    "Ball-point pens gain acceptance as a practical writing instrument, replacing fountain pens for many.",
+                    "Jacques-Yves Cousteau and Emile Gagnan invent the Aqualung, revolutionizing underwater exploration.",
+                    "Lysergic acid diethylamide (LSD) is synthesized, leading to its use in psychological research."
+                ],
+                1944: [
+                    "Charles de Gaulle becomes the Free-French commander-in-chief, leading the French resistance during World War II.",
+                    "Massive air raids on Germany continue as Allied forces intensify their strategic bombing campaign.",
+                    "The Crimea is liberated from German forces, relieving Soviet control of the region.",
+                    "Allied forces take control of Rome, marking a significant victory in the Italian Campaign.",
+                    "D-Day landings in Normandy (Operation Overlord) initiate the liberation of Western Europe from Nazi occupation.",
+                    "The Marianas Islands come under attack as Allied forces continue to advance in the Pacific theater.",
+                    "Paris falls to Allied forces, marking the liberation of the French capital from Nazi control.",
+                    "Franklin D. Roosevelt is re-elected for a fourth term as President of the United States, a record-setting achievement.",
+                    "The mass killings in Nazi concentration camps are revealed to the world, exposing the horrors of the Holocaust.",
+                    "V-1 and V-2 missiles launched by Germany target London and other Allied cities.",
+                    "General Douglas MacArthur returns to the Philippines, fulfilling his promise to return after its capture by Japanese forces.",
+                    "The Battle of the Bulge is fought as German forces launch a surprise offensive in the Ardennes region.",
+                    "A hurricane kills 46 people along the U.S. East Coast and claims the lives of 344 individuals at sea.",
+                    "A fire at a Ringling Bros. circus tent in Hartford, Connecticut, kills 168 people and injures many more.",
+                    "An ammunition explosion at Port Chicago, California, results in the deaths of 322 people and raises safety concerns.",
+                    "Nerve gas is developed as a chemical weapon, adding to the arsenal of deadly substances in warfare."
+                ],
+                1945: [
+                    "Approximately 130,000 people die in the firebombing of Dresden, a devastating aerial attack during World War II.",
+                    "The nuclear blast at Nagasaki kills approximately 60,000 people, and mass bombings in Japan claim hundreds of thousands more lives.",
+                    "The total casualties of World War II are estimated at 50 million people, reflecting the staggering human cost of the war.",
+                    "Europe and Japan require 15 years to achieve significant recovery in the aftermath of World War II.",
+                    "The U.S. war-related deaths reach a total of 405,399, underscoring the sacrifices made during the conflict.",
+                    "Auschwitz concentration camp is liberated by Allied forces, exposing the extent of Nazi atrocities.",
+                    "The Yalta Conference brings together Allied leaders to discuss post-war Europe and the division of Germany.",
+                    "Iwo Jima falls to U.S. Marines after intense fighting on the island.",
+                    "The Remagen Bridge is captured by U.S. forces, providing a key crossing of the Rhine River.",
+                    "President Franklin D. Roosevelt passes away, leading to the succession of Harry S. Truman.",
+                    "Benito Mussolini is executed by Italian partisans, marking the end of his fascist regime.",
+                    "Adolf Hitler commits suicide in his bunker in Berlin as Allied forces close in on the German capital.",
+                    "The full extent of Nazi death camps is revealed to the world, prompting outrage and condemnation.",
+                    "Berlin falls to Allied forces, effectively ending World War II in Europe.",
+                    "Winston Churchill resigns as Prime Minister of the United Kingdom, a role he held during much of the war.",
+                    "The Battle of Okinawa is fought in the Pacific theater, resulting in significant casualties on both sides.",
+                    "The United Nations is officially formed, providing a platform for international cooperation and diplomacy.",
+                    "The Potsdam Conference convenes to address post-war issues and the occupation of Germany.",
+                    "Japan surrenders, officially ending World War II and leading to the occupation of Japan by Allied forces.",
+                    "Korea is partitioned along the 38th parallel, setting the stage for future conflicts on the Korean Peninsula.",
+                    "Jackie Robinson breaks the color barrier in Major League Baseball, becoming the first modern African-American player.",
+                    "The Nuremberg war-crime trials begin, prosecuting Nazi officials for their roles in war crimes and atrocities.",
+                    "Tupperware, a popular food storage product, is introduced to consumers."
+                ],
+                1946: [
+                    "A fire at a Chicago hotel claims the lives of 58 people, highlighting the importance of fire safety measures.",
+                    "The Electronic Numerical Integrator and Computer (ENIAC), an early computer, is unveiled by the U.S. War Department.",
+                    "Winston Churchill delivers his Iron Curtain speech, foreshadowing the Cold War division of Europe.",
+                    "Violence continues in Palestine as tensions persist between Jewish and Arab communities.",
+                    "Labor strikes occur across the United States, reflecting post-war labor disputes and demands.",
+                    "The Chinese Civil War is renewed as Nationalist and Communist forces clash in a struggle for control.",
+                    "Scientific research suggests a link between smoking and lung cancer, leading to increased awareness of health risks.",
+                    "An uprising occurs in Vietnam as resistance against colonial rule intensifies.",
+                    "Chester F. Carlson unveils 'xerography,' a pioneering technology that will later become known as photocopying.",
+                    "Bikini swimsuits are introduced, making a splash in swimwear fashion.",
+                    "Espresso coffee machines are invented, contributing to the popularity of espresso-based beverages."
+                ],
+                1947: [
+                    "The United States abandons attempts to broker a peace in China's ongoing civil war.",
+                    "Religious strife and communal violence escalate in India following its independence from British colonial rule.",
+                    "The Marshall Plan, officially known as the European Recovery Program, is advanced to aid European post-war reconstruction.",
+                    "The last New York streetcar is retired as cities transition to other forms of public transportation.",
+                    "India and Pakistan gain independence from British rule, marking the end of the British Raj and the beginning of new nations.",
+                    "The Polaroid Land Camera is introduced, revolutionizing instant photography.",
+                    "The House Un-American Activities Committee (HUAC) investigates alleged subversive activities in the film industry.",
+                    "The Cold War climate prompts concerns about communist influence and loyalty in the United States."
+                ],
+                1948: [
+                    "Mahatma Gandhi is assassinated by a Hindu nationalist, leading to mourning in India and beyond.",
+                    "A communist coup takes place in Czechoslovakia, consolidating communist control over the country.",
+                    "Civil war continues in the Palestine Mandate as tensions between Jewish and Arab populations persist.",
+                    "The Berlin Airlift begins as Allied forces provide essential supplies to West Berlin during the Soviet blockade.",
+                    "The State of Israel is officially recognized, but conflict with neighboring states continues.",
+                    "The 200-inch Hale Telescope at Mount Palomar is completed, becoming a landmark in astronomical observation.",
+                    "The New York City subway fare doubles to ten cents, affecting daily commuters.",
+                    "The Kinsey Report on human sexuality is published, shedding light on previously taboo subjects.",
+                    "Scrabble, the popular word game, is introduced, challenging players' vocabulary and strategy.",
+                    "The solid-body electric guitar is developed, revolutionizing music and instrument design.",
+                    "Velcro, a versatile fastening system, is invented, finding numerous practical applications.",
+                    "The first 33 1/3 long-playing (LP) records are introduced, changing the music industry."
+                ],
+                1949: [
+                    "Chinese Communists, led by Mao Zedong, take control of Beijing (Peking), leading to the establishment of the People's Republic of China.",
+                    "The North Atlantic Treaty Organization (NATO) is organized, forming a military alliance among Western nations during the Cold War.",
+                    "The Berlin Blockade, a Soviet attempt to isolate West Berlin, concludes without achieving its objectives.",
+                    "The Federal Republic of Germany (West Germany) is officially established as a separate entity from East Germany.",
+                    "The Red Scare and anti-communist sentiments continue in the United States during the early years of the Cold War.",
+                    "The Soviet Union successfully detonates its first nuclear device, entering the nuclear arms race.",
+                    "Nationalist Chinese forces, led by Chiang Kai-shek, retreat to Taiwan, where they establish a separate government.",
+                    "Cable television is introduced as a means of delivering television broadcasts to a wider audience.",
+                    "The development of color television tubes contributes to the eventual introduction of color television.",
+                    "Key-starting automobile ignitions are introduced, simplifying the process of starting vehicles."
+                ],
+                1950: [
+                    "One-piece windshields become a feature of Cadillacs, improving automotive design.",
+                    "RCA announces the development of color television technology, signaling advancements in television broadcasting.",
+                    "France appeals for international aid in its struggle against the Viet Minh in Indochina (Vietnam).",
+                    "Blizzards in the United States result in hundreds of deaths and significant challenges to transportation and infrastructure.",
+                    "The Korean War begins, leading to the loss of thousands of lives and international conflict.",
+                    "U.S. forces conduct successful landings at Inchon, Korea, altering the course of the Korean War.",
+                    "China enters the Korean War on the side of North Korea, escalating the conflict and international tensions.",
+                    "Tennis player Gussie Moran gains attention by sporting lace underwear at Wimbledon, sparking controversy.",
+                    "The Diners' Club card is introduced, pioneering the concept of a credit card for dining and entertainment expenses.",
+                    "The Xerox 914, a commercial photocopier, is introduced, revolutionizing document reproduction.",
+                    "The U.S. public debt reaches $256 billion, reflecting post-war economic challenges and government spending.",
+                    "The U.S. resident population grows to 150.7 million, indicating demographic growth in the post-war era."
+                ],
+                1951: [
+                    "General Douglas MacArthur is stripped of all commands, marking a significant development in the Korean War and U.S. military leadership.",
+                    "A U.S. plane crash claims the lives of 50 individuals, highlighting the importance of aviation safety measures.",
+                    "Color television transmission from the Empire State Building represents a milestone in the evolution of television technology.",
+                    "Hydrogen bomb tests take place at Eniwetok, showcasing the growing capabilities of nuclear weaponry.",
+                    "Truce talks in Korea aim to bring an end to the Korean War, a conflict that has endured for several years.",
+                    "Cinerama, a widescreen film format, is introduced, enhancing the cinematic experience.",
+                    "Chrysler introduces power steering, a feature that improves vehicle handling and maneuverability.",
+                    "Three-color stoplights for automobiles are introduced, enhancing traffic control and safety."
+                ],
+                1952: [
+                    "Queen Elizabeth II accedes to the British throne, marking a significant moment in British monarchy.",
+                    "The worst U.S. bus crash to date kills 28 individuals, prompting increased attention to road safety.",
+                    "The French submarine La Sybille disappears in the Mediterranean with 49 individuals aboard, leading to maritime safety concerns.",
+                    "A U.S. polio epidemic claims the lives of 3,300 people and affects 57,000 children, emphasizing the importance of polio vaccination.",
+                    "Walk/Don't Walk lighted pedestrian signs are introduced in New York City, enhancing pedestrian safety.",
+                    "General Motors (GM) offers built-in air conditioning in some 1953 cars, improving passenger comfort.",
+                    "Eva Peron, a prominent political figure in Argentina, passes away.",
+                    "The first transistorized hearing aid is introduced, offering improved hearing assistance technology.",
+                    "The announcement of the hydrogen bomb underscores the ongoing development of nuclear weaponry.",
+                    "Videotape technology is introduced, revolutionizing recording and playback of video content."
+                ],
+                1953: [
+                    "Joseph Stalin, the leader of the Soviet Union, passes away, leading to a period of transition and uncertainty in the USSR.",
+                    "Storms off the North Sea result in the loss of 200 lives in Britain, highlighting the impact of severe weather events.",
+                    "The structure of DNA is described as a double helix, a groundbreaking discovery in genetics.",
+                    "Pope Pius XII approves of psychoanalysis in therapy, marking a shift in the Catholic Church's stance on psychology.",
+                    "Julius and Ethel Rosenberg are executed in the United States following their espionage conviction during the Cold War.",
+                    "An uprising in East Berlin is quashed by Soviet forces, reflecting political tensions in post-war Germany.",
+                    "The Korean Armistice is signed, bringing an end to the active combat phase of the Korean War.",
+                    "A trend of suburbanization is noted in the United States as more people move away from urban centers.",
+                    "John F. Kennedy and Jacqueline Bouvier are married, marking the beginning of a prominent political family.",
+                    "An expedition searches for the elusive yeti, a mythical creature in Himalayan folklore.",
+                    "The measles vaccine is introduced, contributing to the prevention of this infectious disease."
+                ],
+                1954: [
+                    "The USS Nautilus becomes the first atomic-powered submarine, showcasing advancements in naval technology.",
+                    "The Army-McCarthy hearings take place, scrutinizing Senator Joseph McCarthy's allegations of communist influence in the U.S. Army.",
+                    "Edward R. Murrow challenges McCarthy's tactics and investigates allegations in a series of televised reports.",
+                    "The French garrison at Dien Bien Phu falls to Vietnamese forces, leading to increased involvement of the United States in Vietnam.",
+                    "The first hydrogen bomb is successfully detonated, signifying a major milestone in nuclear weapons development.",
+                    "The U.S. Supreme Court orders the integration of public schools, a pivotal moment in the civil rights movement.",
+                    "North and South Vietnam are formally established as separate entities, setting the stage for future conflicts.",
+                    "The retractable ball-point pen is introduced, providing a convenient writing instrument.",
+                    "The silicon transistor is developed, contributing to the miniaturization of electronic devices."
+                ],
+                1955: [
+                    "A missile with an atomic warhead is exploded in a Nevada test, showcasing advances in military technology.",
+                    "Hurricane Diane strikes, resulting in the deaths of 184 individuals and highlighting the destructive power of natural disasters.",
+                    "Albert Einstein, the renowned physicist, passes away, leaving a lasting legacy in the field of science.",
+                    "The Warsaw Pact treaty is signed, solidifying the Soviet Union's influence over Eastern European nations.",
+                    "Rebellion erupts in Algeria as resistance against French colonial rule intensifies.",
+                    "The Mickey Mouse Club debuts on television, becoming a popular children's program.",
+                    "Air-to-air guided missiles are introduced, enhancing military aviation capabilities.",
+                    "Disneyland, a famous theme park, opens its doors to the public, becoming a major entertainment attraction."
+                ],
+                1956: [
+                    "Over 10,000 Mau-Mau rebels are killed in a four-year conflict in Kenya, marking a significant chapter in the Mau-Mau Uprising.",
+                    "A bus boycott takes place in Montgomery, Alabama, as part of the civil rights movement against racial segregation.",
+                    "Suburbs experience significant growth in the United States as more people move away from urban centers.",
+                    "Soviet Premier Nikita Khrushchev denounces the actions and policies of his predecessor, Joseph Stalin.",
+                    "Gamal Abdel Nasser seizes control of the Suez Canal, leading to the Suez Crisis and international tensions.",
+                    "The Hungarian Revolution unfolds as Hungarians rebel against Soviet domination but are ultimately suppressed by Soviet forces.",
+                    "The Teon Company is formed, contributing to advancements in technology and industry.",
+                    "Go-karts are introduced as a recreational and competitive activity, popularizing kart racing."
+                ],
+                1957: [
+                    "Scientific research demonstrates that smoking is linked to the promotion of cancer, leading to increased awareness of smoking-related health risks.",
+                    "Nike Hercules missiles with atomic warheads are deployed to defend U.S. cities from potential enemy aircraft attacks.",
+                    "The launch of Sputnik, the world's first artificial satellite, shocks the United States and initiates the space race.",
+                    "The Mackinac Straits Bridge, spanning 3,800 feet, is completed, connecting Michigan's Upper and Lower Peninsulas."
+                ],
+                1958: [
+                    "Elvis Presley is drafted into the U.S. Army, temporarily leaving his music career.",
+                    "A tragic fire in a Chicago school claims the lives of 90 people, highlighting the importance of fire safety measures.",
+                    "The U.S. Navy submarine Nautilus successfully sails across the North Pole under the ice, achieving a historic feat.",
+                    "Governor Orval Faubus of Arkansas closes Little Rock's high schools to resist desegregation efforts.",
+                    "Pan American World Airways (Pan Am) inaugurates the first commercial flight of the Boeing 707 jet service to Paris, marking a milestone in air travel.",
+                    "Dr. Albert Sabin introduces the oral polio vaccine, a significant step in combating the polio epidemic.",
+                    "The era of communications satellites begins with the successful launch of the first artificial satellite for global communication.",
+                    "The hula-hoop becomes a popular toy and exercise equipment in the United States."
+                ],
+                1959: [
+                    "Fidel Castro gains power in Cuba after the Cuban Revolution, leading to significant political changes in the country.",
+                    "Ford's Edsel, a highly anticipated automobile model, is judged a commercial failure, impacting the automotive industry.",
+                    "Volvo introduces safety belts (seatbelts) in its vehicles, contributing to automotive safety standards."
+                ],
+                1960: [
+                    "Unrest continues in Algeria as the struggle for independence from French colonial rule intensifies.",
+                    "Hurricane Donna devastates the U.S. East Coast and Puerto Rico, causing significant destruction and loss of life.",
+                    "The artificial kidney is introduced, revolutionizing the treatment of kidney diseases through dialysis.",
+                    "Lunch counter sit-ins begin as part of the civil rights movement, challenging segregation and discrimination.",
+                    "Brasilia, the planned capital of Brazil, officially opens for business, symbolizing modern urban planning.",
+                    "The birth control pill becomes available for sale in the United States, revolutionizing contraception and family planning.",
+                    "The first weather satellite is launched, enhancing weather forecasting and monitoring capabilities.",
+                    "The popularity of portable transistor radios begins, transforming the way people listen to music and news.",
+                    "The U.S. public debt reaches $284 billion, reflecting economic challenges and government expenditures.",
+                    "The U.S. resident population reaches 179.3 million, indicating continued population growth."
+                ],
+                1961: [
+                    "President Dwight D. Eisenhower warns against the influence of the military-industrial complex in his farewell address, highlighting concerns about the growing defense industry.",
+                    "The Leakeys, a family of paleoanthropologists, discover some of the earliest human remains, providing insights into human evolution.",
+                    "The Berlin Wall is erected by East Germany, dividing the city and symbolizing the Cold War's division of Europe.",
+                    "The Peace Corps is established by President John F. Kennedy, promoting international volunteer service and cultural exchange.",
+                    "The Bay of Pigs invasion, a failed U.S.-backed attempt to overthrow Fidel Castro's regime, takes place in Cuba.",
+                    "Valium, a popular tranquilizer and anti-anxiety medication, is introduced, influencing psychiatric treatment."
+                ],
+                1962: [
+                    "The Cuban missile crisis brings the world to the brink of nuclear war as the United States and the Soviet Union engage in a tense standoff over missile installations in Cuba.",
+                    "Gallium-arsenide semiconductor lasers are developed, advancing laser technology and telecommunications.",
+                    "The first satellite link between the United States and the United Kingdom is established, improving global communication.",
+                    "Polaroid introduces color instant film, allowing for instant color photography."
+                ],
+                1963: [
+                    "An enormous civil rights demonstration takes place in Washington, D.C., where Dr. Martin Luther King Jr. delivers his famous \"I Have a Dream\" speech.",
+                    "President John F. Kennedy is tragically assassinated in Dallas, Texas, leading to a period of national mourning and investigation.",
+                    "A coup in Vietnam removes President Ngo Dinh Diem, contributing to political instability in the region.",
+                    "A cold wave sweeps across the United States, resulting in the deaths of 150 people and highlighting the dangers of extreme weather conditions.",
+                    "Hurricane Flora causes the deaths of 7,000 people in Haiti and Cuba, underscoring the destructive power of hurricanes.",
+                    "Mob actions become increasingly common in the Southern United States, reflecting social tensions and resistance to civil rights."
+                ],
+                1964: [
+                    "The Aswan Dam becomes operational, providing hydroelectric power and water resources in Egypt.",
+                    "The Beatles become enormously popular, revolutionizing music and popular culture.",
+                    "The United States accidentally releases a kilogram of plutonium into the atmosphere, raising concerns about nuclear safety.",
+                    "Jawaharlal Nehru, the first Prime Minister of India, passes away, leading to political changes in India.",
+                    "The Verrazano-Narrows Bridge, with a span of 4,260 feet, is completed, connecting Staten Island and Brooklyn in New York.",
+                    "President Lyndon B. Johnson signs the Civil Rights Act into law, marking a significant step in the civil rights movement.",
+                    "The Tonkin Gulf Resolution is passed by the U.S. Congress, authorizing military actions in Vietnam.",
+                    "3-D laser-holography is introduced, advancing holographic technology and imaging.",
+                    "The Moog synthesizer is introduced, revolutionizing electronic music production.",
+                    "The Federal Trade Commission (FTC) requires health warnings on cigarette packaging, acknowledging the health risks of smoking."
+                ],
+                1965: [
+                    "Malcolm X, a prominent civil rights activist, is assassinated, leading to debates about his legacy and contributions.",
+                    "Race riots erupt in the Watts neighborhood of Los Angeles, highlighting racial tensions and inequality in the United States.",
+                    "Pope Paul VI issues a declaration disassociating Jews from guilt for the crucifixion of Jesus Christ, fostering interfaith dialogue.",
+                    "A great electrical blackout affects northeastern states in the United States, emphasizing the vulnerability of electrical systems.",
+                    "Kevlar, a strong and lightweight synthetic material, is introduced, with applications in various industries, including body armor.",
+                    "Radial tires are introduced, improving vehicle safety and performance.",
+                    "IBM introduces its word processor, revolutionizing document preparation and office work."
+                ],
+                1966: [
+                    "The Cultural Revolution begins in China, leading to significant social and political upheaval under Mao Zedong's leadership.",
+                    "Opposition to the Vietnam War increases, with growing protests against U.S. involvement in Southeast Asia.",
+                    "A sniper kills 12 people at the University of Texas at Austin, prompting discussions about gun control and campus safety.",
+                    "Miniskirts are introduced as a fashion trend, challenging traditional dress norms and reflecting cultural changes.",
+                    "Edward Brooke becomes the first African American to be elected as a U.S. Senator by popular vote, marking a milestone in U.S. politics.",
+                    "Dolby-A noise reduction technology is introduced, improving audio recording and playback quality.",
+                    "Skateboards are introduced as a popular recreational activity for youth.",
+                    "The concept of \"body counts\" is introduced as a metric in Vietnam War reports, reflecting the measurement of enemy casualties.",
+                    "Bell-bottom pants are introduced as a distinctive fashion style."
+                ],
+                1967: [
+                    "The Six-Day War takes place in the Middle East, resulting in significant territorial changes and geopolitical shifts.",
+                    "The \"Summer of Love\" is a cultural phenomenon marked by countercultural movements, music festivals, and social experimentation.",
+                    "Thurgood Marshall becomes the first African American Supreme Court justice, making history in the U.S. judicial system.",
+                    "A tragic fire in the Apollo 1 spacecraft claims the lives of three astronauts during a pre-launch test, leading to safety improvements in space exploration.",
+                    "The United States experiences the loss of its 500th aircraft over Vietnam, underscoring the challenges of aerial warfare in the conflict.",
+                    "Race riots erupt in Newark, New Jersey, leaving 26 people dead in four days of violence and unrest.",
+                    "Detroit experiences race riots that result in 43 deaths and significant property damage, highlighting racial tensions in urban centers.",
+                    "Antiwar protests against the Vietnam War accelerate, with growing opposition to U.S. military involvement.",
+                    "The \"body count\" metric becomes a regular feature in Vietnam War reports, quantifying the number of enemy casualties.",
+                    "Law enforcement seizes 209 pounds of heroin in Georgia, reflecting ongoing efforts to combat drug trafficking.",
+                    "Bell-bottom pants become a prominent fashion trend, symbolizing the fashion of the era."
+                ],
+                1968: [
+                    "The Tet Offensive in Vietnam stuns the civilian population in the United States, raising questions about the progress of the war.",
+                    "Dr. Martin Luther King Jr., a civil rights leader, is assassinated, leading to nationwide mourning and protests against racial injustice.",
+                    "Black riots erupt in various U.S. cities, reflecting deep-seated social and racial tensions.",
+                    "Student revolts and protests take place in Paris and around the world, advocating for political and social change.",
+                    "Senator Robert F. Kennedy is tragically assassinated during his presidential campaign, altering the political landscape.",
+                    "A B-52 bomber carrying four hydrogen bombs crashes in a Greenland bay, raising concerns about nuclear accidents.",
+                    "Soviet forces quash a liberalizing government in Czechoslovakia, demonstrating Soviet influence in Eastern Europe.",
+                    "Spain officially voids a 1492 law that banned Jews, reflecting changing attitudes toward religious tolerance.",
+                    "The Democratic National Convention in Chicago faces protests and clashes with antiwar demonstrators.",
+                    "Apollo 8 astronauts become the first humans to orbit the Moon, marking a significant achievement in space exploration."
+                ],
+                1969: [
+                    "Skyjackings to Cuba continue, reflecting a trend of hijackings for political and personal motives.",
+                    "Barnard College in New York City begins to admit men, marking a milestone in gender integration in higher education.",
+                    "The first artificial heart implant is performed, paving the way for advancements in organ transplantation and medical technology.",
+                    "Anti-Vietnam War demonstrations take place in more than 40 cities across the United States on the same weekend, illustrating widespread opposition to the war.",
+                    "The Woodstock Music & Art Fair becomes a cultural icon, symbolizing the counterculture movement and music of the era.",
+                    "Approximately 250,000 protesters march on Washington, D.C., demanding an end to the Vietnam War and social change.",
+                    "Apollo 11 successfully lands on the Moon, with astronauts Neil Armstrong and Buzz Aldrin becoming the first humans to walk on the lunar surface.",
+                    "A snowstorm of the decade closes New York City, disrupting daily life and transportation.",
+                    "The My Lai massacre, which took place in 1968, is revealed to the public, sparking outrage and investigations into war crimes.",
+                    "The Boeing 747 jumbo jet is introduced, revolutionizing long-distance air travel with its large passenger capacity.",
+                    "An oil spill fouls Santa Barbara beaches in California, raising environmental awareness and concerns.",
+                    "The Concorde Mach 2 jetliner conducts its first flight, representing a technological leap in supersonic aviation."
+                ],
+                1970: [
+                    "The concept of \"radical chic\" becomes popular, reflecting a fascination with political activism and social change.",
+                    "A Palestinian group hijacks five airplanes in a coordinated operation, drawing international attention to the Palestinian-Israeli conflict.",
+                    "Charles de Gaulle, the former President of France, passes away, marking the end of an era in French politics.",
+                    "The Asbury Park riots result in the shooting of 46 people, highlighting issues of racial tension and urban unrest.",
+                    "Members of the radical activist group known as the \"Weathermen\" are arrested for a bomb plot, raising concerns about domestic terrorism.",
+                    "Tuna is recalled from the market due to mercury contamination, leading to food safety awareness.",
+                    "Bar codes are introduced as a technology for product identification and inventory management.",
+                    "Floppy disks are introduced as a storage medium for computer data, revolutionizing data transfer and storage.",
+                    "Windsurfing is introduced as a recreational water sport, combining elements of sailing and surfing.",
+                    "The U.S. public debt reaches $370 billion, reflecting economic challenges and government spending.",
+                    "The U.S. resident population reaches 203.3 million, indicating demographic growth."
+                ],
+                1971: [
+                    "A powerful earthquake in Los Angeles claims the lives of 51 people and causes significant damage to the city.",
+                    "A strong reaction against drug use in the armed forces intensifies, leading to anti-drug policies and enforcement.",
+                    "Hot pants are introduced as a fashion trend, characterized by short, tight-fitting shorts for women.",
+                    "The Pentagon Papers, a classified government report, are printed by newspapers, revealing government secrets and decisions related to the Vietnam War.",
+                    "Liquid crystal displays (LCDs) are introduced as a technology for displaying digital information in calculators and screens."
+                ],
+                1972: [
+                    "Ten European nations become members of the European Common Market, promoting economic integration and cooperation.",
+                    "U.S. President Richard Nixon makes a historic visit to China, marking a thaw in U.S.-China relations.",
+                    "Burglars are caught inside the Democratic Party's Watergate headquarters, leading to the Watergate scandal and political investigations.",
+                    "A tragic terrorist attack during the Munich Olympics results in the massacre of 11 Israeli athletes by Palestinian militants.",
+                    "Airline anti-hijacking procedures are established in the United States to enhance aviation security.",
+                    "Electronic pocket calculators are introduced, simplifying mathematical calculations and becoming portable tools.",
+                    "The Pong video game is introduced, pioneering the video game industry and electronic entertainment."
+                ],
+                1973: [
+                    "The last manned mission to the Moon, Apollo 17, takes place, marking the end of the Apollo program and lunar exploration.",
+                    "An oil embargo is imposed by oil-producing nations, leading to an energy crisis and fuel shortages in many countries.",
+                    "The Bosporus Bridge, with a span of 3,524 feet, is completed in Istanbul, Turkey, connecting Europe and Asia.",
+                    "Recombinant DNA technology is introduced, allowing scientists to manipulate and modify DNA, leading to advancements in biotechnology."
+                ],
+                1974: [
+                    "Patty Hearst, the granddaughter of publisher William Randolph Hearst, is kidnapped by the Symbionese Liberation Army (SLA), leading to a high-profile kidnapping case.",
+                    "A widespread gasoline shortage occurs in the United States, causing long lines at gas stations and highlighting energy dependency.",
+                    "Richard Nixon resigns from the Presidency of the United States in the wake of the Watergate scandal, making him the first U.S. President to resign from office.",
+                    "A series of tornadoes kills 315 people in the United States in two days, underscoring the destructive power of severe weather.",
+                    "The Green Revolution, an agricultural technology initiative, is introduced, leading to increased food production and global agricultural advancements."
+                ],
+                1975: [
+                    "South Vietnam falls to North Vietnamese forces, marking the end of the Vietnam War and leading to the reunification of Vietnam.",
+                    "Cambodia falls to the Khmer Rouge regime, resulting in a period of mass atrocities and social upheaval.",
+                    "Civil war erupts in Beirut, Lebanon, leading to a protracted conflict and instability in the region.",
+                    "Atari video games, including the iconic game Pong, are introduced, contributing to the growth of the video game industry."
+                ],
+                1976: [
+                    "Concerns about the extinction of animal species become a prominent public issue, leading to conservation efforts.",
+                    "Mao Tse-tung, the founding father of the People's Republic of China, passes away, marking a significant moment in Chinese history.",
+                    "Hurricane Lizzie devastates Mexico, resulting in the tragic loss of 2,500 lives.",
+                    "The Cray-1 supercomputer is introduced, representing a major advancement in high-performance computing."
+                ],
+                1977: [
+                    "The Trans-Alaskan oil pipeline becomes operational, facilitating the transportation of oil from Alaska to the continental United States.",
+                    "Three Israeli settlements are approved on the West Bank, contributing to the ongoing Israeli-Palestinian conflict.",
+                    "Optical fiber telephone lines are introduced, revolutionizing long-distance communication with improved speed and capacity.",
+                    "The Orient Express, a famous luxury train service, makes its last trip, marking the end of an era in train travel.",
+                    "Protesters attempt to halt the construction of the Seabrook nuclear power plant, reflecting concerns about nuclear energy."
+                ],
+                1978: [
+                    "An agreement is reached for the Panama Canal to be controlled by Panama, ending U.S. control over the strategic waterway.",
+                    "Proposition 13, a California ballot initiative, wins approval and triggers a nationwide trend of reduced capital expenditures.",
+                    "The exchange rate reaches 1 U.S. dollar equaling 175 Japanese yen, impacting international trade and currency markets.",
+                    "A tragic air collision over San Diego claims the lives of 150 people, raising questions about aviation safety.",
+                    "The Jonestown mass suicide occurs, resulting in the deaths of 909 people following the orders of cult leader Jim Jones.",
+                    "The world witnesses the birth of the first test-tube baby in London, a significant milestone in reproductive medicine."
+                ],
+                1979: [
+                    "The Shah of Iran flees the country amid growing unrest and revolution, leading to the Iranian Revolution.",
+                    "The Three Mile Island nuclear power plant experiences a partial meltdown, causing concerns about nuclear safety and environmental impact.",
+                    "Anastasio Somoza is ousted from power in Nicaragua, marking a turning point in the Nicaraguan Revolution.",
+                    "The U.S. embassy in Tehran is seized by Iranian militants, and hostages are held, leading to a diplomatic crisis known as the Iran hostage crisis.",
+                    "Soviet forces enter Afghanistan, initiating the Soviet-Afghan War and a protracted conflict in the region.",
+                    "The Rubik's Cube, a popular puzzle toy, is introduced and becomes a global sensation.",
+                    "Sony introduces the Walkman, a portable cassette player that revolutionizes personal music listening."
+                ],
+                1980: [
+                    "The price of an ounce of gold reaches $802 in the United States, reflecting economic challenges and fluctuations in the precious metals market.",
+                    "The United States experiences the highest inflation rate in 33 years, impacting the economy and consumer purchasing power.",
+                    "Banking deregulation policies are implemented, leading to changes in the financial industry and increased competition.",
+                    "The eruption of Mount St. Helens in Washington State results in the deaths of over 50 people and significant environmental damage.",
+                    "A hostage rescue mission in Iran fails, further intensifying the Iran hostage crisis.",
+                    "Solidarity, a trade union in Poland, gains recognition, challenging communist authorities and leading to political changes.",
+                    "A gold rush in the Amazon rainforest attracts prospectors and environmental concerns.",
+                    "Dolby-C noise reduction technology is introduced, enhancing audio quality in cassette tapes and other audio recordings.",
+                    "The U.S. public debt reaches $908 billion, reflecting fiscal challenges and government spending.",
+                    "The U.S. resident population reaches 226.5 million, indicating continued demographic growth."
+                ],
+                1981: [
+                    "Iran releases the embassy hostages, ending the 444-day-long Iran hostage crisis and improving U.S.-Iran relations.",
+                    "Millions of workers in Poland participate in strikes, demanding workers' rights and political reforms.",
+                    "The U.S. public debt reaches one trillion dollars, marking a significant fiscal milestone.",
+                    "An Israeli raid successfully destroys an Iraqi nuclear reactor, raising concerns about nuclear proliferation in the Middle East.",
+                    "The Humber Bridge, with a span of 4,626 feet, is completed in the United Kingdom, becoming one of the world's longest suspension bridges.",
+                    "Widespread marches and rallies against nuclear weapons and arms take place in Europe, reflecting global concerns about nuclear disarmament.",
+                    "The CDC notes a strange immune-system disease, later identified as AIDS, marking the beginning of a major public health crisis."
+                ],
+                1982: [
+                    "The world experiences a worldwide oil glut, leading to fluctuations in oil prices and changes in the global energy market.",
+                    "The Falklands War erupts between the United Kingdom and Argentina, resulting in territorial conflicts and military operations.",
+                    "An airliner crashes into the Potomac River bridge, resulting in the tragic deaths of 78 passengers and crew members.",
+                    "An oil rig sinks off Newfoundland, Canada, causing the loss of 84 lives and highlighting the dangers of offshore drilling.",
+                    "A major airliner crash in New Orleans claims the lives of 149 people, raising concerns about aviation safety.",
+                    "Approximately 800,000 people participate in a march against nuclear weapons in New York City, advocating for disarmament.",
+                    "Israeli forces reach Beirut, Lebanon, during the Lebanon War, leading to significant developments in the ongoing conflict."
+                ],
+                1983: [
+                    "The assassination of Benigno \"Ninoy\" Aquino Jr. occurs upon his arrival in Manila, leading to political turmoil in the Philippines.",
+                    "Widespread protests against missile deployments take place in Europe, reflecting concerns about the arms race and nuclear weapons.",
+                    "The world population is estimated to reach 4.7 billion, highlighting global demographic trends."
+                ],
+                1984: [
+                    "The legalization of VCR taping is implemented in the United States, addressing copyright and intellectual property issues.",
+                    "The Iran-Iraq war escalates to involve oil tankers in the Persian Gulf, impacting regional stability and oil markets.",
+                    "Reports emerge of Indonesian death squads allegedly responsible for the deaths of approximately 4,000 people, raising human rights concerns.",
+                    "Continued battles and conflicts persist in Beirut, Lebanon, contributing to the city's instability.",
+                    "The isolation of the AIDS virus represents a significant breakthrough in understanding the disease.",
+                    "A federal estimate indicates that there are approximately 350,000 homeless individuals in the United States, prompting discussions on homelessness.",
+                    "Research suggests that passive inhalation of cigarette smoke can cause diseases, leading to increased awareness of the dangers of secondhand smoke.",
+                    "A massive demonstration in Manila, Philippines, involving around 900,000 participants occurs, prompting President Reagan to reflect on economic conditions.",
+                    "An additional historical event or invention for this year: The Apple Macintosh personal computer is introduced, revolutionizing the computer industry with its graphical user interface."
+                ],
+                1985: [
+                    "Kidnappings continue to be a pressing issue in Beirut, affecting the safety of foreign nationals and journalists.",
+                    "Mikhail Gorbachev is selected as the Chairman of the USSR, marking the beginning of significant political reforms in the Soviet Union.",
+                    "Actor Rock Hudson's hospitalization for AIDS raises awareness of the disease in the entertainment industry.",
+                    "France sinks the Greenpeace vessel Rainbow Warrior in a controversial act of sabotage.",
+                    "A devastating earthquake strikes Mexico City, resulting in the tragic loss of 25,000 lives and widespread destruction.",
+                    "The U.S. trade balance becomes negative, reflecting trade deficits and economic challenges.",
+                    "Terrorism emerges as a widespread tactic employed by various splinter groups, posing security threats globally.",
+                    "The Achille Lauro cruise ship is hijacked, leading to the murder of a passenger and international tensions.",
+                    "Massive federal spending continues to drive economic expansion in the United States.",
+                    "The U.S. public debt reaches $1.82 trillion, doubling since 1980 as fiscal concerns grow."
+                ],
+                1986: [
+                    "The Challenger space shuttle experiences a tragic explosion, resulting in the loss of the entire crew and suspending NASA's manned space program for several years.",
+                    "The English Channel tunnel project receives approval, paving the way for a major transportation link between the United Kingdom and mainland Europe.",
+                    "The Chernobyl nuclear disaster unfolds, with dozens of heroes sacrificing themselves to contain the disaster, and experts anticipate long-term health impacts from the released atomic cloud.",
+                    "The emergence of a crack cocaine epidemic in the United States raises concerns about drug addiction and its social consequences.",
+                    "An additional historical event or invention for this year: The Hubble Space Telescope is launched into orbit, revolutionizing astronomical observation."
+                ],
+                1987: [
+                    "The Iran-Iraq War results in approximately one million casualties, highlighting the devastating toll of the prolonged conflict.",
+                    "The Dow Jones Industrial Average experiences a significant drop of 508 points in one day, known as \"Black Monday,\" impacting financial markets.",
+                    "In the United States, there are 13,468 reported AIDS-related deaths, underlining the severity of the AIDS epidemic.",
+                    "Arabs living within Israel initiate a general resistance movement, contributing to tensions in the region.",
+                    "The number of VCRs in the United States reaches 50 million, indicating widespread adoption of the technology."
+                ],
+                1988: [
+                    "The term \"Greenhouse Effect\" becomes widely used in discussions about climate change and global warming, raising environmental awareness.",
+                    "A Pan-Am jetliner explodes over Lockerbie, Scotland, with 259 people aboard, leading to investigations into the bombing and its perpetrators.",
+                    "An Armenian earthquake kills 25,000 people and leaves 400,000 homeless, prompting international relief efforts.",
+                    "RU-486, a controversial medication used for medical abortions, is introduced, sparking debates about reproductive rights.",
+                    "Widespread drought conditions affect the United States, impacting agriculture and water resources.",
+                    "The number of reported AIDS cases in the United States exceeds 60,000, underscoring the continued spread of the epidemic.",
+                    "Estimates suggest that the United States has spent $51.6 billion on illegal drugs this year, highlighting the challenges of drug-related issues."
+                ],
+                1989: [
+                    "The U.S. intensifies its \"war on drugs\" with increased efforts to combat drug trafficking and substance abuse.",
+                    "Political stress and significant changes take place in the Soviet Union, leading to political transformations and the eventual dissolution of the USSR.",
+                    "The U.S.S. Iowa experiences a turret explosion, resulting in the tragic loss of 42 lives and investigations into the incident.",
+                    "Hurricane Hugo strikes, leaving 71 people dead and causing widespread devastation in the affected areas.",
+                    "The Salman Rushdie affair begins, centered around the publication of Rushdie's novel \"The Satanic Verses\" and the subsequent fatwa issued against him.",
+                    "The U.S. conducts a military invasion of Panama, leading to the toppling of General Manuel Noriega's regime.",
+                    "Tiananmen Square demonstrations in Beijing, China, lead to a pro-democracy movement and a government crackdown, resulting in significant unrest.",
+                    "Federally insured bank losses in the United States are estimated at a staggering $500 billion, raising concerns about the stability of the financial sector.",
+                    "Compact discs (CDs) become the dominant playback medium in the United States, revolutionizing the music industry with digital audio technology."
+                ],
+                1990: [
+                    "Iraq's invasion of Kuwait triggers international condemnation, and the United States organizes an expeditionary force to oppose the invasion, setting the stage for the Gulf War.",
+                    "The South African government lifts emergency decrees, signaling political changes in the country.",
+                    "The U.S. public debt reaches $3.23 trillion, reflecting fiscal challenges and government spending.",
+                    "The Hubble Space Telescope encounters technical issues, leading to a space shuttle mission to correct its optics.",
+                    "The United States is estimated to have spent approximately $40 billion on illegal drugs this year, highlighting the persistent issue of drug-related problems.",
+                    "The U.S. resident population reaches 248.7 million, indicating ongoing demographic changes and growth."
+                ],
+                1991: [
+                    "The Gulf War results in the deaths of at least 50,000 Iraqis and significant destruction during the conflict in the Middle East.",
+                    "Iraq releases approximately 40 million gallons of crude oil into the Persian Gulf, leading to environmental and ecological disasters in the region.",
+                    "The Oakland Hills fire in California burns around 3,000 homes and claims dozens of lives, emphasizing the destructive power of wildfires.",
+                    "Massive volcanic eruptions of Mt. Pinatubo on Luzon have far-reaching impacts on climate and air travel.",
+                    "A coup attempt is foiled in the USSR, while Arab-Israeli talks continue in the Middle East.",
+                    "By the end of May, AIDS-related deaths in the United States total 113,426, highlighting the ongoing AIDS epidemic.",
+                    "Imported automobile sales account for one-third of the U.S. market, reflecting changing consumer preferences.",
+                    "The USSR dissolves into its constituent republics, and Mikhail Gorbachev resigns from his leadership position, marking the end of an era in Soviet history.",
+                    "Approximately one-fifth of sub-Saharan college graduates are believed to be HIV-positive, underlining the global impact of the AIDS crisis."
+                ],
+                1992: [
+                    "Economic recession grips industrial nations, resulting in increased homelessness and widespread reports of mass layoffs.",
+                    "Riots erupt in Los Angeles and other U.S. cities following the verdict in the Rodney King trial, resulting in 52 deaths and over $1 billion in damages.",
+                    "The U.S. military is deployed to aid famine relief efforts amid the civil war in Somalia, highlighting humanitarian crises in conflict zones.",
+                    "Tens of thousands of people are massacred during \"ethnic cleansing\" in the former Yugoslavia, underscoring the brutality of the Balkan conflict.",
+                    "Hurricanes strike Florida, Louisiana, and Hawaii, causing dozens of deaths and leaving thousands homeless, emphasizing the destructive power of natural disasters.",
+                    "Major earthquakes in Southern California and Egypt cause extensive damage and disrupt communities.",
+                    "An estimated 13 million people are now infected with the HIV virus, highlighting the global scale of the AIDS epidemic.",
+                    "The Czech Republic and Slovakia separate, marking significant changes in the political landscape of Eastern Europe."
+                ],
+                1993: [
+                    "Terrorists bomb the World Trade Center in New York, resulting in casualties and raising concerns about domestic terrorism.",
+                    "The FBI lays siege to the Branch Davidians near Waco, Texas, and 80 individuals ultimately lose their lives in the incident.",
+                    "Bill Clinton becomes the first Democratic President since Jimmy Carter, marking a change in U.S. political leadership.",
+                    "Strife and conflict continue in Bosnia, contributing to the complex and protracted Balkan Wars.",
+                    "North Korea withdraws from the nuclear nonproliferation treaty, raising concerns about nuclear proliferation.",
+                    "U.S. troops are withdrawn from Somalia, reflecting shifts in U.S. foreign policy.",
+                    "Congress votes to close over 130 U.S. military bases, leading to changes in the nation's defense infrastructure.",
+                    "U.S. unemployment rates decline, reflecting improvements in the labor market.",
+                    "The U.S. national debt reaches $4.35 trillion, emphasizing ongoing fiscal challenges."
+                ],
+                1994: [
+                    "The North American Free Trade Agreement (NAFTA) agreement is ratified by all participating parties, promoting trade and economic cooperation in North America.",
+                    "The CIA's Aldrich Ames is exposed as a Russian spy, highlighting intelligence breaches within U.S. agencies.",
+                    "The Anglican Church ordains its first female priests, marking a historic moment in religious leadership.",
+                    "South Africa holds its first universal-suffrage election, signaling the end of white minority rule and apartheid.",
+                    "Israel and the Palestine Liberation Organization (PLO) sign a self-rule accord, aiming for peace and autonomy in the Middle East.",
+                    "O.J. Simpson is charged in connection with two murders, leading to a high-profile trial and discussions on race, justice, and celebrity.",
+                    "Fifty years since World War II Normandy landings, commemorations take place to remember the D-Day invasion and its significance.",
+                    "A professional baseball strike disrupts the sport's season, raising questions about labor relations in professional sports.",
+                    "The United States intervenes in Haiti and successfully restores Jean-Bertrand Aristide to the presidency, addressing political turmoil in the country."
+                ],
+                1995: [
+                    "The Shoemaker-Levy 9 comet cluster collides with Jupiter, providing a rare astronomical spectacle.",
+                    "A devastating terrorist bomb attack targets the Oklahoma City federal building, resulting in the tragic loss of 161 lives.",
+                    "Approximately one in ten people in the United States is connected to the internet, marking the growing influence of the World Wide Web.",
+                    "O.J. Simpson is acquitted of murder charges in a highly publicized trial, sparking debates and discussions about the legal system and justice.",
+                    "Peace initiatives make progress in Northern Ireland, Bosnia, and the Middle East, fostering hope for conflict resolution.",
+                    "The assassination of Israeli Prime Minister Yitzhak Rabin leads to a period of mourning and uncertainty in Israel.",
+                    "General Colin Powell declines to run for the U.S. presidency, affecting the political landscape and potential candidates.",
+                    "The U.S. federal debt reaches a significant milestone, surpassing $5 trillion, raising concerns about fiscal responsibility."
+                ],
+                1996: [
+                    "U.S. federal workers return to work following a budget crisis, highlighting the impact of government shutdowns on public services.",
+                    "A bomb explodes at the Atlanta Olympic Games, resulting in one fatality and raising security concerns at major international events.",
+                    "Earth experiences a rise in its recent average surface temperature, contributing to discussions about climate change and global warming.",
+                    "Minnesota faces one of its coldest winters in nearly a century, with extreme cold weather affecting the region.",
+                    "Mount Everest climbing deaths continue to rise, underscoring the risks and challenges of high-altitude mountaineering.",
+                    "Islamic rebels capture Kabul, leading to political changes and conflict in Afghanistan.",
+                    "The struggle over abortion continues in the U.S. Senate, reflecting ongoing debates about reproductive rights and legislation.",
+                    "Copyright piracy remains a source of friction between the United States and China, impacting intellectual property rights.",
+                    "The U.S. national debt surpasses $5.2 trillion, highlighting long-term fiscal challenges.",
+                    "The United States experiences economic prosperity, with positive economic indicators and growth.",
+                    "Efforts to control immigration and drug addiction face criticism and challenges in their implementation.",
+                    "Timothy McVeigh is held in connection with the Oklahoma City bombing, one of the deadliest domestic terrorist attacks in U.S. history.",
+                    "The Unabomber suspect, Ted Kaczynski, is indicted, leading to legal proceedings and discussions about domestic terrorism."
+                ],
+                1997: [
+                    "The Haitian ferry Pride of la Gonave sinks, resulting in a tragic maritime disaster with over 200 casualties.",
+                    "New AIDS infections are estimated to exceed 3 million, highlighting the ongoing global health crisis.",
+                    "Approximately 5.8 million people have died from AIDS-related illnesses, underscoring the magnitude of the HIV/AIDS pandemic.",
+                    "The United States has an estimated resident population of approximately 275 million, reflecting demographic changes.",
+                    "Approximately 40% of the U.S. population is now connected to the internet, marking a significant milestone in the digital age.",
+                    "President Bill Clinton faces heavy scrutiny and political pressure regarding allegations of sexual misconduct, leading to a national conversation.",
+                    "The Dow-Jones average surpasses 8,000 points in July, indicating stock market growth and economic stability.",
+                    "Tobacco companies admit that tobacco is addictive, leading to legal and public health implications.",
+                    "Comet Hale-Bopp passes nearby in March, offering a celestial spectacle visible from Earth.",
+                    "Hong Kong reverts to Chinese sovereignty, marking a historic moment in international relations.",
+                    "NASA's Ames Research Center establishes a department of astrobiology, advancing the study of life beyond Earth.",
+                    "The world mourns the death of Diana, Princess of Wales, in a tragic auto crash, triggering global expressions of grief and remembrance.",
+                    "Media mogul Ted Turner donates $1 billion to the United Nations, making a significant philanthropic contribution to international causes."
+                ],
+                1998: [
+                    "President Bill Clinton faces allegations of perjury and obstruction of justice, leading to a cloud of controversy and legal proceedings.",
+                    "The U.S. economic expansion shows signs of slowing, raising concerns about economic stability and growth.",
+                    "El Niño weather patterns lead to heavy rains in California and violent storms across the Midwest, impacting weather and agriculture.",
+                    "Storms cause significant damage in Europe, affecting infrastructure and communities.",
+                    "Tornadoes strike Alabama, resulting in the loss of 34 lives and causing destruction in affected areas.",
+                    "Ted Kaczynski pleads guilty to the Unabomber attacks, acknowledging his involvement in a series of domestic bombings.",
+                    "The U.S. federal budget shows a small surplus for the first time in 30 years, indicating progress in fiscal management.",
+                    "Rwanda executes 22 individuals for their roles in the genocide, marking a significant moment in the pursuit of justice.",
+                    "Iraq appears to achieve successful outcomes in ending UN weapons inspections, raising concerns about international security.",
+                    "Russia experiences economic and social turmoil, reflecting challenges in the post-Soviet era.",
+                    "Chicago O’Hare International Airport records approximately 70 million passenger arrivals and departures in 1997, highlighting its significance as a major transportation hub."
+                ],
+                1999: [
+                    "President Bill Clinton is impeached by the House of Representatives, triggering a historic impeachment trial in the Senate.",
+                    "The U.S. economy experiences a surge, with the Dow Jones average finishing above 11,000 points for the first time in history.",
+                    "The United States faces very large balance of payment deficits, raising concerns about international trade and economic stability.",
+                    "Violent crime in the United States reaches its lowest level since 1973, reflecting positive trends in public safety.",
+                    "The American Medical Association (AMA) approves a union for medical doctors, addressing labor issues within the medical profession."
+                ],
+                2000: [
+                    "The U.S. stock market experiences a burst of bubbles, leading to discussions about the stock market's impact on social security.",
+                    "A Russian nuclear submarine sinks in the Barents Sea, resulting in the tragic loss of 118 lives and raising questions about submarine safety.",
+                    "An Air France Concorde crashes into a hotel, resulting in the tragic deaths of 113 individuals and marking a significant aviation disaster.",
+                    "Mexico's Institutional Revolutionary Party (PRI) loses the presidency for the first time in 71 years, signifying a political shift in Mexico.",
+                    "Edward Gorey, acclaimed author and illustrator, passes away at the age of 75, leaving behind a legacy of unique and imaginative works.",
+                    "George W. Bush is elected as the President of the United States, shaping the country's political landscape and policies."
+                ],
+                2001: [
+                    "A series of coordinated terrorist attacks kills approximately 3,000 people in New York and Virginia, leading to significant changes in security and international relations.",
+                    "The submarine U.S.S. Greenville surfaces underneath a Japanese trawler, resulting in the tragic loss of 9 lives and international attention.",
+                    "New observations of \"dark energy\" and \"dark matter\" force a re-evaluation of previously held cosmological theories, reshaping our understanding of the universe.",
+                    "The solar-powered aircraft Helios reaches an altitude of 96,500 feet, demonstrating the potential of renewable energy in aviation.",
+                    "Approximately 55% of U.S. households now contain computers, signifying the growing presence of technology in homes.",
+                    "Senate and House offices are closed due to anthrax contamination, resulting in heightened concerns about bioterrorism threats.",
+                    "U.S. armed forces enter Afghanistan as part of the global response to terrorism, marking the beginning of a significant military campaign."
+                ],
+                2002: [
+                    "President George W. Bush identifies an \"axis of evil,\" shaping U.S. foreign policy and international perceptions.",
+                    "North Korea reports that it has secretly produced nuclear bombs, intensifying concerns about nuclear proliferation.",
+                    "Enormous accounting frauds and business bankruptcies come to light in the United States, leading to financial scandals and corporate reforms.",
+                    "Piracy is blamed, rather than quality, for the continued decline in sales of recorded music and music videos worldwide, impacting the music industry.",
+                    "The Euro becomes the official currency of multiple European countries, solidifying the Eurozone's economic integration.",
+                    "The war crimes trial of Slobodan Milosevic begins, addressing allegations of human rights abuses during the Balkan conflicts."
+                ],
+                2003: [
+                    "An enormous power outage affects the northeastern United States and eastern Canada during the summertime, revealing vulnerabilities in electrical infrastructure.",
+                    "Europe experiences an unprecedented heatwave, with more than 11,000 deaths in France alone attributed to extreme temperatures above 105°F.",
+                    "Primatologists discover a previously unknown species of ape in the northern Congo, resembling a cross between a gorilla and a chimpanzee, but larger, expanding our knowledge of primate diversity.",
+                    "The Galileo space probe is deliberately crashed into Jupiter, concluding its fourteen-year mission exploring the outer planets of our solar system.",
+                    "A mysterious monolith is discovered in a remote desert, sparking intrigue and speculation about its origin and purpose.",
+                    "The first privately funded spacecraft successfully reaches orbit, marking a milestone in commercial space exploration.",
+                    "The European Space Agency's Mars Express mission confirms the presence of water ice on Mars, increasing the likelihood of future human exploration."
+                ],
+                2004: [
+                    "Terrorist attacks on four rush hour trains result in the tragic deaths of 191 people in Madrid, Spain, and a siege of a school in Beslan, Northern Ossetia, leads to the loss of 335 lives and injuries to at least 700 people.",
+                    "The largest passenger ship afloat, named the Queen Mary 2 by Her Majesty Queen Elizabeth II, sets off on its maiden voyage, symbolizing advancements in maritime technology.",
+                    "Taipei 101, the world's tallest skyscraper at 509 meters, opens to the public, representing architectural and engineering achievements.",
+                    "The Hubble Space Telescope captures stunning images of distant galaxies, providing valuable insights into the cosmos.",
+                    "A breakthrough in stem cell research offers new possibilities for regenerative medicine and disease treatment.",
+                    "Google goes public in a highly anticipated initial public offering, transforming the tech industry and investment landscape.",
+                    "The European Space Agency's Rosetta spacecraft successfully lands a probe on a comet's surface, advancing our understanding of cometary bodies."
+                ],
+                2005: [
+                    "Hurricane Katrina makes landfall along the U.S. Gulf Coast, resulting in the tragic loss of over 1,800 lives and significant damage to communities.",
+                    "The Virgin Atlantic Global Flyer breaks the world record for the fastest solo flight around the world, pushing the boundaries of aviation.",
+                    "A leap second is added to the end of the year, fine-tuning our understanding of time and precision.",
+                    "The Kyoto Protocol enters into force, marking a global commitment to address climate change.",
+                    "YouTube is launched, revolutionizing online video sharing and content creation.",
+                    "The Cassini-Huygens mission successfully lands a probe on Saturn's moon Titan, providing valuable data about this enigmatic world."
+                ],
+                2006: [
+                    "North Korea claims to have conducted its first nuclear test, raising concerns about nuclear proliferation and international security.",
+                    "The 250th anniversary of the birth of Wolfgang Amadeus Mozart is celebrated, honoring the legacy of a prolific composer and musician.",
+                    "Twitter is founded, shaping the way people communicate and share information in the digital age.",
+                    "NASA's New Horizons spacecraft embarks on a mission to Pluto, promising new discoveries about the distant dwarf planet.",
+                    "Researchers achieve the first successful cloning of a mammal from an adult cell, opening new possibilities in genetics and biotechnology.",
+                    "The International Space Station expands with the addition of new modules, enhancing scientific research in space."
+                ],
+                2007: [
+                    "Russia declares the resumption of strategic bomber flight exercises, signaling military assertiveness on the global stage.",
+                    "Harry Potter and the Deathly Hallows is released and becomes the fastest-selling book in publishing history, captivating readers worldwide.",
+                    "Apple releases the iPhone, revolutionizing the smartphone industry and changing the way people interact with technology.",
+                    "China's Chang'e-1 lunar probe successfully enters lunar orbit, marking a significant milestone in China's space exploration efforts.",
+                    "Live Earth concerts are held across the world to raise awareness about climate change and environmental conservation.",
+                    "Researchers discover a new species of deep-sea creature in the Mariana Trench, shedding light on Earth's most extreme environments."
+                ],
+                2008: [
+                    "Bernard Madoff is arrested for committing the largest financial fraud in history, exposing vulnerabilities in the financial sector.",
+                    "Barack Obama is elected as the 44th President of the United States, making history as the first President of African-American origin.",
+                    "The Wilkins Ice Shelf in Antarctica disintegrates, raising concerns about climate change and its impact on polar regions.",
+                    "Lehman Brothers goes bankrupt, triggering a global financial crisis and reshaping the world's economic landscape.",
+                    "Pirate activity increases off the coast of Somalia, drawing international attention to maritime security issues.",
+                    "The Large Hadron Collider (LHC) at CERN becomes operational, enabling groundbreaking experiments in particle physics."
+                ],
+                2009: [
+                    "The Icelandic banking system collapses, highlighting vulnerabilities in global financial markets and banking systems.",
+                    "An outbreak of the H1N1 influenza strain, 'Swine Flu,' reaches pandemic proportions, affecting global public health and healthcare systems.",
+                    "The longest total solar eclipse of the 21st century takes place on July 22, lasting up to 6 minutes and 38.8 seconds, captivating skywatchers across Asia and the Pacific Ocean.",
+                    "The Kepler Space Telescope is launched to search for exoplanets, revolutionizing our understanding of planets beyond our solar system.",
+                    "The Large Hadron Collider (LHC) at CERN achieves record energy levels, enabling experiments to explore fundamental particles and the early universe.",
+                    "The Copenhagen Climate Summit brings world leaders together to address climate change and set emissions targets for the future."
+                ],
+                2010: [
+                    "The Deepwater Horizon oil platform explodes in the Gulf of Mexico, leading to the tragic deaths of eleven oil workers and a seven-month-long oil spill, highlighting environmental risks associated with offshore drilling.",
+                    "The Eyjafjallajökull volcano erupts beneath an Icelandic ice cap, spewing ash into the atmosphere and disrupting air travel across Europe, revealing vulnerabilities in global transportation.",
+                    "Hundreds of thousands of secret American diplomatic cables are released by the website WikiLeaks, sparking debates about transparency, security, and international relations.",
+                    "Apple introduces the iPad, revolutionizing the tablet computer market and changing the way people consume digital content.",
+                    "Scientists create the first synthetic organism with a human-made genetic code, opening new possibilities in biotechnology.",
+                    "The United Nations adopts the 2030 Agenda for Sustainable Development, setting ambitious goals for global sustainability and development."
+                ],
+                2011: [
+                    "The Iraq War is declared over by the United States, marking a significant milestone in U.S. foreign policy.",
+                    "Japan is hit by a 9.1 magnitude earthquake, followed by a devastating tsunami that adds to the death toll and triggers a nuclear crisis in four coastal nuclear power plants.",
+                    "The global population is judged to have reached seven billion, underscoring the challenges and opportunities of demographic growth.",
+                    "Osama bin Laden, the figurehead of Al-Qaeda, is killed by American special forces in Pakistan, leading to discussions about the impact on counterterrorism efforts.",
+                    "Street vendor Mohamed Bouazizi sets himself on fire in Tunisia, sparking a revolutionary movement that leads to the overthrow of the Tunisian government and similar revolutions across the Middle East, known as the Arab Spring.",
+                    "NASA's Juno spacecraft is launched on a mission to study Jupiter's composition and evolution, providing insights into the solar system's history.",
+                    "Scientists discover evidence of water on Mars, raising the possibility of past or present life on the Red Planet."
+                ],
+                2012: [
+                    "The Diamond Jubilee of Queen Elizabeth II is celebrated, commemorating her 60-year reign as the monarch of the United Kingdom and other Commonwealth realms.",
+                    "The Arab Spring continues to unfold, shaping political transitions and unrest in several countries across the Middle East and North Africa.",
+                    "The century's second and last solar transit of Venus occurs, offering a rare celestial event for astronomers and skywatchers.",
+                    "The Tokyo Skytree, the tallest self-supporting tower in the world at 634 meters, opens to the public, showcasing architectural and engineering excellence.",
+                    "CERN announces the discovery of the Higgs Boson, often referred to as the 'god particle,' providing insights into fundamental particles and the nature of the universe.",
+                    "Austrian skydiver Felix Baumgartner becomes the first person to break the sound barrier without machine assistance, achieving this feat with a 24-mile jump to Earth at Roswell, New Mexico.",
+                    "Curiosity, NASA's Mars rover, successfully lands on the Martian surface, embarking on a mission to explore the Red Planet's geology and search for signs of past life."
+                ],
 
             
             # ... (další roky a události)

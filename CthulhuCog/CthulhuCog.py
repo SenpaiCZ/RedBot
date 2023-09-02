@@ -1758,7 +1758,6 @@ class CthulhuCog(commands.Cog):
 
         }
         if skill_name is None:
-            # Pokud není poskytnuto žádné jméno dovednosti, vypíše seznam všech dovedností
             skills_list = ", ".join(skills_info.keys())
             response = f":zap: List of skills: :zap: \n{skills_list}"
         else:
@@ -1767,11 +1766,14 @@ class CthulhuCog(commands.Cog):
                 if len(matching_skills) > 1:
                     await ctx.send(f"Found multiple matching skills: {', '.join(matching_skills)}. Please specify the skill name more clearly.")
                 else:
-                    skill_description = skills_info.get(skill_name, "Skill not found.")
-        
-        response = f":zap: Skill Info: {skill_name}\n {skill_description}"
+                    skill_description = skills_info.get(matching_skills[0], "Skill not found.")
+                    response = f":zap: Skill Info: {matching_skills[0]}\n {skill_description}"
+            else:
+                response = f":zap: Skill Info: {skill_name}\n Skill not found."
+                
         embed = discord.Embed(description=response, color=discord.Color.blue())
         await ctx.send(embed=embed)
+
 
     @commands.command(aliases=["cocc","oinfo"])
     async def coccupations(self, ctx, *, occupation_name: str = None):

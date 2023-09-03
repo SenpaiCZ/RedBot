@@ -853,6 +853,10 @@ class CthulhuCog(commands.Cog):
             matching_skills = [s for s in self.player_stats[user_id] if s.lower().replace(" ", "") == normalized_old_skill_name.replace(" ", "")]
 
             if matching_skills:
+                if new_skill_name.title() in self.player_stats[user_id]:
+                    await ctx.send("Skill with the new name already exists. Choose a different name.")
+                    return
+
                 try:
                     # Create an ordered dictionary to maintain the skill order
                     ordered_skills = OrderedDict()
@@ -864,6 +868,11 @@ class CthulhuCog(commands.Cog):
                         else:
                             ordered_skills[skill_name] = skill_value
 
+                    # Move "Backstory" to the end of the dictionary
+                    if "Backstory" in ordered_skills:
+                        backstory = ordered_skills.pop("Backstory")
+                        ordered_skills["Backstory"] = backstory
+
                     self.player_stats[user_id] = ordered_skills
 
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
@@ -874,6 +883,7 @@ class CthulhuCog(commands.Cog):
                 await ctx.send("Skill not found in your skills list.")
         else:
             await ctx.send(f"{ctx.author.display_name} doesn't have an investigator. Use `!newInv` for creating a new investigator.")
+
 
     #Debugging command to check if your data are corrupted        
     @commands.command(guild_only=True)

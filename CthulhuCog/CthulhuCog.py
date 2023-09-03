@@ -669,7 +669,7 @@ class CthulhuCog(commands.Cog):
                                 await ctx.send(f"{ctx.author.display_name} took too long to react. **HP**:heartpulse: will not be saved.")                        
 
                         #Surpassing MAX_MP
-                        if stat_name == "MP" and new_value > (math.floor(self.player_stats[user_id]["POW"] / 10)):
+                        if stat_name == "MP" and new_value > (math.floor(self.player_stats[user_id]["POW"] / 5)):
                             maxmp_message = await ctx.send(f"Are you sure you want to surpass your **MP**:sparkles: limit? \n Max MP = POW/10")
                             await maxmp_message.add_reaction("✅")
                             await maxmp_message.add_reaction("❌")
@@ -724,7 +724,7 @@ class CthulhuCog(commands.Cog):
                                 try:
                                     reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                     if str(reaction.emoji) == "✅":
-                                        MP = math.floor(self.player_stats[user_id]["POW"] / 10)
+                                        MP = math.floor(self.player_stats[user_id]["POW"] / 5)
                                         self.player_stats[user_id]["MP"] = MP
                                         await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                         await ctx.send(f"{ctx.author.display_name}'s **MP**:sparkles: has been calculated as **{MP}** and successfully saved.")
@@ -808,19 +808,19 @@ class CthulhuCog(commands.Cog):
                                 await ctx.send(f"Age Modifiers: Make an improvement check for EDU:mortar_board:. Ignore this if you play Pulp of Cthulhu.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:. ")
                             elif self.player_stats[user_id]["Age"] < 50:
-                                await ctx.send(f"Age Modifiers: Make 2 improvement checks for EDU:mortar_board: and deduct 5 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 5. Ignore this if you play Pulp of Cthulhu.")
+                                await ctx.send(f"Age Modifiers: Make 2 improvement checks for EDU:mortar_board: and deduct 5 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 5. Deduct 1 from MOV:person_running:. Ignore this if you play Pulp of Cthulhu.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
                             elif self.player_stats[user_id]["Age"] < 60:
-                                await ctx.send(f"Age Modifiers: Make 3 improvement checks for EDU:mortar_board: and deduct 10 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 10. Ignore this if you play Pulp of Cthulhu.")
+                                await ctx.send(f"Age Modifiers: Make 3 improvement checks for EDU:mortar_board: and deduct 10 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 10. Deduct 2 from MOV:person_running:. Ignore this if you play Pulp of Cthulhu.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
                             elif self.player_stats[user_id]["Age"] < 70:
-                                await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 20 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 15. Ignore this if you play Pulp of Cthulhu.")
+                                await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 20 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 15. Deduct 3 from MOV:person_running:. Ignore this if you play Pulp of Cthulhu.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
                             elif self.player_stats[user_id]["Age"] < 80:
-                                await ctx.send(f"Age Modifiers:  Make 4 improvement checks for EDU:mortar_board: and deduct 40 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 20. Ignore this if you play Pulp of Cthulhu.")
+                                await ctx.send(f"Age Modifiers:  Make 4 improvement checks for EDU:mortar_board: and deduct 40 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 20. Deduct 4 from MOV:person_running:. Ignore this if you play Pulp of Cthulhu.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
                             elif self.player_stats[user_id]["Age"] < 90:
-                                await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 80 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 25. Ignore this if you play Pulp of Cthulhu.")
+                                await ctx.send(f"Age Modifiers: Make 4 improvement checks for EDU:mortar_board: and deduct 80 points among STR:muscle:, CON:heart: or DEX:runner:, and reduce APP:heart_eyes: by 25. Deduct 5 from MOV:person_running:. Ignore this if you play Pulp of Cthulhu.")
                                 await ctx.send(f"To make improvement check for EDU:mortar_board: run `!d EDU`. I you FAIL:x: add `!d 1D10` to your EDU:mortar_board:.")
                             else:
                                 await ctx.send(f"Age Modifiers: There are no official rules about investigators above the age of 90. Ignore this if you play Pulp of Cthulhu.")
@@ -1112,7 +1112,7 @@ class CthulhuCog(commands.Cog):
             elif stat_name == "HP":
                 formatted_value = f"{value}/" + str(math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10))
             elif stat_name == "MP":
-                formatted_value = f"{value}/" + str(math.floor(self.player_stats[user_id]["POW"] / 10))
+                formatted_value = f"{value}/" + str(math.floor(self.player_stats[user_id]["POW"] / 5))
             elif stat_name == "Move":
                 if self.player_stats[user_id]["DEX"] != 0 and \
                     self.player_stats[user_id]["SIZ"] != 0 and \

@@ -1239,13 +1239,13 @@ class CthulhuCog(commands.Cog):
             elif page == 2:
                 stats_range = range(17, 41)
             elif page == 3:
-                stats_range = range(41, 68)
+                stats_range = range(41, 65)
             else:
-                stats_range = range(69, len(stats_list))
+                stats_range = range(65, len(stats_list))
     
             for i in stats_range:
                 stat_name, value = stats_list[i]
-                if stat_name == "NAME" or stat_name == "MAX_HP" or stat_name == "MAX_MP" or stat_name == "MAX_SAN" or stat_name == "Backstory":
+                if stat_name == "NAME" or stat_name == "Backstory":
                     continue
                 
                 emoji = get_stat_emoji(stat_name)

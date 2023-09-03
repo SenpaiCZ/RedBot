@@ -663,7 +663,8 @@ class CthulhuCog(commands.Cog):
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    await ctx.send(f"✅")
+                                    #await ctx.send(f"✅")
+                                    pass
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"**HP**:heartpulse: will not be saved.")
                                     return
@@ -680,7 +681,9 @@ class CthulhuCog(commands.Cog):
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    await ctx.send(f"✅")
+                                    #no responce here, just continue command
+                                    #await ctx.send(f"✅")
+                                    pass
                                 elif str(reaction.emoji) == "❌":
                                     await ctx.send(f"**MP**:sparkles: will not be saved.")
                                     return

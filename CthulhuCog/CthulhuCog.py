@@ -1,4 +1,5 @@
 from redbot.core import Config, commands
+from collections import OrderedDict
 import random, discord, json, os, asyncio, re, math
 
 class CthulhuCog(commands.Cog):
@@ -839,27 +840,37 @@ class CthulhuCog(commands.Cog):
         """
         user_id = str(ctx.author.id)  # Get the user's ID as a string
         old_and_new_name = old_and_new_name.rsplit(maxsplit=1)
-        
+
         if len(old_and_new_name) != 2:
             await ctx.send("Invalid input. Please provide old skill name and new skill name.")
             return
-        
+
         old_skill_name = old_and_new_name[0].title()  # Convert the old skill name to title case
         new_skill_name = old_and_new_name[1].title()  # Convert the new skill name to title case
-        
+
         if user_id in self.player_stats:
             normalized_old_skill_name = old_skill_name.lower()  # Normalize old skill name to lowercase
             matching_skills = [s for s in self.player_stats[user_id] if s.lower().replace(" ", "") == normalized_old_skill_name.replace(" ", "")]
-            
+
             if matching_skills:
                 try:
-                    self.player_stats[user_id][new_skill_name] = self.player_stats[user_id].pop(matching_skills[0])
-                    
-                    # Move "Backstory" to the end of the dictionarya
-                    if "Backstory" in self.player_stats[user_id]:
-                        backstory = self.player_stats[user_id].pop("Backstory")
-                        self.player_stats[user_id]["Backstory"] = backstory
-                    
+                    # Create an ordered dictionary to maintain the skill order
+                    ordered_skills = OrderedDict()
+
+                    # Add skills to the ordered dictionary, except the skill being renamed
+                    for skill_name, skill_value in self.player_stats[user_id].items():
+                        if skill_name.lower().replace(" ", "") == normalized_old_skill_name.replace(" ", ""):
+                            ordered_skills[new_skill_name] = skill_value
+                        else:
+                            ordered_skills[skill_name] = skill_value
+
+                    # Move "Backstory" to the end of the dictionary
+                    if "Backstory" in ordered_skills:
+                        backstory = ordered_skills.pop("Backstory")
+                        ordered_skills["Backstory"] = backstory
+
+                    self.player_stats[user_id] = ordered_skills
+
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary
                     await ctx.send(f"Your skill '{matching_skills[0]}' has been updated to '{new_skill_name}'.")
                 except KeyError:

@@ -864,11 +864,6 @@ class CthulhuCog(commands.Cog):
                         else:
                             ordered_skills[skill_name] = skill_value
 
-                    # Move "Backstory" to the end of the dictionary
-                    if "Backstory" in ordered_skills:
-                        backstory = ordered_skills.pop("Backstory")
-                        ordered_skills["Backstory"] = backstory
-
                     self.player_stats[user_id] = ordered_skills
 
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the entire dictionary

@@ -379,9 +379,9 @@ class CthulhuCog(commands.Cog):
             "HP": 0,
             "MP": 0,
             "SAN": 0,
-            "Move": 0,
-            "Build": 0,
-            "Damage Bonus": 0,
+            "Move": "Calculated on the fly by !myChar",
+            "Build": "Calculated on the fly by !myChar",
+            "Damage Bonus": "Calculated on the fly by !myChar",
             "Age": 0,
             "Accounting": 5,
             "Anthropology": 1,
@@ -1877,16 +1877,11 @@ class CthulhuCog(commands.Cog):
                     self.player_stats[user_id]["EDU"] = EDU
                     self.player_stats[user_id]["SIZ"] = SIZ
                     self.player_stats[user_id]["HP"] = HP
-                    self.player_stats[user_id]["MAX_HP"] = HP
                     self.player_stats[user_id]["SAN"] = SAN
                     self.player_stats[user_id]["MP"] = MP
-                    self.player_stats[user_id]["MAX_MP"] = MP
                     self.player_stats[user_id]["LUCK"] = LUCK
                     self.player_stats[user_id]["Dodge"] = math.floor(DEX/5)
                     self.player_stats[user_id]["Language (own)"] = EDU
-                    self.player_stats[user_id]["Build"] = BUILD
-                    self.player_stats[user_id]["Damage Bonus"] = BONUSDMG
-                    self.player_stats[user_id]["Move"] = MOV
 
                     await self.save_data(ctx.guild.id, self.player_stats)  # Save the updated stats
                     await ctx.send("Your character's stats have been saved! You should set your Age with `!cstat Age` now.")

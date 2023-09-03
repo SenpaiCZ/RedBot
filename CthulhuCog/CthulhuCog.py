@@ -654,8 +654,8 @@ class CthulhuCog(commands.Cog):
                     stat_name = matching_skills[0]
                     try:
                         #Surpassing MAX_HP
-                        if stat_name == "HP" and new_value > self.player_stats[user_id]["MAX_HP"]:
-                            maxhp_message = await ctx.send(f"You're attempting to surpass your **HP**:heartpulse: limit. Would you like me to increase the **maximum HP**:chart_with_upwards_trend::heartpulse:?")
+                        if stat_name == "HP" and new_value > (math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)):
+                            maxhp_message = await ctx.send(f"Are you sure you want to surpass your **HP**:heartpulse: limit? \n Max HP = (CON + SIZ)/10")
                             await maxhp_message.add_reaction("✅")
                             await maxhp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -663,18 +663,16 @@ class CthulhuCog(commands.Cog):
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    newMAXHP = new_value
-                                    self.player_stats[user_id]["MAX_HP"] = newMAXHP
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: has been increased to **{newMAXHP}** and successfully saved.")
+                                    await ctx.send(f"✅")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"{ctx.author.display_name}'s **maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")
+                                    await ctx.send(f"**HP**:heartpulse: will not be saved.")
+                                    return
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum HP**:chart_with_upwards_trend::heartpulse: will not been increased.")                        
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. **HP**:heartpulse: will not be saved.")                        
 
                         #Surpassing MAX_MP
-                        if stat_name == "MP" and new_value > self.player_stats[user_id]["MAX_MP"]:
-                            maxmp_message = await ctx.send(f"You're attempting to surpass your **MP**:sparkles: limit. Would you like me to increase the **maximum MP**:chart_with_upwards_trend::sparkles:?")
+                        if stat_name == "MP" and new_value > (math.floor(self.player_stats[user_id]["POW"] / 10)):
+                            maxmp_message = await ctx.send(f"Are you sure you want to surpass your **MP**:sparkles: limit? \n Max MP = POW/10")
                             await maxmp_message.add_reaction("✅")
                             await maxmp_message.add_reaction("❌")
                             def check(reaction, user):
@@ -682,14 +680,12 @@ class CthulhuCog(commands.Cog):
                             try:
                                 reaction, _ = await self.bot.wait_for("reaction_add", timeout=60, check=check)
                                 if str(reaction.emoji) == "✅":
-                                    newMAXMP = new_value
-                                    self.player_stats[user_id]["MAX_MP"] = newMAXMP
-                                    await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
-                                    await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: has been increased to **{newMAXMP}** and successfully saved.")
+                                    await ctx.send(f"✅")
                                 elif str(reaction.emoji) == "❌":
-                                    await ctx.send(f"{ctx.author.display_name}'s **maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")
+                                    await ctx.send(f"**MP**:sparkles: will not be saved.")
+                                    return
                             except asyncio.TimeoutError:
-                                await ctx.send(f"{ctx.author.display_name} took too long to react. **Maximum MP**:chart_with_upwards_trend::sparkles: will not been increased.")                        
+                                await ctx.send(f"{ctx.author.display_name} took too long to react. **MP**:sparkles: will not be saved.")                        
 
                         self.player_stats[user_id][stat_name] = new_value
                         await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
@@ -700,7 +696,7 @@ class CthulhuCog(commands.Cog):
                         #automatic calculation of HP
                         if stat_name == "CON" or stat_name == "SIZ":
                             if self.player_stats[user_id]["CON"] != 0 and self.player_stats[user_id]["SIZ"] != 0 and self.player_stats[user_id]["HP"] == 0:
-                                hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**:heartpulse:. Do you want me to calculate HP(MAX_HP):chart_with_upwards_trend::heartpulse:?")
+                                hp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **HP**:heartpulse:. Do you want me to calculate HP:heartpulse:?")
                                 await hp_message.add_reaction("✅")
                                 await hp_message.add_reaction("❌")
                                 def check(reaction, user):
@@ -710,7 +706,6 @@ class CthulhuCog(commands.Cog):
                                     if str(reaction.emoji) == "✅":
                                         HP = math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10)
                                         self.player_stats[user_id]["HP"] = HP
-                                        self.player_stats[user_id]["MAX_HP"] = HP
                                         await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                         await ctx.send(f"{ctx.author.display_name}'s **HP**:heartpulse: has been calculated as **{HP}** and successfully saved.")
                                     elif str(reaction.emoji) == "❌":
@@ -721,7 +716,7 @@ class CthulhuCog(commands.Cog):
                         #automatic calculation of MP
                         if stat_name == "POW":
                             if self.player_stats[user_id]["POW"] != 0 and self.player_stats[user_id]["MP"] == 0:
-                                mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**:sparkles:. Do you want me to calculate MP(MAX_MP)chart_with_upwards_trend::sparkles:?")
+                                mp_message = await ctx.send(f"{ctx.author.display_name} filled all stats required to calculate **MP**:sparkles:. Do you want me to calculate MP:sparkles:?")
                                 await mp_message.add_reaction("✅")
                                 await mp_message.add_reaction("❌")
                                 def check(reaction, user):
@@ -731,7 +726,6 @@ class CthulhuCog(commands.Cog):
                                     if str(reaction.emoji) == "✅":
                                         MP = math.floor(self.player_stats[user_id]["POW"] / 10)
                                         self.player_stats[user_id]["MP"] = MP
-                                        self.player_stats[user_id]["MAX_MP"] = MP
                                         await self.save_data(ctx.guild.id, self.player_stats)  # Uložení celého slovníku
                                         await ctx.send(f"{ctx.author.display_name}'s **MP**:sparkles: has been calculated as **{MP}** and successfully saved.")
                                     elif str(reaction.emoji) == "❌":

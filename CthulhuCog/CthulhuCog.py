@@ -431,9 +431,6 @@ class CthulhuCog(commands.Cog):
             "CustomSkill": 0,
             "CustomSkills": 0,
             "CustomSkillss": 0,
-            "MAX_HP": 100,
-            "MAX_MP": 100,
-            "MAX_SAN": 1000,
             "Backstory":{'My Story':[],'Personal Description':[],'Ideology and Beliefs':[],'Significant People':[],'Meaningful Locations':[],'Treasured Possessions':[],'Traits':[],'Injuries and Scars':[],'Phobias and Manias':[],'Arcane Tome and Spells':[],'Encounters with Strange Entities':[],'Fellow Investigators':[],'Gear and Possesions':[], 'Spending Level':[],'Cash':[],'Assets':[],}
             }
             await self.save_data(ctx.author.guild.id, self.player_stats)  # Uložení změn do souboru
@@ -1113,9 +1110,9 @@ class CthulhuCog(commands.Cog):
             if stat_name == "Age":
                 formatted_value = f"{value}"
             elif stat_name == "HP":
-                formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_HP"])
+                formatted_value = f"{value}/" + str(math.floor((self.player_stats[user_id]["CON"] + self.player_stats[user_id]["SIZ"]) / 10))
             elif stat_name == "MP":
-                formatted_value = f"{value}/" + str(self.player_stats[user_id]["MAX_MP"])
+                formatted_value = f"{value}/" + str(math.floor(self.player_stats[user_id]["POW"] / 10))
             elif stat_name == "Move":
                 if self.player_stats[user_id]["DEX"] != 0 and \
                     self.player_stats[user_id]["SIZ"] != 0 and \

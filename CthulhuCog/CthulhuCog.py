@@ -3282,7 +3282,7 @@ class CthulhuCog(commands.Cog):
                 description = archetype_info["description"]
                 adjustments = "\n".join(archetype_info["adjustments"])
                 response = f"Archetypes are used only in Pulp of Cthulhu \n\n :scroll: **Description:** {description}\n\n:gear: **Adjustments:**\n\n{adjustments}"
-        image_url = "https://github.com/SenpaiCZ/RedBot/blob/SenpaiCogs/img/adventurer.jpg" 
+        image_url = "https://senpai.cz/wp-content/uploads/2023/09/adventurer.jpg" 
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
         embed.set_image(url=image_url)   
         await ctx.send(embed=embed)

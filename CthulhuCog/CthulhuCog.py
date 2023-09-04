@@ -3037,6 +3037,7 @@ class CthulhuCog(commands.Cog):
         """
         `!cArchetype name` - Get information about archetypes from Pulp of Cthulhu (e.g. !cArchetype Adventurer)
         """
+        image_url = ""
         archetypes_info = {
             "Adventurer": {
                 "description": "For those embracing the adventurer archetype, a life devoid of excitement holds little appeal. They view the world as an expansive playground, filled with uncharted territories and opportunities for heroic deeds. The mundane routine of a nine-to-five desk job is a prospect they find utterly unfulfilling. Adventurers crave the thrill of the unknown, the exhilaration of new experiences, and the trials that test their mettle. To them, life is a grand adventure waiting to be embarked upon, where excitement, joy, and the pursuit of challenges reign supreme.",

@@ -3272,7 +3272,7 @@ class CthulhuCog(commands.Cog):
             },
             "Two-Fisted": {
                 "description": "\"Live at full throttle, never back down\" serves as the mantra for those embodying the two-fisted archetype. These individuals are bundles of dynamism, possessing formidable strength, unyielding resilience, and impressive capability. They have a penchant for settling conflicts through physicality rather than discourse, preferring straightforwardness over ceremony. Fueled by spirited conversations and strong spirits, they prioritize efficiency and have little patience for incompetence. Two-fisted individuals live life at a rapid pace, exhibiting a propensity for quick tempers, a disdain for authority, and an unwavering readiness to engage in any challenge, no matter how gritty.",
-                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196131021525012/twofisted.jpg,
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196131021525012/twofisted.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either STR or SIZ.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Drive Auto, Fighting (Brawl), Firearms (any), Intimidate, Listen, Mechanical Repair, Spot Hidden, Swim, Throw.",

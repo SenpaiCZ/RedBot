@@ -3040,7 +3040,7 @@ class CthulhuCog(commands.Cog):
         archetypes_info = {
             "Adventurer": {
                 "description": "For those embracing the adventurer archetype, a life devoid of excitement holds little appeal. They view the world as an expansive playground, filled with uncharted territories and opportunities for heroic deeds. The mundane routine of a nine-to-five desk job is a prospect they find utterly unfulfilling. Adventurers crave the thrill of the unknown, the exhilaration of new experiences, and the trials that test their mettle. To them, life is a grand adventure waiting to be embarked upon, where excitement, joy, and the pursuit of challenges reign supreme.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/adventurer.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196065472946246/adventurer.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either DEX or APP",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Climb, Diving, Drive Auto, First-Aid, Fighting (any), Firearms (any), Jump, Language (other), Mechanical repair, Pilot (any), Ride, Stealth, Survival (any), Swim.",
@@ -3051,7 +3051,7 @@ class CthulhuCog(commands.Cog):
             },
             "Beefcake": {
                 "description": "Possessing formidable physical strength and the ability to hold their own in challenging situations, the beefcake archetype embodies robustness and muscularity, either through innate gifts or relentless dedication to honing their physique. They're unlikely to be found engrossed in books at the library but could easily grace the pages of billboards. Beefcakes fall into two distinct categories: the nurturing, reserved individuals who convey strength through their silence, and the audacious, outspoken ones who wear their muscularity like a badge of honor.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/beedcake.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196066173399070/beefcake.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** STR.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Climb, Fighting (Brawl), Intimidate, Listen, Mechanical Repair, Psychology, Swim, Throw.",
@@ -3062,7 +3062,7 @@ class CthulhuCog(commands.Cog):
             },
             "Bon Vivant": {
                 "description": "A bon vivant, often associated with a life of opulence, isn't solely defined by wealth. Instead, they're individuals who wholeheartedly embrace life without worrying about the aftermath. Why delay the pleasures of today for tomorrow? This archetype relishes in savoring delectable cuisines, indulging in libations, and pursuing various enjoyable pastimes, making extravagance their way of life. Regardless of their financial status, they rarely prioritize saving for the future and opt to bask in the limelight while cultivating friendships and connections with everyone they encounter.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/bonvivant.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196066915778633/bonvivant.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** SIZ.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Appraise, Art/Craft (any), Charm, Fast Talk, Language Other (any), Listen, Spot Hidden, Psychology.",
@@ -3073,7 +3073,7 @@ class CthulhuCog(commands.Cog):
             },
             "Cold Blooded": {
                 "description": "Cold-blooded rationalists who possess the capacity for nearly anything imaginable. These individuals might adhere to a peculiar moral framework, yet their perspective on humanity remains chillingly straightforward: you're either virtuous or wicked, with no moral ambiguity to navigate. Their outlook on life and death is brutally pragmatic. As efficient executioners, they harbor little self-doubt, readily adhering to orders or pursuing personal vendettas. Achieving their objectives takes precedence, and they will stop at nothing to get the job done. Spontaneity rarely characterizes them; instead, they epitomize unrelenting resolve and calculated planning. At times, they may attempt to convince themselves of certain boundaries they won't cross, but in reality, they are unyielding and will go to any lengths to accomplish what they perceive as their ultimate goal.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/coldblooded.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196067419103262/coldblooded.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** INT.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (Acting), Disguise, Fighting (any), Firearms (any), First Aid, History, Intimidate, Law, Listen, Mechanical Repair, Psychology, Stealth, Survival (any), Track.",
@@ -3084,7 +3084,7 @@ class CthulhuCog(commands.Cog):
             },
             "Dreamer": {
                 "description": "Whether categorized as an idealist or visionary, the dreamer possesses a formidable and imaginative intellect. Individuals of this archetype often chart their unique course in life. They gaze beyond the ordinary facets of existence, possibly seeking an escape from reality or fueled by a desire for a better world. Their aspirations transcend the status quo, aiming to rectify injustices or enhance the world they inhabit.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/dreamer.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196069407207445/dreamer.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Charm, History, Language Other (any), Library Use, Listen, Natural World, Occult.",
@@ -3095,7 +3095,7 @@ class CthulhuCog(commands.Cog):
             },
             "Egghead": {
                 "description": "Deconstructing and comprehending the inner workings of all things is a relentless pursuit for the egghead. They regard knowledge as a valuable treasure, a source of joy, and an intricate puzzle to unravel. Unlike the bookish scholar, the egghead thrives on practicality and revels in hands-on exploration. Whether delving into wires and gears, valves and computational machinery, or the intricacies of biology and anatomy, the egghead is driven to uncover the secrets behind the mechanisms of existence. Whether portrayed as an absent-minded genius or a keen virtuoso, the egghead tends to become engrossed in their current problem, often losing awareness of their surroundings. Depending on the level of pulp in your game, the egghead might possess the ability to invent a wide array of contraptions, some of which may prove incredibly useful, while others could be rather eccentric.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/egghead.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196069679824928/egghead.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either INT or EDU.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Anthropology, Appraise, Computer Use, Electrical Repair, Language Other (any), Library Use, Mechanical Repair, Operate Heavy Machinery, Science (any).",
@@ -3106,7 +3106,7 @@ class CthulhuCog(commands.Cog):
             },  
             "Explorer": {
                 "description": "The explorer's mantra is \"Don't confine me,\" expressing a deep longing for a genuine and enriching existence. Possessing unwavering determination and unshakable resolve, explorers are in a perpetual search for the mysteries that await beyond the visible horizon. Some may find harmony with nature, embracing a life where they rest wherever they find themselves, showing little regard for the soft comforts of urban living. Whether traversing dense jungles, navigating labyrinthine caves, or diligently mapping the concealed corners of the city, explorers are often perceived as misfits who grow restless and frustrated with individuals they view as feeble or timid.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/explorer.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196070057320490/explorer.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either DEX or POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Animal Handling, Anthropology, Archaeology, Climb, Fighting (Brawl), First Aid, Jump, Language Other (any), Natural World, Navigate, Pilot (any), Ride, Stealth, Survival (any), Track.",
@@ -3117,7 +3117,7 @@ class CthulhuCog(commands.Cog):
             },  
             "Femme Fatale": {
                 "description": "A dangerous individual, often possessing captivating beauty, who conceals a self-centered approach to life; someone constantly vigilant. Much like a spider, the femme fatale creates an enticing and glamorous facade, luring others into her intricate web to either acquire what she desires or eliminate her target. Fearless and astute, the femme fatale is unafraid of getting her hands dirty and proves to be a formidable adversary. Yet, she is not recklessly impulsive, preferring to bide her time until her web is meticulously constructed before executing a sudden and well-timed strike, whether it be through psychological manipulation or physical action. This classic pulp archetype can also be referred to as the \"homme fatale\" if the need arises.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/femmefatale.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196070854242354/femmefatale.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** Choose either APP or INT.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (Acting), Appraise, Charm, Disguise, Drive Auto, Fast Talk, Fighting (Brawl), Firearms (Handgun), Listen, Psychology, Sleight of Hand, Stealth.",
@@ -3128,7 +3128,7 @@ class CthulhuCog(commands.Cog):
             },            
             "Grease Monkey": {
                 "description": "The grease monkey possesses a pragmatic mindset, proficient in crafting and mending a wide array of objects, whether they be practical inventions, machinery, engines, or other contraptions. These individuals can often be found beneath a car's hood or tinkering with telephone exchange wires. Grease monkeys exhibit a resolute \"can-do\" attitude, adept at optimizing available resources and showcasing their talents and expertise to impress those in their vicinity. Depending on the level of pulp adventure in your game, these adept individuals may possess the ability to ingeniously cobble together various gadgets, whether for practical or unconventional purposes (Weird Science).",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/greasemonkey.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196071437238333/greasemonkey.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** INT.",
                     ":zap: **Add 100 bonus points divided amongst any of the following skills:** Appraise, Art/Craft (any), Fighting (Brawl), Drive Auto, Electrical Repair, Locksmith, Mechanical Repair, Operate Heavy Machinery, Spot Hidden, Throw.",
@@ -3139,7 +3139,7 @@ class CthulhuCog(commands.Cog):
             },
             "Hard Boiled": {
                 "description": "Resilient and savvy, an individual with a hard-boiled disposition possesses a profound understanding that to apprehend a wrongdoer, one must delve into the mindset of a wrongdoer. Typically, such individuals don't hesitate to bend or break the law to achieve their objectives. They'll employ any available means and might resort to physical force if necessary. Frequently, at their essence, they are principled individuals who yearn for a less corrupt and vile world. Nevertheless, to champion justice, they are willing to adopt the same ruthlessness as their adversaries demand.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/hardboiled.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196065049313360/hardboiled.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Fighting (Brawl), Firearms (any), Drive Auto, Fast Talk, Intimidate, Law, Listen, Locksmith, Sleight of Hand, Spot Hidden, Stealth, Throw.",
@@ -3150,7 +3150,7 @@ class CthulhuCog(commands.Cog):
             },   
             "Harlequin": {
                 "description": "Closely resembling the femme fatale, the harlequin has an aversion to direct involvement in any nefarious activities (whenever possible). Typically endowed with a captivating charm, although not necessarily adhering to traditional standards of beauty, these individuals relish the art of manipulating others into carrying out their wishes. They frequently shroud their true motives beneath a veneer of deceit, whether through blatant falsehoods or artful subterfuge. Occasionally, they champion a specific cause, whether personal or not, while at other times, they revel in sowing chaos and observing the ensuing reactions of those ensnared in their schemes.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/harlequin.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196119017443391/harlequin.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** APP.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (Acting), Charm, Climb, Disguise, Fast Talk, Jump, Language Other (any), Listen, Persuade, Psychology, Sleight of Hand, Stealth.",
@@ -3161,7 +3161,7 @@ class CthulhuCog(commands.Cog):
             },  
             "Hunter": {
                 "description": "Whether driven by the exhilaration of the pursuit, the ultimate reward, or an inherent urge to dominate their surroundings, the hunter exhibits unwavering determination in tracking their quarry. Composed and strategic, the hunter demonstrates a willingness to exercise patience, harboring disdain for the impulsive actions of the careless.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/hunter.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196119311036456/hunter.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either INT or CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Animal Handling, Fighting (any), Firearms (Rifle and/or Handgun), First Aid, Listen, Natural World, Navigate, Spot Hidden, Stealth, Survival (any), Swim, Track.",
@@ -3172,7 +3172,7 @@ class CthulhuCog(commands.Cog):
             },            
             "Mystic": {
                 "description": "Mystics are relentless seekers of the concealed, adventurers in the ethereal domains, in pursuit of enigmatic truths and the essence of existence. Whether they are erudite scholars, shamanic healers, fortune-tellers in a traveling circus, or profound visionaries, their common goal is the acquisition of knowledge and the communion with forces beyond the ordinary realm. Their motivations may range from personal enrichment to the advancement of humanity's welfare.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/mystic.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196115204800564/mystic.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Science (Astronomy), Disguise, History, Hypnosis, Language Other (any), Natural World, Occult, Psychology, Sleight of Hand, Stealth; if the Psychic talent is taken, allocate skill points to the chosen psychic skill(s).",
@@ -3183,7 +3183,7 @@ class CthulhuCog(commands.Cog):
             },
             "Outsider": {
                 "description": "Outsiders exist on the fringes of society, both in a literal and metaphorical sense. They may hail from distant lands or cultures, rendering them foreign to their surroundings. Alternatively, they could be part of the same society but estranged from it, feeling out of place. Typically, outsiders embark on a voyage, be it physical or spiritual, and must fulfill their mission before they can reintegrate into or truly belong to the broader community. Frequently, outsiders possess unique skills and unconventional perspectives, employing obscure, clandestine, or foreign wisdom to navigate their path.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/outsider.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196115464859729/outsider.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either INT or CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Animal Handling, Fighting (any), First Aid, Intimidate, Language Other (any), Listen, Medicine, Navigation, Stealth, Survival (any), Track.",
@@ -3194,7 +3194,7 @@ class CthulhuCog(commands.Cog):
             },
             "Rogue": {
                 "description": "Rogues are the outspoken challengers of societal norms, never hesitating to question the established order and ridicule those in power. They relish their non-conformity, embracing spontaneity and poking fun at conventional conduct. Rules, in their view, are meant to be bent or artfully circumvented. While not necessarily criminals or anarchists seeking to sow discord, rogues take pleasure in executing bewildering feats that leave others in awe. Often, they exude sophistication, guided by their distinctive sets of morals. Despite their endearing qualities, rogues remain carefree and untamed.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/rogue.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196115917832213/rogue.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or APP.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Appraise, Art/Craft (any), Charm, Disguise, Fast Talk, Law, Locksmith, Psychology, Read Lips, Spot Hidden, Stealth.",
@@ -3205,7 +3205,7 @@ class CthulhuCog(commands.Cog):
             },
             "Scholar": {
                 "description": "Scholars rely on their intellect and analytical skills to comprehend the world they inhabit. They often find contentment within the confines of a library, engrossed in books rather than dealing with the practicalities of life. Driven by an unquenchable thirst for knowledge, scholars may not be inherently action-oriented, but in moments of crisis, they can emerge as the sole individuals equipped with the know-how to navigate challenges.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/scholar.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196116677001259/scholar.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** EDU.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Accounting, Anthropology, Cryptography, History, Language Other (any), Library Use, Medicine, Natural World, Occult, Science (any).",
@@ -3217,7 +3217,7 @@ class CthulhuCog(commands.Cog):
             },
             "Seeker": {
                 "description": "Enigmas and conundrums captivate the seeker, engaging their intellect and logic to unravel mysteries and resolve dilemmas. They actively seek out and relish mental puzzles, their unwavering commitment to uncovering the truth unyielding, even in the face of adversity and trials.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/seeker.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196116270166036/seeker.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** INT.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Accounting, Appraise, Disguise, History, Law, Library Use, Listen, Occult, Psychology, Science (any), Spot Hidden, Stealth.",
@@ -3228,7 +3228,7 @@ class CthulhuCog(commands.Cog):
             },
             "Sidekick": {
                 "description": "The sidekick archetype embodies elements of the loyal companion, renegade, and thrill-seeker archetypes. Typically, a youthful individual who has yet to reach their full potential, they seek guidance from a mentor figure or are content with a supporting role rather than the spotlight. Alternatively, some sidekicks yearn to become heroes themselves but find themselves overshadowed by their mentors or peers. Those in a subordinate sidekick role may occasionally struggle against their self-imposed limitations, embarking on reckless adventures that often lead to trouble. Sidekicks generally adhere to a strong moral code centered on duty and responsibility.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/sidekick.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196117612351610/sidekick.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Animal Handling, Climb, Electrical Repair, Fast Talk, First Aid, Jump, Library Use, Listen, Navigate, Photography, Science (any), Stealth, Track.",
@@ -3239,7 +3239,7 @@ class CthulhuCog(commands.Cog):
             },
             "Steadfast": {
                 "description": "The steadfast archetype is marked by a profound commitment to moral integrity. They champion the cause of the vulnerable, prioritize others' well-being above their own, and are prepared to lay down their lives for the safety of others. Guided by a strong sense of morality, whether rooted in spirituality, religion, or a personal moral compass, they uphold the highest ethical standards and refrain from engaging in unethical behavior. They lead by example, inspiring those in their vicinity. Among their various causes, the pursuit of justice remains a steadfast priority.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/steadfast.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196118128242758/steadfast.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** CON.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Accounting, Drive Auto, Fighting (any), Firearms (Handgun), First Aid, History, Intimidate, Law, Natural World, Navigate, Persuade, Psychology, Ride, Spot Hidden, Survival (any).",
@@ -3250,7 +3250,7 @@ class CthulhuCog(commands.Cog):
             },
             "Swashbuckler": {
                 "description": "Swashbucklers are spirited and idealistic individuals perpetually seeking opportunities to rescue those in need. They exude gallantry and heroism, thriving in the midst of action and combat, and they firmly reject firearms, considering them the choice of the unscrupulous. Typically characterized by their exuberance and boisterous nature, swashbucklers maintain their joyful demeanor even in the direst circumstances. At their core, they are romantics, guided by a robust code of honor, yet their penchant for recklessness often places them and others in perilous situations.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/swashbuckler.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196118564438036/swashbuckler.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or APP.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Charm, Climb, Fighting (any), Jump, Language Other (any), Mechanical Repair, Navigate, Pilot (any), Stealth, Swim, Throw.",
@@ -3261,7 +3261,7 @@ class CthulhuCog(commands.Cog):
             },
             "Thrill Seeker": {
                 "description": "Certain individuals are irresistibly drawn to danger and excitement, much like moths to a flame. They find the ordinary life devoid of meaning, seeking adventure and peril as a means to truly experience existence. Thrill seekers perpetually crave greater challenges and elevated stakes, readily wagering it all for the exhilarating surge of adrenaline. These daredevils gravitate toward high-octane sports and activities, viewing mountains and obstacles as invitations to conquer. Their recklessness knows no bounds, leaving them bewildered as to why others are not as willing to embrace similar risks.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/trillseeker.png",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196130505637958/trillseeker.jpg",
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either DEX or POW.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Art/Craft (any), Charm, Climb, Diving, Drive Auto, Fast Talk, Jump, Mechanical Repair, Navigate, Pilot (any), Ride, Stealth, Survival (any), Swim, Throw.",
@@ -3272,7 +3272,7 @@ class CthulhuCog(commands.Cog):
             },
             "Two-Fisted": {
                 "description": "\"Live at full throttle, never back down\" serves as the mantra for those embodying the two-fisted archetype. These individuals are bundles of dynamism, possessing formidable strength, unyielding resilience, and impressive capability. They have a penchant for settling conflicts through physicality rather than discourse, preferring straightforwardness over ceremony. Fueled by spirited conversations and strong spirits, they prioritize efficiency and have little patience for incompetence. Two-fisted individuals live life at a rapid pace, exhibiting a propensity for quick tempers, a disdain for authority, and an unwavering readiness to engage in any challenge, no matter how gritty.",
-                "link":"https://senpai.cz/wp-content/uploads/2023/09/twofisted.jpg",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148196131021525012/twofisted.jpg,
                 "adjustments": [
                     ":heart_decoration: **Core characteristic:** choose either STR or SIZ.",
                     ":zap: **Add 100 bonus points divided among any of the following skills:** Drive Auto, Fighting (Brawl), Firearms (any), Intimidate, Listen, Mechanical Repair, Spot Hidden, Swim, Throw.",
@@ -3336,6 +3336,7 @@ class CthulhuCog(commands.Cog):
                             "**Lore**: has knowledge of a lore specialization skill (e.g. Dream Lore, Vampire Lore, Werewolf Lore, etc.). Note that occupational and/or personal interest skill points should be invested in this skill.",
                             "**Psychic Power**: may choose one psychic power (Clairvoyance, Divination, Medium, Psychometry, or Telekinesis). Note that occupational and/or personal interest skill points should be invested in this skill.",
                             "**Sharp Witted**: able to collate facts quickly; gain a bonus die when making Intelligence (but not Idea) rolls.",]
+        
         combat_talents = ["**Alert**: never surprised in combat.",
                             "**Heavy Hitter**: may spend 10 Luck points to add an additional damage die when dealing out melee combat (die type depends on the weapon being used, e.g. 1D3 for unarmed combat, 1D6 for a sword, etc.)",
                             "**Fast Load**: choose a Firearm specialism; ignore penalty die for loading and frring in the same round.",
@@ -3346,6 +3347,7 @@ class CthulhuCog(commands.Cog):
                             "**Fleet Footed**: may spend 10 Luck to avoid being \"outnumbered\" in melee combat for one combat encounter.",
                             "**Quick Draw**: does not need to have their firearm \"readied\" to gain +50 DEX when determining position in the DEX order for combat.",
                             "**Rapid Fire**: ignores penalty die for multiple handgun shots.",]
+        
         miscellaneous_talents = ["**Scary**: reduces difficulty by one level or gains bonus die (at the Keeper's discretion) to Intimidate rolls.",
                             "**Gadget**: starts game with one weird science gadget.",
                             "**Lucky**: regains an additional +1 D10 Luck points when Luck Recovery rolls are made.",

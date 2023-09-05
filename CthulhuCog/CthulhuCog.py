@@ -2080,6 +2080,7 @@ class CthulhuCog(commands.Cog):
         occupations_info = {
             "Accountant": {
                 "description": "Whether holding a position within a corporation or operating as an independent consultant serving a roster of self-employed clients or enterprises, accountants are an integral part of the financial landscape. Their meticulous nature and unwavering focus on detail render them adept researchers, proficiently supporting inquiries by methodically scrutinizing personal and corporate transactions, financial documents, and various records.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655485843669012/accountant.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
@@ -2088,6 +2089,7 @@ class CthulhuCog(commands.Cog):
             },
             "Acrobat": {
                 "description": "Acrobats can fall into two main categories: they may either be dedicated amateur athletes, participating in formal competitions such as those found in the Olympics, or they can be skilled professionals working within the realm of entertainment, including circuses, carnivals, and theatrical productions.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655486095343706/acrobat.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "9–20",
@@ -2096,6 +2098,7 @@ class CthulhuCog(commands.Cog):
             },
             "Stage Actor": {
                 "description": "Typically, an individual who performs on stage or in the realm of cinema. Stage actors often possess a foundation in classical acting and may view themselves as part of the \"legitimate\" theater, occasionally looking down upon the commercial aspects of the film industry. However, as the late twentieth century unfolds, this distinction begins to wane, with film actors gaining increased recognition and earning higher salaries. The allure of movie stars and the film industry has consistently captivated audiences worldwide. Many celebrities achieve overnight stardom and lead glamorous, high-profile lives, frequently under the scrutiny of the media spotlight. During the 1920s, the epicenter of theater in the United States resides in New York City, although significant theatrical venues exist in most cities across the nation.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148677495164510278/stageactor.jpeg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "9–40",
@@ -2104,6 +2107,7 @@ class CthulhuCog(commands.Cog):
             },
             "Film star": {
                 "description": "Film stars typically refer to actors who have attained fame and renown within the film industry. A considerable number of these stars experience rapid ascension to stardom, and the majority of them live glamorous, high-profile lives, continuously under the scrutiny of the media spotlight.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667931488694393/filmstar.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "20–90",
@@ -2112,6 +2116,7 @@ class CthulhuCog(commands.Cog):
             },
            "Agency detective": {
                 "description": "Detective agencies are prevalent worldwide, boasting several renowned names, with the Pinkerton and Burns agencies being among the most famous, having merged into a single entity in contemporary times. These expansive agencies maintain two distinct categories of personnel: security guards and operatives. Guards are uniformed officers engaged by corporations and private individuals to safeguard assets and individuals from potential threats such as burglars, assassins, and kidnappers. You can refer to the Uniformed Police Officer's description for a detailed portrayal of these characters. On the other hand, Company Operatives operate incognito, working as plainclothes detectives tasked with handling cases that involve unraveling mysteries, preventing homicides, locating missing persons, and various other investigative tasks.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655486367977512/agencydetective.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "20–45",
@@ -2120,6 +2125,7 @@ class CthulhuCog(commands.Cog):
             },
             "Alienist": {
                 "description": "During the 1920s, the term \"alienist\" was used to describe professionals who specialized in the treatment of mental illness, essentially early psychiatrists. At that time, psychoanalysis was not widely recognized in the United States, and its focus on aspects like sexual development and toilet training was often considered inappropriate. Instead, psychiatry, which involved a standard medical education supplemented by behaviorism, was more prevalent. This era saw intense intellectual conflicts between various groups, including alienists, psychiatrists, and neurologists, as they grappled with different approaches to the understanding and treatment of mental health issues.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655486607032330/alienist.jpg",
                 "era":"Classic - 1920s period",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–60",
@@ -2128,6 +2134,7 @@ class CthulhuCog(commands.Cog):
             },
             "Animal trainer": {
                 "description": "Animal trainers in the 1920s could find employment with film studios, traveling circuses, horse stables, or even work as freelancers. Their responsibilities varied widely, from training guide dogs for the blind to teaching lions to perform daring tricks, like jumping through flaming hoops. Typically, animal trainers worked independently and spent extended hours in close contact with the animals they were responsible for, nurturing strong bonds and trust with their animal charges.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655486930010122/animaltrainer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or POW × 2)",
                 "credit_rating": "10–40",
@@ -2136,6 +2143,7 @@ class CthulhuCog(commands.Cog):
             },
             "Antiquarian": {
                 "description": "An individual who derives immense pleasure from the enduring craftsmanship of bygone eras and the enigmatic knowledge of antiquity. This occupation epitomizes the Lovecraftian essence within an investigator's choices. Typically possessing a private source of income, the antiquarian enjoys the freedom to delve into the mysteries of the past, often honing their investigative pursuits to align with personal fascinations and curiosities. Their keen discernment, nimble intellect, and penchant for sardonic wit often lead them to see humor in the ignorance, arrogance, and avarice of others.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655487156506664/antiquarian.jpg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
@@ -2144,6 +2152,7 @@ class CthulhuCog(commands.Cog):
             },
             "Antique dealer": {
                 "description": "Antique dealers typically operate their own storefronts, sell items from their residences, or embark on extended purchasing journeys, turning a profit by reselling these antiques to urban retailers.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655487403950173/antiquedealer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–50",
@@ -2152,6 +2161,7 @@ class CthulhuCog(commands.Cog):
             },
             "Archaeologist": {
                 "description": "Archaeology is the discipline dedicated to the study and investigation of the past, primarily involving the identification, examination, and analysis of recovered artifacts and materials related to human history. This work necessitates thorough research, detailed scrutiny, and a readiness to engage in hands-on excavation. During the 1920s, accomplished archaeologists attained celebrity status, often regarded as daring explorers and adventurers. While some adhered to scientific methods, many were not averse to using sheer physical force to uncover the mysteries of antiquity – a few unscrupulous individuals even resorted to dynamite. Such aggressive approaches would be highly criticized in contemporary times.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655487647236138/archeologist.jpg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–40",
@@ -2160,6 +2170,7 @@ class CthulhuCog(commands.Cog):
             },
             "Architect": {
                 "description": "Architects are skilled professionals responsible for the design and planning of various structures, ranging from small residential conversions to massive multimillion-dollar construction projects. They collaborate closely with project managers and assume a supervisory role during the construction phase. Architects must possess a comprehensive understanding of local building regulations, health and safety standards, and public safety considerations. Some architects may find employment within large architectural firms, while others opt for freelance work, with their reputation playing a significant role in their success. In the 1920s, numerous architects ventured out on their own, operating from home offices or small establishments. However, few managed to secure commissions for their ambitious design visions. Additionally, architecture encompasses specialized fields such as naval architecture and landscape architecture.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655487974395904/architect.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–70",
@@ -2168,6 +2179,7 @@ class CthulhuCog(commands.Cog):
             },
             "Artist": {
                 "description": "Artists encompass a diverse group of individuals who may excel in various creative disciplines, such as painting, sculpting, and more. They can range from being intensely self-absorbed with a unique vision to possessing exceptional talent that ignites passion and comprehension in their audience. Regardless of their level of talent, artists must possess robust and unwavering egos to overcome initial challenges, withstand critical scrutiny, and persevere in their work if they achieve success. Some artists prioritize the pursuit of their craft over material wealth, while others exhibit a keen entrepreneurial spirit to capitalize on their creative endeavors.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148655488351879168/artist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or POW × 2)",
                 "credit_rating": "9–50",
@@ -2176,6 +2188,7 @@ class CthulhuCog(commands.Cog):
             },
             "Asylum Attendant": {
                 "description": "The care of the mentally ill in the 1920s primarily involves two types of institutions: private sanitariums catering to a privileged few with the means to afford them, and state and county facilities responsible for housing the majority of mentally ill individuals. In these state and county facilities, the staff typically includes a limited number of doctors and nurses, while a significant portion consists of attendants. These attendants are often selected more for their physical strength and size than for their medical expertise, reflecting the prevailing practices of the time.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665043785887754/asylumattendant.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "8–20",
@@ -2184,6 +2197,7 @@ class CthulhuCog(commands.Cog):
             },
            "Athlete": {
                 "description": "Athletes in the 1920s, whether playing professional baseball, football, cricket, or basketball, often find themselves in one of two situations. Some are fortunate enough to be part of a major league team, receiving regular salaries and garnering national attention. Others, particularly in the case of 1920s baseball, may be members of minor league teams, with some of these teams owned and operated by major league owners. However, the compensation for players in minor league teams is often meager, barely sufficient to cover their basic needs and keep them on the team. Successful professional athletes, regardless of their league, can attain a level of celebrity within their sports that rivals the fame of film stars, especially in the modern era where sporting heroes share the limelight on red carpets worldwide.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665044008194178/athlete.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–70",
@@ -2192,6 +2206,8 @@ class CthulhuCog(commands.Cog):
             },
             "Author": {
                 "description": "Authors, distinct from journalists, employ words as their tools to delve into and examine the various facets of the human condition, with a particular focus on the spectrum of human emotions. Their work is often a solitary endeavor, and the rewards they reap are often more personal and introspective. In the present day, only a select few authors achieve significant financial success, although in past times, this profession could provide a steady and respectable income. Authors' work habits can vary widely. It's common for an author to dedicate months or even years to research as they prepare for a book, followed by periods of seclusion and intense creative output during the writing process.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665044259836035/author.jpg",
+                "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
                 "suggested_contacts": "Publishers, critics, historians, etc.",
@@ -2199,6 +2215,7 @@ class CthulhuCog(commands.Cog):
             },
             "Bartender": {
                 "description": "Bartenders, typically not the proprietors of the establishment, often serve as the friendly face behind the bar. For some, bartending is a lifelong career or even their own business, while for many others, it's a means to an end. During the 1920s, the Prohibition Act made this profession illegal, but there was still a high demand for bartenders as someone had to skillfully mix and serve drinks in the hidden speakeasies and secret gin joints that proliferated during that era.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665044767363092/bartender.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "8–25",
@@ -2207,6 +2224,7 @@ class CthulhuCog(commands.Cog):
             },
             "Big Game Hunter": {
                 "description": "Big game hunters are highly skilled trackers and hunters, often earning their livelihood by guiding wealthy clients on safaris. They typically specialize in a specific region, such as the Canadian wilderness or the African plains. Some hunters, however, engage in illegal activities, such as capturing exotic animals for private collectors or trading in prohibited animal products like skins and ivory. During the 1920s, such activities were more common and were often legal under the laws of many countries. While the great white hunter is the classic archetype, others may include indigenous guides from local communities who lead hunters through remote areas in search of animals like moose or bears.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665044977061980/biggamehunter.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–50",
@@ -2215,6 +2233,7 @@ class CthulhuCog(commands.Cog):
             },
             "Book Dealer": {
                 "description": "A book dealer can take on various roles, from owning a retail store or running a specialized mail-order service to engaging in buying trips both nationally and internationally. They often cater to a diverse clientele, including both affluent individuals and regular customers who supply lists of desired and rare books.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665045211951115/bookdealer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–40",
@@ -2223,6 +2242,8 @@ class CthulhuCog(commands.Cog):
             },
            "Bounty Hunter": {
                 "description": "Bounty hunters are individuals hired to locate and apprehend fugitives, typically working as freelancers under the employ of Bail Bondsmen to recover bail jumpers. They have the authority to pursue their targets across state lines and often employ aggressive tactics, such as breaking and entering, threats, and physical force, to capture their quarry. In contemporary times, these methods may extend to illegal activities like phone tapping, computer hacking, and covert surveillance to achieve their objectives.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665045732036729/bountyhunter.jpg",
+                "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
                 "suggested_contacts": "Bail bondsmen, local police, criminal informants.",
@@ -2230,6 +2251,7 @@ class CthulhuCog(commands.Cog):
             },
             "Boxer Wrestler": {
                 "description": "Professional boxers and wrestlers are typically under the management of promoters, who may have support from external backers and often enter into contractual agreements with the athletes. These professionals dedicate themselves to full-time training and competing in their respective sports. Amateur boxing competitions serve as a common stepping stone for those with aspirations of turning professional. Additionally, both amateur and retired professional boxers and wrestlers may sometimes engage in underground bareknuckle fights, often organized by criminal syndicates or local entrepreneurs, as a means of earning income.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665689528340633/boxer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + STR × 2",
                 "credit_rating": "9–60",
@@ -2238,6 +2260,7 @@ class CthulhuCog(commands.Cog):
             },
             "Butler Valet Maid": {
                 "description": "This occupation encompasses various roles in domestic service, including butlers, valets, and lady's maids. A butler typically serves as a domestic servant in a large household and is traditionally responsible for overseeing the dining room, wine cellar, and pantry. The butler holds the highest-ranking position among male servants and often supervises other male staff members within the household. While typically male, a housekeeper fulfills the female equivalent role. A valet or lady's maid, on the other hand, provides personalized services to their employer, which may involve tasks such as maintaining their clothes, preparing baths, and acting as a personal assistant. These duties can extend to making travel arrangements, managing their employer's schedule, and handling household finances. The specific responsibilities of these roles can vary depending on the needs and preferences of the employer.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672912195338432/maid.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40 (dependent on their employer’s status and credit rating).",
@@ -2246,6 +2269,7 @@ class CthulhuCog(commands.Cog):
             },
             "Clergy": {
                 "description": "In the Church's hierarchy, clergy members are typically assigned to specific parishes or sent on missionary journeys, often to foreign countries. The structure and priorities of different churches may vary; for instance, in the Catholic Church, a priest can advance through the ranks to become a bishop, archbishop, and even a cardinal. In contrast, a Methodist pastor may progress to the roles of district superintendent and bishop within the Methodist hierarchy. Clergy members from various denominations may also serve as confessors, hearing the confessions of their parishioners. While they are bound by the confidentiality of these confessions, they have the freedom to act upon them as needed. Additionally, some individuals within the Church may have professional training in fields such as medicine, law, or scholarship, and they may serve in these capacities as part of their church-related work. The specific occupation template used would depend on the nature of the investigator's role within the church.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665690031673384/clergy.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–60",
@@ -2254,6 +2278,7 @@ class CthulhuCog(commands.Cog):
             },
             "Computer Programmer Technician Hacker": {
                 "description": "omputer professionals work in various capacities related to computing and technology. Computer programmers are skilled in designing, writing, testing, debugging, and maintaining computer program source code. They possess expertise in subjects like formal logic and application platforms. Computer programmers may work independently as freelancers or within software development companies. Computer technicians, on the other hand, are responsible for developing and maintaining computer systems and networks. They often collaborate with office staff, such as project managers, to ensure the integrity and functionality of computer systems. Related occupations in this field include Database Administrator, IT Systems Manager, Multimedia Developer, Network Administrator, Software Engineer, and Webmaster. In contrast, computer hackers use their knowledge of computers and networks for various purposes. Some, known as \"hacktivists\", engage in cyber activities to promote political causes, while others pursue criminal objectives. Hacking typically involves illegal activities such as unauthorized access to computers and user accounts, leading to consequences like defacing websites, doxing, swatting, or carrying out email bombing attacks aimed at causing denials of service.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669076906987540/hacker.jpg",
                 "era":"Modern - Only available for modern-day game settings.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–70",
@@ -2262,6 +2287,7 @@ class CthulhuCog(commands.Cog):
             },
             "Cowboy Girl": {
                 "description": "Cowboys are individuals who labor on the vast ranges and ranches of the Western United States. While some own their ranches, many are employed as hired hands, taking on work as it becomes available. Those who embrace the thrill and danger of rodeo events can earn substantial income by participating in the rodeo circuit, traveling between events in pursuit of fame and fortune. In the 1920s, a handful of cowboys found opportunities in Hollywood, working as stuntmen and extras in Western films. Notably, Wyatt Earp contributed as a technical advisor to the film industry during this era. In modern times, some ranches have opened their doors to tourists seeking a taste of cowboy life through holiday packages.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665691025707097/cowboy.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–20",
@@ -2270,6 +2296,7 @@ class CthulhuCog(commands.Cog):
             },
             "Craftsperson": {
                 "description": "The craftsperson, often referred to as an artisan or master craftsperson, is highly skilled in the manual production of various items and materials. These individuals are typically quite talented, with some earning prestigious reputations for creating works of art, while others provide essential community services. Craftspersons are proficient in a wide range of trades, including furniture making, jewelry crafting, watchmaking, pottery, blacksmithing, textiles, calligraphy, sewing, carpentry, bookbinding, glassblowing, toy making, stained glass production, and more.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665691256397904/craftperson.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "10–40",
@@ -2278,6 +2305,7 @@ class CthulhuCog(commands.Cog):
             },
             "Criminal": {
                 "description": "Criminals come in all shapes, sizes, and shades of grey. Some are merely opportunistic jacks of all trades, such as pickpockets and thugs. See Assassin, Bank robber, Bootlegger Thug, Burglar, Conman, Freelance Criminal, Gun Moll, Fence, Forger Counterfeiter, Smuggler, Street Punk for detail information.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665691508068362/criminal.jpg",
                 "era":"Any",
                 "skill_points": "Varies",
                 "credit_rating": "Varies",
@@ -2286,6 +2314,7 @@ class CthulhuCog(commands.Cog):
             },
             "Assassin": {
                 "description": "Assassins are cold-blooded killers of the underworld. They are usually hired for targeted killings, often following strict codes of behavior.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665043555192852/assassin.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "30–60",
@@ -2294,6 +2323,7 @@ class CthulhuCog(commands.Cog):
             },
             "Bank Robber": {
                 "description": "Bank robbers are criminals who specialize in robbing banks. They often work in groups and meticulously plan their heists to evade capture.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665044519890944/bankrobber.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "5–75",
@@ -2302,6 +2332,7 @@ class CthulhuCog(commands.Cog):
             },
             "Bootlegger Thug": {
                 "description": "Bootleggers are individuals involved in the illegal production and distribution of alcohol during the Prohibition era. Thugs are enforcers and muscle for criminal organizations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665045438451732/bootlegger.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + STR × 2",
                 "credit_rating": "5–30",
@@ -2310,6 +2341,7 @@ class CthulhuCog(commands.Cog):
             },
             "Burglar": {
                 "description": "Burglars are criminals who specialize in breaking into and entering buildings with the intent to steal valuable items.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665689775808562/burglar.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "5–40",
@@ -2318,6 +2350,7 @@ class CthulhuCog(commands.Cog):
             },
             "Conman": {
                 "description": "Conmen are skilled manipulators who deceive others for financial gain. They use persuasion, charm, and deception to trick their victims.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665690514006187/conman.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "10–65",
@@ -2326,6 +2359,7 @@ class CthulhuCog(commands.Cog):
             },
             "Freelance Criminal": {
                 "description": "Freelance criminals operate on their own terms, pursuing various criminal activities without being tied to organized crime. They are often self-reliant and resourceful.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667933095100456/freelancecriminal.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or APP × 2)",
                 "credit_rating": "5–65",
@@ -2334,6 +2368,7 @@ class CthulhuCog(commands.Cog):
             },
             "Gun Moll": {
                 "description": "A gun moll is a female professional criminal associated with gangsters. She may serve as a partner, accomplice, or lover to male criminals.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669076659519529/gunmoll.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "10–80 (income is usually dependent on boyfriend’s income)",
@@ -2342,6 +2377,7 @@ class CthulhuCog(commands.Cog):
             },
             "Fence": {
                 "description": "Fences are criminals who deal in buying and selling stolen goods. They provide a market for stolen items, acting as intermediaries between thieves and buyers...",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667931144749118/fence.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "20–40",
@@ -2350,6 +2386,7 @@ class CthulhuCog(commands.Cog):
             },
             "Forger Counterfeiter": {
                 "description": "Forgers and counterfeits specialize in creating fake documents, art, or currency. They are skilled at replicating genuine items to deceive and profit.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665690769870900/counterfeiter.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–60",
@@ -2358,6 +2395,7 @@ class CthulhuCog(commands.Cog):
             },
             "Smuggler": {
                 "description": "Smugglers are individuals involved in the illegal transportation and trade of contraband goods across borders or past authorities.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676093398761612/smuggler.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "20–60",
@@ -2366,6 +2404,7 @@ class CthulhuCog(commands.Cog):
             },
             "Street Punk": {
                 "description": "Street punks are individuals known for their involvement in urban subcultures, often engaging in rebellious and anti-authoritarian behavior. They have a reputation for being tough and street-savvy.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676094262775818/streetpunk.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "3–10",
@@ -2374,6 +2413,7 @@ class CthulhuCog(commands.Cog):
             },
             "Cult Leader": {
                 "description": "Throughout its history, America has been a breeding ground for the emergence of new religions and belief systems. From the New England Transcendentalists to more recent examples like the Children of God and many others, the country has witnessed the rise of various religious movements. These movements are typically led by charismatic individuals who may genuinely believe in the doctrines they preach or are primarily motivated by financial gain and the acquisition of power.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148665691780681728/cultleader.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "30–60",
@@ -2382,6 +2422,7 @@ class CthulhuCog(commands.Cog):
             },
             "Deprogrammer": {
                 "description": "Deprogramming is a controversial practice involving efforts to convince or compel an individual to renounce their affiliation with a religious or social group, particularly when the person has joined what is perceived as a cult. Typically, deprogramming is initiated by concerned family members who may hire a deprogrammer to intervene, which can sometimes involve extreme measures like kidnapping. Once separated from the group, deprogrammers employ psychological techniques to help individuals sever their ties to the cult and its influence, a process often referred to as \"conditioning\". In less extreme cases, deprogrammers may work with individuals who have voluntarily left a cult, assisting them in the process of reintegration into mainstream society. These individuals often function as exit counselors, providing support and guidance to former cult members as they adjust to life outside the group.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667100940992552/deprogrammer.jpg",
                 "era":"Modern - Only available for modern-day game settings.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–50",
@@ -2390,6 +2431,7 @@ class CthulhuCog(commands.Cog):
             },
             "Designer": {
                 "description": "Designers are creative professionals who specialize in various fields, including fashion, furniture, graphics, consumer products, and more. They may choose to work independently as freelancers, collaborate with design houses, or be employed by businesses to contribute to the design of a wide range of products, processes, laws, or graphics. The specific design focus of an investigator may influence their skill set, so adjustments to their skills should be made accordingly to reflect their expertise.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667101243003051/designer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–60",
@@ -2398,7 +2440,8 @@ class CthulhuCog(commands.Cog):
             },
             "Dilettante": {
                 "description": "Dilettantes are individuals who do not need to work for a living and are financially supported by inheritances, trust funds, or other sources of income. They typically have significant wealth that requires the expertise of financial advisors to manage. While they are often well-educated, they may not have achieved significant accomplishments in any particular field. Their financial independence allows them to express eccentricities and outspoken views. In the 1920s, some dilettantes might have been known as flappers or sheiks, although not all partygoers needed to be wealthy. In modern times, the term \"hipster\" may also be fitting. Dilettantes have had the opportunity to develop charm and sophistication, but their interests and character may reveal more about their true nature and passions.",
-               "era":"Lovecraftian - Important in Lovecraft’s stories.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667101482061895/dilettante.jpg",
+                "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "50–99",
                 "suggested_contacts": "Variable, but usually people of a similar background and tastes, fraternal organizations, bohemian circles, high society at large.",
@@ -2406,6 +2449,7 @@ class CthulhuCog(commands.Cog):
             },
             "Diver": {
                 "description": "Divers can be found in a range of professions, including the military, law enforcement, sponge gathering, salvage operations, conservation efforts, and treasure hunting. They possess expertise in underwater activities and frequently have connections within maritime and related sectors.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667101721133197/diver.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "9–30",
@@ -2414,6 +2458,7 @@ class CthulhuCog(commands.Cog):
             },
             "Doctor of Medicine": {
                 "description": "Doctors of Medicine are healthcare specialists with expertise in various fields, including general practice, surgery, psychiatry, or medical research. Their primary objectives are to provide medical care to patients, establish professional reputations, and contribute to a well-functioning society. They may practice medicine in rural clinics, urban hospitals, or serve as medical examiners.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667101943451658/doctor.jpg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–80",
@@ -2422,6 +2467,7 @@ class CthulhuCog(commands.Cog):
             },
             "Drifter": {
                 "description": "Drifters are individuals who embrace a nomadic and itinerant way of life, frequently journeying from one location to another. Their choice of this lifestyle can be driven by a longing for independence, philosophical beliefs, or various personal factors. Drifters possess skills that are well-suited for a mobile and survival-oriented existence.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667102190899250/drifter.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2 or STR × 2)",
                 "credit_rating": "0–5",
@@ -2430,6 +2476,7 @@ class CthulhuCog(commands.Cog):
             },
             "Chauffeur": {
                 "description": "A chauffeur is someone who is typically employed either directly by an individual or a company, or they may work for an agency that provides chauffeur services for single occasions or on an ongoing basis. Chauffeurs often cater to affluent businesspeople and may have ties to political circles.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669077615824976/chauffeur.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "10–40",
@@ -2438,6 +2485,7 @@ class CthulhuCog(commands.Cog):
             },
             "Driver": {
                 "description": "Professional drivers can be employed by companies, individuals, or may even operate their own vehicles. This category encompasses taxi drivers and drivers who are skilled at maneuvering through diverse environments. Drivers often have connections in various industries, law enforcement, and the local community.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667102446768170/driver.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–20",
@@ -2446,6 +2494,7 @@ class CthulhuCog(commands.Cog):
             },
             "Taxi driver": {
                 "description": "Taxi drivers offer transportation services to passengers, typically working for taxi companies or as self-employed drivers. They navigate city streets and interact with a diverse range of customers. Taxi drivers often have a deep understanding of the local street network and may have memorable encounters with passengers.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676095143579778/taxidriver.jpg",
                 "era":"Any",
                 "skill_points": "EDU x 2 + DEX x 2",
                 "credit_rating": "9–30",
@@ -2454,6 +2503,7 @@ class CthulhuCog(commands.Cog):
             },
             "Editor": {
                 "description": "Editors work in the news industry, assigning stories, writing editorials, and dealing with deadlines. They play a crucial role in shaping content and meeting journalistic standards. Editors often have contacts in the news industry, local government, and specialized fields.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667102681632778/editor.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2462,6 +2512,7 @@ class CthulhuCog(commands.Cog):
             },
             "Elected Official": {
                 "description": "Editors are integral to the news industry, responsible for assigning stories, crafting editorials, and managing tight deadlines. Their role is pivotal in shaping content and upholding journalistic standards. Editors typically have a network of contacts within the news industry, local government, and specialized fields, aiding them in their work.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667102916509746/electedofficial.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "50–90",
@@ -2470,6 +2521,7 @@ class CthulhuCog(commands.Cog):
             },
             "Engineer": {
                 "description": "Engineers are experts in mechanical or electrical systems, commonly working in civilian enterprises or the military. They leverage their scientific expertise and ingenuity to address technical challenges. Engineers typically have connections in the business world, military circles, and related fields, enabling them to collaborate effectively on complex projects.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667103176577074/engineer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–60",
@@ -2478,6 +2530,7 @@ class CthulhuCog(commands.Cog):
             },
             "Entertainer": {
                 "description": "This occupation encompasses a wide range of roles, including clowns, singers, dancers, comedians, musicians, and more, all of whom perform in front of live audiences. Entertainers thrive on the spotlight and the applause of their fans, and their professions gained significant respect and recognition with the rise of Hollywood stars in the 1920s.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667930058428497/entertainer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "9–70",
@@ -2486,6 +2539,7 @@ class CthulhuCog(commands.Cog):
             },
             "Explorer": {
                 "description": "Explorers in the early twentieth century pursued careers dedicated to exploring uncharted regions of the world. They frequently obtained financial support through grants, donations, and contracts to meticulously document their discoveries through various media. Despite the advancements of the era, large portions of the globe remained unexplored, encompassing regions in Africa, South America, Australia, deserts, and the remote interiors of Asia, offering these explorers a wealth of uncharted territory to traverse and document.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667930326859797/explorer.jpg",
                 "era":"Classic - 1920s period.",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2 or STR × 2)",
                 "credit_rating": "55–80",
@@ -2494,6 +2548,7 @@ class CthulhuCog(commands.Cog):
             },
             "Farmer": {
                 "description": "Farmers are dedicated agricultural laborers responsible for cultivating crops or raising livestock. They may either own the land they work on or be employed by larger agricultural operations. Farming is a physically demanding occupation that requires a strong affinity for outdoor labor. During the 1920s, independent farmers often contended with competition from corporate agricultural enterprises and the volatile nature of commodity markets, which could pose significant challenges to their livelihoods.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667930574336010/farmer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2502,6 +2557,7 @@ class CthulhuCog(commands.Cog):
             },
             "Federal Agent": {
                 "description": "Federal agents are law enforcement officers employed by various federal agencies, serving in both uniformed and undercover capacities. They play a crucial role in enforcing federal laws and conducting investigations into criminal activities that fall under federal jurisdiction. Federal agents often possess extensive networks of contacts within law enforcement, government agencies, and organized crime, which they may leverage in the course of their duties.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667930830180472/federalagent.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–40",
@@ -2510,6 +2566,7 @@ class CthulhuCog(commands.Cog):
             },
             "Firefighter": {
                 "description": "Firefighters are public servants dedicated to preventing and extinguishing fires. They typically work in shifts and reside at fire stations, ready to respond to emergencies at a moment's notice. Firefighting organizations have a hierarchical structure, offering opportunities for career advancement through promotions. Firefighters may have connections within various sectors, including civic works, medical services, and law enforcement, as they collaborate closely with these entities during emergency situations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667931882946681/firefighter.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2518,6 +2575,7 @@ class CthulhuCog(commands.Cog):
             },
             "Foreign Correspondent": {
                 "description": "Foreign correspondents are highly regarded journalists specializing in global news coverage. They are employed by prestigious news organizations and report on international events using various media formats. Foreign correspondents frequently cover significant topics such as natural disasters, political turmoil, and armed conflicts occurring across the world. Their work plays a crucial role in providing a comprehensive understanding of global events to the public.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667932390469663/foreigncorrespondent.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–40",
@@ -2526,6 +2584,7 @@ class CthulhuCog(commands.Cog):
             },
             "Forensic Surgeon": {
                 "description": "Forensic surgeons are skilled medical professionals who perform autopsies to determine the causes of death. Their expertise is vital in assisting law enforcement investigations and providing valuable insights in criminal cases. These professionals often serve as expert witnesses in legal proceedings, providing testimony based on their findings. Forensic surgeons maintain connections with laboratories, law enforcement agencies, and the broader medical community to facilitate their work in unraveling the mysteries of death and assisting the justice system.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148667932692451379/forensicsurgeon.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "40–60",
@@ -2534,6 +2593,7 @@ class CthulhuCog(commands.Cog):
             },
             "Gambler": {
                 "description": "Gamblers are individuals who embrace risk and excitement in games of chance, whether at racetracks, casinos, or illicit gambling dens. Their lifestyle revolves around the thrill of betting and wagering, often leading to high-stakes situations. Gamblers frequently establish connections with bookmakers, those involved in organized crime, and the street-level gambling scene to fuel their passion for games of chance and potentially lucrative opportunities.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669075980034181/gambler.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "8–50",
@@ -2542,6 +2602,7 @@ class CthulhuCog(commands.Cog):
             },
             "Gangster Boss": {
                 "description": "Gangster bosses are the masterminds behind criminal organizations, orchestrating deals and supervising a wide range of illegal activities. They command a network of underlings and associates who carry out their directives. The era of gangsters reached its zenith during the 1920s when they exercised substantial control over various criminal enterprises, including bootlegging, gambling, and organized crime. These bosses are often known for their ruthless tactics and cunning strategies to maintain their power and influence.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669076206538802/gangster.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "60–95",
@@ -2550,6 +2611,7 @@ class CthulhuCog(commands.Cog):
             },
             "Gangster Underling": {
                 "description": "Gangster underlings are the loyal members of a criminal organization who work directly under the gangster boss, each overseeing specific areas of responsibility. They are deeply involved in various illegal activities, which can include protection rackets, illegal gambling operations, and more. In modern times, gangster bosses have shifted their focus to lucrative criminal enterprises such as the drug trade, expanding their criminal influence and power. These underlings are known for their unwavering loyalty to the boss and their commitment to maintaining the organization's operations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669076206538802/gangster.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–20",
@@ -2558,6 +2620,7 @@ class CthulhuCog(commands.Cog):
             },
             "Gentleman Lady": {
                 "description": "A gentleman or lady is characterized by their impeccable manners, courtesy, and refined demeanor, typically belonging to the upper class. During the 1920s, individuals of this social class often maintained large households with servants and owned both city and country residences. In this social stratum, family status and heritage often held greater importance than mere wealth or financial status.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669076441403505/gentleman.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "40–90",
@@ -2566,6 +2629,7 @@ class CthulhuCog(commands.Cog):
             },
             "Hobo": {
                 "description": "Hobos are itinerant laborers who lead a nomadic life, journeying from one town to another, frequently hopping onto freight trains. They are destitute wanderers, continually on the move and encountering risks posed by law enforcement, local communities, and railroad personnel. Hobos maintain connections with fellow travelers of their kind and occasionally establish rapport with amicable railroad security personnel.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669077146046494/hobo.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "0–5",
@@ -2574,6 +2638,7 @@ class CthulhuCog(commands.Cog):
             },
             "Hospital Orderly": {
                 "description": "Hospital orderlies undertake a range of responsibilities within medical institutions, such as cleaning, patient transportation, and miscellaneous tasks. They maintain connections with colleagues in the healthcare field and possess access to medications and medical records.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669077355765820/hospitalorderly.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + STR × 2",
                 "credit_rating": "6–15",
@@ -2582,6 +2647,7 @@ class CthulhuCog(commands.Cog):
             },
             "Investigative Journalist": {
                 "description": "Investigative journalists are dedicated reporters who cover a wide range of subjects and events. They frequently work independently to uncover corruption and hidden motives, employing investigative techniques akin to those used by private detectives, sometimes resorting to subterfuge to obtain crucial information.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669077842300978/investigativejournalist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2590,6 +2656,7 @@ class CthulhuCog(commands.Cog):
             },
             "Reporter": {
                 "description": "Reporters are skilled communicators who use their words to relay and provide commentary on contemporary events. They are typically employed by a variety of media organizations and excel in sourcing stories through interviews with eyewitnesses and meticulous record checks. On occasion, reporters may employ subterfuge to acquire critical information for their stories.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675497815978034/reporter.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2598,6 +2665,7 @@ class CthulhuCog(commands.Cog):
             },
             "Judge": {
                 "description": "Judges are legal professionals who oversee and make rulings in legal proceedings, whether independently or as part of a judicial panel. They often hold their positions through appointments or elections and are typically licensed attorneys. Judges maintain connections within the legal field and may, in some cases, have associations with organized crime.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148678027341992058/judge.jpeg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "50–80",
@@ -2606,6 +2674,7 @@ class CthulhuCog(commands.Cog):
             },
             "Laboratory Assistant": {
                 "description": "Laboratory assistants are valuable members of scientific teams who operate in laboratory settings. They execute diverse tasks, often under the guidance of lead scientists. Their responsibilities vary according to the specific scientific discipline and may encompass duties such as conducting experiments, recording and analyzing results, preparing specimens, and more.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148669078102351882/laboratoryassistant.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2614,6 +2683,7 @@ class CthulhuCog(commands.Cog):
             },
             "Laborer Unskilled": {
                 "description": "Unskilled laborers form a vital segment of the workforce, engaging in various roles such as factory workers and road crew members, among others. While their roles may not require specific skills or qualifications, they often develop expertise in operating power tools and machinery relevant to their fields of work. Unskilled laborers typically have connections within their respective industries.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672910551154819/laborer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2622,6 +2692,7 @@ class CthulhuCog(commands.Cog):
             },
             "Lumberjack": {
                 "description": "Lumberjacks play a crucial role in the forestry industry, specializing in activities like felling trees and managing logs. They are well-connected within their field, often maintaining contacts with fellow forestry workers, wilderness guides, and conservationists.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672911704588308/lumberjack.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2630,6 +2701,7 @@ class CthulhuCog(commands.Cog):
             },
             "Miner": {
                 "description": "Miners are professionals who operate in fields like mining, where they engage in the extraction of valuable minerals and ores. They frequently maintain connections with union officials and political organizations relevant to their industry.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672913155833896/miner.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2638,6 +2710,7 @@ class CthulhuCog(commands.Cog):
             },
             "Lawyer": {
                 "description": "Lawyers are legal professionals who offer legal guidance, representing clients and advocating for legal remedies. They may be retained by clients or appointed by the court, and they typically have connections within the legal field, including potential associations with organized crime.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672910777663559/lawyer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–80",
@@ -2646,6 +2719,7 @@ class CthulhuCog(commands.Cog):
             },
             "Librarian": {
                 "description": "Librarians are responsible for the administration and organization of libraries, including cataloging and curating the collection. They often have connections with booksellers, community organizations, and specialized researchers in their field.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672911478116463/librarian.jpg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–35",
@@ -2654,6 +2728,7 @@ class CthulhuCog(commands.Cog):
             },
              "Mechanic": {
                 "description": "Mechanics and skilled tradespeople encompass a range of professions that demand specialized training and expertise. This category includes carpenters, plumbers, electricians, mechanics, and others with skills in various trades. Many of them are part of trade unions and have valuable connections within their respective fields.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672912547663882/mechanic.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40",
@@ -2662,6 +2737,7 @@ class CthulhuCog(commands.Cog):
             },
             "Military Officer": {
                 "description": "Military officers hold commanding positions in the armed forces, typically requiring advanced education and training. Many of them have graduated from military academies and undergone rigorous training. These officers maintain important contacts within the military and federal government.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672912845439066/militaryofficer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–70",
@@ -2670,6 +2746,7 @@ class CthulhuCog(commands.Cog):
             },
             "Missionary": {
                 "description": "Missionaries are individuals who actively work to spread religious teachings, often in remote or urban areas. They can be affiliated with churches or work independently. Missionaries represent various faiths and can be found all over the world.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672913462022225/missionary.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "0–30",
@@ -2678,6 +2755,7 @@ class CthulhuCog(commands.Cog):
             },
             "Mountain Climber": {
                 "description": "Mountain climbers are individuals who pursue the challenge of ascending peaks as a sport or profession. They thrive on the physical and mental challenges of climbing in various environments. Mountain climbers often have connections within the climbing community, with rescue services, and potential sponsors to support their expeditions.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148672913826922608/mountainclimber.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "30–60",
@@ -2686,6 +2764,7 @@ class CthulhuCog(commands.Cog):
             },
             "Museum Curator": {
                 "description": "Museum curators are responsible for the management and curation of exhibits and collections in museums, often specializing in specific topics or areas of interest. They maintain connections with local universities, scholars, and patrons to ensure the museum's collections and exhibitions are well-maintained and relevant to the community.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674792136900658/museumcurator.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2694,6 +2773,7 @@ class CthulhuCog(commands.Cog):
             },
             "Musician": {
                 "description": "Musicians are individuals who perform either individually or as part of musical groups, showcasing their skills with various instruments or vocal talents. While achieving success in the music industry can be challenging, some musicians are fortunate enough to secure regular work or even attain wealth through their exceptional talent and dedication to their craft.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674792455688252/musician.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "9–30",
@@ -2702,6 +2782,7 @@ class CthulhuCog(commands.Cog):
             },
             "Nurse": {
                 "description": "Nurses are essential healthcare professionals who offer vital medical assistance in hospitals, nursing homes, medical practices, and various healthcare settings. They play a crucial role in patient care, aiding individuals with a wide range of health-related tasks. Additionally, nurses often have extensive networks within the healthcare field, including connections with other healthcare professionals and organizations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674793298739272/nurse.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2710,6 +2791,7 @@ class CthulhuCog(commands.Cog):
             },
             "Occultist": {
                 "description": "Occultists are dedicated individuals who immerse themselves in the study of esoteric secrets, paranormal phenomena, and arcane magic. Their primary goal is to unravel the mysteries of the supernatural world and understand its hidden forces and energies. In their pursuit of knowledge, occultists often delve into various magical theories and practices, seeking to unlock the potential of paranormal abilities. Their expertise in the occult may lead them to uncover extraordinary insights and abilities beyond the comprehension of ordinary individuals.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148679138249556009/ocultist.jpeg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–65",
@@ -2718,6 +2800,7 @@ class CthulhuCog(commands.Cog):
             },
             "Outdoorsman Woman": {
                 "description": "Outdoorsmen and women are individuals highly skilled in the art of surviving and thriving in the wilderness. Their expertise allows them to navigate and adapt to the challenges of the great outdoors, making them valuable guides, rangers, or even those who choose to live a self-sufficient lifestyle in harmony with nature. These individuals possess a deep understanding of wilderness survival techniques, including shelter building, navigation, foraging, and wildlife knowledge, making them well-equipped to handle the rigors of life in untamed environments.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674793881739295/outdoorsman.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "5–20",
@@ -2726,6 +2809,7 @@ class CthulhuCog(commands.Cog):
             },
             "Parapsychologist": {
                 "description": "Parapsychologists are dedicated professionals who specialize in the study and investigation of paranormal phenomena. They employ various scientific and technological methods to gather evidence and gain insights into the unexplained. These experts focus on areas such as extrasensory perception, telekinesis, and hauntings, seeking to unravel the mysteries of the supernatural world and better understand the boundaries of human consciousness. Their work often involves conducting controlled experiments, analyzing data, and exploring the realms of the unknown in their quest for answers to paranormal phenomena.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674800508747876/parapsychologist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2734,6 +2818,7 @@ class CthulhuCog(commands.Cog):
             },
             "Pharmacist": {
                 "description": "Pharmacists are licensed professionals with expertise in dispensing medications and ensuring their safe and effective use. They can be found working in various settings, including hospitals, drug stores, and dispensaries. Pharmacists have access to an extensive inventory of chemicals and drugs, and their responsibilities encompass verifying prescriptions, counseling patients on medication usage, and collaborating with healthcare providers to optimize patient care. These professionals play a crucial role in the healthcare system, combining their knowledge of pharmaceuticals with a commitment to patient well-being.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674800986882068/pharmacist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "35–75",
@@ -2742,6 +2827,7 @@ class CthulhuCog(commands.Cog):
             },
             "Photographer": {
                 "description": "Photographers are skilled individuals who employ various techniques to capture captivating images. Their work spans diverse fields, including art, journalism, wildlife conservation, and more. Photographers have the capacity to achieve fame and recognition through their specialization, mastering the art of visual storytelling and preserving moments in time through their lens. Whether they're documenting history, showcasing the beauty of the natural world, or expressing their creativity through visual artistry, photographers play a vital role in shaping how we perceive and remember the world around us.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674801389555772/photographer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2750,6 +2836,7 @@ class CthulhuCog(commands.Cog):
             },
             "Photojournalist": {
                 "description": "Photojournalists are dedicated reporters who utilize the power of photography to complement their news stories. Operating primarily within industries like news and film, these professionals are tasked with the crucial responsibility of covering events and generating compelling visual content for publication. Through their lenses, they capture the essence of significant moments, enabling the public to gain a deeper understanding of the world's happenings. Whether documenting breaking news, investigative reports, or human interest stories, photojournalists provide a vital visual narrative that enhances our comprehension of current events.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674801389555772/photographer.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–30",
@@ -2758,6 +2845,7 @@ class CthulhuCog(commands.Cog):
             },
             "Pilot": {
                 "description": "Pilots are skilled aviators responsible for operating aircraft across various sectors, encompassing commercial airlines, corporate aviation, and specialized roles like stunt flying or military aviation. These professionals possess the expertise to safely navigate and control aircraft, ensuring the smooth transport of passengers, cargo, or the execution of specific aerial maneuvers. Whether guiding commercial flights to distant destinations, performing daring aerobatics, or conducting strategic military missions, pilots play a crucial role in the world of aviation, mastering the skies with precision and finesse.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674801695735878/pilot.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + DEX × 2",
                 "credit_rating": "20–70",
@@ -2766,6 +2854,7 @@ class CthulhuCog(commands.Cog):
             },
             "Aviator": {
                 "description": "Aviators are fearless daredevils of the skies, renowned for their breathtaking aerial stunts and captivating performances at carnivals, air races, and similar events. These skilled pilots possess the audacity to push the boundaries of aviation, executing jaw-dropping maneuvers that leave audiences in awe. Aviators may also find themselves in crucial roles such as test pilots, fearlessly pushing new aircraft to their limits to ensure safety and performance. With some aviators hailing from military backgrounds, their expertise in the art of flight extends to both entertainment and practical applications in the world of aviation.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674801695735878/pilot.jpg",
                 "era":"Classic - 1920s period.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–60",
@@ -2774,6 +2863,7 @@ class CthulhuCog(commands.Cog):
             },
             "Police Detective": {
                 "description": "Police detectives are skilled investigators dedicated to solving complex crimes and unraveling the mysteries that shroud major felonies. These professionals meticulously gather evidence, question witnesses, and meticulously piece together the puzzle of unlawful activities. Their work often involves close collaboration with uniformed patrol officers, as they strive to build solid cases for criminal prosecution, ensuring that justice prevails. Police detectives are the frontline defenders of law and order, committed to upholding the principles of justice and safeguarding their communities from criminal elements.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148680050636509214/PoliceDetective.jpeg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–50",
@@ -2782,6 +2872,7 @@ class CthulhuCog(commands.Cog):
             },
             "Uniformed Police Officer": {
                 "description": "Uniformed police officers are the guardians of our communities, working diligently in cities, towns, and various law enforcement agencies. They serve on the frontlines, patrolling our streets on foot, in vehicles, or stationed at desks, all with the overarching goal of maintaining public safety and upholding the laws that govern our society. These dedicated individuals are the visible symbols of law enforcement, ensuring that our neighborhoods remain secure and our citizens protected. They are committed to the well-being of their communities, often putting themselves in harm's way to ensure that justice is served.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674802081615972/policeofficer.jpg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2790,6 +2881,7 @@ class CthulhuCog(commands.Cog):
             },
             "Private Investigator": {
                 "description": "Private investigators are the unsung heroes of the investigative world, using their skills to gather critical information and evidence for private clients. Whether it's untangling complex civil cases, locating elusive individuals, or providing essential support in criminal defense, these professionals play a pivotal role in the pursuit of truth and justice.O perating within the boundaries of the law and often requiring licensing, private investigators are masters of surveillance, research, and analysis. They employ a wide array of techniques and tools to uncover hidden facts and connect the dots. Their work can make a substantial difference in legal proceedings, personal matters, and business affairs, offering invaluable insights that can shape the course of action. With determination, resourcefulness, and a commitment to their clients' best interests, private investigators are indispensable allies for those in need of specialized investigative services. They stand ready to navigate the labyrinth of information and secrets, shedding light on the most challenging and enigmatic situations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148674802425544784/privateinvestigator.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2798,6 +2890,7 @@ class CthulhuCog(commands.Cog):
             },
             "Professor": {
                 "description": "Professors are esteemed academics who play a pivotal role in the world of higher education. Typically employed by colleges and universities, these individuals are highly educated and often hold a Ph.D. in their respective fields. Their expertise is not confined to the ivory towers of academia, as many professors also find themselves working in research and development roles for corporations and institutions. These dedicated educators are responsible for imparting knowledge, conducting research, and mentoring the next generation of thinkers and innovators. They excel in their chosen disciplines, contributing to the advancement of human understanding in a wide range of subjects, from the sciences and humanities to business and the arts. With a passion for learning and a commitment to intellectual growth, professors serve as beacons of wisdom and guidance, shaping the minds of students and pushing the boundaries of knowledge through their research. Their work extends far beyond the classroom, influencing the trajectory of academic fields and industries alike.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675496503156788/profesor.jpg",
                 "era":"Lovecraftian - Important in Lovecraft’s stories.",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–70",
@@ -2806,6 +2899,7 @@ class CthulhuCog(commands.Cog):
             },
             "Prospector": {
                 "description": "Prospectors are intrepid individuals who embark on quests to discover valuable natural resources such as gold, oil, minerals, and more. While the exhilarating days of the Gold Rush may be a thing of the past, these modern-day treasure hunters continue to seek their fortunes through independent exploration. Armed with geological knowledge, geological tools, and a keen eye for potential deposits, prospectors scour remote and often unforgiving landscapes in the hope of striking it rich. Their quest for valuable resources can take them to remote wilderness areas, deserts, mountains, and even beneath the Earth's surface. While the challenges they face may be daunting, the potential rewards can be substantial. Prospectors play a vital role in the discovery and development of valuable resources, contributing to the global economy and the advancement of industries that rely on these raw materials. Their work demands a unique blend of scientific expertise, perseverance, and a touch of entrepreneurial spirit as they navigate the ever-changing terrain of resource exploration.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675496759021578/prospector.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "0–10",
@@ -2814,6 +2908,7 @@ class CthulhuCog(commands.Cog):
             },
             "Prostitute": {
                 "description": "Prostitutes engage in various forms of sex work, often driven by circumstances or coercion. They may work independently or under the control of pimps. While some enter the profession as a means of survival or to support themselves and their families, others are tragically forced into this line of work against their will.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675497027440640/prostitute.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "5–50",
@@ -2822,6 +2917,7 @@ class CthulhuCog(commands.Cog):
             },
             "Psychiatrist": {
                 "description": "Psychiatrists are medical professionals who specialize in the diagnosis and treatment of mental disorders. Their expertise encompasses various therapeutic approaches, including the use of psychopharmacology and other therapeutic techniques. Psychiatrists play a crucial role in addressing the complex and diverse mental health needs of their patients.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675497279107112/psychiatrist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "30–80",
@@ -2830,6 +2926,7 @@ class CthulhuCog(commands.Cog):
             },
             "Psychologist": {
                 "description": "Psychologists are professionals who investigate and analyze human behavior, often focusing on specific areas such as psychotherapy, research, or education. Unlike psychiatrists, psychologists are typically not medical doctors but rather experts in understanding the intricacies of human cognition and behavior. They contribute significantly to the fields of psychology and mental health through their research, therapy, and educational roles.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675497534967928/psychologist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "10–40",
@@ -2838,6 +2935,7 @@ class CthulhuCog(commands.Cog):
             },
             "Researcher": {
                 "description": "Researchers are individuals engaged in research activities, which can encompass a wide range of fields, including but not limited to astronomy, physics, and chemistry. They contribute to the advancement of knowledge in their respective areas, whether in academic or private sector settings. Researchers often conduct experiments, gather data, and analyze information to make new discoveries and expand our understanding of the world. Their work plays a vital role in scientific and technological progress.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675498071838770/researcher.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–30",
@@ -2846,6 +2944,7 @@ class CthulhuCog(commands.Cog):
             },
             "Sailor Naval": {
                 "description": "Naval sailors are dedicated military personnel who undergo training and serve in various roles within the navy. These roles encompass a wide range of responsibilities, including mechanics, radio operators, and many others. Naval sailors are essential to the operation of naval vessels, ensuring their proper functioning and readiness for various missions and tasks. Their training and expertise contribute to the strength and effectiveness of their respective naval forces.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148680529047195678/sailornaval.jpeg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
@@ -2854,6 +2953,7 @@ class CthulhuCog(commands.Cog):
             },
             "Sailor Commercial": {
                 "description": "Commercial sailors are individuals employed in various maritime roles, including working on fishing vessels, charter boats, or haulage tankers. While many engage in legitimate maritime activities, some may be involved in illegal undertakings such as smuggling. These sailors navigate the waters to conduct their jobs, whether it's to catch fish, transport cargo, or provide recreational services to passengers. Their roles can vary widely, but they all play a part in the complex and diverse world of maritime operations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675498315091978/sailor.jpg",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "20–40",
                 "suggested_contacts": "Coast Guard, smugglers, organized crime.",
@@ -2861,6 +2961,7 @@ class CthulhuCog(commands.Cog):
             },
             "Salesperson": {
                 "description": "Salespeople are professionals who play a crucial role in promoting and selling goods or services on behalf of businesses. Their responsibilities often involve interacting with potential clients, presenting products or services, and closing deals to generate revenue for their companies. Salespeople can work in various settings, such as traveling to meet clients in person or conducting sales activities from office environments, which may include making phone calls or utilizing digital communication methods. Their ability to effectively communicate and persuade potential customers is essential for achieving sales targets and contributing to a company's success.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675498566758430/salesperson.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + APP × 2",
                 "credit_rating": "9–40",
@@ -2869,6 +2970,7 @@ class CthulhuCog(commands.Cog):
             },
             "Scientist": {
                 "description": "Scientists are professionals dedicated to the pursuit of knowledge and advancement in various fields through research and experimentation. They contribute to the expansion of human understanding and often find employment in both academic institutions and private-sector businesses. Whether they work in universities, research institutions, or corporate settings, scientists play a pivotal role in pushing the boundaries of human knowledge and contributing to innovations that can benefit society as a whole. Their work involves conducting experiments, gathering data, analyzing results, and drawing conclusions to further scientific understanding and solve complex problems in their respective disciplines.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148675498990391418/scientist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–50",
@@ -2877,6 +2979,7 @@ class CthulhuCog(commands.Cog):
             },
             "Secretary": {
                 "description": "Secretaries are professionals who play a crucial role in providing communication and organizational support to executives and managers within a business or organization. They serve as the backbone of administrative operations, ensuring that information flows smoothly and tasks are efficiently managed. Secretaries often have valuable insights into the inner workings of the business, as they are responsible for handling correspondence, scheduling meetings, maintaining records, and coordinating various administrative tasks. Their attention to detail and organizational skills contribute to the overall efficiency and effectiveness of the office or department they serve.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676092639580180/secretary.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or APP × 2)",
                 "credit_rating": "9–30",
@@ -2885,6 +2988,7 @@ class CthulhuCog(commands.Cog):
             },
             "Shopkeeper": {
                 "description": "Shopkeepers are individuals who own and oversee the daily operations of small shops, market stalls, or restaurants. Typically, they are self-employed entrepreneurs who may also run family businesses. Shopkeepers play a vital role in their communities by providing goods and services to local residents and visitors. They are responsible for various aspects of their businesses, including inventory management, customer service, financial transactions, and ensuring the smooth functioning of their establishments. Shopkeepers often have a deep understanding of their products and customers, contributing to the success and sustainability of their businesses.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676092975140925/shopkeeper.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "20–40",
@@ -2893,6 +2997,8 @@ class CthulhuCog(commands.Cog):
             },
             "Soldier Marine": {
                 "description": "Soldiers and Marines are dedicated individuals who serve as enlisted personnel in the Army and Marines. They undergo rigorous training to prepare for various roles, which can include combat and non-combat positions. These servicemembers play a crucial role in ensuring the security and defense of their respective countries. They may be deployed in various domestic and international operations, and their commitment to duty is essential to the success of their units and missions. Whether on the frontlines or in support roles, soldiers and Marines demonstrate unwavering dedication to their military service.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676093675589732/soldier.jpg",
+                "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "9–30",
                 "suggested_contacts": "Military, veterans associations.",
@@ -2900,6 +3006,7 @@ class CthulhuCog(commands.Cog):
             },
             "Spy": {
                 "description": "Spies are covert operatives employed by intelligence agencies to operate undercover, gathering critical information and performing various clandestine missions. These skilled individuals often assume deep cover identities, allowing them to blend seamlessly into their surroundings while carrying out espionage activities. Their work is shrouded in secrecy, and they are trained in various espionage techniques, including surveillance, code-breaking, and counterintelligence. Spies play a vital role in national security, working tirelessly to protect their country's interests by acquiring valuable intelligence and thwarting potential threats.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676093998546954/spy.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "20–60",
@@ -2908,6 +3015,7 @@ class CthulhuCog(commands.Cog):
             },
             "Student Intern": {
                 "description": "Students or interns are individuals who are typically enrolled in educational institutions or undergoing on-the-job training. They often work in exchange for minimal compensation or academic credit. This period of learning and skill development is crucial for their future careers, providing practical experience and insights into their chosen fields. Students and interns can be found in various industries, from business and healthcare to technology and the arts, where they gain valuable knowledge and hands-on training to prepare them for their professional journeys.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676094623502558/student.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "5–10",
@@ -2916,6 +3024,7 @@ class CthulhuCog(commands.Cog):
             },
             "Stuntman": {
                 "description": "Stunt performers, both men and women, are professionals who specialize in executing daring and hazardous stunts within the film and television industry. Their primary role involves simulating dangerous situations, such as falls, crashes, and other high-impact scenarios, to create thrilling and realistic action sequences for entertainment purposes. Stunt performers are highly trained and skilled individuals who prioritize safety while delivering thrilling on-screen performances that captivate audiences.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676094900322334/stuntman.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (DEX × 2 or STR × 2)",
                 "credit_rating": "10–50",
@@ -2924,6 +3033,7 @@ class CthulhuCog(commands.Cog):
             },
             "Tribe Member": {
                 "description": "Members of tribes are part of close-knit communities defined by shared kinship ties and traditional customs. Within these tribal societies, concepts like personal honor, praise, and the pursuit of vengeance hold significant importance. These values shape the dynamics of tribal life, fostering strong bonds among members while also influencing their interactions with other tribes and outsiders.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676095382671431/tribemember.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (STR × 2 or DEX × 2)",
                 "credit_rating": "0–15",
@@ -2932,6 +3042,7 @@ class CthulhuCog(commands.Cog):
             },
             "Undertaker": {
                 "description": "Undertakers, alternatively referred to as morticians or funeral directors, are licensed professionals responsible for overseeing various aspects of funeral services, including burials or cremations.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148681103016734770/undertaker.jpeg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–40",
@@ -2940,6 +3051,7 @@ class CthulhuCog(commands.Cog):
             },
             "Union Activist": {
                 "description": "Union activists take on the responsibility of organizing and leading labor unions across different industries. They often encounter challenges from businesses, politicians, and various interest groups.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676857248624713/unionactivist.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "5–30",
@@ -2948,6 +3060,7 @@ class CthulhuCog(commands.Cog):
             },
             "Waitress Waiter": {
                 "description": "Waitresses and waiters perform the role of serving customers in dining or drinking establishments. They earn tips through the provision of excellent service and by establishing rapport with patrons.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676857483497563/waitress.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or DEX × 2)",
                 "credit_rating": "9–20",
@@ -2956,6 +3069,7 @@ class CthulhuCog(commands.Cog):
             },
             "Clerk Executive": {
                 "description": "This job category spans a wide spectrum, encompassing roles from entry-level clerks to mid-level and senior managers. These positions can be found in businesses of various sizes, ranging from small, locally-owned enterprises to large national or multinational corporations. Clerks often face the challenge of relatively low wages and routine tasks, but those with recognized talent may be considered for future promotions. Middle and senior managers, on the other hand, command higher salaries and carry greater responsibilities, including influencing daily business operations. While unmarried individuals working in white-collar positions are not uncommon, many executives in these roles prioritize family life, with a spouse at home and children – often fulfilling societal expectations in this regard.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676857760317520/whitecollarworker.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–20",
@@ -2964,6 +3078,7 @@ class CthulhuCog(commands.Cog):
             },
              "Middle Senior Manager": {
                 "description": "These roles span a wide range, from entry-level white-collar positions, such as clerks, to mid-level and senior managers. They can be found in businesses of varying sizes, including small to medium-sized locally-owned enterprises, as well as large national or multinational corporations. Clerks often contend with low salaries and mundane tasks, with the hope that those who exhibit talent may eventually be considered for promotion. In contrast, middle and senior managers command higher incomes, carry more significant responsibilities, and have a greater say in the day-to-day management of the business. While unmarried white-collar workers are not uncommon, a significant portion of executive-level professionals prioritize family life. Many of them have spouses at home a",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676857760317520/whitecollarworker.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "20–80",
@@ -2972,6 +3087,7 @@ class CthulhuCog(commands.Cog):
             },
             "Zealot": {
                 "description": "Zealots are fervent and driven individuals who are deeply committed to their beliefs. They often pursue their causes with unwavering passion and can be highly dedicated to effecting change through a variety of methods.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676858108457054/zealot.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 2 + (APP × 2 or POW × 2)",
                 "credit_rating": "0–30",
@@ -2980,6 +3096,7 @@ class CthulhuCog(commands.Cog):
             },
             "Zookeeper": {
                 "description": "Zookeepers are responsible for the care and welfare of animals in zoos, taking care of their feeding, health, and overall well-being. Some zookeepers may specialize in specific breeds or types of animals to provide specialized care.",
+                "link":"https://cdn.discordapp.com/attachments/804680712954445834/1148676858372690022/zookeeper.jpg",
                 "era":"Any",
                 "skill_points": "EDU × 4",
                 "credit_rating": "9–40",
@@ -2989,6 +3106,9 @@ class CthulhuCog(commands.Cog):
                     # Přidejte další povolání a jejich informace...
         }
         
+        image_url = ""
+
+
         if occupation_name is None:
             occupations_list = ", ".join(occupations_info.keys())
             response = f"List of occupations:\n{occupations_list}"
@@ -3013,6 +3133,7 @@ class CthulhuCog(commands.Cog):
                 credit_rating = occupation_info["credit_rating"]
                 suggested_contacts = occupation_info.get("suggested_contacts", "None")
                 skills = occupation_info["skills"]
+                image_url = occupation_info["link"]
                 response = (
                     f":clipboard: Description: {description}\n"
                     f":clock: Era: {era}\n"
@@ -3030,6 +3151,7 @@ class CthulhuCog(commands.Cog):
                 embed_title = "Multiple Matching Occupations"
 
         embed = discord.Embed(title=embed_title, description=response, color=discord.Color.green())
+        embed.set_image(url=image_url)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["cArchetype", "ainfo"])

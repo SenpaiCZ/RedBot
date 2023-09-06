@@ -118,7 +118,7 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !showUserData                  | Debug command. Shows raw data saved for user who calls the command (stats, skill, backstory).  |
 
 # Change Log
-=========================================
+
 6th September 2023 - Images and cleanup
 =========================================
 
@@ -135,7 +135,6 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 **Server owners:** Server owners can delete other players investigators.
 
 
-=========================================
 31st August 2023 - New Features and Enhancements
 =========================================
 

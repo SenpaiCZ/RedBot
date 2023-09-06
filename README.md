@@ -118,7 +118,9 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !showUserData                  | Debug command. Shows raw data saved for user who calls the command (stats, skill, backstory).  |
 
 # Change Log
+=========================================
 6th September 2023 - Images and cleanup
+=========================================
 
 **LESS Variabless:** Removing all MAX varibless, everything is calculated on the fly, based of your stats
 
@@ -133,7 +135,9 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 **Server owners:** Server owners can delete other players investigators.
 
 
+=========================================
 31st August 2023 - New Features and Enhancements
+=========================================
 
 **Automatic Calculations:** After filling in all the required stats, the system now automatically calculates HP, MP, LUCK, MOV, BUILD, and Damage Bonus. This streamlines the process and ensures accurate character progression.
 

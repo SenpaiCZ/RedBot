@@ -107,10 +107,8 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !newInv name                                  | Create a new investigator                   |
 | !autoChar                                | Generate random stats for an investigator if your stats are 0   |
 | !mychar                                  | Show stats and skills                       |
-| !cstat statName                       | Edit investigator stats                     |
-| !cskill skillName                     | Edit investigator skills                    |
+| !cstat statName                       | Edit investigator stats and skills                  |
 | !deleteInvestigator                      | Delete your investigator (you will be prompted to confirm deletion)                   |
-| !mb                                      | Show backstory and inventory                |
 | !cb category - item                   | Add a record to backstory or inventory     |
 | !rb category itemID                | Delete a record from backstory or inventory|
 | !cname male/female                     | Generate a random name                      |
@@ -120,6 +118,20 @@ Step into the realm of eldritch horrors and gripping narratives with the Cthulhu
 | !showUserData                  | Debug command. Shows raw data saved for user who calls the command (stats, skill, backstory).  |
 
 # Change Log
+6th September 2023 - Images and cleanup
+
+**LESS Variabless:** Removing all MAX varibless, everything is calculated on the fly, based of your stats
+
+**Images:** Adding images to occupations and archetypes from poc
+
+**Merging commands:** Removing !cskill and moving all changing of stats and skills into !cstat commands. Adding smarter search for skills (You dont have to write Drive Auto, drive or auto will work just fine). 
+
+**More merging commands:** Backstory and inventory has been moved to !mychar on 4th page. Adding and removing enteries works the same way as before.
+
+**More Emoji:** Changing language will not resort into ? instead of emoji. Most languages have been added and renaming language skill will just change generic emoji into flag emoji.
+
+**Server owners:** Server owners can delete other players investigators.
+
 
 31st August 2023 - New Features and Enhancements
 
